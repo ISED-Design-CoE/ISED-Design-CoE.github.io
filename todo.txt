@@ -1,0 +1,11 @@
+To do:
+1. HTML for all screens (first pass then further passes)
+2. "Save" and "Help" screens
+3. Convert selections to actual radio buttons and checkboxes - especially 090
+4. Add numbered section headings to step navigation
+5. Add basic incorporation to 020
+6. Mock up two separated names (after 070)
+7. Fix JS errors and enhance interactions
+8. Add chevrons pointing to action buttons if they're not on screen
+9. Fix up province selection in 050
+10. Add expand/collapse all in 100
