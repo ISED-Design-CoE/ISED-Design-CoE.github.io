@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="template.css">
 
   <!-- Start page-specific CSS -->
+  <link rel="stylesheet" href="term-list.css">
   <!-- End page-specific CSS -->
 
 </head>
@@ -106,36 +107,36 @@
   <p><small>Ex. <span class="bold">Imperial</span> Oil Limited, <span class="bold">J. Turner</span> Holdings Inc., <span class="bold">Go</span> Travel Corp.</small></p>
 
   <h2>Between Us coffee shop Inc.</h2>
-  <div class="term-list">
-    <div class="term-wrapper">
-      <div class="term candidate-term" tabindex=0>
-        Between
-      </div>
-    </div>
-    <div class="term-wrapper">
-      <div class="term candidate-term" tabindex=0>
-        Us
-      </div>
-    </div>
-    <div class="term-wrapper">
-      <div class="term candidate-term" tabindex=0>
-        coffee
-      </div>
-    </div>
-    <div class="term-wrapper">
-      <div class="term candidate-term" tabindex=0>
-        shop
-      </div>
-    </div>
-    <div class="term-wrapper">
-      <div class="term legal-element">
-        Inc.
-      </div>
-      Legal<br>
-      element<br>
-      &#x2713;
-    </div>
-  </div>
+
+  <ul class="list-unstyled list-inline term-list">
+    <li class="checkbox">
+      <input type="checkbox" id="large-checkbox-item-1">
+      <label for="large-checkbox-item-1">Between</label>
+    </li>
+
+    <li class="checkbox">
+      <input type="checkbox" id="large-checkbox-item-2">
+      <label for="large-checkbox-item-2">Us</label>
+    </li>
+
+    <li class="checkbox">
+      <input type="checkbox" id="large-checkbox-item-3">
+      <label for="large-checkbox-item-3">coffee</label>
+    </li>
+
+    <li class="checkbox">
+      <input type="checkbox" id="large-checkbox-item-4">
+      <label for="large-checkbox-item-4">shop</label>
+    </li>
+
+    <li class="checkbox">
+      <input type="checkbox" id="large-checkbox-item-5" disabled>
+      <label for="large-checkbox-item-5">Inc.</label>
+      <br>Legal
+      <br>element
+      <br>&#x2713;
+      </li>
+  </ul>
 
   <ul class="list-unstyled">
     <li>

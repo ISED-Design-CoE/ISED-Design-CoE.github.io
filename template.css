@@ -96,39 +96,6 @@
 }
 
 
-/* Terms */
-.term-list {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-  display: flex;
-  justify-content: center;
-}
-.term-wrapper {
-  display: inline-block;
-  vertical-align: top;
-  text-align: center;
-}
-.term-wrapper .term {
-  margin: 0.5rem;
-  border: 2px solid #26374a;
-  border-radius: 999px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  cursor: default;
-}
-.term.legal-element {
-  background-color: #f2f2f2;
-  cursor:not-allowed;
-}
-.term-wrapper .term.candidate-term:hover,
-.term-wrapper .term.candidate-term:focus {
-  border-bottom: 6px solid #26374a;
-}
-.term-wrapper .term.candidate-term:focus {
-  background-color: #26374a;
-  color: white;
-}
-
 /* Name evaluation */
 .evaluation summary {
   min-height: 60px;
