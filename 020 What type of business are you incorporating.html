@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="template.css">
 
   <!-- Start page-specific CSS -->
+  <link rel="stylesheet" href="bulging-cards.css">
   <!-- End page-specific CSS -->
 
 </head>
@@ -103,18 +104,19 @@
   <h1>What type of business are you incorporating?</h1>
   <p><span class="bold">Choose the type of incorporation that is right for you.</span></p>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div tabindex="0">
-        <hr>
-        <div class="inline-block">
-          <img src="images/CBCA_icon.png" alt="" class="bulge">
-        </div>
-        <div class="inline-block">
-          <label><span class="bulge">Business<br>corporation</span></label>
-        </div>
-        <hr class="bulge">
+  <ul class="list-unstyled bulging-cards row">
+    <li class="radio bulging-card col-sm-6">
+      <input type="radio" id="large-radio-item-1" name="type-of-business">
+      <hr>
+      <div class="inline-block">
+        <img src="images/CBCA_icon.png" alt="" class="bulge">
       </div>
+      <div class="inline-block">
+        <label for="large-radio-item-1">
+          <span class="bulge">Business<br>corporation</span>
+        </label>
+      </div>
+      <hr class="bulge">
       <ul>
         <li>Is incorporated under the Canada Business Corporations Act</li>
         <li>Business corporations issue shares and the owners are the shareholders</li>
@@ -122,25 +124,27 @@
         <li><span class="bold">Custom incorporation:</span> Gives you flexibility to tailor your corporate name, articles of incorporation and shares.</li>
         <li>Learn more about <a href="(Business corporations)">business corporations</a></li>
       </ul>
-    </div>
-    <div class="col-sm-6">
-      <div tabindex="0">
-        <hr>
-        <div class="inline-block">
-          <img src="images/NFP_Act_icon.png" alt="" class="bulge">
-        </div>
-        <div class="inline-block">
-          <label><span class="bulge">Not-for-profit<br>organisation</span></label>
-        </div>
-        <hr class="bulge">
+    </li>
+    <li class="radio bulging-card col-sm-6">
+      <input type="radio" id="large-radio-item-2" name="type-of-business">
+      <hr>
+      <div class="inline-block">
+        <img src="images/NFP_Act_icon.png" alt="" class="bulge">
       </div>
+      <div class="inline-block">
+        <label for="large-radio-item-2">
+          <span class="bulge">Not-for-profit<br>organisation</span>
+        </label>
+      </div>
+      <hr class="bulge">
       <ul>
         <li>Incorporated under the Canada Not For Profit Corporations Act</li>
         <li>Not-for-profit corporations do not issue shares, and they have members</li>
         <li>Learn more about <a href="(Not-for-profit corporations)">not-for-profit corporations</a></li>
       </ul>
-    </div>
-  </div>
+    </li>
+  </ul>
+
 
   <div class="action-bar">
     <a href="010 Before we get started.html" class="btn btn-default">Previous</a>

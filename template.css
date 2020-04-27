@@ -68,34 +68,6 @@
   display: inline;
 }
 
-/* Bulging cards */
-*[tabindex] img.bulge {
-  height: 50px;
-  margin-right: 1rem;
-}
-*[tabindex]:hover img.bulge,
-*[tabindex]:focus img.bulge {
-  height: 63px;
-}
-
-*[tabindex] span.bulge,
-*[tabindex] span.bulge {
-  font-weight: normal;
-  font-size: 1.2em;
-}
-*[tabindex]:hover span.bulge,
-*[tabindex]:focus span.bulge {
-  font-weight: bold;
-}
-
-*[tabindex] hr {
-  border-color: #26374a;
-}
-*[tabindex]:focus hr.bulge {
-  border-width: 1rem;
-}
-
-
 /* Name evaluation */
 .evaluation summary {
   min-height: 60px;

@@ -1,0 +1,114 @@
+/* fix discrepancies between GCWeb4 and GCWeb 5+ */
+.radio {
+  font-size: 20px;
+  line-height: 1.65em;
+}
+
+/* bigger label */
+label {
+  font-size: 20px;
+}
+
+/* custom checkboxes */
+
+/* .bulging-cards input {
+  opacity: 0;
+} */
+
+.bulging-cards .radio {
+  position: relative;
+  cursor: pointer;
+  font-weight: normal;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.bulging-cards .radio {
+  padding-left: 30px;
+  margin-bottom: 32px;
+}
+
+.bulging-cards .radio label::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #333;
+  margin-top: -4px;
+ }
+
+.bulging-cards .radio label::before {
+  content: "";
+  border-radius: 50%;
+}
+
+.bulging-cards .checkbox label::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 12px;
+  top: 0px;
+  width: 13px;
+  height: 22px;
+  border: solid #333;
+  border-width: 0 5px 5px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* .bulging-cards .radio label::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #333;
+} */
+
+/* hide the check */
+.bulging-cards .radio input[type="radio"] + label::after {
+    content: none;
+}
+
+/* unhide check when checked */
+/* .bulging-cards .radio input[type="radio"]:checked + label::after {
+    content: "";
+} */
+
+
+/* Bulging cards */
+.bulging-card img.bulge {
+  height: 50px;
+  margin-right: 1rem;
+}
+.bulging-card:hover img.bulge,
+.bulging-card:focus img.bulge {
+  height: 63px;
+}
+
+.bulging-card span.bulge,
+.bulging-card span.bulge {
+  font-weight: normal;
+  font-size: 1.2em;
+}
+.bulging-card:hover span.bulge,
+.bulging-card:focus span.bulge {
+  font-weight: bold;
+}
+
+.bulging-card hr {
+  border-color: #26374a;
+}
+.bulging-card:focus hr.bulge {
+  border-width: 1rem;
+}
