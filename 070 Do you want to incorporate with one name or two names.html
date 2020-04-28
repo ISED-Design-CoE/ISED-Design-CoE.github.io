@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="template.css">
 
   <!-- Start page-specific CSS -->
+  <link rel="stylesheet" href="bulging-cards.css">
   <!-- End page-specific CSS -->
 
 </head>
@@ -103,18 +104,17 @@
   <h1>Do you want to incorporate with one name or two names?</h1>
   <p>Select if you are incorporating your corporation under one name or under both official languages. <span class="bold">Please choose one option.</span></p>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div tabindex="0">
-        <hr>
-        <div class="inline-block">
+  <div class="bulging-cards row">
+    <div class="radio col-sm-6">
+      <input type="radio" id="large-radio-item-1" name="number-of-names">
+      <label for="large-radio-item-1">
+        <span class="inline-block">
           <img src="images/one_name.png" alt="" class="bulge">
-        </div>
-        <div class="inline-block">
-          <label><span class="bulge">One name<br> (English, French<br> or a combination)</span></label>
-        </div>
-        <hr class="bulge">
-      </div>
+        </span>
+        <span class="inline-block">
+          <span class="bulge">One name<br> (English, French<br> or a combination)</span>
+        </span>
+      </label>
       <ul>
         <li>A combined name has to describe your business in both languages and can only include the legal element Inc. at the end of the name (e.g. Boulangerie René Bakery Inc.)</li>
         <li>May include a word in a language other than French or English as long as it is not a description of the business.</li>
@@ -122,17 +122,16 @@
         <li>Learn more about <a href="(Business naming)">business naming</a></li>
       </ul>
     </div>
-    <div class="col-sm-6">
-      <div tabindex="0">
-        <hr>
-        <div class="inline-block">
+    <div class="radio col-sm-6">
+      <input type="radio" id="large-radio-item-2" name="number-of-names">
+      <label for="large-radio-item-2">
+        <span class="inline-block">
           <img src="images/two_names.png" alt="" class="bulge">
-        </div>
-        <div class="inline-block">
-          <label><span class="bulge">Two separated<br> names (English<br> and French)</span></label>
-        </div>
-        <hr class="bulge">
-      </div>
+        </span>
+        <span class="inline-block">
+          <span class="bulge">Two separated<br> names (English<br> and French)</span>
+        </span>
+      </label>
       <ul>
         <li>If you are proposing a bilingual name, you must ensure that both language forms are not so different from one another that they appear to be two different corporations.</li>
         <li>You may include a word in a language other than French or English as long as it is the main name and not a description of the business.</li>

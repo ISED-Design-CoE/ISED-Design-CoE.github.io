@@ -1,7 +1,7 @@
 To do:
 1. HTML for all screens (first pass then further passes) - DONE, pending changes
 2. "Save" and "Help" screens - DONE
-3. Convert selections to actual radio buttons and checkboxes - especially 090
+3. Convert selections to actual radio buttons and checkboxes - DONE
 4. Add numbered section headings to step navigation
 5. Add basic incorporation to 020
 6. Mock up two separated names (after 070)
