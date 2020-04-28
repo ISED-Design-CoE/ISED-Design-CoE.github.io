@@ -106,7 +106,7 @@
 
   <div class="form-group">
     <label for="email">Email (make sure it's correct)</label>
-    <input type="email" id="email" class="form-control fullwidth" autocomplete="email" required>
+    <input type="email" id="email" class="form-control fullwidth" autocomplete="email" required value="something-i-entered@when-saving.com">
   </div>
 
   <div class="form-group">
@@ -130,13 +130,14 @@
   <div class="notesaboutmockup">
     <h2>Notes about this mockup:</h2>
     <ul>
+      <li>If the user has saved their progress then we already have an email address. Populate it into the email field, but let them change it</li>
       <li>This page includes some measures to ensure we get correct email addresses, per <a href="https://uxmovement.com/forms/why-the-email-confirmation-field-must-die/">https://uxmovement.com/forms/why-the-email-confirmation-field-must-die/</a></li>
       <li>It would be a good idea to add some sanity checks as well. Some ideas:
         <ul>
           <li>Check whether the domain (the part after the @ sign, if it's the kind of email address that includes an @ sign) looks like a typo for one of the widely-used email providers
             <ul>
               <li>This list would include domains like gmail.com, yahoo.com and yahoo.ca, hotmail.com and hotmail.ca, outlook.com, and aol.com</li>
-              <li>We could also look at the domains of email addresses already in our database.</li>
+              <li>We could also look at the domains of email addresses already in our database</li>
             </ul>
           </li>
           <li>If it does, ask the user whether they meant that address instead (example dismissable alert: "Did you mean yahoo.com? Change or dismiss")</li>
