@@ -9,11 +9,15 @@ label {
   font-size: 20px;
 }
 
+.radio label {
+  padding-left: 0;
+}
+
 /* custom checkboxes */
 
-/* .bulging-cards input {
+.bulging-cards input {
   opacity: 0;
-} */
+}
 
 .bulging-cards .radio {
   position: relative;
@@ -26,7 +30,7 @@ label {
 }
 
 .bulging-cards .radio {
-  padding-left: 30px;
+  margin-top: 0;
   margin-bottom: 32px;
 }
 
@@ -35,25 +39,24 @@ label {
   box-sizing: border-box;
   position: absolute;
   display: inline-block;
-  top: 0;
-  left: 0;
+  right: 15px;
   width: 36px;
   height: 36px;
   border: 2px solid #333;
   margin-top: -4px;
  }
 
-.bulging-cards .radio label::before {
+/* .bulging-cards .radio label::before {
   content: "";
   border-radius: 50%;
-}
+} */
 
-.bulging-cards .checkbox label::after {
+.bulging-cards .radio label::after {
   content: "";
   display: inline-block;
   position: absolute;
-  left: 12px;
-  top: 0px;
+  right: 26px;
+  top: 47px;
   width: 13px;
   height: 22px;
   border: solid #333;
@@ -63,28 +66,10 @@ label {
   transform: rotate(45deg);
 }
 
-/* .bulging-cards .radio label::after {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  top: 4px;
-  left: 8px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #333;
-} */
-
 /* hide the check */
-.bulging-cards .radio input[type="radio"] + label::after {
+.bulging-cards .radio input[type="radio"]:not(:checked) + label::after {
     content: none;
 }
-
-/* unhide check when checked */
-/* .bulging-cards .radio input[type="radio"]:checked + label::after {
-    content: "";
-} */
-
 
 /* Bulging cards */
 .bulging-card img.bulge {
@@ -92,16 +77,17 @@ label {
   margin-right: 1rem;
 }
 .bulging-card:hover img.bulge,
+.bulging-cards .radio input[type="radio"]:focus + label img.bulge,
 .bulging-card:focus img.bulge {
   height: 63px;
 }
 
-.bulging-card span.bulge,
 .bulging-card span.bulge {
   font-weight: normal;
   font-size: 1.2em;
 }
 .bulging-card:hover span.bulge,
+.bulging-cards .radio input[type="radio"]:focus + label span.bulge,
 .bulging-card:focus span.bulge {
   font-weight: bold;
 }
