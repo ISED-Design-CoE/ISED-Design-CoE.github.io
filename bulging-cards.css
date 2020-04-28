@@ -4,13 +4,9 @@
   line-height: 1.65em;
 }
 
-/* bigger label */
-label {
-  font-size: 20px;
-}
-
 .radio label {
   padding-left: 0;
+  font-size: 20px;
 }
 
 /* custom checkboxes */
@@ -20,6 +16,8 @@ label {
 }
 
 .bulging-cards .radio {
+  margin-top: 0;
+  margin-bottom: 32px;
   position: relative;
   cursor: pointer;
   font-weight: normal;
@@ -27,11 +25,6 @@ label {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.bulging-cards .radio {
-  margin-top: 0;
-  margin-bottom: 32px;
 }
 
 .bulging-cards .radio label::before {
@@ -44,19 +37,20 @@ label {
   height: 36px;
   border: 2px solid #333;
   margin-top: -4px;
- }
+}
 
-/* .bulging-cards .radio label::before {
+/* Uncomment this selector for circular radio button */
+.bulging-cards .radio label::before {
   content: "";
   border-radius: 50%;
-} */
+}
 
 .bulging-cards .radio label::after {
   content: "";
   display: inline-block;
   position: absolute;
   right: 26px;
-  top: 47px;
+  top: 35px;
   width: 13px;
   height: 22px;
   border: solid #333;
@@ -71,7 +65,7 @@ label {
     content: none;
 }
 
-/* Bulging cards */
+/* Bulging cards: images */
 .bulging-card img.bulge {
   height: 50px;
   margin-right: 1rem;
@@ -82,6 +76,7 @@ label {
   height: 63px;
 }
 
+/* Bulging cards: text */
 .bulging-card span.bulge {
   font-weight: normal;
   font-size: 1.2em;
@@ -92,9 +87,22 @@ label {
   font-weight: bold;
 }
 
-.bulging-card hr {
-  border-color: #26374a;
+/* Bulging cards: bottom border */
+.bulging-card label {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  border-top: 1px solid #26374a;
+  border-bottom: 1px solid #26374a;
 }
-.bulging-card:focus hr.bulge {
-  border-width: 1rem;
+.bulging-cards .radio input[type="radio"]:checked + label {
+  border-bottom-width: 10px;
+  margin-bottom: 11px;
+}
+
+/* add focus */
+.bulging-cards .radio input[type="radio"]:focus + label::before  {
+    box-shadow: 0 0 3pt 2pt rgb(59, 153, 252);
 }
