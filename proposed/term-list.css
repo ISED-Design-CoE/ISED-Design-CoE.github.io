@@ -1,0 +1,63 @@
+/* general formatting */
+.term-list {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.term-list .checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* hide the real checkbox */
+.term-list .checkbox input {
+  opacity: 0;
+}
+
+/* create "pills" */
+.term-list .checkbox label {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border: 2px solid #26374a;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+}
+
+/* make disabled items (legal element) look different */
+.term-list .checkbox input[type="checkbox"]:disabled + label {
+  background-color: #f2f2f2;
+  cursor:not-allowed;
+}
+
+/* colour in the "pills" when selected or mouseover */
+.term-list .checkbox input[type="checkbox"]:not(:disabled) + label:hover,
+.term-list .checkbox input[type="checkbox"]:not(:disabled) + label:focus,
+.term-list .checkbox input[type="checkbox"]:not(:disabled):hover + label,
+.term-list .checkbox input[type="checkbox"]:not(:disabled):focus + label {
+  background-color: #26374a;
+  color: white;
+}
+
+/* create the underline */
+.term-list .checkbox label::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 3rem);
+  top: 3rem;
+  width: 6rem;
+  height: 22px;
+  border-bottom: solid #26374a 1rem;
+}
+
+/* hide the underline unless checked */
+.term-list .checkbox input[type="checkbox"]:not(:checked) + label::after {
+    content: none;
+}

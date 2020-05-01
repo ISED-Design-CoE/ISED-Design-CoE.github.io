@@ -1,0 +1,103 @@
+/* Note: this CSS file has more than its share of magic numbers. Screens have only been tested in Firefox on Windows with default font-sizes. */
+
+/* fix discrepancies between GCWeb4 and GCWeb 5+ */
+.radio {
+  font-size: 20px;
+  line-height: 1.65em;
+}
+
+.radio label {
+  padding-left: 0;
+}
+
+/* custom checkboxes */
+.bulging-cards input {
+  opacity: 0;
+}
+.bulging-cards .radio {
+  margin-top: 0;
+  margin-bottom: 32px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Circle */
+.bulging-cards .radio label::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  display: inline-block;
+  right: 15px;
+  width: 36px;
+  height: 36px;
+  margin-top: -4px;
+  border: 2px solid #333;
+  border-radius: 50%;
+}
+
+/* Checkmark */
+.bulging-cards .radio label::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  right: 26px;
+  top: 35px;
+  width: 13px;
+  height: 22px;
+  border: solid #333;
+  border-width: 0 5px 5px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* hide the check */
+.bulging-cards .radio input[type="radio"]:not(:checked) + label::after {
+    content: none;
+}
+
+/* add focus */
+.bulging-cards .radio input[type="radio"]:focus + label::before  {
+  box-shadow: 0 0 3pt 2pt rgb(59, 153, 252);
+}
+
+/* Bulging cards: images */
+.bulging-cards .radio img.bulge {
+  height: 50px;
+  margin-right: 1rem;
+}
+.bulging-cards .radio:hover img.bulge,
+.bulging-cards .radio input[type="radio"]:focus + label img.bulge {
+  height: 63px;
+}
+.bulging-cards .radio label > span {
+  min-width: 72px;
+}
+
+/* Bulging cards: text */
+.bulging-cards .radio span.bulge {
+  font-size: 1.2em;
+}
+.bulging-cards .radio:hover span.bulge,
+.bulging-cards .radio input[type="radio"]:focus + label span.bulge {
+  font-weight: bold;
+}
+
+/* Bulging cards: bottom border */
+.bulging-cards .radio label {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  border-top: 1px solid #26374a;
+  border-bottom: 1px solid #26374a;
+}
+.bulging-cards .radio input[type="radio"]:checked + label {
+  border-bottom-width: 10px;
+  margin-bottom: 11px;
+}
