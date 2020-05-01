@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
 
   <!-- Start title -->
-  <title>Who are your customers? - Incorporate - Corporations Canada - Innovation, Science and Economic Development Canada</title>
+  <title>Review - Incorporate - Corporations Canada - Innovation, Science and Economic Development Canada</title>
   <!-- End title -->
 
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="template.css">
 
   <!-- Start page-specific CSS -->
-  <link rel="stylesheet" href="https://design.canada.ca/css/checkbox-radio.css">
   <!-- End page-specific CSS -->
 
 </head>
@@ -76,14 +75,14 @@
       <li class="completed"><a>Business activity</a></li>
       <li class="completed"><a>Assigned numbered name or custom corporate name?</a></li>
       <li class="completed"><a>Choose a legal element</a></li>
-      <li class="active"><a>Who are your customers?</a></li>
-      <li><a>Where are your customers?</a></li>
-      <li><a>Do you want to incorporate with one name or two names?</a></li>
-      <li><a>What is the name you want?</a></li>
-      <li><a>Distinctive words in your proposed name</a></li>
-      <li><a>Similar names</a></li>
-      <li><a>Upload supporting documentation</a></li>
-      <li><a>Review</a></li>
+      <li class="completed"><a>Who are your customers?</a></li>
+      <li class="completed"><a>Where are your customers?</a></li>
+      <li class="completed"><a>Do you want to incorporate with one name or two names?</a></li>
+      <li class="completed"><a>What is the name you want?</a></li>
+      <li class="completed"><a>Distinctive words in your proposed name</a></li>
+      <li class="completed"><a>Similar names</a></li>
+      <li class="completed"><a>Upload supporting documentation</a></li>
+      <li class="active"><a>Review</a></li>
       <li><a>Contact information</a></li>
       <li><a>Payment for custom corporate name</a></li>
       <li><a>Your payment was successful</a></li>
@@ -102,40 +101,27 @@
 <section class="gc-nav-section" id="wb-cont">
 
   <!-- Start page content -->
-  <h1>Who are your customers?</h1>
+  <h1>Review</h1>
 
-  <p>We don't want people to confuse your business with one that has already been incorporated. This could happen if your corporate name is too similar to another company in the same industry that serves the same kind of customer.</p>
-  <p>To help us approve the name you want, please let us know what kind of customers you'll have.</p>
+  <p>Please confirm that the information below is correct. You can click on any underlined text to go back and change it.</p>
 
-  <fieldset class="chckbxrdio-grp">
-    <legend class="wb-inv">Your business' clients</legend>
-    <ul class="list-unstyled can-ca-form">
-      <li class="checkbox">
-        <input type="checkbox" id="large-checkbox-item-1">
-        <label for="large-checkbox-item-1">Consumers</label>
-        <div class="form-group largefix">
-          <label for="moreInformationConsumers" class="wb-inv">More information about your consumer clients</label>
-          <textarea id="moreInformationConsumers" class="form-control fullwidth"></textarea>
-        </div>
-      </li>
-      <li class="checkbox">
-        <input type="checkbox" id="large-checkbox-item-2">
-        <label for="large-checkbox-item-2">Businesses</label>
-        <div class="form-group largefix">
-          <label for="moreInformationBusinesses" class="wb-inv">More information about your business clients</label>
-          <textarea id="moreInformationBusinesses" class="form-control fullwidth"></textarea>
-        </div>
-      </li>
-      <li class="checkbox">
-        <input type="checkbox" id="large-checkbox-item-3">
-        <label for="large-checkbox-item-3">No customers, this is a holding company</label>
-    </li>
-  </ul>
- </fieldset>
+  <div class="review">
+    <p><a href="080 Propose a corporate name.html">Between Us coffee shop Inc.</a> and <a href="080 Propose a corporate name.html">café entre nous Inc.</a> are the names I want to incorporate under.</p>
 
-  <div class="action-bar">
-    <a href="040 Assigned numbered name or custom corporate name.html" class="btn btn-default">Previous</a>
-    <a href="060 Where are your customers.html" class="btn btn-primary">Next</a>
+    <p>My business <a href="030 What does your corporation do.html">will serve food and drinks (from coffee and tea to sandwiches) on tables and for take-out. We also provide catering services around Ottawa and Gatineau.</a></p>
+
+    <p>My business will offer services to <a href="050 Who are your business clients.html">consumers</a>, specifically <a href="050 Who are your business clients.html">Students and staff from the University of Ottawa. Also people from the neighbourhood and passersby.</a>.</p>
+
+    <p>My industry is <a href="030 What does your corporation do.html">Food services and drinking places</a> and <a href="030 What does your corporation do.html">Drinking places (alcoholic beverages)</a>.</p>
+
+    <p>My business will operate in the provinces of <a href="050 Who are your business clients.html">Quebec</a> and <a href="050 Who are your business clients.html">Ontario</a> and in <a href="050 Who are your business clients.html">Ottawa, Gatineau, Hull and Kanata</a>.</p>
+
+    <p>Possible confusion with the following business has been clarified: <a href="100 Are other businesses using your proposed name.html">Between Us Bookshop Inc.</a></p>
+  </div>
+
+    <div class="action-bar">
+    <a href="110 Upload support information.html" class="btn btn-default">Previous</a>
+    <a href="130 Contact information.html" class="btn btn-primary">Next</a>
     <a href="510 Save.html" class="btn btn-link">Save</a>
     <a href="520 Help.html" class="btn btn-link">Help</a>
   </div>
@@ -144,9 +130,8 @@
   <div class="notesaboutmockup">
     <h2>Notes about this mockup:</h2>
     <ul>
-      <li>
-        The "Nobody" checkbox is mutually exclusive with the other two
-      </li>
+      <li>Information is drawn from the indicated screens. Hyperlinks allow users to go back to those screens to make changes.</li>
+      <li>More design work is required to map responses on those screens to text on this screen.</li>
     </ul>
   </div>
   <!-- End page content -->
@@ -202,18 +187,6 @@
   <script src="https://www.canada.ca/etc/designs/canada/wet-boew/js/theme.min.js"></script>
 
   <!-- Start page-specific ECMAscript -->
-  <!-- $(function() {
-    $("#large-checkbox-item-1").select({
-      $("#large-checkbox-item-3").prop( "checked", false );
-    });
-    $("#large-checkbox-item-2").select({
-      $("#large-checkbox-item-3").prop( "checked", false );
-    });
-    $("#large-checkbox-item-3").select({
-      $("#large-checkbox-item-1").prop( "checked", false );
-      $("#large-checkbox-item-2").prop( "checked", false );
-    });
-  }); -->
   <!-- End page-specific ECMAscript -->
 
 </body>

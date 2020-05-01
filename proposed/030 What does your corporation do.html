@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
 
   <!-- Start title -->
-  <title>What does your corporation do? - Incorporate - Corporations Canada - Innovation, Science and Economic Development Canada</title>
+  <title>Business activity - Incorporate - Corporations Canada - Innovation, Science and Economic Development Canada</title>
   <!-- End title -->
 
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
@@ -71,20 +71,21 @@
 
       <!-- Start navigation -->
       <li class="completed"><a>Before we get started</a></li>
-      <li class="completed"><a>What type of business are you incorporating?</a></li>
-      <li class="active"><a>What does your corporation do?</a></li>
+      <li class="completed"><a>For-profit or not-for-profit?
+</a></li>
+      <li class="active"><a>Business activity</a></li>
       <li><a>Assigned numbered name or custom corporate name?</a></li>
-      <li><a>Choose your legal element</a></li>
-      <li><a>Who are your business' clients?</a></li>
+      <li><a>Choose a legal element</a></li>
+      <li><a>Who are your customers?</a></li>
       <li><a>Where are your customers?</a></li>
       <li><a>Do you want to incorporate with one name or two names?</a></li>
-      <li><a>Propose a corporate name</a></li>
-      <li><a>Distinctive words in your name proposal</a></li>
-      <li><a>Are other businesses using your proposed name?</a></li>
-      <li><a>Upload support information</a></li>
-      <li><a>Finalizing your name proposal</a></li>
+      <li><a>What is the name you want?</a></li>
+      <li><a>Distinctive words in your proposed name</a></li>
+      <li><a>Similar names</a></li>
+      <li><a>Upload supporting documentation</a></li>
+      <li><a>Review</a></li>
       <li><a>Contact information</a></li>
-      <li><a>Paying for an evaluation of your proposed name</a></li>
+      <li><a>Payment for custom corporate name</a></li>
       <li><a>Your payment was successful</a></li>
       <li><a>Articles of incorporation</a></li>
       <li><a>Review, Print and Sign</a></li>
@@ -101,21 +102,28 @@
 <section class="gc-nav-section" id="wb-cont">
 
   <!-- Start page content -->
-  <h1>What does your corporation do?</h1>
+  <h1>Business activity</h1>
   <div class="form-group">
-    <p>Knowing this information lets us provide you additional information that is relevant to your field of business. <span class="bold">Please provide below the most accurate description of the main activity of your corporation.</span></p>
-    <label for="naicsSearchInput" class="wb-inv">Business activity</label>
+    <p>What does your corporation do?</p>
+    <p>Enter your primary business activity. You can enter a secondary business activity too if you like.</p>
+    <label for="naicsSearchInput" class="wb-inv">Primary business activity</label>
     <input id="naicsSearchInput" maxlength="250" size="100" class="form-control" autocomplete="off" spellcheck="false"><!-- Works the same as in Nuans: see page comments -->
   </div>
 
   <div class="form-group">
-    <button type="button" class="btn btn-default btn-block"><span class="fa fa-plus"></span> <span class="wb-inv">Add secondary business activity</span></button>
+    <div id="add-secondary" class="show">
+      <button type="button" class="btn btn-default btn-block"><span class="fa fa-plus"></span> <span class="wb-inv">Add secondary business activity</span></button>
+    </div>
+    <div id="secondary" class="hidden">
+      <label for="naicsSearchInput2" class="wb-inv">Secondary business activity</label>
+      <input id="naicsSearchInput2" maxlength="250" size="100" class="form-control" autocomplete="off" spellcheck="false"><!-- Works the same as in Nuans: see page comments -->
+    </div>
   </div>
 
   <div class="form-group margin-top">
     <p>
-      <span class="bold">You may also provide additional information so we can help you more. My business&hellip;</span><br>
-      e.g. &hellip;will be a local coffee shop specialized in organic products served at tables, to go, and sold in bulk over the counter
+      <span class="bold">You may also provide additional information. My business&hellip;</span><br>
+      e.g. &hellip;is a local coffee shop specializing in organic products served at tables, to go, and sold in bulk over the counter
     </p>
     <label for="moreInformation" class="wb-inv">More information about your business</label>
     <textarea id="moreInformation" class="form-control fullwidth"></textarea>
