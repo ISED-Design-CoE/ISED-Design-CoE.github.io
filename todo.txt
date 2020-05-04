@@ -1,6 +1,4 @@
 To do:
-- Add <form> tags to HTML
-
 - 060: Hide "more information" boxes if corresponding checkboxes aren't checked
 - 080: Indicate that name is the only required field
 - 090: Add note that this page only displays if there is more than one word in the name

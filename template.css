@@ -32,6 +32,18 @@
   padding: 10px 14px;
 }
 
+/* Temporary fix: remove when https://github.com/wet-boew/GCWeb/pull/1676 is approved */
+:not(#wb-srch) form, .checkbox, .checkbox-inline, .radio, .radio-inline, form .btn:not(.btn-call-to-action) {
+  font-size: 20px;
+  line-height: 1.65em;
+}
+form .btn:not(.btn-call-to-action), .form-control {
+  padding: 10px 14px;
+}
+legend {
+  line-height: inherit;
+}
+
 /* Action bar */
 .action-bar {
   margin-top: 4rem;
