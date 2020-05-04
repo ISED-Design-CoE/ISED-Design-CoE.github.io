@@ -8,6 +8,8 @@ To do:
 - 100: Highlight the exact-matched words
 - 120: Add note explaining where the user goes when they click on each link. For instance, if they make a change to the name that affects the distinctive term (e.g. not just capitalization) then they have to go through the process again
 
+- Update text and design per latest XD mockup
+
 - Add numbered section headings to step navigation
 - Fix JS errors and enhance interactions
 
