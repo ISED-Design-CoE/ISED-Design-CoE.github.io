@@ -1,11 +1,19 @@
 To do:
-1. HTML for all screens (first pass then further passes) - DONE, pending changes
-2. "Save" and "Help" screens - DONE
-3. Convert selections to actual radio buttons and checkboxes - DONE
-4. Add numbered section headings to step navigation
-5. Add basic incorporation to 020
-6. Mock up two separated names (after 070)
-7. Fix JS errors and enhance interactions
-8. Add chevrons pointing to action buttons if they're not on screen
-9. Fix up province selection in 050
-10. Add expand/collapse all in 100
+- Include TBS' checkbox CSS on every page
+- Fill in the circles in the completed steps in the sidebar
+- Add <form> tags to HTML
+
+- 060: Hide "more information" boxes if corresponding checkboxes aren't checked
+- 080: Indicate that name is the only required field
+- 090: Add note that this page only displays if there is more than one word in the name
+- 090: Don't centre. Instead, justify left, but with a 24px margin
+- 090: If we can't fit the whole name on one line, then stack terms vertically with checkboxes
+- 100: Move checkbox to the left
+- 100: Highlight the exact-matched words
+- 120: Add note explaining where the user goes when they click on each link. For instance, if they make a change to the name that affects the distinctive term (e.g. not just capitalization) then they have to go through the process again
+
+- Add numbered section headings to step navigation
+- Fix JS errors and enhance interactions
+
+- 050: Fix up province selection
+- 100: Add expand/collapse all
