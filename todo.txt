@@ -1,5 +1,4 @@
 To do:
-- Include TBS' checkbox CSS on every page
 - Fill in the circles in the completed steps in the sidebar
 - Add <form> tags to HTML
 
