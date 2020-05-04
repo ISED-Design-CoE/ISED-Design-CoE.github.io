@@ -1,5 +1,4 @@
 To do:
-- 060: Hide "more information" boxes if corresponding checkboxes aren't checked
 - 080: Indicate that name is the only required field
 - 090: Add note that this page only displays if there is more than one word in the name
 - 090: Don't centre. Instead, justify left, but with a 24px margin
