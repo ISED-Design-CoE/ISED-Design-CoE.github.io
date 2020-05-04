@@ -256,7 +256,8 @@ ol.gc-navseq>li>a[href]:hover::before {
   border-color: #ccc;
 }
 .gc-navseq li.completed>a::before {
-  border-color: #ccc
+  border-color: #ccc;
+  background-color: #eee;
 }
 /*active*/
 .gc-navseq li.active>a::before, .gc-navseq-fa li.active span.fa-li {

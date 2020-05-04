@@ -1,5 +1,4 @@
 To do:
-- Fill in the circles in the completed steps in the sidebar
 - Add <form> tags to HTML
 
 - 060: Hide "more information" boxes if corresponding checkboxes aren't checked
