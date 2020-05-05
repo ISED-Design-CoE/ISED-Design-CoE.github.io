@@ -1,5 +1,4 @@
 To do:
-- 090: Add note that this page only displays if there is more than one word in the name
 - 090: Don't centre. Instead, justify left, but with a 24px margin
 - 090: If we can't fit the whole name on one line, then stack terms vertically with checkboxes
 - 100: Move checkbox to the left
