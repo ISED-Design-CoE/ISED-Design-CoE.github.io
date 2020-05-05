@@ -38,6 +38,8 @@ details[open] {
 /* Temporary fix: remove when https://github.com/wet-boew/GCWeb/pull/1676 is approved */
 :not(#wb-srch) form, .checkbox, .checkbox-inline, .radio, .radio-inline, form .btn:not(.btn-call-to-action) {
   font-size: 20px;
+}
+:not(#wb-srch) form {
   line-height: 1.65em;
 }
 form .btn:not(.btn-call-to-action), .form-control {
@@ -71,49 +73,6 @@ legend {
 .notesaboutmockup h2 {
   font-size: inherit;
   margin-top: 1em;
-}
-
-/* ** CSS for specific pages ** */
-/* Choose legal element */
-.choose-legal-element {
-  margin: 2em;
-}
-
-.choose-legal-element .form-control {
-  display: inline;
-}
-
-/* Name evaluation */
-.evaluation summary {
-  min-height: 60px;
-}
-.evaluation label {
-  margin-top: -8px;
-}
-
-
-/* File upload, from https://www.sitepoint.com/html5-file-drag-and-drop/ */
-#filedrag {
-  font-weight: bold;
-  text-align: center;
-  padding: 1em 0;
-  margin: 1em 0;
-  color: #555;
-  border: 2px dashed #555;
-  border-radius: 7px;
-  cursor: default;
-}
-
-#filedrag.hover {
-  color: #f00;
-  border-color: #f00;
-  border-style: solid;
-  box-shadow: inset 0 3px 4px #888;
-}
-
-/* Review */
-.review {
-  margin-top: 2rem;
 }
 
 

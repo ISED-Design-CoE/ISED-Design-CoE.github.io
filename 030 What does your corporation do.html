@@ -21,6 +21,7 @@
 
   <!-- Start page-specific CSS -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="addfield.css">
   <!-- End page-specific CSS -->
 
 </head>
@@ -107,13 +108,14 @@
   <h1>What does your corporation do?</h1>
   <div class="form-group">
     <p>Knowing this information lets us provide you additional information that is relevant to your field of business. <span class="bold">Please provide below the most accurate description of the main activity of your corporation.</span></p>
-    <label for="naicsSearchInput" class="wb-inv">Business activity</label>
-    <input id="naicsSearchInput" maxlength="250" size="100" class="form-control" autocomplete="off" spellcheck="false"><!-- Works the same as in Nuans: see page comments -->
+    <label for="naicsSearchInput1" class="wb-inv">Primary business activity</label>
+    <input id="naicsSearchInput1" maxlength="250" size="100" class="form-control" autocomplete="off" spellcheck="false"><!-- Works the same as in Nuans: see page comments -->
   </div>
 
   <div class="form-group">
-    <button type="button" class="btn btn-default btn-block"><span class="fa fa-plus"></span> <span class="wb-inv">Add secondary business activity</span></button>
-  </div>
+    <button type="button" class="btn btn-default btn-block addfield"><span class="fa fa-plus"></span> <span class="wb-inv">Add secondary business activity</span></button>
+    <label for="naicsSearchInput2" class="wb-inv">Secondary business activity</label>
+    <input id="naicsSearchInput2" maxlength="250" size="100" class="form-control" autocomplete="off" spellcheck="false"><!-- Works the same as in Nuans: see page comments -->  </div>
 
   <div class="form-group margin-top">
     <p>

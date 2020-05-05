@@ -1,0 +1,7 @@
+.choose-legal-element {
+  margin: 2em;
+}
+
+.choose-legal-element .form-control {
+  display: inline;
+}
