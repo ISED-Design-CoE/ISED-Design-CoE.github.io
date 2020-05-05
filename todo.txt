@@ -7,11 +7,12 @@ To do:
 - 110: Add information about acceptable file formats and maximum size
 - 120: Add note explaining where the user goes when they click on each link. For instance, if they make a change to the name that affects the distinctive term (e.g. not just capitalization) then they have to go through the process again
 - 130: Add note that this page is about contact information for the person that Corporations Canada should contact about the incorporation, and belongs later in the process
+- Add numbered section headings to step navigation
 
 - Update text and design per latest XD mockup
+- Add pages for when there are two names
 
-- Add numbered section headings to step navigation
-- Fix JS errors and enhance interactions
-
+- Fix JS errors
+- Use TBS' own stylesheet for new alerts etc. instead of including directly in template.css
 - 050: Fix up province selection
 - 100: Add expand/collapse all
