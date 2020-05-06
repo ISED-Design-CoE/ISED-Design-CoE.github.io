@@ -11,6 +11,7 @@ To do:
 
 - Update text and design per latest XD mockup
 - Add pages for when there are two names
+- Add alternative first page
 
 - Fix JS errors
 - Use TBS' own stylesheet for new alerts etc. instead of including directly in template.css
