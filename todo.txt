@@ -1,6 +1,4 @@
 To do:
-- 090: Don't centre. Instead, justify left, but with a 24px margin
-- 090: If we can't fit the whole name on one line, then stack terms vertically with checkboxes
 - 100: Move checkbox to the left
 - 100: Highlight the exact-matched words
 - 100: Add text equivalents for the NAICS codes
@@ -15,5 +13,6 @@ To do:
 
 - Fix JS errors
 - Use TBS' own stylesheet for new alerts etc. instead of including directly in template.css
+- 090: If we can't fit the whole name on one line, then stack terms vertically with checkboxes (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
 - 050: Fix up province selection
 - 100: Add expand/collapse all
