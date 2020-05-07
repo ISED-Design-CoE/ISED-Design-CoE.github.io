@@ -38,6 +38,7 @@ details[open] {
 /* Temporary fix: remove when https://github.com/wet-boew/GCWeb/pull/1676 is approved */
 :not(#wb-srch) form, .checkbox, .checkbox-inline, .radio, .radio-inline, form .btn:not(.btn-call-to-action) {
   font-size: 20px;
+  line-height: inherit;
 }
 :not(#wb-srch) form {
   line-height: 1.65em;
