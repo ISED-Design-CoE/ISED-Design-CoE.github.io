@@ -83,8 +83,21 @@
     <h2>Notes about this mockup:</h2>
     <ul>
       <li>Sends an email, like current "Save and Exit"&hellip;</li>
-      <li>&hellip;then returns the user to the page they were on previously, with a banner message that says "Saved".</li>
-      <li>The user only comes to this page once. After we have their email address, we can send the email and display the banner message without taking them away from the page they're on.</li>
+      <li>&hellip;then returns the user to the page they were on previously, with a banner message that says "Saved"</li>
+      <li>The user only comes to this page once. After we have their email address, we can send the email and display the banner message without taking them away from the page they're on</li>
+      <li>It would be a good idea to add sanity checks to the email address as entered. Some ideas:
+        <ul>
+          <li>Check whether the domain (the part after the @ sign, if it's the kind of email address that includes an @ sign) looks like a typo for one of the widely-used email providers
+            <ul>
+              <li>This list would include domains like gmail.com, yahoo.com and yahoo.ca, hotmail.com and hotmail.ca, outlook.com, and aol.com</li>
+              <li>The list should also include common domains of email addresses already in our database</li>
+            </ul>
+          </li>
+          <li>If it does, ask the user whether they meant that address instead (example dismissable alert: "Did you mean yahoo.com? Change or dismiss")</li>
+          <li>Otherwise, check whether an MX record exists for the domain, and give the user a warning message (e.g. "Please ensure email address is typed correctly") if it doesn't</li>
+        </ul>
+      </li>
+
     </ul>
   </div>
   <!-- End page content -->
