@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="template.css">
 
   <!-- Start page-specific CSS -->
-  <link rel="stylesheet" href="more-info.css">
   <!-- End page-specific CSS -->
 
 </head>
@@ -121,9 +120,11 @@
         <input type="checkbox" id="large-checkbox-item-02">
         <label for="large-checkbox-item-02">Across Canada</label>
       </li>
-      <li class="checkbox">
-        <input type="checkbox" id="large-checkbox-item-03">
-        <label for="large-checkbox-item-03">In specific provinces and territories (choose all that apply)</label>
+      <li>
+        <div class="checkbox">
+          <input type="checkbox" id="large-checkbox-item-03">
+          <label for="large-checkbox-item-03">In specific provinces and territories (choose all that apply)</label>
+        </div>
         <details class="largefix">
           <summary>Provinces/territories</summary>
           <ul class="list-unstyled can-ca-form">
@@ -182,17 +183,21 @@
           </ul>
         </details>
       </li>
-    <li class="checkbox">
-      <input type="checkbox" id="large-checkbox-item-04">
-      <label for="large-checkbox-item-04">In specific cities and regions (enter all that apply)</label>
+    <li>
+      <div class="checkbox">
+        <input type="checkbox" id="large-checkbox-item-04">
+        <label for="large-checkbox-item-04">In specific cities and regions (enter all that apply)</label>
+      </div>
       <div class="form-group largefix">
         <label for="moreInformationCityRegion" class="wb-inv">More information about city or region</label>
         <textarea id="moreInformationCityRegion" class="form-control full-width"></textarea>
       </div>
     </li>
-    <li class="checkbox">
-      <input type="checkbox" id="large-checkbox-item-05">
-      <label for="large-checkbox-item-05">Other (please specify)</label>
+    <li>
+      <div class="checkbox">
+        <input type="checkbox" id="large-checkbox-item-05">
+        <label for="large-checkbox-item-05">Other (please specify)</label>
+      </div>
       <div class="form-group largefix">
         <label for="moreInformationOtherLocation" class="wb-inv">More information about other location</label>
         <textarea id="moreInformationOtherLocation" class="form-control full-width"></textarea>
@@ -212,6 +217,7 @@
   <div class="notesaboutmockup">
     <h2>Notes about this mockup:</h2>
     <ul>
+      <li>Only display "More information" fields if the checkbox is checked</li>
       <li>Should the "City or Region" field follow the model of <a href="https://services.bizpal-perle.ca/">BizPaL</a>?
       </li>
     </ul>

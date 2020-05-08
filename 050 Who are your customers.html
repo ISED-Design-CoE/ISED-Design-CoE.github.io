@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="template.css">
 
   <!-- Start page-specific CSS -->
-  <link rel="stylesheet" href="more-info.css">
   <!-- End page-specific CSS -->
 
 </head>
@@ -112,25 +111,31 @@
   <fieldset class="chckbxrdio-grp">
     <legend class="wb-inv">Your customers</legend>
     <ul class="list-unstyled can-ca-form">
-      <li class="checkbox">
-        <input type="checkbox" id="large-checkbox-item-1">
-        <label for="large-checkbox-item-1">General public (e.g. walk-in clients)</label>
+      <li>
+        <div class="checkbox">
+          <input type="checkbox" id="large-checkbox-item-1">
+          <label for="large-checkbox-item-1">General public (e.g. walk-in clients)</label>
+        </div>
         <div class="form-group largefix">
           <label for="moreInformationGeneralPublic">More information <span class="wb-inv">about your general-public clients</span></label>
           <textarea id="moreInformationGeneralPublic" class="form-control fullwidth"></textarea>
-          </div>
+        </div>
       </li>
-      <li class="checkbox">
+      <li>
+        <div class="checkbox">
           <input type="checkbox" id="large-checkbox-item-2">
           <label for="large-checkbox-item-2">Targeted segment or specific clientele (e.g. hospitality, government, automotive)</label>
-          <div class="form-group largefix">
-            <label for="moreInformationTargetedSegment">More information <span class="wb-inv">about your targeted-segment clients</span></label>
-            <textarea id="moreInformationTargetedSegment" class="form-control fullwidth"></textarea>
-            </div>
+        </div>
+        <div class="form-group largefix">
+          <label for="moreInformationTargetedSegment">More information <span class="wb-inv">about your targeted-segment clients</span></label>
+          <textarea id="moreInformationTargetedSegment" class="form-control fullwidth"></textarea>
+        </div>
         </li>
-      <li class="checkbox">
-        <input type="checkbox" id="large-checkbox-item-3">
-        <label for="large-checkbox-item-3">Nobody (e.g. a holding company)</label>
+      <li>
+        <div class="checkbox">
+          <input type="checkbox" id="large-checkbox-item-3">
+          <label for="large-checkbox-item-3">Nobody (e.g. a holding company)</label>
+        </div>
         <div class="form-group largefix">
           <label for="moreInformationNobody">More information <span class="wb-inv">about your clients</span></label>
           <textarea id="moreInformationNobody" class="form-control fullwidth"></textarea>
@@ -150,6 +155,7 @@
   <div class="notesaboutmockup">
     <h2>Notes about this mockup:</h2>
     <ul>
+      <li>Only display "More information" fields if the checkbox is checked</li>
       <li>The "Nobody" checkbox is mutually exclusive with the other two</li>
     </ul>
   </div>

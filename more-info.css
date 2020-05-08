@@ -1,7 +1,0 @@
-/* This is very fragile but it's a CSS-only technique that works with this particular HTML */
-
-.checkbox input[type="checkbox"]:not(:checked) + label + details,
-.checkbox input[type="checkbox"]:not(:checked) + label + details > summary,
-.checkbox input[type="checkbox"]:not(:checked) + label + div.form-group {
-  display: none !important;
-}
