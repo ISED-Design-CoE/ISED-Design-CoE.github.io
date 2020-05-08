@@ -14,7 +14,11 @@
   vertical-align: top;
 }
 .margin-top {
-  margin-top: 8rem;
+  margin-top: 38px;
+}
+
+.margin-bottom {
+  margin-bottom: 38px;
 }
 
 /* Adjustments relating to large checkboxes */
@@ -27,12 +31,17 @@
   font-size: initial !important;
 }
 
-/* Adjustments relating to inconsistencies between GCWeb4 and GCWeb5+ */
+/* Adjustments relating to inconsistencies between GCWeb4 and GCWeb5+, and other general formatting */
 .input-group .form-control {
   padding: 10px 14px;
+  line-height: inherit;
 }
 details[open] {
   padding-bottom: 0;
+}
+fieldset {
+  border-top: 0;
+  padding-top: 0;
 }
 
 /* Temporary fix: remove when https://github.com/wet-boew/GCWeb/pull/1676 is approved */

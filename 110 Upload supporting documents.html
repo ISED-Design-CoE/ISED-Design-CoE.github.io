@@ -7,7 +7,7 @@
   <meta charset="utf-8"/>
 
   <!-- Start title -->
-  <title>What is the name you want? - Incorporate - Corporations Canada - Innovation, Science and Economic Development Canada</title>
+  <title>Upload supporting documents - Incorporate - Corporations Canada - Innovation, Science and Economic Development Canada</title>
   <!-- End title -->
 
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="template.css">
 
   <!-- Start page-specific CSS -->
+  <link rel="stylesheet" href="file-upload.css">
   <!-- End page-specific CSS -->
 
 </head>
@@ -71,21 +72,20 @@
 
       <!-- Start navigation -->
       <li class="completed"><a>Before we get started</a></li>
-      <li class="completed"><a>For-profit or not-for-profit?
-</a></li>
-      <li class="completed"><a>Business activity</a></li>
+      <li class="completed"><a>What type of business are you incorporating?</a></li>
+      <li class="completed"><a>What does your corporation do?</a></li>
       <li class="completed"><a>Assigned numbered name or custom corporate name?</a></li>
-      <li class="completed"><a>Choose a legal element</a></li>
+      <li class="completed"><a>Choose your legal element</a></li>
       <li class="completed"><a>Who are your customers?</a></li>
       <li class="completed"><a>Where are your customers?</a></li>
       <li class="completed"><a>Do you want to incorporate with one name or two names?</a></li>
-      <li class="active"><a>What is the name you want?</a></li>
-      <li><a>Distinctive words in your proposed name</a></li>
-      <li><a>Similar names</a></li>
-      <li><a>Upload supporting documentation</a></li>
-      <li><a>Review</a></li>
+      <li class="completed"><a>Propose a corporate name</a></li>
+      <li class="completed"><a>Distinctive words in your name proposal</a></li>
+      <li class="completed"><a>Are other businesses using your proposed name?</a></li>
+      <li class="active"><a>Upload supporting documents</a></li>
+      <li><a>Finalizing your name proposal</a></li>
       <li><a>Contact information</a></li>
-      <li><a>Payment for custom corporate name</a></li>
+      <li><a>Paying for an evaluation of your proposed name</a></li>
       <li><a>Your payment was successful</a></li>
       <li><a>Articles of incorporation</a></li>
       <li><a>Review, Print and Sign</a></li>
@@ -104,89 +104,36 @@
 <form class="force-style-gcweb-current">
 
   <!-- Start page content -->
-  <h1>What is the name you want?</h1>
+  <h1>Upload supporting documents</h1>
 
-  <p>The more clearly your proposed names describe your business, the more likely they are to be approved.</p>
-  <p>Each of your names must include one of the following legal elements, and the selections must match each other. There is no difference among the choices.</p>
-  <table class="table">
-    <caption class="wb-inv">Corresponding selections</caption>
-    <thead>
-      <tr>
-        <th>English name</th>
-        <th>French name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><ul><li>
-          Inc.
-        </li></ul></td>
-        <td><ul><li>
-          Inc.
-        </li></ul></td>
-      </tr>
-      <tr>
-        <td><ul><li>
-          Ltd.
-        </li></ul></td>
-        <td><ul><li>
-          Ltée
-        </li></ul></td>
-      </tr>
-      <tr>
-        <td><ul><li>
-          Limited
-        </li></ul></td>
-        <td><ul><li>
-          Limitée
-        </li></ul></td>
-      </tr>
-      <tr>
-        <td><ul><li>
-          Incorporated
-        </li></ul></td>
-        <td><ul><li>
-          Incorporée
-        </li></ul></td>
-      </tr>
-    </tbody>
+  <p>You have indicated that you have a working relationship with the following companies and trademarks:</p>
+  <ul>
+    <li>Between Us Bookshop Inc.</li>
+  </ul>
+  <p class="bold">Please upload any documentation you have that shows that relationship.</p>
+  <p>Some examples that would be helpful to us:</p>
+  <ul>
+    <li>Provincial certifications or licences for your own businesses</li>
+    <li>Consent letters from other people for their businesses (<a href="(Sample consent letter)">sample consent letter</a>)</li>
+    <li>Documents explaining why people wouldn't confuse your corporation with the other business or trademark</li>
+  </ul>
+  <p>Documents must be in unlocked PDF format and may be up to 10MB in size.</p>
 
-  <div class="form-group">
-    <label for="proposedName">Proposed name in first official language</label>
-    <input type="text" id="proposedName" class="form-control fullwidth" autocomplete="organization" required="required">
-  </div>
+  <form role="form" method="get" action="#" enctype="multipart/form-data">
+    <div class="form-group">
+      <div>
+        <label for="fileselect">Files to upload:</label>
+        <input type="file" id="fileselect" name="fileselect[]" multiple="multiple">
+        <div id="filedrag">Drop files here</div>
+      </div>
+    </div>
+  </form>
 
-  <div class="form-group">
-    <label for="proposedName">Proposed name in second official language</label>
-    <input type="text" id="proposedName" class="form-control fullwidth" autocomplete="organization" required="required">
-  </div>
+  <p><a href="(Sample of consent letters)">Sample of consent letters</a></p>
 
-  <div class="form-group">
-    <p>
-      <span class="bold">Tell us about how you came up with your name. Please select from the options below.</span>
-    </p>
-    <label for="howCameUpWith" class="wb-inv">How you came up with your proposed name</label>
-    <select id="howCameUpWith" class="form-control fullwidth">
-      <option>&nbsp;</option>
-      <option>It is the name of a person (Last name, first name or full name)</option>
-      <option>it is a made-up word</option>
-      <option>It is an acronym</option>
-      <option>It is a phrase</option>
-      <option>Other</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <p>
-      <span class="bold">Tell us more about the meaning of your name</span>
-    </p>
-    <label for="moreInformation" class="wb-inv">More information about the meaning of your name</label>
-    <textarea id="moreInformation" class="form-control fullwidth"></textarea>
-  </div>
-
-  <div class="action-bar">
-    <a href="070 Do you want to incorporate with one name or two names.html" class="btn btn-default">Previous</a>
-    <a href="090 Distinctive words in your name proposal.html" class="btn btn-primary">Next</a>
+    <div class="action-bar">
+    <a href="100 Are other businesses using your proposed name.html" class="btn btn-default">Previous</a>
+    <a href="120 Finalizing your name proposal.html" class="btn btn-primary">Next</a>
     <a href="510 Save.html" class="btn btn-default">Save</a>
     <a href="600 Help.html" class="btn btn-link">Help</a>
   </div>
@@ -195,9 +142,7 @@
   <div class="notesaboutmockup">
     <h2>Notes about this mockup:</h2>
     <ul>
-      <li>
-        No notes
-      </li>
+      <li>Enable (accessible) drag/drop functionality. HTML/CSS here is from <a href="https://www.sitepoint.com/html5-file-drag-and-drop/">https://www.sitepoint.com/html5-file-drag-and-drop/</a></li>
     </ul>
   </div>
   <!-- End page content -->

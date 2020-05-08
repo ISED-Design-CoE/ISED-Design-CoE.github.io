@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="template.css">
 
   <!-- Start page-specific CSS -->
+  <link rel="stylesheet" href="modal.css">
   <!-- End page-specific CSS -->
 
 </head>
@@ -67,7 +68,7 @@
   <!-- Start page content -->
   <h1>Save</h1>
 
-  <p>We will send you a code to enable you to continue from this point. <span class="bold">Please provide your email address.</span></p>
+  <p class="bold">Please leave us your contact information so we can save your progress.</p>
 
   <div class="form-group">
     <label for="email">Email address</label>
@@ -75,16 +76,17 @@
   </div>
 
   <div class="action-bar">
-    <a href="javascript:history.back()" class="btn btn-primary">Save</a>
+    <a href="520 Saved.html" class="btn btn-primary">Submit</a>
   </div>
 
 
   <div class="notesaboutmockup">
     <h2>Notes about this mockup:</h2>
     <ul>
-      <li>Sends an email, like current "Save and Exit"&hellip;</li>
-      <li>&hellip;then returns the user to the page they were on previously, with a banner message that says "Saved"</li>
-      <li>The user only comes to this page once. After we have their email address, we can send the email and display the banner message without taking them away from the page they're on</li>
+      <li>This page should be a modal overlay that appears on whatever page the user clicked "Save" on</li>
+      <li>It sends an email, like current "Save and Exit"&hellip;</li>
+      <li>&hellip;then changes to <a href="520 Saved.html">the "saved" modal</a></li>
+      <li>The user only sees this particular page once. After we have their email address, we can send the email and take them directly to the "saved" modal</li>
       <li>It would be a good idea to add sanity checks to the email address as entered. Some ideas:
         <ul>
           <li>Check whether the domain (the part after the @ sign, if it's the kind of email address that includes an @ sign) looks like a typo for one of the widely-used email providers

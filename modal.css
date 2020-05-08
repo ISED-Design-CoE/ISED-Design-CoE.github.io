@@ -1,0 +1,16 @@
+header,
+footer,
+h1,
+.pagedetails {
+  display: none;
+}
+
+.container {
+  max-width: 30em;
+  text-align: center;
+}
+
+.notesaboutmockup,
+.form-group {
+  text-align: left;
+}
