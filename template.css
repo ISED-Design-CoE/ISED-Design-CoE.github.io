@@ -27,9 +27,6 @@
   margin-left: 50px;
   font-size: 20px !important;
 }
-.action-bar .btn {
-  font-size: initial !important;
-}
 
 /* General formatting */
 .input-group .form-control {
@@ -66,11 +63,12 @@ legend {
 .action-bar {
   margin-top: 4rem;
 }
-.action-bar .btn {
-  margin-right: 4rem;
+form .action-bar .btn {
+  margin-right: 3rem;
+  padding: 0.5rem;
 }
-.action-bar .btn:not(.btn-link) {
-  min-width: 7em;
+form .action-bar .btn:not(.btn-link) {
+  min-width: 6em;
 }
 
 /* Mockup notes */
