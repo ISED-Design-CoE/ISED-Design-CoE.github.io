@@ -1,10 +1,94 @@
 - Fix JS errors
-- 050, 060: hide textareas if checkboxes unchecked
-- 050: uncheck "nobody" if either of the other checkboxes is checked, and vice versa
-- 080, 085, 090, 095: justify tip boxes vertically
-- 090, 095: If we can't fit the whole name on one line, then stack terms vertically with checkboxes (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
-- 050: Fix up province selection
-- 100, 105: Add expand/collapse all
+(General)
+- Increase size of triangles in dropdown widget to be 15px on a side.
+- Change line spacing to 24px
+- Change paragraph margin to 20px
+- Change margin for bulleted list items to 10px
+- Change size of navigation buttons to 41x129px
+- Change radius of rounded corners to 10px
+- ROBERTO to send other must-have measurements via PowerPoint
+- Add a note proposing accessibility testing to client. We've followed best practices but have not actually tested
+- Extend size of content area (as indicated by red line) to 819 px on wide-enough screens. Single-column content will sit to the left, with a gap separating it from the step list, and multi-column content will fill the space
+- Remove halo effect
+- Fix the alignment of circles and lines in the step list and alert message
+- In the step list, style completed items the same as the current item
+- Use filled bullets in every bulleted list
+- Right-align regular text in big buttons
+- Maintain a 15px padding inside big buttons
+- Align the radio button inside a big button with the title
+- Ensure big buttons have a minimum height of 135px, including the 5px blue border when selected
 - Add numbered section headings to step navigation
-- Make skip links visible on small screens
-- sprinkle in ARIA e.g. aria-controls
+- Make skip links visible on small screens (ask me about this--it's for better navigation on small screens)
+- Sprinkle in ARIA e.g. aria-controls (this is so blind people can understand e.g. that checking a checkbox will make a textarea appear)
+
+010 Before we get started
+- No notes (except for the above!)
+
+020 What type of business are you incorporating?
+- Revert headings to their mandatory size
+- Match the line spacing of the headings ("Business corporation", "Not-for-profit corporation") with the big-button titles ("Basic incorporation", "Custom incorporation", "Not-for-profit incorporation")
+- Reverse the order of the price (e.g. "$200") and time (e.g. "~ 10 minutes")
+- Ensure the "Basic incorporation" and "Custom incorporation" big buttons have a minimum width of 240px, and the "Not-for-profit incorporation" big button has a minimum width of 280px
+- Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
+- Line up the bottom of the dividing line with the bottom of the main content
+
+030 What does your corporation do?
+- No notes
+
+040 Assigned numbered name or custom corporate name?
+- Reverse the order of the price (e.g. "$200") and time (e.g. "~ 10 minutes (fastest)")
+
+050 Who are your customers?
+- Match the wording and indentation of the textareas as per XD
+- Hide textareas if checkboxes unchecked
+- Uncheck "nobody" if either of the other checkboxes is checked, and vice versa
+
+060 Where are your customers?
+- Either implement the "provinces/territories" functionality from XD or describe it in the notes
+- Hide textareas if checkboxes unchecked
+
+070 Do you want to incorporate with one name or two names?
+- No notes
+
+080 Propose a corporate name
+- In the Tip dropdown, use only variations of an existing blue rather than introducing new hues (affects also 090)
+- Align the three columns vertically (affects also 090)
+
+085 Propose a corporate name [two-name version]
+- No notes
+
+090 Distinctive words in your name proposal
+- Increase size of display name ("Between Us Coffee Shop") to 36px
+- Ensure capsules have a minimum width so they aren't just circles
+- Fix the capsules so that the underline appears on hover/active and the filled background on selection, rather than the other way round as at present
+- Increase the length of the underline on wider capsules
+- If we can't fit all the capsules on one line, then stack terms and use checkboxes instead (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
+
+095 Distinctive words in your name proposal [two-name version]
+- Note that if one of the languages only has a single term other than the legal element then we include it on the page but pre-check the term. If both languages only have a single term other than the legal element then we skip the page as in the one-name version
+
+100 Are other businesses using your proposed name?
+- Add a column title for the checkboxes so we don't have to repeat the label on each line
+- Condense the list items vertically
+- For trademarks, replace "Nice classification codes" with "Business activity (Nice classification)"
+- Add expand/collapse all
+
+105 Are other businesses using your proposed name? [two-name version]
+- No notes
+
+110 Upload supporting documents
+- Make the information that documents must be in unlocked PDF format and may be up to 10MB in size more prominent
+
+120 Finalizing your name proposal
+- Add space below "Choose any underlined statement that you would like to edit" (the "ask")
+
+130 Contact information
+- No notes
+
+150 Paying for an evaluation of your proposed name
+- Replace "CVD" with "Security code"
+- Something we forgot from last week: change "Next" button to yellow per existing Corporations Canada design
+- Add note that this page (and the one following) belong at the end of the process, not here. TRACY to propose wording
+
+160 Your payment was successful
+- We discussed a variety of fixes for the alert at the bottom and decided that the real solution was to move this payment process, like the contact information page, to the end of the entire process
