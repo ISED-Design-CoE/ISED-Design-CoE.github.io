@@ -70,10 +70,10 @@
   height: 50px;
   margin-right: 1rem;
 }
-.bulging-cards .radio label:hover img.bulge,
+/* .bulging-cards .radio label:hover img.bulge,
 .bulging-cards .radio input[type="radio"]:focus + label img.bulge {
   height: 63px;
-}
+} */
 .bulging-cards .radio label > span {
   min-width: 72px;
 }
@@ -83,10 +83,10 @@
   font-size: 1.2em;
   font-weight: bold;
 }
-.bulging-cards .radio label:hover span.bulge,
+/* .bulging-cards .radio label:hover span.bulge,
 .bulging-cards .radio input[type="radio"]:focus + label span.bulge {
   font-weight: bold;
-}
+} */
 
 /* Bulging cards: bottom border */
 .bulging-cards .radio label {
