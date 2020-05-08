@@ -31,7 +31,7 @@
   font-size: initial !important;
 }
 
-/* Adjustments relating to inconsistencies between GCWeb4 and GCWeb5+, and other general formatting */
+/* General formatting */
 .input-group .form-control {
   padding: 10px 14px;
   line-height: inherit;
@@ -42,6 +42,9 @@ details[open] {
 fieldset {
   border-top: 0;
   padding-top: 0;
+}
+h2 {
+  font-size: 24px;
 }
 
 /* Temporary fix: remove when https://github.com/wet-boew/GCWeb/pull/1676 is approved */
