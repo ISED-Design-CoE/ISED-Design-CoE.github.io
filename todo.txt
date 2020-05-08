@@ -1,6 +1,6 @@
-- Widen default screen
 - Fix JS errors
 - 050, 060: hide textareas if checkboxes unchecked
+- 050: uncheck "nobody" if either of the other checkboxes is checked, and vice versa
 - 080, 085, 090, 095: justify tip boxes vertically
 - 090, 095: If we can't fit the whole name on one line, then stack terms vertically with checkboxes (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
 - 050: Fix up province selection
