@@ -5,3 +5,8 @@
 summary::marker {
   font-size: 22.5px;
 }
+
+/* Change line spacing to 24px */
+:not(#wb-srch) form {
+  line-height: 24px;
+}
