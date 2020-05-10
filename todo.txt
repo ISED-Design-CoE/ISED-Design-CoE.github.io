@@ -1,5 +1,4 @@
 (General)
-- Change paragraph margin to 20px
 - Change margin for bulleted list items to 10px
 - Change size of navigation buttons to 41x129px
 - Change radius of rounded corners to 10px
