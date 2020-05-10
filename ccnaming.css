@@ -1,1 +1,7 @@
 /* Specific formatting for the CCNaming project */
+/* TESTED ONLY IN FIREFOX ON WINDOWS */
+
+/* Increase size of triangles in dropdown widget to be 15px on a side */
+summary::marker {
+  font-size: 22.5px;
+}
