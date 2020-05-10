@@ -33,6 +33,10 @@
 }
 
 /* General formatting */
+.breadcrumb {
+  display: none;
+}
+
 .input-group .form-control {
   padding: 10px 14px;
   line-height: inherit;

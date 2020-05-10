@@ -1,4 +1,3 @@
-- Fix JS errors
 (General)
 - Increase size of triangles in dropdown widget to be 15px on a side.
 - Change line spacing to 24px
