@@ -1,5 +1,4 @@
 (General)
-- Revert headings to their mandatory size
 - Change size of navigation buttons to 41x129px
 - Change radius of rounded corners to 10px
 - ROBERTO to send other must-have measurements via PowerPoint

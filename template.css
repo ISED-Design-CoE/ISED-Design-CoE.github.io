@@ -48,9 +48,6 @@ fieldset {
   border-top: 0;
   padding-top: 0;
 }
-h2 {
-  font-size: 24px;
-}
 
 /* Temporary fix: remove when https://github.com/wet-boew/GCWeb/pull/1676 is approved */
 :not(#wb-srch) form, .checkbox, .checkbox-inline, .radio, .radio-inline, form .btn:not(.btn-call-to-action) {
