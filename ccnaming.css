@@ -21,3 +21,16 @@ p {
 li {
   margin-bottom: 10px;
 }
+
+/* Change size of navigation buttons to 41x129px */
+form .action-bar .btn {
+  height: 41px;
+}
+form .action-bar .btn:not(.btn-link) {
+  min-width: 129px;
+}
+
+/* Change radius of rounded corners to 10px */
+form .action-bar .btn:not(.btn-link) {
+  border-radius:10px;
+}
