@@ -7,6 +7,17 @@ summary::marker {
 }
 
 /* Change line spacing to 24px */
-:not(#wb-srch) form {
+:not(#wb-srch) form,
+li {
   line-height: 24px;
+}
+
+/* Change paragraph margin to 20px */
+p {
+  margin-bottom: 20px;
+}
+
+/* Change margin for bulleted list items to 10px */
+li {
+  margin-bottom: 10px;
 }

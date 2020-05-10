@@ -1,5 +1,5 @@
 (General)
-- Change margin for bulleted list items to 10px
+- Revert headings to their mandatory size
 - Change size of navigation buttons to 41x129px
 - Change radius of rounded corners to 10px
 - ROBERTO to send other must-have measurements via PowerPoint
@@ -21,7 +21,6 @@
 - No notes (except for the above!)
 
 020 What type of business are you incorporating?
-- Revert headings to their mandatory size
 - Match the line spacing of the headings ("Business corporation", "Not-for-profit corporation") with the big-button titles ("Basic incorporation", "Custom incorporation", "Not-for-profit incorporation")
 - Reverse the order of the price (e.g. "$200") and time (e.g. "~ 10 minutes")
 - Ensure the "Basic incorporation" and "Custom incorporation" big buttons have a minimum width of 240px, and the "Not-for-profit incorporation" big button has a minimum width of 280px
