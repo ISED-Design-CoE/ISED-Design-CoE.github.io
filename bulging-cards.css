@@ -16,8 +16,8 @@
 }
 
 /* border between CBCA and NFP Act */
-.border-left {
-  border-left: 1px solid #333;
+.border-right {
+  border-right: 1px solid #333;
 }
 
 /* custom checkboxes */

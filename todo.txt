@@ -1,5 +1,4 @@
 (General)
-- ROBERTO to send other must-have measurements via PowerPoint
 - Add a note proposing accessibility testing to client. We've followed best practices but have not actually tested
 - Extend size of content area (as indicated by red line) to 819 px on wide-enough screens. Single-column content will sit to the left, with a gap separating it from the step list, and multi-column content will fill the space
 - Remove halo effect

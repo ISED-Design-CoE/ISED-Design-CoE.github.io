@@ -1,36 +1,53 @@
 /* Specific formatting for the CCNaming project */
 /* TESTED ONLY IN FIREFOX ON WINDOWS */
 
-/* Increase size of triangles in dropdown widget to be 15px on a side */
+/* Dropdown widget */
 summary::marker {
   font-size: 22.5px;
 }
+details summary {
+  border-radius: 5px;
+}
 
-/* Change line spacing to 24px */
+/* Line spacing and margins */
 :not(#wb-srch) form,
 li {
   line-height: 24px;
 }
-
-/* Change paragraph margin to 20px */
 p {
   margin-bottom: 20px;
 }
-
-/* Change margin for bulleted list items to 10px */
 li {
   margin-bottom: 10px;
 }
 
-/* Change size of navigation buttons to 41x129px */
+/* Navigation buttons */
 form .action-bar .btn {
   height: 41px;
+  margin-right: 17px;
 }
 form .action-bar .btn:not(.btn-link) {
   min-width: 129px;
+  border-radius:10px;
 }
 
-/* Change radius of rounded corners to 10px */
-form .action-bar .btn:not(.btn-link) {
-  border-radius:10px;
+/* All buttons */
+.btn.focus, .btn:focus, .btn:hover {
+  font-weight: bold;
+}
+
+/* h1 */
+h1 {
+  border-bottom-color: #ff0000;
+  margin-bottom: 15.6px;
+}
+
+/* Step navigation */
+.gc-navseq li.completed, .gc-navseq-fa li.completed, .gc-navseq-fa li.completed span.fa-li {
+  border-color: #26374a;
+}
+.gc-navseq li.completed>a::before {
+  border-color: #26374a;
+  background-color: #26374a;
+  color: #fff;
 }
