@@ -19,8 +19,7 @@
 - Condense the list items vertically
 - Add expand/collapse all
 
-150 Paying for an evaluation of your proposed name
-- Something we forgot from last week: change "Next" button to yellow per existing Corporations Canada design
+140 Paying for an evaluation of your proposed name
 - Add note that this page (and the one following) belong at the end of the process, not here. TRACY to propose wording
 
 160 Your payment was successful
