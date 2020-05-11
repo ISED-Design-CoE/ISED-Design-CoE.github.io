@@ -1,20 +1,26 @@
 (General)
-- Extend size of content area (as indicated by red line) to 819 px on wide-enough screens. Single-column content will sit to the left, with a gap separating it from the step list, and multi-column content will fill the space
-
 - Right-align regular text in big buttons
 - Maintain a 15px padding inside big buttons
 - Align the radio button inside a big button with the title
 - Ensure big buttons have a minimum height of 135px, including the 5px blue border when selected
-- Add numbered section headings to step navigation
 
 020 What type of business are you incorporating?
 - Ensure the "Basic incorporation" and "Custom incorporation" big buttons have a minimum width of 240px, and the "Not-for-profit incorporation" big button has a minimum width of 280px
-- Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
 
-090 Distinctive words in your name proposal
-- If we can't fit all the capsules on one line, then stack terms and use checkboxes instead (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
+(General)
+- Extend size of content area (as indicated by red line) to 819 px on wide-enough screens. Single-column content will sit to the left, with a gap separating it from the step list, and multi-column content will fill the space
 
 100 Are other businesses using your proposed name?
 - Add a column title for the checkboxes so we don't have to repeat the label on each line
 - Condense the list items vertically
 - Add expand/collapse all
+
+(General)
+- Add numbered section headings to step navigation
+
+090 Distinctive words in your name proposal
+- If we can't fit all the capsules on one line, then stack terms and use checkboxes instead (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
+
+020 What type of business are you incorporating?
+- Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
+
