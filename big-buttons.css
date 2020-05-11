@@ -1,0 +1,79 @@
+/* Note: this CSS file has more than its share of magic numbers. Screens have only been tested in Firefox on Windows with default font-sizes. */
+
+.big-buttons .radio {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 20px;
+  line-height: 1.65em;
+}
+
+/* big buttons: bottom border */
+.big-buttons .radio label {
+  width: 100%;
+  padding-left: 0;
+  padding: 20px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #26374a;
+}
+
+/* big buttons: images */
+.big-buttons .radio label img {
+  height: 50px;
+  margin-right: 1rem;
+}
+
+/* big buttons: text */
+.big-buttons .radio label > span {
+  min-width: 72px;
+}
+
+.big-buttons .radio label span.big-button-header {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.big-buttons .radio input[type="radio"]:checked + label {
+  border-bottom-width: 10px;
+  margin-bottom: 11px;
+}
+
+/* custom checkboxes */
+.big-buttons input {
+  opacity: 0;
+}
+/* circle */
+.big-buttons .radio label::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  display: inline-block;
+  left: 24px;
+  bottom: 29px;
+  width: 36px;
+  height: 36px;
+  margin-top: -4px;
+  border: 2px solid #333;
+  border-radius: 50%;
+}
+
+/* checkmark */
+.big-buttons .radio label::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 35px;
+  bottom: 38px;
+  width: 13px;
+  height: 22px;
+  border: solid #333;
+  border-width: 0 5px 5px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* hide the check */
+.big-buttons .radio input[type="radio"]:not(:checked) + label::after {
+    content: none;
+}

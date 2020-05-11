@@ -11,10 +11,10 @@
 }
 
 /* custom checkboxes */
-.bulging-cards input {
+.big-buttons input {
   opacity: 0;
 }
-.bulging-cards .radio {
+.big-buttons .radio {
   margin-top: 0;
   margin-bottom: 32px;
   position: relative;
@@ -26,7 +26,7 @@
 }
 
 /* Circle */
-.bulging-cards .radio label::before {
+.big-buttons .radio label::before {
   content: "";
   box-sizing: border-box;
   position: absolute;
@@ -40,7 +40,7 @@
 }
 
 /* Checkmark */
-.bulging-cards .radio label::after {
+.big-buttons .radio label::after {
   content: "";
   display: inline-block;
   position: absolute;
@@ -56,39 +56,39 @@
 }
 
 /* hide the check */
-.bulging-cards .radio input[type="radio"]:not(:checked) + label::after {
+.big-buttons .radio input[type="radio"]:not(:checked) + label::after {
     content: none;
 }
 
 /* add focus */
-.bulging-cards .radio input[type="radio"]:focus + label::before  {
+.big-buttons .radio input[type="radio"]:focus + label::before  {
   box-shadow: 0 0 3pt 2pt rgb(59, 153, 252);
 }
 
-/* Bulging cards: images */
-.bulging-cards .radio img.bulge {
+/* big buttons: images */
+.big-buttons .radio img.big-button-header {
   height: 50px;
   margin-right: 1rem;
 }
-.bulging-cards .radio:hover img.bulge,
-.bulging-cards .radio input[type="radio"]:focus + label img.bulge {
+.big-buttons .radio:hover img.big-button-header,
+.big-buttons .radio input[type="radio"]:focus + label img.big-button-header {
   height: 63px;
 }
-.bulging-cards .radio label > span {
+.big-buttons .radio label > span {
   min-width: 72px;
 }
 
-/* Bulging cards: text */
-.bulging-cards .radio span.bulge {
+/* big buttons: text */
+.big-buttons .radio span.big-button-header {
   font-size: 1.2em;
 }
-.bulging-cards .radio:hover span.bulge,
-.bulging-cards .radio input[type="radio"]:focus + label span.bulge {
+.big-buttons .radio:hover span.big-button-header,
+.big-buttons .radio input[type="radio"]:focus + label span.big-button-header {
   font-weight: bold;
 }
 
-/* Bulging cards: bottom border */
-.bulging-cards .radio label {
+/* big buttons: bottom border */
+.big-buttons .radio label {
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -97,7 +97,7 @@
   border-top: 1px solid #26374a;
   border-bottom: 1px solid #26374a;
 }
-.bulging-cards .radio input[type="radio"]:checked + label {
+.big-buttons .radio input[type="radio"]:checked + label {
   border-bottom-width: 10px;
   margin-bottom: 11px;
 }
