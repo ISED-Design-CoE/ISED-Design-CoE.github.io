@@ -411,7 +411,7 @@ ol.gc-navseq>li>a::before {
 ul.gc-navseq>li>a::before {
   height: 18px;
   width: 18px;
-  margin-left: -40px;
+  margin-left: -39px;
   content: "";
 }
 ul.gc-navseq>li>a[href]:hover::before {
