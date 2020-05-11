@@ -7,8 +7,6 @@
 - Ensure big buttons have a minimum height of 135px, including the 5px blue border when selected
 - Add numbered section headings to step navigation
 
-- Sprinkle in ARIA e.g. aria-controls (this is so blind people can understand e.g. that checking a checkbox will make a textarea appear)
-
 020 What type of business are you incorporating?
 - Ensure the "Basic incorporation" and "Custom incorporation" big buttons have a minimum width of 240px, and the "Not-for-profit incorporation" big button has a minimum width of 280px
 - Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
