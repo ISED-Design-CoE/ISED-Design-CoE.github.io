@@ -1,5 +1,17 @@
 /* Note: this CSS file has more than its share of magic numbers. Screens have only been tested in Firefox on Windows with default font-sizes. */
 
+/* Anatomy:
+.big-buttons             -- triggers the rules in this stylesheet
+  .radio                 -- triggers rules in WET
+    label                -- the actual big-button
+      .bb-icon           -- SVG image, at top right
+      .bb-header-wrapper -- larger text, including optional examples, at top left
+        .bb-header       -- Actual header text
+        .bb-example      -- Example
+      .bb-text           -- smaller text, at bottom right
+      (button)           -- actually a combination of ::before and ::after for the label
+*/
+
 .big-buttons .radio {
   margin-top: 0;
   margin-bottom: 0;
@@ -7,35 +19,42 @@
   line-height: 1.65em;
 }
 
-/* big buttons: bottom border */
 .big-buttons .radio label {
   width: 100%;
-  padding-left: 0;
-  padding: 20px;
+  padding: 15px;
   margin-top: 12px;
   margin-bottom: 20px;
   border: 1px solid #26374a;
+  min-height: 130px;
+}
+.big-buttons .radio input[type="radio"]:checked + label,
+.big-buttons .radio input[type="radio"]:focus + label {
+  border-bottom-width: 10px;
+  margin-bottom: 11px;
 }
 
-/* big buttons: images */
-.big-buttons .radio label img {
+/* big buttons: icons */
+.bb-icon {
+  float: right;
+}
+.bb-icon img {
   height: 50px;
-  margin-right: 1rem;
 }
 
-/* big buttons: text */
-.big-buttons .radio label > span {
-  min-width: 72px;
-}
-
-.big-buttons .radio label span.big-button-header {
+/* big buttons: header section */
+.bb-header {
   font-size: 1.2em;
   font-weight: bold;
 }
+.bb-example {
+  display: block;
+}
 
-.big-buttons .radio input[type="radio"]:checked + label {
-  border-bottom-width: 10px;
-  margin-bottom: 11px;
+/* big buttons: text */
+.bb-text {
+  min-width: 72px;
+  text-align: right;
+  float: right;
 }
 
 /* custom checkboxes */
@@ -48,8 +67,8 @@
   box-sizing: border-box;
   position: absolute;
   display: inline-block;
-  left: 24px;
-  bottom: 29px;
+  left: 29px;
+  bottom: 34px;
   width: 36px;
   height: 36px;
   margin-top: -4px;
@@ -57,13 +76,21 @@
   border-radius: 50%;
 }
 
+/* focus */
+.big-buttons .form-checkbox input[type="checkbox"]:focus + label::before,
+.big-buttons .form-radio input[type="radio"]:focus + label::before,
+.big-buttons .checkbox input[type="checkbox"]:focus + label::before,
+.big-buttons .radio input[type="radio"]:focus + label::before {
+  border-width: 3px;
+}
+
 /* checkmark */
 .big-buttons .radio label::after {
   content: "";
   display: inline-block;
   position: absolute;
-  left: 35px;
-  bottom: 38px;
+  left: 40px;
+  bottom: 43px;
   width: 13px;
   height: 22px;
   border: solid #333;

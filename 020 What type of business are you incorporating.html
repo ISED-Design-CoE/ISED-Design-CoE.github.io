@@ -34,8 +34,10 @@
   <link rel="stylesheet" href="big-buttons.css">
   <style>
     /* border between CBCA and NFP Act */
-    .border-right {
-      border-right: 1px solid #333;
+    @media all and (min-width:768px) {
+      .border-right {
+        border-right: 1px solid #333;
+      }
     }
   </style>
   <!-- End page-specific CSS -->
@@ -116,13 +118,13 @@
         <div class="col-sm-6">
           <input type="radio" id="large-radio-item-1" name="type-of-business">
           <label for="large-radio-item-1">
-            <span class="pull-right">
+            <span class="bb-icon">
               <img src="images/basic.svg" alt="">
             </span>
-            <span class="inline-block">
-              <span class="big-button-header">Basic<br>incorporation</span>
+            <span class="bb-header-wrapper">
+              <span class="bb-header">Basic<br>incorporation</span>
             </span>
-            <span class="pull-right">
+            <span class="bb-text">
               $200
               <br>~ 10 minutes
             </span>
@@ -131,13 +133,13 @@
         <div class="col-sm-6">
           <input type="radio" id="large-radio-item-3" name="type-of-business">
           <label for="large-radio-item-3">
-            <span class="pull-right">
+            <span class="bb-icon">
               <img src="images/CBCA_icon.svg" alt="">
             </span>
-            <span class="inline-block">
-              <span class="big-button-header">Custom<br>incorporation</span>
+            <span class="bb-header-wrapper">
+              <span class="bb-header">Custom<br>incorporation</span>
             </span>
-            <span class="pull-right">
+            <span class="bb-text">
               $213.80
               <br>~ 20 minutes
             </span>
@@ -158,13 +160,13 @@
         <div class="col-sm-12">
           <input type="radio" id="large-radio-item-2" name="type-of-business">
           <label for="large-radio-item-2">
-            <span class="pull-right">
+            <span class="bb-icon">
               <img src="images/NFP_Act_icon.svg" alt="">
             </span>
-            <span class="inline-block">
-              <span class="big-button-header">Not-for-profit<br>incorporation</span>
+            <span class="bb-header-wrapper">
+              <span class="bb-header">Not-for-profit<br>incorporation</span>
             </span>
-            <span class="pull-right">
+            <span class="bb-text">
               $200 &ndash; $213.80
               <br>~ 20 minutes
             </span>

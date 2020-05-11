@@ -1,13 +1,4 @@
 (General)
-- Right-align regular text in big buttons
-- Maintain a 15px padding inside big buttons
-- Align the radio button inside a big button with the title
-- Ensure big buttons have a minimum height of 135px, including the 5px blue border when selected
-
-020 What type of business are you incorporating?
-- Ensure the "Basic incorporation" and "Custom incorporation" big buttons have a minimum width of 240px, and the "Not-for-profit incorporation" big button has a minimum width of 280px
-
-(General)
 - Extend size of content area (as indicated by red line) to 819 px on wide-enough screens. Single-column content will sit to the left, with a gap separating it from the step list, and multi-column content will fill the space
 
 100 Are other businesses using your proposed name?
@@ -24,3 +15,4 @@
 020 What type of business are you incorporating?
 - Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
 
+Compare big-buttons.css with template.css -- can consolidate?

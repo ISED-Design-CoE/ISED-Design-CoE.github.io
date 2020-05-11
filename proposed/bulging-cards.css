@@ -66,12 +66,12 @@
 }
 
 /* big buttons: images */
-.big-buttons .radio img.big-button-header {
+.big-buttons .radio img.bb-header {
   height: 50px;
   margin-right: 1rem;
 }
-.big-buttons .radio:hover img.big-button-header,
-.big-buttons .radio input[type="radio"]:focus + label img.big-button-header {
+.big-buttons .radio:hover img.bb-header,
+.big-buttons .radio input[type="radio"]:focus + label img.bb-header {
   height: 63px;
 }
 .big-buttons .radio label > span {
@@ -79,11 +79,11 @@
 }
 
 /* big buttons: text */
-.big-buttons .radio span.big-button-header {
+.big-buttons .radio span.bb-header {
   font-size: 1.2em;
 }
-.big-buttons .radio:hover span.big-button-header,
-.big-buttons .radio input[type="radio"]:focus + label span.big-button-header {
+.big-buttons .radio:hover span.bb-header,
+.big-buttons .radio input[type="radio"]:focus + label span.bb-header {
   font-weight: bold;
 }
 

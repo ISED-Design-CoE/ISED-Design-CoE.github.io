@@ -1,6 +1,24 @@
 /* Specific formatting for the CCNaming project */
 /* TESTED ONLY IN FIREFOX ON WINDOWS */
 
+/* resize sidebar */
+@media all and (min-width:992px) {
+  aside.gc-nav nav {
+    width: 25%;
+    left: 75%;
+  }
+  aside.gc-nav h1 {
+    width: 75%;
+  }
+  section.gc-nav-section {
+    width: 75%;
+  }
+  aside.gc-nav ~ section.gc-nav-section {
+    right: 25%;
+  }
+}
+
+
 /* Dropdown widget */
 summary::marker {
   font-size: 22.5px;
@@ -75,8 +93,10 @@ h2 {
   border-color: #cad6e3;
 }
 
-.panel-body {
-  height: 361px;
+@media all and (min-width:768px) {
+  .panel-body {
+    height: 361px;
+  }
 }
 
 /* display name */
