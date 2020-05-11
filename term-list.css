@@ -36,17 +36,11 @@
   cursor:not-allowed;
 }
 
-/* colour in the "pills" when selected or mouseover */
-.term-list .checkbox input[type="checkbox"]:not(:disabled) + label:hover,
-.term-list .checkbox input[type="checkbox"]:not(:disabled) + label:focus,
-.term-list .checkbox input[type="checkbox"]:not(:disabled):hover + label,
-.term-list .checkbox input[type="checkbox"]:not(:disabled):focus + label {
-  background-color: #26374a;
-  color: white;
-}
-
-/* create the underline */
-.term-list .checkbox label::after {
+/* create underline when selected or mouseover */
+.term-list .checkbox input[type="checkbox"]:not(:disabled) + label:hover::after,
+.term-list .checkbox input[type="checkbox"]:not(:disabled) + label:focus::after,
+.term-list .checkbox input[type="checkbox"]:not(:disabled):hover + label::after,
+.term-list .checkbox input[type="checkbox"]:not(:disabled):focus + label::after {
   content: "";
   position: absolute;
   left: calc(50% - 3rem);
@@ -56,7 +50,8 @@
   border-bottom: solid #26374a 1rem;
 }
 
-/* hide the underline unless checked */
-.term-list .checkbox input[type="checkbox"]:not(:checked) + label::after {
-    content: none;
+/* colour in the "pills" when checked */
+.term-list .checkbox input[type="checkbox"]:checked + label {
+  background-color: #26374a;
+  color: white;
 }
