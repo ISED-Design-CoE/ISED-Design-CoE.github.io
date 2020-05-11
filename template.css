@@ -49,10 +49,6 @@ form .action-bar .btn:not(.btn-link) {
   margin-top: 38px;
 }
 
-.margin-bottom {
-  margin-bottom: 38px;
-}
-
 /* Show "skip to content" link at small screen sizes */
 @media screen and (max-width:991px) {
   .wb-sl[href="#wb-cont"] {
