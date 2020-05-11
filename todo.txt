@@ -14,9 +14,6 @@
 090 Distinctive words in your name proposal
 - If we can't fit all the capsules on one line, then stack terms and use checkboxes instead (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
 
-095 Distinctive words in your name proposal [two-name version]
-- Note that if one of the languages only has a single term other than the legal element then we include it on the page but pre-check the term. If both languages only have a single term other than the legal element then we skip the page as in the one-name version
-
 100 Are other businesses using your proposed name?
 - Add a column title for the checkboxes so we don't have to repeat the label on each line
 - Condense the list items vertically
