@@ -52,3 +52,22 @@ h1 {
   background-color: #26374a;
   color: #fff;
 }
+
+/* Panels */
+.panel-primary {
+  border-color: #26374a;
+}
+.panel-primary > .panel-heading {
+  color: #fff;
+  background-color: #26374a;
+  border-color: #26374a;
+}
+
+.panel-info {
+  border-color: #cad6e3;
+}
+.panel-info > .panel-heading {
+  color: #26374a;
+  background-color: #cad6e3;
+  border-color: #cad6e3;
+}
