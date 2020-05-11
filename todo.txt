@@ -11,9 +11,6 @@
 - Ensure the "Basic incorporation" and "Custom incorporation" big buttons have a minimum width of 240px, and the "Not-for-profit incorporation" big button has a minimum width of 280px
 - Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
 
-080 Propose a corporate name
-- Align the three columns vertically (affects also 090)
-
 090 Distinctive words in your name proposal
 - Increase size of display name ("Between Us Coffee Shop") to 36px
 - Ensure capsules have a minimum width so they aren't just circles

@@ -71,3 +71,7 @@ h1 {
   background-color: #cad6e3;
   border-color: #cad6e3;
 }
+
+.panel-body {
+  height: 361px;
+}
