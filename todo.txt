@@ -13,12 +13,8 @@
 - Ensure the "Basic incorporation" and "Custom incorporation" big buttons have a minimum width of 240px, and the "Not-for-profit incorporation" big button has a minimum width of 280px
 - Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
 
-050 Who are your customers?
-- Hide textareas if checkboxes unchecked
-
 060 Where are your customers?
 - Either implement the "provinces/territories" functionality from XD or describe it in the notes
-- Hide textareas if checkboxes unchecked
 
 080 Propose a corporate name
 - In the Tip dropdown, use only variations of an existing blue rather than introducing new hues (affects also 090)

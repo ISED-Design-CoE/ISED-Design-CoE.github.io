@@ -112,9 +112,9 @@
           <input type="checkbox" id="large-checkbox-item-1">
           <label for="large-checkbox-item-1">General public (e.g. walk-in clients)</label>
         </div>
-        <div class="form-group largefix">
-          <label for="moreInformationGeneralPublic">Tell us more about who are your <span class="wb-inv">general-public </span>clients</label>
-          <textarea id="moreInformationGeneralPublic" class="form-control fullwidth"></textarea>
+        <div id="more-information-1" class="form-group largefix">
+          <label for="more-information-input-1">Tell us more about who are your <span class="wb-inv">general-public </span>clients</label>
+          <textarea id="more-information-input-1" class="form-control fullwidth"></textarea>
         </div>
       </li>
       <li>
@@ -122,9 +122,9 @@
           <input type="checkbox" id="large-checkbox-item-2">
           <label for="large-checkbox-item-2">Targeted segment or specific clientele (e.g. hospitality, government, automotive)</label>
         </div>
-        <div class="form-group largefix">
-          <label for="moreInformationTargetedSegment">Tell us more about who are your <span class="wb-inv">targeted-segment </span>clients</label>
-          <textarea id="moreInformationTargetedSegment" class="form-control fullwidth"></textarea>
+        <div id="more-information-2" class="form-group largefix">
+          <label for="more-information-input-2">Tell us more about who are your <span class="wb-inv">targeted-segment </span>clients</label>
+          <textarea id="more-information-input-2" class="form-control fullwidth"></textarea>
         </div>
         </li>
       <li>
@@ -132,9 +132,9 @@
           <input type="checkbox" id="large-checkbox-item-3">
           <label for="large-checkbox-item-3">Nobody (e.g. a holding company)</label>
         </div>
-        <div class="form-group largefix">
-          <label for="moreInformationNobody">Please provide more details</label>
-          <textarea id="moreInformationNobody" class="form-control fullwidth"></textarea>
+        <div id="more-information-3" class="form-group largefix">
+          <label for="more-information-input-3">Please provide more details</label>
+          <textarea id="more-information-input-3" class="form-control fullwidth"></textarea>
           </div>
       </li>
     </ul>
@@ -212,16 +212,95 @@
 
   <!-- Start page-specific ECMAscript -->
   <script>
+    // Hide textareas and set up ARIA relationships
+    $( "#large-checkbox-item-1" ).attr( "aria-controls", "#more-information-1" )
+    if ( $( "#large-checkbox-item-1" ).prop( "checked" ) ) {
+      $( "#large-checkbox-item-1" ).attr( "aria-expanded", "true" )
+      $( "#more-information-1" ).attr( "aria-hidden", "false" )
+    } else {
+      $( "#large-checkbox-item-1" ).attr( "aria-expanded", "false" )
+      $( "#more-information-1" ).attr( "aria-hidden", "true" )
+                                .hide()
+    }
+
+    $( "#large-checkbox-item-2" ).attr( "aria-controls", "#more-information-2" )
+    if ( $( "#large-checkbox-item-2" ).prop( "checked" ) ) {
+      $( "#large-checkbox-item-2" ).attr( "aria-expanded", "true" )
+      $( "#more-information-2" ).attr( "aria-hidden", "false" )
+    } else {
+      $( "#large-checkbox-item-2" ).attr( "aria-expanded", "false" )
+      $( "#more-information-2" ).attr( "aria-hidden", "true" )
+                                .hide()
+    }
+
+    $( "#large-checkbox-item-3" ).attr( "aria-controls", "#more-information-3" )
+    if ( $( "#large-checkbox-item-3" ).prop( "checked" ) ) {
+      $( "#large-checkbox-item-3" ).attr( "aria-expanded", "true" )
+      $( "#more-information-3" ).attr( "aria-hidden", "false" )
+    } else {
+      $( "#large-checkbox-item-3" ).attr( "aria-expanded", "false" )
+      $( "#more-information-3" ).attr( "aria-hidden", "true" )
+                                .hide()
+    }
+
     $(function() {
+
+      // Set up event listeners
       $( "#large-checkbox-item-1" ).change( function() {
-        $("#large-checkbox-item-3").prop( "checked", false )
+        if ( $( this ).prop( "checked" ) ) {
+          $( this ).attr( "aria-expanded", "true" )
+          $( "#more-information-1" ).attr( "aria-hidden", "false" )
+                                    .show()
+
+          $( "#large-checkbox-item-3" ).prop( "checked", false )
+                                       .attr( "aria-expanded", "true" )
+          $( "#more-information-3" ).attr( "aria-hidden", "true" )
+                                    .hide()
+        } else {
+          $( this ).attr( "aria-expanded", "false" )
+          $( "#more-information-1" ).attr( "aria-hidden", "true" )
+                                    .hide()
+        }
       })
+
       $( "#large-checkbox-item-2" ).change( function() {
-        $("#large-checkbox-item-3").prop( "checked", false )
+        if ( $( this ).prop( "checked" ) ) {
+          $( this ).attr( "aria-expanded", "true" )
+          $( "#more-information-2" ).attr( "aria-hidden", "false" )
+                                    .show()
+
+          $( "#large-checkbox-item-3" ).prop( "checked", false )
+                                       .attr( "aria-expanded", "true" )
+          $( "#more-information-3" ).attr( "aria-hidden", "true" )
+                                    .hide()
+        } else {
+          $( this ).attr( "aria-expanded", "false" )
+          $( "#more-information-2" ).attr( "aria-hidden", "true" )
+                                    .hide()
+        }
       })
+
       $( "#large-checkbox-item-3" ).change( function() {
-        $("#large-checkbox-item-1").prop( "checked", false )
-        $("#large-checkbox-item-2").prop( "checked", false )
+        if ( $( this ).prop( "checked" ) ) {
+          $( this ).attr( "aria-expanded", "true" )
+          $( "#more-information-3" ).attr( "aria-hidden", "false" )
+                                    .show()
+
+          $( "#large-checkbox-item-1" ).prop( "checked", false )
+                                       .attr( "aria-expanded", "true" )
+          $( "#more-information-1" ).attr( "aria-hidden", "true" )
+                                    .hide()
+
+          $( "#large-checkbox-item-2" ).prop( "checked", false )
+                                       .attr( "aria-expanded", "true" )
+          $( "#more-information-2" ).attr( "aria-hidden", "true" )
+                                    .hide()
+
+        } else {
+          $( this ).attr( "aria-expanded", "false" )
+          $( "#more-information-3" ).attr( "aria-hidden", "true" )
+                                    .hide()
+        }
       })
     })
   </script>

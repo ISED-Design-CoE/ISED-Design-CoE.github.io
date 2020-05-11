@@ -119,10 +119,10 @@
       <li>
         <div class="checkbox">
           <input type="checkbox" id="large-checkbox-item-03">
-          <label for="large-checkbox-item-03">In specific provinces and territories (choose all that apply)</label>
+          <label for="large-checkbox-item-03">In specific provinces and territories</label>
         </div>
-        <details class="largefix">
-          <summary>Provinces/territories</summary>
+        <details id="more-information-03" class="largefix">
+          <summary>Choose all that apply</summary>
           <ul class="list-unstyled can-ca-form">
             <li class="checkbox">
               <input type="checkbox" id="large-checkbox-item-1">
@@ -182,20 +182,20 @@
     <li>
       <div class="checkbox">
         <input type="checkbox" id="large-checkbox-item-04">
-        <label for="large-checkbox-item-04">In specific cities and regions (enter all that apply)</label>
+        <label for="large-checkbox-item-04">In specific cities and regions</label>
       </div>
-      <div class="form-group largefix">
-        <label for="moreInformationCityRegion" class="wb-inv">More information about city or region</label>
+      <div id="more-information-04" class="form-group largefix">
+        <label for="moreInformationCityRegion">Enter all that apply</label>
         <textarea id="moreInformationCityRegion" class="form-control full-width"></textarea>
       </div>
     </li>
     <li>
       <div class="checkbox">
         <input type="checkbox" id="large-checkbox-item-05">
-        <label for="large-checkbox-item-05">Other (please specify)</label>
+        <label for="large-checkbox-item-05">Other</label>
       </div>
-      <div class="form-group largefix">
-        <label for="moreInformationOtherLocation" class="wb-inv">More information about other location</label>
+      <div id="more-information-05" class="form-group largefix">
+        <label for="moreInformationOtherLocation">Please specify</label>
         <textarea id="moreInformationOtherLocation" class="form-control full-width"></textarea>
       </div>
     </li>
@@ -274,6 +274,79 @@
   </script>
 
   <!-- Start page-specific ECMAscript -->
+  <script>
+    // Hide textareas and set up ARIA relationships
+    $( "#large-checkbox-item-03" ).attr( "aria-controls", "#more-information-03" )
+    if ( $( "#large-checkbox-item-03" ).prop( "checked" ) ) {
+      $( "#large-checkbox-item-03" ).attr( "aria-expanded", "true" )
+      $( "#more-information-03" ).attr( "aria-hidden", "false" )
+    } else {
+      $( "#large-checkbox-item-03" ).attr( "aria-expanded", "false" )
+      $( "#more-information-03" ).attr( "aria-hidden", "true" )
+                                 .hide()
+    }
+
+    $( "#large-checkbox-item-04" ).attr( "aria-controls", "#more-information-04" )
+    if ( $( "#large-checkbox-item-04" ).prop( "checked" ) ) {
+      $( "#large-checkbox-item-04" ).attr( "aria-expanded", "true" )
+      $( "#more-information-04" ).attr( "aria-hidden", "false" )
+    } else {
+      $( "#large-checkbox-item-04" ).attr( "aria-expanded", "false" )
+      $( "#more-information-04" ).attr( "aria-hidden", "true" )
+                                 .hide()
+    }
+
+    $( "#large-checkbox-item-05" ).attr( "aria-controls", "#more-information-05" )
+    if ( $( "#large-checkbox-item-05" ).prop( "checked" ) ) {
+      $( "#large-checkbox-item-05" ).attr( "aria-expanded", "true" )
+      $( "#more-information-05" ).attr( "aria-hidden", "false" )
+    } else {
+      $( "#large-checkbox-item-05" ).attr( "aria-expanded", "false" )
+      $( "#more-information-05" ).attr( "aria-hidden", "true" )
+                                 .hide()
+    }
+
+    $(function() {
+
+      // Set up event listeners
+      $( "#large-checkbox-item-03" ).change( function() {
+        if ( $( this ).prop( "checked" ) ) {
+          $( this ).attr( "aria-expanded", "true" )
+          $( "#more-information-03" ).attr( "aria-hidden", "false" )
+                                    .show()
+        } else {
+          $( this ).attr( "aria-expanded", "false" )
+          $( "#more-information-03" ).attr( "aria-hidden", "true" )
+                                    .hide()
+        }
+      })
+
+      $( "#large-checkbox-item-04" ).change( function() {
+        if ( $( this ).prop( "checked" ) ) {
+          $( this ).attr( "aria-expanded", "true" )
+          $( "#more-information-04" ).attr( "aria-hidden", "false" )
+                                    .show()
+        } else {
+          $( this ).attr( "aria-expanded", "false" )
+          $( "#more-information-04" ).attr( "aria-hidden", "true" )
+                                    .hide()
+        }
+      })
+
+      $( "#large-checkbox-item-05" ).change( function() {
+        if ( $( this ).prop( "checked" ) ) {
+          $( this ).attr( "aria-expanded", "true" )
+          $( "#more-information-05" ).attr( "aria-hidden", "false" )
+                                    .show()
+        } else {
+          $( this ).attr( "aria-expanded", "false" )
+          $( "#more-information-05" ).attr( "aria-hidden", "true" )
+                                    .hide()
+        }
+      })
+
+    })
+  </script>
   <!-- End page-specific ECMAscript -->
 
 </body>
