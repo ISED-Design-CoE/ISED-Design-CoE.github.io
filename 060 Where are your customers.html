@@ -121,8 +121,9 @@
           <input type="checkbox" id="large-checkbox-item-03">
           <label for="large-checkbox-item-03">In specific provinces and territories</label>
         </div>
-        <details id="more-information-03" class="largefix">
-          <summary>Choose all that apply</summary>
+        <div id="more-information-03" class="largefix">
+        <details>
+          <summary id="provinces-territories">Choose all that apply</summary>
           <ul class="list-unstyled can-ca-form">
             <li class="checkbox">
               <input type="checkbox" id="large-checkbox-item-1">
@@ -178,6 +179,7 @@
             </li>
           </ul>
         </details>
+        </div>
       </li>
     <li>
       <div class="checkbox">
@@ -214,6 +216,7 @@
     <h2>Notes about this mockup:</h2>
     <ul>
       <li>Only display "More information" fields if the checkbox is checked</li>
+      <li>Note the interaction on the province/territory dropdown</li>
       <li>Should the "City or Region" field follow the model of <a href="https://services.bizpal-perle.ca/">BizPaL</a>?
       </li>
     </ul>
@@ -306,6 +309,21 @@
                                  .hide()
     }
 
+      // Create province/territory display
+      var $els = $( "#more-information-03 input[type='checkbox']:checked + label" )
+      if ( $els.length ) {
+        var $provTerrList = $els.map(function() {
+                              return this.innerText;
+                            })
+                                .get()
+                                .join( ", " )
+        $( "#provinces-territories" ).text( $provTerrList )
+      } else {
+        $( "#provinces-territories" ).text( "Choose all that apply" )
+        // This probably shouldn't be a hardcoded string
+      }
+      // Also maybe this should be a function since it's used again in the event listener
+
     $(function() {
 
       // Set up event listeners
@@ -343,6 +361,23 @@
           $( "#more-information-05" ).attr( "aria-hidden", "true" )
                                     .hide()
         }
+      })
+
+      // Set up listener for province/territory display
+      $( "#more-information-03 input[type='checkbox']" ).change( function() {
+        var $els = $( "#more-information-03 input[type='checkbox']:checked + label" )
+        if ( $els.length ) {
+          var $provTerrList = $els.map(function() {
+                                return this.innerText;
+                              })
+                                  .get()
+                                  .join( ", " )
+          $( "#provinces-territories" ).text( $provTerrList )
+        } else {
+          $( "#provinces-territories" ).text( "Choose all that apply" )
+          // This probably shouldn't be a hardcoded string
+        }
+        // Also maybe this should be a function since it was used before on page load
       })
 
     })
