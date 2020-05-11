@@ -37,10 +37,13 @@ form .action-bar .btn:not(.btn-link) {
   font-weight: bold;
 }
 
-/* h1 */
+/* headings */
 h1 {
   border-bottom-color: #ff0000;
   margin-bottom: 15.6px;
+}
+h2 {
+  margin-top: 0;
 }
 
 /* Step navigation */
@@ -76,8 +79,15 @@ h1 {
   height: 361px;
 }
 
+/* display name */
 .display-name {
   font-size: 36px;
   margin-top: 4rem;
   margin-bottom: 4rem;
+}
+
+/* "ask" */
+.ask {
+  font-weight: bold;
+  font-size: 24px;
 }
