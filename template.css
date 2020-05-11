@@ -291,21 +291,12 @@ input[type="reset"], input[type="button"], input[type="submit"]
     content: "";
 }
 
-/* add focus */
-.can-ca-form .checkbox input[type="checkbox"]:focus + label::before,
-.can-ca-form .form-checkbox input[type="checkbox"]:focus + label::before,
-.can-ca-form .form-radio input[type="radio"]:focus + label::before,
-.can-ca-form .radio input[type="radio"]:focus + label::before  {
-    box-shadow: 0 0 3pt 2pt rgb(59, 153, 252);
-}
-
  @media only screen and (max-width: 1200px) {
 
 .can-ca-form .form-checkbox,
 .can-ca-form .form-radio {
     min-width: 50%;
   }
-
 }
 
 

@@ -15,7 +15,6 @@
 
 050 Who are your customers?
 - Hide textareas if checkboxes unchecked
-- Uncheck "nobody" if either of the other checkboxes is checked, and vice versa
 
 060 Where are your customers?
 - Either implement the "provinces/territories" functionality from XD or describe it in the notes

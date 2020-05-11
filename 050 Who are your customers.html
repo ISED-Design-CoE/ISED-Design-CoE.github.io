@@ -211,18 +211,20 @@
   </script>
 
   <!-- Start page-specific ECMAscript -->
-  <!-- $(function() {
-    $("#large-checkbox-item-1").select({
-      $("#large-checkbox-item-3").prop( "checked", false );
-    });
-    $("#large-checkbox-item-2").select({
-      $("#large-checkbox-item-3").prop( "checked", false );
-    });
-    $("#large-checkbox-item-3").select({
-      $("#large-checkbox-item-1").prop( "checked", false );
-      $("#large-checkbox-item-2").prop( "checked", false );
-    });
-  }); -->
+  <script>
+    $(function() {
+      $( "#large-checkbox-item-1" ).change( function() {
+        $("#large-checkbox-item-3").prop( "checked", false )
+      })
+      $( "#large-checkbox-item-2" ).change( function() {
+        $("#large-checkbox-item-3").prop( "checked", false )
+      })
+      $( "#large-checkbox-item-3" ).change( function() {
+        $("#large-checkbox-item-1").prop( "checked", false )
+        $("#large-checkbox-item-2").prop( "checked", false )
+      })
+    })
+  </script>
   <!-- End page-specific ECMAscript -->
 
 </body>
