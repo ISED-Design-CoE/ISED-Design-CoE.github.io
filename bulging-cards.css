@@ -60,11 +60,6 @@
     content: none;
 }
 
-/* add focus */
-.bulging-cards .radio input[type="radio"]:focus + label::before  {
-  box-shadow: 0 0 3pt 2pt rgb(59, 153, 252);
-}
-
 /* Bulging cards: images */
 .bulging-cards .radio label img.bulge {
   height: 50px;

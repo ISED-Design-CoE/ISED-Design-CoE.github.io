@@ -1,6 +1,5 @@
 (General)
 - Extend size of content area (as indicated by red line) to 819 px on wide-enough screens. Single-column content will sit to the left, with a gap separating it from the step list, and multi-column content will fill the space
-- Remove halo effect
 - Fix the alignment of circles and lines in the step list and alert message
 - Use filled bullets in every bulleted list
 - Right-align regular text in big buttons
