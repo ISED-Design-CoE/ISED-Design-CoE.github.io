@@ -32,7 +32,14 @@
   <!-- Start page-specific CSS -->
   <link rel="stylesheet" href="ccnaming.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link rel="stylesheet" href="addfield.css">
+  <style>
+    #addedfield {
+      display: none;
+    }
+    .margin-top {
+      margin-top: 8rem;
+    }
+  </style>
   <!-- End page-specific CSS -->
 
 </head>
@@ -110,9 +117,14 @@
   </div>
 
   <div class="form-group">
-    <button type="button" class="btn btn-default btn-block addfield"><span class="fa fa-plus"></span> <span class="wb-inv">Add secondary business activity</span></button>
-    <label for="naicsSearchInput2" class="wb-inv">Secondary business activity</label>
-    <input id="naicsSearchInput2" maxlength="250" size="100" class="form-control" autocomplete="off" spellcheck="false"><!-- Works the same as in Nuans: see page comments -->  </div>
+    <div id="addfield">
+      <button id="addfield" type="button" class="btn btn-default btn-block addfield"><span class="fa fa-plus"></span> <span class="wb-inv">Add secondary business activity</span></button>
+    </div>
+    <div id="addedfield">
+      <label for="naicsSearchInput2" class="wb-inv">Secondary business activity</label>
+      <input id="naicsSearchInput2" maxlength="250" size="100" class="form-control" autocomplete="off" spellcheck="false"><!-- Works the same as in Nuans: see page comments -->
+    </div>
+  </div>
 
   <div class="form-group margin-top">
     <p>
@@ -203,6 +215,14 @@
   </script>
 
   <!-- Start page-specific ECMAscript -->
+  <script>
+    $(function() {
+      $( "#addfield" ).click( function() {
+        $( this ).hide()
+        $( "#addedfield" ).show()
+      })
+    })
+  </script>
   <!-- End page-specific ECMAscript -->
 
 </body>
