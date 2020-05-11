@@ -12,8 +12,6 @@
 - Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
 
 090 Distinctive words in your name proposal
-- Ensure capsules have a minimum width so they aren't just circles
-- Increase the length of the underline on wider capsules
 - If we can't fit all the capsules on one line, then stack terms and use checkboxes instead (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
 
 095 Distinctive words in your name proposal [two-name version]

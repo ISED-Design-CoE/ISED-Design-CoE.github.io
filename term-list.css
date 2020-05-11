@@ -21,13 +21,14 @@
   opacity: 0;
 }
 
-/* create "pills" */
+/* create capsules */
 .term-list .checkbox label {
   margin-left: 1rem;
   margin-right: 1rem;
   border: 2px solid #26374a;
   border-radius: 999px;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
+  min-width: 4em;
 }
 
 /* make disabled items (legal element) look different */
@@ -43,14 +44,14 @@
 .term-list .checkbox input[type="checkbox"]:not(:disabled):focus + label::after {
   content: "";
   position: absolute;
-  left: calc(50% - 3rem);
+  left: 2rem;
   top: 4rem;
-  width: 6rem;
+  width: calc(100% - 4rem);
   height: 22px;
   border-bottom: solid #26374a 1rem;
 }
 
-/* colour in the "pills" when checked */
+/* colour in the capsules when checked */
 .term-list .checkbox input[type="checkbox"]:checked + label {
   background-color: #26374a;
   color: white;
