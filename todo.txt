@@ -1,6 +1,3 @@
-(General)
-- Extend size of content area (as indicated by red line) to 819 px on wide-enough screens. Single-column content will sit to the left, with a gap separating it from the step list, and multi-column content will fill the space
-
 100 Are other businesses using your proposed name?
 - Add a column title for the checkboxes so we don't have to repeat the label on each line
 - Condense the list items vertically

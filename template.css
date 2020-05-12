@@ -4,7 +4,9 @@
 
 /* Mockup notes */
 .notesaboutmockup {
-  /* display: none; */
+  display: none;
+}
+.notesaboutmockup {
   margin-top: 8rem;
   border-color: #FC6;
   border-width: 2px;
