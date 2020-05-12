@@ -17,22 +17,6 @@
     right: 25%;
   }
 }
-@media all and (min-width:1170px) {
-  aside.gc-nav nav {
-    width: 30%;
-    left: 70%;
-  }
-  aside.gc-nav h1 {
-    width: 70%;
-  }
-  section.gc-nav-section {
-    width: 70%;
-  }
-  aside.gc-nav ~ section.gc-nav-section {
-    right: 30%;
-  }
-}
-
 
 
 /* Dropdown widget */
