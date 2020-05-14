@@ -1,17 +1,8 @@
-100 Are other businesses using your proposed name?
-105 Are other businesses using your proposed name - two-name version
-- Add a column title for the checkboxes so we don't have to repeat the label on each line
-- Condense the list items vertically
-- Add expand/collapse all
-
 (General)
 - Add numbered section headings to step navigation
 - Turn them into accordions
 - Show the full accordion expanded on the first page
 - On other pages, show the accordion closed except for the current section
-
-110 Upload supporting documents
-- Add "PDF only"
 
 090 Distinctive words in your name proposal
 - If we can't fit all the capsules on one line, then stack terms and use checkboxes instead (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
@@ -20,5 +11,3 @@
 - Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
 
 Compare big-buttons.css with template.css -- can consolidate?
-
-Use data-behavior (https://blog.bigbinary.com/2012/10/10/data-behavior.html)
