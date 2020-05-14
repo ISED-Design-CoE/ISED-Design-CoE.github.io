@@ -1,8 +1,6 @@
 100 Are other businesses using your proposed name
 105 Are other businesses using your proposed name - two-name version
 - Add note to user about "up to 35"
-- Add note to dev about same
-- Also if zero results then don't show this page
 
 100 Are other businesses using your proposed name?
 105 Are other businesses using your proposed name - two-name version
