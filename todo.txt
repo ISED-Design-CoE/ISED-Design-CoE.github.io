@@ -34,3 +34,5 @@
 - Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
 
 Compare big-buttons.css with template.css -- can consolidate?
+
+Use data-behavior (https://blog.bigbinary.com/2012/10/10/data-behavior.html)
