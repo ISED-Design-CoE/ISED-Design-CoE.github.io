@@ -107,6 +107,7 @@ h2 {
 /* display name */
 .display-name {
   font-size: 36px;
+  line-height: 40px;
   margin-top: 4rem;
   margin-bottom: 4rem;
 }
