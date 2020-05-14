@@ -2,7 +2,7 @@ evaluation summary {
   min-height: 60px;
 }
 details summary {
-  padding: 7px;
+  padding: 12px;
 }
 .can-ca-form .checkbox, .can-ca-form .radio {
   padding-left: 0;
@@ -15,6 +15,7 @@ details summary {
 .can-ca-form .checkbox label::before, .can-ca-form .radio label::before, .can-ca-form .form-checkbox label::before, .can-ca-form .form-radio label::before {
   position: inherit;
   margin-top: -6px;
+  margin-right: -5px;
 }
 .can-ca-form .checkbox label::after, .can-ca-form .radio label::after, .can-ca-form .form-checkbox label::after, .can-ca-form .form-radio label::after {
   left: 12px;
