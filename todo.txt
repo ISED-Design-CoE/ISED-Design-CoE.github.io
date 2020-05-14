@@ -1,7 +1,3 @@
-100 Are other businesses using your proposed name
-105 Are other businesses using your proposed name - two-name version
-- Add note to user about "up to 35"
-
 100 Are other businesses using your proposed name?
 105 Are other businesses using your proposed name - two-name version
 - Add a column title for the checkboxes so we don't have to repeat the label on each line
