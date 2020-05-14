@@ -32,6 +32,11 @@
 
   <!-- Start page-specific CSS -->
   <link rel="stylesheet" href="ccnaming.css">
+  <style>
+    #email-button {
+      display: none;
+    }
+  </style>
   <!-- End page-specific CSS -->
 
 </head>
@@ -114,29 +119,26 @@
 
     <dt>Transaction date:</dt>
     <dd><time datetime="2020-04-28T08:20:37.929-0400">2020-04-28, 8:20:37a.m.</time></dd>
-
-    <dt>A confirmation email has been sent to:</dt>
-    <dd>username@domain.com</dd>
   </dl>
 
-  <div class="form-group">
-    <label for="email">Also email invoice copy to:</label>
-    <div class="input-group">
-      <input type="email" id="email" class="form-control" autocomplete="email">
-      <span class="input-group-btn">
-       <button class="btn btn-default" type="button">Send</button>
-      </span>
+  <div class="form-group margin-top">
+    <p>A receipt has been sent to <span class="bold">something-i-entered@when-saving.com</span>.</p>
+    <p id="email-no-js">Email a copy&hellip;</p>
+    <button class="btn btn-default" type="button" id="email-button">Email a copy&hellip;</button>
+    <div id="email-form">
+      <label for="email">Recipient</label>
+      <div class="input-group">
+        <input type="email" id="email" class="form-control" autocomplete="email">
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Send</button>
+        </span>
+      </div>
     </div>
   </div>
 
   <p>
-    <button class="btn btn-default" type="button">Print invoice</button>
+    <button class="btn btn-default" type="button">Print a copy&hellip;</button>
   </p>
-
-  <section class="alert-alt alert-info-alt margin-top">
-    <h2 class="h3">Your proposal will be evaluated before being approved</h2>
-    <p>Once you complete your application, an examiner will evaluate your proposed name to eliminate any possible confusion with other registered businesses and trademarks. If there is any confusion, the examiner will ask you for more information through your email or phone number.</p>
-  </section>
 
 
   <div class="action-bar">
@@ -161,7 +163,7 @@
           <li>Contents of that invoice have not been designed. Should it include the requested corporate name? What about the contact details?</li>
         </ul>
       </li>
-      <li>The "email invoice" functionality should send the same formatted invoice by email to the email address that was entered</li>
+      <li>The "email a copy" functionality should send the same formatted invoice by email to the email address that was entered</li>
     </ul>
   </div>
   <!-- End page content -->
@@ -220,6 +222,24 @@
   </script>
 
   <!-- Start page-specific ECMAscript -->
+  <script>
+    $(function() {
+      // Hide input form and set up ARIA relationship
+      $( "#email-button" ).attr( "aria-controls", "#email-form" )
+                          .show()
+      $( "#email-no-js" ).hide()
+      $( "#email-form" ).hide()
+
+      // Set up event listener
+      $( "#email-button" ).click( function() {
+        $( this ).attr( "aria-expanded", "true" )
+                 .hide()
+        $( "#email-no-js" ).show()
+        $( "#email-form" ).attr( "aria-hidden", "false" )
+                          .show()
+      })
+    })
+  </script>
   <!-- End page-specific ECMAscript -->
 
 </body>
