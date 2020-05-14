@@ -1,6 +1,11 @@
 /* Specific formatting for the CCNaming project */
 /* TESTED ONLY IN FIREFOX ON WINDOWS */
 
+/* constrain line-width to 65 characters (more or less!) per https://design.canada.ca/styles/typography.html */
+.cnt-wdth-lmtd {
+  max-width: 559px;
+}
+
 /* resize sidebar */
 @media all and (min-width:992px) {
   aside.gc-nav nav {
