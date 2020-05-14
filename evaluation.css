@@ -1,5 +1,11 @@
-evaluation summary {
-  min-height: 60px;
+details, summary {
+  display: inline-block;
+}
+details {
+  width: 100%;
+}
+.evaluation summary {
+  min-height: 50px;
 }
 details summary {
   padding: 12px;
