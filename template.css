@@ -2,35 +2,12 @@
 /* from Kivi */
 /* ********* */
 
-/* Mockup notes */
-/* .notesaboutmockup {
-  display: none;
-} */
+/* To hide the notes box, uncomment the following declaration: */
+/*
 .notesaboutmockup {
-  margin-top: 8rem;
-  border-color: #FC6;
-  border-width: 2px;
-  border-style: solid;
-  padding: 0 1em;
-  color: #333;
-  background: #FFD;
+  display: none;
 }
-.notesaboutmockup h2 {
-  font-size: inherit;
-  margin-top: 1em;
-}
-
-/* Action bar */
-.action-bar {
-  margin-top: 4rem;
-}
-form .action-bar .btn {
-  margin-right: 3rem;
-  padding: 0.5rem;
-}
-form .action-bar .btn:not(.btn-link) {
-  min-width: 6em;
-}
+*/
 
 /* Utility classes */
 .bold {
@@ -46,7 +23,17 @@ form .action-bar .btn:not(.btn-link) {
 .margin-top {
   margin-top: 38px;
 }
+.largefix {
+  margin-top: -24px;
+  margin-left: 78px;
+  font-size: 20px !important;
+}
 
+
+/* Step navigation */
+.gc-navseq .group {
+  display: none;
+}
 /* Show "skip to content" link at small screen sizes */
 @media screen and (max-width:991px) {
   .wb-sl[href="#wb-cont"] {
@@ -60,18 +47,40 @@ form .action-bar .btn:not(.btn-link) {
   }
 }
 
-/* Adjustments relating to large checkboxes */
-.largefix {
-  margin-top: -24px;
-  margin-left: 78px;
-  font-size: 20px !important;
+
+/* Action bar */
+.action-bar {
+  margin-top: 4rem;
 }
+form .action-bar .btn {
+  margin-right: 3rem;
+  padding: 0.5rem;
+}
+form .action-bar .btn:not(.btn-link) {
+  min-width: 6em;
+}
+
+
+/* Mockup notes */
+.notesaboutmockup {
+  margin-top: 8rem;
+  border-color: #FC6;
+  border-width: 2px;
+  border-style: solid;
+  padding: 0 1em;
+  color: #333;
+  background: #FFD;
+}
+.notesaboutmockup h2 {
+  font-size: inherit;
+  margin-top: 1em;
+}
+
 
 /* General formatting */
 .breadcrumb {
   display: none;
 }
-
 .input-group .form-control {
   padding: 10px 14px;
   line-height: inherit;
@@ -83,7 +92,6 @@ fieldset {
   border-top: 0;
   padding-top: 0;
 }
-
 details > ul > li {
   list-style-type: disc;
 }

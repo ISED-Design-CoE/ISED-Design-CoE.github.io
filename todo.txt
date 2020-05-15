@@ -10,4 +10,5 @@
 020 What type of business are you incorporating?
 - Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
 
+Final HTML validation
 Compare big-buttons.css with template.css -- can consolidate?
