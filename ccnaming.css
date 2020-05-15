@@ -2,7 +2,7 @@
 /* TESTED ONLY IN FIREFOX ON WINDOWS */
 
 /* constrain line-width to 65 characters (more or less!) per https://design.canada.ca/styles/typography.html */
-.cnt-wdth-lmtd {
+.limited-width {
   max-width: 559px;
 }
 
@@ -112,8 +112,8 @@ h2 {
   margin-bottom: 4rem;
 }
 
-/* "ask" */
-.ask {
+/* "instruction" */
+.instruction {
   font-weight: bold;
   font-size: 24px;
   line-height: 29px;
