@@ -48,17 +48,8 @@ ul.gc-navseq > li.group > a::before {
 ul.gc-navseq > li.group > a::before {
   content: counter(step-counter);
 }
-ul.gc-navseq > li.group > a[href]:hover::before {
-  width: 36px;
-  height: 36px;
-  margin-top: -2px;
-  font-size: 1.2em;
-  margin-right: -2px;
-  margin-left: -53px;
-  line-height: 1.5;
-}
 
-/* Because the nav takes so much room, show "skip to content" link at small screen sizes */
+/* Because the nav can be long, show "skip to content" link at small screen sizes */
 @media screen and (max-width:991px) {
   .wb-sl[href="#wb-cont"] {
     clip: unset;
@@ -133,6 +124,33 @@ form .btn:not(.btn-call-to-action), .form-control {
 }
 legend {
   line-height: inherit;
+}
+
+/* ************* */
+/* From WAI-ARIA */
+/* ************* */
+
+/* Based on https://www.w3.org/TR/wai-aria-practices/examples/accordion/accordion.html */
+
+.Accordion-icon {
+  border: solid hsl(0, 0%, 62%);
+  border-width: 0 2px 2px 0;
+  height: 0.5rem;
+  pointer-events: none;
+  position: absolute;
+  right: 2em;
+  top: 50%;
+  transform: translateY(-60%) rotate(45deg);
+  width: 0.5rem;
+}
+
+.Accordion-trigger:focus .Accordion-icon,
+.Accordion-trigger:hover .Accordion-icon {
+  border-color: hsl(216, 94%, 73%);
+}
+
+.Accordion-trigger[aria-expanded="true"] .Accordion-icon {
+  transform: translateY(-50%) rotate(-135deg);
 }
 
 
