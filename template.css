@@ -31,10 +31,34 @@
 
 
 /* Step navigation */
-.gc-navseq .group {
-  display: none;
+
+/* Group headers */
+ul.gc-navseq {
+  counter-reset: step-counter;
 }
-/* Show "skip to content" link at small screen sizes */
+ul.gc-navseq > li.group {
+  padding-left: 29px;
+  counter-increment: step-counter;
+}
+ul.gc-navseq > li.group > a::before {
+  height: 34px;
+  width: 34px;
+  margin-left: -52px;
+}
+ul.gc-navseq > li.group > a::before {
+  content: counter(step-counter);
+}
+ul.gc-navseq > li.group > a[href]:hover::before {
+  width: 36px;
+  height: 36px;
+  margin-top: -2px;
+  font-size: 1.2em;
+  margin-right: -2px;
+  margin-left: -53px;
+  line-height: 1.5;
+}
+
+/* Because the nav takes so much room, show "skip to content" link at small screen sizes */
 @media screen and (max-width:991px) {
   .wb-sl[href="#wb-cont"] {
     clip: unset;
