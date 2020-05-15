@@ -126,6 +126,13 @@ legend {
   line-height: inherit;
 }
 
+/* Hack for step nav in Chrome */
+/* .chromehack::before {
+  float: none !important;
+} */
+
+
+
 /* ************* */
 /* From WAI-ARIA */
 /* ************* */
@@ -133,6 +140,9 @@ legend {
 /* Based on https://www.w3.org/TR/wai-aria-practices/examples/accordion/accordion.html */
 
 .Accordion-icon {
+  display: none;
+}
+/* .Accordion-icon {
   border: solid hsl(0, 0%, 62%);
   border-width: 0 2px 2px 0;
   height: 0.5rem;
@@ -151,7 +161,7 @@ legend {
 
 .Accordion-trigger[aria-expanded="true"] .Accordion-icon {
   transform: translateY(-50%) rotate(-135deg);
-}
+} */
 
 
 /* ******** */
