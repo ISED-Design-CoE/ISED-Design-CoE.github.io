@@ -127,9 +127,9 @@ legend {
 }
 
 /* Hack for step nav in Chrome */
-/* .chromehack::before {
-  float: none !important;
-} */
+.chromehack::before {
+  float: left;
+}
 
 
 
@@ -461,7 +461,7 @@ ul.gc-navseq.noline>li {
   border-radius: 50%;
   border: 4px solid #26374a;
   background-color: #fff;
-  float: left;
+  /* float: left; */ /* Doesn't work with Chrome; add via Javascript :-( */
   /* display: inline-block; */
   display: block; /* inline-block and float are incompatible */
   text-decoration: none;

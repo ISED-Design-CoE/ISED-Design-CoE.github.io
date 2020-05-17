@@ -1,7 +1,4 @@
 (General)
-- Fix step nav display issue in Chrome
-
-(General)
 - Turn numbered section headings in step navigation into accordions
 - Show the full accordion expanded on the first page
 - On other pages, show the accordion closed except for the current section
