@@ -413,9 +413,9 @@ section.gc-nav-section + .pagedetails {
 .gc-navseq .small, .gc-navseq small {
   line-height: 0em;
 }
-.gc-navseq * {
+/* .gc-navseq * {
   font-weight: inherit!important
-}
+} */
 .gc-navseq *, .gc-navseq-fa * {
   font-size: inherit!important;
   margin-top: 0px!important;
