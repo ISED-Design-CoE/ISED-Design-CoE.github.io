@@ -1,21 +1,12 @@
-(General)
-- Add more breathing room between "ask" and body
-
 (Sidebar)
-- Make line spacing consistent
 - Use old/new grey styling
 - Turn numbered section headings in step navigation into accordions
 - Show the full accordion expanded on the first page
 - On other pages, show the accordion closed except for the current section
 
-030
-- Fix NFP to "30 minutes" to match CBCA
-
 090 Distinctive words in your name proposal
 - If we can't fit all the capsules on one line, then stack terms and use checkboxes instead (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
 
-020 What type of business are you incorporating?
-- Line up the top of the dividing line with the top of the headings ("Business corporation", "Not-for-profit corporation")
-
 Final HTML validation
+
 Compare big-buttons.css with template.css -- can consolidate?
