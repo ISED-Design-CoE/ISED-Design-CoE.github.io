@@ -78,6 +78,12 @@ h2 {
   background-color: #26374a;
   color: #fff;
 }
+.gc-navseq *, .gc-navseq-fa * {
+  line-height: 24px !important;
+}
+ul.gc-navseq > li.group > a::before {
+  margin-top: -6px;
+}
 
 /* Panels */
 .panel-primary {
@@ -117,4 +123,5 @@ h2 {
   font-weight: bold;
   font-size: 24px;
   line-height: 29px;
+  margin-bottom: 40px;
 }
