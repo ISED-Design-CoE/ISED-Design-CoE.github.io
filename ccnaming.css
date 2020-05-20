@@ -70,16 +70,6 @@ h2 {
 }
 
 /* Step navigation */
-.gc-navseq li.completed>a::before {
-  color: #333333;
-}
-.gc-navseq li.completed a,
-.gc-navseq li.completed a:visited {
-  color: #888888;
-}
-.gc-navseq li.active a {
-  font-weight: bold;
-}
 .gc-navseq *, .gc-navseq-fa * {
   line-height: 24px !important;
 }
