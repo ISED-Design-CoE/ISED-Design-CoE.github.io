@@ -70,13 +70,15 @@ h2 {
 }
 
 /* Step navigation */
-.gc-navseq li.completed, .gc-navseq-fa li.completed, .gc-navseq-fa li.completed span.fa-li {
-  border-color: #26374a;
-}
 .gc-navseq li.completed>a::before {
-  border-color: #26374a;
-  background-color: #26374a;
-  color: #fff;
+  color: #333333;
+}
+.gc-navseq li.completed a,
+.gc-navseq li.completed a:visited {
+  color: #888888;
+}
+.gc-navseq li.active a {
+  font-weight: bold;
 }
 .gc-navseq *, .gc-navseq-fa * {
   line-height: 24px !important;
