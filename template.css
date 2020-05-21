@@ -93,7 +93,7 @@ ul.gc-navseq > li.group > button::before {
   translate: 0 6px;
 }
 .gc-navseq > li.hide-border {
-  border-left-color: #fff;
+  border-left-color: transparent;
 }
 
 /* Because the nav can be long, show "skip to content" link at small screen sizes */
