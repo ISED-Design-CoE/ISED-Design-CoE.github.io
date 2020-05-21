@@ -56,6 +56,20 @@ ul.gc-navseq > li.group > a::before {
 ul.gc-navseq > li.group > a::before {
   content: counter(step-counter);
 }
+.accordion-icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 13px solid;
+  pointer-events: none;
+}
+.accordion-icon.open {
+  border-top: 13px solid;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
 
 /* Because the nav can be long, show "skip to content" link at small screen sizes */
 @media screen and (max-width:991px) {
@@ -139,32 +153,6 @@ legend {
   float: left;
 }
 
-
-
-/* ************* */
-/* From WAI-ARIA */
-/* ************* */
-
-/* Based on https://www.w3.org/TR/wai-aria-practices/examples/accordion/accordion.html */
-
-.Accordion-icon {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 14px solid;
-  pointer-events: none;
-}
-
-.Accordion-trigger:focus .Accordion-icon,
-.Accordion-trigger:hover .Accordion-icon {
-  border-color: hsl(216, 94%, 73%);
-}
-
-.Accordion-trigger[aria-expanded="true"] .Accordion-icon {
-  transform: translateY(-50%) rotate(-135deg);
-}
 
 
 /* ******** */
