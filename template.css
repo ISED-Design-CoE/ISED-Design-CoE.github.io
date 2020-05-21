@@ -65,10 +65,14 @@ ul.gc-navseq > li.group > a::before {
   border-left: 13px solid;
   pointer-events: none;
 }
-.accordion-icon.open {
+.open .accordion-icon {
   border-top: 13px solid;
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
+  translate: 0 8px;
+}
+.gc-navseq > li.hide-border {
+  border-left-color: #fff;
 }
 
 /* Because the nav can be long, show "skip to content" link at small screen sizes */

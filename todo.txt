@@ -1,7 +1,6 @@
 (Sidebar)
-- Turn numbered section headings in step navigation into accordions
-- Show the full accordion expanded on the first page
-- On other pages, show the accordion closed except for the current section
+- Make accordions work via keyboard
+- On pages other than the first, show the accordion closed except for the current section
 
 Final HTML validation
 
