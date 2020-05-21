@@ -1,5 +1,6 @@
 $( function() {
   // Fix Chrome bug with step navigation
+  $( ".gc-navseq>li>button" ).addClass( "chromehack" )
   $( ".gc-navseq>li>a" ).addClass( "chromehack" )
 
   // Set up step navigation accordion
@@ -14,15 +15,14 @@ $( function() {
   ]
   var numGroups = 7
 
-  $( ".group a" ).each( function() {
+  $( ".group button" ).each( function() {
     // Locate the space-separated list for aria-controls
     let groupNum = $( this ).attr( "data-controls" )
                          .split( "-" )[1]
     let group = groups[ groupNum - 1 ]
 
     // Apply ARIA
-    $( this ).attr( "role", "button" )
-             .attr( "aria-expanded", "true" )
+    $( this ).attr( "aria-expanded", "true" )
              .attr( "aria-controls", group )
 
     // Set up listeners

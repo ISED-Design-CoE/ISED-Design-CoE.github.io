@@ -1,4 +1,6 @@
 (Sidebar)
+- change border to transparent, not white
+- add aria-current="step"
 - Make accordions work via keyboard
 - On pages other than the first, show the accordion closed except for the current section
 

@@ -73,7 +73,7 @@ h2 {
 .gc-navseq *, .gc-navseq-fa * {
   line-height: 24px !important;
 }
-ul.gc-navseq > li.group a::before {
+ul.gc-navseq > li.group button::before {
   margin-top: -6px;
 }
 
