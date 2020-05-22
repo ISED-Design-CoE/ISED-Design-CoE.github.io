@@ -1,5 +1,4 @@
 (Sidebar)
-- add aria-current="step"
 - On pages other than the first, show the accordion closed except for the current section
 
 Final HTML validation
