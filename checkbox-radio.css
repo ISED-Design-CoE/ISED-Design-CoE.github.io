@@ -1,0 +1,130 @@
+/* Based on https://design.canada.ca/css/checkbox-radio.css */
+
+/* bigger label */
+label {
+  font-size: 20px !important; /*will not use important tags on PR, will correct source */
+}
+
+.label {
+  text-align: left!important;
+  display:inline-block!important;
+  clear: left!important;
+  white-space:normal!important;
+}
+
+/* increase field flow sizing */
+
+.btn {
+  font-size: 20px !important; /*will not use important tags on PR, will correct source */
+  font-variant-ligatures: no-common-ligatures;
+}
+
+.pagedetails .btn  {
+  font-size: 16px !important; /*will not use important tags on PR, will correct source */
+  font-variant-ligatures: no-common-ligatures;
+}
+
+input[type="reset"],
+input[type="button"],
+input[type="submit"] {
+  height: 50px!important;
+}
+
+/* custom checkboxes */
+
+.can-ca-form input {
+  position: absolute;
+  opacity: 0;
+}
+
+.can-ca-form input:disabled + label {
+  cursor: not-allowed;
+}
+
+.can-ca-form input:disabled + label::before {
+  border-color: #ccc;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc4JyBoZWlnaHQ9JzgnPgogIDxyZWN0IHdpZHRoPSc4JyBoZWlnaHQ9JzgnIGZpbGw9JyNmZmYnLz4KICA8cGF0aCBkPSdNMCAwTDggOFpNOCAwTDAgOFonIHN0cm9rZS13aWR0aD0nMC41JyBzdHJva2U9JyNhYWEnLz4KPC9zdmc+Cg==");
+  background-repeat: repeat;
+}
+
+.can-ca-form {
+  clear: both;
+  padding-top: 6px;
+}
+
+.can-ca-form .checkbox,
+.can-ca-form .radio {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 32px;
+  cursor: pointer;
+  font-weight: normal;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.can-ca-form .checkbox label::before,
+.can-ca-form .radio label::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #333;
+  margin-top: -4px;
+}
+
+.can-ca-form .radio label::before {
+  content: "";
+  border-radius: 50%;
+}
+
+/* focus */
+.can-ca-form .checkbox input[type="checkbox"]:focus + label::before,
+.can-ca-form .radio input[type="radio"]:focus + label::before {
+  border-width: 3px;
+}
+
+.can-ca-form .checkbox label::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 12px;
+  top: 0px;
+  width: 13px;
+  height: 22px;
+  border: solid #333;
+  border-width: 0 5px 5px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.can-ca-form .radio label::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #333;
+}
+
+/* hide the check */
+.can-ca-form .checkbox input[type="checkbox"] + label::after,
+.can-ca-form .radio input[type="radio"] + label::after {
+    content: none;
+}
+
+/* unhide check when checked */
+.can-ca-form .checkbox input[type="checkbox"]:checked + label::after,
+.can-ca-form .radio input[type="radio"]:checked + label::after {
+    content: "";
+}

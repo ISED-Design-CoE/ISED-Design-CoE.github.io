@@ -70,7 +70,7 @@ h2 {
 }
 
 /* Step navigation */
-.gc-navseq *, .gc-navseq-fa * {
+.gc-navseq * {
   line-height: 24px !important;
 }
 ul.gc-navseq > li.group button::before {

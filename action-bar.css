@@ -1,0 +1,10 @@
+.action-bar {
+  margin-top: 4rem;
+}
+form .action-bar .btn {
+  margin-right: 3rem;
+  padding: 0.5rem;
+}
+form .action-bar .btn:not(.btn-link) {
+  min-width: 6em;
+}

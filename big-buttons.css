@@ -12,10 +12,14 @@
       (button)           -- actually a combination of ::before and ::after for the label
 */
 
+.big-buttons {
+  padding-top: 0;
+}
+
 .big-buttons .radio {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 20px;
+  padding-left: 15px;
   line-height: 1.65em;
 }
 
@@ -57,40 +61,18 @@
   float: right;
 }
 
-/* custom checkboxes */
-.big-buttons input {
-  opacity: 0;
-}
-/* circle */
+/* radio buttons: overrides for template.css */
 .big-buttons .radio label::before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  display: inline-block;
   left: 29px;
   bottom: 34px;
-  width: 36px;
-  height: 36px;
-  margin-top: -4px;
-  border: 2px solid #333;
-  border-radius: 50%;
-}
-
-/* focus */
-.big-buttons .form-checkbox input[type="checkbox"]:focus + label::before,
-.big-buttons .form-radio input[type="radio"]:focus + label::before,
-.big-buttons .checkbox input[type="checkbox"]:focus + label::before,
-.big-buttons .radio input[type="radio"]:focus + label::before {
-  border-width: 3px;
+  top: inherit;
 }
 
 /* checkmark */
 .big-buttons .radio label::after {
-  content: "";
-  display: inline-block;
-  position: absolute;
   left: 40px;
   bottom: 43px;
+  top: inherit;
   width: 13px;
   height: 22px;
   border: solid #333;
@@ -98,9 +80,6 @@
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-}
-
-/* hide the check */
-.big-buttons .radio input[type="radio"]:not(:checked) + label::after {
-    content: none;
+  border-radius: 0;
+  background-color: transparent;
 }

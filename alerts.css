@@ -1,0 +1,70 @@
+/* Based on CSS in https://www.canada.ca/en/revenue-agency/services/child-family-benefits/canada-child-benefit-overview/canada-child-benefit-payment-dates.html */
+
+/*alerts(new design replacement, remove -alt from all classes) */
+.alert-alt {
+  margin-left: 10px;
+  border-left: 6px solid #000;
+  padding-left: 15px;
+  background-clip: content-box;
+  margin-bottom: 23px;
+}
+.alert-alt > p,
+.alert-alt > .ul,
+.alert-alt > .ol {
+  margin-bottom: 0px;
+}
+.alert-alt > * {
+  margin-left: 15px;
+}
+.alert-alt details {
+  margin-left: 0.5em
+}
+.alert-alt >:first-child:not(details) {
+  padding-top: 15px;
+  margin-top:auto;
+}
+.alert-alt >:last-child {
+  padding-bottom: 25px;
+}
+.alert-alt:before {
+  font-size: 26px;
+  margin-left: -1.28em;
+  margin-top: 0.5em;
+  padding: 2px;
+  background-color: #fff;
+  line-height: 1.1em;
+  font-family: "Glyphicons Halflings";
+  position: absolute;
+}
+.well .alert-alt:before {
+  background-color: #f5f5f5;
+}
+.alert-info-alt {
+  border-left-color: #269abc;
+}
+.alert-success-alt {
+  border-left-color: #278400;
+}
+.alert-warning-alt {
+  border-left-color: #f90;
+}
+.alert-danger-alt {
+  border-left-color: #d3080c;
+}
+.alert-info-alt::before,
+details.alert-info-alt::before {
+  content: "\e086";
+  color: #269abc;
+}
+.alert-success-alt::before {
+  content: "\e084";
+  color: #278400;
+}
+.alert-warning-alt::before {
+  content: "\e107";
+  color: #f90;
+}
+.alert-danger-alt::before {
+  content: "\e101";
+  color: #d3080c;
+}
