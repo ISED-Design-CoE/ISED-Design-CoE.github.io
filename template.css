@@ -92,8 +92,10 @@ ul.gc-navseq > li.group > button::before {
   border-left: 6px solid transparent;
   translate: 0 6px;
 }
-.gc-navseq > li.hide-border {
-  border-left-color: transparent;
+@media all and (min-width:992px) {
+  .gc-navseq > li.hide-border {
+    border-left-color: transparent;
+  }
 }
 
 /* Because the nav can be long, show "skip to content" link at small screen sizes */
@@ -626,6 +628,7 @@ aside.gc-nav nav>.gc-navseq {
   padding-top: 30px;
   margin-top: -18px;
 }
+.gc-navseq > li.hide-border,
 aside.gc-nav nav>.gc-navseq > li:last-child {
   border-bottom: 5px solid #26374a;
   border-left: 5px solid #26374a;
