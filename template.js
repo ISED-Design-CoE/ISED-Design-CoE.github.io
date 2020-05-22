@@ -35,7 +35,7 @@ $( function() {
           $( "#"+this ).hide()
         })
         if ( groupNum == numGroups ) {
-          $( this ).parent()
+          $( this ).closest( ".group" )
                    .addClass( "hide-border" )
         }
       } else {
@@ -45,7 +45,7 @@ $( function() {
           $( "#"+this ).show()
         })
         if ( groupNum == numGroups ) {
-          $( this ).parent()
+          $( this ).closest( ".group" )
                    .removeClass( "hide-border" )
         }
       }
