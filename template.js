@@ -1,6 +1,6 @@
 $( function() {
   // Fix Chrome bug with step navigation
-  $( ".gc-navseq>li>button" ).addClass( "chromehack" )
+  $( ".gc-navseq>li button" ).addClass( "chromehack" )
   $( ".gc-navseq>li>a" ).addClass( "chromehack" )
 
   // Set up step navigation accordion
