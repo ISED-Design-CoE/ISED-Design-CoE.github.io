@@ -1,13 +1,27 @@
-/* general formatting */
-.term-list {
-  margin-top: 4rem;
-  margin-bottom: 4rem;
-  display: flex;
+/* hide the real checkbox */
+.term-list .checkbox input {
+  opacity: 0;
 }
 
-.term-list .checkbox {
+
+/* ************ */
+/* capsule view */
+/* ************ */
+
+/* general formatting */
+.term-list.capsules {
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  margin-left: -5px;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+.term-list.capsules .checkbox {
   margin-top: 0;
   margin-bottom: 0;
+  padding-left: 5px;
+  padding-right: 5px;
   text-align: center;
   font-size: 20px;
   -webkit-user-select: none;
@@ -16,13 +30,8 @@
   user-select: none;
 }
 
-/* hide the real checkbox */
-.term-list .checkbox input {
-  opacity: 0;
-}
-
 /* create capsules */
-.term-list .checkbox label {
+.term-list.capsules .checkbox label {
   margin-left: 1rem;
   margin-right: 1rem;
   border: 2px solid #26374a;
@@ -32,16 +41,16 @@
 }
 
 /* make disabled items (legal element) look different */
-.term-list .checkbox input[type="checkbox"]:disabled + label {
+.term-list.capsules .checkbox input[type="checkbox"]:disabled + label {
   background-color: #f2f2f2;
   cursor:not-allowed;
 }
 
 /* create underline when selected or mouseover */
-.term-list .checkbox input[type="checkbox"]:not(:disabled) + label:hover::after,
-.term-list .checkbox input[type="checkbox"]:not(:disabled) + label:focus::after,
-.term-list .checkbox input[type="checkbox"]:not(:disabled):hover + label::after,
-.term-list .checkbox input[type="checkbox"]:not(:disabled):focus + label::after {
+.term-list.capsules .checkbox input[type="checkbox"]:not(:disabled) + label:hover::after,
+.term-list.capsules .checkbox input[type="checkbox"]:not(:disabled) + label:focus::after,
+.term-list.capsules .checkbox input[type="checkbox"]:not(:disabled):hover + label::after,
+.term-list.capsules .checkbox input[type="checkbox"]:not(:disabled):focus + label::after {
   content: "";
   position: absolute;
   left: 2rem;
@@ -52,7 +61,19 @@
 }
 
 /* colour in the capsules when checked */
-.term-list .checkbox input[type="checkbox"]:checked + label {
+.term-list.capsules .checkbox input[type="checkbox"]:checked + label {
   background-color: #26374a;
   color: white;
+}
+
+/* ************* */
+/* checkbox view */
+/* ************* */
+
+/* Mostly rely on existing can-ca-form styles, but here are some overrides */
+.term-list.can-ca-form {
+  margin-top: -3rem;
+}
+.term-list.can-ca-form br {
+  display: none;
 }

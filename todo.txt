@@ -1,4 +1,1 @@
-090 Distinctive words in your name proposal
-- If we can't fit all the capsules on one line, then stack terms and use checkboxes instead (ref. https://stackoverflow.com/questions/6284600/display-a-div-only-if-there-is-enough-space-and-hide-it-if-there-isnt)
-
 Compare big-buttons.css with template.css -- can consolidate?

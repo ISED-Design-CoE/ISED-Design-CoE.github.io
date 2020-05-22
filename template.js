@@ -1,4 +1,6 @@
 $( function() {
+  "use strict"
+
   // Fix Chrome bug with step navigation
   $( ".gc-navseq>li button" ).addClass( "chromehack" )
   $( ".gc-navseq>li>a" ).addClass( "chromehack" )
@@ -18,7 +20,7 @@ $( function() {
   $( ".group button" ).each( function() {
     // Locate the space-separated list for aria-controls
     let groupNum = $( this ).attr( "data-controls" )
-                         .split( "-" )[1]
+                            .split( "-" )[1]
     let group = groups[ groupNum - 1 ]
 
     // Apply ARIA
