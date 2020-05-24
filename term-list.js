@@ -4,7 +4,11 @@ $( function() {
   // Figure out how wide the window needs to be to fit the widest list(s) of terms
   let maxElSize = 0
   $( ".term-list" ).each( function() {
-    maxElSize = Math.max( maxElSize, this.scrollWidth )
+    var thisElSize = 0
+    $( this ).children().each( function() {
+      thisElSize = thisElSize + $( this ).outerWidth( true )
+    })
+    maxElSize = Math.max( maxElSize, thisElSize )
   })
   // Now we know maxElSize
 
@@ -28,14 +32,8 @@ $( function() {
   reAssignClasses()
 
 // Call the function on window resize
-// Use setTimeout to "debounce" window resizing
-  let resizeTimer
-
   $( window ).resize( function() {
-    clearTimeout( resizeTimer );
-    resizeTimer = setTimeout( function() {
       reAssignClasses()
-    }, 250);
   })
 
 })
