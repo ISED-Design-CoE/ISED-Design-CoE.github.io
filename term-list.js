@@ -4,7 +4,7 @@ $( function() {
   // Figure out how wide the window needs to be to fit the widest list(s) of terms
   let maxElSize = 0
   $( ".term-list" ).each( function() {
-    var thisElSize = 0
+    let thisElSize = 0
     $( this ).children().each( function() {
       thisElSize = thisElSize + $( this ).outerWidth( true )
     })
