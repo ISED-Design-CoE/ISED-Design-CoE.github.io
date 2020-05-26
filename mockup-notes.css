@@ -1,11 +1,12 @@
 .notesaboutmockup {
-  margin-top: 8rem;
+  display: none;
+  /* margin-top: 8rem;
   border-color: #FC6;
   border-width: 2px;
   border-style: solid;
   padding: 0 1em;
   color: #333;
-  background: #FFD;
+  background: #FFD; */
 }
 .notesaboutmockup h2 {
   font-size: inherit;
