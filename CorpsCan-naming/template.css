@@ -1,0 +1,53 @@
+/* Utility classes */
+.bold {
+  font-weight: bold;
+}
+.fullwidth {
+  width: 100%;
+}
+.inline-block {
+  display: inline-block;
+  vertical-align: top;
+}
+.margin-top {
+  margin-top: 38px;
+}
+.largefix {
+  margin-top: -24px;
+  margin-left: 78px;
+  font-size: 20px !important;
+}
+
+/* General formatting */
+.breadcrumb {
+  display: none;
+}
+.input-group .form-control {
+  padding: 10px 14px;
+  line-height: inherit;
+}
+details[open] {
+  padding-bottom: 0;
+}
+fieldset {
+  border-top: 0;
+  padding-top: 0;
+}
+details > ul > li {
+  list-style-type: disc;
+}
+
+/* Temporary fix: remove when https://github.com/wet-boew/GCWeb/pull/1676 is approved */
+:not(#wb-srch) form, .checkbox, .checkbox-inline, .radio, .radio-inline, form .btn:not(.btn-call-to-action) {
+  font-size: 20px;
+  line-height: inherit;
+}
+:not(#wb-srch) form {
+  line-height: 1.65em;
+}
+form .btn:not(.btn-call-to-action), .form-control {
+  padding: 10px 14px;
+}
+legend {
+  line-height: inherit;
+}
