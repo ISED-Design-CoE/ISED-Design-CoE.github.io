@@ -77,7 +77,8 @@
 	<h1 property="name" id="wb-cont">Sign in</h1>
 
 	<div class="wb-frmvld">
-		<form action="select-licensee.html" method="post" id="sign-in">
+		<form action="select-licensee.html" method="get" id="sign-in">
+		<input type="hidden" id="target" name="target">
 		<p>Please sign in to your web profile to access the NCLL Portal</p>
 		<div class="wb-frm">
 			<div class="form-group">
@@ -115,7 +116,7 @@
 		const queryString = window.location.search
 		const urlParams = new URLSearchParams ( queryString )
 		const target = urlParams.get ( 'target' )
-		document.getElementById ( 'sign-in' ) .action = 'select-licensee.html?target=' + target
+		document.getElementById ( 'target' ) .value = target
 	</script>
 
 <!-- End page content -->
