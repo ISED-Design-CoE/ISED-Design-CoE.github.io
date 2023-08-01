@@ -90,22 +90,22 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><a href="dashboard.html">Select</a></td>
+					<td><a href="portal.html" id="target">Select</a></td>
 					<td>The best company</td>
 					<td>10000005465346</td>
 				</tr>
 				<tr>
-					<td><a href="dashboard.html">Select</a></td>
+					<td><a href="#">Select</a></td>
 					<td>A different company</td>
 					<td>10000005422541</td>
 				</tr>
 				<tr>
-					<td><a href="dashboard.html">Select</a></td>
+					<td><a href="#">Select</a></td>
 					<td>Another different company</td>
 					<td>10000003231298</td>
 				</tr>
 				<tr>
-					<td><a href="dashboard.html">Select</a></td>
+					<td><a href="#">Select</a></td>
 					<td>Not a bad company all things considered</td>
 					<td>10000003420001</td>
 				</tr>
@@ -121,6 +121,12 @@
 			</ul>
 		</div>
 	</div>
+	<script>
+		const queryString = window.location.search
+		const urlParams = new URLSearchParams ( queryString )
+		const target = urlParams.get ( 'target' )
+		document.getElementById ( 'target' ) .href = target + '.html'
+	</script>
 
 <!-- End page content -->
 
