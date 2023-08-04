@@ -42,7 +42,9 @@
 				margin-top: 1em;
 			}
 		/* Styles for this mockup */
-			
+			:not(#wb-srch) form {
+				font-size: 20px;
+			}
 		</style>
 		<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
 <!-- End DECoE customization -->
@@ -81,29 +83,30 @@
 <!-- Start page content -->
 	<div class="form-group">
 		<ul class="nav nav-wizard">
-			<li class="active">General information</li>
 			<li>Contact information</li>
+			<li class="active">General information</li>
 			<li>Licence area</li>
 			<li>Technical details</li>
-			<li>Confirmation</li>
+			<li>Review</li>
 		</ul>
 	</div>
 
 	<h1 property="name" id="wb-cont">General information</h1>
 
 	<div class="wb-frmvld">
-		<form action="contact.html" method="get">
+		<form action="licence-area.html" method="get">
 
 		<div class="wb-frm">
 			<div class="form-group">
 				<label for="ari">
 					<span class="field-name">
-						Application reference identifier
+						Application identifier
 					</span>
 				</label>
-				<p>This field is available for your internal use.</p>
+				<p>Internal identifier for your own use.</p>
 				<input id="ari" name="ari" class="form-control " value="" type="text">
 			</div>
+
 			<div class="form-group">
 				<label for="effective-date" class="required">
 					<span class="field-name">
@@ -114,7 +117,31 @@
 				</label>
 				<input type="date" id="effective-date" name="effective-date" class="form-control">
 			</div>
-			<div class="form-group">
+
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
+						Renewable or temporary licence
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<details>
+					<summary>More information.</summary>
+					<p>Renewable licences last until March 31 and can be renewed annually. Temporary licences last up to 11 months.</p>
+				</details>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" id="renewable" name="renewable-temporary" value="renewable">
+						<label for="renewable">Renewable</label>
+					</li>
+					<li class="radio">
+						<input type="radio" id="temporary" name="renewable-temporary" value="temporary">
+						<label for="temporary">Temporary</label>
+					</li>
+				</ul>
+			</fieldset>
+
+			<div class="form-group" id="expiry-date-div" hidden>
 				<label for="expiry-date" class="required">
 					<span class="field-name">
 						Expiry date<span class="datepicker-format">
@@ -124,17 +151,74 @@
 				</label>
 				<input type="date" id="expiry-date" name="expiry-date" class="form-control">
 			</div>
+
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
+						Does The best company or any of its affiliates or subsidiaries currently have 100,000 or more retail mobile phone subscribers?
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<details>
+					<summary>Why are we asking this question?</summary>
+					<p>Any entity, or affiliate of that entity (as defined in section 6.2 in SPB-001-23), with 100,000 or more retail mobile phone subscribers as reported to the CRTC through its Annual Telecommunications Survey is ineligible to hold a licence for the blocks from 3940 MHz to 3980 MHz.</p>
+				</details>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" id="MNSP-yes" name="MNSP" value="yes">
+						<label for="MNSP-yes">Yes</label>
+					</li>
+					<li class="radio">
+						<input type="radio" id="MNSP-no" name="MNSP" value="No">
+						<label for="MNSP-no">No</label>
+					</li>
+				</ul>
+			</fieldset>
+
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
+						Bandwidth
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" id="tenMHz" name="bandwidth" value="10">
+						<label for="tenMHz">10 MHz</label>
+					</li>
+					<li class="radio">
+						<input type="radio" id="twentyMHz" name="bandwidth" value="20">
+						<label for="twentyMHz">20 MHz contiguous</label>
+					</li>
+				</ul>
+			</fieldset>
+
 		</div>
 		<button class="btn btn-primary" type="submit">Next</button>
+		<button class="btn btn-secondary" type="button">Save</button>
+		<br>
+		<button class="btn btn-secondary" type="button">Back</button>
 
 		<div class="notesaboutmockup">
 			<h2>Notes about this mockup:</h2>
 			<ul>
 				<li>When user selects "Temporary", show the "Expiry date" field</li>
+				<li>TODO: move back button to top of page</li>
 			</ul>
 		</div>
 		</form>
 		<script>
+			const renewableButton = document.getElementById ( "renewable" )
+			const temporaryButton = document.getElementById ( "temporary" )
+			const expiryDateDiv = document.getElementById ( "expiry-date-div" )
+			renewableButton.addEventListener ( "click", (event) => {
+				expiryDateDiv .setAttribute ( "hidden", "hidden" )
+			})
+			temporaryButton.addEventListener ( "click", (event) => {
+				expiryDateDiv .removeAttribute ( "hidden" )
+			})
+
 			function convertDateToISO ( date, offset ) {
 				let fullDate = new Date()
 				fullDate.setTime ( date.getTime() - (offset*60*1000))

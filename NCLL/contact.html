@@ -7,7 +7,7 @@
 
 <!-- Start DECoE customization -->
 		<title>
-			Sign in - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+			Contact information - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
 		</title>
 <!-- End DECoE customization -->
 
@@ -42,10 +42,11 @@
 				margin-top: 1em;
 			}
 		/* Styles for this mockup */
-			:not(#wb-srch) form {
+		:not(#wb-srch) form {
 				font-size: 20px;
 			}
 		</style>
+		<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
 <!-- End DECoE customization -->
 
 	</head>
@@ -69,6 +70,10 @@
 				"breadcrumbs": [{
 					"title": "SMS",
 					"href": "index.html"
+				},
+				{
+					"title": "NCLL portal",
+					"href": "dashboard.html"
 				}],
 				"showPreContent": false
 			});
@@ -76,51 +81,103 @@
 		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
 
 <!-- Start page content -->
-	<h1 property="name" id="wb-cont">Sign in</h1>
+	<div class="form-group">
+		<ul class="nav nav-wizard">
+			<li class="active">Contact information</li>
+			<li>General information</li>
+			<li>Licence area</li>
+			<li>Technical details</li>
+			<li>Review</li>
+		</ul>
+	</div>
+
+	<h1 property="name" id="wb-cont">Contact information</h1>
+	<p>Optionally select existing contacts associated with your account. To add additional contacts, contact one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
 
 	<div class="wb-frmvld">
-		<form action="select-licensee.html" method="get" id="sign-in">
-		<input type="hidden" id="target" name="target">
-		<p>Please sign in to your web profile to access the NCLL Portal</p>
+		<form action="general.html" method="get">
+
 		<div class="wb-frm">
 			<div class="form-group">
-				<label for="username" class="required">
+				<label for="admin-contact">
 					<span class="field-name">
-						Username
+						Administrative contact
 					</span>
-					<strong class="required small" aria-hidden="true">(required)</strong>
 				</label>
-				<input id="username" name="username" class="form-control " value="" type="text" required="required">
-				<p><a href="https://sms-sgs.ic.gc.ca/login/resetPassword">Forgot your username?</a></p>
+				<select id="admin-contact" name="admin-contact" class="form-control">
+					<option>Please select</option>
+					<option>John Dutton</option>
+				</select>
 			</div>
 			<div class="form-group">
-				<label for="password" class="required">
+				<label for="payment-contact">
 					<span class="field-name">
-						Password
+						Payment contact
 					</span>
-					<strong class="required small" aria-hidden="true">(required)</strong>
 				</label>
-				<input id="password" name="password" class="form-control " value="" type="password" required="required">
-				<p><a href="https://sms-sgs.ic.gc.ca/login/resetPassword">Forgot your password?</a></p>
+				<select id="payment-contact" name="payment-contact" class="form-control">
+					<option>Please select</option>
+					<option>Pierre Untel</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="tech-contact">
+					<span class="field-name">
+						Technical contact
+					</span>
+				</label>
+				<select id="tech-contact" name="tech-contact" class="form-control">
+					<option>Please select</option>
+					<option>John Doe</option>
+				</select>
 			</div>
 		</div>
-		<button class="btn btn-primary" type="submit">Sign in</button>
-		<p><a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/online-registration">Register</a> if you are a new user.</p>
+		<button class="btn btn-primary" type="submit">Next</button>
+
 		<div class="notesaboutmockup">
 			<h2>Notes about this mockup:</h2>
 			<ul>
-				<li>Ensure the links on this page are correct</li>
-				<li>TODO: Move "Forgot" links above form, per <a href="https://adamsilver.io/blog/where-to-put-buttons-on-forms/">Where to put buttons on forms</a></li>
+				<li>TODO: Add more explanation of what this selection means</li>
+				<li>TODO: Add rules about what if there's only one selection</li>
 			</ul>
 		</div>
 		</form>
+		<script>
+			function convertDateToISO ( date, offset ) {
+				let fullDate = new Date()
+				fullDate.setTime ( date.getTime() - (offset*60*1000))
+				return fullDate.toISOString().substring(0,10)
+			}
+			const effectiveDateField = document.getElementById ( "effective-date" )
+			const expiryDateField = document.getElementById ( "expiry-date" )
+
+			// Set minimum value for Effective date (=today)
+			const currentDate = new Date()
+			const offset = currentDate.getTimezoneOffset() // we will reuse this
+			const currentDateISO = convertDateToISO ( currentDate, offset )
+			effectiveDateField .setAttribute ( "min", currentDateISO )
+			
+			// Set maximum value for Effective date (= 60 days in future)
+			const maxEffectiveDate = new Date()
+			maxEffectiveDate.setDate ( currentDate.getDate() + 60 )
+			const maxEffectiveDateISO = convertDateToISO ( maxEffectiveDate, offset )
+			effectiveDateField .setAttribute ( "max", maxEffectiveDateISO )
+			
+			effectiveDateField.addEventListener ( "change", (event) => {
+				let effectiveDateValue = event.target.value
+
+				// Set minimum value for Expiry date (= Effective date)
+				expiryDateField .setAttribute ( "min", effectiveDateValue )
+			
+				// Set maximum value for Expiry date (= 11 months from Effective date)
+				const maxExpiryDate = new Date( effectiveDateValue )
+				maxExpiryDate.setMonth ( maxExpiryDate.getMonth() + 11 )
+				const maxExpiryDateISO = convertDateToISO ( maxExpiryDate, offset )
+				expiryDateField .setAttribute ( "max", maxExpiryDateISO )
+			})
+
+		</script>
 	</div>
-	<script>
-		const queryString = window.location.search
-		const urlParams = new URLSearchParams ( queryString )
-		const target = urlParams.get ( 'target' )
-		document.getElementById ( 'target' ) .value = target
-	</script>
 
 <!-- End page content -->
 
