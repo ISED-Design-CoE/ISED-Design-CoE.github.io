@@ -26,6 +26,8 @@
 		</script>
 
 <!-- Start DECoE customization -->
+		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+		<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
 		<style>
 		/* Styles for all mockups */
 			.notesaboutmockup {
@@ -42,9 +44,20 @@
 				margin-top: 1em;
 			}
 		/* Styles for this mockup */
+			#superhead {
+				font-size: 1.7em;
+				font-weight: bold;
+			}
+			#status {
+				border-left: 3px solid #999;
+				padding-left: 2px;
+				background-color: #EEE;
+			}
+			ul.nav-wizard li {
+				font-size: inherit;
+			}
+
 		</style>
-		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
-		<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
 <!-- End DECoE customization -->
 
 	</head>
@@ -79,6 +92,10 @@
 		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
 
 <!-- Start page content -->
+	<div id="superhead">
+		<p>Non-competitive local licence application (01000139-001) <span class="pull-right" id="status">Draft</span></p>
+	</div>
+
 	<div class="form-group">
 		<ul class="nav nav-wizard">
 			<li class="active">Contact information</li>
