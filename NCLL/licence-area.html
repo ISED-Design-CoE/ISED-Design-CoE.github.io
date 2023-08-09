@@ -117,7 +117,12 @@
 			<div class="wb-frm">
 				<div class="container">
 					<h1 property="name" id="wb-cont">Licence area</h1>
-					<p>Enter your licence area coordinates (maximum 12) by using the draw tool on the interactive map or by entering them manually in a table.</p>
+					<p>Enter your licence area coordinates (maximum 12) by either</p>
+					<ul>
+						<li>using the draw tool on the interactive map</li>
+						<li>entering them manually in a table</li>
+						<li>entering your polygon formatted in WKT</li>
+					</ul>
 				
 					<div class="row wb-eqht">
 					<div class="col-md-4">
@@ -152,19 +157,83 @@
 						<div class="form-group">
 							<label for="WKT">
 								<span class="field-name">
-									WKT formatted coordinates
+									Coordinates in <a href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">Well Known Text</a> format
 								</span>
 							</label>
+							<p>e.g. POLYGON((-113.956370 50.880852,-113.952550 50.880744,-113.944869 50.882288,-113.945942 50.884372,-113.951950 50.883398,-113.956885 50.882369,-113.956370 50.880852))</p>
 							<input id="WKT" name="WKT" class="form-control">
+						</div>
+
+						<p>Once your area is entered, click <kbd><samp>Calculate</samp></kbd> to get the information about the area and to calculate the licence fee</p>
+						<button type="button" class="btn btn-call-to-action" id="calculate-button">Calculate</button>
+
+						<h2>Area information</h2>
+						<div id="area-information-before">
+							<p>Press <kbd><samp>Calculate</samp></kbd> to see results.</p>
+						</div>
+						<div id="area-information-after" hidden>
+							<p><strong>Area size</strong> - <span class="area-size">162</span> km<sup>2</sup></p>
+							<details>
+								<summary>More information on area size</summary>
+								<p>Total area covered by the licence</p>
+							</details>
+
+							<p><strong>Fee zone</strong> - <span class="fee-zone-type">Rural</span>: $<span class="fee-zone-cost">0.45</span> per MHz per year per km<sup>2</sup></p>
+							<details>
+								<summary>More information on fee zone</summary>
+								<p>Licences in:</p>
+								<ul class="list-unstyled">
+									<li>Remote areas cost $0.01 per MHz per year per km<sup>2</sup></li>
+									<li>Urban areas cost $1.80 per MHz per year per km<sup>2</sup></li>
+									<li>Rural areas cost $0.45 per MHz per year per km<sup>2</sup></li>
+								</ul>
+							</details>
+
+							<p><strong>Licence type</strong> - <span class="licence-type">Medium power (##</span> dBm/MHz)</p>
+							<details>
+								<summary>More information on licence type</summary>
+								<ul class="list-unstyled">
+									<li>Urban areas are low power (## dBm/MHz)</li>
+									<li>Areas between 0&ndash;15 km<sup>2</sup> are low-power (## dBm/MHz)</li>
+									<li>Areas between 75&ndash;165 km<sup>2</sup> are medium-power (## dBm/MHz)</li>
+								</ul>
+								<p>You can apply for multiple licences to cover an area larger than 15 km<sup>2</sup> with low power</p>
+							</details>
+
+							<p><strong>Placement of antenna</strong> - <span class="antenna">Indoor/outdoor</span></p>
+							<details>
+								<summary>More information on antenna location</summary>
+								<ul class="list-unstyled">
+									<li>Low power licences can be indoor/outdoor or indoor only</li>
+									<li>Medium power licences can only be indoor/outdoor</li>
+								</ul>
+								<p>You can apply for multiple licences in order to cover an area larger than 15 km<sup>2</sup> that is indoor</p>
+							</details>
+						</div>
+
+						<h2>Licence fee</h2>
+						<div id="licence-fee-before">
+							<p>Press <kbd><samp>Calculate</samp></kbd> to see results.</p>
+						</div>
+						<div id="licence-fee-after" hidden>
+							<dl class="dl-horizontal">
+								<dt>Base rate (Rural) per year</dt>
+								<dd>$<span class="fee-zone-cost">0.45</span> per MHz per km<sup>2</sup></dd>
+								<dt>Requested bandwidth</dt>
+								<dd><span class="bandwidth">10</span> MHz</dd>
+								<dt>Area size</dt>
+								<dd><span class="area-size">162</span> km<sup>2</sup></dd>
+							</dl>
+							<dl class="dl-horizontal">
+								<dt>Total cost per year</dt>
+								<dd>$<span class="fee-zone-cost">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">162</span> = $<span class="total-cost">729.00</span></dd>
+							</dl>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<button type="button" class="btn btn-call-to-action">Calculate</button>
-				</div>
 
 
-				<button class="btn btn-primary" type="submit">Next</button>
+				<button class="btn btn-primary" type="submit" id="next-button" hidden>Next</button>
 				<button class="btn btn-secondary" type="button">Save</button>
 				<br>
 				<button class="btn btn-secondary" type="button">Back</button>
@@ -173,11 +242,27 @@
 					<h2>Notes about this mockup:</h2>
 					<ul>
 						<li>TODO: remove back button?</li>
+						<li>TODO: make these numbers functional</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</form>
+	<script>
+		const calculateButton = document.getElementById ( "calculate-button" )
+		const areaInformationBefore = document.getElementById ( "area-information-before" )
+		const areaInformationAfter = document.getElementById ( "area-information-after" )
+		const licenceFeeBefore = document.getElementById ( "licence-fee-before" )
+		const licenceFeeAfter = document.getElementById ( "licence-fee-after" )
+		const nextButton = document.getElementById ( "next-button" )
+		calculateButton.addEventListener ( "click", (event) => {
+			areaInformationBefore .setAttribute ( "hidden", "hidden" )
+			areaInformationAfter .removeAttribute ( "hidden" )
+			licenceFeeBefore .setAttribute ( "hidden", "hidden" )
+			licenceFeeAfter .removeAttribute ( "hidden" )
+			nextButton .removeAttribute ( "hidden" )
+		})
+	</script>
 	</div>
 
 <!-- End page content -->
