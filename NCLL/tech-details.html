@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+	<head>
+<!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
+	 <meta charset="utf-8">
+
+<!-- Start DECoE customization -->
+		<title>
+			Technical details - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+		</title>
+<!-- End DECoE customization -->
+
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+		<noscript>
+			<!-- Write closure fall-back static file -->
+			<!-- refTop.html -->
+		</noscript>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refTop({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+<!-- Start DECoE customization -->
+	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
+	<style>
+		/* Styles for all mockups */
+			.notesaboutmockup {
+				color: #333;
+				background: #FFD;
+				padding: 0 1em;
+				border-color: #FC6;
+				border-width: 2px;
+				border-style: solid;
+				margin-top: 3em;
+			}
+			.notesaboutmockup h2 {
+				font-size: inherit;
+				margin-top: 1em;
+			}
+		/* Styles for this mockup */
+			#superhead {
+				font-size: 1.7em;
+				font-weight: bold;
+			}
+			#status {
+				border-left: 3px solid #999;
+				padding-left: 2px;
+				background-color: #EEE;
+			}
+			ul.nav-wizard li {
+				font-size: inherit;
+			}
+			.alert {
+				border-left: 0px;
+			}
+			.dark-bottom {
+				border-bottom: 2px solid black;
+			}
+	</style>
+<!-- End DECoE customization -->
+
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<div id="def-top">
+			<!-- Write closure fall-back static file -->
+			<!-- transactTop-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defTop = document.getElementById("def-top");
+			defTop.outerHTML = wet.builder.top({
+				"cdnEnv": "esdcprod",
+				"lngLinks": [{
+					"lang": "fr",
+					"href": "transactional-fr.shtml",
+					"text": "Français"
+				}],
+				"search": false,
+				"siteMenu": false,
+				"breadcrumbs": [{
+					"title": "SMS",
+					"href": "index.html"
+				},
+				{
+					"title": "NCLL portal",
+					"href": "dashboard.html"
+				}],
+				"showPreContent": false
+			});
+		</script>
+		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+<!-- Start page content -->
+
+	<div id="superhead">
+		<p>Non-competitive local licence application (01000139-001) <span class="pull-right" id="status">Draft</span></p>
+	</div>
+	<div class="form-group">
+		<ul class="nav nav-wizard">
+			<li><a href="contact.html">Contact information</a></li>
+			<li><a href="general.html">General information</a></li>
+			<li><a href="licence-area.html">Licence area</a></li>
+			<li class="active">Technical details</li>
+			<li>Review</li>
+		</ul>
+	</div>
+
+	<div class="wb-frmvld">
+		<form action="review.html" method="get">
+			<div class="wb-frm">
+				<div class="container">
+					<h1 property="name" id="wb-cont">Technical details</h1>
+					<fieldset class="gc-chckbxrdio">
+						<legend class="required">
+							<span class="field-name">
+								Select what frequency block you prefer
+							</span>
+							<strong class="required small" aria-hidden="true">(required)</strong>
+						</legend>
+						<p>Choose whether you would like any frequency block, or only a specific block</p>
+						<table class="table form-group">
+							<tr class="dark-bottom">
+								<th>Frequency block</th>
+								<th>Information</th>
+							</tr>
+							<tr>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-any" name="frequency" value="any">
+										<label for="frequency-any">Any</label>
+									</li>
+								</td>
+								<td>
+									<p>Allows ISED to automatically assign any frequency block.</p>
+									<section class="alert alert-warning">
+										<p>A1 operates under <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/fixed-satellite-microwave/b6-no-interference-no-protection-ninp">no-interference, no-protection</a> restrictions. There is a risk of interference from adjacent band <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/policy-and-licensing-framework-spectrum-3800-mhz-band">3800&nbsp;MHz flex</a>.</p>
+									</section>
+								</td>
+							</tr>
+
+							<tr class="dark-bottom">
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-any-except-a1" name="frequency" value="any-except-a1">
+										<label for="frequency-any-except-a1">Any except A1</label>
+									</li>
+								</td>
+								<td>
+									<p>Allows ISED to automatically assign any frequency block except A1.</p>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a1" name="frequency" value="a1">
+										<label for="frequency-a1">A1: 3900&ndash;3910&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<section class="alert alert-warning">
+										<p>A1 operates under <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/fixed-satellite-microwave/b6-no-interference-no-protection-ninp">no-interference, no-protection</a> restrictions. There is a risk of interference from adjacent band <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/policy-and-licensing-framework-spectrum-3800-mhz-band">3800&nbsp;MHz flex</a>.</p>
+									</section>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a2" name="frequency" value="a2">
+										<label for="frequency-a2">A2: 3910&ndash;3920&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a3" name="frequency" value="a3">
+										<label for="frequency-a3">A3: 3920&ndash;3930&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a4" name="frequency" value="a4" disabled>
+										<label for="frequency-a4">A4: 3930&ndash;3940&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p>The requested licence area overlaps an existing licence using frequency block A4.</p>
+								</td>
+							</tr>
+
+							<tr class="dark-bottom">
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a5-to-a8" name="frequency" value="a5-to-a8" disabled>
+										<label for="frequency-a5-to-a8">A5 to A8: 3940&ndash;3980&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p>Any entity, or affiliate of that entity, with 100,000 or more retail mobile phone subscribers is ineligible to hold a licence for the blocks from 3940&nbsp;MHz to 3980&nbsp;MHz.</p>
+								</td>
+							</tr>
+
+						</table>
+					</fieldset>
+					
+
+				<button class="btn btn-primary" type="submit">Next</button>
+				<button class="btn btn-secondary" type="button">Save</button>
+				<br>
+				<button class="btn btn-secondary" type="button">Back</button>
+
+				<div class="notesaboutmockup">
+					<h2>Notes about this mockup:</h2>
+					<ul>
+						<li>TODO: remove back button?</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</form>
+	</div>
+
+<!-- End page content -->
+
+			<div id="def-preFooter">
+				<!-- Write closure fall-back static file -->
+				<!-- preFooter-en.html -->
+			</div>
+			<!-- Write closure template -->
+			<script>
+				var defPreFooter = document.getElementById("def-preFooter");
+				defPreFooter.outerHTML = wet.builder.preFooter({
+					"cdnEnv": "esdcprod",
+					"versionIdentifier": "CD56",
+					"showPostContent": false,
+					"showFeedback": false,
+					"showShare": false
+				});
+			</script>
+		</main>
+		<div id="def-footer">
+			<!-- Write closure fall-back static file -->
+			<!-- transactFooter-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defFooter = document.getElementById("def-footer");
+			defFooter.outerHTML = wet.builder.footer({
+				"cdnEnv": "esdcprod",
+				"showFooter": false,
+				"showFeatures": false,
+				"termsLink": [{
+        			"newWindow": true
+				}],
+				"privacyLink": [{
+					"newWindow": true
+				}],
+				"contextualFooter":{
+					"title": "Spectrum and Telecommunications Sector",
+					"links": [{
+						"text": "Contact us",
+						"href":"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
+						"newWindow": true
+					}]
+				}
+			});
+		</script>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refFooter({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+	</body>
+</html>
