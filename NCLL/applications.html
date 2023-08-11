@@ -7,7 +7,7 @@
 
 <!-- Start DECoE customization -->
 		<title>
-			Success - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+			Applications - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
 		</title>
 <!-- End DECoE customization -->
 
@@ -26,9 +26,7 @@
 		</script>
 
 <!-- Start DECoE customization -->
-	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
-	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
-	<style>
+		<style>
 		/* Styles for all mockups */
 			.notesaboutmockup {
 				color: #333;
@@ -44,19 +42,12 @@
 				margin-top: 1em;
 			}
 		/* Styles for this mockup */
-			#superhead {
-				font-size: 1.7em;
-				font-weight: bold;
+			#cancel-button {
+				margin-top: 1em;
 			}
-			#status {
-				border-left: 3px solid #999;
-				padding-left: 2px;
-				background-color: #EEE;
-			}
-			ul.nav-wizard li {
-				font-size: inherit;
-			}
-	</style>
+		</style>
+		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+
 <!-- End DECoE customization -->
 
 	</head>
@@ -80,8 +71,7 @@
 				"breadcrumbs": [{
 					"title": "SMS",
 					"href": "index.html"
-				},
-				{
+				}, {
 					"title": "NCLL portal",
 					"href": "dashboard.html"
 				}],
@@ -91,37 +81,116 @@
 		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
 
 <!-- Start page content -->
-
-	<div id="superhead">
-		<p>Non-competitive local licence application (01000139-001) <span class="pull-right" id="status">Submitted</span></p>
-	</div>
+	<h1 property="name" id="wb-cont">Applications</h1>
 
 	<div class="wb-frmvld">
-		<h1 property="name" id="wb-cont">Success</h1>
+		<p>Manage existing applications</p>
+		<a href="contact.html" class="btn btn-call-to-action pull-right">Start new application</a>
 
-		<p>Your request has been submitted</p>
-		<section class="alert alert-success">
-			<h2>Application 01000139-001 has been successfully submitted</h2>
-			<ul>
-				<li>A confirmation email will be sent to John Dutton, john.dutton@thebestcompany.ca</li>
-				<li>Once the application has been approved, we will contact Pierre Untel, pierre.untel@thebestcompany.ca, for payment</li>
-				<li>Once you have paid and your effective date has been reached, you will be able to use the licence</li>
-			</ul>
-		</section>
+		<table class="wb-tables table">
+			<thead>
+				<tr>
+					<th>Application number</th>
+					<th>Application identifier</th>
+					<th>Effective date</th>
+					<th>Status</th>
+					<th>Amount due</th>
+					<th data-orderable="false">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="review.html">01000139-001</a></td>
+					<td>Downtown Ottawa</td>
+					<td>2023-11-01</td>
+					<td>Payment due</td>
+					<td>$40.00</td>
+					<td>
+						<select class="form-control">
+							<option>Actions</option>
+							<option>Pay</option>
+							<option>View</option>
+							<option>Duplicate</option>
+							<option>Delete</option>
+							<option disabled>────────────────────</option>
+							<option>Download</option>
+							<option>Download summary report</option>
+							<option>Download fee report</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><a href="#">01000121-001</a></td>
+					<td>-</td>
+					<td>2024-03-01</td>
+					<td>Under review</td>
+					<td>$0.00</td>
+					<td>
+						<select class="form-control">
+							<option>Actions</option>
+							<option>Pay</option>
+							<option>View</option>
+							<option>Duplicate</option>
+							<option>Delete</option>
+							<option disabled>────────────────────</option>
+							<option>Download</option>
+							<option>Download summary report</option>
+							<option>Download fee report</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><a href="#">01000133-001</a></td>
+					<td>Merivale station</td>
+					<td>2024-03-01</td>
+					<td>Under review</td>
+					<td>$0.00</td>
+					<td>
+						<select class="form-control">
+							<option>Actions</option>
+							<option>Pay</option>
+							<option>View</option>
+							<option>Duplicate</option>
+							<option>Delete</option>
+							<option disabled>────────────────────</option>
+							<option>Download</option>
+							<option>Download summary report</option>
+							<option>Download fee report</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><a href="#">01000011-001</a></td>
+					<td>3900 MHz Band</td>
+					<td>2024-04-24</td>
+					<td>Failed</td>
+					<td>$0.00</td>
+					<td>
+						<select class="form-control">
+							<option>Actions</option>
+							<option>Pay</option>
+							<option>View</option>
+							<option>Duplicate</option>
+							<option>Delete</option>
+							<option disabled>────────────────────</option>
+							<option>Download</option>
+							<option>Download summary report</option>
+							<option>Download fee report</option>
+						</select>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 
-		<p>What would you like to do next?</p>
-		<ul>
-			<li>Go to the <a href="dashboard.html">Dashboard</a></li>
-			<li>Go to the <a href="applications.html">Applications page</a></li>
-			<li>Return to the <a href="index.html">SMS website</a>
-		</ul>	
-
-
+		<p><a href="index.html" class="btn btn-default" id="cancel-button">Cancel</a></p>
 
 		<div class="notesaboutmockup">
 			<h2>Notes about this mockup:</h2>
 			<ul>
-				<li>TODO: finalize design</li>
+				<li>Uses the <a href="https://wet-boew.github.io/v4.0-ci/docs/ref/tables/tables-en.html">DataTables plugin for WET</a></li>
+				<li>TODO: Enable links to filtered views</li>
+				<li>TODO: Ensure dropdown lists are appropriate to statuses</li>
+				<li>TODO: Prevent ordering (see the <a href="https://datatables.net/reference/option/order">Datatables documentation</a></li>
 			</ul>
 		</div>
 	</div>
