@@ -213,26 +213,28 @@
 					<h2>Notes about this mockup:</h2>
 					<ul>
 						<li>TODO: remove back button?</li>
-						<li>TODO: make these data reflect participant's actual choices</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</form>
 	<script>
-		const calculateButton = document.getElementById ( "calculate-button" )
-		const areaInformationBefore = document.getElementById ( "area-information-before" )
-		const areaInformationAfter = document.getElementById ( "area-information-after" )
-		const licenceFeeBefore = document.getElementById ( "licence-fee-before" )
-		const licenceFeeAfter = document.getElementById ( "licence-fee-after" )
-		const nextButton = document.getElementById ( "next-button" )
-		calculateButton.addEventListener ( "click", (event) => {
-			areaInformationBefore .setAttribute ( "hidden", "hidden" )
-			areaInformationAfter .removeAttribute ( "hidden" )
-			licenceFeeBefore .setAttribute ( "hidden", "hidden" )
-			licenceFeeAfter .removeAttribute ( "hidden" )
-			nextButton .removeAttribute ( "hidden" )
-		})
+		const queryString = window.location.search
+		const urlParams = new URLSearchParams ( queryString )
+		
+		for ( const [ key, value ] of urlParams ) {
+			// Remove namespace prefix
+		    let className = key.replace ( /^CAT_/, '' )
+
+			for ( const elem of document .getElementsByClassName ( className ) ) {
+				if ( value == "" ) {
+					elem .innerHTML = "-"
+				} else {
+					elem .innerHTML = value
+				}
+			}
+		}
+
 	</script>
 	</div>
 
