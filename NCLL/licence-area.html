@@ -202,10 +202,6 @@
 						</table>
 					</div>
 					<div class="col-md-8" id="map">
-						<div style="display:flex; align-items:center; justify-content: center; height: 100%;width: 100%;">
-							<div id="map"></div>
-							</div>
-						</div>
 					</div>
 				</div>
 				<div class="row">
@@ -526,13 +522,13 @@
 			area_size_spans = document.querySelectorAll(".area-size");
 
 			area_size_spans.forEach(element => {
-				element.innerText = element.textContent = parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100;
+				element.innerText = element.textContent = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
 			});
 
 			total_cost_spans = document.querySelectorAll(".total-cost");
 
 			total_cost_spans.forEach(element => {
-				element.innerText = element.textContent = 10* 0.45 * parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100;
+				element.innerText = element.textContent = 10* 0.45 * (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
 			});
             
             });
