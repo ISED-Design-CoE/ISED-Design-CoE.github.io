@@ -157,41 +157,6 @@
 			</ul>
 		</div>
 		</form>
-		<script>
-			function convertDateToISO ( date, offset ) {
-				let fullDate = new Date()
-				fullDate.setTime ( date.getTime() - (offset*60*1000))
-				return fullDate.toISOString().substring(0,10)
-			}
-			const effectiveDateField = document.getElementById ( "effective-date" )
-			const expiryDateField = document.getElementById ( "expiry-date" )
-
-			// Set minimum value for Effective date (=today)
-			const currentDate = new Date()
-			const offset = currentDate.getTimezoneOffset() // we will reuse this
-			const currentDateISO = convertDateToISO ( currentDate, offset )
-			effectiveDateField .setAttribute ( "min", currentDateISO )
-			
-			// Set maximum value for Effective date (= 60 days in future)
-			const maxEffectiveDate = new Date()
-			maxEffectiveDate.setDate ( currentDate.getDate() + 60 )
-			const maxEffectiveDateISO = convertDateToISO ( maxEffectiveDate, offset )
-			effectiveDateField .setAttribute ( "max", maxEffectiveDateISO )
-			
-			effectiveDateField.addEventListener ( "change", (event) => {
-				let effectiveDateValue = event.target.value
-
-				// Set minimum value for Expiry date (= Effective date)
-				expiryDateField .setAttribute ( "min", effectiveDateValue )
-			
-				// Set maximum value for Expiry date (= 11 months from Effective date)
-				const maxExpiryDate = new Date( effectiveDateValue )
-				maxExpiryDate.setMonth ( maxExpiryDate.getMonth() + 11 )
-				const maxExpiryDateISO = convertDateToISO ( maxExpiryDate, offset )
-				expiryDateField .setAttribute ( "max", maxExpiryDateISO )
-			})
-
-		</script>
 	</div>
 
 <!-- End page content -->
