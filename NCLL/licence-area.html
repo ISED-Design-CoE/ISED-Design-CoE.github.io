@@ -519,11 +519,21 @@
                     opacity: 1})
 
 			
-			span = document.getElementById("area-size");
 
 			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
             area = L.GeometryUtil.geodesicArea(latlngs);
-			span.innerText = span.textContent = parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100;
+
+			area_size_spans = document.querySelectorAll(".area-size");
+
+			area_size_spans.forEach(element => {
+				element.innerText = element.textContent = parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100;
+			});
+
+			total_cost_spans = document.querySelectorAll(".total-cost");
+
+			total_cost_spans.forEach(element => {
+				element.innerText = element.textContent = 10* 0.45 * parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100;
+			});
             
             });
         
