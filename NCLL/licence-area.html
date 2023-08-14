@@ -369,6 +369,11 @@
 			}));
 		</script>
 		<script>
+
+
+		// Leaftlet code
+
+			// create map and center to Muskeg
             var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                     osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib}),
@@ -376,29 +381,38 @@
                 color:'#ff9900'
                 }});
         
+			// add the polygon that will be drawn to the map
             var drawnItems = new L.FeatureGroup();
             map.addLayer(drawnItems);
         
+			// add zoom to the bottom right
             new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
-        
-            new L.Control.Fullscreen({position: 'topright'}).addTo(map);
 
+			// add Fullscreen to the top right. Currently broken
+            // new L.Control.Fullscreen({position: 'topright'}).addTo(map);
+
+
+
+			// Layers.
+
+			// Map layers. Not implemented.
 			const baseLayers = {
 				'Standard': osm,
 				'Terrain': osm
 			};
 
-			const urban = L.layerGroup();
-			const metro = L.layerGroup();
-			const rural = L.layerGroup();
-			const remote = L.layerGroup();
+			// Fee zone layer.
 			const feezone = L.layerGroup();
-
 			const overlays = {
 				'Fee Zones': feezone,
 			};
 
+			// Add layer buttom to the top right.
 			const layerControl = L.control.layers(baseLayers, overlays, {position: 'topleft'});
+
+			// Draw control, removes everything but polygon,
+			// and removes intersection from polygon.
+			// Add area and restrict to 12 points.
         
             var drawControl = new L.Control.Draw({
                 position: 'topleft',
@@ -425,7 +439,8 @@
         
                 },
             });
-        
+
+			// Add search, currently does not work well, as I have not added an API key.
 			var searchControl = L.esri.Geocoding.geosearch({
 				expanded: true,
         	})
@@ -434,11 +449,12 @@
             map.addControl(drawControl);
 			map.addControl(layerControl);
 
-            var scale = L.control.scale(); // Creating scale control
-                 scale.addTo(map); // Adding scale control to the map
+			// add scale to the bottom left.
+            var scale = L.control.scale(); 
+                 scale.addTo(map); 
         
         
-        
+			// When the user clicks the trashcan, remove everything and change the icon back to the polygon.
             L.Control.RemoveAll = L.Control.extend({
                 options: {
                     position: 'topleft',
@@ -518,6 +534,8 @@
 
 			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
             area = L.GeometryUtil.geodesicArea(latlngs);
+
+			console.log(latlngs)
 
 			area_size_spans = document.querySelectorAll(".area-size");
 
