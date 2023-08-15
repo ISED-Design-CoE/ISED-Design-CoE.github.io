@@ -234,6 +234,7 @@
 			// Remove namespace prefix
 		    let className = key.replace ( /^CAT_/, '' )
 			
+			// add lat longs to the variable
 			if (value != "") {
 				if (className.startsWith('lat')) {
 					lats.push(value);
@@ -251,6 +252,7 @@
 			}
 		}
 
+		// combine lat longs into an array for leaflet.
 		for (let i = 0; i < lats.length; i++) {
 			lat_longs.push([lats[i],longs[i]])
 		}
@@ -321,6 +323,7 @@
 		
 			var polygon = L.polygon(lat_longs).addTo(map);
 
+			// zoom into the polygon
 			map.fitBounds(polygon.getBounds());
 
 			// disable map interaction
