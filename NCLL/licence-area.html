@@ -370,6 +370,35 @@
 
 		// Leaftlet code
 
+			function change_lat_lngs(latlngs) {
+				area = L.GeometryUtil.geodesicArea(latlngs);
+				lat_long_sliced = latlngs.slice(0,12)
+				lat_long_index = 1;
+				wkt = "POLYGON(("
+				for (let i = 0; i < lat_long_sliced.length; i++) {
+					lat_id = "lat" + (i+1)
+					document.getElementById(lat_id).value = latlngs[i].lat;
+					long_id = "long" + (i+1)
+					document.getElementById(long_id).value = latlngs[i].lng;
+					wkt += latlngs[i].lat + "," + latlngs[i].lng
+				}
+
+			wkt += "))"
+
+			document.getElementById("WKT").value = wkt;
+
+			area_size_spans = document.querySelectorAll(".area-size");
+
+			area_size_spans.forEach(element => {
+				element.innerText = element.textContent = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
+			});
+
+			total_cost_spans = document.querySelectorAll(".total-cost");
+			total_cost_spans.forEach(element => {
+				element.innerText = element.textContent = (10* 0.45 * ((parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3))).toFixed(2);
+			});
+			}
+
 			// create map and center to Muskeg
             var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -526,43 +555,20 @@
 
 			
 
-			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
-            area = L.GeometryUtil.geodesicArea(latlngs);
+			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
 
-			lat_long_sliced = latlngs.slice(0,12)
-			lat_long_index = 1;
-			
-			wkt = "POLYGON(("
-
-			for (let i = 0; i < lat_long_sliced.length; i++) {
-				lat_id = "lat" + (i+1)
-				document.getElementById(lat_id).value = latlngs[i].lat;
-				long_id = "long" + (i+1)
-				document.getElementById(long_id).value = latlngs[i].lng;
-				wkt += latlngs[i].lat + "," + latlngs[i].lng
-			}
-
-			wkt += "))"
-
-			document.getElementById("WKT").value = wkt;
-
-			area_size_spans = document.querySelectorAll(".area-size");
-
-			area_size_spans.forEach(element => {
-				element.innerText = element.textContent = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
-			});
-
-			total_cost_spans = document.querySelectorAll(".total-cost");
-
-			total_cost_spans.forEach(element => {
-				element.innerText = element.textContent = (10* 0.45 * ((parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3))).toFixed(2);
-			});
+			change_lat_lngs(latlngs);
             
             });
         
             map.on(L.Draw.Event.EDITVERTEX, function(e){
-                console.log(e)
-                console.log(e.layers.getLayers()[0])
+
+                layers = e.layers
+
+				drawnItems.eachLayer(function (layer) {
+					change_lat_lngs(layer.getLatLngs()[0])
+				})
+
             })
         
          
