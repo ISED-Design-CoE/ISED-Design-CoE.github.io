@@ -26,6 +26,53 @@
 		</script>
 
 <!-- Start DECoE customization -->
+
+<link rel="stylesheet" href="libs/leaflet.css"/>
+<link rel="stylesheet" href="src/leaflet.draw.css"/>
+
+
+<!-- src does not work with folder, this is long but the best I can do because of 
+	how leaflet draw is designed. -->
+<script src="libs/leaflet-src.js"></script>
+<script src="src/Leaflet.draw.js"></script>
+<script src="src/Leaflet.Draw.Event.js"></script>
+<script src="src/edit/handler/Edit.Poly.js"></script>
+<script src="src/edit/handler/Edit.SimpleShape.js"></script>
+<script src="src/edit/handler/Edit.Rectangle.js"></script>
+<script src="src/draw/handler/Draw.Feature.js"></script>
+<script src="src/draw/handler/Draw.Polyline.js"></script>
+<script src="src/draw/handler/Draw.Polygon.js"></script>
+<script src="src/draw/handler/Draw.SimpleShape.js"></script>
+<script src="src/draw/handler/Draw.Rectangle.js"></script>
+<script src="src/draw/handler/Draw.Circle.js"></script>
+<script src="src/draw/handler/Draw.Marker.js"></script>
+<script src="src/draw/handler/Draw.CircleMarker.js"></script>
+<script src="src/ext/TouchEvents.js"></script>
+<script src="src/ext/LatLngUtil.js"></script>
+<script src="src/ext/GeometryUtil.js"></script>
+<script src="src/ext/LineUtil.Intersect.js"></script>
+<script src="src/ext/Polyline.Intersect.js"></script>
+<script src="src/ext/Polygon.Intersect.js"></script>
+<script src="src/Control.Draw.js"></script>
+<script src="src/Tooltip.js"></script>
+<script src="src/Toolbar.js"></script>
+<script src="src/draw/DrawToolbar.js"></script>
+<script src="src/edit/EditToolbar.js"></script>
+<script src="src/edit/handler/EditToolbar.Edit.js"></script>
+<script src="src/edit/handler/EditToolbar.Delete.js"></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+
+<script src="https://unpkg.com/esri-leaflet"></script>
+
+<!-- Esri Leaflet Geocoder -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
+/>
+<script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+
+
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
 	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
 	<style>
@@ -58,7 +105,7 @@
 			}
 			#map {
 				border: 1px solid black;
-				height: 20em;
+				height: 70em;
 			}
 			#WKT {
 				width: 100%;
@@ -134,22 +181,23 @@
 								<th>Latitude</th>
 								<th>Longitude</th>
 							</tr>
-							<tr><td>1</td><td><input name="lat01" class="form-control" size=9 inputmode="decimal"></td><td><input name="long01" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>2</td><td><input name="lat02" class="form-control" size=9 inputmode="decimal"></td><td><input name="long02" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>3</td><td><input name="lat03" class="form-control" size=9 inputmode="decimal"></td><td><input name="long03" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>4</td><td><input name="lat04" class="form-control" size=9 inputmode="decimal"></td><td><input name="long04" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>5</td><td><input name="lat05" class="form-control" size=9 inputmode="decimal"></td><td><input name="long05" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>6</td><td><input name="lat06" class="form-control" size=9 inputmode="decimal"></td><td><input name="long06" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>7</td><td><input name="lat07" class="form-control" size=9 inputmode="decimal"></td><td><input name="long07" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>8</td><td><input name="lat08" class="form-control" size=9 inputmode="decimal"></td><td><input name="long08" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>9</td><td><input name="lat09" class="form-control" size=9 inputmode="decimal"></td><td><input name="long09" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>10</td><td><input name="lat10" class="form-control" size=9 inputmode="decimal"></td><td><input name="long10" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>11</td><td><input name="lat11" class="form-control" size=9 inputmode="decimal"></td><td><input name="long11" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>12</td><td><input name="lat12" class="form-control" size=9 inputmode="decimal"></td><td><input name="long12" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<!-- the ids are different from the name as it is easier to iterate through them this way. Feel free to notify me
+								if the ids should match the name. - Jacob -->
+							<tr><td>1</td><td><input id="lat1" name="lat01" class="form-control" size=9 inputmode="decimal"></td><td><input id="long1" name="long01" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>2</td><td><input id="lat2" name="lat02" class="form-control" size=9 inputmode="decimal"></td><td><input id="long2" name="long02" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>3</td><td><input id="lat3" name="lat03" class="form-control" size=9 inputmode="decimal"></td><td><input id="long3" name="long03" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>4</td><td><input id="lat4" name="lat04" class="form-control" size=9 inputmode="decimal"></td><td><input id="long4" name="long04" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>5</td><td><input id="lat5" name="lat05" class="form-control" size=9 inputmode="decimal"></td><td><input id="long5" name="long05" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>6</td><td><input id="lat6" name="lat06" class="form-control" size=9 inputmode="decimal"></td><td><input id="long6" name="long06" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>7</td><td><input id="lat7" name="lat07" class="form-control" size=9 inputmode="decimal"></td><td><input id="long7" name="long07" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>8</td><td><input id="lat8" name="lat08" class="form-control" size=9 inputmode="decimal"></td><td><input id="long8" name="long08" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>9</td><td><input id="lat9" name="lat09" class="form-control" size=9 inputmode="decimal"></td><td><input id="long9" name="long09" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>10</td><td><input id="lat10" name="lat10" class="form-control" size=9 inputmode="decimal"></td><td><input id="long10" name="long10" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>11</td><td><input id="lat11" name="lat11" class="form-control" size=9 inputmode="decimal"></td><td><input id="long11" name="long11" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>12</td><td><input id="lat12" name="lat12" class="form-control" size=9 inputmode="decimal"></td><td><input id="long12" name="long12" class="form-control" size=9 inputmode="decimal"></td></tr>
 						</table>
 					</div>
 					<div class="col-md-8" id="map">
-						Map
 					</div>
 				</div>
 				<div class="row">
@@ -172,7 +220,7 @@
 							<p>Press <kbd><samp>Calculate</samp></kbd> to see results.</p>
 						</div>
 						<div id="area-information-after" hidden>
-							<p><strong>Area size</strong> - <span class="area-size">162</span> km<sup>2</sup></p>
+							<p><strong>Area size</strong> - <span class="area-size" id="area-size">162</span> km<sup>2</sup></p>
 							<details>
 								<summary>More information on area size</summary>
 								<p>Total area covered by the licence</p>
@@ -309,6 +357,256 @@
 						"newWindow": true
 					}]
 				}
+			});
+		</script>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refFooter({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+		<script>
+
+
+		// Leaftlet code
+
+			function change_lat_lngs(latlngs) {
+				area = L.GeometryUtil.geodesicArea(latlngs);
+				lat_long_sliced = latlngs.slice(0,12)
+				lat_long_index = 1;
+				wkt = "POLYGON(("
+				for (let i = 0; i < lat_long_sliced.length; i++) {
+					lat_id = "lat" + (i+1)
+					document.getElementById(lat_id).value = latlngs[i].lat;
+					long_id = "long" + (i+1)
+					document.getElementById(long_id).value = latlngs[i].lng;
+					wkt += latlngs[i].lat + "," + latlngs[i].lng
+				}
+
+			wkt += "))"
+
+			document.getElementById("WKT").value = wkt;
+
+			area_size_spans = document.querySelectorAll(".area-size");
+
+			area_size_spans.forEach(element => {
+				element.innerText = element.textContent = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
+			});
+
+			total_cost_spans = document.querySelectorAll(".total-cost");
+			total_cost_spans.forEach(element => {
+				element.innerText = element.textContent = (10* 0.45 * ((parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3))).toFixed(2);
+			});
+			}
+
+			// create map and center to Muskeg
+            var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib}),
+                    map = new L.Map('map', {zoomControl:false, layers: [osm], center: new L.LatLng(63.27268094792591, -100.5815661012755), zoom: 3.3,selectedPathOptions: {
+                color:'#ff9900'
+                }});
+        
+			// add the polygon that will be drawn to the map
+            var drawnItems = new L.FeatureGroup();
+            map.addLayer(drawnItems);
+        
+			// add zoom to the bottom right
+            new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
+
+			// add Fullscreen to the top right. Currently broken
+            // new L.Control.Fullscreen({position: 'topright'}).addTo(map);
+
+
+
+			// Layers.
+
+			// Map layers. Not implemented.
+			const baseLayers = {
+				'Standard': osm,
+				'Terrain': osm
+			};
+
+			// Fee zone layer.
+			const feezone = L.layerGroup();
+			const overlays = {
+				'Fee Zones': feezone,
+			};
+
+			// Add layer buttom to the top right.
+			const layerControl = L.control.layers(baseLayers, overlays, {position: 'topleft'});
+
+			// Draw control, removes everything but polygon,
+			// and removes intersection from polygon.
+			// Add area and restrict to 12 points.
+        
+            var drawControl = new L.Control.Draw({
+                position: 'topleft',
+                draw: {
+                    polyline: false,
+                    polygon: true,
+                    circle: false,
+                    rectangle: false,
+                    marker: false,
+                    circlemarker: false,
+                polygon: {
+                        allowIntersection: false,
+                        showArea: true,
+                        maxPoints:12,
+                metric: "km",
+                precision: {km:5},
+                shapeOptions: {
+                        fillColor :'#bf00ff',
+                    fillOpacity:0.65,
+                    color:"#8600b3",
+                    opacity: 1
+                          }
+                }
+        
+                },
+            });
+
+			// Add search, currently does not work well, as I have not added an API key.
+			var searchControl = L.esri.Geocoding.geosearch({
+				expanded: true,
+        	})
+
+			map.addControl(searchControl)
+            map.addControl(drawControl);
+			map.addControl(layerControl);
+
+			// add scale to the bottom left.
+            var scale = L.control.scale(); 
+                 scale.addTo(map); 
+        
+        
+			// When the user clicks the trashcan, remove everything and change the icon back to the polygon.
+            L.Control.RemoveAll = L.Control.extend({
+                options: {
+                    position: 'topleft',
+                },
+        
+                onAdd: function (map) {
+                    var controlDiv = L.DomUtil.create('div', 'leaflet-control leaflet-bar');
+                    var controlUI = L.DomUtil.create('a', 'leaflet-draw-edit-remove', controlDiv);
+                    controlUI.title = 'Remove all drawn items';
+                    controlUI.setAttribute('href', '#');
+
+                    controlUI.style.backgroundImage = 'url(src/images/trash.svg)'
+        
+                    L.DomEvent
+                        .addListener(controlUI, 'click', L.DomEvent.stopPropagation)
+                        .addListener(controlUI, 'click', L.DomEvent.preventDefault)
+                        .addListener(controlUI, 'click', function () {
+                            drawnItems.clearLayers();
+                            map.removeControl(removeAllControl);
+							map.removeControl(layerControl);
+            				map.addControl(drawControl);
+							map.addControl(layerControl);
+                        });
+                    return controlDiv;
+                }
+            });
+        
+        removeAllControl = new L.Control.RemoveAll();
+        
+        
+        // Add area on hover
+        
+        var getPopupContent = function(layer) {
+        
+                  var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
+                  area = L.GeometryUtil.geodesicArea(latlngs);
+                  return "Area: "+ parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100 + " square kilometer";
+        
+                };
+        
+        // TODO : on mouseout finish the polygon
+        
+        // on draw
+            map.on(L.Draw.Event.CREATED, function (e) {
+                var type = e.layerType,
+                        layer = e.layer;
+						
+            map.removeControl(drawControl);
+			map.removeControl(layerControl);
+            map.addControl(removeAllControl);
+			layerControl.addTo(map);
+            layer.on('mouseover', function (event) {
+                layer.bindPopup(getPopupContent(layer)).openPopup();
+            });
+            layer.on('mouseout', function (event) {
+                layer.bindPopup(getPopupContent(layer)).closePopup();
+            });
+
+			if (layer.getLatLngs()[0].length < 12) {
+				layer.editing.enable()
+			}
+        
+            drawnItems.addLayer(layer);
+            
+            drawnItems.setStyle({fillColor :'#33cc33',
+                    fillOpacity:0.65,
+                    color:"#248f24",
+                    opacity: 1})
+
+			
+
+			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
+
+			change_lat_lngs(latlngs);
+            
+            });
+
+			// on edit:
+        
+            map.on(L.Draw.Event.EDITVERTEX, function(e){
+
+				drawnItems.eachLayer(function (layer) {
+
+					lat_lngs = layer.getLatLngs()[0]
+
+					if (lat_lngs.length >= 12) {
+						layer.editing.disable()
+
+					}
+
+					change_lat_lngs(lat_lngs)
+				})
+
+            })
+        
+         
+           map.on(L.Draw.Event.DELETED, function (e) {
+        
+            if (Object.keys(e.layers._layers).length != 0) {
+                map.removeControl(removeAllControl);
+				map.removeControl(layerControl);
+                map.addControl(drawControl);
+				layerControl.addTo(map);
+            }
+        
+            
+        });
+        
+        </script>
+		<script>
+			var defFooter = document.getElementById("def-footer");
+			defFooter.outerHTML = wet.builder.footer({
+				"cdnEnv": "esdcprod",
+				"showFooter": false,
+				"showFeatures": false,
+
+				"contactLinks": [{
+					"href": "#",
+					"newWindow": true
+				}],
+				"termsLink": [{
+					"href": "#"
+				}],
+				"privacyLink": [{
+					"newWindow": true
+				}]
 			});
 		</script>
 		<!-- Write closure template -->
