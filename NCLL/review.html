@@ -231,19 +231,16 @@
 		var lat_longs = [];
 
 		for ( const [ key, value ] of urlParams ) {
-			// Remove namespace prefix
-		    let className = key.replace ( /^CAT_/, '' )
-			
 			// add lat longs to the variable
 			if (value != "") {
-				if (className.startsWith('lat')) {
+				if (key.startsWith('lat')) {
 					lats.push(value);
-				} else if (className.startsWith('long')) {
+				} else if (key.startsWith('long')) {
 					longs.push(value);
 				}
 			}
 
-			for ( const elem of document .getElementsByClassName ( className ) ) {
+			for ( const elem of document .getElementsByClassName ( key ) ) {
 				if ( value == "" ) {
 					elem .innerHTML = "-"
 				} else {
