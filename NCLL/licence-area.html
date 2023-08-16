@@ -538,13 +538,10 @@
             layer.on('mouseout', function (event) {
                 layer.bindPopup(getPopupContent(layer)).closePopup();
             });
-        
-        
-            layer.on(L.Draw.Event.EDITVERTEX, function(e){
-                console.log(layer.getLatLngs()[0])
-            })
-        
-            layer.editing.enable()
+
+			if (layer.getLatLngs()[0].length < 12) {
+				layer.editing.enable()
+			}
         
             drawnItems.addLayer(layer);
             
@@ -560,13 +557,21 @@
 			change_lat_lngs(latlngs);
             
             });
+
+			// on edit:
         
             map.on(L.Draw.Event.EDITVERTEX, function(e){
 
-                layers = e.layers
-
 				drawnItems.eachLayer(function (layer) {
-					change_lat_lngs(layer.getLatLngs()[0])
+
+					lat_lngs = layer.getLatLngs()[0]
+
+					if (lat_lngs.length >= 12) {
+						layer.editing.disable()
+
+					}
+
+					change_lat_lngs(lat_lngs)
 				})
 
             })
