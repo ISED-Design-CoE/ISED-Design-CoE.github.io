@@ -223,7 +223,7 @@
 		const urlParams = new URLSearchParams ( queryString )
 		
 		for ( const [ key, value ] of urlParams ) {
-			for ( const elem of document .getElementsByClassName ( className ) ) {
+			for ( const elem of document .getElementsByClassName ( key ) ) {
 				if ( value == "" ) {
 					elem .innerHTML = "-"
 				} else {
