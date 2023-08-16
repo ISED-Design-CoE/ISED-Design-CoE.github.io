@@ -377,10 +377,10 @@
 				wkt = "POLYGON(("
 				for (let i = 0; i < lat_long_sliced.length; i++) {
 					lat_id = "lat" + (i+1)
-					document.getElementById(lat_id).value = latlngs[i].lat;
+					document.getElementById(lat_id).value = latlngs[i].lat.toFixed(6);
 					long_id = "long" + (i+1)
-					document.getElementById(long_id).value = latlngs[i].lng;
-					wkt += latlngs[i].lat + "," + latlngs[i].lng
+					document.getElementById(long_id).value = latlngs[i].lng.toFixed(6);
+					wkt += latlngs[i].lat.toFixed(6) + "," + latlngs[i].lng.toFixed(6)
 				}
 
 			wkt += "))"
@@ -517,7 +517,7 @@
         
                   var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
                   area = L.GeometryUtil.geodesicArea(latlngs);
-                  return "Area: "+ parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100 + " square kilometer";
+                  return "Area: "+ (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3) + " square kilometer";
         
                 };
         
