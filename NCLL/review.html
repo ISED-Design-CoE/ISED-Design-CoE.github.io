@@ -109,7 +109,7 @@
 			<li><a href="general.html">General information</a></li>
 			<li><a href="licence-area.html">Licence area</a></li>
 			<li><a href="tech-details.html">Technical details</a></li>
-			<li class="active">Review</li>
+			<li class="active" aria-current="step">Review</li>
 		</ul>
 	</div>
 
@@ -223,10 +223,7 @@
 		const urlParams = new URLSearchParams ( queryString )
 		
 		for ( const [ key, value ] of urlParams ) {
-			// Remove namespace prefix
-		    let className = key.replace ( /^CAT_/, '' )
-
-			for ( const elem of document .getElementsByClassName ( className ) ) {
+			for ( const elem of document .getElementsByClassName ( key ) ) {
 				if ( value == "" ) {
 					elem .innerHTML = "-"
 				} else {
