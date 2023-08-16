@@ -223,9 +223,6 @@
 		const urlParams = new URLSearchParams ( queryString )
 		
 		for ( const [ key, value ] of urlParams ) {
-			// Remove namespace prefix
-		    let className = key.replace ( /^CAT_/, '' )
-
 			for ( const elem of document .getElementsByClassName ( className ) ) {
 				if ( value == "" ) {
 					elem .innerHTML = "-"
