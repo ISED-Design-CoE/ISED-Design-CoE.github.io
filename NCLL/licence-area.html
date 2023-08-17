@@ -346,14 +346,14 @@
 		for ( let elem of document .getElementsByClassName ( "area-size" ) ) {
 			elem .innerText = areaSize
 		}
-		createHiddenField ( "area-size", areaSize )
+		var area_field = createHiddenField ( "area-size", areaSize )
 
 		// Calculate total cost
 		const totalCost = ( baseRate * bandwidth * areaSize ) .toFixed ( 2 )
 		for ( let elem of document .getElementsByClassName ( "total-cost" ) ) {
 			elem .innerText = totalCost
 		}
-		createHiddenField ( "total-cost", totalCost )
+		var cost_field = createHiddenField ( "total-cost", totalCost )
 
 	</script>
 	</div>
@@ -432,6 +432,9 @@
 				total_cost_spans.forEach(element => {
 					element.innerText = element.textContent = "0";
 				});
+
+				area_field.setAttribute( "value", "0" );
+				cost_field.setAttribute( "value", "0" );
 					
 			}
 
@@ -462,14 +465,22 @@
 
 				area_size_spans = document.querySelectorAll(".area-size");
 
+				let area_number = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
+
 				area_size_spans.forEach(element => {
-					element.innerText = element.textContent = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
+					element.innerText = element.textContent = area_number
 				});
+
+				area_field.setAttribute( "value", area_number );
+
+				let cost_number = (10* 0.45 * (area_number)).toFixed(2);
 
 				total_cost_spans = document.querySelectorAll(".total-cost");
 				total_cost_spans.forEach(element => {
-					element.innerText = element.textContent = (10* 0.45 * ((parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3))).toFixed(2);
+					element.innerText = element.textContent = cost_number
 				});
+
+				cost_field.setAttribute("value", cost_number);
 			}
 
 			// create map and center to Muskeg
