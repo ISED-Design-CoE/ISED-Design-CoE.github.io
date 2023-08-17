@@ -110,6 +110,12 @@
 			#WKT {
 				width: 100%;
 			}
+			.mt-0 {
+				margin-top: 0;
+			}
+			.pad-bottom {
+				margin-bottom: 2em;
+			}
 	</style>
 <!-- End DECoE customization -->
 
@@ -164,16 +170,19 @@
 			<div class="wb-frm">
 				<div class="container">
 					<h1 property="name" id="wb-cont">Licence area</h1>
-					<p>Enter your licence area coordinates (maximum 12) by either</p>
-					<ul>
-						<li>using the draw tool on the interactive map</li>
-						<li>entering them manually in a table</li>
-						<li>entering your polygon formatted in WKT</li>
-					</ul>
+					<div class="pad-bottom">
+						<p>Your licence area must be defined by between 3 and 12 boundary points, connected with straight lines. It may be convex or concave but it may not intersect itself.</p>
+						<p>These coordinates may be entered in any of the following ways:</p>
+						<ol>
+							<li>Entering the coordinates into the Coordinates table below</li>
+							<li>Drawing the boundary on the interactive map</li>
+							<li>Entering the boundary in <abbr>WKT</abbr> (Well Known Text) format into the input field below the map</li>
+						</ul>
+					</div>
 				
 					<div class="row wb-eqht">
 					<div class="col-md-4">
-						<h2>Coordinates</h2>
+						<h2 class="mt-0">Coordinates</h2>
 						<p>Latitude and longitude coordinates are in degree decimal format.</p>
 						<table class="table form-group">
 							<tr>
@@ -181,17 +190,15 @@
 								<th>Latitude</th>
 								<th>Longitude</th>
 							</tr>
-							<!-- the ids are different from the name as it is easier to iterate through them this way. Feel free to notify me
-								if the ids should match the name. - Jacob -->
-							<tr><td>1</td><td><input id="lat1" name="lat01" class="form-control" size=9 inputmode="decimal"></td><td><input id="long1" name="long01" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>2</td><td><input id="lat2" name="lat02" class="form-control" size=9 inputmode="decimal"></td><td><input id="long2" name="long02" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>3</td><td><input id="lat3" name="lat03" class="form-control" size=9 inputmode="decimal"></td><td><input id="long3" name="long03" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>4</td><td><input id="lat4" name="lat04" class="form-control" size=9 inputmode="decimal"></td><td><input id="long4" name="long04" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>5</td><td><input id="lat5" name="lat05" class="form-control" size=9 inputmode="decimal"></td><td><input id="long5" name="long05" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>6</td><td><input id="lat6" name="lat06" class="form-control" size=9 inputmode="decimal"></td><td><input id="long6" name="long06" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>7</td><td><input id="lat7" name="lat07" class="form-control" size=9 inputmode="decimal"></td><td><input id="long7" name="long07" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>8</td><td><input id="lat8" name="lat08" class="form-control" size=9 inputmode="decimal"></td><td><input id="long8" name="long08" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>9</td><td><input id="lat9" name="lat09" class="form-control" size=9 inputmode="decimal"></td><td><input id="long9" name="long09" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>1</td><td><input id="lat1" name="lat1" class="form-control" size=9 inputmode="decimal"></td><td><input id="long1" name="long1" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>2</td><td><input id="lat2" name="lat2" class="form-control" size=9 inputmode="decimal"></td><td><input id="long2" name="long2" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>3</td><td><input id="lat3" name="lat3" class="form-control" size=9 inputmode="decimal"></td><td><input id="long3" name="long3" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>4</td><td><input id="lat4" name="lat4" class="form-control" size=9 inputmode="decimal"></td><td><input id="long4" name="long4" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>5</td><td><input id="lat5" name="lat5" class="form-control" size=9 inputmode="decimal"></td><td><input id="long5" name="long5" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>6</td><td><input id="lat6" name="lat6" class="form-control" size=9 inputmode="decimal"></td><td><input id="long6" name="long6" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>7</td><td><input id="lat7" name="lat7" class="form-control" size=9 inputmode="decimal"></td><td><input id="long7" name="long7" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>8</td><td><input id="lat8" name="lat8" class="form-control" size=9 inputmode="decimal"></td><td><input id="long8" name="long8" class="form-control" size=9 inputmode="decimal"></td></tr>
+							<tr><td>9</td><td><input id="lat9" name="lat9" class="form-control" size=9 inputmode="decimal"></td><td><input id="long9" name="long9" class="form-control" size=9 inputmode="decimal"></td></tr>
 							<tr><td>10</td><td><input id="lat10" name="lat10" class="form-control" size=9 inputmode="decimal"></td><td><input id="long10" name="long10" class="form-control" size=9 inputmode="decimal"></td></tr>
 							<tr><td>11</td><td><input id="lat11" name="lat11" class="form-control" size=9 inputmode="decimal"></td><td><input id="long11" name="long11" class="form-control" size=9 inputmode="decimal"></td></tr>
 							<tr><td>12</td><td><input id="lat12" name="lat12" class="form-control" size=9 inputmode="decimal"></td><td><input id="long12" name="long12" class="form-control" size=9 inputmode="decimal"></td></tr>
@@ -205,7 +212,7 @@
 						<div class="form-group">
 							<label for="WKT">
 								<span class="field-name">
-									Coordinates in <a href="https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry">Well Known Text</a> format
+									Coordinates in WKT (Well Known Text) format
 								</span>
 							</label>
 							<p>e.g. POLYGON((-113.956370 50.880852,-113.952550 50.880744,-113.944869 50.882288,-113.945942 50.884372,-113.951950 50.883398,-113.956885 50.882369,-113.956370 50.880852))</p>

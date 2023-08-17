@@ -184,15 +184,15 @@
 							<th>Latitude</th>
 							<th>Longitude</th>
 						</tr>
-						<tr><td>1</td><td><span class="lat01">48.233463</span></td><td><span class="long01">-89.750008</td></tr>
-						<tr><td>2</td><td><span class="lat02">48.291512</span></td><td><span class="long02">-89.721282</td></tr>
-						<tr><td>3</td><td><span class="lat03">48.281911</span></td><td><span class="long03">-89.658390</td></tr>
-						<tr><td>4</td><td><span class="lat04">48.254440</span></td><td><span class="long04">-89.614391</td></tr>
-						<tr><td>5</td><td><span class="lat05">48.216475</span></td><td><span class="long05">-89.593922</td></tr>
-						<tr><td>6</td><td><span class="lat06">48.234064</span></td><td><span class="long06">-89.683164</td></tr>
-						<tr><td>7</td><td><span class="lat07">48.234064</span></td><td><span class="long07">-89.683164</td></tr>
-						<tr><td>8</td><td><span class="lat08">48.234064</span></td><td><span class="long08">-89.683164</td></tr>
-						<tr><td>9</td><td><span class="lat09">48.234064</span></td><td><span class="long09">-89.683164</td></tr>
+						<tr><td>1</td><td><span class="lat1">48.233463</span></td><td><span class="long1">-89.750008</td></tr>
+						<tr><td>2</td><td><span class="lat2">48.291512</span></td><td><span class="long2">-89.721282</td></tr>
+						<tr><td>3</td><td><span class="lat3">48.281911</span></td><td><span class="long3">-89.658390</td></tr>
+						<tr><td>4</td><td><span class="lat4">48.254440</span></td><td><span class="long4">-89.614391</td></tr>
+						<tr><td>5</td><td><span class="lat5">48.216475</span></td><td><span class="long5">-89.593922</td></tr>
+						<tr><td>6</td><td><span class="lat6">48.234064</span></td><td><span class="long6">-89.683164</td></tr>
+						<tr><td>7</td><td><span class="lat7">48.234064</span></td><td><span class="long7">-89.683164</td></tr>
+						<tr><td>8</td><td><span class="lat8">48.234064</span></td><td><span class="long8">-89.683164</td></tr>
+						<tr><td>9</td><td><span class="lat9">48.234064</span></td><td><span class="long9">-89.683164</td></tr>
 						<tr><td>10</td><td><span class="lat10">48.233463</span></td><td><span class="long10">-89.750008</td></tr>
 						<tr><td>11</td><td><span class="lat11">48.233463</span></td><td><span class="long11">-89.750008</td></tr>
 						<tr><td>12</td><td><span class="lat12">48.233463</span></td><td><span class="long12">-89.750008</td></tr>
@@ -269,8 +269,7 @@
 		// Hide unneeded coordinate pairs
 		// Yes there are probably slicker ways to do this. This is prototype code, not production code
 		for ( let i = lats .length; i < 12; i++ ) {			
-			let paddedIndex = ( i + 1 ) .toString () .padStart ( 2, "0" )
-			let children = document .getElementsByClassName ( "lat" + paddedIndex )
+			let children = document .getElementsByClassName ( "lat" + i )
 			for ( let j = 0; j < children .length; j++ ) {
 				children [j] .parentNode .parentNode .remove()
 			}			
