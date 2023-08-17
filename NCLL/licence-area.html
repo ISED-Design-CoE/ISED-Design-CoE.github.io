@@ -171,9 +171,10 @@
 					<ol>
 						<li>Entering the coordinates into the Coordinates table below</li>
 						<li>Drawing the boundary on the interactive map</li>
-						<li>Entering the boundary in <abbr>WKT</abbr> (Well Known Text) format into the input field below the map</li>
+						<li>Entering a description of the boundary in <abbr>WKT</abbr> (Well Known Text) format into the input field below the map</li>
 					</ol>
 					<p>This application form is not designed to assist with network planning. If you would like to identify the coordinates of an area that will not cause interference with other operators, please consider using our <a href="SLAB-en-leaflet.html" target="_blank">Spectrum licence area browser</a>.</p>
+					<p>Remember that you will need to be able to cover the full licence area. And because low power licences have a better chance of being approved, you may want to limit the size of your licence area to 15 km<sup>2</sup> or less.</p>
 				
 					<div class="row wb-eqht">
 					<div class="col-md-4">
@@ -207,11 +208,16 @@
 						<div class="form-group">
 							<label for="WKT">
 								<span class="field-name">
-									Coordinates in WKT (Well Known Text) format
+									Boundary description in WKT (Well Known Text) format
 								</span>
 							</label>
-							<p>e.g. POLYGON((-113.956370 50.880852,-113.952550 50.880744,-113.944869 50.882288,-113.945942 50.884372,-113.951950 50.883398,-113.956885 50.882369,-113.956370 50.880852))</p>
-							<input id="WKT" name="WKT" class="form-control">
+							<details>
+								<summary>More information on the WKT format</summary>
+								<p>In this format, the latitude and longitude of each point are entered as a space-separated pair, and each pair is separated from the next by a comma.</p>
+								<p>e.g. POLYGON((-113.956370 50.880852,-113.952550 50.880744,-113.944869 50.882288,-113.945942 50.884372,-113.951950 50.883398,-113.956885 50.882369,-113.956370 50.880852))</p>
+								<p>The input field below accepts up to 12 pairs and will ignore any pairs after that.</p>
+							</details>
+							<textarea id="WKT" name="WKT" class="form-control" rows="3">(Enter description of boundary in WKT format here)</textarea>
 						</div>
 
 						<p>Once your area is entered, click <kbd><samp>Calculate</samp></kbd> to get the information about the area and to calculate the licence fee</p>
