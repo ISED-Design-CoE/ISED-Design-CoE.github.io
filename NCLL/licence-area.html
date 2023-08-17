@@ -598,30 +598,5 @@
         });
         
         </script>
-		<script>
-			var defFooter = document.getElementById("def-footer");
-			defFooter.outerHTML = wet.builder.footer({
-				"cdnEnv": "esdcprod",
-				"showFooter": false,
-				"showFeatures": false,
-
-				"contactLinks": [{
-					"href": "#",
-					"newWindow": true
-				}],
-				"termsLink": [{
-					"href": "#"
-				}],
-				"privacyLink": [{
-					"newWindow": true
-				}]
-			});
-		</script>
-		<!-- Write closure template -->
-		<script>
-			document.write(wet.builder.refFooter({
-				"cdnEnv": "esdcprod"
-			}));
-		</script>
 	</body>
 </html>
