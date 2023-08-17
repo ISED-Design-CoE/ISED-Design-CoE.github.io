@@ -473,7 +473,7 @@
 
 				area_field.setAttribute( "value", area_number );
 
-				let cost_number = (10* 0.45 * (area_number)).toFixed(2);
+				let cost_number = (bandwidth * 0.45 * (area_number)).toFixed(2);
 
 				total_cost_spans = document.querySelectorAll(".total-cost");
 				total_cost_spans.forEach(element => {
