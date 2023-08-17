@@ -112,6 +112,14 @@
 			#WKT {
 				width: 100%;
 			}
+			@media (min-width: 768px) {
+				.dl-horizontal dt {
+					width: 15em;
+				}
+			}
+			#area-information-after > p {
+				margin-top: 1em;
+			}
 	</style>
 <!-- End DECoE customization -->
 
@@ -234,7 +242,7 @@
 								<p>Total area covered by the licence</p>
 							</details>
 
-							<p><strong>Fee zone</strong> - <span class="fee-zone-type">Rural</span>: $<span class="fee-zone-cost">0.45</span> per MHz per year per km<sup>2</sup></p>
+							<p><strong>Fee zone</strong> - <span class="fee-zone-type">Rural</span>: $<span class="base-rate">0.45</span> per MHz per year per km<sup>2</sup></p>
 							<details>
 								<summary>More information on fee zone</summary>
 								<p>Licences in:</p>
@@ -274,15 +282,13 @@
 						<div id="licence-fee-after" hidden>
 							<dl class="dl-horizontal">
 								<dt>Base rate (Rural) per year</dt>
-								<dd>$<span class="fee-zone-cost">0.45</span> per MHz per km<sup>2</sup></dd>
+								<dd>$<span class="base-rate">0.45</span> per MHz per km<sup>2</sup></dd>
 								<dt>Requested bandwidth</dt>
 								<dd><span class="bandwidth">10</span> MHz</dd>
 								<dt>Area size</dt>
 								<dd><span class="area-size">162</span> km<sup>2</sup></dd>
-							</dl>
-							<dl class="dl-horizontal">
 								<dt>Total cost per year</dt>
-								<dd>$<span class="fee-zone-cost">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">162</span> = $<span class="total-cost">729.00</span></dd>
+								<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">162</span> = $<span class="total-cost">729.00</span></dd>
 							</dl>
 						</div>
 					</div>
@@ -298,7 +304,6 @@
 					<h2>Notes about this mockup:</h2>
 					<ul>
 						<li>TODO: remove back button?</li>
-						<li>TODO: make these numbers functional</li>
 					</ul>
 				</div>
 			</div>
@@ -320,6 +325,37 @@
 		})
 	</script>
 	<script src="catch-and-throw.js"></script>
+	<script>
+		// Calculate the licence fee
+		// Get base rate
+		const baseRate = .45 // hardcode for now (this is the rural rate)
+		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
+			elem .innerText = baseRate
+		}
+		createHiddenField ( "base-rate", baseRate )
+
+		// Get bandwidth (from previous page)
+		const bandwidth = urlParams.get ( "bandwidth" )
+		for ( let elem of document .getElementsByClassName ( "bandwidth" ) ) {
+			elem .innerText = bandwidth
+		}
+		createHiddenField ( "bandwidth", bandwidth )
+		
+		// Get area size
+		const areaSize = 162 // hardcode for now, but this should come from Leaflet.js
+		for ( let elem of document .getElementsByClassName ( "area-size" ) ) {
+			elem .innerText = areaSize
+		}
+		createHiddenField ( "area-size", areaSize )
+
+		// Calculate total cost
+		const totalCost = ( baseRate * bandwidth * areaSize ) .toFixed ( 2 )
+		for ( let elem of document .getElementsByClassName ( "total-cost" ) ) {
+			elem .innerText = totalCost
+		}
+		createHiddenField ( "total-cost", totalCost )
+
+	</script>
 	</div>
 
 <!-- End page content -->
