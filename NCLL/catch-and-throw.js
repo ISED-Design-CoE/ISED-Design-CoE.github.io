@@ -6,6 +6,7 @@ function createHiddenField ( fieldName, fieldValue ) {
 
   // Append to form
   document .forms [0] .appendChild ( inputField )
+  return inputField
 }
 
 const queryString = window.location.search

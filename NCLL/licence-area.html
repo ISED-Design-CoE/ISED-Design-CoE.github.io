@@ -349,14 +349,14 @@
 		for ( let elem of document .getElementsByClassName ( "area-size" ) ) {
 			elem .innerText = areaSize
 		}
-		createHiddenField ( "area-size", areaSize )
+		var area_field = createHiddenField ( "area-size", areaSize )
 
 		// Calculate total cost
 		const totalCost = ( baseRate * bandwidth * areaSize ) .toFixed ( 2 )
 		for ( let elem of document .getElementsByClassName ( "total-cost" ) ) {
 			elem .innerText = totalCost
 		}
-		createHiddenField ( "total-cost", totalCost )
+		var cost_field = createHiddenField ( "total-cost", totalCost )
 
 	</script>
 	</div>
@@ -417,33 +417,73 @@
 
 		// Leaftlet code
 
+			function reset_lat_lngs() {
+				for (let i = 0; i < 12; i++) {
+					document.getElementById("lat" + (i+1)).value = "";
+					document.getElementById("long" + (i+1)).value = "";
+				}
+
+				document.getElementById("WKT").value = "";
+
+				area_size_spans = document.querySelectorAll(".area-size");
+
+				area_size_spans.forEach(element => {
+					element.innerText = element.textContent = "0";
+				});
+
+				total_cost_spans = document.querySelectorAll(".total-cost");
+				total_cost_spans.forEach(element => {
+					element.innerText = element.textContent = "0";
+				});
+
+				area_field.setAttribute( "value", "0" );
+				cost_field.setAttribute( "value", "0" );
+					
+			}
+
+	
+
 			function change_lat_lngs(latlngs) {
 				area = L.GeometryUtil.geodesicArea(latlngs);
 				lat_long_sliced = latlngs.slice(0,12)
-				lat_long_index = 1;
 				wkt = "POLYGON(("
-				for (let i = 0; i < lat_long_sliced.length; i++) {
+				for (let i = 0; i < 12; i++) {
 					lat_id = "lat" + (i+1)
-					document.getElementById(lat_id).value = latlngs[i].lat;
 					long_id = "long" + (i+1)
-					document.getElementById(long_id).value = latlngs[i].lng;
-					wkt += latlngs[i].lat + "," + latlngs[i].lng
+					if (i < lat_long_sliced.length) {
+						document.getElementById(lat_id).value = latlngs[i].lat.toFixed(6);
+						document.getElementById(long_id).value = latlngs[i].lng.toFixed(6);
+						wkt += latlngs[i].lat.toFixed(6) + " " + latlngs[i].lng.toFixed(6) + ","
+					} else {
+						document.getElementById(lat_id).value = "";
+						document.getElementById(long_id).value = "";
+					}
+					
 				}
+			
+				wkt = wkt.substring(0,wkt.length-1)
+				wkt += "))"
 
-			wkt += "))"
+				document.getElementById("WKT").value = wkt;
 
-			document.getElementById("WKT").value = wkt;
+				area_size_spans = document.querySelectorAll(".area-size");
 
-			area_size_spans = document.querySelectorAll(".area-size");
+				let area_number = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
 
-			area_size_spans.forEach(element => {
-				element.innerText = element.textContent = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
-			});
+				area_size_spans.forEach(element => {
+					element.innerText = element.textContent = area_number
+				});
 
-			total_cost_spans = document.querySelectorAll(".total-cost");
-			total_cost_spans.forEach(element => {
-				element.innerText = element.textContent = (10* 0.45 * ((parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3))).toFixed(2);
-			});
+				area_field.setAttribute( "value", area_number );
+
+				let cost_number = (bandwidth * 0.45 * (area_number)).toFixed(2);
+
+				total_cost_spans = document.querySelectorAll(".total-cost");
+				total_cost_spans.forEach(element => {
+					element.innerText = element.textContent = cost_number
+				});
+
+				cost_field.setAttribute("value", cost_number);
 			}
 
 			// create map and center to Muskeg
@@ -462,7 +502,7 @@
             new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
 
 			// add Fullscreen to the top right. Currently broken
-            // new L.Control.Fullscreen({position: 'topright'}).addTo(map);
+            new L.Control.Fullscreen({pseudoFullscreen: true, position: 'topright'}).addTo(map);
 
 
 
@@ -545,6 +585,7 @@
                         .addListener(controlUI, 'click', L.DomEvent.stopPropagation)
                         .addListener(controlUI, 'click', L.DomEvent.preventDefault)
                         .addListener(controlUI, 'click', function () {
+							reset_lat_lngs();
                             drawnItems.clearLayers();
                             map.removeControl(removeAllControl);
 							map.removeControl(layerControl);
@@ -564,7 +605,7 @@
         
                   var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
                   area = L.GeometryUtil.geodesicArea(latlngs);
-                  return "Area: "+ parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100 + " square kilometer";
+                  return "Area: "+ (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3) + " square kilometer";
         
                 };
         
@@ -613,10 +654,9 @@
 
 					lat_lngs = layer.getLatLngs()[0]
 
-					if (lat_lngs.length >= 12) {
-						layer.editing.disable()
-
-					}
+					// if (lat_lngs.length >= 12) {
+					// 	layer.editing.disable()
+					// }
 
 					change_lat_lngs(lat_lngs)
 				})

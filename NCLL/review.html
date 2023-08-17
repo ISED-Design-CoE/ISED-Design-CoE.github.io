@@ -269,7 +269,7 @@
 
 		// Hide unneeded boundary point pairs
 		// Yes there are probably slicker ways to do this. This is prototype code, not production code
-		for ( let i = lats .length; i < 12; i++ ) {			
+		for ( let i = lats .length +1; i < 13; i++ ) {			
 			let children = document .getElementsByClassName ( "lat" + i )
 			for ( let j = 0; j < children .length; j++ ) {
 				children [j] .parentNode .parentNode .remove()
