@@ -193,6 +193,9 @@
 						<tr><td>7</td><td><span class="lat07">48.234064</span></td><td><span class="long07">-89.683164</td></tr>
 						<tr><td>8</td><td><span class="lat08">48.234064</span></td><td><span class="long08">-89.683164</td></tr>
 						<tr><td>9</td><td><span class="lat09">48.234064</span></td><td><span class="long09">-89.683164</td></tr>
+						<tr><td>10</td><td><span class="lat10">48.233463</span></td><td><span class="long10">-89.750008</td></tr>
+						<tr><td>11</td><td><span class="lat11">48.233463</span></td><td><span class="long11">-89.750008</td></tr>
+						<tr><td>12</td><td><span class="lat12">48.233463</span></td><td><span class="long12">-89.750008</td></tr>
 					</table>
 			
 					<div>
@@ -261,6 +264,16 @@
 					elem .innerText = value
 				}
 			}
+		}
+
+		// Hide unneeded coordinate pairs
+		// Yes there are probably slicker ways to do this. This is prototype code, not production code
+		for ( let i = lats .length; i < 12; i++ ) {			
+			let paddedIndex = ( i + 1 ) .toString () .padStart ( 2, "0" )
+			let children = document .getElementsByClassName ( "lat" + paddedIndex )
+			for ( let j = 0; j < children .length; j++ ) {
+				children [j] .parentNode .parentNode .remove()
+			}			
 		}
 
 		// combine lat longs into an array for leaflet.
