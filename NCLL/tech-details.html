@@ -59,7 +59,12 @@
 			.alert {
 				border-left: 0px;
 			}
-			.dark-bottom {
+			.table.accentuate-dividers tr th,
+			.table.accentuate-dividers tr td {
+				border-top: 1px solid black;
+				border-bottom: 1px solid black;
+			}
+			.table tr.dark-bottom td {
 				border-bottom: 2px solid black;
 			}
 	</style>
@@ -124,7 +129,7 @@
 							<strong class="required small" aria-hidden="true">(required)</strong>
 						</legend>
 						<p>Choose whether you would like any frequency block, or only a specific block</p>
-						<table class="table form-group">
+						<table class="table form-group accentuate-dividers">
 							<tr class="dark-bottom">
 								<th>Frequency block</th>
 								<th>Information</th>
