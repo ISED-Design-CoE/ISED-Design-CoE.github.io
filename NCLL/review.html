@@ -177,7 +177,7 @@
 					<div id="map">
 						Map
 					</div>
-					<h3>Coordinates</h3>
+					<h3>Boundary points</h3>
 					<table class="table">
 						<tr>
 							<th><span class="wb-inv">Number</span></th>
@@ -228,6 +228,7 @@
 
 				<button class="btn btn-primary" type="submit" id="next-button">Submit</button>
 				<button class="btn btn-secondary" type="button">Save</button>
+				<button class="btn btn-secondary" type="button" onclick="print()">Print</button>
 				<br>
 				<button class="btn btn-secondary" type="button">Back</button>
 
@@ -266,7 +267,7 @@
 			}
 		}
 
-		// Hide unneeded coordinate pairs
+		// Hide unneeded boundary point pairs
 		// Yes there are probably slicker ways to do this. This is prototype code, not production code
 		for ( let i = lats .length +1; i < 13; i++ ) {			
 			let children = document .getElementsByClassName ( "lat" + i )
