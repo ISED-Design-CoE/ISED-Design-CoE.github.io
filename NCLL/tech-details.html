@@ -59,8 +59,20 @@
 			.alert {
 				border-left: 0px;
 			}
-			.dark-bottom {
+			.alert>:last-child {
+    			padding-bottom: 0;
+			}
+			.table.accentuate-dividers tr th,
+			.table.accentuate-dividers tr td {
+				border-top: 1px solid black;
+				border-bottom: 1px solid black;
+			}
+			.table tr.dark-bottom td {
 				border-bottom: 2px solid black;
+			}
+			.table.accentuate-dividers tr th:first-child,
+			.table.accentuate-dividers tr td:first-child {
+				white-space: nowrap;
 			}
 	</style>
 <!-- End DECoE customization -->
@@ -124,7 +136,7 @@
 							<strong class="required small" aria-hidden="true">(required)</strong>
 						</legend>
 						<p>Choose whether you would like any frequency block, or only a specific block</p>
-						<table class="table form-group">
+						<table class="table form-group accentuate-dividers">
 							<tr class="dark-bottom">
 								<th>Frequency block</th>
 								<th>Information</th>
@@ -156,7 +168,7 @@
 								</td>
 							</tr>
 
-							<tr>
+							<tr class="tenMHz" hidden>
 								<td>
 									<li class="radio">
 										<input type="radio" id="frequency-a1" name="frequency" value="a1">
@@ -170,7 +182,7 @@
 								</td>
 							</tr>
 
-							<tr>
+							<tr class="tenMHz" hidden>
 								<td>
 									<li class="radio">
 										<input type="radio" id="frequency-a2" name="frequency" value="a2">
@@ -182,7 +194,7 @@
 								</td>
 							</tr>
 
-							<tr>
+							<tr class="tenMHz" hidden>
 								<td>
 									<li class="radio">
 										<input type="radio" id="frequency-a3" name="frequency" value="a3">
@@ -194,7 +206,7 @@
 								</td>
 							</tr>
 
-							<tr>
+							<tr class="tenMHz" hidden>
 								<td>
 									<li class="radio">
 										<input type="radio" id="frequency-a4" name="frequency" value="a4" disabled>
@@ -206,7 +218,7 @@
 								</td>
 							</tr>
 
-							<tr class="dark-bottom">
+							<tr class="tenMHz dark-bottom MNSP" hidden>
 								<td>
 									<li class="radio">
 										<input type="radio" id="frequency-a5-to-a8" name="frequency" value="a5-to-a8" disabled>
@@ -215,6 +227,152 @@
 								</td>
 								<td>
 									<p>Any entity, or affiliate of that entity, with 100,000 or more retail mobile phone subscribers is ineligible to hold a licence for the blocks from 3940&nbsp;MHz to 3980&nbsp;MHz.</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-MNSP" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a5" name="frequency" value="a5">
+										<label for="frequency-a5">A5: 3940&ndash;3950&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-MNSP" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a6" name="frequency" value="a6">
+										<label for="frequency-a6">A6: 3950&ndash;3960&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-MNSP" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a7" name="frequency" value="a7">
+										<label for="frequency-a7">A7: 3960&ndash;3970&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz dark-bottom not-MNSP" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a8" name="frequency" value="a8">
+										<label for="frequency-a8">A8: 3970&ndash;3980&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a1-a2" name="frequency" value="a1-a2">
+										<label for="frequency-a1-a2">A1-A2: 3900&ndash;3920&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<section class="alert alert-warning">
+										<p>A1 operates under <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/fixed-satellite-microwave/b6-no-interference-no-protection-ninp">no-interference, no-protection</a> restrictions. There is a risk of interference from adjacent band <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/policy-and-licensing-framework-spectrum-3800-mhz-band">3800&nbsp;MHz flex</a>.</p>
+									</section>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a2-a3" name="frequency" value="a2-a3">
+										<label for="frequency-a2-a3">A2-A3: 3910&ndash;3930&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a3-a4" name="frequency" value="a3-a4" disabled>
+										<label for="frequency-a3-a4">A3-A4: 3920&ndash;3940&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p>The requested licence area overlaps an existing licence using frequency block A4.</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz dark-bottom MNSP" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a4-to-a8" name="frequency" value="a4-to-a8" disabled>
+										<label for="frequency-a4-to-a8">A4 to A8: 3930&ndash;3980&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p>Any entity, or affiliate of that entity, with 100,000 or more retail mobile phone subscribers is ineligible to hold a licence for the blocks from 3940&nbsp;MHz to 3980&nbsp;MHz.</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz not-MNSP" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a4-a5" name="frequency" value="a4-a5" disabled>
+										<label for="frequency-a4-a5">A4-A5: 3930&ndash;3950&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p>The requested licence area overlaps an existing licence using frequency block A4.</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz not-MNSP" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a5-a6" name="frequency" value="a5-a6">
+										<label for="frequency-a5-a6">A5-A6: 3940&ndash;3960&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz not-MNSP" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a6-a7" name="frequency" value="a6-a7">
+										<label for="frequency-a6-a7">A6-A7: 3950&ndash;3970&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz dark-bottom not-MNSP" hidden>
+								<td>
+									<li class="radio">
+										<input type="radio" id="frequency-a7-a8" name="frequency" value="a7-a8">
+										<label for="frequency-a7-a8">A7-A8: 3960&ndash;3980&nbsp;MHz</label>
+									</li>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
 								</td>
 							</tr>
 
@@ -237,6 +395,34 @@
 		</div>
 	</form>
 	<script src="catch-and-throw.js"></script>
+	<script>
+		// Show appropriate rows of the table
+
+		// Show the ones with the right bandwidth...
+		const bandwidth = urlParams.get ( "bandwidth" )
+		if ( bandwidth == "10" ) {
+			for ( let elem of document .getElementsByClassName ( "tenMHz" ) ) {
+				elem .removeAttribute ( "hidden" )
+			}
+		} else {
+			for ( let elem of document .getElementsByClassName ( "twentyMHz" ) ) {
+				elem .removeAttribute ( "hidden" )
+			}
+		}
+
+		// ...and then re-hide the ones that aren't appropriate to this company
+		const MNSP = urlParams.get ( "MNSP" )
+		if ( MNSP == "yes" ) {
+			for ( let elem of document .getElementsByClassName ( "not-MNSP" ) ) {
+				elem .setAttribute ( "hidden", "hidden" )
+			}
+		} else {
+			for ( let elem of document .getElementsByClassName ( "MNSP" ) ) {
+				elem .setAttribute ( "hidden", "hidden" )
+			}
+		}
+
+	</script>
 	</div>
 
 <!-- End page content -->

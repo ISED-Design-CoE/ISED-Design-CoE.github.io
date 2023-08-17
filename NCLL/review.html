@@ -128,13 +128,27 @@
 						<h2>Contact information</h2>
 						<span class="pull-right"><button class="btn btn-secondary" type="button">Edit</button></span>
 					</div>
+					<h3>Administrative contact</h3>
 					<dl>
-						<dt>Administrative contact</dt>
-						<dd><span class="admin-contact">Use default</span></dd>
-						<dt>Payment contact</dt>
-						<dd><span class="payment-contact">Use default</span></dd>
-						<dt>Technical contact</dt>
-						<dd><span class="tech-contact">Use default</span></dd>
+						<dt>Name</dt>
+						<dd><span class="admin-contact-name">John Dutton</span></dd>
+						<dt>Address</dt>
+						<dd><span class="admin-contact-address">999 Main St., Calgary AB</span></dd>
+						<dt>Email</dt>
+						<dd><span class="admin-contact-email">john.dutton@yellowstone.com</span></dd>
+						<dt>Telephone</dt>
+						<dd><span class="admin-contact-telephone">(403) 123-4567</span></dd>
+					</dl>
+					<h3>Payment contact</h3>
+					<dl>
+						<dt>Name</dt>
+						<dd><span class="payment-contact-name">John Dutton</span></dd>
+						<dt>Address</dt>
+						<dd><span class="payment-contact-address">999 Main St., Calgary AB</span></dd>
+						<dt>Email</dt>
+						<dd><span class="payment-contact-email">john.dutton@yellowstone.com</span></dd>
+						<dt>Telephone</dt>
+						<dd><span class="payment-contact-telephone">(403) 123-4567</span></dd>
 					</dl>
 				
 					<div>
@@ -170,15 +184,18 @@
 							<th>Latitude</th>
 							<th>Longitude</th>
 						</tr>
-						<tr><td>1</td><td><span class="lat01">48.233463</span></td><td><span class="long01">-89.750008</td></tr>
-						<tr><td>2</td><td><span class="lat02">48.291512</span></td><td><span class="long02">-89.721282</td></tr>
-						<tr><td>3</td><td><span class="lat03">48.281911</span></td><td><span class="long03">-89.658390</td></tr>
-						<tr><td>4</td><td><span class="lat04">48.254440</span></td><td><span class="long04">-89.614391</td></tr>
-						<tr><td>5</td><td><span class="lat05">48.216475</span></td><td><span class="long05">-89.593922</td></tr>
-						<tr><td>6</td><td><span class="lat06">48.234064</span></td><td><span class="long06">-89.683164</td></tr>
-						<tr><td>7</td><td><span class="lat07">48.234064</span></td><td><span class="long07">-89.683164</td></tr>
-						<tr><td>8</td><td><span class="lat08">48.234064</span></td><td><span class="long08">-89.683164</td></tr>
-						<tr><td>9</td><td><span class="lat09">48.234064</span></td><td><span class="long09">-89.683164</td></tr>
+						<tr><td>1</td><td><span class="lat1">48.233463</span></td><td><span class="long1">-89.750008</td></tr>
+						<tr><td>2</td><td><span class="lat2">48.291512</span></td><td><span class="long2">-89.721282</td></tr>
+						<tr><td>3</td><td><span class="lat3">48.281911</span></td><td><span class="long3">-89.658390</td></tr>
+						<tr><td>4</td><td><span class="lat4">48.254440</span></td><td><span class="long4">-89.614391</td></tr>
+						<tr><td>5</td><td><span class="lat5">48.216475</span></td><td><span class="long5">-89.593922</td></tr>
+						<tr><td>6</td><td><span class="lat6">48.234064</span></td><td><span class="long6">-89.683164</td></tr>
+						<tr><td>7</td><td><span class="lat7">48.234064</span></td><td><span class="long7">-89.683164</td></tr>
+						<tr><td>8</td><td><span class="lat8">48.234064</span></td><td><span class="long8">-89.683164</td></tr>
+						<tr><td>9</td><td><span class="lat9">48.234064</span></td><td><span class="long9">-89.683164</td></tr>
+						<tr><td>10</td><td><span class="lat10">48.233463</span></td><td><span class="long10">-89.750008</td></tr>
+						<tr><td>11</td><td><span class="lat11">48.233463</span></td><td><span class="long11">-89.750008</td></tr>
+						<tr><td>12</td><td><span class="lat12">48.233463</span></td><td><span class="long12">-89.750008</td></tr>
 					</table>
 			
 					<div>
@@ -196,7 +213,7 @@
 					</div>
 					<dl class="dl-horizontal">
 						<dt>Base rate (Rural) per year</dt>
-						<dd>$<span class="fee-zone-cost">0.45</span> per MHz per km<sup>2</sup></dd>
+						<dd>$<span class="base-rate">0.45</span> per MHz per km<sup>2</sup></dd>
 						<dt>Requested bandwidth</dt>
 						<dd><span class="bandwidth">10</span> MHz</dd>
 						<dt>Area size</dt>
@@ -204,7 +221,7 @@
 					</dl>
 					<dl class="dl-horizontal">
 						<dt>Total cost per year</dt>
-						<dd>$<span class="fee-zone-cost">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">162</span> = $<span class="total-cost">729.00</span></dd>
+						<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">162</span> = $<span class="total-cost">729.00</span></dd>
 					</dl>
 				</div>
 
@@ -231,25 +248,31 @@
 		var lat_longs = [];
 
 		for ( const [ key, value ] of urlParams ) {
-			// Remove namespace prefix
-		    let className = key.replace ( /^CAT_/, '' )
-			
 			// add lat longs to the variable
 			if (value != "") {
-				if (className.startsWith('lat')) {
+				if (key.startsWith('lat')) {
 					lats.push(value);
-				} else if (className.startsWith('long')) {
+				} else if (key.startsWith('long')) {
 					longs.push(value);
 				}
 			}
 
-			for ( const elem of document .getElementsByClassName ( className ) ) {
+			for ( const elem of document .getElementsByClassName ( key ) ) {
 				if ( value == "" ) {
-					elem .innerHTML = "-"
+					elem .innerText = "-"
 				} else {
-					elem .innerHTML = value
+					elem .innerText = value
 				}
 			}
+		}
+
+		// Hide unneeded coordinate pairs
+		// Yes there are probably slicker ways to do this. This is prototype code, not production code
+		for ( let i = lats .length; i < 12; i++ ) {			
+			let children = document .getElementsByClassName ( "lat" + i )
+			for ( let j = 0; j < children .length; j++ ) {
+				children [j] .parentNode .parentNode .remove()
+			}			
 		}
 
 		// combine lat longs into an array for leaflet.
