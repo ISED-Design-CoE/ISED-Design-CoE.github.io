@@ -56,10 +56,10 @@
 			ul.nav-wizard li {
 				font-size: inherit;
 			}
-			.alert {
+			.alert-warning {
 				border-left: 0px;
 			}
-			.alert>:last-child {
+			.alert-warning>:last-child {
     			padding-bottom: 0;
 			}
 			.table.accentuate-dividers tr th,
@@ -379,9 +379,11 @@
 						</table>
 					</fieldset>
 					
-
+				<section id="save-div" class="alert alert-success" hidden>
+					<p>Application saved as draft</p>
+				</section>
 				<button class="btn btn-primary" type="submit">Next</button>
-				<button class="btn btn-secondary" type="button">Save</button>
+				<button class="btn btn-secondary" type="button" id="save-button">Save</button>
 				<br>
 				<button class="btn btn-secondary" type="button">Back</button>
 
@@ -394,6 +396,13 @@
 			</div>
 		</div>
 	</form>
+	<script>
+		const saveButton = document.getElementById ( "save-button" )
+		const saveDiv = document.getElementById ( "save-div" )
+		saveButton.addEventListener ( "click", (event) => {
+			saveDiv .removeAttribute ( "hidden" )
+		})
+	</script>
 	<script src="catch-and-throw.js"></script>
 	<script>
 		// Show appropriate rows of the table
