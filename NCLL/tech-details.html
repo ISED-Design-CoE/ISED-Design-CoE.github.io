@@ -60,10 +60,13 @@
 			.alert-warning>:last-child {
     			padding-bottom: 0;
 			}
+			.alert::before {
+				margin-left: calc(-1.27em + 8px);
+			}
 			.table.accentuate-dividers tr th,
 			.table.accentuate-dividers tr td {
-				border-top: 1px solid black;
-				border-bottom: 1px solid black;
+				border: 1px solid black;
+				/* border-bottom: 1px solid black; */
 			}
 			.table tr.dark-bottom td {
 				border-bottom: 2px solid black;
@@ -71,6 +74,9 @@
 			.table.accentuate-dividers tr th:first-child,
 			.table.accentuate-dividers tr td:first-child {
 				white-space: nowrap;
+			}
+			.gc-chckbxrdio input[type=checkbox]+label::before, .gc-chckbxrdio input[type=radio]+label::before {
+				left: 1px;
 			}
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
