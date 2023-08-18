@@ -12,8 +12,25 @@ function createHiddenField ( fieldName, fieldValue ) {
 const queryString = window.location.search
 const urlParams = new URLSearchParams ( queryString )
 
+
 for ( const [ key, value ] of urlParams ) {
-    
-  // Create hidden input field (which will be thrown forward to the next screen because GET)
-  createHiddenField ( key, value )
+
+  previous_buttons = document.querySelectorAll("input[name="+key+"]");
+
+  previous_buttons.forEach(button => {
+    if (button != null) {
+      if (button.value == value) {
+        button.checked = true;
+      }
+    } 
+  })
+  
+  previous_element = document.getElementById(key);
+  if (previous_element != null) {
+    previous_element.value= value;
+  } else {
+      // Create hidden input field (which will be thrown forward to the next screen because GET)
+    createHiddenField ( key, value )
 }
+  }
+
