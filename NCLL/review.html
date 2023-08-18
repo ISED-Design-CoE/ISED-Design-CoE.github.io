@@ -107,7 +107,7 @@
 <!-- Start page content -->
 
 	<div id="superhead">
-		<p>Non-competitive local licence application (01000139-001) <span class="pull-right" id="status">Draft</span></p>
+		<p>Non-competitive local licence application (<span class="app-number"></span>01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
 	</div>
 	<div class="form-group">
 		<ul class="nav nav-wizard">
@@ -318,6 +318,15 @@
 		const changeLicensee = document .getElementById ( "change-licensee" )
 		const wbBc = document .getElementById ( "wb-bc" )
 		wbBc .prepend ( changeLicensee )
+	</script>
+	<script>
+		// Read application number from parameters if present
+		if ( urlParams .has ( "app-number" ) ) {
+			const appNumberText = urlParams .get ( "app-number" )
+			for ( let elem of document .getElementsByClassName ( "app-number" ) ) {
+				elem .innerText = appNumberText
+			}
+		}
 	</script>
 <!-- End page content -->
 
