@@ -73,8 +73,6 @@
 <script src="https://unpkg.com/esri-leaflet-geocoder"></script>
 
 
-	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
-	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
 	<style>
 		/* Styles for all mockups */
 			.notesaboutmockup {
@@ -124,6 +122,9 @@
 				background-color: yellow;
 			}
 	</style>
+	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
+	<link href="ncll-portal.css" rel="stylesheet" type="text/css">
 <!-- End DECoE customization -->
 
 	</head>
@@ -369,7 +370,27 @@
 
 	</script>
 	</div>
-
+	<div id="change-licensee">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-offset-8 col-xs-4">
+					<details>
+						<summary>The Best Company</summary>
+						<p><a href="select-licensee.html">Switch licensee account</a></p>
+						<p class="border-top"><a href="login.html"><span class="glyphicon-log-out glyphicon"></span> Sign out</a></p>
+					</details>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		// Move #change-licensee to top of screen
+		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
+		// This does lead to z-index issues: the "Log out" button can't currently be reached because it's behind the <main> element
+		const changeLicensee = document .getElementById ( "change-licensee" )
+		const wbBc = document .getElementById ( "wb-bc" )
+		wbBc .prepend ( changeLicensee )
+	</script>
 <!-- End page content -->
 
 			<div id="def-preFooter">
