@@ -99,7 +99,7 @@
 					<tr>
 						<td>
 							<div class="radio">
-								<input type="radio" id="the_best_company" name="licensee" value="Any">
+								<input type="radio" id="the_best_company" name="licensee" value="The best company" data-rule-required="true">
 								<label for="the_best_company">The best company</label>
 							</div>
 						</td>
@@ -108,7 +108,7 @@
 					<tr>
 						<td>
 							<div class="radio">
-								<input type="radio" id="a_different_company" name="licensee" value="Any">
+								<input type="radio" id="a_different_company" name="licensee" value="A different company">
 								<label for="a_different_company">A different company</label>
 							</div>
 						</td>
@@ -117,7 +117,7 @@
 					<tr>
 						<td>
 							<div class="radio">
-								<input type="radio" id="another_different_company" name="licensee" value="Any">
+								<input type="radio" id="another_different_company" name="licensee" value="Another different company">
 								<label for="another_different_company">Another different company</label>
 							</div>
 						</td>
@@ -126,7 +126,7 @@
 					<tr>
 						<td>
 							<div class="radio">
-								<input type="radio" id="not_a_bad_company" name="licensee" value="Any">
+								<input type="radio" id="not_a_bad_company" name="licensee" value="Not a bad company all things considered">
 								<label for="not_a_bad_company">Not a bad company all things considered</label>
 							</div>
 						</td>
@@ -143,11 +143,11 @@
 				<h2>Notes about this mockup:</h2>
 				<ul>
 					<li>Uses the <a href="https://wet-boew.github.io/v4.0-ci/docs/ref/tables/tables-en.html">DataTables plugin for WET</a></li>
-					<li>TODO: replace "Select" links with radio buttons and add a "Next" button at the bottom?</li>
 					<li>TODO:
 						<ul>
 							<li>When user is logging into the portal, leave as is</li>
 							<li>When user is logging into an application, add this to the list of steps</li>
+							<li>Make selection required</li>
 						</ul>
 					</li>
 				</ul>
@@ -155,10 +155,11 @@
 		</div>
 		</fieldset>
 	<script>
+		// Update form action to reflect the desired target
 		const queryString = window.location.search
 		const urlParams = new URLSearchParams ( queryString )
 		const target = urlParams.get ( 'target' )
-		document.getElementById ( 'target' ) .href = target + '.html'
+		document.getElementById ( 'sign-in' ) .setAttribute ( "action", target + '.html' )
 	</script>
 	<div id="change-licensee">
 		<div class="container">
