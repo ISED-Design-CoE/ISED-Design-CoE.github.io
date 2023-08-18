@@ -1,0 +1,46 @@
+
+/* .notesaboutmockup {
+	display: none;
+} */
+
+/* Uncomment the above if using these pages for usability testing */
+
+#wb-bc {
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width: 768px) {
+    #wb-bc {
+        width: 750px;
+    }
+    #change-licensee {
+        position: absolute;
+    }
+}
+@media (min-width: 992px) {
+    #wb-bc {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px) {
+    #wb-bc {
+        width: 1170px;
+    }
+}
+.border-top {
+    padding-top: 11.5px;
+    border-top: 1px solid #ddd
+}
+#change-licensee details summary {
+    font-weight: bold;
+}
+#change-licensee details[open] {
+    padding-bottom: 0
+}
+#change-licensee a {
+    text-decoration: none;
+}
+#change-licensee a:hover,
+#change-licensee a:focus {
+    text-decoration: underline;
+}
