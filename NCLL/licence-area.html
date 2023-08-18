@@ -345,10 +345,12 @@
 			licenceFeeAfter .removeAttribute ( "hidden" )
 
 			// Show the error message if necessary, and don't unhide the Next button
+			const lowPowerMessage = document.getElementById ( "low-power-message" )
 			if ( powerLevel == "Low power" && area_field . value > 15 ) {
-				const lowPowerMessage = document.getElementById ( "low-power-message" )
 				lowPowerMessage .removeAttribute ( "hidden" )
+				nextButton .setAttribute ( "hidden" , "hidden" )
 			} else {
+				lowPowerMessage .setAttribute ( "hidden" , "hidden" )
 				nextButton .removeAttribute ( "hidden" )
 			}
 		})
