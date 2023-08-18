@@ -130,7 +130,7 @@
 					</span>
 					<strong class="required small" aria-hidden="true">(required)</strong>
 				</label>
-				<input type="date" id="effective-date" name="effective-date" class="form-control">
+				<input type="date" id="effective-date" name="effective-date" class="form-control" required="required">
 			</div>
 
 			<fieldset class="gc-chckbxrdio">
@@ -146,7 +146,7 @@
 				</details>
 				<ul class="list-unstyled lst-spcd-2">
 					<li class="radio">
-						<input type="radio" id="renewable" name="renewable-temporary" value="renewable">
+						<input type="radio" id="renewable" name="renewable-temporary" value="renewable" data-rule-required="true">
 						<label for="renewable">Renewable</label>
 					</li>
 					<li class="radio">
@@ -180,7 +180,7 @@
 				</details>
 				<ul class="list-unstyled lst-spcd-2">
 					<li class="radio">
-						<input type="radio" id="MNSP-yes" name="MNSP" value="yes">
+						<input type="radio" id="MNSP-yes" name="MNSP" value="yes" data-rule-required="true">
 						<label for="MNSP-yes">Yes</label>
 					</li>
 					<li class="radio">
@@ -199,7 +199,7 @@
 				</legend>
 				<ul class="list-unstyled lst-spcd-2">
 					<li class="radio">
-						<input type="radio" id="tenMHz" name="bandwidth" value="10">
+						<input type="radio" id="tenMHz" name="bandwidth" value="10" data-rule-required="true">
 						<label for="tenMHz">10 MHz</label>
 					</li>
 					<li class="radio">
