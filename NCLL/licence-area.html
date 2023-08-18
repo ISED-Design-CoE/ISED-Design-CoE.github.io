@@ -696,6 +696,7 @@
 
 			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
 
+			console.log(latlngs)
 			change_lat_lngs(latlngs);
             
             });
@@ -731,5 +732,61 @@
         });
         
         </script>
+
+
+
+<script>
+
+if (document.getElementById("lat1").value != "") {
+
+	lats = []
+	longs = []
+	lat_longs = [];
+	
+	for ( let i = 1; i < 13; i++ ) {
+			if (document.getElementById("lat"+i).value != "") {
+				console.log(document.getElementById("lat"+i).value);
+				lats.push(document.getElementById("lat"+i).value);
+				longs.push(document.getElementById("long"+i).value);
+				}
+	}
+
+		for (let i = 0; i < lats.length; i++) {
+			lat_longs.push([lats[i],longs[i]])
+		}
+	
+	console.log(lat_longs)
+
+	const polygon = L.polygon(lat_longs).addTo(map);
+
+
+						
+	map.removeControl(drawControl);
+	map.removeControl(layerControl);
+	map.addControl(removeAllControl);
+	layerControl.addTo(map);
+	polygon.on('mouseover', function (event) {
+		polygon.bindPopup(getPopupContent(polygon)).openPopup();
+	});
+	polygon.on('mouseout', function (event) {
+		polygon.bindPopup(getPopupContent(polygon)).closePopup();
+	});
+
+	if (polygon.getLatLngs()[0].length < 12) {
+		polygon.editing.enable()
+	}
+
+	drawnItems.addLayer(polygon);
+	
+	drawnItems.setStyle({fillColor :'#33cc33',
+			fillOpacity:0.65,
+			color:"#248f24",
+			opacity: 1})
+
+
+}
+
+
+</script>
 	</body>
 </html>
