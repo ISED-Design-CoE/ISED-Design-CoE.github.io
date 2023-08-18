@@ -209,6 +209,61 @@
 				</ul>
 			</fieldset>
 
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
+						Scope of service
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<details>
+					<summary>More information.</summary>
+					<p>If you hold an indoor-only licence, you only need to serve at least one building within your licence area, rather than the whole licence area.</p>
+					<p>However, indoor-only licences must be low power, which means they can be at most 15 km<sup>2</sup> in area.</p>
+					<p>If you hold an outdoor-and-indoor licence, you do not need to have indoor transmitters, but you must have at least one outdoor transmitter and you must serve your entire licence area.</p>
+				</details>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" id="indoor-only" name="antenna" value="Indoor only">
+						<label for="indoor-only">Indoor only</label>
+						<div id="medium-power-message" class="alert alert-info" hidden>
+							<p>Medium power licences cannot be indoor-only.</p>
+						</div>
+					</li>
+					<li class="radio">
+						<input type="radio" id="outdoor-indoor" name="antenna" value="Outdoor and indoor" data-rule-required="true">
+						<label for="outdoor-indoor">Outdoor and indoor</label>
+					</li>
+				</ul>
+			</fieldset>
+
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
+						Power level
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<details>
+					<summary>More information.</summary>
+					<p>Low-power licences can be acquired in licence areas of any area type, for any scope of service, and for area sizes up to 15 km<sup>2</sup> in area.</p>
+					<p>Medium-power licences can only be acquired in rural or remote areas, for outdoor-and-indoor licences, and for area sizes between 75 and 165 km<sup>2</sup>.</p>
+				</details>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" id="low-power" name="power-level" value="Low power" data-rule-required="true">
+						<label for="low-power">Low power</label>
+					</li>
+					<li class="radio">
+						<input type="radio" id="medium-power" name="power-level" value="Medium power">
+						<label for="medium-power">Medium power</label>
+						<div id="indoor-only-message" class="alert alert-info" hidden>
+							<p>Indoor-only licences cannot be medium power.</p>
+						</div>
+				</li>
+				</ul>
+			</fieldset>
+
 		</div>
 		<section id="save-div" class="alert alert-success" hidden>
 			<p>Application saved as draft</p>
@@ -274,11 +329,43 @@
 		<script>
 			const saveButton = document.getElementById ( "save-button" )
 			const saveDiv = document.getElementById ( "save-div" )
-			saveButton.addEventListener ( "click", (event) => {
+			saveButton .addEventListener ( "click", ( event ) => {
 				saveDiv .removeAttribute ( "hidden" )
 			})
 		</script>
 		<script src="catch-and-throw.js"></script>
+		<script>
+			// Validate the interaction between the Scope of service and Power level fields
+			const indoorOnlyField = document.getElementById ( "indoor-only" )
+			const outdoorIndoorField = document.getElementById ( "outdoor-indoor" )
+
+			// const lowPowerField = document.getElementById ( "low-power" )
+			const lowPowerField = document.getElementById ( "low-power" )
+			const mediumPowerField = document.getElementById ( "medium-power" )
+
+			const indoorOnlyMessage = document.getElementById ( "indoor-only-message" )
+			const mediumPowerMessage = document.getElementById ( "medium-power-message" )
+
+			indoorOnlyField .addEventListener ( "click", ( event ) => {
+				indoorOnlyMessage .removeAttribute ( "hidden" )
+				mediumPowerField .disabled = true
+			})
+
+			outdoorIndoorField .addEventListener ( "click", ( event ) => {
+				indoorOnlyMessage .setAttribute ( "hidden", "hidden" )
+				mediumPowerField .disabled = false
+			})
+
+			lowPowerField .addEventListener ( "click", ( event ) => {
+				mediumPowerMessage .setAttribute ( "hidden", "hidden" )
+				indoorOnlyField .disabled = false
+			})
+
+			mediumPowerField .addEventListener ( "click", ( event ) => {
+				mediumPowerMessage .removeAttribute ( "hidden" )
+				indoorOnlyField .disabled = true
+			})
+		</script>
 	</div>
 	<div id="change-licensee">
 		<div class="container">

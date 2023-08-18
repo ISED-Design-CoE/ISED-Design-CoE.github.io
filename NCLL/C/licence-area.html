@@ -277,43 +277,17 @@
 							<p>Press <kbd><samp>Calculate</samp></kbd> to see results.</p>
 						</div>
 						<div id="area-information-after" hidden>
-							<p><strong>Area size</strong> - <span class="area-size" id="area-size">162</span> km<sup>2</sup></p>
-							<details>
-								<summary>More information on area size</summary>
-								<p>Total area covered by the licence</p>
-							</details>
+							<dl class="dl-horizontal">
+								<dt>Area size:</dt>
+								<dd><span class="area-size" id="area-size">88</span> km<sup>2</sup></dd>
+								<dt>Fee zone:</dt>
+								<dd><span class="fee-zone-type">Rural</span></dd>
+							</dl>
 
-							<p><strong>Fee zone</strong> - <span class="fee-zone-type">Rural</span>: $<span class="base-rate">0.45</span> per MHz per year per km<sup>2</sup></p>
-							<details>
-								<summary>More information on fee zone</summary>
-								<p>Licences in:</p>
-								<ul class="list-unstyled">
-									<li>Remote areas cost $0.01 per MHz per year per km<sup>2</sup></li>
-									<li>Urban areas cost $1.80 per MHz per year per km<sup>2</sup></li>
-									<li>Rural areas cost $0.45 per MHz per year per km<sup>2</sup></li>
-								</ul>
-							</details>
-
-							<p><strong>Licence type</strong> - <span class="licence-type">Medium power (##</span> dBm/MHz)</p>
-							<details>
-								<summary>More information on licence type</summary>
-								<ul class="list-unstyled">
-									<li>Urban areas are low power (## dBm/MHz)</li>
-									<li>Areas between 0&ndash;15 km<sup>2</sup> are low-power (## dBm/MHz)</li>
-									<li>Areas between 75&ndash;165 km<sup>2</sup> are medium-power (## dBm/MHz)</li>
-								</ul>
-								<p>You can apply for multiple licences to cover an area larger than 15 km<sup>2</sup> with low power</p>
-							</details>
-
-							<p><strong>Scope of coverage</strong> - <span class="antenna">Indoor/outdoor</span></p>
-							<details>
-								<summary>More information on scope of coverage</summary>
-								<ul class="list-unstyled">
-									<li>Low power licences can be indoor/outdoor or indoor only</li>
-									<li>Medium power licences can only be indoor/outdoor</li>
-								</ul>
-								<p>You can apply for multiple licences in order to cover an area larger than 15 km<sup>2</sup> that is indoor</p>
-							</details>
+							<div id="low-power-message" class="alert alert-danger" hidden>
+								<p>You have requested a low power licence, which means the licence area can be at most 15 km<sup>2</sup> in area.</p>
+								<p>Please adjust the area to be less than 15 km<sup>2</sup>. After submitting this application, you may then <a href="how-to-split.html">duplicate</a> it to create as many other licence applications as you would like.</p>
+							</div>
 						</div>
 
 						<h2>Licence fee</h2>
@@ -352,6 +326,7 @@
 			</div>
 		</div>
 	</form>
+	<script src="catch-and-throw.js"></script>
 	<script>
 		const calculateButton = document.getElementById ( "calculate-button" )
 		const areaInformationBefore = document.getElementById ( "area-information-before" )
@@ -359,12 +334,22 @@
 		const licenceFeeBefore = document.getElementById ( "licence-fee-before" )
 		const licenceFeeAfter = document.getElementById ( "licence-fee-after" )
 		const nextButton = document.getElementById ( "next-button" )
+
+		const powerLevel = urlParams.get ( "power-level" )
+
 		calculateButton.addEventListener ( "click", (event) => {
 			areaInformationBefore .setAttribute ( "hidden", "hidden" )
 			areaInformationAfter .removeAttribute ( "hidden" )
 			licenceFeeBefore .setAttribute ( "hidden", "hidden" )
 			licenceFeeAfter .removeAttribute ( "hidden" )
-			nextButton .removeAttribute ( "hidden" )
+
+			// Show the error message if necessary, and don't unhide the Next button
+			if ( powerLevel == "Low power" ) {
+				const lowPowerMessage = document.getElementById ( "low-power-message" )
+				lowPowerMessage .removeAttribute ( "hidden" )
+			} else {
+				nextButton .removeAttribute ( "hidden" )
+			}
 		})
 	</script>
 	<script>
@@ -374,7 +359,6 @@
 			saveDiv .removeAttribute ( "hidden" )
 		})
 	</script>
-	<script src="catch-and-throw.js"></script>
 	<script>
 		// Calculate the licence fee
 		// Get base rate
