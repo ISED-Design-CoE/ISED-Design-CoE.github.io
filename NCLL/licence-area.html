@@ -345,7 +345,7 @@
 			licenceFeeAfter .removeAttribute ( "hidden" )
 
 			// Show the error message if necessary, and don't unhide the Next button
-			if ( powerLevel == "Low power" ) {
+			if ( powerLevel == "Low power" && area_field . value > 15 ) {
 				const lowPowerMessage = document.getElementById ( "low-power-message" )
 				lowPowerMessage .removeAttribute ( "hidden" )
 			} else {
@@ -362,6 +362,8 @@
 	</script>
 	<script>
 		// Calculate the licence fee
+		// Do we do this twice??
+
 		// Get base rate
 		const baseRate = .45 // hardcode for now (this is the rural rate)
 		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
