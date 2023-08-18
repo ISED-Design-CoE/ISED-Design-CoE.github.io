@@ -146,11 +146,11 @@
 				</details>
 				<ul class="list-unstyled lst-spcd-2">
 					<li class="radio">
-						<input type="radio" id="renewable" name="renewable-temporary" value="renewable" data-rule-required="true">
+						<input type="radio" id="renewable" name="renewable-temporary" value="Renewable" data-rule-required="true">
 						<label for="renewable">Renewable</label>
 					</li>
 					<li class="radio">
-						<input type="radio" id="temporary" name="renewable-temporary" value="temporary">
+						<input type="radio" id="temporary" name="renewable-temporary" value="Temporary">
 						<label for="temporary">Temporary</label>
 					</li>
 				</ul>
@@ -180,11 +180,11 @@
 				</details>
 				<ul class="list-unstyled lst-spcd-2">
 					<li class="radio">
-						<input type="radio" id="MNSP-yes" name="MNSP" value="yes" data-rule-required="true">
+						<input type="radio" id="MNSP-yes" name="MNSP" value="Yes" data-rule-required="true">
 						<label for="MNSP-yes">Yes</label>
 					</li>
 					<li class="radio">
-						<input type="radio" id="MNSP-no" name="MNSP" value="no">
+						<input type="radio" id="MNSP-no" name="MNSP" value="No">
 						<label for="MNSP-no">No</label>
 					</li>
 				</ul>
@@ -283,8 +283,8 @@
 		</div>
 		</form>
 		<script>
-			const renewableButton = document.getElementById ( "renewable" )
-			const temporaryButton = document.getElementById ( "temporary" )
+			const renewableButton = document.getElementById ( "Renewable" )
+			const temporaryButton = document.getElementById ( "Temporary" )
 			const expiryDateDiv = document.getElementById ( "expiry-date-div" )
 			renewableButton.addEventListener ( "click", (event) => {
 				expiryDateDiv .setAttribute ( "hidden", "hidden" )
