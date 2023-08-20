@@ -363,11 +363,8 @@
 		})
 	</script>
 	<script>
-		// Calculate the licence fee
-		// Do we do this twice??
-
-		// Get base rate
-		const baseRate = .45 // hardcode for now (this is the rural rate)
+		// Set up needed fields for cost calculation
+		const baseRate = .45 // this is the rural rate
 		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
 			elem .innerText = baseRate
 		}
@@ -378,21 +375,9 @@
 		for ( let elem of document .getElementsByClassName ( "bandwidth" ) ) {
 			elem .innerText = bandwidth
 		}
-		createHiddenField ( "bandwidth", bandwidth )
 		
-		// Get area size
-		const areaSize = 162 // hardcode for now, but this should come from Leaflet.js
-		for ( let elem of document .getElementsByClassName ( "area-size" ) ) {
-			elem .innerText = areaSize
-		}
-		var area_field = createHiddenField ( "area-size", areaSize )
-
-		// Calculate total cost
-		const totalCost = ( baseRate * bandwidth * areaSize ) .toFixed ( 2 )
-		for ( let elem of document .getElementsByClassName ( "total-cost" ) ) {
-			elem .innerText = totalCost
-		}
-		var cost_field = createHiddenField ( "total-cost", totalCost )
+		var area_field = createHiddenField ( "area-size", 0 )
+		var cost_field = createHiddenField ( "total-cost", 0 )
 
 	</script>
 	</div>
@@ -541,7 +526,7 @@
 
 				area_field.setAttribute( "value", area_number );
 
-				let cost_number = (bandwidth * 0.45 * (area_number)).toFixed(2);
+				let cost_number = (bandwidth * baseRate * (area_number)).toFixed(2);
 
 				total_cost_spans = document.querySelectorAll(".total-cost");
 				total_cost_spans.forEach(element => {
