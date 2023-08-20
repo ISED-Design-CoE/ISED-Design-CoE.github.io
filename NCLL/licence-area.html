@@ -115,7 +115,7 @@
 					width: 15em;
 				}
 			}
-			#area-information-after > p {
+			#calc-results-after > p {
 				margin-top: 1em;
 			}
 			.highlight {
@@ -265,7 +265,7 @@
 								<summary>More information</summary>
 								<p>WKT is a compact format for describing mathematical shapes, including polygons. Each vertex is a longitude-latitude pair.</p>
 								<p>e.g. POLYGON((<span class="highlight">-113.956370 50.880852</span>,<span class="highlight">-113.952550 50.880744</span>,<span class="highlight">-113.944869 50.882288</span>,<span class="highlight">-113.945942 50.884372</span>,<span class="highlight">-113.951950 50.883398</span>,<span class="highlight">-113.956885 50.882369</span>,<span class="highlight">-113.956370 50.880852</span>))</p>
-								<p>The input field below accepts up to 12 pairs.</p>
+								<p>The input field below accepts a polygon with up to 12 pairs.</p>
 							</details>
 							<textarea id="WKT" name="WKT" class="form-control" rows="3" placeholder="Enter WKT text here"></textarea>
 						</div>
@@ -273,39 +273,50 @@
 						<p>Once your area is entered, click <kbd><samp>Calculate</samp></kbd> to get the information about the area and to calculate the licence fee</p>
 						<button type="button" class="btn btn-call-to-action" id="calculate-button">Calculate</button>
 
-						<h2>Area information</h2>
-						<div id="area-information-before">
+						<div id="calc-results-before">
 							<p>Press <kbd><samp>Calculate</samp></kbd> to see results.</p>
 						</div>
-						<div id="area-information-after" hidden>
+						<div id="calc-results-after" hidden>
+							<h2>Area information</h2>
 							<dl class="dl-horizontal">
 								<dt>Area size:</dt>
-								<dd><span class="area-size" id="area-size">88</span> km<sup>2</sup></dd>
+								<dd><span class="area-size" id="area-size">0</span> km<sup>2</sup></dd>
 								<dt>Fee zone:</dt>
 								<dd><span class="fee-zone-type">Rural</span></dd>
 							</dl>
 
-							<div id="low-power-message" class="alert alert-danger" hidden>
+							<div id="LP-too-large-message" class="alert alert-danger" hidden>
 								<p>You have requested a low power licence, which means the licence area can be at most 15 km<sup>2</sup> in area.</p>
-								<p>Please adjust the area to be less than 15 km<sup>2</sup>. After submitting this application, you may then <a href="how-to-split.html" target="_blank">duplicate</a> it to create as many other licence applications as you would like.</p>
+								<p>Please adjust the area to be less than 15 km<sup>2</sup>. After submitting this application, you may then duplicate it to create as many other licence applications as you would like. See <a href="how-to-split.html" target="_blank">How to split an NCLL licence area into multiple licence areas</a> for how to do this.</p>
 							</div>
-						</div>
+							<div id="MP-too-small-but-LP-OK-message" class="alert alert-danger" hidden>
+								<p>You have requested a medium power licence, which means the licence area must be at least 75 km<sup>2</sup> in area.</p>
+								<p>Please adjust the area to be at least 75 km<sup>2</sup>.</p>
+								<p>Alternatively, you may go back to the previous screen and change to a low power licence.</p>
+							</div>
+							<div id="MP-too-small-message" class="alert alert-danger" hidden>
+								<p>You have requested a medium power licence, which means the licence area must be at least 75 km<sup>2</sup> in area.</p>
+								<p>Please adjust the area to be at least 75 km<sup>2</sup>.</p>
+								<p>Alternatively, you may apply for multiple low power licences, as described at <a href="how-to-split.html" target="_blank">How to split an NCLL licence area into multiple licence areas</a>.</p>
+							</div>
+							<div id="MP-too-large-message" class="alert alert-danger" hidden>
+								<p>You have requested a medium power licence, which means the licence area can be at most 165 km<sup>2</sup> in area.</p>
+								<p>Please adjust the area to be less than 165 km<sup>2</sup>. After submitting this application, you may then duplicate it to create as many other licence applications as you would like. See <a href="how-to-split.html" target="_blank">How to split an NCLL licence area into multiple licence areas</a> for how to do this.</p>
+							</div>
 
-						<h2>Licence fee</h2>
-						<div id="licence-fee-before">
-							<p>Press <kbd><samp>Calculate</samp></kbd> to see results.</p>
-						</div>
-						<div id="licence-fee-after" hidden>
-							<dl class="dl-horizontal">
-								<dt>Base rate (Rural) per year</dt>
-								<dd>$<span class="base-rate">0.45</span> per MHz per km<sup>2</sup></dd>
-								<dt>Requested bandwidth</dt>
-								<dd><span class="bandwidth">10</span> MHz</dd>
-								<dt>Area size</dt>
-								<dd><span class="area-size">162</span> km<sup>2</sup></dd>
-								<dt>Total cost per year</dt>
-								<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">162</span> = $<span class="total-cost">729.00</span></dd>
-							</dl>
+							<div id="licence-fee-text">
+								<h2>Licence fee</h2>
+								<dl class="dl-horizontal">
+									<dt>Base rate (Rural) per year</dt>
+									<dd>$<span class="base-rate">0.45</span> per MHz per km<sup>2</sup></dd>
+									<dt>Requested bandwidth</dt>
+									<dd><span class="bandwidth">10</span> MHz</dd>
+									<dt>Area size</dt>
+									<dd><span class="area-size">0</span> km<sup>2</sup></dd>
+									<dt>Total cost per year</dt>
+									<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+								</dl>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -330,27 +341,57 @@
 	<script src="catch-and-throw.js"></script>
 	<script>
 		const calculateButton = document.getElementById ( "calculate-button" )
-		const areaInformationBefore = document.getElementById ( "area-information-before" )
-		const areaInformationAfter = document.getElementById ( "area-information-after" )
-		const licenceFeeBefore = document.getElementById ( "licence-fee-before" )
-		const licenceFeeAfter = document.getElementById ( "licence-fee-after" )
+		const calcResultsBefore = document.getElementById ( "calc-results-before" )
+		const calcResultsAfter = document.getElementById ( "calc-results-after" )
 		const nextButton = document.getElementById ( "next-button" )
 
 		const powerLevel = urlParams.get ( "power-level" )
 
-		calculateButton.addEventListener ( "click", (event) => {
-			areaInformationBefore .setAttribute ( "hidden", "hidden" )
-			areaInformationAfter .removeAttribute ( "hidden" )
-			licenceFeeBefore .setAttribute ( "hidden", "hidden" )
-			licenceFeeAfter .removeAttribute ( "hidden" )
+		const lpTooLargeMessage = document.getElementById ( "LP-too-large-message" )
+		const mpTooSmallLPOKMessage = document.getElementById ( "MP-too-small-but-LP-OK-message" )
+		const mpTooSmallMessage = document.getElementById ( "MP-too-small-message" )
+		const mpTooLargeMessage = document.getElementById ( "MP-too-large-message" )
+		const licenceFeeText = document.getElementById ( "licence-fee-text" )
 
-			// Show the error message if necessary, and don't unhide the Next button
-			const lowPowerMessage = document.getElementById ( "low-power-message" )
+		calculateButton.addEventListener ( "click", (event) => {
+			calcResultsBefore .setAttribute ( "hidden", "hidden" )
+			calcResultsAfter .removeAttribute ( "hidden" )
+
+			// As appropriate, show error message and hide the Next button
 			if ( powerLevel == "Low power" && area_field . value > 15 ) {
-				lowPowerMessage .removeAttribute ( "hidden" )
+				lpTooLargeMessage .removeAttribute ( "hidden" )
+				mpTooSmallLPOKMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooSmallMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
+				licenceFeeText .setAttribute ( "hidden" , "hidden" )
+				nextButton .setAttribute ( "hidden" , "hidden" )
+			} else if ( powerLevel == "Medium power" && area_field . value <= 15 ) {
+				lpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooSmallLPOKMessage .removeAttribute ( "hidden" )
+				mpTooSmallMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
+				licenceFeeText .setAttribute ( "hidden" , "hidden" )
+				nextButton .setAttribute ( "hidden" , "hidden" )
+			} else if ( powerLevel == "Medium power" && area_field . value < 75 ) {
+				lpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooSmallLPOKMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooSmallMessage .removeAttribute ( "hidden" )
+				mpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
+				licenceFeeText .setAttribute ( "hidden" , "hidden" )
+				nextButton .setAttribute ( "hidden" , "hidden" )
+			} else if ( powerLevel == "Medium power" && area_field . value > 165 ) {
+				lpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooSmallLPOKMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooSmallMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooLargeMessage .removeAttribute ( "hidden" )
+				licenceFeeText .setAttribute ( "hidden" , "hidden" )
 				nextButton .setAttribute ( "hidden" , "hidden" )
 			} else {
-				lowPowerMessage .setAttribute ( "hidden" , "hidden" )
+				lpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooSmallLPOKMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooSmallMessage .setAttribute ( "hidden" , "hidden" )
+				mpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
+				licenceFeeText .removeAttribute ( "hidden" )
 				nextButton .removeAttribute ( "hidden" )
 			}
 		})
