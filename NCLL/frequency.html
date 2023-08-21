@@ -60,10 +60,13 @@
 			.alert-warning>:last-child {
     			padding-bottom: 0;
 			}
+			.alert::before {
+				margin-left: calc(-1.27em + 8px);
+			}
 			.table.accentuate-dividers tr th,
 			.table.accentuate-dividers tr td {
-				border-top: 1px solid black;
-				border-bottom: 1px solid black;
+				border: 1px solid black;
+				/* border-bottom: 1px solid black; */
 			}
 			.table tr.dark-bottom td {
 				border-bottom: 2px solid black;
@@ -71,6 +74,9 @@
 			.table.accentuate-dividers tr th:first-child,
 			.table.accentuate-dividers tr td:first-child {
 				white-space: nowrap;
+			}
+			.gc-chckbxrdio input[type=checkbox]+label::before, .gc-chckbxrdio input[type=radio]+label::before {
+				left: 1px;
 			}
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
@@ -112,14 +118,15 @@
 <!-- Start page content -->
 
 	<div id="superhead">
-		<p>Non-competitive local licence application (01000139-001) <span class="pull-right" id="status">Draft</span></p>
+		<p>Non-competitive local licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
 	</div>
 	<div class="form-group">
 		<ul class="nav nav-wizard">
 			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
-			<li><a class="navbar-item" href="general.html">General information</a></li>
+			<li><a class="navbar-item"href="general.html">General information</a></li>
+			<li><a class="navbar-item" href="technical-details.html">Technical details</a></li>
 			<li><a class="navbar-item" href="licence-area.html">Licence area</a></li>
-			<li class="active" aria-current="step">Technical details</li>
+			<li class="active" aria-current="step">Frequency</li>
 			<li>Review</li>
 		</ul>
 	</div>
@@ -152,7 +159,7 @@
 								<td>
 									<p>Allows ISED to automatically assign any frequency block.</p>
 									<section class="alert alert-warning">
-										<p>A1 operates under <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/fixed-satellite-microwave/b6-no-interference-no-protection-ninp">no-interference, no-protection</a> restrictions. There is a risk of interference from adjacent band <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/policy-and-licensing-framework-spectrum-3800-mhz-band">3800&nbsp;MHz flex</a>.</p>
+										<p>NCL licensed operations that include block A1 (3900-3910 MHz) are on a no-protection, no-interference basis with respect to flexible use services in the 3650-3900 MHz (3800 MHz) band.  The NCL licensees with operations on block A1 shall not claim protection from, nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
 									</section>
 								</td>
 							</tr>
@@ -178,7 +185,7 @@
 								</td>
 								<td>
 									<section class="alert alert-warning">
-										<p>A1 operates under <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/fixed-satellite-microwave/b6-no-interference-no-protection-ninp">no-interference, no-protection</a> restrictions. There is a risk of interference from adjacent band <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/policy-and-licensing-framework-spectrum-3800-mhz-band">3800&nbsp;MHz flex</a>.</p>
+										<p>NCL licensed operations that include block A1 (3900-3910 MHz) are on a no-protection, no-interference basis with respect to flexible use services in the 3650-3900 MHz (3800 MHz) band.  The NCL licensees with operations on block A1 shall not claim protection from, nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
 									</section>
 								</td>
 							</tr>
@@ -288,7 +295,7 @@
 								</td>
 								<td>
 									<section class="alert alert-warning">
-										<p>A1 operates under <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/fixed-satellite-microwave/b6-no-interference-no-protection-ninp">no-interference, no-protection</a> restrictions. There is a risk of interference from adjacent band <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/policy-and-licensing-framework-spectrum-3800-mhz-band">3800&nbsp;MHz flex</a>.</p>
+										<p>NCL licensed operations that include block A1 (3900-3910 MHz) are on a no-protection, no-interference basis with respect to flexible use services in the 3650-3900 MHz (3800 MHz) band.  The NCL licensees with operations on block A1 shall not claim protection from, nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
 									</section>
 								</td>
 							</tr>
@@ -454,6 +461,15 @@
 		const changeLicensee = document .getElementById ( "change-licensee" )
 		const wbBc = document .getElementById ( "wb-bc" )
 		wbBc .prepend ( changeLicensee )
+	</script>
+	<script>
+		// Read application number from parameters if present
+		if ( urlParams .has ( "app-number" ) ) {
+			const appNumberText = urlParams .get ( "app-number" )
+			for ( let elem of document .getElementsByClassName ( "app-number" ) ) {
+				elem .innerText = appNumberText
+			}
+		}
 	</script>
 <!-- End page content -->
 
