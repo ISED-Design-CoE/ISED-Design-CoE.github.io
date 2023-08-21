@@ -241,6 +241,29 @@
 				mediumPowerMessage .removeAttribute ( "hidden" )
 				indoorOnlyField .disabled = true
 			})
+
+			for ( const [ key, value ] of urlParams ) {
+				if (key == 'antenna') {
+					if (value == 'Outdoor and indoor') {
+						indoorOnlyMessage .setAttribute ( "hidden", "hidden" )
+						mediumPowerField .disabled = false
+					}
+					if (value == 'Indoor only') {
+						indoorOnlyMessage .removeAttribute ( "hidden" )
+						mediumPowerField .disabled = true
+					}
+				}
+				if (key == 'power-level') {
+					if (value == 'Low power') {
+						mediumPowerMessage .setAttribute ( "hidden", "hidden" )
+						indoorOnlyField .disabled = false
+					}
+					if (value == 'Medium power') {
+						mediumPowerMessage .removeAttribute ( "hidden" )
+						indoorOnlyField .disabled = true
+					}
+				}
+			}
 		</script>
 	</div>
 	<div id="change-licensee">
