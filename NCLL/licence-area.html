@@ -791,8 +791,20 @@ if (document.getElementById("lat1").value != "") {
 		for (let i = 0; i < lats.length; i++) {
 			lat_longs.push([lats[i],longs[i]])
 		}
-	
-	console.log(lat_longs)
+		
+	area_size_spans = document.querySelectorAll(".area-size");
+	area_size_spans.forEach(element => {
+		console.log(document.getElementById("area-size").value)
+		element.innerText = element.textContent = document.getElementById("area-size").value;
+	});
+
+	total_cost_spans = document.querySelectorAll(".total-cost");
+	total_cost_spans.forEach(element => {
+		element.innerText = element.textContent = document.getElementById("total-cost").value;
+	});
+
+	area_field.setAttribute( "value", document.getElementById("area-size").value );
+	cost_field.setAttribute( "value", document.getElementById("total-cost").value );
 
 	const polygon = L.polygon(lat_longs).addTo(map);
 
@@ -820,8 +832,12 @@ if (document.getElementById("lat1").value != "") {
 			color:"#248f24",
 			opacity: 1})
 
+	map.fitBounds(polygon.getBounds());
+
 
 }
+
+
 
 
 </script>
