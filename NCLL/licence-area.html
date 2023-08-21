@@ -353,7 +353,7 @@
 		const mpTooLargeMessage = document.getElementById ( "MP-too-large-message" )
 		const licenceFeeText = document.getElementById ( "licence-fee-text" )
 
-		calculateButton.addEventListener ( "click", (event) => {
+		function calculate_area_info () {
 			calcResultsBefore .setAttribute ( "hidden", "hidden" )
 			calcResultsAfter .removeAttribute ( "hidden" )
 
@@ -394,6 +394,10 @@
 				licenceFeeText .removeAttribute ( "hidden" )
 				nextButton .removeAttribute ( "hidden" )
 			}
+		}
+
+		calculateButton.addEventListener ( "click", (event) => {
+			calculate_area_info()
 		})
 	</script>
 	<script>
@@ -836,6 +840,7 @@ if (document.getElementById("lat1").value != "") {
 			opacity: 1})
 
 	map.fitBounds(polygon.getBounds());
+	calculate_area_info()
 
 
 }
