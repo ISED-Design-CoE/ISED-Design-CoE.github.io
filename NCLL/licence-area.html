@@ -30,6 +30,11 @@
 <link rel="stylesheet" href="libs/leaflet.css"/>
 <link rel="stylesheet" href="src/leaflet.draw.css"/>
 
+<script>
+const baseQuery = window.location.search
+var urlQueries = baseQuery
+</script>
+
 
 <!-- src does not work with folder, this is long but the best I can do because of 
 	how leaflet draw is designed. -->
@@ -327,7 +332,7 @@
 				<button class="btn btn-primary" type="submit" id="next-button" hidden>Next</button>
 				<button class="btn btn-secondary" type="button" id="save-button">Save</button>
 				<br>
-				<button class="btn btn-secondary" type="button" onclick="window.location.href = 'technical-details.html'+ window.location.search">Back</button>
+				<button class="btn btn-secondary" type="button" onclick="window.location.href = 'technical-details.html'+ urlQueries">Back</button>
 
 				<div class="notesaboutmockup">
 					<h2>Notes about this mockup:</h2>
@@ -340,6 +345,8 @@
 	</form>
 	<script src="catch-and-throw.js"></script>
 	<script>
+		var area_number = 0;
+		var cost_number = 0;
 		const calculateButton = document.getElementById ( "calculate-button" )
 		const calcResultsBefore = document.getElementById ( "calc-results-before" )
 		const calcResultsAfter = document.getElementById ( "calc-results-after" )
@@ -354,6 +361,25 @@
 		const licenceFeeText = document.getElementById ( "licence-fee-text" )
 
 		function calculate_area_info () {
+
+			
+
+			urlQueries = baseQuery 
+
+			for (let i = 0; i < 12; i++) {
+					lat_id = "lat" + (i+1)
+					long_id = "long" + (i+1)
+					if (document.getElementById(lat_id).value != "") {
+						urlQueries += "&" + lat_id + "=" + document.getElementById(lat_id).value
+						urlQueries += "&" + long_id + "=" + document.getElementById(long_id).value
+					
+					}
+				}
+			urlQueries += "&area-size=" + area_number
+			urlQueries += "&total-cost=" + cost_number
+
+			console.log(urlQueries)
+
 			calcResultsBefore .setAttribute ( "hidden", "hidden" )
 			calcResultsAfter .removeAttribute ( "hidden" )
 
@@ -533,6 +559,9 @@
 
 				area_field.setAttribute( "value", "0" );
 				cost_field.setAttribute( "value", "0" );
+
+				area_number = 0;
+				cost_number = 0;
 					
 			}
 
@@ -563,7 +592,7 @@
 
 				area_size_spans = document.querySelectorAll(".area-size");
 
-				let area_number = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
+				area_number = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
 
 				area_size_spans.forEach(element => {
 					element.innerText = element.textContent = area_number
@@ -571,7 +600,7 @@
 
 				area_field.setAttribute( "value", area_number );
 
-				let cost_number = (bandwidth * baseRate * (area_number)).toFixed(2);
+				cost_number = (bandwidth * baseRate * (area_number)).toFixed(2);
 
 				total_cost_spans = document.querySelectorAll(".total-cost");
 				total_cost_spans.forEach(element => {
