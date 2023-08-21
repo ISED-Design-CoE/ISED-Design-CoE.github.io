@@ -98,7 +98,7 @@
 	</div>
 	<div class="form-group">
 		<ul class="nav nav-wizard">
-			<li><a href="contact.html">Contact information</a></li>
+			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
 			<li class="active" aria-current="step">General information</li>
 			<li>Technical details</li>
 			<li>Licence area</li>
@@ -198,7 +198,7 @@
 		<button class="btn btn-primary" type="submit">Next</button>
 		<button class="btn btn-secondary" type="button" id="save-button">Save</button>
 		<br>
-		<button class="btn btn-secondary" type="button" onclick="history.back()">Back</button>
+		<button class="btn btn-secondary" type="button" onclick="window.location.href = 'contact.html'+ window.location.search">Back</button>
 
 		<div class="notesaboutmockup">
 			<h2>Notes about this mockup:</h2>
@@ -343,5 +343,6 @@
 				"cdnEnv": "esdcprod"
 			}));
 		</script>
+		<script src="queries-in-navbar.js"></script>
 	</body>
 </html>

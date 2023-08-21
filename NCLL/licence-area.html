@@ -165,9 +165,9 @@
 	</div>
 	<div class="form-group">
 		<ul class="nav nav-wizard">
-			<li><a href="contact.html">Contact information</a></li>
-			<li><a href="general.html">General information</a></li>
-			<li><a href="technical-details.html">Technical details</a></li>
+			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
+			<li><a class="navbar-item" href="general.html">General information</a></li>
+			<li><a class="navbar-item" href="technical-details.html">Technical details</a></li>
 			<li class="active" aria-current="step">Licence area</li>
 			<li>Frequency</li>
 			<li>Review</li>
@@ -327,7 +327,7 @@
 				<button class="btn btn-primary" type="submit" id="next-button" hidden>Next</button>
 				<button class="btn btn-secondary" type="button" id="save-button">Save</button>
 				<br>
-				<button class="btn btn-secondary" type="button" onclick="history.back()">Back</button>
+				<button class="btn btn-secondary" type="button" onclick="window.location.href = 'technical-details.html'+ window.location.search">Back</button>
 
 				<div class="notesaboutmockup">
 					<h2>Notes about this mockup:</h2>
@@ -353,7 +353,7 @@
 		const mpTooLargeMessage = document.getElementById ( "MP-too-large-message" )
 		const licenceFeeText = document.getElementById ( "licence-fee-text" )
 
-		calculateButton.addEventListener ( "click", (event) => {
+		function calculate_area_info () {
 			calcResultsBefore .setAttribute ( "hidden", "hidden" )
 			calcResultsAfter .removeAttribute ( "hidden" )
 
@@ -394,6 +394,10 @@
 				licenceFeeText .removeAttribute ( "hidden" )
 				nextButton .removeAttribute ( "hidden" )
 			}
+		}
+
+		calculateButton.addEventListener ( "click", (event) => {
+			calculate_area_info()
 		})
 	</script>
 	<script>
@@ -682,6 +686,8 @@
 							map.removeControl(layerControl);
             				map.addControl(drawControl);
 							map.addControl(layerControl);
+							calcResultsBefore .removeAttribute ( "hidden", "hidden" )
+							calcResultsAfter .setAttribute ( "hidden", "hidden" )
                         });
                     return controlDiv;
                 }
@@ -733,6 +739,7 @@
 
 			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
 
+			console.log(latlngs)
 			change_lat_lngs(latlngs);
             
             });
@@ -750,6 +757,9 @@
 					// }
 
 					change_lat_lngs(lat_lngs)
+
+					calcResultsBefore .removeAttribute ( "hidden", "hidden" )
+					calcResultsAfter .setAttribute ( "hidden", "hidden" )
 				})
 
             })
@@ -768,5 +778,81 @@
         });
         
         </script>
+
+
+
+<script>
+
+if (document.getElementById("lat1").value != "") {
+
+	lats = []
+	longs = []
+	lat_longs = [];
+	
+	for ( let i = 1; i < 13; i++ ) {
+			if (document.getElementById("lat"+i).value != "") {
+				console.log(document.getElementById("lat"+i).value);
+				lats.push(document.getElementById("lat"+i).value);
+				longs.push(document.getElementById("long"+i).value);
+				}
+	}
+
+		for (let i = 0; i < lats.length; i++) {
+			lat_longs.push([lats[i],longs[i]])
+		}
+		
+	area_size_spans = document.querySelectorAll(".area-size");
+	area_size_spans.forEach(element => {
+		console.log(document.getElementById("area-size").value)
+		element.innerText = element.textContent = document.getElementById("area-size").value;
+	});
+
+	total_cost_spans = document.querySelectorAll(".total-cost");
+	total_cost_spans.forEach(element => {
+		element.innerText = element.textContent = document.getElementById("total-cost").value;
+	});
+
+	area_field.setAttribute( "value", document.getElementById("area-size").value );
+	cost_field.setAttribute( "value", document.getElementById("total-cost").value );
+
+	const polygon = L.polygon(lat_longs).addTo(map);
+
+
+						
+	map.removeControl(drawControl);
+	map.removeControl(layerControl);
+	map.addControl(removeAllControl);
+	layerControl.addTo(map);
+	polygon.on('mouseover', function (event) {
+		polygon.bindPopup(getPopupContent(polygon)).openPopup();
+	});
+	polygon.on('mouseout', function (event) {
+		polygon.bindPopup(getPopupContent(polygon)).closePopup();
+	});
+
+	if (polygon.getLatLngs()[0].length < 12) {
+		polygon.editing.enable()
+	}
+
+	drawnItems.addLayer(polygon);
+	
+	drawnItems.setStyle({fillColor :'#33cc33',
+			fillOpacity:0.65,
+			color:"#248f24",
+			opacity: 1})
+
+	map.fitBounds(polygon.getBounds());
+	calculate_area_info()
+
+
+}
+
+
+
+
+</script>
+
+<script src="queries-in-navbar.js"></script>
+
 	</body>
 </html>
