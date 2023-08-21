@@ -686,6 +686,8 @@
 							map.removeControl(layerControl);
             				map.addControl(drawControl);
 							map.addControl(layerControl);
+							calcResultsBefore .removeAttribute ( "hidden", "hidden" )
+							calcResultsAfter .setAttribute ( "hidden", "hidden" )
                         });
                     return controlDiv;
                 }
