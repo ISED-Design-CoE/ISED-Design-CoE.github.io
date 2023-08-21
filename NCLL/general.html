@@ -209,10 +209,21 @@
 			</ul>
 		</div>
 		</form>
+		<script src="catch-and-throw.js"></script>
 		<script>
 			const renewableButton = document.getElementById ( "renewable" )
 			const temporaryButton = document.getElementById ( "temporary" )
 			const expiryDateDiv = document.getElementById ( "expiry-date-div" )
+
+			for ( const [ key, value ] of urlParams ) {
+				if (key == 'renewable-temporary') {
+					if (value == 'Temporary') {
+						expiryDateDiv .removeAttribute ( "hidden" )
+					}
+				}
+			}
+
+
 			renewableButton.addEventListener ( "click", (event) => {
 				expiryDateDiv .setAttribute ( "hidden", "hidden" )
 			})
@@ -260,7 +271,7 @@
 				saveDiv .removeAttribute ( "hidden" )
 			})
 		</script>
-		<script src="catch-and-throw.js"></script>
+		
 	</div>
 	<div id="change-licensee">
 		<div class="container">
