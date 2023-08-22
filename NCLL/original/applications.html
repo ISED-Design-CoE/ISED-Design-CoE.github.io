@@ -72,6 +72,7 @@
 				"breadcrumbs": [{
 					"title": "SMS",
 					"href": "index.html"
+
 				}, {
 					"title": "NCLL portal",
 					"href": "dashboard.html"
@@ -193,12 +194,12 @@
 			</ul>
 		</div>
 	</div>
-	<div id="change-licensee">
+	<div id="change-licensee" style="background-color:rgb(30, 20, 88); width:100vw; left:0vw; margin-bottom:2vh; max-height: 39px;">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-offset-8 col-xs-4">
-					<details>
-						<summary>The Best Company</summary>
+				<div class="col-xs-offset-8 col-xs-4" >
+					<details style="background-color:white">
+						<summary style="color:black;">The Best Company</summary>
 						<p><a href="select-licensee.html">Switch licensee account</a></p>
 						<p class="border-top"><a href="login.html"><span class="glyphicon-log-out glyphicon"></span> Sign out</a></p>
 					</details>
@@ -212,6 +213,7 @@
 		// This does lead to z-index issues: the "Log out" button can't currently be reached because it's behind the <main> element
 		const changeLicensee = document .getElementById ( "change-licensee" )
 		const wbBc = document .getElementById ( "wb-bc" )
+		<!-- wbBc = document.style.backgroundColor = "black"; -->
 		wbBc .prepend ( changeLicensee )
 	</script>
 <!-- End page content -->
@@ -268,4 +270,5 @@
 
 		<script src="filter-rows.js"></script>
 	</body>
-</html>
+
+</html>	

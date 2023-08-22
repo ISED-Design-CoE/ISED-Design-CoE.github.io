@@ -8,7 +8,21 @@
 #wb-bc {
     margin-left: auto;
     margin-right: auto;
+    
 }
+
+#wb-bc .container .breadcrumb{
+    margin-top: 50px;
+}
+
+#wb-bc .container{
+    max-height: inherit;
+}
+
+#wb-bc .container .row{
+    max-height: inherit;
+}
+
 @media (min-width: 768px) {
     #wb-bc {
         width: 750px;
@@ -33,9 +47,15 @@
 }
 #change-licensee details summary {
     font-weight: bold;
+    background-color: white;
+    z-index: 2;
 }
 #change-licensee details[open] {
-    padding-bottom: 0
+    padding-bottom: 0;
+    float:left;
+    width: 100%;
+    z-index: 2;
+
 }
 #change-licensee a {
     text-decoration: none;
