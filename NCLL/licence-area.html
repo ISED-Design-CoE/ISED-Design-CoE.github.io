@@ -193,7 +193,21 @@ var urlQueries = baseQuery
 					</ol>
 					<p>Remember that you will need to be able to cover the full licence area. As well, low power licences have a better chance of being approved, so you may want to limit the size of your licence area to 15 km<sup>2</sup> or less.</p>
 					<p><b>Note</b>: this application form is not designed to assist with network planning. If you would like to identify an area that is less likely to overlap with existing NCLL licences or other sources of interference, please consider using our <a href="SLAB-en-leaflet.html" target="_blank">Spectrum licence area browser</a>.</p>
-
+					
+					<div class="form-group">
+						<label for="WKT">
+							<span class="field-name">
+								Boundary description in WKT (Well Known Text) format
+							</span>
+						</label>
+						<details>
+							<summary>More information</summary>
+							<p>WKT is a compact format for describing mathematical shapes, including polygons. Each vertex is a longitude-latitude pair.</p>
+							<p>e.g. POLYGON((<span class="highlight">-113.956370 50.880852</span>,<span class="highlight">-113.952550 50.880744</span>,<span class="highlight">-113.944869 50.882288</span>,<span class="highlight">-113.945942 50.884372</span>,<span class="highlight">-113.951950 50.883398</span>,<span class="highlight">-113.956885 50.882369</span>,<span class="highlight">-113.956370 50.880852</span>))</p>
+							<p>The input field below accepts a polygon with up to 12 pairs.</p>
+						</details>
+						<textarea id="WKT" name="WKT" class="form-control" rows="3" placeholder="Enter WKT text here"></textarea>
+					</div>
 					<div class="row wb-eqht">
 					<div class="col-md-4">
 						<h2>Boundary points</h2>
@@ -260,20 +274,6 @@ var urlQueries = baseQuery
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<div class="form-group">
-							<label for="WKT">
-								<span class="field-name">
-									Boundary description in WKT (Well Known Text) format
-								</span>
-							</label>
-							<details>
-								<summary>More information</summary>
-								<p>WKT is a compact format for describing mathematical shapes, including polygons. Each vertex is a longitude-latitude pair.</p>
-								<p>e.g. POLYGON((<span class="highlight">-113.956370 50.880852</span>,<span class="highlight">-113.952550 50.880744</span>,<span class="highlight">-113.944869 50.882288</span>,<span class="highlight">-113.945942 50.884372</span>,<span class="highlight">-113.951950 50.883398</span>,<span class="highlight">-113.956885 50.882369</span>,<span class="highlight">-113.956370 50.880852</span>))</p>
-								<p>The input field below accepts a polygon with up to 12 pairs.</p>
-							</details>
-							<textarea id="WKT" name="WKT" class="form-control" rows="3" placeholder="Enter WKT text here"></textarea>
-						</div>
 
 						<p>Once your area is entered, click <kbd><samp>Calculate</samp></kbd> to get the information about the area and to calculate the licence fee</p>
 						<button type="button" class="btn btn-call-to-action" id="calculate-button">Calculate</button>
