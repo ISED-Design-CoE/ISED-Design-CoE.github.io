@@ -570,7 +570,7 @@ var urlQueries = baseQuery
 			function change_lat_lngs(latlngs) {
 				area = L.GeometryUtil.geodesicArea(latlngs);
 				lat_long_sliced = latlngs.slice(0,12)
-				wkt = "POLYGON(("
+				let wkt = "POLYGON(("
 				for (let i = 0; i < 12; i++) {
 					lat_id = "lat" + (i+1)
 					long_id = "long" + (i+1)
@@ -817,18 +817,27 @@ if (document.getElementById("lat1").value != "") {
 	lats = []
 	longs = []
 	lat_longs = [];
+
+	wkt = "POLYGON(("
 	
 	for ( let i = 1; i < 13; i++ ) {
 			if (document.getElementById("lat"+i).value != "") {
-				console.log(document.getElementById("lat"+i).value);
-				lats.push(document.getElementById("lat"+i).value);
-				longs.push(document.getElementById("long"+i).value);
+				temp_lat = document.getElementById("lat"+i).value
+				temp_long = document.getElementById("long"+i).value
+
+				lats.push(temp_lat);
+				longs.push(temp_long);
+				wkt += temp_lat + " " + temp_long + ","
+				
 				}
 	}
 
 		for (let i = 0; i < lats.length; i++) {
 			lat_longs.push([lats[i],longs[i]])
 		}
+
+	wkt = wkt.substring(0,wkt.length-1) + "))"
+	document.getElementById("WKT").value = wkt;
 		
 	area_size_spans = document.querySelectorAll(".area-size");
 	area_size_spans.forEach(element => {
