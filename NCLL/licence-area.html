@@ -108,8 +108,7 @@ var urlQueries = baseQuery
 			}
 			#map {
 				border: 1px solid black;
-				height: 70em;
-				margin-top: 38px; /* to match the default for the <h2> beside it */
+				height: 65em;
 				margin-bottom: 2em;
 			}
 			#WKT {
@@ -125,6 +124,9 @@ var urlQueries = baseQuery
 			}
 			.highlight {
 				background-color: yellow;
+			}
+			.map-instructions {
+				margin-top: 38px;	
 			}
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
@@ -208,7 +210,7 @@ var urlQueries = baseQuery
 						<textarea id="WKT" name="WKT" class="form-control" rows="3" placeholder="Enter WKT text here"></textarea>
 					</div>
 
-					<div class="row wb-eqht">
+					<div class="row">
 					<div class="col-md-4">
 						<h2>Boundary points</h2>
 						<p>Latitude and longitude are in degree decimal format.</p>
@@ -233,7 +235,7 @@ var urlQueries = baseQuery
 						</table>
 					</div>
 					<div class="col-md-8">
-						<details>
+						<details class="map-instructions">
 							<summary>How to use the map</summary>
 							<p>To navigate the map:</p>
 
