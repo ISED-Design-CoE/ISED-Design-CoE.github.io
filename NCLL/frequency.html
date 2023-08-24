@@ -66,10 +66,9 @@
 			.table.accentuate-dividers tr th,
 			.table.accentuate-dividers tr td {
 				border: 1px solid black;
-				/* border-bottom: 1px solid black; */
 			}
-			.table tr.dark-bottom td {
-				border-bottom: 2px solid black;
+			.table tr.table-break td {
+				border-bottom: 3px double black;
 			}
 			.table.accentuate-dividers tr th:first-child,
 			.table.accentuate-dividers tr td:first-child {
@@ -145,7 +144,7 @@
 						</legend>
 						<p>Choose whether you would like any frequency block, or only a specific block</p>
 						<table class="table form-group accentuate-dividers">
-							<tr class="dark-bottom">
+							<tr>
 								<th>Frequency block</th>
 								<th>Information</th>
 							</tr>
@@ -164,7 +163,7 @@
 								</td>
 							</tr>
 
-							<tr class="dark-bottom">
+							<tr class="table-break">
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-any-except-a1" name="frequency" value="Any except A1">
@@ -226,7 +225,7 @@
 								</td>
 							</tr>
 
-							<tr class="tenMHz dark-bottom MNSP" hidden>
+							<tr class="tenMHz MNSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a5-to-a8" name="frequency" value="A5 to A8" disabled>
@@ -274,7 +273,7 @@
 								</td>
 							</tr>
 
-							<tr class="tenMHz dark-bottom not-MNSP" hidden>
+							<tr class="tenMHz not-MNSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a8" name="frequency" value="A8">
@@ -324,7 +323,7 @@
 								</td>
 							</tr>
 
-							<tr class="twentyMHz dark-bottom MNSP" hidden>
+							<tr class="twentyMHz MNSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a4-to-a8" name="frequency" value="A4 to A8" disabled>
@@ -372,7 +371,7 @@
 								</td>
 							</tr>
 
-							<tr class="twentyMHz dark-bottom not-MNSP" hidden>
+							<tr class="twentyMHz not-MNSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a7-a8" name="frequency" value="A7-A8">
