@@ -227,13 +227,6 @@
 			}
 
 
-			renewableButton.addEventListener ( "click", (event) => {
-				expiryDateDiv .setAttribute ( "hidden", "hidden" )
-			})
-			temporaryButton.addEventListener ( "click", (event) => {
-				expiryDateDiv .removeAttribute ( "hidden" )
-			})
-
 			function convertDateToISO ( date, offset ) {
 				let fullDate = new Date()
 				fullDate.setTime ( date.getTime() - (offset*60*1000))
@@ -265,6 +258,15 @@
 				maxExpiryDate.setMonth ( maxExpiryDate.getMonth() + 11 )
 				const maxExpiryDateISO = convertDateToISO ( maxExpiryDate, offset )
 				expiryDateField .setAttribute ( "max", maxExpiryDateISO )
+			})
+
+			renewableButton.addEventListener ( "click", (event) => {
+				expiryDateDiv .setAttribute ( "hidden", "hidden" )
+				expiryDateField .removeAttribute ( "required" )
+			})
+			temporaryButton.addEventListener ( "click", (event) => {
+				expiryDateField .setAttribute ( "required", "required" )
+				expiryDateDiv .removeAttribute ( "hidden" )
 			})
 		</script>
 		<script>
