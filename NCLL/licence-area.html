@@ -732,6 +732,12 @@ var urlQueries = baseQuery
         // TODO : on mouseout finish the polygon
         
         // on draw
+
+			map.on( L.Draw.Event.DRAWSTART, function (e) {
+				calcResultsBefore .removeAttribute ( "hidden", "hidden" )
+				calcResultsAfter .setAttribute ( "hidden", "hidden" )
+			})
+
             map.on(L.Draw.Event.CREATED, function (e) {
                 var type = e.layerType,
                         layer = e.layer;
