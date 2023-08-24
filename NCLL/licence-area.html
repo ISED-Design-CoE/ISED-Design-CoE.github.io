@@ -322,7 +322,7 @@ var urlQueries = baseQuery
 							<div id="licence-fee-text">
 								<h2>Licence fee</h2>
 								<dl class="dl-horizontal">
-									<dt>Base rate (Rural) per year</dt>
+									<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
 									<dd>$<span class="base-rate">0.45</span> per MHz per km<sup>2</sup></dd>
 									<dt>Requested bandwidth</dt>
 									<dd><span class="bandwidth">10</span> MHz</dd>
@@ -429,11 +429,19 @@ var urlQueries = baseQuery
 	</script>
 	<script>
 		// Set up needed fields for cost calculation
-		const baseRate = .45 // this is the rural rate
+		let baseRate = urlParams.get ( "base-rate" ) 
+		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
 		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
 			elem .innerText = baseRate
 		}
 		createHiddenField ( "base-rate", baseRate )
+
+		let feeZone = urlParams.get ( "fee-zone" ) 
+		if (feeZone == null) {feeZone = "Rural"} // matches the default baseRate
+		for ( let elem of document .getElementsByClassName ( "fee-zone" ) ) {
+			elem .innerText = feeZone
+		}
+		createHiddenField ( "fee-zone", feeZone )
 
 		// Get bandwidth (from previous page)
 		const bandwidth = urlParams.get ( "bandwidth" )
