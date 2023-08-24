@@ -64,8 +64,13 @@
 			.table.accentuate-dividers tr td {
 				border: 1px solid black;
 			}
-			.table tr.table-break td {
-				border-bottom: 3px double black;
+			.table.accentuate-dividers tr.table-spacer td {
+				border: none;
+				padding: 0;
+				height: 8px;
+			}
+			.table.accentuate-dividers tr.table-spacer {
+				border: 1px solid black;
 			}
 			.table.accentuate-dividers tr th:first-child,
 			.table.accentuate-dividers tr td:first-child {
@@ -164,7 +169,7 @@
 								</td>
 							</tr>
 
-							<tr class="table-break">
+							<tr>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-any-except-a1" name="frequency" value="Any except A1">
@@ -175,6 +180,8 @@
 									<p>Allows ISED to automatically assign any frequency block except A1.</p>
 								</td>
 							</tr>
+
+							<tr class="table-spacer" aria-hidden="hidden"><td></td><td></td></tr>
 
 							<tr class="tenMHz" hidden>
 								<td>
