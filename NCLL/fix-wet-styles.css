@@ -1,3 +1,8 @@
 :not(#wb-srch) form, .checkbox, .checkbox-inline, .radio, .radio-inline, form .btn:not(.btn-call-to-action) {
 	font-size: inherit;
 }
+.btn {
+	min-width: 6em;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}

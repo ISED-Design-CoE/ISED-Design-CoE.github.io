@@ -184,15 +184,14 @@ var urlQueries = baseQuery
 			<div class="wb-frm">
 				<div class="container">
 					<h1 property="name" id="wb-cont">Licence area</h1>
-					<p>Your licence area must be defined by between 3 and 12 boundary points, connected with straight lines. It may be convex or concave but it may not intersect itself.</p>
-					<p>These boundary points may be entered in any of the following ways:</p>
+					<p>Define your licence area with up to 12 boundary points, connected with straight lines.</p>
+					<p>You may do so in any of the following ways:</p>
 					<ol>
-						<li>Entering them into the Boundary points table below</li>
-						<li>Drawing the boundary on the interactive map</li>
-						<li>Entering a description of the boundary in <abbr>WKT</abbr> (Well Known Text) format into the input field below the map</li>
+						<li>Enter a description of the licence area in <abbr>WKT</abbr> (Well Known Text) format</li>
+						<li>Enter the latitudes and longitudes of the boundary points</li>
+						<li>Draw the licence area on the interactive map</li>
 					</ol>
-					<p>Remember that you will need to be able to cover the full licence area. As well, low power licences have a better chance of being approved, so you may want to limit the size of your licence area to 15 km<sup>2</sup> or less.</p>
-					<p><b>Note</b>: this application form is not designed to assist with network planning. If you would like to identify an area that is less likely to overlap with existing NCLL licences or other sources of interference, please consider using our <a href="SLAB-en-leaflet.html" target="_blank">Spectrum licence area browser</a>.</p>
+					<p><b>Note</b>: you can obtain a WKT description of your licence area using our <a href="SLAB-en-leaflet.html" target="_blank">Spectrum licence area browser</a>.</p>
 					
 					<div class="form-group">
 						<label for="WKT">
@@ -208,6 +207,7 @@ var urlQueries = baseQuery
 						</details>
 						<textarea id="WKT" name="WKT" class="form-control" rows="3" placeholder="Enter WKT text here"></textarea>
 					</div>
+
 					<div class="row wb-eqht">
 					<div class="col-md-4">
 						<h2>Boundary points</h2>
@@ -290,23 +290,31 @@ var urlQueries = baseQuery
 								<dd><span class="fee-zone-type">Rural</span></dd>
 							</dl>
 
+							<div id="zero-area-message" class="alert alert-danger" hidden>
+								<p>Please enter a licence area. You may do this in one of three ways:</p>
+								<ol>
+									<li>Entering a description of the boundary in <abbr>WKT</abbr> (Well Known Text) format into the input field above</li>
+									<li>Entering the boundary points into the Boundary points table above</li>
+									<li>Drawing the licence area on the interactive map above</li>
+								</ol>
+							</div>
 							<div id="LP-too-large-message" class="alert alert-danger" hidden>
 								<p>You have requested a low power licence, which means the licence area can be at most 15 km<sup>2</sup> in area.</p>
-								<p>Please adjust the area to be less than 15 km<sup>2</sup>. After submitting this application, you may then duplicate it to create as many other licence applications as you would like. See <a href="how-to-split.html" target="_blank">How to split an NCLL licence area into multiple licence areas</a> for how to do this.</p>
+								<p>Please adjust the area to be less than 15 km<sup>2</sup>. After submitting this application, you may then duplicate it to create as many other licence applications as you would like. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
 							</div>
 							<div id="MP-too-small-but-LP-OK-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be at least 75 km<sup>2</sup> in area.</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
 								<p>Please adjust the area to be at least 75 km<sup>2</sup>.</p>
 								<p>Alternatively, you may go back to the previous screen and change to a low power licence.</p>
 							</div>
 							<div id="MP-too-small-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be at least 75 km<sup>2</sup> in area.</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
 								<p>Please adjust the area to be at least 75 km<sup>2</sup>.</p>
-								<p>Alternatively, you may apply for multiple low power licences, as described at <a href="how-to-split.html" target="_blank">How to split an NCLL licence area into multiple licence areas</a>.</p>
+								<p>Alternatively, you may apply for multiple low power licences, as described at <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a>.</p>
 							</div>
 							<div id="MP-too-large-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area can be at most 165 km<sup>2</sup> in area.</p>
-								<p>Please adjust the area to be less than 165 km<sup>2</sup>. After submitting this application, you may then duplicate it to create as many other licence applications as you would like. See <a href="how-to-split.html" target="_blank">How to split an NCLL licence area into multiple licence areas</a> for how to do this.</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
+								<p>Please adjust the area to be less than 165 km<sup>2</sup>. After submitting this application, you may then duplicate it to create as many other licence applications as you would like. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
 							</div>
 
 							<div id="licence-fee-text">
@@ -330,9 +338,9 @@ var urlQueries = baseQuery
 					<p>Application saved as draft</p>
 				</section>
 				<button class="btn btn-primary" type="submit" id="next-button" hidden>Next</button>
-				<button class="btn btn-secondary" type="button" id="save-button">Save</button>
+				<button class="btn btn-default" type="button" id="save-button">Save</button>
 				<br>
-				<button class="btn btn-secondary" type="button" onclick="window.location.href = 'technical-details.html'+ urlQueries">Back</button>
+				<button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details.html'+ urlQueries">Back</button>
 
 				<div class="notesaboutmockup">
 					<h2>Notes about this mockup:</h2>
@@ -354,10 +362,12 @@ var urlQueries = baseQuery
 
 		const powerLevel = urlParams.get ( "power-level" )
 
-		const lpTooLargeMessage = document.getElementById ( "LP-too-large-message" )
-		const mpTooSmallLPOKMessage = document.getElementById ( "MP-too-small-but-LP-OK-message" )
-		const mpTooSmallMessage = document.getElementById ( "MP-too-small-message" )
-		const mpTooLargeMessage = document.getElementById ( "MP-too-large-message" )
+		const errorMessages = {}
+		errorMessages [ "Zero area" ] = document.getElementById ( "zero-area-message" )
+		errorMessages [ "Too large for LP" ] = document.getElementById ( "LP-too-large-message" )
+		errorMessages [ "Too small for MP but LP is OK" ] = document.getElementById ( "MP-too-small-but-LP-OK-message" )
+		errorMessages [ "Too small for MP" ] = document.getElementById ( "MP-too-small-message" )
+		errorMessages [ "Too large for MP" ] = document.getElementById ( "MP-too-large-message" )
 		const licenceFeeText = document.getElementById ( "licence-fee-text" )
 
 		function calculate_area_info () {
@@ -378,45 +388,27 @@ var urlQueries = baseQuery
 			urlQueries += "&area-size=" + area_number
 			urlQueries += "&total-cost=" + cost_number
 
-			console.log(urlQueries)
-
 			calcResultsBefore .setAttribute ( "hidden", "hidden" )
 			calcResultsAfter .removeAttribute ( "hidden" )
 
-			// As appropriate, show error message and hide the Next button
-			if ( powerLevel == "Low power" && area_field . value > 15 ) {
-				lpTooLargeMessage .removeAttribute ( "hidden" )
-				mpTooSmallLPOKMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooSmallMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
-				licenceFeeText .setAttribute ( "hidden" , "hidden" )
-				nextButton .setAttribute ( "hidden" , "hidden" )
+			for ( let errorMessage in errorMessages ) {
+				errorMessages [ errorMessage ] .setAttribute ( "hidden" , "hidden" )
+			}
+			licenceFeeText .setAttribute ( "hidden" , "hidden" )
+			nextButton .setAttribute ( "hidden" , "hidden" )
+
+			// As appropriate, show error message
+			if ( area_field . value == 0 ) {
+				errorMessages [ "Zero area" ] .removeAttribute ( "hidden" )
+			} else if ( powerLevel == "Low power" && area_field . value > 15 ) {
+				errorMessages [ "Too large for LP" ] .removeAttribute ( "hidden" )
 			} else if ( powerLevel == "Medium power" && area_field . value <= 15 ) {
-				lpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooSmallLPOKMessage .removeAttribute ( "hidden" )
-				mpTooSmallMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
-				licenceFeeText .setAttribute ( "hidden" , "hidden" )
-				nextButton .setAttribute ( "hidden" , "hidden" )
+				errorMessages [ "Too small for MP but LP is OK" ] .removeAttribute ( "hidden" )
 			} else if ( powerLevel == "Medium power" && area_field . value < 75 ) {
-				lpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooSmallLPOKMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooSmallMessage .removeAttribute ( "hidden" )
-				mpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
-				licenceFeeText .setAttribute ( "hidden" , "hidden" )
-				nextButton .setAttribute ( "hidden" , "hidden" )
+				errorMessages [ "Too small for MP" ] .removeAttribute ( "hidden" )
 			} else if ( powerLevel == "Medium power" && area_field . value > 165 ) {
-				lpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooSmallLPOKMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooSmallMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooLargeMessage .removeAttribute ( "hidden" )
-				licenceFeeText .setAttribute ( "hidden" , "hidden" )
-				nextButton .setAttribute ( "hidden" , "hidden" )
-			} else {
-				lpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooSmallLPOKMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooSmallMessage .setAttribute ( "hidden" , "hidden" )
-				mpTooLargeMessage .setAttribute ( "hidden" , "hidden" )
+				errorMessages [ "Too large for MP" ] .removeAttribute ( "hidden" )
+			} else { // everything's okay
 				licenceFeeText .removeAttribute ( "hidden" )
 				nextButton .removeAttribute ( "hidden" )
 			}
