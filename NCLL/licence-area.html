@@ -705,6 +705,7 @@ var urlQueries = baseQuery
 			},
 		});
 		textboxControl = new L.Control.textbox();
+		map.addControl(textboxControl);
 		
         
 			// When the user clicks the trashcan, remove everything and change the icon back to the polygon.
@@ -729,7 +730,6 @@ var urlQueries = baseQuery
                             drawnItems.clearLayers();
                             map.removeControl(removeAllControl);
 							map.removeControl(layerControl);
-							map.removeControl(textboxControl);
             				map.addControl(drawControl);
 							map.addControl(layerControl);
 							calcResultsBefore .removeAttribute ( "hidden", "hidden" )
@@ -757,7 +757,7 @@ var urlQueries = baseQuery
         // on draw
 
 			map.on( L.Draw.Event.DRAWSTART, function (e) {
-				map.addControl(textboxControl)
+				
 				calcResultsBefore .removeAttribute ( "hidden", "hidden" )
 				calcResultsAfter .setAttribute ( "hidden", "hidden" )
 			})
@@ -889,9 +889,7 @@ if (document.getElementById("lat1").value != "") {
 
 	map.removeControl(drawControl);
 	map.removeControl(layerControl);
-	map.addControl(removeAllControl);
-	map.addControl(textboxControl);
-		
+	map.addControl(removeAllControl);		
 	area_size_spans = document.querySelectorAll(".area-size");
 	area_size_spans.forEach(element => {
 		console.log(document.getElementById("area-size").value)
