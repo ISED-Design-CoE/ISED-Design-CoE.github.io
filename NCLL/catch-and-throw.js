@@ -2,6 +2,7 @@ function createHiddenField ( fieldName, fieldValue ) {
   let inputField = document.createElement ( "input" )
   inputField.setAttribute( "type", "hidden" )
   inputField.setAttribute( "name", fieldName )
+
   inputField.setAttribute( "id", fieldName )
   inputField.setAttribute( "value", fieldValue )
 
@@ -12,7 +13,6 @@ function createHiddenField ( fieldName, fieldValue ) {
 
 const queryString = window.location.search
 const urlParams = new URLSearchParams ( queryString )
-
 
 for ( const [ key, value ] of urlParams ) {
 
@@ -36,4 +36,5 @@ for ( const [ key, value ] of urlParams ) {
     }
 }
   }
+
 

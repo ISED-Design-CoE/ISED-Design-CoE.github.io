@@ -193,7 +193,6 @@
 					</li>
 				</ul>
 			</fieldset>
-
 		</div>
 		<section id="save-div" class="alert alert-success" hidden>
 			<p>Application saved as draft</p>
@@ -225,7 +224,6 @@
 					}
 				}
 			}
-
 
 			function convertDateToISO ( date, offset ) {
 				let fullDate = new Date()
@@ -259,7 +257,6 @@
 				const maxExpiryDateISO = convertDateToISO ( maxExpiryDate, offset )
 				expiryDateField .setAttribute ( "max", maxExpiryDateISO )
 			})
-
 			renewableButton.addEventListener ( "click", (event) => {
 				expiryDateDiv .setAttribute ( "hidden", "hidden" )
 				expiryDateField .removeAttribute ( "required" )

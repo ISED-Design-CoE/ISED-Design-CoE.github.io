@@ -35,7 +35,6 @@ const baseQuery = window.location.search
 var urlQueries = baseQuery
 </script>
 
-
 <!-- src does not work with folder, this is long but the best I can do because of 
 	how leaflet draw is designed. -->
 <script src="libs/leaflet-src.js"></script>
@@ -284,7 +283,6 @@ var urlQueries = baseQuery
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-
 						<p>Once your area is entered, click <kbd><samp>Calculate fee</samp></kbd> to calculate the licence fee</p>
 						<button type="button" class="btn btn-call-to-action" id="calculate-button">Calculate fee</button>
 
@@ -443,13 +441,11 @@ var urlQueries = baseQuery
 			elem .innerText = feeZone
 		}
 		createHiddenField ( "fee-zone", feeZone )
-
 		// Get bandwidth (from previous page)
 		const bandwidth = urlParams.get ( "bandwidth" )
 		for ( let elem of document .getElementsByClassName ( "bandwidth" ) ) {
 			elem .innerText = bandwidth
-		}
-		
+		}		
 		var area_field = createHiddenField ( "area-size", 0 )
 		var cost_field = createHiddenField ( "total-cost", 0 )
 
@@ -476,6 +472,7 @@ var urlQueries = baseQuery
 		const wbBc = document .getElementById ( "wb-bc" )
 		wbBc .prepend ( changeLicensee )
 	</script>
+
 	<script>
 		// Read application number from parameters if present
 		if ( urlParams .has ( "app-number" ) ) {
@@ -594,7 +591,6 @@ var urlQueries = baseQuery
 				document.getElementById("WKT").value = wkt;
 
 				area_size_spans = document.querySelectorAll(".area-size");
-
 				area_number = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
 
 				area_size_spans.forEach(element => {
@@ -710,10 +706,6 @@ var urlQueries = baseQuery
 		});
 		textboxControl = new L.Control.textbox();
 		
-		
-
-		
-		
         
 			// When the user clicks the trashcan, remove everything and change the icon back to the polygon.
             L.Control.RemoveAll = L.Control.extend({
@@ -825,6 +817,7 @@ var urlQueries = baseQuery
 
 			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
 
+
 			console.log(latlngs)
 			change_lat_lngs(latlngs);
             
@@ -864,8 +857,6 @@ var urlQueries = baseQuery
         });
         
         </script>
-
-
 
 <script>
 
