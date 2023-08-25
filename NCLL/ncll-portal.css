@@ -15,7 +15,7 @@
     margin-top: 50px;
 }
 
-#wb-bc .col-xs-offset-8.col-xs-4 details{
+#dropdownBackground{
     background-color: white;
 }
 
@@ -107,6 +107,10 @@
 }
 #change-licensee details[open] {
     padding-bottom: 0;
+    float:left;
+    width: 100%;
+    z-index: 2;
+
 }
 #change-licensee a {
     text-decoration: none;
