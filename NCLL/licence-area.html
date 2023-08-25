@@ -125,8 +125,11 @@ var urlQueries = baseQuery
 			.highlight {
 				background-color: yellow;
 			}
-			.map-instructions {
+			#map-instructions {
 				margin-top: 38px;	
+			}
+			html {
+				scroll-behavior: smooth;
 			}
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
@@ -188,15 +191,15 @@ var urlQueries = baseQuery
 					<h1 property="name" id="wb-cont">Licence area</h1>
 					<p>Define your licence area, with up to 12 boundary points, in any of the following ways:</p>
 					<ol>
-						<li>Enter a description of the licence area in <abbr>WKT</abbr> (Well Known Text) format</li>
-						<li>Enter the latitudes and longitudes of the boundary points</li>
-						<li>Draw the licence area on the interactive map</li>
+						<li>Enter a description of the licence area in <a href="#wkt-input"><abbr>WKT</abbr> (Well Known Text) format</a></li>
+						<li>Enter the latitudes and longitudes of the <a href="#coords-input"> boundary points</a></li>
+						<li>Draw the licence area on the <a href="#map-instructions">interactive map</a></li>
 					</ol>
 					<p><b>Note</b>: you can obtain a WKT description of your licence area using the <a href="SLAB-en-leaflet.html" target="_blank">NCLL spectrum licence browser</a>.</p>
 					
 					<div class="form-group">
 						<label for="WKT">
-							<span class="field-name">
+							<span class="field-name" id="wkt-input">
 								Boundary description in WKT (Well Known Text) format
 							</span>
 						</label>
@@ -211,7 +214,7 @@ var urlQueries = baseQuery
 
 					<div class="row">
 					<div class="col-md-4">
-						<h2>Boundary points</h2>
+						<h2 id="coords-input">Boundary points</h2>
 						<p>Latitude and longitude are in degree decimal format.</p>
 						<table class="table form-group">
 							<tr>
@@ -234,7 +237,7 @@ var urlQueries = baseQuery
 						</table>
 					</div>
 					<div class="col-md-8">
-						<details class="map-instructions">
+						<details id="map-instructions">
 							<summary>How to use the map</summary>
 							<p>To navigate the map:</p>
 
@@ -285,11 +288,11 @@ var urlQueries = baseQuery
 							
 
 							<div id="zero-area-message" class="alert alert-danger" hidden>
-								<p>Please enter a licence area. You may do this in one of three ways:</p>
+								<p>Please enter a licence area. You may do so in any of the following ways:</p>
 								<ol>
-									<li>Entering a description of the boundary in <abbr>WKT</abbr> (Well Known Text) format into the input field above</li>
-									<li>Entering the boundary points into the Boundary points table above</li>
-									<li>Drawing the licence area on the interactive map above</li>
+									<li>Enter a description of the licence area in <a href="#wkt-input"><abbr>WKT</abbr> (Well Known Text) format</a></li>
+									<li>Enter the latitudes and longitudes of the <a href="#coords-input"> boundary points</a></li>
+									<li>Draw the licence area on the <a href="#map-instructions">interactive map</a></li>
 								</ol>
 							</div>
 							<div id="LP-too-large-message" class="alert alert-danger" hidden>
