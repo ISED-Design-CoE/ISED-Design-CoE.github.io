@@ -45,6 +45,10 @@
 			#cancel-button {
 				margin-top: 1em;
 			}
+			.status-col {
+				font-size: 12px;
+				width: 20em;
+			}
 		</style>
 		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
 		<link href="ncll-portal.css" rel="stylesheet" type="text/css">
@@ -93,7 +97,18 @@
 					<th>Application number</th>
 					<th>Application identifier</th>
 					<th>Effective date</th>
-					<th>Status</th>
+					<th class="status-col">
+						<details><summary>Status</summary>
+						<label for="awaiting_checkbox">Awaiting effective date</label>
+						<input type="checkbox" name="awaiting_checkbox" id="awaiting_checkbox" onchange="toggleStatus('awaiting')">
+						<br>
+						<label for="active_checkbox">Active</label>
+						<input type="checkbox" name="active_checkbox" id="active_checkbox" onchange="toggleStatus('active')">
+						<br>
+						<label for="inactive_checkbox">Inactive</label>
+						<input type="checkbox" name="inactive_checkbox" id="inactive_checkbox" onchange="toggleStatus('inactive')">
+						</details>
+					</th>
 					<th>Amount due</th>
 					<th data-orderable="false">Actions</th>
 				</tr>
