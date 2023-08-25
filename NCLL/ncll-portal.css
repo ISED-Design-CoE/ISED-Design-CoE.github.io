@@ -1,14 +1,13 @@
 
-/* .notesaboutmockup {
+.notesaboutmockup {
 	display: none;
-} */
+}
 
 /* Uncomment the above if using these pages for usability testing */
 
 #wb-bc {
     margin-left: auto;
-    margin-right: auto;
-    
+    margin-right: auto;  
 }
 
 #wb-bc .container .breadcrumb{
@@ -102,6 +101,7 @@
 }
 #change-licensee details summary {
     font-weight: bold;
+
     background-color: white;
     z-index: 2;
 }
@@ -110,6 +110,7 @@
     float:left;
     width: 100%;
     z-index: 2;
+
 
 }
 #change-licensee a {
