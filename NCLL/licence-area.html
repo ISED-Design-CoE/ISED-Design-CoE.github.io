@@ -125,7 +125,7 @@ var urlQueries = baseQuery
 			.highlight {
 				background-color: yellow;
 			}
-			.map-instructions {
+			#map-instructions {
 				margin-top: 38px;	
 			}
 			.text-on-map{
@@ -133,6 +133,9 @@ var urlQueries = baseQuery
 				border-radius:4px;
 				outline:2px solid rgba(0,0,0,0.2);
 				padding:8px;
+			}
+			html {
+				scroll-behavior: smooth;
 			}
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
@@ -192,23 +195,22 @@ var urlQueries = baseQuery
 			<div class="wb-frm">
 				<div class="container">
 					<h1 property="name" id="wb-cont">Licence area</h1>
-					<p>Define your licence area with up to 12 boundary points, connected with straight lines.</p>
-					<p>You may do so in any of the following ways:</p>
+					<p>Define your licence area, with up to 12 boundary points, in any of the following ways:</p>
 					<ol>
-						<li>Enter a description of the licence area in <abbr>WKT</abbr> (Well Known Text) format</li>
-						<li>Enter the latitudes and longitudes of the boundary points</li>
-						<li>Draw the licence area on the interactive map</li>
+						<li>Enter a description of the licence area in <a href="#wkt-input"><abbr>WKT</abbr> (Well Known Text) format</a></li>
+						<li>Enter the latitudes and longitudes of the <a href="#coords-input"> boundary points</a></li>
+						<li>Draw the licence area on the <a href="#map-instructions">interactive map</a></li>
 					</ol>
-					<p><b>Note</b>: you can obtain a WKT description of your licence area using our <a href="SLAB-en-leaflet.html" target="_blank">Spectrum licence area browser</a>.</p>
+					<p><b>Note</b>: you can obtain a WKT description of your licence area using the <a href="SLAB-en-leaflet.html" target="_blank">NCLL spectrum licence browser</a>.</p>
 					
 					<div class="form-group">
 						<label for="WKT">
-							<span class="field-name">
+							<span class="field-name" id="wkt-input">
 								Boundary description in WKT (Well Known Text) format
 							</span>
 						</label>
 						<details>
-							<summary>More information</summary>
+							<summary>More information<span class="wb-inv"> about WKT</span></summary>
 							<p>WKT is a compact format for describing mathematical shapes, including polygons. Each vertex is a longitude-latitude pair.</p>
 							<p>e.g. POLYGON((<span class="highlight">-113.956370 50.880852</span>,<span class="highlight">-113.952550 50.880744</span>,<span class="highlight">-113.944869 50.882288</span>,<span class="highlight">-113.945942 50.884372</span>,<span class="highlight">-113.951950 50.883398</span>,<span class="highlight">-113.956885 50.882369</span>,<span class="highlight">-113.956370 50.880852</span>))</p>
 							<p>The input field below accepts a polygon with up to 12 pairs.</p>
@@ -218,7 +220,7 @@ var urlQueries = baseQuery
 
 					<div class="row">
 					<div class="col-md-4">
-						<h2>Boundary points</h2>
+						<h2 id="coords-input">Boundary points</h2>
 						<p>Latitude and longitude are in degree decimal format.</p>
 						<table class="table form-group">
 							<tr>
@@ -241,7 +243,7 @@ var urlQueries = baseQuery
 						</table>
 					</div>
 					<div class="col-md-8">
-						<details class="map-instructions">
+						<details id="map-instructions">
 							<summary>How to use the map</summary>
 							<p>To navigate the map:</p>
 
@@ -283,27 +285,20 @@ var urlQueries = baseQuery
 				<div class="row">
 					<div class="col-md-12">
 
-						<p>Once your area is entered, click <kbd><samp>Calculate</samp></kbd> to get the information about the area and to calculate the licence fee</p>
-						<button type="button" class="btn btn-call-to-action" id="calculate-button">Calculate</button>
+						<p>Once your area is entered, click <kbd><samp>Calculate fee</samp></kbd> to calculate the licence fee</p>
+						<button type="button" class="btn btn-call-to-action" id="calculate-button">Calculate fee</button>
 
 						<div id="calc-results-before">
-							<p>Press <kbd><samp>Calculate</samp></kbd> to see results.</p>
 						</div>
 						<div id="calc-results-after" hidden>
-							<h2>Area information</h2>
-							<dl class="dl-horizontal">
-								<dt>Area size:</dt>
-								<dd><span class="area-size" id="area-size">0</span> km<sup>2</sup></dd>
-								<dt>Fee zone:</dt>
-								<dd><span class="fee-zone-type">Rural</span></dd>
-							</dl>
+							
 
 							<div id="zero-area-message" class="alert alert-danger" hidden>
-								<p>Please enter a licence area. You may do this in one of three ways:</p>
+								<p>Please enter a licence area. You may do so in any of the following ways:</p>
 								<ol>
-									<li>Entering a description of the boundary in <abbr>WKT</abbr> (Well Known Text) format into the input field above</li>
-									<li>Entering the boundary points into the Boundary points table above</li>
-									<li>Drawing the licence area on the interactive map above</li>
+									<li>Enter a description of the licence area in <a href="#wkt-input"><abbr>WKT</abbr> (Well Known Text) format</a></li>
+									<li>Enter the latitudes and longitudes of the <a href="#coords-input"> boundary points</a></li>
+									<li>Draw the licence area on the <a href="#map-instructions">interactive map</a></li>
 								</ol>
 							</div>
 							<div id="LP-too-large-message" class="alert alert-danger" hidden>
@@ -328,7 +323,7 @@ var urlQueries = baseQuery
 							<div id="licence-fee-text">
 								<h2>Licence fee</h2>
 								<dl class="dl-horizontal">
-									<dt>Base rate (Rural) per year</dt>
+									<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
 									<dd>$<span class="base-rate">0.45</span> per MHz per km<sup>2</sup></dd>
 									<dt>Requested bandwidth</dt>
 									<dd><span class="bandwidth">10</span> MHz</dd>
@@ -345,10 +340,10 @@ var urlQueries = baseQuery
 				<section id="save-div" class="alert alert-success" hidden>
 					<p>Application saved as draft</p>
 				</section>
-				<button class="btn btn-primary" type="submit" id="next-button" hidden>Next</button>
+				<button class="btn btn-primary" type="submit" id="next-button" hidden>Next &gt;</button>
 				<button class="btn btn-default" type="button" id="save-button">Save</button>
 				<br>
-				<button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details.html'+ urlQueries">Back</button>
+				<button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details.html'+ urlQueries">&lt; Back</button>
 
 				<div class="notesaboutmockup">
 					<h2>Notes about this mockup:</h2>
@@ -435,11 +430,19 @@ var urlQueries = baseQuery
 	</script>
 	<script>
 		// Set up needed fields for cost calculation
-		const baseRate = .45 // this is the rural rate
+		let baseRate = urlParams.get ( "base-rate" ) 
+		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
 		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
 			elem .innerText = baseRate
 		}
 		createHiddenField ( "base-rate", baseRate )
+
+		let feeZone = urlParams.get ( "fee-zone" ) 
+		if (feeZone == null) {feeZone = "Rural"} // matches the default baseRate
+		for ( let elem of document .getElementsByClassName ( "fee-zone" ) ) {
+			elem .innerText = feeZone
+		}
+		createHiddenField ( "fee-zone", feeZone )
 
 		// Get bandwidth (from previous page)
 		const bandwidth = urlParams.get ( "bandwidth" )
@@ -763,6 +766,8 @@ var urlQueries = baseQuery
 
 			map.on( L.Draw.Event.DRAWSTART, function (e) {
 				map.addControl(textboxControl)
+				calcResultsBefore .removeAttribute ( "hidden", "hidden" )
+				calcResultsAfter .setAttribute ( "hidden", "hidden" )
 			})
 
 			map.on( L.Draw.Event.DRAWVERTEX, function(e) {

@@ -142,8 +142,11 @@
 					<strong class="required small" aria-hidden="true">(required)</strong>
 				</legend>
 				<details>
-					<summary>More information</summary>
-					<p>Renewable licences last until March 31 and can be renewed annually. Temporary licences last up to 11 months.</p>
+					<summary>More information<span class="wb-inv"> about renewable and temporary licences</span></summary>
+					<ul class="list-unstyled">
+						<li><strong>Renewable</strong> licences last until March 31 and can be renewed annually.</li>
+						<li><strong>Temporary</strong> licences last up to 11 months.</li>
+					</ul>
 				</details>
 				<ul class="list-unstyled lst-spcd-2">
 					<li class="radio">
@@ -195,10 +198,10 @@
 		<section id="save-div" class="alert alert-success" hidden>
 			<p>Application saved as draft</p>
 		</section>
-		<button class="btn btn-primary" type="submit">Next</button>
+		<button class="btn btn-primary" type="submit">Next &gt;</button>
 		<button class="btn btn-default" type="button" id="save-button">Save</button>
 		<br>
-		<button class="btn btn-default" type="button" onclick="window.location.href = 'contact.html'+ window.location.search">Back</button>
+		<button class="btn btn-default" type="button" onclick="window.location.href = 'contact.html'+ window.location.search">&lt; Back</button>
 
 		<div class="notesaboutmockup">
 			<h2>Notes about this mockup:</h2>
@@ -223,13 +226,6 @@
 				}
 			}
 
-
-			renewableButton.addEventListener ( "click", (event) => {
-				expiryDateDiv .setAttribute ( "hidden", "hidden" )
-			})
-			temporaryButton.addEventListener ( "click", (event) => {
-				expiryDateDiv .removeAttribute ( "hidden" )
-			})
 
 			function convertDateToISO ( date, offset ) {
 				let fullDate = new Date()
@@ -262,6 +258,15 @@
 				maxExpiryDate.setMonth ( maxExpiryDate.getMonth() + 11 )
 				const maxExpiryDateISO = convertDateToISO ( maxExpiryDate, offset )
 				expiryDateField .setAttribute ( "max", maxExpiryDateISO )
+			})
+
+			renewableButton.addEventListener ( "click", (event) => {
+				expiryDateDiv .setAttribute ( "hidden", "hidden" )
+				expiryDateField .removeAttribute ( "required" )
+			})
+			temporaryButton.addEventListener ( "click", (event) => {
+				expiryDateField .setAttribute ( "required", "required" )
+				expiryDateDiv .removeAttribute ( "hidden" )
 			})
 		</script>
 		<script>

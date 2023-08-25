@@ -83,7 +83,7 @@
 
 <!-- Start page content -->
 	<h1 property="name" id="wb-cont">Select licensee account</h1>
-	<form action="dashboard.html" method="get" id="sign-in">
+	<form action="dashboard.html" method="get">
 		<fieldset class="gc-chckbxrdio">
 
 		<div class="wb-frmvld">
@@ -135,7 +135,7 @@
 				</tbody>
 			</table>
 			
-			<button class="btn btn-primary" type="submit" id="next-button">Next</button>
+			<button class="btn btn-primary" type="submit" id="next-button">Next &gt;</button>
 
 			<div class="notesaboutmockup">
 				<h2>Notes about this mockup:</h2>
@@ -151,17 +151,7 @@
 				</ul>
 			</div>
 		</div>
-		</fieldset>
-	<script>
-		// Update form action to reflect the desired target
-		const queryString = window.location.search
-		const urlParams = new URLSearchParams ( queryString )
-		const target = urlParams.get ( 'target' )
-		if (target == null) {
-			target = "dashboard.html";
-		}
-		document.getElementById ( 'sign-in' ) .setAttribute ( "action", target + '.html' )
-	</script>
+	</fieldset>
 	<div id="change-licensee">
 		<div class="container">
 			<div class="row">
