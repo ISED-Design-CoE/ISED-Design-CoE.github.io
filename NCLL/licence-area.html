@@ -593,7 +593,7 @@ var urlQueries = baseQuery
 					if (i < lat_long_sliced.length) {
 						document.getElementById(lat_id).value = latlngs[i].lat.toFixed(6);
 						document.getElementById(long_id).value = latlngs[i].lng.toFixed(6);
-						wkt += latlngs[i].lat.toFixed(6) + " " + latlngs[i].lng.toFixed(6) + ","
+						wkt += latlngs[i].lng.toFixed(6) + " " + latlngs[i].lat.toFixed(6) + ","
 					} else {
 						document.getElementById(lat_id).value = "";
 						document.getElementById(long_id).value = "";
@@ -891,7 +891,7 @@ if (document.getElementById("lat1").value != "") {
 
 				lats.push(temp_lat);
 				longs.push(temp_long);
-				wkt += temp_lat + " " + temp_long + ","
+				wkt += temp_long + " " + temp_lat + ","
 				
 				}
 	}
