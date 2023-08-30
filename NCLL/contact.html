@@ -99,8 +99,8 @@
 
 	<div class="form-group">
 		<ul class="nav nav-wizard">
+			<li><a class="navbar-item"href="general.html">General information</a></li>
 			<li class="active" aria-current="step">Contact information</li>
-			<li>General information</li>
 			<li>Technical details</li>
 			<li>Licence area</li>
 			<li>Frequency</li>
@@ -112,7 +112,7 @@
 	<p>The contact information below relates only to the current licence application.</p>
 	
 	<div class="wb-frmvld">
-		<form action="general.html" method="get">
+		<form action="technical-details.html" method="get">
 		<div class="wb-frm">
 			<section class="panel panel-default">
 				<header class="panel-heading">
@@ -218,7 +218,7 @@
 		<button class="btn btn-primary" type="submit">Next &gt;</button>
 		<button class="btn btn-default" type="button" id="save-button">Save</button>
 		<br>
-		<button class="btn btn-default" type="button" onclick="history.back()">&lt; Back</button>
+		<button class="btn btn-default" type="button" onclick="window.location.href = 'general.html'+ window.location.search">&lt; Back</button>
 
 		<div class="notesaboutmockup">
 			<h2>Notes about this mockup:</h2>
@@ -230,7 +230,6 @@
 			<h2>Changes from phase 2A BRD:</h2>
 			<ul>
 				<li>Ref. 5.8.3 Account Information page</li>
-				<li>Now first page in the wizard</li>
 				<li>Moved account information into header</li>
 				<li>Removed technical contact</li>
 				<li>Re-added contact information for contacts</li>
