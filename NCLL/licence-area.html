@@ -381,6 +381,28 @@ var urlQueries = baseQuery
 	</form>
 	<script src="catch-and-throw.js"></script>
 	<script>
+		// Set up needed fields for cost calculation
+		let baseRate = urlParams.get ( "base-rate" ) 
+		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
+		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
+			elem .innerText = baseRate
+		}
+		createHiddenField ( "base-rate", baseRate )
+
+		let feeZone = urlParams.get ( "fee-zone" ) 
+		if (feeZone == null) {feeZone = "Rural"} // matches the default baseRate
+		for ( let elem of document .getElementsByClassName ( "fee-zone" ) ) {
+			elem .innerText = feeZone
+		}
+		createHiddenField ( "fee-zone", feeZone )
+		// Get bandwidth (from previous page)
+		const bandwidth = urlParams.get ( "bandwidth" )
+		for ( let elem of document .getElementsByClassName ( "bandwidth" ) ) {
+			elem .innerText = bandwidth
+		}		
+		var area_field = createHiddenField ( "area-size", 0 )
+		var cost_field = createHiddenField ( "total-cost", 0 )
+
 		var area_number = 0;
 		var cost_number = 0;
 		const calculateButton = document.getElementById ( "calculate-button" )
@@ -401,8 +423,6 @@ var urlQueries = baseQuery
 		const licenceFeeText = document.getElementById ( "licence-fee-text" )
 
 		function calculate_area_info () {
-
-			
 
 			urlQueries = baseQuery 
 
@@ -447,7 +467,7 @@ var urlQueries = baseQuery
 
 				} else { // powerLevel == "Medium power"
 
-					if ( false ) { // This should check if any part of the drawn area overlaps an urban area
+					if ( feeZone == "Urban" ) {
 						noErrors = false
 						errorMessages [ "MP in urban area" ] .removeAttribute ( "hidden" )
 					}
@@ -480,30 +500,6 @@ var urlQueries = baseQuery
 		saveButton.addEventListener ( "click", (event) => {
 			saveDiv .removeAttribute ( "hidden" )
 		})
-	</script>
-	<script>
-		// Set up needed fields for cost calculation
-		let baseRate = urlParams.get ( "base-rate" ) 
-		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
-		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
-			elem .innerText = baseRate
-		}
-		createHiddenField ( "base-rate", baseRate )
-
-		let feeZone = urlParams.get ( "fee-zone" ) 
-		if (feeZone == null) {feeZone = "Rural"} // matches the default baseRate
-		for ( let elem of document .getElementsByClassName ( "fee-zone" ) ) {
-			elem .innerText = feeZone
-		}
-		createHiddenField ( "fee-zone", feeZone )
-		// Get bandwidth (from previous page)
-		const bandwidth = urlParams.get ( "bandwidth" )
-		for ( let elem of document .getElementsByClassName ( "bandwidth" ) ) {
-			elem .innerText = bandwidth
-		}		
-		var area_field = createHiddenField ( "area-size", 0 )
-		var cost_field = createHiddenField ( "total-cost", 0 )
-
 	</script>
 	</div>
 	<div id="change-licensee">
