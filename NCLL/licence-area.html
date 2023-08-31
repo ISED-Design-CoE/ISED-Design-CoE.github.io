@@ -299,10 +299,19 @@ var urlQueries = baseQuery
 									<li>Draw the licence area on the <a href="#map-instructions">interactive map</a></li>
 								</ol>
 							</div>
+							<div id="Out-of-Canada-message" class="alert alert-danger" hidden>
+								<p>The licence area extends beyond national borders.</p>
+								<p>Please adjust the licence area to be fully within Canada.</p>
+							</div>
+							<div id="MP-in-urban-message" class="alert alert-danger" hidden>
+								<p>You have requested a medium power licence, which is not allowed in urban areas.</p>
+								<p>Please adjust the licence area to be fully outside any urban areas.</p>
+								<p>Alternatively, you may go back to the previous screen and change to a low power licence.</p>
+							</div>
 							<div id="LP-too-large-message" class="alert alert-danger" hidden>
 								<p>You have requested a low power licence, which means the licence area can be at most 15 km<sup>2</sup> in area.</p>
 								<p>Your current area size is <span class='area-size'>0</span> km<sup>2</sup>. Please adjust the area to be less than 15 km<sup>2</sup>.</p>
-								<p>After submitting this application, you may then duplicate it to create as many other licence applications as you would like. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
+								<p>After submitting this application, you may then duplicate it as necessary. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
 							</div>
 							<div id="MP-too-small-but-LP-OK-message" class="alert alert-danger" hidden>
 								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
@@ -317,7 +326,7 @@ var urlQueries = baseQuery
 							<div id="MP-too-large-message" class="alert alert-danger" hidden>
 								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
 								<p>Your current area size is <span class='area-size'>0</span> km<sup>2</sup>. Please adjust the area to be less than 165 km<sup>2</sup>.</p>
-								<p>After submitting this application, you may then duplicate it to create as many other licence applications as you would like. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
+								<p>After submitting this application, you may then duplicate it as necessary. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
 							</div>
 
 							<div id="licence-fee-text">
@@ -383,6 +392,8 @@ var urlQueries = baseQuery
 
 		const errorMessages = {}
 		errorMessages [ "Zero area" ] = document.getElementById ( "zero-area-message" )
+		errorMessages [ "Out of Canada" ] = document.getElementById ( "Out-of-Canada-message" )
+		errorMessages [ "MP in urban area" ] = document.getElementById ( "MP-in-urban-message" )
 		errorMessages [ "Too large for LP" ] = document.getElementById ( "LP-too-large-message" )
 		errorMessages [ "Too small for MP but LP is OK" ] = document.getElementById ( "MP-too-small-but-LP-OK-message" )
 		errorMessages [ "Too small for MP" ] = document.getElementById ( "MP-too-small-message" )
@@ -416,18 +427,44 @@ var urlQueries = baseQuery
 			licenceFeeText .setAttribute ( "hidden" , "hidden" )
 			nextButton .setAttribute ( "hidden" , "hidden" )
 
+			let noErrors = true
 			// As appropriate, show error message
-			if ( area_field . value == 0 ) {
+			if ( area_field .value == 0 ) { // If no area drawn, there can be no other errors
+				noErrors = false
 				errorMessages [ "Zero area" ] .removeAttribute ( "hidden" )
-			} else if ( powerLevel == "Low power" && area_field . value > 15 ) {
-				errorMessages [ "Too large for LP" ] .removeAttribute ( "hidden" )
-			} else if ( powerLevel == "Medium power" && area_field . value <= 15 ) {
-				errorMessages [ "Too small for MP but LP is OK" ] .removeAttribute ( "hidden" )
-			} else if ( powerLevel == "Medium power" && area_field . value < 75 ) {
-				errorMessages [ "Too small for MP" ] .removeAttribute ( "hidden" )
-			} else if ( powerLevel == "Medium power" && area_field . value > 165 ) {
-				errorMessages [ "Too large for MP" ] .removeAttribute ( "hidden" )
-			} else { // everything's okay
+			} else {
+
+				if ( false ) { // This should check if any part of the drawn area is outside Canada
+					noErrors = false
+					errorMessages [ "Out of Canada" ] .removeAttribute ( "hidden" )
+				}
+
+				if ( powerLevel == "Low power" ) {
+					if ( area_field .value > 15 ) {
+						noErrors = false
+						errorMessages [ "Too large for LP" ] .removeAttribute ( "hidden" )
+					}
+
+				} else { // powerLevel == "Medium power"
+
+					if ( false ) { // This should check if any part of the drawn area overlaps an urban area
+						noErrors = false
+						errorMessages [ "MP in urban area" ] .removeAttribute ( "hidden" )
+					}
+
+					if ( area_field .value <= 15 ) {
+						noErrors = false
+						errorMessages [ "Too small for MP but LP is OK" ] .removeAttribute ( "hidden" )
+					} else if ( area_field .value < 75 ) {
+						noErrors = false
+						errorMessages [ "Too small for MP" ] .removeAttribute ( "hidden" )
+					} else if ( area_field .value > 165 ) {
+						noErrors = false
+						errorMessages [ "Too large for MP" ] .removeAttribute ( "hidden" )
+					}
+				}
+			}
+			if ( noErrors ) { // everything's okay
 				licenceFeeText .removeAttribute ( "hidden" )
 				nextButton .removeAttribute ( "hidden" )
 			}
