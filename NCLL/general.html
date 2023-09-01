@@ -144,7 +144,7 @@
 				<details>
 					<summary>More information<span class="wb-inv"> about renewable and temporary licences</span></summary>
 					<ul class="list-unstyled">
-						<li><strong>Renewable</strong> licences last until March 31 and can be renewed annually.</li>
+						<li><strong>Renewable</strong> licences expire on March 31 each year and have a high expectation to be renewed for another year.</li>
 						<li><strong>Temporary</strong> licences last up to 11 months.</li>
 					</ul>
 				</details>
@@ -174,13 +174,13 @@
 			<fieldset class="gc-chckbxrdio">
 				<legend class="required">
 					<span class="field-name">
-						Does The best company or any of its affiliates or subsidiaries currently have 100,000 or more retail mobile phone subscribers?
+						Does The Best Company or any of its affiliates or subsidiaries currently have 100,000 or more retail mobile phone subscribers?
 					</span>
 					<strong class="required small" aria-hidden="true">(required)</strong>
 				</legend>
 				<details>
 					<summary>Why are we asking this question?</summary>
-					<p>Any entity, or affiliate of that entity (as defined in section 6.2 in SPB-001-23), with 100,000 or more retail mobile phone subscribers as reported to the CRTC through its Annual Telecommunications Survey is ineligible to hold a licence for the blocks from 3940 MHz to 3980 MHz.</p>
+					<p>Any entity, or affiliate of that entity (as defined in section 6.2 in <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/decision-non-competitive-local-licensing-framework-including-spectrum-3900-3980-mhz-band-and" target="_blank">SPB-001-23</a>), with 100,000 or more retail mobile phone subscribers as reported to the CRTC through its Annual Telecommunications Survey is ineligible to hold a licence for the blocks from 3940 MHz to 3980 MHz.</p>
 				</details>
 				<ul class="list-unstyled lst-spcd-2">
 					<li class="radio">
@@ -206,7 +206,7 @@
 			<h2>Notes about this mockup:</h2>
 			<ul>
 				<li>When user selects "Temporary", show the "Expiry date" field</li>
-				<li>User can jump to previously visited pages using "step navigation" at top of screen</li>
+				<li>Step navigation in heading based on <a href="https://sms-sgs.ic.gc.ca/registration/applicationWizard?execution=e1s2">new user registration form</a></li>
 			</ul>
 			<h2>Changes from phase 2A BRD:</h2>
 			<ul>
@@ -296,7 +296,6 @@
 	<script>
 		// Move #change-licensee to top of screen
 		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
-		// This does lead to z-index issues: the "Log out" button can't currently be reached because it's behind the <main> element
 		const changeLicensee = document .getElementById ( "change-licensee" )
 		const wbBc = document .getElementById ( "wb-bc" )
 		wbBc .prepend ( changeLicensee )

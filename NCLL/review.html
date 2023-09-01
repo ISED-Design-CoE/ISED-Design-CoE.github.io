@@ -62,6 +62,11 @@
 				height: 60em;
 				width: 60em;
 			}
+			@media (min-width: 768px) {
+				.dl-horizontal dt {
+					width: 15em;
+				}
+			}
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
 	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
@@ -148,7 +153,7 @@
 					</div>
 						<dt>Bandwidth</dt>
 						<dd><span class="bandwidth">10 MHz</span></dd>
-						<dt>Antenna location</dt>
+						<dt>Location of antennas</dt>
 						<dd><span class="antenna">Outdoor and indoor</span></dd>
 						<dt>Licence type</dt>
 						<dd><span class="power-level">Medium power</span></dd>
@@ -211,6 +216,8 @@
 			
 					<h3>Licence fee</h3>
 					<dl class="dl-horizontal">
+						<dt>Area type</dt>
+						<dd><span class="fee-zone">Rural</span></dd>
 						<dt>Base rate (Rural) per year</dt>
 						<dd>$<span class="base-rate">0.45</span> per MHz per km<sup>2</sup></dd>
 						<dt>Requested bandwidth</dt>
@@ -229,7 +236,7 @@
 					</div>
 					<dl>
 						<dt>Requested frequency blocks</dt>
-						<dd><span class="frequency">A3: 3920&ndash;3930&nbsp;MHz</span></dd>
+						<dd><span class="frequency">A3: 3920–3930</span>&nbsp;MHz</dd>
 					</dl>
 				</div>
 
@@ -320,7 +327,6 @@
 	<script>
 		// Move #change-licensee to top of screen
 		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
-		// This does lead to z-index issues: the "Log out" button can't currently be reached because it's behind the <main> element
 		const changeLicensee = document .getElementById ( "change-licensee" )
 		const wbBc = document .getElementById ( "wb-bc" )
 		wbBc .prepend ( changeLicensee )

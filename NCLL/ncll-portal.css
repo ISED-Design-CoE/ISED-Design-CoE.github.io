@@ -21,9 +21,9 @@
 #wb-bc #change-licensee{
     max-height: 39px;
     width:100vw;
-    left:0vw; 
+    left:0vw;
     margin-bottom:2vh;
-    background-color:rgb(30, 20, 88);
+    /* background-color:#38414d; */
 }
 
 #wb-bc #change-licensee .container .row .col-xs-offset-8.col-xs-4{

@@ -110,14 +110,10 @@
 					<td>
 						<select class="form-control">
 							<option>Actions</option>
-							<option>Pay</option>
-							<option>View</option>
+							<option>Edit</option>
+							<option>Download</option>
 							<option>Duplicate</option>
 							<option>Delete</option>
-							<option disabled>────────────────────</option>
-							<option>Download</option>
-							<option>Download summary report</option>
-							<option>Download fee report</option>
 						</select>
 					</td>
 				</tr>
@@ -129,7 +125,6 @@
 			<ul>
 				<li>Uses the <a href="https://wet-boew.github.io/v4.0-ci/docs/ref/tables/tables-en.html">DataTables plugin for WET</a></li>
 				<li>TODO: Enable links to filtered views</li>
-				<li>TODO: Ensure dropdown lists are appropriate to statuses</li>
 			</ul>
 			<h2>Changes from phase 2A BRD:</h2>
 			<ul>
@@ -156,7 +151,6 @@
 	<script>
 		// Move #change-licensee to top of screen
 		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
-		// This does lead to z-index issues: the "Log out" button can't currently be reached because it's behind the <main> element
 		const changeLicensee = document .getElementById ( "change-licensee" )
 		const wbBc = document .getElementById ( "wb-bc" )
 		wbBc .prepend ( changeLicensee )
