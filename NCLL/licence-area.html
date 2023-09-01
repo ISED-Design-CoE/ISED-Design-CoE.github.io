@@ -309,23 +309,23 @@ var urlQueries = baseQuery
 								<p>Alternatively, you may go back to the previous screen and change to a low power licence.</p>
 							</div>
 							<div id="LP-too-large-message" class="alert alert-danger" hidden>
-								<p>You have requested a low power licence, which means the licence area can be at most 15 km<sup>2</sup> in area.</p>
-								<p>Your current area size is <span class='area-size'>0</span> km<sup>2</sup>. Please adjust the area to be less than 15 km<sup>2</sup>.</p>
+								<p>You have requested a low power licence, which means the licence area can be at most 15 km² in area.</p>
+								<p>Your current area size is <span class='area-size'>0</span> km². Please adjust the area to be less than 15 km².</p>
 								<p>After submitting this application, you may then duplicate it as necessary. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
 							</div>
 							<div id="MP-too-small-but-LP-OK-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
-								<p>Your current area size is <span class='area-size'>0</span> km<sup>2</sup>. Please adjust the area to be at least 75 km<sup>2</sup>.</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area.</p>
+								<p>Your current area size is <span class='area-size'>0</span> km². Please adjust the area to be at least 75 km².</p>
 								<p>Alternatively, you may go back to the previous screen and change to a low power licence.</p>
 							</div>
 							<div id="MP-too-small-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
-								<p>Your current area size is <span class='area-size'>0</span> km<sup>2</sup>. Please adjust the area to be at least 75 km<sup>2</sup>.</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area.</p>
+								<p>Your current area size is <span class='area-size'>0</span> km². Please adjust the area to be at least 75 km².</p>
 								<p>Alternatively, you may apply for multiple low power licences, as described at <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a>.</p>
 							</div>
 							<div id="MP-too-large-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
-								<p>Your current area size is <span class='area-size'>0</span> km<sup>2</sup>. Please adjust the area to be less than 165 km<sup>2</sup>.</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area.</p>
+								<p>Your current area size is <span class='area-size'>0</span> km². Please adjust the area to be less than 165 km².</p>
 								<p>After submitting this application, you may then duplicate it as necessary. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
 							</div>
 
@@ -335,11 +335,11 @@ var urlQueries = baseQuery
 									<dt>Area type</dt>
 									<dd><span class="fee-zone">Rural</span></dd>
 									<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-									<dd>$<span class="base-rate">0.45</span> per MHz per km<sup>2</sup></dd>
+									<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
 									<dt>Requested bandwidth</dt>
 									<dd><span class="bandwidth">10</span> MHz</dd>
 									<dt>Area size</dt>
-									<dd><span class="area-size">0</span> km<sup>2</sup></dd>
+									<dd><span class="area-size">0</span> km²</dd>
 									<dt>Total cost per year</dt>
 									<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 								</dl>
@@ -752,7 +752,7 @@ var urlQueries = baseQuery
 			var area_text = document.createElement('div');
 			area_text.classList.add('area-size')
 			text.appendChild(area_text)
-			text.innerHTML = "<div class='text-on-map'> <strong>Area size:</strong> <span class='area-size area-size-drawing'>0</span> <span>km<sup>2</sup></span> </div>"
+			text.innerHTML = "<div class='text-on-map'> <strong>Area size:</strong> <span class='area-size area-size-drawing'>0</span> <span>km²</span> </div>"
 			return text;
 			},
 		});
