@@ -79,7 +79,7 @@
 				"search": false,
 				"siteMenu": false,
 				"breadcrumbs": [{
-					"title": "SMS",
+					"title": "Spectrum Management System",
 					"href": "index.html"
 				},
 				{
@@ -98,8 +98,8 @@
 	</div>
 	<div class="form-group">
 		<ul class="nav nav-wizard">
-			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
 			<li><a class="navbar-item" href="general.html">General information</a></li>
+			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
 			<li class="active" aria-current="step">Technical details</li>
 			<li>Licence area</li>
 			<li>Frequency</li>
@@ -138,12 +138,12 @@
 			<fieldset class="gc-chckbxrdio">
 				<legend class="required">
 					<span class="field-name">
-						Antenna location
+						Location of antennas
 					</span>
 					<strong class="required small" aria-hidden="true">(required)</strong>
 				</legend>
 				<details>
-					<summary>More information<span class="wb-inv"> about antenna location</span></summary>
+					<summary>More information<span class="wb-inv"> about location of antennas</span></summary>
 					<ul class="list-unstyled">
 						<li>With an <strong>indoor-only</strong> licence, you need to serve at least one building within your licence area.</li>
 						<li>With an <strong>outdoor-and-indoor</strong> licence, you need to serve your whole licence area.</li>
@@ -174,8 +174,8 @@
 				<details>
 					<summary>More information<span class="wb-inv"> about licence type</span></summary>
 					<ul class="list-unstyled">
-						<li>A <strong>Low-power</strong> licence can be up to 15 km<sup>2</sup> in area.</li>
-						<li>A <strong>Medium-power</strong> licence can be between 75 and 165 km<sup>2</sup>, but is not allowed in urban areas.</li>
+						<li>A <strong>Low-power</strong> licence can be up to 15 km² in area.</li>
+						<li>A <strong>Medium-power</strong> licence can be between 75 and 165 km², but is not allowed in urban areas.</li>
 					</ul>
 				</details>
 				<ul class="list-unstyled lst-spcd-2">
@@ -200,12 +200,18 @@
 		<button class="btn btn-primary" type="submit">Next &gt;</button>
 		<button class="btn btn-default" type="button" id="save-button">Save</button>
 		<br>
-		<button class="btn btn-default" type="button" onclick="window.location.href = 'general.html'+ window.location.search">&lt; Back</button>
+		<button class="btn btn-default" type="button" onclick="window.location.href = 'contact.html'+ window.location.search">&lt; Back</button>
 
 		<div class="notesaboutmockup">
 			<h2>Notes about this mockup:</h2>
 			<ul>
-				<li>TODO: remove back button?</li>
+				<li>Note: Location of antennas field and Licence type field are interdependent</li>
+			</ul>
+			<h2>Changes from phase 2A BRD:</h2>
+			<ul>
+				<li>Ref. 5.8.5 Technical details page</li>
+				<li>Removed "Maximum antenna height"</li>
+				<li>Moved questions about frequency to a separate page, "Frequency"</li>
 			</ul>
 		</div>
 		</form>
@@ -275,13 +281,13 @@
 	</div>
 	<div id="change-licensee">
 		<div class="container">
-			<div class="row">
-				<div class="col-xs-offset-8 col-xs-4">
-					<details>
-						<summary>The Best Company</summary>
-						<p><a href="select-licensee.html">Switch licensee account</a></p>
-						<p class="border-top"><a href="login.html"><span class="glyphicon-log-out glyphicon"></span> Sign out</a></p>
-					</details>
+			<div class="col-xs-5 col-xs-offset-7 col-md-offset-0 col-md-4" style="float:right">
+				<section id="wb-so">
+					<h2 class="wb-inv">Sign-on information</h2>
+					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licencee account</button>
+					<button class="btn btn-primary" type="button" onclick="window.location = 'login.html'">Sign out</button>
+					<p class="small mrgn-tp-sm">Licencee: <span class="nowrap">The Best Company</span></p>
+				</section>
 				</div>
 			</div>
 		</div>
@@ -289,7 +295,6 @@
 	<script>
 		// Move #change-licensee to top of screen
 		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
-		// This does lead to z-index issues: the "Log out" button can't currently be reached because it's behind the <main> element
 		const changeLicensee = document .getElementById ( "change-licensee" )
 		const wbBc = document .getElementById ( "wb-bc" )
 		wbBc .prepend ( changeLicensee )

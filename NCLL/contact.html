@@ -80,7 +80,7 @@
 				"search": false,
 				"siteMenu": false,
 				"breadcrumbs": [{
-					"title": "SMS",
+					"title": "Spectrum Management System",
 					"href": "index.html"
 				},
 				{
@@ -99,8 +99,8 @@
 
 	<div class="form-group">
 		<ul class="nav nav-wizard">
+			<li><a class="navbar-item"href="general.html">General information</a></li>
 			<li class="active" aria-current="step">Contact information</li>
-			<li>General information</li>
 			<li>Technical details</li>
 			<li>Licence area</li>
 			<li>Frequency</li>
@@ -112,7 +112,7 @@
 	<p>The contact information below relates only to the current licence application.</p>
 	
 	<div class="wb-frmvld">
-		<form action="general.html" method="get">
+		<form action="technical-details.html" method="get">
 		<div class="wb-frm">
 			<section class="panel panel-default">
 				<header class="panel-heading">
@@ -155,7 +155,7 @@
 								<option>John Dutton</option>
 							</select>
 							<br>
-							<p style="line-height: 135%">Note: To add to or update your administrative contact information, please connect with one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
+							<p style="line-height: 135%">To update your administrative contacts, please connect with one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
 						</div>
 					</div>
 					<div class="col-sm-12">
@@ -168,6 +168,7 @@
 				</header>
 				<div class="panel-body">
 					<div class="col-sm-8">
+
 						<dl class="dl-horizontal brdr-0">
 							<dt>Name</dt>
 							<dd>
@@ -199,30 +200,39 @@
 								</span>
 							</label>
 							<select id="payment-contact" name="payment-contact" class="form-control">
+
 								<option>John Dutton</option>
 								<option selected>Beth Dutton</option>
 							</select>
 							<br>
-							<p style="line-height: 135%">Note: To add to or update your administrative contact information, please connect with one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
+							<p style="line-height: 135%">To update your payment contacts, please connect with one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
 						</div>
 					</div>
-
 				</div>
 			</section>
 		</div>
 		<section id="save-div" class="alert alert-success" hidden>
 			<p>Application saved as draft</p>
 		</section>
+
 		<button class="btn btn-primary" type="submit">Next &gt;</button>
 		<button class="btn btn-default" type="button" id="save-button">Save</button>
 		<br>
-		<button class="btn btn-default" type="button" onclick="history.back()">&lt; Back</button>
+		<button class="btn btn-default" type="button" onclick="window.location.href = 'general.html'+ window.location.search">&lt; Back</button>
 
 		<div class="notesaboutmockup">
 			<h2>Notes about this mockup:</h2>
 			<ul>
-				<li>TODO: Add more explanation of what this selection means</li>
+				<li>User can jump to previously visited pages using "step navigation" at top of screen</li>
+				<li>TODO: Clarify relationship between account-level contacts and licence-level contacts</li>
 				<li>TODO: Add rules about what if there's only one selection</li>
+			</ul>
+			<h2>Changes from phase 2A BRD:</h2>
+			<ul>
+				<li>Ref. 5.8.3 Account Information page</li>
+				<li>Moved account information into header</li>
+				<li>Removed technical contact</li>
+				<li>Re-added contact information for contacts</li>
 			</ul>
 		</div>
 		</form>
@@ -236,13 +246,13 @@
 	</script>
 	<div id="change-licensee">
 		<div class="container">
-			<div class="row">
-				<div class="col-xs-offset-8 col-xs-4">
-					<details>
-						<summary>The Best Company</summary>
-						<p><a href="select-licensee.html">Switch licensee account</a></p>
-						<p class="border-top"><a href="login.html"><span class="glyphicon-log-out glyphicon"></span> Sign out</a></p>
-					</details>
+			<div class="col-xs-5 col-xs-offset-7 col-md-offset-0 col-md-4" style="float:right">
+				<section id="wb-so">
+					<h2 class="wb-inv">Sign-on information</h2>
+					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licencee account</button>
+					<button class="btn btn-primary" type="button" onclick="window.location = 'login.html'">Sign out</button>
+					<p class="small mrgn-tp-sm">Licencee: <span class="nowrap">The Best Company</span></p>
+				</section>
 				</div>
 			</div>
 		</div>
@@ -250,7 +260,6 @@
 	<script>
 		// Move #change-licensee to top of screen
 		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
-		// This does lead to z-index issues: the "Log out" button can't currently be reached because it's behind the <main> element
 		const changeLicensee = document .getElementById ( "change-licensee" )
 		const wbBc = document .getElementById ( "wb-bc" )
 		wbBc .prepend ( changeLicensee )

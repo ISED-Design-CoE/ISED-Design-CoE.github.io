@@ -35,7 +35,6 @@ const baseQuery = window.location.search
 var urlQueries = baseQuery
 </script>
 
-
 <!-- src does not work with folder, this is long but the best I can do because of 
 	how leaflet draw is designed. -->
 <script src="libs/leaflet-src.js"></script>
@@ -119,12 +118,10 @@ var urlQueries = baseQuery
 					width: 15em;
 				}
 			}
-			#calc-results-after > p {
-				margin-top: 1em;
-			}
 			.highlight {
 				background-color: yellow;
 			}
+			.margin-top,
 			#map-instructions {
 				margin-top: 38px;	
 			}
@@ -162,7 +159,7 @@ var urlQueries = baseQuery
 				"search": false,
 				"siteMenu": false,
 				"breadcrumbs": [{
-					"title": "SMS",
+					"title": "Spectrum Management System",
 					"href": "index.html"
 				},
 				{
@@ -181,8 +178,8 @@ var urlQueries = baseQuery
 	</div>
 	<div class="form-group">
 		<ul class="nav nav-wizard">
-			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
 			<li><a class="navbar-item" href="general.html">General information</a></li>
+			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
 			<li><a class="navbar-item" href="technical-details.html">Technical details</a></li>
 			<li class="active" aria-current="step">Licence area</li>
 			<li>Frequency</li>
@@ -197,16 +194,16 @@ var urlQueries = baseQuery
 					<h1 property="name" id="wb-cont">Licence area</h1>
 					<p>Define your licence area, with up to 12 boundary points, in any of the following ways:</p>
 					<ol>
-						<li>Enter a description of the licence area in <a href="#wkt-input"><abbr>WKT</abbr> (Well Known Text) format</a></li>
+						<li>Enter a description of the licence area in <a href="#wkt-input"><abbr>WKT</abbr> (Well Known Text) format.</a></li>
 						<li>Enter the latitudes and longitudes of the <a href="#coords-input"> boundary points</a></li>
 						<li>Draw the licence area on the <a href="#map-instructions">interactive map</a></li>
 					</ol>
-					<p><b>Note</b>: you can obtain a WKT description of your licence area using the <a href="SLAB-en-leaflet.html" target="_blank">NCLL spectrum licence browser</a>.</p>
-					
-					<div class="form-group">
+					<p>Once your area is entered, click <kbd><samp>Calculate fee</samp></kbd> to calculate the licence fee</p>
+						
+					<div class="form-group margin-top">
 						<label for="WKT">
 							<span class="field-name" id="wkt-input">
-								Boundary description in WKT (Well Known Text) format
+								Licence area in WKT (Well Known Text) format
 							</span>
 						</label>
 						<details>
@@ -214,77 +211,78 @@ var urlQueries = baseQuery
 							<p>WKT is a compact format for describing mathematical shapes, including polygons. Each vertex is a longitude-latitude pair.</p>
 							<p>e.g. POLYGON((<span class="highlight">-113.956370 50.880852</span>,<span class="highlight">-113.952550 50.880744</span>,<span class="highlight">-113.944869 50.882288</span>,<span class="highlight">-113.945942 50.884372</span>,<span class="highlight">-113.951950 50.883398</span>,<span class="highlight">-113.956885 50.882369</span>,<span class="highlight">-113.956370 50.880852</span>))</p>
 							<p>The input field below accepts a polygon with up to 12 pairs.</p>
+							<p>You can obtain a WKT description of your licence area using the <a href="SLAB-en-leaflet.html" target="_blank">NCLL spectrum licence browser</a>.</p>
 						</details>
 						<textarea id="WKT" name="WKT" class="form-control" rows="3" placeholder="Enter WKT text here"></textarea>
 					</div>
 
 					<div class="row">
-					<div class="col-md-4">
-						<h2 id="coords-input">Boundary points</h2>
-						<p>Latitude and longitude are in degree decimal format.</p>
-						<table class="table form-group">
-							<tr>
-								<th><span class="wb-inv">Number</span></th>
-								<th>Latitude</th>
-								<th>Longitude</th>
-							</tr>
-							<tr><td>1</td><td><input id="lat1" name="lat1" class="form-control" size=9 inputmode="decimal"></td><td><input id="long1" name="long1" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>2</td><td><input id="lat2" name="lat2" class="form-control" size=9 inputmode="decimal"></td><td><input id="long2" name="long2" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>3</td><td><input id="lat3" name="lat3" class="form-control" size=9 inputmode="decimal"></td><td><input id="long3" name="long3" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>4</td><td><input id="lat4" name="lat4" class="form-control" size=9 inputmode="decimal"></td><td><input id="long4" name="long4" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>5</td><td><input id="lat5" name="lat5" class="form-control" size=9 inputmode="decimal"></td><td><input id="long5" name="long5" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>6</td><td><input id="lat6" name="lat6" class="form-control" size=9 inputmode="decimal"></td><td><input id="long6" name="long6" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>7</td><td><input id="lat7" name="lat7" class="form-control" size=9 inputmode="decimal"></td><td><input id="long7" name="long7" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>8</td><td><input id="lat8" name="lat8" class="form-control" size=9 inputmode="decimal"></td><td><input id="long8" name="long8" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>9</td><td><input id="lat9" name="lat9" class="form-control" size=9 inputmode="decimal"></td><td><input id="long9" name="long9" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>10</td><td><input id="lat10" name="lat10" class="form-control" size=9 inputmode="decimal"></td><td><input id="long10" name="long10" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>11</td><td><input id="lat11" name="lat11" class="form-control" size=9 inputmode="decimal"></td><td><input id="long11" name="long11" class="form-control" size=9 inputmode="decimal"></td></tr>
-							<tr><td>12</td><td><input id="lat12" name="lat12" class="form-control" size=9 inputmode="decimal"></td><td><input id="long12" name="long12" class="form-control" size=9 inputmode="decimal"></td></tr>
-						</table>
-					</div>
-					<div class="col-md-8">
-						<details id="map-instructions">
-							<summary>How to use the map</summary>
-							<p>To navigate the map:</p>
+						<div class="col-md-4">
+							<h2 id="coords-input">Boundary points</h2>
+							<p>Latitude and longitude are in degree decimal format.</p>
+							<table class="table form-group">
+								<tr>
+									<th><span class="wb-inv">Number</span></th>
+									<th>Latitude</th>
+									<th>Longitude</th>
+								</tr>
+								<tr><td>1</td><td><input id="lat1" name="lat1" class="form-control" size=9 inputmode="decimal"></td><td><input id="long1" name="long1" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>2</td><td><input id="lat2" name="lat2" class="form-control" size=9 inputmode="decimal"></td><td><input id="long2" name="long2" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>3</td><td><input id="lat3" name="lat3" class="form-control" size=9 inputmode="decimal"></td><td><input id="long3" name="long3" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>4</td><td><input id="lat4" name="lat4" class="form-control" size=9 inputmode="decimal"></td><td><input id="long4" name="long4" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>5</td><td><input id="lat5" name="lat5" class="form-control" size=9 inputmode="decimal"></td><td><input id="long5" name="long5" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>6</td><td><input id="lat6" name="lat6" class="form-control" size=9 inputmode="decimal"></td><td><input id="long6" name="long6" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>7</td><td><input id="lat7" name="lat7" class="form-control" size=9 inputmode="decimal"></td><td><input id="long7" name="long7" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>8</td><td><input id="lat8" name="lat8" class="form-control" size=9 inputmode="decimal"></td><td><input id="long8" name="long8" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>9</td><td><input id="lat9" name="lat9" class="form-control" size=9 inputmode="decimal"></td><td><input id="long9" name="long9" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>10</td><td><input id="lat10" name="lat10" class="form-control" size=9 inputmode="decimal"></td><td><input id="long10" name="long10" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>11</td><td><input id="lat11" name="lat11" class="form-control" size=9 inputmode="decimal"></td><td><input id="long11" name="long11" class="form-control" size=9 inputmode="decimal"></td></tr>
+								<tr><td>12</td><td><input id="lat12" name="lat12" class="form-control" size=9 inputmode="decimal"></td><td><input id="long12" name="long12" class="form-control" size=9 inputmode="decimal"></td></tr>
+							</table>
+						</div>
+						<div class="col-md-8">
+							<details id="map-instructions">
+								<summary>How to use the interactive map</summary>
+								<p>To navigate the map:</p>
 
-							<ul>
-								<li>Search using the search bar at the top left of the map</li>
-								<li>Click and drag to move the map</li>
-								<li>Zoom in:</li>
 								<ul>
-									<li>Double click</li>
-									<li>Scroll</li>
-									<li>Click the zoom icons on the bottom right</li>
+									<li>Search using the search bar at the top left of the map</li>
+									<li>Click and drag to move the map</li>
+									<li>Zoom in:</li>
+									<ul>
+										<li>Double click</li>
+										<li>Scroll</li>
+										<li>Click the zoom icons on the bottom right</li>
+									</ul>
 								</ul>
-							</ul>
-							<p>To draw:</p>
-								<ol>
-									<li>Navigate to your location</li>
-									<li>Click the draw tool
-										<svg width="30" height="30">
-											<path xmlns="http://www.w3.org/2000/svg" transform="translate(-73,-15)" id="polygon" d="M 100,24.565 97.904,39.395 83.07,42 76,28.773 86.463,18 Z" style="fill:#464646;fill-opacity:1"/>
-										  </svg>
+								<p>To draw:</p>
+									<ol>
+										<li>Navigate to your location</li>
+										<li>Click the draw tool
+											<svg width="30" height="30">
+												<path xmlns="http://www.w3.org/2000/svg" transform="translate(-73,-15)" id="polygon" d="M 100,24.565 97.904,39.395 83.07,42 76,28.773 86.463,18 Z" style="fill:#464646;fill-opacity:1"/>
+											</svg>
 
-									</li>
-									<li>Click on the map to add points. These are connected by straight lines.</li>
-									<li>Close your boundary:</li>
-									<ul>
-										<li>Click the first points</li>
-										<li>Click the finish button next to the draw icon</li>
-									</ul>
-									<li>Edit your boundary:</li>
-									<ul>
-										<li>Drag the white points to move them</li>
-										<li>Drag the translucent points to add new points</li>
-									</ul>
-								</ol>
-						</details>
-						<div id="map"></div>
+										</li>
+										<li>Click on the map to add points. These are connected by straight lines.</li>
+										<li>Close your boundary:</li>
+										<ul>
+											<li>Click the first points</li>
+											<li>Click the finish button next to the draw icon</li>
+										</ul>
+										<li>Edit your boundary:</li>
+										<ul>
+											<li>Drag the white points to move them</li>
+											<li>Drag the translucent points to add new points</li>
+										</ul>
+									</ol>
+							</details>
+							<div id="map"></div>
+						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row margin-top">
 					<div class="col-md-12">
-
 						<p>Once your area is entered, click <kbd><samp>Calculate fee</samp></kbd> to calculate the licence fee</p>
 						<button type="button" class="btn btn-call-to-action" id="calculate-button">Calculate fee</button>
 
@@ -301,34 +299,47 @@ var urlQueries = baseQuery
 									<li>Draw the licence area on the <a href="#map-instructions">interactive map</a></li>
 								</ol>
 							</div>
+							<div id="Out-of-Canada-message" class="alert alert-danger" hidden>
+								<p>The licence area extends beyond national borders.</p>
+								<p>Please adjust the licence area to be fully within Canada.</p>
+							</div>
+							<div id="MP-in-urban-message" class="alert alert-danger" hidden>
+								<p>You have requested a medium power licence, which is not allowed in urban areas.</p>
+								<p>Please adjust the licence area to be fully outside any urban areas.</p>
+								<p>Alternatively, you may go back to the previous screen and change to a low power licence.</p>
+							</div>
 							<div id="LP-too-large-message" class="alert alert-danger" hidden>
-								<p>You have requested a low power licence, which means the licence area can be at most 15 km<sup>2</sup> in area.</p>
-								<p>Please adjust the area to be less than 15 km<sup>2</sup>. After submitting this application, you may then duplicate it to create as many other licence applications as you would like. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
+								<p>You have requested a low power licence, which means the licence area can be at most 15 km² in area.</p>
+								<p>Your current area size is <span class='area-size'>0</span> km². Please adjust the area to be less than 15 km².</p>
+								<p>After submitting this application, you may then duplicate it as necessary. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
 							</div>
 							<div id="MP-too-small-but-LP-OK-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
-								<p>Please adjust the area to be at least 75 km<sup>2</sup>.</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area.</p>
+								<p>Your current area size is <span class='area-size'>0</span> km². Please adjust the area to be at least 75 km².</p>
 								<p>Alternatively, you may go back to the previous screen and change to a low power licence.</p>
 							</div>
 							<div id="MP-too-small-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
-								<p>Please adjust the area to be at least 75 km<sup>2</sup>.</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area.</p>
+								<p>Your current area size is <span class='area-size'>0</span> km². Please adjust the area to be at least 75 km².</p>
 								<p>Alternatively, you may apply for multiple low power licences, as described at <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a>.</p>
 							</div>
 							<div id="MP-too-large-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be between 75 km<sup>2</sup> and 165 km<sup>2</sup> in area.</p>
-								<p>Please adjust the area to be less than 165 km<sup>2</sup>. After submitting this application, you may then duplicate it to create as many other licence applications as you would like. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area.</p>
+								<p>Your current area size is <span class='area-size'>0</span> km². Please adjust the area to be less than 165 km².</p>
+								<p>After submitting this application, you may then duplicate it as necessary. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
 							</div>
 
 							<div id="licence-fee-text">
 								<h2>Licence fee</h2>
 								<dl class="dl-horizontal">
+									<dt>Area type</dt>
+									<dd><span class="fee-zone">Rural</span></dd>
 									<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-									<dd>$<span class="base-rate">0.45</span> per MHz per km<sup>2</sup></dd>
+									<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
 									<dt>Requested bandwidth</dt>
 									<dd><span class="bandwidth">10</span> MHz</dd>
 									<dt>Area size</dt>
-									<dd><span class="area-size">0</span> km<sup>2</sup></dd>
+									<dd><span class="area-size">0</span> km²</dd>
 									<dt>Total cost per year</dt>
 									<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 								</dl>
@@ -348,7 +359,23 @@ var urlQueries = baseQuery
 				<div class="notesaboutmockup">
 					<h2>Notes about this mockup:</h2>
 					<ul>
-						<li>TODO: remove back button?</li>
+						<li>The three modes of input are dependent on each other: when one updates, they all update.</li>
+						<li>Note error messages if people enter invalid data.</li>
+					</ul>
+					<h2>Changes from phase 2A BRD:</h2>
+					<ul>
+						<li>Ref. 5.8.4 Licence area page</li>
+						<li>Added ability to enter coordinates in WKT</li>
+						<li>Always show input fields for all 12 coordinates ("boundary points")</li>
+						<li>Update layers available on the map</li>
+						<li>Show licence areas on the map:
+							<ul>
+								<li>All granted and requested-but-not-denied licence areas from this licensee</li>
+								<li>All regions where no 10-MHz or 20-MHz frequency range is available (as appropriate)</li>
+							</ul>
+						</li>
+						<li>Removed check for RA exclusion zones</li>
+						<li>Modify the information provided after the user clicks "Validate licence area" (now "Calculate fee")</li>
 					</ul>
 				</div>
 			</div>
@@ -356,6 +383,28 @@ var urlQueries = baseQuery
 	</form>
 	<script src="catch-and-throw.js"></script>
 	<script>
+		// Set up needed fields for cost calculation
+		let baseRate = urlParams.get ( "base-rate" ) 
+		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
+		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
+			elem .innerText = baseRate
+		}
+		createHiddenField ( "base-rate", baseRate )
+
+		let feeZone = urlParams.get ( "fee-zone" ) 
+		if (feeZone == null) {feeZone = "Rural"} // matches the default baseRate
+		for ( let elem of document .getElementsByClassName ( "fee-zone" ) ) {
+			elem .innerText = feeZone
+		}
+		createHiddenField ( "fee-zone", feeZone )
+		// Get bandwidth (from previous page)
+		const bandwidth = urlParams.get ( "bandwidth" )
+		for ( let elem of document .getElementsByClassName ( "bandwidth" ) ) {
+			elem .innerText = bandwidth
+		}		
+		var area_field = createHiddenField ( "area-size", 0 )
+		var cost_field = createHiddenField ( "total-cost", 0 )
+
 		var area_number = 0;
 		var cost_number = 0;
 		const calculateButton = document.getElementById ( "calculate-button" )
@@ -367,6 +416,8 @@ var urlQueries = baseQuery
 
 		const errorMessages = {}
 		errorMessages [ "Zero area" ] = document.getElementById ( "zero-area-message" )
+		errorMessages [ "Out of Canada" ] = document.getElementById ( "Out-of-Canada-message" )
+		errorMessages [ "MP in urban area" ] = document.getElementById ( "MP-in-urban-message" )
 		errorMessages [ "Too large for LP" ] = document.getElementById ( "LP-too-large-message" )
 		errorMessages [ "Too small for MP but LP is OK" ] = document.getElementById ( "MP-too-small-but-LP-OK-message" )
 		errorMessages [ "Too small for MP" ] = document.getElementById ( "MP-too-small-message" )
@@ -374,8 +425,6 @@ var urlQueries = baseQuery
 		const licenceFeeText = document.getElementById ( "licence-fee-text" )
 
 		function calculate_area_info () {
-
-			
 
 			urlQueries = baseQuery 
 
@@ -400,18 +449,44 @@ var urlQueries = baseQuery
 			licenceFeeText .setAttribute ( "hidden" , "hidden" )
 			nextButton .setAttribute ( "hidden" , "hidden" )
 
+			let noErrors = true
 			// As appropriate, show error message
-			if ( area_field . value == 0 ) {
+			if ( area_field .value == 0 ) { // If no area drawn, there can be no other errors
+				noErrors = false
 				errorMessages [ "Zero area" ] .removeAttribute ( "hidden" )
-			} else if ( powerLevel == "Low power" && area_field . value > 15 ) {
-				errorMessages [ "Too large for LP" ] .removeAttribute ( "hidden" )
-			} else if ( powerLevel == "Medium power" && area_field . value <= 15 ) {
-				errorMessages [ "Too small for MP but LP is OK" ] .removeAttribute ( "hidden" )
-			} else if ( powerLevel == "Medium power" && area_field . value < 75 ) {
-				errorMessages [ "Too small for MP" ] .removeAttribute ( "hidden" )
-			} else if ( powerLevel == "Medium power" && area_field . value > 165 ) {
-				errorMessages [ "Too large for MP" ] .removeAttribute ( "hidden" )
-			} else { // everything's okay
+			} else {
+
+				if ( false ) { // This should check if any part of the drawn area is outside Canada
+					noErrors = false
+					errorMessages [ "Out of Canada" ] .removeAttribute ( "hidden" )
+				}
+
+				if ( powerLevel == "Low power" ) {
+					if ( area_field .value > 15 ) {
+						noErrors = false
+						errorMessages [ "Too large for LP" ] .removeAttribute ( "hidden" )
+					}
+
+				} else { // powerLevel == "Medium power"
+
+					if ( feeZone == "Urban" ) {
+						noErrors = false
+						errorMessages [ "MP in urban area" ] .removeAttribute ( "hidden" )
+					}
+
+					if ( area_field .value <= 15 ) {
+						noErrors = false
+						errorMessages [ "Too small for MP but LP is OK" ] .removeAttribute ( "hidden" )
+					} else if ( area_field .value < 75 ) {
+						noErrors = false
+						errorMessages [ "Too small for MP" ] .removeAttribute ( "hidden" )
+					} else if ( area_field .value > 165 ) {
+						noErrors = false
+						errorMessages [ "Too large for MP" ] .removeAttribute ( "hidden" )
+					}
+				}
+			}
+			if ( noErrors ) { // everything's okay
 				licenceFeeText .removeAttribute ( "hidden" )
 				nextButton .removeAttribute ( "hidden" )
 			}
@@ -428,42 +503,16 @@ var urlQueries = baseQuery
 			saveDiv .removeAttribute ( "hidden" )
 		})
 	</script>
-	<script>
-		// Set up needed fields for cost calculation
-		let baseRate = urlParams.get ( "base-rate" ) 
-		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
-		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
-			elem .innerText = baseRate
-		}
-		createHiddenField ( "base-rate", baseRate )
-
-		let feeZone = urlParams.get ( "fee-zone" ) 
-		if (feeZone == null) {feeZone = "Rural"} // matches the default baseRate
-		for ( let elem of document .getElementsByClassName ( "fee-zone" ) ) {
-			elem .innerText = feeZone
-		}
-		createHiddenField ( "fee-zone", feeZone )
-
-		// Get bandwidth (from previous page)
-		const bandwidth = urlParams.get ( "bandwidth" )
-		for ( let elem of document .getElementsByClassName ( "bandwidth" ) ) {
-			elem .innerText = bandwidth
-		}
-		
-		var area_field = createHiddenField ( "area-size", 0 )
-		var cost_field = createHiddenField ( "total-cost", 0 )
-
-	</script>
 	</div>
 	<div id="change-licensee">
 		<div class="container">
-			<div class="row">
-				<div class="col-xs-offset-8 col-xs-4">
-					<details>
-						<summary>The Best Company</summary>
-						<p><a href="select-licensee.html">Switch licensee account</a></p>
-						<p class="border-top"><a href="login.html"><span class="glyphicon-log-out glyphicon"></span> Sign out</a></p>
-					</details>
+			<div class="col-xs-5 col-xs-offset-7 col-md-offset-0 col-md-4" style="float:right">
+				<section id="wb-so">
+					<h2 class="wb-inv">Sign-on information</h2>
+					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licencee account</button>
+					<button class="btn btn-primary" type="button" onclick="window.location = 'login.html'">Sign out</button>
+					<p class="small mrgn-tp-sm">Licencee: <span class="nowrap">The Best Company</span></p>
+				</section>
 				</div>
 			</div>
 		</div>
@@ -471,11 +520,11 @@ var urlQueries = baseQuery
 	<script>
 		// Move #change-licensee to top of screen
 		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
-		// This does lead to z-index issues: the "Log out" button can't currently be reached because it's behind the <main> element
 		const changeLicensee = document .getElementById ( "change-licensee" )
 		const wbBc = document .getElementById ( "wb-bc" )
 		wbBc .prepend ( changeLicensee )
 	</script>
+
 	<script>
 		// Read application number from parameters if present
 		if ( urlParams .has ( "app-number" ) ) {
@@ -580,7 +629,7 @@ var urlQueries = baseQuery
 					if (i < lat_long_sliced.length) {
 						document.getElementById(lat_id).value = latlngs[i].lat.toFixed(6);
 						document.getElementById(long_id).value = latlngs[i].lng.toFixed(6);
-						wkt += latlngs[i].lat.toFixed(6) + " " + latlngs[i].lng.toFixed(6) + ","
+						wkt += latlngs[i].lng.toFixed(6) + " " + latlngs[i].lat.toFixed(6) + ","
 					} else {
 						document.getElementById(lat_id).value = "";
 						document.getElementById(long_id).value = "";
@@ -594,7 +643,6 @@ var urlQueries = baseQuery
 				document.getElementById("WKT").value = wkt;
 
 				area_size_spans = document.querySelectorAll(".area-size");
-
 				area_number = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
 
 				area_size_spans.forEach(element => {
@@ -704,15 +752,12 @@ var urlQueries = baseQuery
 			var area_text = document.createElement('div');
 			area_text.classList.add('area-size')
 			text.appendChild(area_text)
-			text.innerHTML = "<div class='text-on-map'> <strong>Area size:</strong> <span class='area-size area-size-drawing'>0</span> <span>km<sup>2</sup></span> </div>"
+			text.innerHTML = "<div class='text-on-map'> <strong>Area size:</strong> <span class='area-size area-size-drawing'>0</span> <span>km²</span> </div>"
 			return text;
 			},
 		});
 		textboxControl = new L.Control.textbox();
-		
-		
-
-		
+		map.addControl(textboxControl);
 		
         
 			// When the user clicks the trashcan, remove everything and change the icon back to the polygon.
@@ -737,7 +782,6 @@ var urlQueries = baseQuery
                             drawnItems.clearLayers();
                             map.removeControl(removeAllControl);
 							map.removeControl(layerControl);
-							map.removeControl(textboxControl);
             				map.addControl(drawControl);
 							map.addControl(layerControl);
 							calcResultsBefore .removeAttribute ( "hidden", "hidden" )
@@ -765,7 +809,7 @@ var urlQueries = baseQuery
         // on draw
 
 			map.on( L.Draw.Event.DRAWSTART, function (e) {
-				map.addControl(textboxControl)
+				
 				calcResultsBefore .removeAttribute ( "hidden", "hidden" )
 				calcResultsAfter .setAttribute ( "hidden", "hidden" )
 			})
@@ -825,6 +869,7 @@ var urlQueries = baseQuery
 
 			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
 
+
 			console.log(latlngs)
 			change_lat_lngs(latlngs);
             
@@ -865,8 +910,6 @@ var urlQueries = baseQuery
         
         </script>
 
-
-
 <script>
 
 if (document.getElementById("lat1").value != "") {
@@ -884,7 +927,7 @@ if (document.getElementById("lat1").value != "") {
 
 				lats.push(temp_lat);
 				longs.push(temp_long);
-				wkt += temp_lat + " " + temp_long + ","
+				wkt += temp_long + " " + temp_lat + ","
 				
 				}
 	}
@@ -898,9 +941,7 @@ if (document.getElementById("lat1").value != "") {
 
 	map.removeControl(drawControl);
 	map.removeControl(layerControl);
-	map.addControl(removeAllControl);
-	map.addControl(textboxControl);
-		
+	map.addControl(removeAllControl);		
 	area_size_spans = document.querySelectorAll(".area-size");
 	area_size_spans.forEach(element => {
 		console.log(document.getElementById("area-size").value)
