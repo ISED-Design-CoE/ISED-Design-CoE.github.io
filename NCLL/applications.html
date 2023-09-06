@@ -49,6 +49,15 @@
 				font-size: 12px;
 				width: 20em;
 			}
+			.status-summary {
+				font-size: 20px;
+				margin-left:-13px;
+				margin-right:-13px;
+			}
+
+			.align-top {
+				vertical-align: top;
+			}
 		</style>
 		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
 		<link href="ncll-portal.css" rel="stylesheet" type="text/css">
@@ -94,24 +103,28 @@
 
 		<table class="wb-tables table">
 			<thead>
-				<tr>
-					<th>Application number</th>
-					<th>Application identifier</th>
-					<th>Effective date</th>
-					<th class="status-col">
-						<details><summary>Status</summary>
-						<label for="draft_checkbox">Draft</label>
-						<input type="checkbox" name="draft_checkbox" id="draft_checkbox" onchange="toggleStatus('draft')">
-						<br>
-						<label for="review_checkbox">Under review</label>
-						<input type="checkbox" name="review_checkbox" id="review_checkbox" onchange="toggleStatus('review')">
-						<br>
-						<label for="failed_checkbox">Failed or rejected</label>
-						<input type="checkbox" name="failed_checkbox" id="failed_checkbox" onchange="toggleStatus('failed')">
+				<tr >
+					<th class="align-top">Application number</th>
+					<th class="align-top">Application identifier</th>
+					<th class="align-top">Effective date</th>
+					<th data-orderable="false" class="status-col">
+						<details><summary class="status-summary">Status</summary>
+							<div class="checkbox gc-chckbxrdio">		
+								<input type="checkbox" name="draft_checkbox" id="draft_checkbox" onchange="toggleStatus('draft')">
+								<label for="draft_checkbox">Draft</label>
+							</div>
+							<div class="checkbox gc-chckbxrdio">
+								<input type="checkbox" name="review_checkbox" id="review_checkbox" onchange="toggleStatus('review')">
+								<label for="review_checkbox">Under review</label>
+							</div>
+							<div class="checkbox gc-chckbxrdio">
+								<input type="checkbox" name="failed_checkbox" id="failed_checkbox" onchange="toggleStatus('failed')">
+								<label for="failed_checkbox">Failed or rejected</label>
+							</div>
 						</details>
 					</th>
-					<th>Amount due</th>
-					<th data-orderable="false">Actions</th>
+					<th class="align-top">Amount due</th>
+					<th data-orderable="false" class="align-top">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
