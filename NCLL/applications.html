@@ -85,58 +85,56 @@
 <!-- Start page content -->
 	<h1 property="name" id="wb-cont">Applications</h1>
 
-	<div class="wb-frmvld">
-		<p>Manage existing applications</p>
-		<a href="general.html" class="btn btn-call-to-action pull-right">Start new application</a>
+	<p>Manage existing applications</p>
+	<a href="general.html" class="btn btn-call-to-action pull-right">Start new application</a>
 
-		<table class="wb-tables table">
-			<thead>
-				<tr>
-					<th>Application number</th>
-					<th>Application identifier</th>
-					<th>Effective date</th>
-					<th>Status</th>
-					<th>Amount due</th>
-					<th data-orderable="false">Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="data_row draft">
-					<td><a href="general.html?base-rate=1.80&fee-zone=Urban&app-number=01000130-001&ari=ProjID+%23511244&effective-date=2023-10-23&renewable-temporary=Temporary&expiry-date=2023-10-25&MNSP=No&admin-contact-name=John+Dutton&admin-contact-address=999+Main+St.%2C+Calgary+AB&admin-contact-email=john.dutton%40yellowstone.com&admin-contact-telephone=%28403%29+123-4567&admin-contact=John+Dutton&payment-contact-name=Beth+Dutton&payment-contact-address=999+Main+St.%2C+Calgary+AB&payment-contact-email=beth.dutton%40yellowstone.com&payment-contact-telephone=%28403%29+891-2345&payment-contact=John+Dutton">01000130-001</a></td>
-					<td>ProjID #511244</td>
-					<td>2023-08-20</td>
-					<td>Draft</td>
-					<td>$0.00</td>
-					<td>
-						<select class="form-control">
-							<option>Actions</option>
-							<option>Edit</option>
-							<option>Download</option>
-							<option>Duplicate</option>
-							<option>Delete</option>
-						</select>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+	<table class="wb-tables table">
+		<thead>
+			<tr>
+				<th>Application number</th>
+				<th>Application identifier</th>
+				<th>Effective date</th>
+				<th>Status</th>
+				<th>Amount due</th>
+				<th data-orderable="false">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="data_row draft">
+				<td><a href="general.html?base-rate=1.80&fee-zone=Urban&app-number=01000130-001&ari=ProjID+%23511244&effective-date=2023-10-23&renewable-temporary=Temporary&expiry-date=2023-10-25&MNSP=No&admin-contact-name=John+Dutton&admin-contact-address=999+Main+St.%2C+Calgary+AB&admin-contact-email=john.dutton%40yellowstone.com&admin-contact-telephone=%28403%29+123-4567&admin-contact=John+Dutton&payment-contact-name=Beth+Dutton&payment-contact-address=999+Main+St.%2C+Calgary+AB&payment-contact-email=beth.dutton%40yellowstone.com&payment-contact-telephone=%28403%29+891-2345&payment-contact=John+Dutton">01000130-001</a></td>
+				<td>ProjID #511244</td>
+				<td>2023-08-20</td>
+				<td>Draft</td>
+				<td>$0.00</td>
+				<td>
+					<select class="form-control">
+						<option>Actions</option>
+						<option>Edit</option>
+						<option>Download</option>
+						<option>Duplicate</option>
+						<option>Delete</option>
+					</select>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
-		<div class="notesaboutmockup">
-			<h2>Notes about this mockup:</h2>
-			<ul>
-				<li>Uses the <a href="https://wet-boew.github.io/v4.0-ci/docs/ref/tables/tables-en.html">DataTables plugin for WET</a></li>
-				<li>TODO: Enable links to filtered views</li>
-			</ul>
-			<h2>Changes from phase 2A BRD:</h2>
-			<ul>
-				<li>Ref. 5.3 Draft Applications Page and 5.4 Submitted Applications page</li>
-				<li>Combined all Applications pages and added "Status" column</li>
-				<li>Added and removed columns from the table</li>
-			</ul>
-			</div>
+	<div class="notesaboutmockup">
+		<h2>Notes about this mockup:</h2>
+		<ul>
+			<li>Uses the <a href="https://wet-boew.github.io/v4.0-ci/docs/ref/tables/tables-en.html">DataTables plugin for WET</a></li>
+			<li>TODO: Enable links to filtered views</li>
+		</ul>
+		<h2>Changes from phase 2A BRD:</h2>
+		<ul>
+			<li>Ref. 5.3 Draft Applications Page and 5.4 Submitted Applications page</li>
+			<li>Combined all Applications pages and added "Status" column</li>
+			<li>Added and removed columns from the table</li>
+		</ul>
 	</div>
 	<div id="change-licensee">
 		<div class="container">
-			<div class="col-xs-5 col-xs-offset-7 col-md-offset-0 col-md-4" style="float:right">
+			<div class="col-md-offset-6 col-md-6">
 				<section id="wb-so">
 					<h2 class="wb-inv">Sign-on information</h2>
 					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licensee account</button>

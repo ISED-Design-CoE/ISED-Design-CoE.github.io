@@ -42,19 +42,13 @@
 				margin-top: 1em;
 			}
 		/* Styles for this mockup */
-			#superhead {
-				font-size: 1.7em;
-				font-weight: bold;
+			fieldset {
+				margin-top: 1em;
 			}
-			#status {
-				border-left: 3px solid #999;
-				padding-left: 2px;
-				background-color: #EEE;
+			.spaced {
+				margin-top: 1em;
+				margin-bottom: 2em;
 			}
-			ul.nav-wizard li {
-				font-size: inherit;
-			}
-
 		</style>
 		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
 		<link href="ncll-portal.css" rel="stylesheet" type="text/css">
@@ -109,107 +103,49 @@
 	</div>
 
 	<h1 property="name" id="wb-cont">Contact information</h1>
-	<p>The contact information below relates only to the current licence application.</p>
 	
 	<div class="wb-frmvld">
 		<form action="technical-details.html" method="get">
 		<div class="wb-frm">
-			<section class="panel panel-default">
-				<header class="panel-heading">
-					<h2 class="panel-title">Administrative contact</h2>
-				</header>
-				<div class="panel-body">
-					<div class="col-sm-8">
-						<dl class="dl-horizontal brdr-0">
-							<dt>Name</dt>
-							<dd>
-								John Dutton
-								<input type="hidden" name="admin-contact-name" value="John Dutton">
-							</dd>
-							<dt>Address</dt>
-							<dd>
-								999 Main St., Calgary AB
-								<input type="hidden" name="admin-contact-address" value="999 Main St., Calgary AB">
-							</dd>
-							<dt>E-mail</dt>
-							<dd>
-								john.dutton@yellowstone.com
-								<input type="hidden" name="admin-contact-email" value="john.dutton@yellowstone.com">
-							</dd>
-							<dt>Telephone</dt>
-							<dd>
-								(403) 123-4567
-								<input type="hidden" name="admin-contact-telephone" value="(403) 123-4567">
-							</dd>
-						</dl>
-					</div>
-					<div class="col-sm-4">
-						<div class="form-group">
-							<label for="admin-contact">
-								<span class="field-name">
-									Choose administrative contact
-								</span>
-							</label>
-							<select id="admin-contact" name="admin-contact" class="form-control">
-								<option selected>Account owner (John Dutton)</option>
-								<option>John Dutton</option>
-							</select>
-							<br>
-							<p style="line-height: 135%">To update your administrative contacts, please connect with one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
-						</div>
-					</div>
-					<div class="col-sm-12">
-					</div>
-				</div>
-			</section>
-			<section class="panel panel-default">
-				<header class="panel-heading">
-					<h2 class="panel-title">Payment contact</h2>
-				</header>
-				<div class="panel-body">
-					<div class="col-sm-8">
-
-						<dl class="dl-horizontal brdr-0">
-							<dt>Name</dt>
-							<dd>
-								Beth Dutton
-								<input type="hidden" name="payment-contact-name" value="Beth Dutton">
-							</dd>
-							<dt>Address</dt>
-							<dd>
-								999 Main St., Calgary AB
-								<input type="hidden" name="payment-contact-address" value="999 Main St., Calgary AB">
-							</dd>
-							<dt>E-mail</dt>
-							<dd>
-								beth.dutton@yellowstone.com
-								<input type="hidden" name="payment-contact-email" value="beth.dutton@yellowstone.com">
-							</dd>
-							<dt>Telephone</dt>
-							<dd>
-								(403) 891-2345
-								<input type="hidden" name="payment-contact-telephone" value="(403) 891-2345">
-							</dd>
-						</dl>
-					</div>
-					<div class="col-sm-4">
-						<div class="form-group">
-							<label for="admin-contact">
-								<span class="field-name">
-									Choose payment contact
-								</span>
-							</label>
-							<select id="payment-contact" name="payment-contact" class="form-control">
-
-								<option>John Dutton</option>
-								<option selected>Beth Dutton</option>
-							</select>
-							<br>
-							<p style="line-height: 135%">To update your payment contacts, please connect with one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
-						</div>
-					</div>
-				</div>
-			</section>
+			<fieldset class="gc-chckbxrdio">
+				<legend>E-mail addresses to receive application status updates</legend>
+				<details>
+					<summary>More information<span class="wb-inv"> about the e-mail addresses for application status updates</span></summary>
+					<p>The e-mail address <cite>john.dutton@yellowstone.com</cite> is currently the "E-mail address to receive application status updates (and for licence/invoice delivery if selected)" for this licensee.</p>
+					<p>You may also select an administrative contact to receive a copy of the e-mail.</p>
+				</details>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" name="email-2" id="email-2-1">
+						<label for="email-2-1">john.dutton@yellowstone.com</label>
+					</li>
+					<li class="radio">
+						<input type="radio" name="email-2" id="email-2-2">
+						<label for="email-2-2">john.dutton@yellowstone.com, rip.wheeler@yellowstone.com</label>
+					</li>
+				</ul>
+			</fieldset>
+			<fieldset class="gc-chckbxrdio">
+				<legend>E-mail addresses to receive licences and invoices</legend>
+				<details>
+					<summary>More information<span class="wb-inv"> about the e-mail address for licences and invoices</span></summary>
+					<p>The e-mail address <cite>john.dutton@yellowstone.com</cite> is currently the "E-mail address to receive application status updates (and for licence/invoice delivery if selected)" for this licensee.</p>
+					<p>You may instead select a payment contact to receive the e-mail.</p>
+				</details>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" name="email-3" id="email-3-1">
+						<label for="email-3-1">john.dutton@yellowstone.com</label>
+					</li>
+					<li class="radio">
+						<input type="radio" name="email-3" id="email-3-2">
+						<label for="email-3-2">beth.dutton@yellowstone.com</label>
+					</li>
+				</ul>
+			</fieldset>
+			<div class="spaced">
+				<p>Note: To add an address not listed here, please contact one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
+			</div>
 		</div>
 		<section id="save-div" class="alert alert-success" hidden>
 			<p>Application saved as draft</p>
@@ -224,19 +160,17 @@
 			<h2>Notes about this mockup:</h2>
 			<ul>
 				<li>User can jump to previously visited pages using "step navigation" at top of screen</li>
-				<li>TODO: Clarify relationship between account-level contacts and licence-level contacts</li>
-				<li>TODO: Add rules about what if there's only one selection</li>
 			</ul>
 			<h2>Changes from phase 2A BRD:</h2>
 			<ul>
 				<li>Ref. 5.8.3 Account Information page</li>
-				<li>Moved account information into header</li>
+				<li>Moved licensee information into header</li>
 				<li>Removed technical contact</li>
-				<li>Re-added contact information for contacts</li>
 			</ul>
 		</div>
 		</form>
 	</div>
+	<script src="catch-and-throw.js"></script>
 	<script>
 		const saveButton = document.getElementById ( "save-button" )
 		const saveDiv = document.getElementById ( "save-div" )
@@ -246,7 +180,7 @@
 	</script>
 	<div id="change-licensee">
 		<div class="container">
-			<div class="col-xs-5 col-xs-offset-7 col-md-offset-0 col-md-4" style="float:right">
+			<div class="col-md-offset-6 col-md-6">
 				<section id="wb-so">
 					<h2 class="wb-inv">Sign-on information</h2>
 					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licensee account</button>
@@ -324,6 +258,5 @@
 				"cdnEnv": "esdcprod"
 			}));
 		</script>
-		<script src="catch-and-throw.js"></script>
 	</body>
 </html>

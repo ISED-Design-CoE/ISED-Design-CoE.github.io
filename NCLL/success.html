@@ -42,18 +42,6 @@
 				margin-top: 1em;
 			}
 		/* Styles for this mockup */
-			#superhead {
-				font-size: 1.7em;
-				font-weight: bold;
-			}
-			#status {
-				border-left: 3px solid #999;
-				padding-left: 2px;
-				background-color: #EEE;
-			}
-			ul.nav-wizard li {
-				font-size: inherit;
-			}
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
 	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
@@ -97,43 +85,41 @@
 		<p>Non-competitive local licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Submitted</span></p>
 	</div>
 
-	<div class="wb-frmvld">
-		<h1 property="name" id="wb-cont">Success</h1>
+	<h1 property="name" id="wb-cont">Success</h1>
 
-		<p>Your request has been submitted.</p>
-		<section class="alert alert-success">
-			<h2>Application <span class="app-number">01000139-001</span> has been successfully submitted</h2>
-			<ul>
-				<li>A confirmation e-mail will be sent to <span id="admin-contact-name">John Dutton</span>, <span id="admin-contact-email">john.dutton@thebestcompany.ca</span></li>
-				<li>Once the application has been approved, we will contact <span id="payment-contact-name">Pierre Untel</span>, <span id="payment-contact-email">pierre.untel@thebestcompany.ca</span>, for payment</li>
-				<li>Once you have paid and your effective date has been reached, you will be able to use the licence</li>
-			</ul>
-		</section>
-
-		<p>What would you like to do next?</p>
+	<p>Your request has been submitted.</p>
+	<section class="alert alert-success">
+		<h2>Application <span class="app-number">01000139-001</span> has been successfully submitted</h2>
 		<ul>
-			<li>Go to the <a href="dashboard.html">Dashboard</a></li>
-			<li><a href="general.html">Create a new application</a> </li>
-			<li><a href="general.html">Duplicate this application</a></li>
-			<li>Return to the <a href="index.html">SMS website</a>
-		</ul>	
+			<li>A confirmation e-mail will be sent to <span id="admin-contact-name">John Dutton</span>, <span id="admin-contact-email">john.dutton@thebestcompany.ca</span></li>
+			<li>Once the application has been approved, we will contact <span id="payment-contact-name">Pierre Untel</span>, <span id="payment-contact-email">pierre.untel@thebestcompany.ca</span>, for payment</li>
+			<li>Once you have paid and your effective date has been reached, you will be able to use the licence</li>
+		</ul>
+	</section>
+
+	<p>What would you like to do next?</p>
+	<ul>
+		<li>Go to the <a href="dashboard.html">Dashboard</a></li>
+		<li><a href="general.html">Create a new application</a> </li>
+		<li><a href="general.html">Duplicate this application</a></li>
+		<li>Return to the <a href="index.html">SMS website</a>
+	</ul>	
 
 
 
-		<div class="notesaboutmockup">
-			<h2>Notes about this mockup:</h2>
-			<ul>
-				<li>TODO: finalize design</li>
-			</ul>
-			<h2>Changes from phase 2A BRD:</h2>
-			<ul>
-				<li>This page not included in Phase 2A BRD</li>
-			</ul>
-		</div>
+	<div class="notesaboutmockup">
+		<h2>Notes about this mockup:</h2>
+		<ul>
+			<li>TODO: finalize design</li>
+		</ul>
+		<h2>Changes from phase 2A BRD:</h2>
+		<ul>
+			<li>This page not included in Phase 2A BRD</li>
+		</ul>
 	</div>
 	<div id="change-licensee">
 		<div class="container">
-			<div class="col-xs-5 col-xs-offset-7 col-md-offset-0 col-md-4" style="float:right">
+			<div class="col-md-offset-6 col-md-6">
 				<section id="wb-so">
 					<h2 class="wb-inv">Sign-on information</h2>
 					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licensee account</button>

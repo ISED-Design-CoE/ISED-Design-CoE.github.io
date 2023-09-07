@@ -1,122 +1,44 @@
-
 /* .notesaboutmockup {
 	display: none;
 } */
 
 /* Uncomment the above if using these pages for usability testing */
 
-#wb-bc {
-    margin-left: auto;
-    margin-right: auto;  
+/* Breadcrumbs */
+#wb-bc ol {
+    margin-top: 0;
+}
+#wb-bc li {
+    padding-top: 0;
 }
 
-#wb-bc .container .breadcrumb{
-    margin-top: 50px;
+/* Page "superhead" */
+#superhead {
+    font-size: 1.7em;
+    font-weight: bold;
+}
+.app-number {
+    white-space:nowrap;
+}
+#status {
+    border-left: 3px solid #999;
+    padding-left: 2px;
+    background-color: #EEE;
 }
 
-#dropdownBackground{
-    background-color: white;
+/* Navigation wizard */
+ul.nav-wizard li {
+    font-size: inherit;
 }
 
-#wb-bc #change-licensee{
-    max-height: 39px;
-    width:100vw;
-    left:0vw;
-    margin-bottom:2vh;
-    /* background-color:#38414d; */
-}
-
-#wb-bc #change-licensee .container .row .col-xs-offset-8.col-xs-4{
-    z-index: 2;
-}
-
-#wb-bc .container{
-    max-height: inherit;
-}
-
-#wb-bc .container .row{
-    max-height: inherit;
-    z-index: 2;
-}
-
-@media (max-width: 680px){
-    #wb-bc #change-licensee{
-        max-height: 61px;
-        width:100vw;
-        left:0vw; 
-        margin-bottom:2vh;
-        padding-right: 20px;
-    }
-}
-@media (max-width: 462px){
-    #wb-bc #change-licensee{
-        max-height: 84px;
-        width:100vw;
-        left:0vw; 
-        padding-right: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    #change-licensee {
-        position: absolute;
-    }
-
-}
-@media (max-width: 680px) {
-    #wb-bc .container .breadcrumb{
-        margin-top: 70px;
-    }
-
-}
-
-@media (max-width: 462px) {
-    #wb-bc .container .breadcrumb{
-        margin-top: 90px;
-    }
-
-}
-
-@media (min-width: 768px) {
-    #wb-bc {
-        width: 750px;
-    }
-    #change-licensee {
-        position: absolute;
-    }
-}
-@media (min-width: 992px) {
-    #wb-bc {
-        width: 970px;
-    }
-}
-@media (min-width: 1200px) {
-    #wb-bc {
-        width: 1170px;
-    }
-}
+/* General */
 .border-top {
     padding-top: 11.5px;
     border-top: 1px solid #ddd
 }
-#change-licensee details summary {
-    font-weight: bold;
 
-    background-color: white;
-    z-index: 2;
-}
-#change-licensee details[open] {
-    padding-bottom: 0;
-    float:left;
-    width: 100%;
-    z-index: 2;
-
-
-}
-#change-licensee a {
-    text-decoration: none;
-}
-#change-licensee a:hover,
-#change-licensee a:focus {
-    text-decoration: underline;
+.btn {
+	min-width: 6em;
+	margin-right: 10px;
+	margin-bottom: 10px;
 }
