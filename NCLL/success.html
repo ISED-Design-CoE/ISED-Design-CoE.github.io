@@ -91,8 +91,8 @@
 	<section class="alert alert-success">
 		<h2>Application <span class="app-number">01000139-001</span> has been successfully submitted</h2>
 		<ul>
-			<li>A confirmation e-mail will be sent to <span id="admin-contact-name">John Dutton</span>, <span id="admin-contact-email">john.dutton@thebestcompany.ca</span></li>
-			<li>Once the application has been approved, we will contact <span id="payment-contact-name">Pierre Untel</span>, <span id="payment-contact-email">pierre.untel@thebestcompany.ca</span>, for payment</li>
+			<li>A confirmation e-mail will be sent to <span id="admin-email">john.dutton@thebestcompany.ca</span></li>
+			<li>Once the application has been approved, we will contact <span id="payment-email">pierre.untel@thebestcompany.ca</span> for payment</li>
 			<li>Once you have paid and your effective date has been reached, you will be able to use the licence</li>
 		</ul>
 	</section>
@@ -141,17 +141,17 @@
 		const queryString = window.location.search
 		const urlParams = new URLSearchParams ( queryString )
 
-		const adminContactName = document .getElementById ( "admin-contact-name" )
-		adminContactName .innerText = urlParams .get ( "admin-contact-name" )
+		const adminEmail = document .getElementById ( "admin-email" )
+		const adminEmailParm = urlParams .get ( "admin-email" )
+		if ( adminEmailParm ) {
+			adminEmail .innerText = adminEmailParm
+		}
 
-		const adminContactEmail = document .getElementById ( "admin-contact-email" )
-		adminContactEmail .innerText = urlParams .get ( "admin-contact-email" )
-
-		const paymentContactName = document .getElementById ( "payment-contact-name" )
-		paymentContactName .innerText = urlParams .get ( "payment-contact-name" )
-
-		const paymentContactEmail = document .getElementById ( "payment-contact-email" )
-		paymentContactEmail .innerText = urlParams .get ( "payment-contact-email" )
+		const paymentEmail = document .getElementById ( "payment-email" )
+		const paymentEmailParm = urlParams .get ( "payment-email" )
+		if ( paymentEmailParm ) {
+			paymentEmail .innerText = paymentEmailParm
+		}
 	</script>	
 	<script>
 		// Read application number from parameters if present
