@@ -110,16 +110,16 @@
 						<fieldset>
 							<legend><span class="field-name">Status</span></legend>
 							<ul class="list-unstyled">
-								<li class="checkbox"><label for="status1"><input type="checkbox" id="status1" name="status" data-column="3" value="Awaiting effective date"> Awaiting effective date</label></li>
-								<li class="checkbox"><label for="status2"><input type="checkbox" id="status2" name="status" data-column="3" value="Active"> Active</label></li>
+								<li class="checkbox"><label for="awaiting_checkbox"><input type="checkbox" id="awaiting_checkbox" name="status" onchange="toggleStatus('awaiting')"> Awaiting effective date</label></li>
+								<li class="checkbox"><label for="active_checkbox"><input type="checkbox" id="active_checkbox" name="status" onchange="toggleStatus('active')"> Active</label></li>
 <!-- TODO: How can we keep this from including "Inactive"? -->
-								<li class="checkbox"><label for="status3"><input type="checkbox" id="status3" name="status" data-column="3" value="Payment due"> Payment due</label></li>
-								<li class="checkbox"><label for="status4"><input type="checkbox" id="status4" name="status" data-column="3" value="Inactive"> Inactive</label></li>
+								<li class="checkbox"><label for="payment_checkbox"><input type="checkbox" id="payment_checkbox" name="status" onchange="toggleStatus('payment')"> Payment due</label></li>
+								<li class="checkbox"><label for="inactive_checkbox"><input type="checkbox" id="inactive_checkbox" name="status" onchange="toggleStatus('inactive')"> Inactive</label></li>
 							</ul>
 						</fieldset>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary" aria-controls="dataset-filter1">Filter</button>
+						<button type="submit" class="btn btn-primary" aria-controls="dataset-filter1" onclick="filterTable()">Filter</button>
 					</div>
 					<div class="form-group">
 						<button type="reset" class="btn btn-link btn-sm p-0">Reset to defaults</button>
