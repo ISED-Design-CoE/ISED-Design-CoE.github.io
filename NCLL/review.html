@@ -130,8 +130,8 @@
 						<dd><span class="effective-date">2024-04-28</span></dd>
 						<dt>Renewable or temporary licence</dt>
 						<dd><span class="renewable-temporary">Temporary</span></dd>
-						<dt>Expiry date</dt>
-						<dd><span class="expiry-date">2024-10-24</span></dd>
+						<dt class="expiry-date-present">Expiry date</dt>
+						<dd class="expiry-date-present"><span class="expiry-date">2024-10-24</span></dd>
 						<dt>Does The best company or any of its affiliates or subsidiaries currently have 100,000 or more retail mobile phone subscribers?</dt>
 						<dd><span class="MNSP">Yes</span></dd>
 					</dl>
@@ -139,8 +139,9 @@
 						<h2>Technical details</h2>
 						<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details.html'+ window.location.search">Edit</button></span>
 					</div>
+					<dl>
 						<dt>Bandwidth</dt>
-						<dd><span class="bandwidth">10 MHz</span></dd>
+						<dd><span class="bandwidth">10</span> MHz</dd>
 						<dt>Location of antennas</dt>
 						<dd><span class="antenna">Outdoor and indoor</span></dd>
 						<dt>Licence type</dt>
@@ -151,27 +152,11 @@
 						<h2>Contact information</h2>
 						<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'contact.html'+ window.location.search">Edit</button></span>
 					</div>
-					<h3>Administrative contact</h3>
 					<dl>
-						<dt>Name</dt>
-						<dd><span class="admin-contact-name">John Dutton</span></dd>
-						<dt>Address</dt>
-						<dd><span class="admin-contact-address">999 Main St., Calgary AB</span></dd>
-						<dt>E-mail</dt>
-						<dd><span class="admin-contact-email">john.dutton@yellowstone.com</span></dd>
-						<dt>Telephone</dt>
-						<dd><span class="admin-contact-telephone">(403) 123-4567</span></dd>
-					</dl>
-					<h3>Payment contact</h3>
-					<dl>
-						<dt>Name</dt>
-						<dd><span class="payment-contact-name">John Dutton</span></dd>
-						<dt>Address</dt>
-						<dd><span class="payment-contact-address">999 Main St., Calgary AB</span></dd>
-						<dt>E-mail</dt>
-						<dd><span class="payment-contact-email">john.dutton@yellowstone.com</span></dd>
-						<dt>Telephone</dt>
-						<dd><span class="payment-contact-telephone">(403) 123-4567</span></dd>
+						<dt>E-mail addresses to receive application status updates</dt>
+						<dd><span class="asu">john.dutton@yellowstone.com</span></dd>
+						<dt>E-mail address to receive licences and invoices</dt>
+						<dd><span class="lai">beth.dutton@yellowstone.com</span></dd>
 					</dl>
 				
 					<div>
@@ -272,6 +257,14 @@
 					elem .innerText = "-"
 				} else {
 					elem .innerText = value
+				}
+			}
+		}
+		if ( urlParams .has ( "expiry-date" ) ) {
+			const expDate = urlParams .get ( "expiry-date" )
+			if ( expDate == "" ) {
+				for ( const elem of document .getElementsByClassName ( "expiry-date-present" ) ) {
+					elem .setAttribute ( "hidden", "hidden" )
 				}
 			}
 		}
