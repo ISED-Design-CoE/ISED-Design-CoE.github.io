@@ -248,6 +248,7 @@
 				const maxExpiryDate = new Date( effectiveDateValue )
 				maxExpiryDate.setMonth ( maxExpiryDate.getMonth() + 11 )
 				const maxExpiryDateISO = convertDateToISO ( maxExpiryDate, offset )
+				console.log(maxExpiryDate)
 				expiryDateField .setAttribute ( "max", maxExpiryDateISO )
 			})
 			renewableButton.addEventListener ( "click", (event) => {
@@ -349,5 +350,22 @@
 			}));
 		</script>
 		<script src="queries-in-navbar.js"></script>
+
+		<script>
+			if (urlParams.get('effective-date') != null) {
+
+				let effectiveDateValue =urlParams.get('effective-date')
+
+				// Set minimum value for Expiry date (= Effective date)
+				expiryDateField .setAttribute ( "min", effectiveDateValue )
+			
+				// Set maximum value for Expiry date (= 11 months from Effective date)
+				const maxExpiryDate = new Date( effectiveDateValue )
+				maxExpiryDate.setMonth ( maxExpiryDate.getMonth() + 11 )
+				const maxExpiryDateISO = convertDateToISO ( maxExpiryDate, offset )
+				console.log(maxExpiryDate)
+				expiryDateField .setAttribute ( "max", maxExpiryDateISO )
+			}
+		</script>
 	</body>
 </html>
