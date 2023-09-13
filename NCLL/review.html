@@ -480,13 +480,13 @@
 			document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
 
 			if (urlParams.get('renewable-temporary') == 'Renewable') {
-				if (urlParams.get('less-than-min') == true) {
+				if (urlParams.get('less-than-min') == "true") {
 					document.getElementById ( "renew-min-cost" ).removeAttribute("hidden")
 				} else {
 					document.getElementById ( "renew-cost" ).removeAttribute("hidden")
 				}
 			} else {
-				if (urlParams.get('less-than-min') == true) {
+				if (urlParams.get('less-than-min') == "true") {
 					document.getElementById ( "temp-min-cost" ).removeAttribute("hidden")
 				} else {
 					document.getElementById ( "temp-cost" ).removeAttribute("hidden")
