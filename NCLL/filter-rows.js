@@ -8,13 +8,10 @@ function filterTable() {
 			row.removeAttribute('hidden')
 		} else {
 			match = false;
-			row.className.split(' ').forEach(row_status => {
-				if (status_set.has(row_status)){
-					row.removeAttribute('hidden')
-					match = true
-				}
-				
-			})
+			if (status_set.has(row.getAttribute('status'))) {
+				row.removeAttribute('hidden')
+				match = true
+			}
 			if (!match) {
 				row.setAttribute('hidden','hidden')
 			}
