@@ -90,18 +90,20 @@
 	<p>Your request has been submitted.</p>
 	<section class="alert alert-success">
 		<h2>Application <span class="app-number">01000139-001</span> has been successfully submitted</h2>
-		<ul>
-			<li>A confirmation e-mail will be sent to <span id="admin-email">john.dutton@thebestcompany.ca</span></li>
-			<li>Once the application has been approved, we will contact <span id="payment-email">pierre.untel@thebestcompany.ca</span> for payment</li>
+		What happens next:
+		<ol>
+			<li>We will send a confirmation e-mail to <span id="asu">john.dutton@thebestcompany.ca</span></li>
+			<li>We will review the application and let you know the result. This will take between 7 and 84 days</li>
+			<li>If the application is approved, we will send an invoice to <span id="lai">pierre.untel@thebestcompany.ca</span></li>
 			<li>Once you have paid and your effective date has been reached, you will be able to use the licence</li>
-		</ul>
+		</ol>
 	</section>
 
-	<p>What would you like to do next?</p>
+	<p>What would you like to do now?</p>
 	<ul>
 		<li>Go to the <a href="dashboard.html">Dashboard</a></li>
-		<li><a href="general.html">Create a new application</a> </li>
-		<li><a href="general.html">Duplicate this application</a></li>
+		<li>Create a <a href="general.html">new application</a> </li>
+		<li><a href="general.html">Duplicate</a> this application</li>
 		<li>Return to the <a href="index.html">SMS website</a>
 	</ul>	
 
@@ -141,16 +143,16 @@
 		const queryString = window.location.search
 		const urlParams = new URLSearchParams ( queryString )
 
-		const adminEmail = document .getElementById ( "admin-email" )
-		const adminEmailParm = urlParams .get ( "admin-email" )
-		if ( adminEmailParm ) {
-			adminEmail .innerText = adminEmailParm
+		const asuEmail = document .getElementById ( "asu" )
+		const asuEmailParm = urlParams .get ( "asu" )
+		if ( asuEmailParm ) {
+			asuEmail .innerText = asuEmailParm
 		}
 
-		const paymentEmail = document .getElementById ( "payment-email" )
-		const paymentEmailParm = urlParams .get ( "payment-email" )
-		if ( paymentEmailParm ) {
-			paymentEmail .innerText = paymentEmailParm
+		const laiEmail = document .getElementById ( "lai" )
+		const laiEmailParm = urlParams .get ( "lai" )
+		if ( laiEmailParm ) {
+			laiEmail .innerText = laiEmailParm
 		}
 	</script>	
 	<script>
