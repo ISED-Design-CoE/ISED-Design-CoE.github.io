@@ -456,7 +456,12 @@ var urlQueries = baseQuery
 
 		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
 
-		if (temporary_licence) {baseRate = baseRate / 12}
+		createHiddenField ( "base-rate", baseRate )
+
+		if (temporary_licence && urlParams.get( "already-divided" ) == null) {
+			baseRate = baseRate / 12
+			createHiddenField ( "already-divided", true)
+		}
 		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
 			elem .innerText = baseRate
 		}
@@ -1101,6 +1106,11 @@ if (document.getElementById("lat1").value != "") {
 	total_cost_spans = document.querySelectorAll(".total-cost");
 	total_cost_spans.forEach(element => {
 		element.innerText = element.textContent = document.getElementById("total-cost").value;
+	});
+
+	temp_cost_spans = document.querySelectorAll(".temp-cost");
+	temp_cost_spans.forEach(element => {
+		element.innerText = element.textContent = document.getElementById("temp-cost").value;
 	});
 
 	area_field.setAttribute( "value", document.getElementById("area-size").value );
