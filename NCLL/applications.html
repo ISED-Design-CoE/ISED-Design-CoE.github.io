@@ -91,36 +91,78 @@
 	<p>Manage existing applications</p>
 	<a href="general.html" class="btn btn-call-to-action pull-right">Start new application</a>
 
-	<table class="wb-tables table">
-		<thead>
-			<tr>
-				<th>Application number</th>
-				<th>Application identifier</th>
-				<th>Effective date</th>
-				<th>Status</th>
-				<th>Amount due</th>
-				<th data-orderable="false">Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="data_row draft">
-				<td><a href="general.html?base-rate=1.80&fee-zone=Urban&app-number=01000130-001&ari=ProjID+%23511244&effective-date=2023-10-23&renewable-temporary=Temporary&expiry-date=2023-10-25&MNSP=No&admin-contact-name=John+Dutton&admin-contact-address=999+Main+St.%2C+Calgary+AB&admin-contact-email=john.dutton%40yellowstone.com&admin-contact-telephone=%28403%29+123-4567&admin-contact=John+Dutton&payment-contact-name=Beth+Dutton&payment-contact-address=999+Main+St.%2C+Calgary+AB&payment-contact-email=beth.dutton%40yellowstone.com&payment-contact-telephone=%28403%29+891-2345&payment-contact=John+Dutton">01000130-001</a></td>
-				<td>ProjID #511244</td>
-				<td>2023-08-20</td>
-				<td>Draft</td>
-				<td>$0.00</td>
-				<td>
-					<select class="form-control">
-						<option>Actions</option>
-						<option>Edit</option>
-						<option>Download</option>
-						<option>Duplicate</option>
-						<option>Delete</option>
-					</select>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="row">
+		<div class="col-md-3">
+			<h4 class="wb-inv">Filtering options</h4>
+			<details open>
+				<summary><h4 class="h4">Filter options</h4></summary>
+				<form class="wb-tables-filter" data-bind-to="dataset-filter1">
+					<div class="form-group">
+						<fieldset>
+							<legend>
+								<span class="field-name">Effective date</span>
+							</legend>
+							<div class="form-group">
+								<label for="dt_mindate" class="small">Earliest effective date</label>
+								<input type="date" class="form-control" id="dt_mindate" name="dt_mindate" data-column="2">
+							</div>
+							<div class="form-group">
+								<label for="dt_maxdate" class="small">Latest effective date</label>
+								<input type="date" class="form-control" id="dt_maxdate" name="dt_maxdate" data-column="2">
+							</div>
+						</fieldset>
+					</div>
+					<div class="form-group">
+						<fieldset>
+							<legend><span class="field-name">Status</span></legend>
+							<ul class="list-unstyled">
+								<li class="checkbox"><label for="draft_checkbox"><input type="checkbox" id="draft_checkbox" name="status" onchange="toggleStatus('draft')"> Draft</label></li>
+								<li class="checkbox"><label for="review_checkbox"><input type="checkbox" id="review_checkbox" name="status" onchange="toggleStatus('review')"> Awaiting approval</label></li>
+								<li class="checkbox"><label for="payment_checkbox"><input type="checkbox" id="payment_checkbox" name="status" onchange="toggleStatus('payment')"> Payment due</label></li>
+								<li class="checkbox"><label for="failed_checkbox"><input type="checkbox" id="failed_checkbox" name="status" onchange="toggleStatus('failed')"> Failed or rejected</label></li>
+							</ul>
+						</fieldset>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary" aria-controls="dataset-filter1" onclick="filterTable()">Filter</button>
+					</div>
+					<div class="form-group">
+						<button onclick="window.location.href = 'applications.html'" class="btn btn-link btn-sm p-0">Clear all filters</button>
+					</div>
+				</form>
+			</details>
+		</div>
+		<div class="col-md-9">
+			<table class="wb-tables table" id="dataset-filter1">
+				<thead>
+					<tr>
+						<th>Application number</th>
+						<th>Application identifier</th>
+						<th>Effective date</th>
+						<th>Status</th>
+						<th>Amount due</th>
+						<th data-orderable="false">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="data_row draft">
+						<td><a href="general.html?base-rate=1.80&fee-zone=Urban&app-number=01000130-001&ari=ProjID+%23511244&effective-date=2023-10-23&renewable-temporary=Temporary&expiry-date=2023-10-25&MNSP=No&admin-contact-name=John+Dutton&admin-contact-address=999+Main+St.%2C+Calgary+AB&admin-contact-email=john.dutton%40yellowstone.com&admin-contact-telephone=%28403%29+123-4567&admin-contact=John+Dutton&payment-contact-name=Beth+Dutton&payment-contact-address=999+Main+St.%2C+Calgary+AB&payment-contact-email=beth.dutton%40yellowstone.com&payment-contact-telephone=%28403%29+891-2345&payment-contact=John+Dutton">01000130-001</a></td>
+						<td>ProjID #511244</td>
+						<td>2023-08-20</td>
+						<td>Draft</td>
+						<td>$0.00</td>
+						<td>
+							<select class="form-control">
+								<option>Actions</option>
+								<option>Edit</option>
+								<option>Download</option>
+								<option>Duplicate</option>
+								<option>Delete</option>
+							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 
 	<div class="notesaboutmockup">
 		<h2>Notes about this mockup:</h2>
