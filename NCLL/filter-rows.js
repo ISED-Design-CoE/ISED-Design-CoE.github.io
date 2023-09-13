@@ -8,7 +8,7 @@ function filterTable() {
 			row.removeAttribute('hidden')
 		} else {
 			match = false;
-			if (status_set.has(row.getAttribute('status'))) {
+			if (status_set.has(row.getAttribute('data-status'))) {
 				row.removeAttribute('hidden')
 				match = true
 			}
