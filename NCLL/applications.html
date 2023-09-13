@@ -26,6 +26,8 @@
 		</script>
 
 <!-- Start DECoE customization -->
+		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+		<link href="ncll-portal.css" rel="stylesheet" type="text/css">
 		<style>
 		/* Styles for all mockups */
 			.notesaboutmockup {
@@ -42,12 +44,14 @@
 				margin-top: 1em;
 			}
 		/* Styles for this mockup */
-			#cancel-button {
+			#dataset-filter1_wrapper table {
 				margin-top: 1em;
+				border-top: 1px solid #111;
+			}
+			.nowrap {
+				white-space: nowrap;
 			}
 		</style>
-		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
-		<link href="ncll-portal.css" rel="stylesheet" type="text/css">
 
 <!-- End DECoE customization -->
 
@@ -86,7 +90,6 @@
 	<h1 property="name" id="wb-cont">Applications</h1>
 
 	<p>Manage existing applications</p>
-	<a href="general.html" class="btn btn-call-to-action pull-right">Start new application</a>
 
 	<div class="row">
 		<div class="col-md-3">
@@ -115,7 +118,6 @@
 							<ul class="list-unstyled">
 								<li class="checkbox"><label for="draft_checkbox"><input type="checkbox" id="draft_checkbox" name="status" onchange="toggleStatus('draft')"> Draft</label></li>
 								<li class="checkbox"><label for="review_checkbox"><input type="checkbox" id="review_checkbox" name="status" onchange="toggleStatus('review')"> Awaiting approval</label></li>
-								<li class="checkbox"><label for="payment_checkbox"><input type="checkbox" id="payment_checkbox" name="status" onchange="toggleStatus('payment')"> Payment due</label></li>
 								<li class="checkbox"><label for="failed_checkbox"><input type="checkbox" id="failed_checkbox" name="status" onchange="toggleStatus('failed')"> Failed or rejected</label></li>
 							</ul>
 						</fieldset>
@@ -165,7 +167,6 @@
 		<h2>Notes about this mockup:</h2>
 		<ul>
 			<li>Uses the <a href="https://wet-boew.github.io/v4.0-ci/docs/ref/tables/tables-en.html">DataTables plugin for WET</a></li>
-			<li>TODO: Enable links to filtered views</li>
 		</ul>
 		<h2>Changes from phase 2A BRD:</h2>
 		<ul>
