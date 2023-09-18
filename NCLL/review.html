@@ -158,6 +158,8 @@
 						<dd><span class="bandwidth">10</span> MHz</dd>
 						<dt>Location of antennas</dt>
 						<dd><span class="antenna">Outdoor and indoor</span></dd>
+						<dt class="antenna-height-present">Maximum antenna height</dt>
+						<dd class="antenna-height-present"><span class="antenna-height">10</span></dd>
 						<dt>Licence type</dt>
 						<dd><span class="power-level">Medium power</span></dd>
 					</dl>
@@ -265,10 +267,27 @@
 		if ( urlParams .has ( "expiry-date" ) ) {
 			const expDate = urlParams .get ( "expiry-date" )
 			if ( expDate == "" ) {
-				for ( const elem of document .getElementsByClassName ( "expiry-date-present" ) ) {
+				for ( let elem of document .getElementsByClassName ( "expiry-date-present" ) ) {
 					elem .setAttribute ( "hidden", "hidden" )
 				}
 			}
+		} else {
+			for ( let elem of document .getElementsByClassName ( "expiry-date-present" ) ) {
+					elem .setAttribute ( "hidden", "hidden" )
+				}
+		}
+
+		if ( urlParams .has ( "antenna-height" ) ) {
+			const expDate = urlParams .get ( "antenna-height" )
+			if ( expDate == "" ) {
+				for ( let elem of document .getElementsByClassName ( "antenna-height-present" ) ) {
+					elem .setAttribute ( "hidden", "hidden" )
+				}
+			}
+		} else {
+			for ( let elem of document .getElementsByClassName ( "antenna-height-present" ) ) {
+					elem .setAttribute ( "hidden", "hidden" )
+				}
 		}
 
 		// Hide unneeded boundary point pairs
