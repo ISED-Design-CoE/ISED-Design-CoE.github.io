@@ -264,27 +264,32 @@
 				}
 			}
 		}
+
+		var expiryDatePresent = true
 		if ( urlParams .has ( "expiry-date" ) ) {
 			const expDate = urlParams .get ( "expiry-date" )
 			if ( expDate == "" ) {
-				for ( let elem of document .getElementsByClassName ( "expiry-date-present" ) ) {
-					elem .setAttribute ( "hidden", "hidden" )
-				}
+				expiryDatePresent = false
 			}
 		} else {
+			expiryDatePresent = false
+		}
+		if ( ! expiryDatePresent ) {
 			for ( let elem of document .getElementsByClassName ( "expiry-date-present" ) ) {
 					elem .setAttribute ( "hidden", "hidden" )
 				}
 		}
 
+		var antennaHeightPresent = true
 		if ( urlParams .has ( "antenna-height" ) ) {
 			const expDate = urlParams .get ( "antenna-height" )
 			if ( expDate == "" ) {
-				for ( let elem of document .getElementsByClassName ( "antenna-height-present" ) ) {
-					elem .setAttribute ( "hidden", "hidden" )
-				}
+				antennaHeightPresent = false
 			}
 		} else {
+			antennaHeightPresent = false
+		}
+		if ( ! antennaHeightPresent ) {
 			for ( let elem of document .getElementsByClassName ( "antenna-height-present" ) ) {
 					elem .setAttribute ( "hidden", "hidden" )
 				}
