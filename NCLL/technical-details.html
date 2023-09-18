@@ -138,7 +138,8 @@
 					<summary>More information<span class="wb-inv"> about location of antennas</span></summary>
 					<ul class="list-unstyled">
 						<li>With an <strong>indoor-only</strong> licence, you need to serve at least one building within your licence area.</li>
-						<li>With an <strong>outdoor-and-indoor</strong> licence, you need to serve your whole licence area.</li>
+						<li>With an <strong>outdoor</strong> licence, you need to serve your whole licence area.</li>
+						<li>An outdoor licence may include indoor antennas.</li>
 					</ul>
 				</details>
 				<ul class="list-unstyled lst-spcd-2">
@@ -150,8 +151,8 @@
 						</div>
 					</li>
 					<li class="radio">
-						<input type="radio" id="outdoor-indoor" name="antenna" value="Outdoor and indoor" data-rule-required="true">
-						<label for="outdoor-indoor">Outdoor and indoor</label>
+						<input type="radio" id="outdoor" name="antenna" value="Outdoor" data-rule-required="true">
+						<label for="outdoor">Outdoor</label>
 					</li>
 				</ul>
 			</fieldset>
@@ -218,7 +219,7 @@
 		<script>
 			// Validate the interaction between the Scope of service and Power level fields
 			const indoorOnlyField = document.getElementById ( "indoor-only" )
-			const outdoorIndoorField = document.getElementById ( "outdoor-indoor" )
+			const outdoorIndoorField = document.getElementById ( "outdoor" )
 
 			// const lowPowerField = document.getElementById ( "low-power" )
 			const lowPowerField = document.getElementById ( "low-power" )
