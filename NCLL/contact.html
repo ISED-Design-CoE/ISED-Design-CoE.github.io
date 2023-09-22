@@ -52,6 +52,9 @@
 				margin-top: 1em;
 				margin-bottom: 2em;
 			}
+			.panel-body {
+				padding-top: 0;
+			}
 		</style>
 <!-- End DECoE customization -->
 
@@ -107,46 +110,60 @@
 	<div class="wb-frmvld">
 		<form action="technical-details.html" method="get">
 		<div class="wb-frm">
-			<fieldset class="gc-chckbxrdio">
-				<legend>For updates about the application</legend>
-				<details>
-					<summary>More information<span class="wb-inv"> about the e-mail addresses for updates about the application</span></summary>
-					<p>The e-mail address <cite>john.dutton@yellowstone.com</cite> is currently the “E-mail address to receive application status updates (and for licence/invoice delivery if selected)” for this licensee.</p>
-					<p>You may also select a second contact to receive the e-mail.</p>
-				</details>
-				<ul class="list-unstyled lst-spcd-2">
-					<li class="radio">
-						<input type="radio" name="asu" id="asu-1" value="john.dutton@yellowstone.com">
-						<label for="asu-1">john.dutton@yellowstone.com</label>
-					</li>
-					<li class="radio">
-						<input type="radio" name="asu" id="asu-2" value="rip.wheeler@yellowstone.com, john.dutton@yellowstone.com">
-						<label for="asu-2">rip.wheeler@yellowstone.com, john.dutton@yellowstone.com</label>
-					</li>
-					<li class="radio">
-						<input type="radio" name="asu" id="asu-3" value="thomas.rainwater@yellowstone.com, john.dutton@yellowstone.com">
-						<label for="asu-3">thomas.rainwater@yellowstone.com, john.dutton@yellowstone.com</label>
-					</li>
-				</ul>
-			</fieldset>
-			<fieldset class="gc-chckbxrdio">
-				<legend>For invoices</legend>
-				<details>
-					<summary>More information<span class="wb-inv"> about the e-mail address for invoices</span></summary>
-					<p>The e-mail address <cite>john.dutton@yellowstone.com</cite> is currently the “E-mail address to receive application status updates (and for licence/invoice delivery if selected)” for this licensee.</p>
-					<p>You may instead select a payment office to receive the e-mail.</p>
-				</details>
-				<ul class="list-unstyled lst-spcd-2">
-					<li class="radio">
-						<input type="radio" name="lai" id="lai-1" value="john.dutton@yellowstone.com">
-						<label for="lai-1">john.dutton@yellowstone.com</label>
-					</li>
-					<li class="radio">
-						<input type="radio" name="lai" id="lai-2" value="beth.dutton@yellowstone.com">
-						<label for="lai-2">beth.dutton@yellowstone.com</label>
-					</li>
-				</ul>
-			</fieldset>
+			<section class="panel panel-default">
+				<header class=panel-heading>
+					<h3 class=panel-title>For updates about the application</h3>
+				</header>
+				<div class=panel-body>
+					<fieldset class="gc-chckbxrdio">
+						<legend class="wb-inv">For updates about the application</legend>
+						<details>
+							<summary>More information<span class="wb-inv"> about the e-mail addresses for updates about the application</span></summary>
+							<p>The e-mail address <cite>john.dutton@yellowstone.com</cite> is currently the “E-mail address to receive application status updates (and for licence/invoice delivery if selected)” for this licensee.</p>
+							<p>You may also select a second address to receive updates.</p>
+						</details>
+						<ul class="list-unstyled lst-spcd-2">
+							<li class="radio">
+								<input type="radio" name="asu" id="asu-1" value="john.dutton@yellowstone.com">
+								<label for="asu-1">john.dutton@yellowstone.com</label>
+							</li>
+							<li class="radio">
+								<input type="radio" name="asu" id="asu-2" value="rip.wheeler@yellowstone.com, john.dutton@yellowstone.com">
+								<label for="asu-2">rip.wheeler@yellowstone.com, john.dutton@yellowstone.com</label>
+							</li>
+							<li class="radio">
+								<input type="radio" name="asu" id="asu-3" value="thomas.rainwater@yellowstone.com, john.dutton@yellowstone.com">
+								<label for="asu-3">thomas.rainwater@yellowstone.com, john.dutton@yellowstone.com</label>
+							</li>
+						</ul>
+					</fieldset>
+				</div>
+			</section>
+			<section class="panel panel-default">
+				<header class=panel-heading>
+					<h3 class=panel-title>For invoices</h3>
+				</header>
+				<div class=panel-body>
+					<fieldset class="gc-chckbxrdio">
+						<legend class="wb-inv">For invoices</legend>
+						<details>
+							<summary>More information<span class="wb-inv"> about the e-mail address for invoices</span></summary>
+							<p>The e-mail address <cite>john.dutton@yellowstone.com</cite> is currently the “E-mail address to receive application status updates (and for licence/invoice delivery if selected)” for this licensee.</p>
+							<p>You may instead select a different address to receive invoices.</p>
+						</details>
+						<ul class="list-unstyled lst-spcd-2">
+							<li class="radio">
+								<input type="radio" name="lai" id="lai-1" value="john.dutton@yellowstone.com">
+								<label for="lai-1">john.dutton@yellowstone.com</label>
+							</li>
+							<li class="radio">
+								<input type="radio" name="lai" id="lai-2" value="beth.dutton@yellowstone.com">
+								<label for="lai-2">beth.dutton@yellowstone.com</label>
+							</li>
+						</ul>
+					</fieldset>
+				</div>
+			</section>
 			<div class="spaced">
 				<p>Note: To add an address not listed here, please contact one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
 			</div>
