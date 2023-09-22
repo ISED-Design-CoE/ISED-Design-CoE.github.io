@@ -317,18 +317,91 @@ var urlQueries = baseQuery
 
 							<div id="licence-fee-text">
 								<h2>Licence fee</h2>
-								<dl class="dl-horizontal">
-									<dt>Area type</dt>
-									<dd><span class="fee-zone">Rural</span></dd>
-									<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-									<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
-									<dt>Requested bandwidth</dt>
-									<dd><span class="bandwidth">10</span> MHz</dd>
-									<dt>Area size</dt>
-									<dd><span class="area-size">0</span> km²</dd>
-									<dt>Total cost per year</dt>
-									<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
-								</dl>
+
+								<div id="renew-cost">
+									<dl class="dl-horizontal">
+										<dt>Area type</dt>
+										<dd><span class="fee-zone">Rural</span></dd>
+										<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
+										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dt>Requested bandwidth</dt>
+										<dd><span class="bandwidth">10</span> MHz</dd>
+										<dt>Area size</dt>
+										<dd><span class="area-size">0</span> km²</dd>
+										<dt>Total cost per year</dt>
+										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+									</dl>
+								</div>
+
+								<div id="renew-min-cost">
+									<dl class="dl-horizontal">
+										<dt>Area type</dt>
+										<dd><span class="fee-zone">Rural</span></dd>
+										<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
+										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dt>Requested bandwidth</dt>
+										<dd><span class="bandwidth">10</span> MHz</dd>
+										<dt>Area size</dt>
+										<dd><span class="area-size">0</span> km²</dd>
+										<dt>Calculated cost</dt>
+										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+									</dl>
+									<br>
+									<dl class="dl-horizontal">
+										<dt>Minimum fee per year</dt>
+										<dd>$48.00</span></dd>
+										<dt>Total cost per year</dt>
+										<dd><b>$48.00</b></dd>
+									</dl>
+								</div>
+
+								<div id="temp-cost">
+									<dl class="dl-horizontal">
+										<dt>Area type</dt>
+										<dd><span class="fee-zone">Rural</span></dd>
+										<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
+										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dt>Requested bandwidth</dt>
+										<dd><span class="bandwidth">10</span> MHz</dd>
+										<dt>Area size</dt>
+										<dd><span class="area-size">0</span> km²</dd>
+										<dt>Calculated cost per calendar month</dt>
+										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+									</dl>
+									<br>
+									<dl class="dl-horizontal">
+										<dt>Licence duration</dt>
+										<dd><span class="licence-duration">8</span> calendar months</dd>
+										<dt>Total cost</dt>
+										<dd>$<span class="temp-cost">0.45</span> &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+									</dl>
+
+								</div>
+
+								<div id="temp-min-cost">
+									<dl class="dl-horizontal">
+										<dt>Area type</dt>
+										<dd><span class="fee-zone">Rural</span></dd>
+										<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
+										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dt>Requested bandwidth</dt>
+										<dd><span class="bandwidth">10</span> MHz</dd>
+										<dt>Area size</dt>
+										<dd><span class="area-size">0</span> km²</dd>
+										<dt>Calculated cost per calendar month</dt>
+										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+									</dl>
+									<br>
+									<dl class="dl-horizontal">
+										<dt>Minimum fee per calendar month</dt>
+										<dd>$4.00</dd>
+										<dt>Licence duration</dt>
+										<dd><span class="licence-duration">8</span> calendar months</dd>
+										<dt>Total cost</dt>
+										<dd>$4.00 &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+									</dl>
+								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -370,8 +443,23 @@ var urlQueries = baseQuery
 	<script src="catch-and-throw.js"></script>
 	<script>
 		// Set up needed fields for cost calculation
+		const temporary_licence = urlParams.get('renewable-temporary') == 'Temporary' 
+		document.getElementById ( "renew-cost" ).setAttribute("hidden","hidden")
+		document.getElementById ( "renew-min-cost" ).setAttribute("hidden","hidden")
+		document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
+		document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
+
+
 		let baseRate = urlParams.get ( "base-rate" ) 
+
 		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
+
+		createHiddenField ( "base-rate", baseRate )
+
+		if (temporary_licence && urlParams.get( "already-divided" ) == null) {
+			baseRate = baseRate / 12
+			createHiddenField ( "already-divided", true)
+		}
 		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
 			elem .innerText = baseRate
 		}
@@ -390,13 +478,28 @@ var urlQueries = baseQuery
 		}		
 		var area_field = createHiddenField ( "area-size", 0 )
 		var cost_field = createHiddenField ( "total-cost", 0 )
+		var temp_cost_field = createHiddenField ( "temp-cost", 0 )
+		var less_than_min_field = createHiddenField ( "less-than-min", false )
+		
+		var duration = ((urlParams.get('expiry-date').split("-")[0] - urlParams.get('effective-date').split("-")[0]) * 12) + (urlParams.get('expiry-date').split("-")[1] - urlParams.get('effective-date').split("-")[1] + 1)
+
+		for ( let elem of document .getElementsByClassName ( "licence-duration" ) ) {
+			elem .innerText = duration
+		}	
+
+
+		var duration_field = createHiddenField ( "licence-duration", 0)
+
+		duration_field.setAttribute( "value", duration )
 
 		var area_number = 0;
 		var cost_number = 0;
+		var temp_cost_number = 0;
 		const calculateButton = document.getElementById ( "calculate-button" )
 		const calcResultsBefore = document.getElementById ( "calc-results-before" )
 		const calcResultsAfter = document.getElementById ( "calc-results-after" )
 		const nextButton = document.getElementById ( "next-button" )
+		
 
 		const powerLevel = urlParams.get ( "power-level" )
 
@@ -412,6 +515,13 @@ var urlQueries = baseQuery
 
 		function calculate_area_info () {
 
+			less_than_min_field.setAttribute("value", false)
+
+			document.getElementById ( "renew-cost" ).setAttribute("hidden","hidden")
+			document.getElementById ( "renew-min-cost" ).setAttribute("hidden","hidden")
+			document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
+			document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
+
 			urlQueries = baseQuery 
 
 			for (let i = 0; i < 12; i++) {
@@ -424,7 +534,26 @@ var urlQueries = baseQuery
 					}
 				}
 			urlQueries += "&area-size=" + area_number
-			urlQueries += "&total-cost=" + cost_number
+			if (!temporary_licence) {
+				if (cost_number > 48) {
+					urlQueries += "&total-cost=" + cost_number
+					
+				} else {
+					console.log('costs 48')
+					urlQueries += "&total-cost=" + 48
+					cost_field.setAttribute( "value", 48)
+				}
+			} else {
+				if (temp_cost_number > 4) {
+					urlQueries += "&total-cost=" + cost_number
+				} else {
+					console.log('costs 4')
+					urlQueries += "&total-cost=" + 4 * duration
+					cost_field.setAttribute( "value", 4 * duration )
+
+				}
+			}
+			
 
 			calcResultsBefore .setAttribute ( "hidden", "hidden" )
 			calcResultsAfter .removeAttribute ( "hidden" )
@@ -473,6 +602,28 @@ var urlQueries = baseQuery
 				}
 			}
 			if ( noErrors ) { // everything's okay
+				if (temporary_licence) {
+					if (temp_cost_number > 4) {
+						document.getElementById('temp-cost').removeAttribute('hidden');
+					} else {
+						cost_number = 4 * duration
+
+						total_cost_spans = document.querySelectorAll(".total-cost");
+						total_cost_spans.forEach(element => {
+							element.innerText = element.textContent = cost_number
+						});
+						document.getElementById('temp-min-cost').removeAttribute('hidden');
+						less_than_min_field.setAttribute( "value", true )
+					}
+				} else {
+					if (cost_number > 48) {
+						document.getElementById('renew-cost').removeAttribute('hidden');
+					} else {
+
+						document.getElementById('renew-min-cost').removeAttribute('hidden');
+						less_than_min_field.setAttribute( "value", true )
+					}
+				}
 				licenceFeeText .removeAttribute ( "hidden" )
 				nextButton .removeAttribute ( "hidden" )
 			}
@@ -595,11 +746,18 @@ var urlQueries = baseQuery
 					element.innerText = element.textContent = "0";
 				});
 
+				temp_cost_spans = document.querySelectorAll(".temp-cost");
+				temp_cost_spans.forEach(element => {
+					element.innerText = element.textContent = "0";
+				});
+
 				area_field.setAttribute( "value", "0" );
 				cost_field.setAttribute( "value", "0" );
+				temp_field.setAttribute( "value", "0" );
 
 				area_number = 0;
 				cost_number = 0;
+				temp_cost_number = 0
 					
 			}
 
@@ -638,6 +796,15 @@ var urlQueries = baseQuery
 				area_field.setAttribute( "value", area_number );
 
 				cost_number = (bandwidth * baseRate * (area_number)).toFixed(2);
+				if (temporary_licence) {
+					temp_cost_number = cost_number
+					temp_cost_spans = document.querySelectorAll(".temp-cost");
+					temp_cost_spans.forEach(element => {
+						element.innerText = element.textContent = cost_number
+					});
+					temp_cost_field.setAttribute("value", cost_number)
+					cost_number = (cost_number * duration).toFixed(2)
+				}
 
 				total_cost_spans = document.querySelectorAll(".total-cost");
 				total_cost_spans.forEach(element => {
@@ -939,8 +1106,16 @@ if (document.getElementById("lat1").value != "") {
 		element.innerText = element.textContent = document.getElementById("total-cost").value;
 	});
 
+	temp_cost_spans = document.querySelectorAll(".temp-cost");
+	temp_cost_spans.forEach(element => {
+		element.innerText = element.textContent = document.getElementById("temp-cost").value;
+	});
+
 	area_field.setAttribute( "value", document.getElementById("area-size").value );
 	cost_field.setAttribute( "value", document.getElementById("total-cost").value );
+	temp_cost_field.setAttribute( "value", document.getElementById("temp-cost").value );
+	area_number=document.getElementById("area-size").value
+	cost_number=document.getElementById("total-cost").value
 
 	const polygon = L.polygon(lat_longs).addTo(map);
 

@@ -192,20 +192,89 @@
 					</table>
 			
 					<h3>Licence fee</h3>
-					<dl class="dl-horizontal">
-						<dt>Area type</dt>
-						<dd><span class="fee-zone">Rural</span></dd>
-						<dt>Base rate (Rural) per year</dt>
-						<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
-						<dt>Requested bandwidth</dt>
-						<dd><span class="bandwidth">10</span> MHz</dd>
-						<dt>Area size</dt>
-						<dd><span class="area-size">162</span> km²</dd>
-					</dl>
-					<dl class="dl-horizontal">
-						<dt>Total cost per year</dt>
-						<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">162</span> = $<span class="total-cost">729.00</span></dd>
-					</dl>
+					<div id="renew-cost">
+						<dl class="dl-horizontal">
+							<dt>Area type</dt>
+							<dd><span class="fee-zone">Rural</span></dd>
+							<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
+							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+							<dt>Requested bandwidth</dt>
+							<dd><span class="bandwidth">10</span> MHz</dd>
+							<dt>Area size</dt>
+							<dd><span class="area-size">0</span> km²</dd>
+							<dt>Total cost per year</dt>
+							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+						</dl>
+					</div>
+
+					<div id="renew-min-cost">
+						<dl class="dl-horizontal">
+							<dt>Area type</dt>
+							<dd><span class="fee-zone">Rural</span></dd>
+							<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
+							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+							<dt>Requested bandwidth</dt>
+							<dd><span class="bandwidth">10</span> MHz</dd>
+							<dt>Area size</dt>
+							<dd><span class="area-size">0</span> km²</dd>
+							<dt>Calculated cost</dt>
+							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+						</dl>
+						<br>
+						<dl class="dl-horizontal">
+							<dt>Minimum fee per year</dt>
+							<dd>$48.00</span></dd>
+							<dt>Total cost per year</dt>
+							<dd><b>$48.00</b></dd>
+						</dl>
+					</div>
+
+					<div id="temp-cost">
+						<dl class="dl-horizontal">
+							<dt>Area type</dt>
+							<dd><span class="fee-zone">Rural</span></dd>
+							<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
+							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+							<dt>Requested bandwidth</dt>
+							<dd><span class="bandwidth">10</span> MHz</dd>
+							<dt>Area size</dt>
+							<dd><span class="area-size">0</span> km²</dd>
+							<dt>Calculated cost per calendar month</dt>
+							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+						</dl>
+						<br>
+						<dl class="dl-horizontal">
+							<dt>Licence duration</dt>
+							<dd><span class="licence-duration">8</span> calendar months</dd>
+							<dt>Total cost</dt>
+							<dd>$<span class="temp-cost">0.45</span> &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+						</dl>
+
+					</div>
+
+					<div id="temp-min-cost">
+						<dl class="dl-horizontal">
+							<dt>Area type</dt>
+							<dd><span class="fee-zone">Rural</span></dd>
+							<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
+							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+							<dt>Requested bandwidth</dt>
+							<dd><span class="bandwidth">10</span> MHz</dd>
+							<dt>Area size</dt>
+							<dd><span class="area-size">0</span> km²</dd>
+							<dt>Calculated cost per calendar month</dt>
+							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+						</dl>
+						<br>
+						<dl class="dl-horizontal">
+							<dt>Minimum fee per calendar month</dt>
+							<dd>$4.00</dd>
+							<dt>Licence duration</dt>
+							<dd><span class="licence-duration">8</span> calendar months</dd>
+							<dt>Total cost</dt>
+							<dd>$4.00 &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+						</dl>
+					</div>
 
 				</section>
 				<section class="step">
@@ -427,5 +496,31 @@
 			}
 		</script>
 		<script src="queries-in-navbar.js"></script>
+
+
+		<!-- show the right fee calculation -->
+
+		<script>
+
+			document.getElementById ( "renew-cost" ).setAttribute("hidden","hidden")
+			document.getElementById ( "renew-min-cost" ).setAttribute("hidden","hidden")
+			document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
+			document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
+
+			if (urlParams.get('renewable-temporary') == 'Renewable') {
+				if (urlParams.get('less-than-min') == "true") {
+					document.getElementById ( "renew-min-cost" ).removeAttribute("hidden")
+				} else {
+					document.getElementById ( "renew-cost" ).removeAttribute("hidden")
+				}
+			} else {
+				if (urlParams.get('less-than-min') == "true") {
+					document.getElementById ( "temp-min-cost" ).removeAttribute("hidden")
+				} else {
+					document.getElementById ( "temp-cost" ).removeAttribute("hidden")
+				}
+			}
+
+		</script>
 	</body>
 </html>
