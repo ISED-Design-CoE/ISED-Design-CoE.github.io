@@ -87,49 +87,46 @@
 <!-- Start page content -->
 	<h1 property="name" id="wb-cont">Licences</h1>
 
-	<p>Manage existing licences</p>
-
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-12">
 			<h4 class="wb-inv">Filtering options</h4>
-			<details open>
+			<details>
 				<summary><h4 class="h4">Filter options</h4></summary>
 				<form class="wb-tables-filter" data-bind-to="dataset-filter1">
-					<div class="form-group">
-						<fieldset>
-							<legend>
-								<span class="field-name">Effective date</span>
-							</legend>
+					<div class="row">
+						<div class="col-md-6">
 							<div class="form-group">
-								<label for="dt_mindate" class="small">Earliest effective date</label>
-								<input type="date" class="form-control" id="dt_mindate" name="dt_mindate" data-column="2">
+								<fieldset>
+									<legend><span class="field-name">Status</span></legend>
+									<ul class="list-unstyled">
+										<li class="checkbox"><label for="awaiting_checkbox"><input type="checkbox" id="awaiting_checkbox" name="status" onchange="toggleStatus('awaiting')"> Awaiting effective date</label></li>
+										<li class="checkbox"><label for="active_checkbox"><input type="checkbox" id="active_checkbox" name="status" onchange="toggleStatus('active')"> Active</label></li>
+										<li class="checkbox"><label for="inactive_checkbox"><input type="checkbox" id="inactive_checkbox" name="status" onchange="toggleStatus('inactive')"> Inactive</label></li>
+									</ul>
+								</fieldset>
 							</div>
+						</div>
+						<div class="col-md-6">
 							<div class="form-group">
-								<label for="dt_maxdate" class="small">Latest effective date</label>
-								<input type="date" class="form-control" id="dt_maxdate" name="dt_maxdate" data-column="2">
+								<fieldset>
+									<legend><span class="field-name">Payment/compliance</span></legend>
+									<ul class="list-unstyled">
+										<li class="checkbox"><label for="payment_checkbox"><input type="checkbox" id="payment_checkbox" name="status" onchange=""> Payment due</label></li>
+										<li class="checkbox"><label for="station_data_checkbox"><input type="checkbox" id="station_data_checkbox" name="status" onchange=""> Station data overdue</label></li>
+										<li class="checkbox"><label for="deployment_checkbox"><input type="checkbox" id="deployment_checkbox" name="status" onchange=""> Deployment required</label></li>
+									</ul>
+								</fieldset>
 							</div>
-						</fieldset>
-					</div>
-					<div class="form-group">
-						<fieldset>
-							<legend><span class="field-name">Status</span></legend>
-							<ul class="list-unstyled">
-								<li class="checkbox"><label for="awaiting_checkbox"><input type="checkbox" id="awaiting_checkbox" name="status" onchange="toggleStatus('awaiting')"> Awaiting effective date</label></li>
-								<li class="checkbox"><label for="active_checkbox"><input type="checkbox" id="active_checkbox" name="status" onchange="toggleStatus('active')"> Active</label></li>
-								<li class="checkbox"><label for="inactive_checkbox"><input type="checkbox" id="inactive_checkbox" name="status" onchange="toggleStatus('inactive')"> Inactive</label></li>
-							</ul>
-						</fieldset>
+						</div>
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary" aria-controls="dataset-filter1" onclick="filterTable()">Filter</button>
-					</div>
-					<div class="form-group">
-						<button onclick="window.location.href = 'licences.html'" class="btn btn-link btn-sm p-0">Clear all filters</button>
+						<button onclick="window.location.href = 'licences.html'" class="btn btn-default">Clear all filters</button>
 					</div>
 				</form>
 			</details>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-12">
 			<table class="wb-tables table" id="dataset-filter1">
 				<thead>
 					<tr>
@@ -138,6 +135,7 @@
 						<th>Effective date</th>
 						<th>Status</th>
 						<th>Amount due</th>
+						<th>Compliance</th>
 						<th data-orderable="false">Actions</th>
 					</tr>
 				</thead>
@@ -148,6 +146,7 @@
 						<td class="nowrap">2024-03-01</td>
 						<td>Awaiting effective date</td>
 						<td>$0.00</td>
+						<td>-</td>
 						<td>
 							<select class="form-control">
 								<option>Actions</option>
@@ -165,6 +164,26 @@
 						<td class="nowrap">2022-09-01</td>
 						<td>Active</td>
 						<td>$1375.15</td>
+						<td>Station data overdue</td>
+						<td>
+							<select class="form-control">
+								<option>Actions</option>
+								<option>Pay</option>
+								<option>View</option>
+								<option>Download</option>
+								<option>Duplicate</option>
+								<option>Cancel licence</option>
+								<option>Download fee report</option>
+							</select>
+						</td>
+					</tr>
+					<tr class="data_row" data-status="active">
+						<td><a href="review.html?app-number=01000062-001&frequency=A6-A7&lat1=45.461004&long1=-75.596066&lat2=45.452334&long2=-75.681553&lat3=45.422462&long3=-75.703182&lat4=45.413304&long4=-75.723095&lat5=45.350366&long5=-75.815105&lat6=45.316094&long6=-75.789700&lat7=45.332509&long7=-75.729618&lat8=45.314646&long8=-75.721722&lat9=45.321405&long9=-75.686703&lat10=45.335646&long10=-75.690823&lat11=45.378829&long11=-75.585423&lat12=45.411617&long12=-75.612202&WKT=POLYGON%28%2845.461004+-75.596066%2C45.452334+-75.681553%2C45.422462+-75.703182%2C45.413304+-75.723095%2C45.350366+-75.815105%2C45.316094+-75.789700%2C45.332509+-75.729618%2C45.314646+-75.721722%2C45.321405+-75.686703%2C45.335646+-75.690823%2C45.378829+-75.585423%2C45.411617+-75.612202%29%29&bandwidth=20&antenna=Outdoor+and+indoor&power-level=Medium+power&ari=Downtown+Ottawa&effective-date=2022-09-01&renewable-temporary=Renewable&expiry-date=&MNSP=No&admin-contact-name=John+Dutton&admin-contact-address=999+Main+St.%2C+Calgary+AB&admin-contact-email=john.dutton%40yellowstone.com&admin-contact-telephone=%28403%29+123-4567&admin-contact=Please+select&payment-contact-name=Beth+Dutton&payment-contact-address=999+Main+St.%2C+Calgary+AB&payment-contact-email=beth.dutton%40yellowstone.com&payment-contact-telephone=%28403%29+891-2345&payment-contact=Beth+Dutton&base-rate=0.45&bandwidth=20&area-size=152.795&total-cost=1375.15">01000062-001</a></td>
+						<td>Yellowstone Ranch</td>
+						<td class="nowrap">2024-02-15</td>
+						<td>Active</td>
+						<td>$0.00</td>
+						<td>Deployment required</td>
 						<td>
 							<select class="form-control">
 								<option>Actions</option>
@@ -183,6 +202,7 @@
 						<td class="nowrap">2016-04-24</td>
 						<td>Inactive</td>
 						<td>$0.00</td>
+						<td>-</td>
 						<td>
 							<select class="form-control">
 								<option>Actions</option>
