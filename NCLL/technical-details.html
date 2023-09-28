@@ -143,9 +143,9 @@
 						<li class="radio">
 							<input type="radio" id="indoor-only" name="antenna" value="Indoor only" data-rule-required="true">
 							<label for="indoor-only">No, all antennas will be indoor</label>
-							<div id="medium-power-message" class="alert alert-info" hidden>
-								<p>Medium power licences cannot be indoor-only.</p>
-							</div>
+							<!-- <div id="medium-power-message" class="alert alert-info" hidden>
+								<p>Medium power licences must have at least one outdoor antenna.</p>
+							</div> -->
 						</li>
 					</ul>
 				</fieldset>
@@ -185,7 +185,7 @@
 							<input type="radio" id="medium-power" name="power-level" value="Medium power">
 							<label for="medium-power">Medium power</label>
 							<div id="indoor-only-message" class="alert alert-info" hidden>
-								<p>Indoor-only licences cannot be medium power.</p>
+								<p>Indoor-only licences must be low power.</p>
 							</div>
 					</li>
 					</ul>
@@ -205,7 +205,6 @@
 			<ul>
 				<li>Location of antennas field and Licence type field are interdependent</li>
 				<li>Antenna height field only displays if location of antennas is indoor-only</li>
-				<li>Need link to SRSP</li>
 			</ul>
 			<h2>Changes from phase 2A BRD:</h2>
 			<ul>
@@ -232,7 +231,7 @@
 			const antennaHeightField = document.getElementById ( "antenna-height" )
 
 			const indoorOnlyMessage = document.getElementById ( "indoor-only-message" )
-			const mediumPowerMessage = document.getElementById ( "medium-power-message" )
+			// const mediumPowerMessage = document.getElementById ( "medium-power-message" )
 			const antennaHeightDiv = document.getElementById ( "antenna-height-div" )
 
 			indoorOnlyField .addEventListener ( "click", ( event ) => {
@@ -249,15 +248,15 @@
 				antennaHeightField .removeAttribute ( "required" )
 			})
 
-			lowPowerField .addEventListener ( "click", ( event ) => {
-				mediumPowerMessage .setAttribute ( "hidden", "hidden" )
-				indoorOnlyField .disabled = false
-			})
+			// lowPowerField .addEventListener ( "click", ( event ) => {
+			// 	mediumPowerMessage .setAttribute ( "hidden", "hidden" )
+			// 	indoorOnlyField .disabled = false
+			// })
 
-			mediumPowerField .addEventListener ( "click", ( event ) => {
-				mediumPowerMessage .removeAttribute ( "hidden" )
-				indoorOnlyField .disabled = true
-			})
+			// mediumPowerField .addEventListener ( "click", ( event ) => {
+			// 	mediumPowerMessage .removeAttribute ( "hidden" )
+			// 	indoorOnlyField .disabled = true
+			// })
 
 			for ( const [ key, value ] of urlParams ) {
 				if (key == 'antenna') {
@@ -270,16 +269,16 @@
 						mediumPowerField .disabled = true
 					}
 				}
-				if (key == 'power-level') {
-					if (value == 'Low power') {
-						mediumPowerMessage .setAttribute ( "hidden", "hidden" )
-						indoorOnlyField .disabled = false
-					}
-					if (value == 'Medium power') {
-						mediumPowerMessage .removeAttribute ( "hidden" )
-						indoorOnlyField .disabled = true
-					}
-				}
+				// if (key == 'power-level') {
+				// 	if (value == 'Low power') {
+				// 		mediumPowerMessage .setAttribute ( "hidden", "hidden" )
+				// 		indoorOnlyField .disabled = false
+				// 	}
+				// 	if (value == 'Medium power') {
+				// 		mediumPowerMessage .removeAttribute ( "hidden" )
+				// 		indoorOnlyField .disabled = true
+				// 	}
+				// }
 			}
 		</script>
 	</div>
