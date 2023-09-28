@@ -181,11 +181,13 @@ var urlQueries = baseQuery
 				<div class="container">
 					<h1 property="name" id="wb-cont">Licence area</h1>
 					<p>Define your licence area, with up to 12 boundary points, in any of the following ways:</p>
-					<ol>
+					<ul>
 						<li>Enter a description of the licence area in <a href="#wkt-input"><abbr>WKT</abbr> (Well Known Text) format</a></li>
 						<li>Enter the latitudes and longitudes of the <a href="#coords-input"> boundary points</a></li>
 						<li>Draw the licence area on the <a href="#map-instructions">interactive map</a></li>
-					</ol>
+					</ul>
+					<p class="lp" hidden>You have requested a low power licence, so your licence area can be up to 15 km².</p>
+					<p class="mp" hidden>You have requested a medium power licence, so your licence area can be between 75 and 165 km² and may not overlap an urban area.</p>
 					<p>Once your area is entered, click <kbd><samp>Calculate fee</samp></kbd> to calculate the licence fee</p>
 						
 					<div class="form-group margin-top">
@@ -667,6 +669,19 @@ var urlQueries = baseQuery
 				elem .innerText = appNumberText
 			}
 		}
+
+		if ( urlParams .has ( "power-level" ) ) {
+			const powerLevel = urlParams .get ( "power-level" )
+			if ( powerLevel == "Low power" ) {
+				for ( let elem of document .getElementsByClassName ( "lp" ) ) {
+					elem .removeAttribute ( "hidden" )
+				}
+			} else if ( powerLevel == "Medium power" ) {
+				for ( let elem of document .getElementsByClassName ( "mp" ) ) {
+					elem .removeAttribute ( "hidden" )
+				}
+			}
+		}
 	</script>
 <!-- End page content -->
 
@@ -722,7 +737,7 @@ var urlQueries = baseQuery
 		<script>
 
 
-		// Leaftlet code
+		// Leaflet code
 
 			function reset_lat_lngs() {
 				for (let i = 0; i < 12; i++) {
