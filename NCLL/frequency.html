@@ -128,14 +128,14 @@
 					<fieldset class="gc-chckbxrdio">
 						<legend class="required">
 							<span class="field-name">
-								Select what frequency block you prefer
+								Select what frequency block<span class="twentyMHz" hidden>s</span> you prefer
 							</span>
 							<strong class="required small" aria-hidden="true">(required)</strong>
 						</legend>
-						<p>Choose whether you would like any frequency block, or only a specific block</p>
+						<p>Choose whether you would like any <span class="twentyMHz" hidden>pair of</span> frequency block<span class="twentyMHz" hidden>s</span>, or only a specific <span class="twentyMHz" hidden>pair</span> <span class="tenMHz" hidden>block</span></p>
 						<table class="table form-group accentuate-dividers">
 							<tr>
-								<th>Frequency block</th>
+								<th>Frequency block<span class="twentyMHz" hidden>s</span></th>
 								<th>Information</th>
 							</tr>
 							<tr>
@@ -146,7 +146,7 @@
 									</div>
 								</td>
 								<td>
-									<p>Allows ISED to automatically assign any frequency block.</p>
+									<p>Allows ISED to automatically assign any <span class="twentyMHz" hidden>pair of</span> frequency block<span class="twentyMHz" hidden>s</span>.</p>
 									<details>
 										<summary>
 											<span class="glyphicon glyphicon-warning-sign"></span>
@@ -161,11 +161,11 @@
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-any-except-a1" name="frequency" value="Any except A1">
-										<label for="frequency-any-except-a1">Any except A1</label>
+										<label for="frequency-any-except-a1">Any except A1<span class="twentyMHz" hidden>-A2</span></label>
 									</div>
 								</td>
 								<td>
-									<p>Allows ISED to automatically assign any frequency block except A1.</p>
+									<p>Allows ISED to automatically assign any <span class="twentyMHz" hidden>pair of</span> frequency block<span class="twentyMHz" hidden>s</span> except A1<span class="twentyMHz" hidden>-A2</span>.</p>
 								</td>
 							</tr>
 
@@ -174,8 +174,8 @@
 							<tr class="tenMHz" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a1" name="frequency" value="A1: 3900–3910">
-										<label for="frequency-a1">A1: 3900–3910&nbsp;MHz</label>
+										<input type="radio" id="frequency-a1" name="frequency" value="A1 (3900–3910 MHz)">
+										<label for="frequency-a1">A1 (3900–3910&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -192,8 +192,8 @@
 							<tr class="tenMHz" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a2" name="frequency" value="A2: 3910–3920">
-										<label for="frequency-a2">A2: 3910–3920&nbsp;MHz</label>
+										<input type="radio" id="frequency-a2" name="frequency" value="A2 (3910–3920 MHz)">
+										<label for="frequency-a2">A2 (3910–3920&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -204,8 +204,8 @@
 							<tr class="tenMHz" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a3" name="frequency" value="A3: 3920–3930">
-										<label for="frequency-a3">A3: 3920–3930&nbsp;MHz</label>
+										<input type="radio" id="frequency-a3" name="frequency" value="A3 (3920–3930 MHz)">
+										<label for="frequency-a3">A3 (3920–3930&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -216,8 +216,8 @@
 							<tr class="tenMHz" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a4" name="frequency" value="A4: 3930–3940" disabled>
-										<label for="frequency-a4">A4: 3930–3940&nbsp;MHz</label>
+										<input type="radio" id="frequency-a4" name="frequency" value="A4 (3930–3940 MHz)" disabled>
+										<label for="frequency-a4">A4 (3930–3940&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -228,8 +228,12 @@
 							<tr class="tenMHz MNSP" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a5-to-a8" name="frequency" value="A5–A8: 3940–3980" disabled>
-										<label for="frequency-a5-to-a8">A5–A8: 3940–3980&nbsp;MHz</label>
+										<input type="radio" id="frequency-a5-to-a8" name="frequency" value="A5–A8 (3940–3980 MHz)" disabled>
+										<label for="frequency-a5-to-a8">A5 (3940–3950&nbsp;MHz)<br>
+											A6 (3950–3960&nbsp;MHz)<br>
+											A7 (3960–3970&nbsp;MHz)<br>
+											A8 (3970–3980&nbsp;MHz)
+										</label>
 									</div>
 								</td>
 								<td>
@@ -240,8 +244,8 @@
 							<tr class="tenMHz not-MNSP" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a5" name="frequency" value="A5: 3940–3950">
-										<label for="frequency-a5">A5: 3940–3950&nbsp;MHz</label>
+										<input type="radio" id="frequency-a5" name="frequency" value="A5 (3940–3950 MHz)">
+										<label for="frequency-a5">A5 (3940–3950&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -252,8 +256,8 @@
 							<tr class="tenMHz not-MNSP" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a6" name="frequency" value="A6: 3950–3960">
-										<label for="frequency-a6">A6: 3950–3960&nbsp;MHz</label>
+										<input type="radio" id="frequency-a6" name="frequency" value="A6 (3950–3960 MHz)">
+										<label for="frequency-a6">A6 (3950–3960&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -264,8 +268,8 @@
 							<tr class="tenMHz not-MNSP" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a7" name="frequency" value="A7: 3960–3970">
-										<label for="frequency-a7">A7: 3960–3970&nbsp;MHz</label>
+										<input type="radio" id="frequency-a7" name="frequency" value="A7 (3960–3970 MHz)">
+										<label for="frequency-a7">A7 (3960–3970&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -276,8 +280,8 @@
 							<tr class="tenMHz not-MNSP" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a8" name="frequency" value="A8: 3970–3980">
-										<label for="frequency-a8">A8: 3970–3980&nbsp;MHz</label>
+										<input type="radio" id="frequency-a8" name="frequency" value="A8 (3970–3980 MHz)">
+										<label for="frequency-a8">A8 (3970–3980&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -288,15 +292,16 @@
 							<tr class="twentyMHz" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a1-a2" name="frequency" value="A1-A2: 3900–3920">
-										<label for="frequency-a1-a2">A1-A2: 3900–3920&nbsp;MHz</label>
+										<input type="radio" id="frequency-a1-a2" name="frequency" value="A1-A2 (3900–3920 MHz)">
+										<label for="frequency-a1-a2">A1 (3900–3910&nbsp;MHz)<br>
+											A2 (3910–3920&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
 									<details>
 										<summary>
 											<span class="glyphicon glyphicon-warning-sign"></span>
-										Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations to 3800 MHz flexible use operations.
+										Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations.
 										</summary>
 										<p>The NCL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
 									</details>
@@ -306,8 +311,9 @@
 							<tr class="twentyMHz" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a2-a3" name="frequency" value="A2-A3: 3910–3930">
-										<label for="frequency-a2-a3">A2-A3: 3910–3930&nbsp;MHz</label>
+										<input type="radio" id="frequency-a2-a3" name="frequency" value="A2-A3 (3910–3930 MHz)">
+										<label for="frequency-a2-a3">A2 (3910–3920&nbsp;MHz)<br>
+											A3 (3920–3930&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -318,8 +324,9 @@
 							<tr class="twentyMHz" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a3-a4" name="frequency" value="A3-A4: 3920–3940" disabled>
-										<label for="frequency-a3-a4">A3-A4: 3920–3940&nbsp;MHz</label>
+										<input type="radio" id="frequency-a3-a4" name="frequency" value="A3-A4 (3920–3940 MHz)" disabled>
+										<label for="frequency-a3-a4">A3 (3920–3930&nbsp;MHz)<br>
+											A4 (3930–3940&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -330,8 +337,12 @@
 							<tr class="twentyMHz MNSP" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a4-to-a8" name="frequency" value="A4–A8: 3930–3980" disabled>
-										<label for="frequency-a4-to-a8">A4–A8: 3930–3980&nbsp;MHz</label>
+										<input type="radio" id="frequency-a4-to-a8" name="frequency" value="A4–A8 (3930–3980 MHz)" disabled>
+										<label for="frequency-a4-to-a8">A5 (3940–3950&nbsp;MHz)<br>
+											A6 (3950–3960&nbsp;MHz)<br>
+											A7 (3960–3970&nbsp;MHz)<br>
+											A8 (3970–3980&nbsp;MHz)
+										</label>
 									</div>
 								</td>
 								<td>
@@ -342,8 +353,9 @@
 							<tr class="twentyMHz not-MNSP" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a4-a5" name="frequency" value="A4-A5: 3930–3950" disabled>
-										<label for="frequency-a4-a5">A4-A5: 3930–3950&nbsp;MHz</label>
+										<input type="radio" id="frequency-a4-a5" name="frequency" value="A4-A5 (3930–3950 MHz)" disabled>
+										<label for="frequency-a4-a5">A4 (3930–3940&nbsp;MHz)<br>
+											A5 (3940–3950&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -354,8 +366,9 @@
 							<tr class="twentyMHz not-MNSP" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a5-a6" name="frequency" value="A5-A6: 3940–3960">
-										<label for="frequency-a5-a6">A5-A6: 3940–3960&nbsp;MHz</label>
+										<input type="radio" id="frequency-a5-a6" name="frequency" value="A5-A6 (3940–3960 MHz)">
+										<label for="frequency-a5-a6">A5 (3940–3950&nbsp;MHz)<br>
+											A6 (3950–3960&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -366,8 +379,9 @@
 							<tr class="twentyMHz not-MNSP" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a6-a7" name="frequency" value="A6-A7: 3950–3970">
-										<label for="frequency-a6-a7">A6-A7: 3950–3970&nbsp;MHz</label>
+										<input type="radio" id="frequency-a6-a7" name="frequency" value="A6-A7 (3950–3970 MHz)">
+										<label for="frequency-a6-a7">A6 (3950–3960&nbsp;MHz)<br>
+											A7 (3960–3970&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
@@ -378,8 +392,9 @@
 							<tr class="twentyMHz not-MNSP" hidden>
 								<td>
 									<div class="radio">
-										<input type="radio" id="frequency-a7-a8" name="frequency" value="A7-A8: 3960–3980">
-										<label for="frequency-a7-a8">A7-A8: 3960–3980&nbsp;MHz</label>
+										<input type="radio" id="frequency-a7-a8" name="frequency" value="A7-A8 (3960–3980 MHz)">
+										<label for="frequency-a7-a8">A7 (3960–3970&nbsp;MHz)<br>
+											A8 (3970–3980&nbsp;MHz)</label>
 									</div>
 								</td>
 								<td>
