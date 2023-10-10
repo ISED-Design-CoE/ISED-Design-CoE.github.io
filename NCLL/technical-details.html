@@ -150,7 +150,7 @@
 					</ul>
 				</fieldset>
 
-				<div class="form-group" id="antenna-height-div" hidden>
+				<!-- <div class="form-group" id="antenna-height-div" hidden>
 					<label for="antenna-height" class="required">
 						<span class="field-name">
 							Maximum antenna height
@@ -159,7 +159,7 @@
 					</label>
 					<p>Height of highest antenna, above ground, in metres. Cannot exceed building height.</p>
 					<input id="antenna-height" name="antenna-height" class="form-control" type="text" size=2 required>
-				</div>
+				</div> -->
 
 				<fieldset class="gc-chckbxrdio">
 					<legend class="required">
@@ -204,7 +204,7 @@
 			<h2>Notes about this mockup:</h2>
 			<ul>
 				<li>Location of antennas field and Licence type field are interdependent</li>
-				<li>Antenna height field only displays if location of antennas is indoor-only</li>
+				<!-- <li>Antenna height field only displays if location of antennas is indoor-only</li> -->
 			</ul>
 			<h2>Changes from phase 2A BRD:</h2>
 			<ul>
@@ -228,24 +228,24 @@
 
 			const lowPowerField = document.getElementById ( "low-power" )
 			const mediumPowerField = document.getElementById ( "medium-power" )
-			const antennaHeightField = document.getElementById ( "antenna-height" )
+			// const antennaHeightField = document.getElementById ( "antenna-height" )
 
 			const indoorOnlyMessage = document.getElementById ( "indoor-only-message" )
 			// const mediumPowerMessage = document.getElementById ( "medium-power-message" )
-			const antennaHeightDiv = document.getElementById ( "antenna-height-div" )
+			// const antennaHeightDiv = document.getElementById ( "antenna-height-div" )
 
 			indoorOnlyField .addEventListener ( "click", ( event ) => {
 				indoorOnlyMessage .removeAttribute ( "hidden" )
 				mediumPowerField .disabled = true
-				antennaHeightDiv .removeAttribute ( "hidden" )
-				antennaHeightField .setAttribute ( "required" , "required" )
+				// antennaHeightDiv .removeAttribute ( "hidden" )
+				// antennaHeightField .setAttribute ( "required" , "required" )
 			})
 
 			outdoorIndoorField .addEventListener ( "click", ( event ) => {
 				indoorOnlyMessage .setAttribute ( "hidden", "hidden" )
 				mediumPowerField .disabled = false
-				antennaHeightDiv .setAttribute ( "hidden", "hidden" )
-				antennaHeightField .removeAttribute ( "required" )
+				// antennaHeightDiv .setAttribute ( "hidden", "hidden" )
+				// antennaHeightField .removeAttribute ( "required" )
 			})
 
 			// lowPowerField .addEventListener ( "click", ( event ) => {
