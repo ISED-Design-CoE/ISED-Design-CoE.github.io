@@ -480,16 +480,16 @@ var urlQueries = baseQuery
 		var temp_cost_field = createHiddenField ( "temp-cost", 0 )
 		var less_than_min_field = createHiddenField ( "less-than-min", false )
 		
-		var duration = ((urlParams.get('expiry-date').split("-")[0] - urlParams.get('effective-date').split("-")[0]) * 12) + (urlParams.get('expiry-date').split("-")[1] - urlParams.get('effective-date').split("-")[1] + 1)
+		const expiry_date = urlParams.get( "expiry-date" )
+		if ( expiry_date ) {
+			const effective_date = urlParams.get( "effective-date" )
+			var duration = ((expiry_date.split("-")[0] - effective_date.split("-")[0]) * 12) + (expiry_date.split("-")[1] - effective_date.split("-")[1] + 1)
 
-		for ( let elem of document .getElementsByClassName ( "licence-duration" ) ) {
-			elem .innerText = duration
-		}	
-
-
-		var duration_field = createHiddenField ( "licence-duration", 0)
-
-		duration_field.setAttribute( "value", duration )
+			for ( let elem of document .getElementsByClassName ( "licence-duration" ) ) {
+				elem .innerText = duration
+			}	
+			var duration_field = createHiddenField ( "licence-duration", duration )
+		}
 
 		var area_number = 0;
 		var cost_number = 0;
