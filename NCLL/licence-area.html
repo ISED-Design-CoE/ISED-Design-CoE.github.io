@@ -316,6 +316,15 @@ var urlQueries = baseQuery
 								<p>Your current area size is <span class='area-size'>##</span> km². Please adjust the area to be less than 165 km².</p>
 								<p>After submitting this application, you may then duplicate it as necessary. See <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a> for how to do this.</p>
 							</div>
+							<div id="No-duration-message" class="alert alert-danger" hidden>
+								<p>We are unable to calculate a fee for this application, because we do not know how long you need the licence for.</p>
+								<p>Please return to the <a href="general.html">General information</a> screen to provide this information.</p>
+							</div>
+							<div id="No-bandwidth-message" class="alert alert-danger" hidden>
+								<p>We are unable to calculate a fee for this application, because we do not know how much bandwidth you require.</p>
+								<p>Please return to the <a href="technical-details.html">Technical details</a> screen to provide this information.</p>
+							</div>
+					
 
 							<div id="licence-fee-text">
 								<h2>Licence fee</h2>
@@ -442,7 +451,8 @@ var urlQueries = baseQuery
 	<script src="catch-and-throw.js"></script>
 	<script>
 		// Set up needed fields for cost calculation
-		const temporary_licence = urlParams.get('renewable-temporary') == 'Temporary' 
+		const renewable_temporary = urlParams.get('renewable-temporary')
+		const temporary_licence = ( renewable_temporary == 'Temporary' )
 		document.getElementById ( "renew-cost" ).setAttribute("hidden","hidden")
 		document.getElementById ( "renew-min-cost" ).setAttribute("hidden","hidden")
 		document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
@@ -510,6 +520,8 @@ var urlQueries = baseQuery
 		errorMessages [ "Too small for MP but LP is OK" ] = document.getElementById ( "MP-too-small-but-LP-OK-message" )
 		errorMessages [ "Too small for MP" ] = document.getElementById ( "MP-too-small-message" )
 		errorMessages [ "Too large for MP" ] = document.getElementById ( "MP-too-large-message" )
+		errorMessages [ "No duration" ] = document.getElementById ( "No-duration-message" )
+		errorMessages [ "No bandwidth" ] = document.getElementById ( "No-bandwidth-message" )
 		const licenceFeeText = document.getElementById ( "licence-fee-text" )
 
 		function calculate_area_info () {
@@ -598,6 +610,14 @@ var urlQueries = baseQuery
 						noErrors = false
 						errorMessages [ "Too large for MP" ] .removeAttribute ( "hidden" )
 					}
+				}
+				if ( renewable_temporary == null || ( temporary_licence && effective_date == null )) {
+					noErrors = false
+					errorMessages [ "No duration" ] .removeAttribute ( "hidden" )
+				}
+				if ( bandwidth == null ) {
+					noErrors = false
+					errorMessages [ "No bandwidth" ] .removeAttribute ( "hidden" )
 				}
 			}
 			if ( noErrors ) { // everything's okay
