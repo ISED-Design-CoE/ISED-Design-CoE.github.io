@@ -122,6 +122,14 @@ var urlQueries = baseQuery
 			html {
 				scroll-behavior: smooth;
 			}
+            #map .leaflet-draw-draw-polygon {
+                background-image: url('src/images/draw.svg') !important;
+                background-position: 50%;
+                width: 5em;
+                height: 5em;
+                
+            }
+
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
 	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
@@ -608,6 +616,21 @@ var urlQueries = baseQuery
 
 			// Layers.
 
+			// Map layers. Not implemented.
+			const baseLayers = {
+				'Standard': osm,
+				'Terrain': osm
+			};
+
+			// Fee zone layer.
+			const feezone = L.layerGroup();
+			const overlays = {
+				'Fee Zones': feezone,
+			};
+
+			// Add layer buttom to the top right.
+			const layerControl = L.control.layers(baseLayers, overlays, {position: 'topleft'});
+
 			// Draw control, removes everything but polygon,
 			// and removes intersection from polygon.
 			// Add area and restrict to 12 points.
@@ -643,7 +666,6 @@ var urlQueries = baseQuery
 				expanded: true,
         	})
 
-			map.addControl(searchControl)
             map.addControl(drawControl);
 
 			// add scale to the bottom left.
@@ -663,7 +685,10 @@ var urlQueries = baseQuery
                     controlUI.title = 'Remove all drawn items';
                     controlUI.setAttribute('href', '#');
 
-                    controlUI.style.backgroundImage = 'url(src/images/trash.svg)'
+                    controlUI.style.backgroundImage = 'url(src/images/delete.svg)'
+
+                    controlUI.style.width = '5em'
+                    controlUI.style.height = '5em'
         
                     L.DomEvent
                         .addListener(controlUI, 'click', L.DomEvent.stopPropagation)
@@ -726,7 +751,6 @@ var urlQueries = baseQuery
 						
             map.removeControl(drawControl);
             map.addControl(removeAllControl);
-			layerControl.addTo(map);
             layer.on('mouseover', function (event) {
                 layer.bindPopup(getPopupContent(layer)).openPopup();
             });
