@@ -125,6 +125,7 @@ var urlQueries = baseQuery
             #map .leaflet-draw-draw-polygon {
                 background-image: url('src/images/draw.svg') !important;
                 background-position: 50%;
+                background-size: 60%;
                 width: 5em;
                 height: 5em;
                 
@@ -689,6 +690,7 @@ var urlQueries = baseQuery
 
                     controlUI.style.width = '5em'
                     controlUI.style.height = '5em'
+                    controlUI.style.backgroundSize = '70%'
         
                     L.DomEvent
                         .addListener(controlUI, 'click', L.DomEvent.stopPropagation)
