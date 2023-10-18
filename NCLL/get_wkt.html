@@ -231,13 +231,29 @@ var urlQueries = baseQuery
 					</div>
 
 					<div class="form-group margin-top">
+						<div class="alert alert-warning" id="medium-power-alert" hidden="hidden">
+							<p>The area is between 75 km<sup>2</sup> and 165 km<sup>2</sup>. It can only be used with <b>medium power</b>.</sup></p>
+						</div>
+
+						<div class="alert alert-warning" id="low-power-alert" hidden="hidden">
+							<p>The area is between 0 km<sup>2</sup> and 15 km<sup>2</sup>. It can only be used with <b>low power</b>.</sup></p>
+						</div>
+
+						<div class="alert alert-danger" id="too-large-alert" hidden="hidden">
+							<p>The area is too large. Please reduce the size of the polygon to be less than 165km<sup>2</sup></p>
+						</div>
+
+						<div class="alert alert-danger" id="between-alert" hidden="hidden">
+							<p>The area is between 15 km<sup>2</sup> and 75 km<sup>2</sup>. Please reduce or increase your area size beyond these limits.</p>
+						</div>
+
 						<label for="WKT">
 							<span class="field-name" id="wkt-input">
 								Licence area in WKT (Well Known Text) format
 							</span>
 						</label>
                         <input type="text" id="WKT" name="WKT" disabled="true" class="form-control">
-						<button class="btn btn-primary" type="button" id="copy-button" onClick="copy()">Copy WKT</button>
+						<button class="btn btn-primary" type="button" disabled="hidden" id="copy-button" onClick="copy()">Copy WKT</button>
 
 						<div class="alert alert-success" id="copied-alert" hidden="true">
 							<p>WKT Copied</p>
@@ -333,6 +349,15 @@ var urlQueries = baseQuery
 			function reset_lat_lngs() {
 				document.getElementById("WKT").value = "";
 				document.getElementById ( "copied-alert" ).setAttribute("hidden","hidden");
+				area_size_spans = document.querySelectorAll(".area-size");
+
+				area_size_spans.forEach(element => {
+					element.innerText = element.textContent = "0";
+				});
+				document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
+				document.getElementById ( "copy-button" ).setAttribute("disabled","disabled");
+				document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
+				document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
 			}
 
 	
@@ -351,7 +376,43 @@ var urlQueries = baseQuery
 				wkt = wkt.substring(0,wkt.length-1)
 				wkt += "))"
 
-				document.getElementById("WKT").value = wkt;
+				area_size_spans = document.querySelectorAll(".area-size");
+				area_number = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
+
+				area_size_spans.forEach(element => {
+					element.innerText = element.textContent = area_number
+				});
+
+				if (area >= 165000000) {
+					document.getElementById ( "too-large-alert" ).removeAttribute("hidden");
+					document.getElementById ( "copy-button" ).setAttribute("disabled","disabled");
+					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
+					document.getElementById("WKT").value = "";
+				} else if (area >= 75000000 && area <= 165000000 ) {
+					document.getElementById ( "medium-power-alert" ).removeAttribute("hidden");
+					document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "copy-button" ).removeAttribute("disabled")
+					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
+					document.getElementById("WKT").value = wkt;
+				} else if (area <= 15000000){
+					document.getElementById ( "low-power-alert" ).removeAttribute("hidden");
+					document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "copy-button" ).removeAttribute("disabled")
+					document.getElementById("WKT").value = wkt;
+				} else {
+					console.log('test')
+					document.getElementById ( "too-large-alert" ).setAttribute("disabled","disabled");
+					document.getElementById ( "copy-button" ).setAttribute("disabled","disabled");
+					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "between-alert" ).removeAttribute("hidden");
+					document.getElementById("WKT").value = "";
+				}
 
 			}
 
@@ -466,6 +527,24 @@ var urlQueries = baseQuery
             });
         
         removeAllControl = new L.Control.RemoveAll();
+
+		L.Control.textbox = L.Control.extend({
+			options: {
+				position:'bottomleft',
+			},
+
+			onAdd: function(map) {
+				
+			var text = L.DomUtil.create('div');
+			var area_text = document.createElement('div');
+			area_text.classList.add('area-size')
+			text.appendChild(area_text)
+			text.innerHTML = "<div class='text-on-map'> <strong>Area size:</strong> <span class='area-size area-size-drawing'>0</span> <span>km²</span> </div>"
+			return text;
+			},
+		});
+		textboxControl = new L.Control.textbox();
+		map.addControl(textboxControl);
         
         
         // Add area on hover
