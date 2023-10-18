@@ -7,7 +7,7 @@
 
 <!-- Start DECoE customization -->
 		<title>
-			WKT tool - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+			WKT tool - NCL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
 		</title>
 <!-- End DECoE customization -->
 
@@ -162,12 +162,20 @@ var urlQueries = baseQuery
 
         <script>
             function copy() {
-                console.log('test')
+				
                 let textarea = document.getElementById("WKT");
                 textarea.select();
-                console.log(textarea.value)
-                navigator.clipboard.writeText(textarea.value);
-                }
+				if (textarea.value != "") {
+					navigator.clipboard.writeText(textarea.value);
+					document.getElementById ( "copied-alert" ).removeAttribute("hidden")
+				}
+            }
+
+			document.addEventListener("click", (evt) => {
+				if (evt.target != document.getElementById ( "copy-button" )){
+					document.getElementById ( "copied-alert" ).setAttribute("hidden","hidden");
+				}
+      		});
         </script>
 
 		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
@@ -183,33 +191,10 @@ var urlQueries = baseQuery
 			<div class="wb-frm">
 				<div class="container">
 
+					<h1 property="name" id="wb-cont">Licence area</h1>
+					<p>Define your licence area, with up to 12 boundary points, by drawing it on the interactive map</p>
+					<p>Once your area is entered, click <kbd><samp>Copy WKT</samp></kbd> to copy the licence area in WKT format to your clipboard.</p>
 
-                    <div class="form-group margin-top">
-						<label for="WKT">
-							<span class="field-name" id="wkt-input">
-								Licence area in WKT (Well Known Text) format
-							</span>
-						</label>
-						<details>
-							<summary>More information<span class="wb-inv"> about WKT</span></summary>
-							<p>WKT is a compact format for describing mathematical shapes, including polygons. Each vertex is a longitude-latitude pair.</p>
-							<p>e.g. POLYGON((<span class="highlight">-113.956370 50.880852</span>,<span class="highlight">-113.952550 50.880744</span>,<span class="highlight">-113.944869 50.882288</span>,<span class="highlight">-113.945942 50.884372</span>,<span class="highlight">-113.951950 50.883398</span>,<span class="highlight">-113.956885 50.882369</span>,<span class="highlight">-113.956370 50.880852</span>))</p>
-							<p>The input field below accepts a polygon with up to 12 pairs.</p>
-						</details>
-
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <button style="width: 10em;" class="btn btn-primary" type="button" id="copy-button" onClick="copy()">Copy WKT</button>
-                            </span>
-                            <input type="text" id="WKT" name="WKT" disabled="true" class="form-control">
-                        </div>
-
-                    </div>
-
-
-                        
-					</div>
-                    
 					<div class="row">
 							<details id="map-instructions">
 								<summary>How to use the interactive map</summary>
@@ -245,6 +230,24 @@ var urlQueries = baseQuery
 							</details>
 							<div id="map"></div>
 					</div>
+
+					<div class="form-group margin-top">
+						<label for="WKT">
+							<span class="field-name" id="wkt-input">
+								Licence area in WKT (Well Known Text) format
+							</span>
+						</label>
+							<p>WKT is a compact format for describing mathematical shapes, including polygons. Each vertex is a longitude-latitude pair.</p>
+							<p>e.g. POLYGON((<span class="highlight">-113.956370 50.880852</span>,<span class="highlight">-113.952550 50.880744</span>,<span class="highlight">-113.944869 50.882288</span>,<span class="highlight">-113.945942 50.884372</span>,<span class="highlight">-113.951950 50.883398</span>,<span class="highlight">-113.956885 50.882369</span>,<span class="highlight">-113.956370 50.880852</span>))</p>
+							<p>This tool accepts a polygon with up to 12 pairs.</p>
+              
+                        <input type="text" id="WKT" name="WKT" disabled="true" class="form-control">
+						<button class="btn btn-primary" type="button" id="copy-button" onClick="copy()">Copy WKT</button>
+
+						<div class="alert alert-success" id="copied-alert" hidden="true">
+							<p>WKT Copied</p>
+						 </div>
+                    </div>
 				</div>
 
 				<div class="notesaboutmockup">
@@ -273,240 +276,9 @@ var urlQueries = baseQuery
 		</div>
 
 	<script src="catch-and-throw.js"></script>
-	<script>
-		// Set up needed fields for cost calculation
-		const renewable_temporary = urlParams.get('renewable-temporary')
-		const temporary_licence = ( renewable_temporary == 'Temporary' )
-		document.getElementById ( "renew-cost" ).setAttribute("hidden","hidden")
-		document.getElementById ( "renew-min-cost" ).setAttribute("hidden","hidden")
-		document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
-		document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
 
-
-		let baseRate = urlParams.get ( "base-rate" ) 
-
-		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
-
-		createHiddenField ( "base-rate", baseRate )
-
-		if (temporary_licence && urlParams.get( "already-divided" ) == null) {
-			baseRate = baseRate / 12
-			createHiddenField ( "already-divided", true)
-		}
-		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
-			elem .innerText = baseRate
-		}
-		createHiddenField ( "base-rate", baseRate )
-
-		let feeZone = urlParams.get ( "fee-zone" ) 
-		if (feeZone == null) {feeZone = "Rural"} // matches the default baseRate
-		for ( let elem of document .getElementsByClassName ( "fee-zone" ) ) {
-			elem .innerText = feeZone
-		}
-		createHiddenField ( "fee-zone", feeZone )
-		// Get bandwidth (from previous page)
-		const bandwidth = urlParams.get ( "bandwidth" )
-		for ( let elem of document .getElementsByClassName ( "bandwidth" ) ) {
-			elem .innerText = bandwidth
-		}		
-		var area_field = createHiddenField ( "area-size", 0 )
-		var cost_field = createHiddenField ( "total-cost", 0 )
-		var temp_cost_field = createHiddenField ( "temp-cost", 0 )
-		var less_than_min_field = createHiddenField ( "less-than-min", false )
-		
-		const expiry_date = urlParams.get( "expiry-date" )
-		if ( expiry_date ) {
-			const effective_date = urlParams.get( "effective-date" )
-			var duration = ((expiry_date.split("-")[0] - effective_date.split("-")[0]) * 12) + (expiry_date.split("-")[1] - effective_date.split("-")[1] + 1)
-
-			for ( let elem of document .getElementsByClassName ( "licence-duration" ) ) {
-				elem .innerText = duration
-			}	
-			var duration_field = createHiddenField ( "licence-duration", duration )
-		}
-
-		var area_number = 0;
-		var cost_number = 0;
-		var temp_cost_number = 0;
-		const calculateButton = document.getElementById ( "calculate-button" )
-		const calcResultsBefore = document.getElementById ( "calc-results-before" )
-		const calcResultsAfter = document.getElementById ( "calc-results-after" )
-		const nextButton = document.getElementById ( "next-button" )
-		
-
-		const powerLevel = urlParams.get ( "power-level" )
-
-		const errorMessages = {}
-		errorMessages [ "Zero area" ] = document.getElementById ( "zero-area-message" )
-		errorMessages [ "Out of Canada" ] = document.getElementById ( "Out-of-Canada-message" )
-		errorMessages [ "MP in urban area" ] = document.getElementById ( "MP-in-urban-message" )
-		errorMessages [ "Too large for LP" ] = document.getElementById ( "LP-too-large-message" )
-		errorMessages [ "Too small for MP but LP is OK" ] = document.getElementById ( "MP-too-small-but-LP-OK-message" )
-		errorMessages [ "Too small for MP" ] = document.getElementById ( "MP-too-small-message" )
-		errorMessages [ "Too large for MP" ] = document.getElementById ( "MP-too-large-message" )
-		errorMessages [ "No duration" ] = document.getElementById ( "No-duration-message" )
-		errorMessages [ "No bandwidth" ] = document.getElementById ( "No-bandwidth-message" )
-		const licenceFeeText = document.getElementById ( "licence-fee-text" )
-
-		function calculate_area_info () {
-
-			less_than_min_field.setAttribute("value", false)
-
-			document.getElementById ( "renew-cost" ).setAttribute("hidden","hidden")
-			document.getElementById ( "renew-min-cost" ).setAttribute("hidden","hidden")
-			document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
-			document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
-
-			urlQueries = baseQuery 
-
-			for (let i = 0; i < 12; i++) {
-					lat_id = "lat" + (i+1)
-					long_id = "long" + (i+1)
-					if (document.getElementById(lat_id).value != "") {
-						urlQueries += "&" + lat_id + "=" + document.getElementById(lat_id).value
-						urlQueries += "&" + long_id + "=" + document.getElementById(long_id).value
-					
-					}
-				}
-			urlQueries += "&area-size=" + area_number
-			if (!temporary_licence) {
-				if (cost_number > 48) {
-					urlQueries += "&total-cost=" + cost_number
-					
-				} else {
-					console.log('costs 48')
-					urlQueries += "&total-cost=" + 48
-					cost_field.setAttribute( "value", 48)
-				}
-			} else {
-				if (temp_cost_number > 4) {
-					urlQueries += "&total-cost=" + cost_number
-				} else {
-					console.log('costs 4')
-					urlQueries += "&total-cost=" + 4 * duration
-					cost_field.setAttribute( "value", 4 * duration )
-
-				}
-			}
-			
-
-			calcResultsBefore .setAttribute ( "hidden", "hidden" )
-			calcResultsAfter .removeAttribute ( "hidden" )
-
-			for ( let errorMessage in errorMessages ) {
-				errorMessages [ errorMessage ] .setAttribute ( "hidden" , "hidden" )
-			}
-			licenceFeeText .setAttribute ( "hidden" , "hidden" )
-			nextButton .setAttribute ( "hidden" , "hidden" )
-
-			let noErrors = true
-			// As appropriate, show error message
-			if ( area_field .value == 0 ) { // If no area drawn, there can be no other errors
-				noErrors = false
-				errorMessages [ "Zero area" ] .removeAttribute ( "hidden" )
-			} else {
-
-				if ( false ) { // This should check if any part of the drawn area is outside Canada
-					noErrors = false
-					errorMessages [ "Out of Canada" ] .removeAttribute ( "hidden" )
-				}
-
-				if ( powerLevel == "Low power" ) {
-					if ( area_field .value > 15 ) {
-						noErrors = false
-						errorMessages [ "Too large for LP" ] .removeAttribute ( "hidden" )
-					}
-
-				} else { // powerLevel == "Medium power"
-
-					if ( feeZone == "Urban" ) {
-						noErrors = false
-						errorMessages [ "MP in urban area" ] .removeAttribute ( "hidden" )
-					}
-
-					if ( area_field .value <= 15 ) {
-						noErrors = false
-						errorMessages [ "Too small for MP but LP is OK" ] .removeAttribute ( "hidden" )
-					} else if ( area_field .value < 75 ) {
-						noErrors = false
-						errorMessages [ "Too small for MP" ] .removeAttribute ( "hidden" )
-					} else if ( area_field .value > 165 ) {
-						noErrors = false
-						errorMessages [ "Too large for MP" ] .removeAttribute ( "hidden" )
-					}
-				}
-				if ( renewable_temporary == null || ( temporary_licence && effective_date == null )) {
-					noErrors = false
-					errorMessages [ "No duration" ] .removeAttribute ( "hidden" )
-				}
-				if ( bandwidth == null ) {
-					noErrors = false
-					errorMessages [ "No bandwidth" ] .removeAttribute ( "hidden" )
-				}
-			}
-			if ( noErrors ) { // everything's okay
-				if (temporary_licence) {
-					if (temp_cost_number > 4) {
-						document.getElementById('temp-cost').removeAttribute('hidden');
-					} else {
-						cost_number = 4 * duration
-
-						total_cost_spans = document.querySelectorAll(".total-cost");
-						total_cost_spans.forEach(element => {
-							element.innerText = element.textContent = cost_number
-						});
-						document.getElementById('temp-min-cost').removeAttribute('hidden');
-						less_than_min_field.setAttribute( "value", true )
-					}
-				} else {
-					if (cost_number > 48) {
-						document.getElementById('renew-cost').removeAttribute('hidden');
-					} else {
-
-						document.getElementById('renew-min-cost').removeAttribute('hidden');
-						less_than_min_field.setAttribute( "value", true )
-					}
-				}
-				licenceFeeText .removeAttribute ( "hidden" )
-				nextButton .removeAttribute ( "hidden" )
-			}
-		}
-
-		calculateButton.addEventListener ( "click", (event) => {
-			calculate_area_info()
-		})
-	</script>
-	<script>
-		const saveButton = document.getElementById ( "save-button" )
-		const saveDiv = document.getElementById ( "save-div" )
-		saveButton.addEventListener ( "click", (event) => {
-			saveDiv .removeAttribute ( "hidden" )
-		})
-	</script>
 	</div>
 
-	<script>
-		// Read application number from parameters if present
-		if ( urlParams .has ( "app-number" ) ) {
-			const appNumberText = urlParams .get ( "app-number" )
-			for ( let elem of document .getElementsByClassName ( "app-number" ) ) {
-				elem .innerText = appNumberText
-			}
-		}
-
-		if ( urlParams .has ( "power-level" ) ) {
-			const powerLevel = urlParams .get ( "power-level" )
-			if ( powerLevel == "Low power" ) {
-				for ( let elem of document .getElementsByClassName ( "lp" ) ) {
-					elem .removeAttribute ( "hidden" )
-				}
-			} else if ( powerLevel == "Medium power" ) {
-				for ( let elem of document .getElementsByClassName ( "mp" ) ) {
-					elem .removeAttribute ( "hidden" )
-				}
-			}
-		}
-	</script>
 <!-- End page content -->
 
 			<div id="def-preFooter">
@@ -564,10 +336,8 @@ var urlQueries = baseQuery
 		// Leaflet code
 
 			function reset_lat_lngs() {
-
 				document.getElementById("WKT").value = "";
-				
-					
+				document.getElementById ( "copied-alert" ).setAttribute("hidden","hidden");
 			}
 
 	
@@ -807,87 +577,4 @@ var urlQueries = baseQuery
         
         </script>
 
-<script>
-
-if (document.getElementById("lat1").value != "") {
-
-	lats = []
-	longs = []
-	lat_longs = [];
-
-	wkt = "POLYGON(("
-	
-	for ( let i = 1; i < 13; i++ ) {
-			if (document.getElementById("lat"+i).value != "") {
-				temp_lat = document.getElementById("lat"+i).value
-				temp_long = document.getElementById("long"+i).value
-
-				lats.push(temp_lat);
-				longs.push(temp_long);
-				wkt += temp_long + " " + temp_lat + ","
-				
-				}
-	}
-
-		for (let i = 0; i < lats.length; i++) {
-			lat_longs.push([lats[i],longs[i]])
-		}
-
-	wkt = wkt.substring(0,wkt.length-1) + "))"
-	document.getElementById("WKT").value = wkt;
-
-	map.removeControl(drawControl);
-	map.addControl(removeAllControl);		
-	area_size_spans = document.querySelectorAll(".area-size");
-	area_size_spans.forEach(element => {
-		console.log(document.getElementById("area-size").value)
-		element.innerText = element.textContent = document.getElementById("area-size").value;
-	});
-
-	total_cost_spans = document.querySelectorAll(".total-cost");
-	total_cost_spans.forEach(element => {
-		element.innerText = element.textContent = document.getElementById("total-cost").value;
-	});
-
-	temp_cost_spans = document.querySelectorAll(".temp-cost");
-	temp_cost_spans.forEach(element => {
-		element.innerText = element.textContent = document.getElementById("temp-cost").value;
-	});
-
-	area_field.setAttribute( "value", document.getElementById("area-size").value );
-	cost_field.setAttribute( "value", document.getElementById("total-cost").value );
-	temp_cost_field.setAttribute( "value", document.getElementById("temp-cost").value );
-	area_number=document.getElementById("area-size").value
-	cost_number=document.getElementById("total-cost").value
-
-	const polygon = L.polygon(lat_longs).addTo(map);
-
-	polygon.on('mouseover', function (event) {
-		polygon.bindPopup(getPopupContent(polygon)).openPopup();
-	});
-	polygon.on('mouseout', function (event) {
-		polygon.bindPopup(getPopupContent(polygon)).closePopup();
-	});
-
-	if (polygon.getLatLngs()[0].length < 12) {
-		polygon.editing.enable()
-	}
-
-	drawnItems.addLayer(polygon);
-	
-	drawnItems.setStyle({fillColor :'#33cc33',
-			fillOpacity:0.65,
-			color:"#248f24",
-			opacity: 1})
-
-	map.fitBounds(polygon.getBounds());
-	calculate_area_info()
-
-
-}
-
-
-
-
-</script>
 </html>
