@@ -171,6 +171,7 @@ var urlQueries = baseQuery
 				}
             }
 
+			// I am sure that there is a better, more efficient way of doing this...
 			document.addEventListener("click", (evt) => {
 				if (evt.target != document.getElementById ( "copy-button" )){
 					document.getElementById ( "copied-alert" ).setAttribute("hidden","hidden");
@@ -182,20 +183,18 @@ var urlQueries = baseQuery
 
 <!-- Start page content -->
 
-	<div id="superhead">
-		<p>Non-competitive local (NCL) licence WKT tool</p>
-	</div>
-
 	<div class="wb-frmvld">
 
 			<div class="wb-frm">
 				<div class="container">
 
-					<h1 property="name" id="wb-cont">Licence area</h1>
-					<p>Define your licence area, with up to 12 boundary points, by drawing it on the interactive map</p>
-					<p>Once your area is entered, click <kbd><samp>Copy WKT</samp></kbd> to copy the licence area in WKT format to your clipboard.</p>
-
-					<div class="row">
+					<h1 property="name" id="wb-cont">Licence area in WKT (Well Known Text) Format</h1>
+					<p>
+					You may draw a licence area, with up to 12 boundary points on the interactive map below.
+					Once a licence area is defined, you may copy the coordinates in WKT format to your clipboard.
+					</p>
+					
+						<div class="row">
 							<details id="map-instructions">
 								<summary>How to use the interactive map</summary>
 								<p>To navigate the map:</p>
@@ -237,10 +236,6 @@ var urlQueries = baseQuery
 								Licence area in WKT (Well Known Text) format
 							</span>
 						</label>
-							<p>WKT is a compact format for describing mathematical shapes, including polygons. Each vertex is a longitude-latitude pair.</p>
-							<p>e.g. POLYGON((<span class="highlight">-113.956370 50.880852</span>,<span class="highlight">-113.952550 50.880744</span>,<span class="highlight">-113.944869 50.882288</span>,<span class="highlight">-113.945942 50.884372</span>,<span class="highlight">-113.951950 50.883398</span>,<span class="highlight">-113.956885 50.882369</span>,<span class="highlight">-113.956370 50.880852</span>))</p>
-							<p>This tool accepts a polygon with up to 12 pairs.</p>
-              
                         <input type="text" id="WKT" name="WKT" disabled="true" class="form-control">
 						<button class="btn btn-primary" type="button" id="copy-button" onClick="copy()">Copy WKT</button>
 
