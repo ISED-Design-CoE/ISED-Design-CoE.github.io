@@ -7,7 +7,7 @@
 
 <!-- Start DECoE customization -->
 		<title>
-			Success - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+			Applications - NCL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
 		</title>
 <!-- End DECoE customization -->
 
@@ -26,7 +26,9 @@
 		</script>
 
 <!-- Start DECoE customization -->
-	<style>
+		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+		<link href="NCL-portal.css" rel="stylesheet" type="text/css">
+		<style>
 		/* Styles for all mockups */
 			.notesaboutmockup {
 				color: #333;
@@ -42,10 +44,15 @@
 				margin-top: 1em;
 			}
 		/* Styles for this mockup */
-	</style>
-	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
-	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
-	<link href="ncll-portal.css" rel="stylesheet" type="text/css">
+			#dataset-filter1_wrapper table {
+				margin-top: 1em;
+				border-top: 1px solid #111;
+			}
+			.nowrap {
+				white-space: nowrap;
+			}
+		</style>
+
 <!-- End DECoE customization -->
 
 	</head>
@@ -69,9 +76,9 @@
 				"breadcrumbs": [{
 					"title": "Spectrum Management System",
 					"href": "index.html"
-				},
-				{
-					"title": "NCLL portal",
+
+				}, {
+					"title": "NCL portal",
 					"href": "portal.html"
 				}],
 				"showPreContent": false
@@ -80,43 +87,74 @@
 		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
 
 <!-- Start page content -->
+	<h1 property="name" id="wb-cont">Applications</h1>
 
-	<div id="superhead">
-		<p>Non-competitive local licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Awaiting approval</span></p>
-	</div>
-
-	<h1 property="name" id="wb-cont">Success</h1>
-
-	<section class="alert alert-success">
-		<h2>Application <span class="app-number">01000139-001</span> has been successfully submitted</h2>
-		What happens next:
-		<ol>
-			<li>We will send a <strong>confirmation e-mail</strong> to <span id="asu">john.dutton@thebestcompany.ca</span>.</li>
-			<li>We will <strong>review</strong> the application and let you know the result. This will generally take less than two weeks but could take up to 12 weeks.</li>
-			<li>If the application is approved, we will send an <strong>invoice</strong> to <span id="lai">pierre.untel@thebestcompany.ca</span>.<br>
-				<strong>Paper invoices will <em>not</em> be sent.</strong></li>
-		</ol>
-	</section>
-
-	<p>What would you like to do now?</p>
-	<ul>
-		<li>Go to the <a href="portal.html">NCLL portal</a></li>
-		<li>Create a <a href="general.html">new application</a> </li>
-		<li><a href="general.html">Duplicate</a> this application</li>
-		<li>Give us <a href="https://forms.office.com/r/M2TmZPmJKq">feedback</a> about how to improve this application form</li>
-	</ul>	
-
-
+	<div class="row">
+		<div class="col-md-12">
+			<h4 class="wb-inv">Filtering options</h4>
+			<details>
+				<summary><h4 class="h4">Filter options</h4></summary>
+				<form class="wb-tables-filter" data-bind-to="dataset-filter1">
+					<div class="form-group">
+						<fieldset>
+							<legend><span class="field-name">Status</span></legend>
+							<ul class="list-unstyled">
+								<li class="checkbox"><label for="draft_checkbox"><input type="checkbox" id="draft_checkbox" name="status" onchange="toggleStatus('draft')"> Draft</label></li>
+								<li class="checkbox"><label for="review_checkbox"><input type="checkbox" id="review_checkbox" name="status" onchange="toggleStatus('review')"> Awaiting approval</label></li>
+								<li class="checkbox"><label for="payment_due_checkbox"><input type="checkbox" id="payment_due_checkbox" name="status" onchange=""> Payment due</label></li>
+								<li class="checkbox"><label for="failed_checkbox"><input type="checkbox" id="failed_checkbox" name="status" onchange="toggleStatus('failed')"> Failed / withdrawn / rejected</label></li>
+							</ul>
+						</fieldset>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary" aria-controls="dataset-filter1" onclick="filterTable()">Filter</button>
+						<button onclick="window.location.href = 'applications.html'" class="btn btn-default">Clear all filters</button>
+					</div>
+				</form>
+			</details>
+		</div>
+		<div class="col-md-12">
+			<table class="wb-tables table" id="dataset-filter1">
+				<thead>
+					<tr>
+						<th>Application number</th>
+						<th>Application identifier</th>
+						<th>Effective date</th>
+						<th>Status</th>
+						<th>Amount due</th>
+						<th data-orderable="false">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="data_row" data-status="draft">
+						<td><a href="general.html?asu=john.dutton%40yellowstone.com&lai=beth.dutton%40yellowstone.com&ari=ProjID+%23511244&effective-date=2023-10-23&renewable-temporary=Temporary&expiry-date=2023-10-25&MNSP=No&base-rate=1.80&fee-zone=Urban&app-number=01000130-001">01000130-001</a></td>
+						<td>ProjID #511244</td>
+						<td>2023-08-20</td>
+						<td>Draft</td>
+						<td>$0.00</td>
+						<td>
+							<select class="form-control">
+								<option>Actions</option>
+								<option>Edit</option>
+								<option>Download</option>
+								<option>Duplicate</option>
+								<option>Delete</option>
+							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 
 	<div class="notesaboutmockup">
 		<h2>Notes about this mockup:</h2>
 		<ul>
-			<li>The words "and your effective date has been reached" will only be displayed if the effective date is more than seven days in the future</li>
-			<li>The notice about paper invoices will only be displayed if the licensee had selected at account creation that they wanted paper invoices</li>
+			<li>Uses the <a href="https://wet-boew.github.io/v4.0-ci/docs/ref/tables/tables-en.html">DataTables plugin for WET</a></li>
 		</ul>
 		<h2>Changes from phase 2A BRD:</h2>
 		<ul>
-			<li>This page not included in Phase 2A BRD</li>
+			<li>Ref. 5.3 Draft Applications Page and 5.4 Submitted Applications page</li>
+			<li>Combined all Applications pages and added "Status" column</li>
+			<li>Added and removed columns from the table</li>
 		</ul>
 	</div>
 	<div id="change-licensee">
@@ -138,31 +176,6 @@
 		const changeLicensee = document .getElementById ( "change-licensee" )
 		const wbBc = document .getElementById ( "wb-bc" )
 		wbBc .prepend ( changeLicensee )
-	</script>
-	<script>
-		const queryString = window.location.search
-		const urlParams = new URLSearchParams ( queryString )
-
-		const asuEmail = document .getElementById ( "asu" )
-		const asuEmailParm = urlParams .get ( "asu" )
-		if ( asuEmailParm ) {
-			asuEmail .innerText = asuEmailParm
-		}
-
-		const laiEmail = document .getElementById ( "lai" )
-		const laiEmailParm = urlParams .get ( "lai" )
-		if ( laiEmailParm ) {
-			laiEmail .innerText = laiEmailParm
-		}
-	</script>	
-	<script>
-		// Read application number from parameters if present
-		if ( urlParams .has ( "app-number" ) ) {
-			const appNumberText = urlParams .get ( "app-number" )
-			for ( let elem of document .getElementsByClassName ( "app-number" ) ) {
-				elem .innerText = appNumberText
-			}
-		}
 	</script>
 <!-- End page content -->
 
@@ -215,5 +228,6 @@
 				"cdnEnv": "esdcprod"
 			}));
 		</script>
+
+		<script src="filter-rows.js"></script>
 	</body>
-</html>

@@ -131,10 +131,19 @@ var urlQueries = baseQuery
                 
             }
 
+			#map .leaflet-draw-edit-remove {
+				background-image: url('src/images/delete.svg') !important;
+				background-position: 50%;
+				width: 5em;
+				height: 5em;
+				background-size: 70%;
+
+			}
+
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
 	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
-	<link href="ncll-portal.css" rel="stylesheet" type="text/css">
+	<link href="NCL-portal.css" rel="stylesheet" type="text/css">
 <!-- End DECoE customization -->
 
 	</head>
@@ -247,19 +256,25 @@ var urlQueries = baseQuery
 							<p>The area is between 15 km<sup>2</sup> and 75 km<sup>2</sup>. Please reduce or increase your area size beyond these limits.</p>
 						</div>
 
-						<label for="WKT">
-							<span class="field-name" id="wkt-input">
-								Licence area in WKT (Well Known Text) format
-							</span>
-						</label>
-                        <input type="text" id="WKT" name="WKT" disabled="true" class="form-control">
-						<button class="btn btn-primary" type="button" disabled="hidden" id="copy-button" onClick="copy()">Copy WKT</button>
-
 						<div class="alert alert-success" id="copied-alert" hidden="true">
 							<p>WKT Copied</p>
 						 </div>
                     </div>
 				</div>
+
+				<table class="wb-tables table" id="wkt-table" >
+					<thead>
+						<tr>
+							<th width="10%">ID</th>
+							<th width="75%" data-orderable="false">WKT</th>
+							<th data-orderable="false">Copy</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+						
+					</tbody>
+				</table>
 
 				<div class="notesaboutmockup">
 					<h2>Notes about this mockup:</h2>
@@ -285,6 +300,8 @@ var urlQueries = baseQuery
 				</div>
 			</div>
 		</div>
+
+		
 
 	<script src="catch-and-throw.js"></script>
 
@@ -341,135 +358,31 @@ var urlQueries = baseQuery
 				"cdnEnv": "esdcprod"
 			}));
 		</script>
+
+
 		<script>
 
-
-		// Leaflet code
-
-			function reset_lat_lngs() {
-				document.getElementById("WKT").value = "";
-				document.getElementById ( "copied-alert" ).setAttribute("hidden","hidden");
-				area_size_spans = document.querySelectorAll(".area-size");
-
-				area_size_spans.forEach(element => {
-					element.innerText = element.textContent = "0";
-				});
-				document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
-				document.getElementById ( "copy-button" ).setAttribute("disabled","disabled");
-				document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
-				document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
-			}
-
-	
-
-			function change_lat_lngs(latlngs) {
-				area = L.GeometryUtil.geodesicArea(latlngs);
-				lat_long_sliced = latlngs.slice(0,12)
-				let wkt = "POLYGON(("
-				for (let i = 0; i < 12; i++) {
-					if (i < lat_long_sliced.length) {
-						wkt += latlngs[i].lng.toFixed(6) + " " + latlngs[i].lat.toFixed(6) + ","
-					}
-					
-				}
-			
-				wkt = wkt.substring(0,wkt.length-1)
-				wkt += "))"
-
-				area_size_spans = document.querySelectorAll(".area-size");
-				area_number = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
-
-				area_size_spans.forEach(element => {
-					element.innerText = element.textContent = area_number
-				});
-
-				if (area >= 165000000) {
-					document.getElementById ( "too-large-alert" ).removeAttribute("hidden");
-					document.getElementById ( "copy-button" ).setAttribute("disabled","disabled");
-					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
-					document.getElementById("WKT").value = "";
-				} else if (area >= 75000000 && area <= 165000000 ) {
-					document.getElementById ( "medium-power-alert" ).removeAttribute("hidden");
-					document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "copy-button" ).removeAttribute("disabled")
-					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
-					document.getElementById("WKT").value = wkt;
-				} else if (area <= 15000000){
-					document.getElementById ( "low-power-alert" ).removeAttribute("hidden");
-					document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "copy-button" ).removeAttribute("disabled")
-					document.getElementById("WKT").value = wkt;
-				} else {
-					console.log('test')
-					document.getElementById ( "too-large-alert" ).setAttribute("disabled","disabled");
-					document.getElementById ( "copy-button" ).setAttribute("disabled","disabled");
-					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "between-alert" ).removeAttribute("hidden");
-					document.getElementById("WKT").value = "";
-				}
-
-			}
-
-			// create map and center to Muskeg
-            var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                     osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib}),
                     map = new L.Map('map', {zoomControl:false, layers: [osm], center: new L.LatLng(63.27268094792591, -100.5815661012755), zoom: 3.3,selectedPathOptions: {
                 color:'#ff9900'
                 }});
-        
-			// add the polygon that will be drawn to the map
-            var drawnItems = new L.FeatureGroup();
-            map.addLayer(drawnItems);
-        
-			// add zoom to the bottom right
-            new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
+            drawnItems = L.featureGroup().addTo(map);
 
-			// add Fullscreen to the top right. Currently broken
-            new L.Control.Fullscreen({pseudoFullscreen: true, position: 'topright'}).addTo(map);
-
-
-
-			// Layers.
-
-			// Map layers. Not implemented.
-			const baseLayers = {
-				'Standard': osm,
-				'Terrain': osm
-			};
-
-			// Fee zone layer.
-			const feezone = L.layerGroup();
-			const overlays = {
-				'Fee Zones': feezone,
-			};
-
-			// Add layer buttom to the top right.
-			const layerControl = L.control.layers(baseLayers, overlays, {position: 'topleft'});
-
-			// Draw control, removes everything but polygon,
-			// and removes intersection from polygon.
-			// Add area and restrict to 12 points.
-        
-            var drawControl = new L.Control.Draw({
-                position: 'topleft',
-                draw: {
-                    polyline: false,
-                    polygon: true,
-                    circle: false,
-                    rectangle: false,
-                    marker: false,
-                    circlemarker: false,
-                polygon: {
-                        allowIntersection: false,
-                        showArea: true,
-                        maxPoints:12,
+    map.addControl(new L.Control.Draw({
+        edit: {
+            featureGroup: drawnItems,
+            poly: {
+                allowIntersection: false
+            },
+			edit: false
+        },
+        draw: {
+            polygon: {
+				allowIntersection: false,
+				showArea: true,
+				maxPoints:12,
                 metric: "km",
                 precision: {km:5},
                 shapeOptions: {
@@ -478,177 +391,85 @@ var urlQueries = baseQuery
                     color:"#8600b3",
                     opacity: 1
                           }
-                }
-        
-                },
-            });
-
-			// Add search, currently does not work well, as I have not added an API key.
-			var searchControl = L.esri.Geocoding.geosearch({
-				expanded: true,
-        	})
-
-            map.addControl(drawControl);
-
-			// add scale to the bottom left.
-            var scale = L.control.scale(); 
-        	scale.addTo(map); 
-		
-        
-			// When the user clicks the trashcan, remove everything and change the icon back to the polygon.
-            L.Control.RemoveAll = L.Control.extend({
-                options: {
-                    position: 'topleft',
-                },
-        
-                onAdd: function (map) {
-                    var controlDiv = L.DomUtil.create('div', 'leaflet-control leaflet-bar');
-                    var controlUI = L.DomUtil.create('a', 'leaflet-draw-edit-remove', controlDiv);
-                    controlUI.title = 'Remove all drawn items';
-                    controlUI.setAttribute('href', '#');
-
-                    controlUI.style.backgroundImage = 'url(src/images/delete.svg)'
-
-                    controlUI.style.width = '5em'
-                    controlUI.style.height = '5em'
-                    controlUI.style.backgroundSize = '70%'
-        
-                    L.DomEvent
-                        .addListener(controlUI, 'click', L.DomEvent.stopPropagation)
-                        .addListener(controlUI, 'click', L.DomEvent.preventDefault)
-                        .addListener(controlUI, 'click', function () {
-							reset_lat_lngs();
-                            drawnItems.clearLayers();
-                            map.removeControl(removeAllControl);
-            				map.addControl(drawControl);
-                        });
-                    return controlDiv;
-                }
-            });
-        
-        removeAllControl = new L.Control.RemoveAll();
-
-		L.Control.textbox = L.Control.extend({
-			options: {
-				position:'bottomleft',
 			},
+			polyline: false,
+			circle: false,
+			rectangle: false,
+			marker: false,
+			circlemarker: false,
+        }
+    }));
 
-			onAdd: function(map) {
-				
-			var text = L.DomUtil.create('div');
-			var area_text = document.createElement('div');
-			area_text.classList.add('area-size')
-			text.appendChild(area_text)
-			text.innerHTML = "<div class='text-on-map'> <strong>Area size:</strong> <span class='area-size area-size-drawing'>0</span> <span>km²</span> </div>"
-			return text;
-			},
-		});
-		textboxControl = new L.Control.textbox();
-		map.addControl(textboxControl);
-        
-        
-        // Add area on hover
-        
-        var getPopupContent = function(layer) {
-        
-                  var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
-                  area = L.GeometryUtil.geodesicArea(latlngs);
-                  return "Area: "+ (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3) + " square kilometer";
-        
-                };
-        
-        // TODO : on mouseout finish the polygon
-        
-        // on draw
+	function CopyRow(row) {
+		console.log(row)
+		var table = $('#wkt-table').DataTable();
+		console.log(table.cell(row,1).data())
+		navigator.clipboard.writeText(table.cell(row,1).data());
+	} 
 
-			map.on( L.Draw.Event.DRAWVERTEX, function(e) {
+    map.on(L.Draw.Event.CREATED, function (event) {
+        var layer = event.layer;
 
-				let temp_lats=[]
-				let temp_longs=[]
-				let temp_latlongs=[]
+        drawnItems.addLayer(layer);
 
-				layers = e.layers._layers
-				if (Object.keys(layers).length >=3 ) {
-					for (var vertex_id in layers) {
-					temp_lats.push(layers[vertex_id]._latlng.lat)
-					temp_longs.push(layers[vertex_id]._latlng.lng)
-					}
-					console.log(temp_latlongs)
-					for (let i = 0; i < temp_lats.length; i++) {
-						temp_latlongs.push({lat:temp_lats[i],lng:temp_longs[i]})
-					}
-					console.log(L.GeometryUtil.geodesicArea(temp_latlongs))
-					temp_areas = document.querySelectorAll(".area-size-drawing");
-					temp_areas.forEach(element => {
-						element.innerText = element.textContent = (L.GeometryUtil.geodesicArea(temp_latlongs)/1000000).toFixed(3)
-					});
-				}
+		layer.editing.enable()
 
-			}) 
+		drawnItems.addLayer(layer);
 
-            map.on(L.Draw.Event.CREATED, function (e) {
-                var type = e.layerType,
-                layer = e.layer;
-						
-            map.removeControl(drawControl);
-            map.addControl(removeAllControl);
-            layer.on('mouseover', function (event) {
-                layer.bindPopup(getPopupContent(layer)).openPopup();
-            });
-            layer.on('mouseout', function (event) {
-                layer.bindPopup(getPopupContent(layer)).closePopup();
-            });
+		var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
 
-			if (layer.getLatLngs()[0].length < 12) {
-				layer.editing.enable()
+		area = L.GeometryUtil.geodesicArea(latlngs);
+		lat_long_sliced = latlngs.slice(0,12)
+		let wkt = "POLYGON(("
+		for (let i = 0; i < 12; i++) {
+			if (i < lat_long_sliced.length) {
+				wkt += latlngs[i].lng.toFixed(6) + " " + latlngs[i].lat.toFixed(6) + ","
 			}
-        
-            drawnItems.addLayer(layer);
-            
-            drawnItems.setStyle({fillColor :'#33cc33',
-                    fillOpacity:0.65,
-                    color:"#248f24",
-                    opacity: 1})
-
 			
-
-			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
-
-
-			console.log(latlngs)
-			change_lat_lngs(latlngs);
+		}
+	
+		wkt = wkt.substring(0,wkt.length-1)
+		wkt += "))"
             
-            });
+		drawnItems.setStyle({fillColor :'#33cc33',
+				fillOpacity:0.65,
+				color:"#248f24",
+				opacity: 1});
 
-			// on edit:
-        
-            map.on(L.Draw.Event.EDITVERTEX, function(e){
+		var table = $('#wkt-table').DataTable();
 
-				drawnItems.eachLayer(function (layer) {
+		var count = table.rows().count() +1
 
-					lat_lngs = layer.getLatLngs()[0]
+		console.log(count)
 
-					// if (lat_lngs.length >= 12) {
-					// 	layer.editing.disable()
-					// }
+		table.row.add([
+			layer._leaflet_id,
+			wkt,
+			"<button class='btn btn-primary' OnClick='(CopyRow("+(count-1)+"))'>Copy WKT</button>"]).draw();	
 
-					change_lat_lngs(lat_lngs)
+    });
 
-				})
+	map.on(L.Draw.Event.DELETED, function (e) {
+		var table = $('#wkt-table').DataTable();
+		e.layers.eachLayer(layer => {
+			i = 0
+			table.rows().every( function ( rowIdx, tableLoop, rowLoop ) {
+				var data = this.data();
+				if(data[0]==layer._leaflet_id){
 
-            })
-        
-         
-           map.on(L.Draw.Event.DELETED, function (e) {
-        
-            if (Object.keys(e.layers._layers).length != 0) {
-                map.removeControl(removeAllControl);
-                map.addControl(drawControl);
-            }
-        
-            
-        });
-        
-        </script>
+					table.row(i).remove( {
+						title: 'Delete row of deleted poly'
+					}).draw();
+				}
+				i +=1
+			} );
+		});
+
+		
+
+		
+    });
+
+</script>
 
 </html>

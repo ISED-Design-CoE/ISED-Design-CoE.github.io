@@ -3,5 +3,5 @@ GitHub Pages location to publish mockups from the ISED Design and Experimentatio
 
 Redirecting to current mockup...
 <script>
-  document.location = "/NCLL"
+  document.location = "/NCL"
 </script>
