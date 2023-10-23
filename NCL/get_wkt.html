@@ -163,12 +163,9 @@ var urlQueries = baseQuery
         <script>
             function copy() {
 				
-                let textarea = document.getElementById("WKT");
-                textarea.select();
-				if (textarea.value != "") {
-					navigator.clipboard.writeText(textarea.value);
-					document.getElementById ( "copied-alert" ).removeAttribute("hidden")
-				}
+                let output = document.getElementById("WKT");
+				navigator.clipboard.writeText(output.textContent)
+				document.getElementById ( "copied-alert" ).removeAttribute("hidden")
             }
 
 			// I am sure that there is a better, more efficient way of doing this...
@@ -231,11 +228,12 @@ var urlQueries = baseQuery
 					</div>
 
 					<div class="form-group margin-top">
-						<div class="alert alert-warning" id="medium-power-alert" hidden="hidden">
+
+						<div class="alert alert-info" id="medium-power-alert" hidden="hidden">
 							<p>The area is between 75 km<sup>2</sup> and 165 km<sup>2</sup>. It can only be used with <b>medium power</b>.</sup></p>
 						</div>
 
-						<div class="alert alert-warning" id="low-power-alert" hidden="hidden">
+						<div class="alert alert-info" id="low-power-alert" hidden="hidden">
 							<p>The area is between 0 km<sup>2</sup> and 15 km<sup>2</sup>. It can only be used with <b>low power</b>.</sup></p>
 						</div>
 
@@ -247,17 +245,22 @@ var urlQueries = baseQuery
 							<p>The area is between 15 km<sup>2</sup> and 75 km<sup>2</sup>. Please reduce or increase your area size beyond these limits.</p>
 						</div>
 
+						<div id="wkt-output" hidden="true">
 						<label for="WKT">
 							<span class="field-name" id="wkt-input">
 								Licence area in WKT (Well Known Text) format
 							</span>
 						</label>
-                        <input type="text" id="WKT" name="WKT" disabled="true" class="form-control">
-						<button class="btn btn-primary" type="button" disabled="hidden" id="copy-button" onClick="copy()">Copy WKT</button>
+                        <output type="text" id="WKT" name="WKT" class="form-control"></output>
+						<button class="btn btn-primary" type="button" id="copy-button" onClick="copy()">Copy WKT</button>
+
+						</div>
 
 						<div class="alert alert-success" id="copied-alert" hidden="true">
 							<p>WKT Copied</p>
 						 </div>
+
+						
                     </div>
 				</div>
 
@@ -333,14 +336,15 @@ var urlQueries = baseQuery
 					element.innerText = element.textContent = "0";
 				});
 				document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
-				document.getElementById ( "copy-button" ).setAttribute("disabled","disabled");
+				document.getElementById ( "wkt-output" ).setAttribute("hidden","hidden");
 				document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
 				document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
+				document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
 			}
 
 	
 
-			function change_lat_lngs(latlngs) {
+			function change_lat_lngs(latlngs, layer) {
 				area = L.GeometryUtil.geodesicArea(latlngs);
 				lat_long_sliced = latlngs.slice(0,12)
 				let wkt = "POLYGON(("
@@ -363,33 +367,58 @@ var urlQueries = baseQuery
 
 				if (area >= 165000000) {
 					document.getElementById ( "too-large-alert" ).removeAttribute("hidden");
-					document.getElementById ( "copy-button" ).setAttribute("disabled","disabled");
+					document.getElementById ( "wkt-output" ).setAttribute("hidden","hidden");
 					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
 					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
 					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
+
+					
+            
+            		drawnItems.setStyle({fillColor :'#760000',
+                    fillOpacity:0.65,
+                    color:"#4e0000",
+                    opacity: 1})
+
+
 					document.getElementById("WKT").value = "";
 				} else if (area >= 75000000 && area <= 165000000 ) {
 					document.getElementById ( "medium-power-alert" ).removeAttribute("hidden");
 					document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "copy-button" ).removeAttribute("disabled")
+					document.getElementById ( "wkt-output" ).removeAttribute("hidden");
 					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
 					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
 					document.getElementById("WKT").value = wkt;
+
+					drawnItems.setStyle({fillColor :'#33cc33',
+                    fillOpacity:0.65,
+                    color:"#248f24",
+                    opacity: 1})
+
 				} else if (area <= 15000000){
 					document.getElementById ( "low-power-alert" ).removeAttribute("hidden");
 					document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
 					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
 					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
-					document.getElementById ( "copy-button" ).removeAttribute("disabled")
+					document.getElementById ( "wkt-output" ).removeAttribute("hidden");
 					document.getElementById("WKT").value = wkt;
+
+					drawnItems.setStyle({fillColor :'#33cc33',
+                    fillOpacity:0.65,
+                    color:"#248f24",
+                    opacity: 1})
 				} else {
-					console.log('test')
-					document.getElementById ( "too-large-alert" ).setAttribute("disabled","disabled");
-					document.getElementById ( "copy-button" ).setAttribute("disabled","disabled");
+					document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "wkt-output" ).setAttribute("hidden","hidden");
 					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
 					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
 					document.getElementById ( "between-alert" ).removeAttribute("hidden");
 					document.getElementById("WKT").value = "";
+
+					drawnItems.setStyle({fillColor :'#760000',
+                    fillOpacity:0.65,
+                    color:"#4e0000",
+                    opacity: 1})
+
 				}
 
 			}
@@ -580,21 +609,15 @@ var urlQueries = baseQuery
 			if (layer.getLatLngs()[0].length < 12) {
 				layer.editing.enable()
 			}
-        
-            drawnItems.addLayer(layer);
-            
-            drawnItems.setStyle({fillColor :'#33cc33',
-                    fillOpacity:0.65,
-                    color:"#248f24",
-                    opacity: 1})
-
 			
 
 			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
 
+			drawnItems.addLayer(layer);
+
 
 			console.log(latlngs)
-			change_lat_lngs(latlngs);
+			change_lat_lngs(latlngs, layer);
             
             });
 
@@ -610,7 +633,7 @@ var urlQueries = baseQuery
 					// 	layer.editing.disable()
 					// }
 
-					change_lat_lngs(lat_lngs)
+					change_lat_lngs(lat_lngs, layer)
 
 				})
 
