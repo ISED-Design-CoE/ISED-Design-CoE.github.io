@@ -123,9 +123,9 @@ var urlQueries = baseQuery
 				scroll-behavior: smooth;
 			}
             #map .leaflet-draw-draw-polygon {
-                background-image: url('src/images/draw.svg') !important;
+                background-image: url('src/images/draw_fr.svg') !important;
                 background-position: 50%;
-                background-size: 60%;
+                background-size: 90%;
                 width: 5em;
                 height: 5em;
                 
@@ -149,9 +149,9 @@ var urlQueries = baseQuery
 			defTop.outerHTML = wet.builder.top({
 				"cdnEnv": "esdcprod",
 				"lngLinks": [{
-					"lang": "fr",
-					"href": "get_wkt_fr.html",
-					"text": "Français"
+					"lang": "en",
+					"href": "get_wkt.html",
+					"text": "English"
 				}],
 				"search": false,
 				"siteMenu": false,
@@ -185,42 +185,42 @@ var urlQueries = baseQuery
 			<div class="wb-frm">
 				<div class="container">
 
-					<h1 property="name" id="wb-cont">Licence area in WKT (Well Known Text) Format</h1>
+					<h1 property="name" id="wb-cont">Zones de licence dans le format WKT (Well Known Text)</h1>
 					<p>
-					You may draw a licence area, with up to 12 boundary points on the interactive map below.
-					Once a licence area is defined, you may copy the coordinates in WKT format to your clipboard.
+						Vous pouvez dessiner une zone de licence, avec jusqu'à 12 points de délimitation, sur la carte interactive ci-dessous.
+						Une fois la zone de licence définie, vous pouvez copier les coordonnées au format WKT dans votre presse-papiers.
 					</p>
 					
 						<div class="row">
 							<details id="map-instructions">
-								<summary>How to use the interactive map</summary>
-								<p>To navigate the map:</p>
+								<summary>Comment utiliser la carte intéractive</summary>
+								<p>Pour naviguer la carte:</p>
 
 								<ul>
-									<li>Click and drag to move the map</li>
-									<li>Zoom in:</li>
+									<li>Cliquez et glisser pour bouger la carte</li>
+									<li>Zoom:</li>
 									<ul>
-										<li>Double click</li>
-										<li>Scroll</li>
-										<li>Click the zoom icons on the bottom right</li>
+										<li>Double-clique</li>
+										<li>Défiler</li>
+										<li>Cliquez les icons de zoom en bas à gauche./li>
 									</ul>
 								</ul>
-								<p>To draw:</p>
+								<p>Pour dessiner:</p>
 									<ol>
-										<li>Navigate to your location</li>
-										<li>Click the draw tool
-											<img src="src/images/draw.svg" alt="Draw Tool">
+										<li>Naviguer à votre position</li>
+										<li>Cliquez sur le boutton de dessin de dessin.
+											<img src="src/images/draw_fr.svg" alt="Draw Tool">
 										</li>
-										<li>Click on the map to add points. These are connected by straight lines.</li>
-										<li>Close your boundary:</li>
+										<li>Cliquez sur la carte pour ajouter des points. Ces dernières sont connecté avec les lignes droites.</li>
+										<li>Fermez votre zone de licence:</li>
 										<ul>
-											<li>Click the first point</li>
-											<li>Click the finish button next to the draw icon</li>
+											<li>Cliquez le premier points</li>
+											<li>Cliquez le boutton Finir à côté du boutton de dessin</li>
 										</ul>
-										<li>Edit your boundary:</li>
+										<li>Modifier votre zone de licence:</li>
 										<ul>
-											<li>Drag the white points to move them</li>
-											<li>Drag the translucent points to add new points</li>
+											<li>Glissez les points blanc pour les déplacer</li>
+											<li>Glissez les points translucide pour ajouter des points.</li>
 										</ul>
 									</ol>
 							</details>
@@ -230,34 +230,34 @@ var urlQueries = baseQuery
 					<div class="form-group margin-top">
 
 						<div class="alert alert-info" id="medium-power-alert" hidden="hidden">
-							<p>The area is between 75 km<sup>2</sup> and 165 km<sup>2</sup>. It can only be used with <b>medium power</b>.</sup></p>
+							<p>Cette zone est entre 75 km<sup>2</sup> et 165 km<sup>2</sup>. Elle ne peut qu'être utilisé avec <b>pouvoir moyen</b>.</sup></p>
 						</div>
 
 						<div class="alert alert-info" id="low-power-alert" hidden="hidden">
-							<p>The area is between 0 km<sup>2</sup> and 15 km<sup>2</sup>. It can only be used with <b>low power</b>.</sup></p>
+							<p>Cette zone est entre 0 km<sup>2</sup> et 15 km<sup>2</sup>. Elle ne peut qu'être utilisé avec <b>low power</b>.</sup></p>
 						</div>
 
 						<div class="alert alert-danger" id="too-large-alert" hidden="hidden">
-							<p>The area is too large. Please reduce the size of the polygon to be less than 165km<sup>2</sup></p>
+							<p>L'aire de votre zone est trop large.  S'il vous plaît réduire votre zone pour qu'elle soit moins que 165km<sup>2</sup></p>
 						</div>
 
 						<div class="alert alert-danger" id="between-alert" hidden="hidden">
-							<p>The area is between 15 km<sup>2</sup> and 75 km<sup>2</sup>. Please reduce or increase your area size beyond these limits.</p>
+							<p>Cette zone est entre 15 km<sup>2</sup> et 75 km<sup>2</sup>. S'il vous plaît réduire ou augementer votre aire hors de ces limites.</p>
 						</div>
 
 						<div id="wkt-output" hidden="true">
 						<label for="WKT">
 							<span class="field-name" id="wkt-input">
-								Licence area in WKT (Well Known Text) format
+								Zone de licence en format WKT (Well Known Text)
 							</span>
 						</label>
                         <output type="text" id="WKT" name="WKT" class="form-control"></output>
-						<button class="btn btn-primary" type="button" id="copy-button" onClick="copy()">Copy WKT</button>
+						<button class="btn btn-primary" type="button" id="copy-button" onClick="copy()">Copier le WKT</button>
 
 						</div>
 
 						<div class="alert alert-success" id="copied-alert" hidden="true">
-							<p>WKT Copied</p>
+							<p>Le WKT a été copié</p>
 						 </div>
 
 						
@@ -301,15 +301,17 @@ var urlQueries = baseQuery
 				"showFooter": false,
 				"showFeatures": false,
 				"termsLink": [{
-        			"newWindow": true
+        			"newWindow": true,
+					"text": "Avis"
 				}],
 				"privacyLink": [{
-					"newWindow": true
+					"newWindow": true,
+					"text": "Confidentialité"
 				}],
 				"contextualFooter":{
 					"title": "Spectrum and Telecommunications Sector",
 					"links": [{
-						"text": "Contact us",
+						"text": "Contactez-nous",
 						"href":"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
 						"newWindow": true
 					}]
@@ -434,12 +436,14 @@ var urlQueries = baseQuery
 			// add the polygon that will be drawn to the map
             var drawnItems = new L.FeatureGroup();
             map.addLayer(drawnItems);
+
+			
         
 			// add zoom to the bottom right
-            new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
+            new L.Control.Zoom({ position: 'bottomright', zoomInTitle:'Zoom avant', zoomOutTitle:'Zoom arrière'}).addTo(map);
 
 			// add Fullscreen to the top right. Currently broken
-            new L.Control.Fullscreen({pseudoFullscreen: true, position: 'topright'}).addTo(map);
+            new L.Control.Fullscreen({pseudoFullscreen: true, position: 'topright', title:{'false':'Plein Écran','true':'Quitter Plein Écran'}}).addTo(map);
 
 
 
@@ -490,6 +494,21 @@ var urlQueries = baseQuery
                 },
             });
 
+			L.drawLocal.draw.toolbar.buttons.polygon = 'Dessiner un polygone'
+
+			L.drawLocal.draw.handlers.polygon.tooltip.start = 'Cliquez pour commencer le polygone'
+			L.drawLocal.draw.handlers.polygon.tooltip.cont = 'Cliquez pour continuer le polygone'
+			L.drawLocal.draw.handlers.polygon.tooltip.end = 'Cliquez le premier point pour finir le polygone'
+
+			L.drawLocal.draw.toolbar.finish.Title = 'Finir de dessiner'
+			L.drawLocal.draw.toolbar.finish.text = 'Finir'
+
+			L.drawLocal.draw.toolbar.undo.Title = 'Supprimer le dernier point dessiner'
+			L.drawLocal.draw.toolbar.undo.text = 'Supprimer le dernier point'
+
+			L.drawLocal.draw.toolbar.actions.Title = 'Annuler le dessin'
+			L.drawLocal.draw.toolbar.actions.text = 'Annuler'
+
 			// Add search, currently does not work well, as I have not added an API key.
 			var searchControl = L.esri.Geocoding.geosearch({
 				expanded: true,
@@ -511,14 +530,14 @@ var urlQueries = baseQuery
                 onAdd: function (map) {
                     var controlDiv = L.DomUtil.create('div', 'leaflet-control leaflet-bar');
                     var controlUI = L.DomUtil.create('a', 'leaflet-draw-edit-remove', controlDiv);
-                    controlUI.title = 'Remove polygon';
+                    controlUI.title = 'Enlever le polygon';
                     controlUI.setAttribute('href', '#');
 
-                    controlUI.style.backgroundImage = 'url(src/images/delete.svg)'
+                    controlUI.style.backgroundImage = 'url(src/images/delete_fr.svg)'
 
                     controlUI.style.width = '5em'
                     controlUI.style.height = '5em'
-                    controlUI.style.backgroundSize = '70%'
+                    controlUI.style.backgroundSize = '90%'
         
                     L.DomEvent
                         .addListener(controlUI, 'click', L.DomEvent.stopPropagation)
@@ -546,7 +565,7 @@ var urlQueries = baseQuery
 			var area_text = document.createElement('div');
 			area_text.classList.add('area-size')
 			text.appendChild(area_text)
-			text.innerHTML = "<div class='text-on-map'> <strong>Area size:</strong> <span class='area-size area-size-drawing'>0</span> <span>km²</span> </div>"
+			text.innerHTML = "<div class='text-on-map'> <strong>Aire de zone:</strong> <span class='area-size area-size-drawing'>0</span> <span>km²</span> </div>"
 			return text;
 			},
 		});
@@ -649,6 +668,8 @@ var urlQueries = baseQuery
         
             
         });
+
+		
         
         </script>
 
