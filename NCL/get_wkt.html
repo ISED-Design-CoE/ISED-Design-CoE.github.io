@@ -599,12 +599,6 @@ var urlQueries = baseQuery
 						
             map.removeControl(drawControl);
             map.addControl(removeAllControl);
-            layer.on('mouseover', function (event) {
-                layer.bindPopup(getPopupContent(layer)).openPopup();
-            });
-            layer.on('mouseout', function (event) {
-                layer.bindPopup(getPopupContent(layer)).closePopup();
-            });
 
 			if (layer.getLatLngs()[0].length < 12) {
 				layer.editing.enable()
