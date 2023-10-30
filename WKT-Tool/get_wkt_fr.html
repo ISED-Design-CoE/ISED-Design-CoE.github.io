@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+	<head>
+<!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
+	 <meta charset="utf-8">
+
+<!-- Start DECoE customization -->
+		<title>
+			WKT tool - NCL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+		</title>
+<!-- End DECoE customization -->
+
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+		<noscript>
+			<!-- Write closure fall-back static file -->
+			<!-- refTop.html -->
+		</noscript>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refTop({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+<!-- Start DECoE customization -->
+
+<link rel="stylesheet" href="libs/leaflet.css"/>
+<link rel="stylesheet" href="src/leaflet.draw.css"/>
+
+<script>
+const baseQuery = window.location.search
+var urlQueries = baseQuery
+</script>
+
+<!-- src does not work with folder, this is long but the best I can do because of 
+	how leaflet draw is designed. -->
+<script src="libs/leaflet-src.js"></script>
+<script src="src/Leaflet.draw.js"></script>
+<script src="src/Leaflet.Draw.Event.js"></script>
+<script src="src/edit/handler/Edit.Poly.js"></script>
+<script src="src/edit/handler/Edit.SimpleShape.js"></script>
+<script src="src/edit/handler/Edit.Rectangle.js"></script>
+<script src="src/draw/handler/Draw.Feature.js"></script>
+<script src="src/draw/handler/Draw.Polyline.js"></script>
+<script src="src/draw/handler/Draw.Polygon.js"></script>
+<script src="src/draw/handler/Draw.SimpleShape.js"></script>
+<script src="src/draw/handler/Draw.Rectangle.js"></script>
+<script src="src/draw/handler/Draw.Circle.js"></script>
+<script src="src/draw/handler/Draw.Marker.js"></script>
+<script src="src/draw/handler/Draw.CircleMarker.js"></script>
+<script src="src/ext/TouchEvents.js"></script>
+<script src="src/ext/LatLngUtil.js"></script>
+<script src="src/ext/GeometryUtil.js"></script>
+<script src="src/ext/LineUtil.Intersect.js"></script>
+<script src="src/ext/Polyline.Intersect.js"></script>
+<script src="src/ext/Polygon.Intersect.js"></script>
+<script src="src/Control.Draw.js"></script>
+<script src="src/Tooltip.js"></script>
+<script src="src/Toolbar.js"></script>
+<script src="src/draw/DrawToolbar.js"></script>
+<script src="src/edit/EditToolbar.js"></script>
+<script src="src/edit/handler/EditToolbar.Edit.js"></script>
+<script src="src/edit/handler/EditToolbar.Delete.js"></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+
+<script src="https://unpkg.com/esri-leaflet"></script>
+
+<!-- Esri Leaflet Geocoder -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
+/>
+<script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+
+
+	<style>
+		/* Styles for all mockups */
+			.notesaboutmockup {
+				color: #333;
+				background: #FFD;
+				padding: 0 1em;
+				border-color: #FC6;
+				border-width: 2px;
+				border-style: solid;
+				margin-top: 3em;
+			}
+			.notesaboutmockup h2 {
+				font-size: inherit;
+				margin-top: 1em;
+			}
+		/* Styles for this mockup */
+			#map {
+				border: 1px solid black;
+				height: 65em;
+				margin-bottom: 2em;
+			}
+			#WKT {
+				width: 100%;
+			}
+			@media (min-width: 768px) {
+				.dl-horizontal dt {
+					width: 15em;
+				}
+			}
+			.highlight {
+				background-color: yellow;
+			}
+			.margin-top,
+			#map-instructions {
+				margin-top: 38px;	
+			}
+			.text-on-map{
+				background:white;
+				border-radius:4px;
+				outline:2px solid rgba(0,0,0,0.2);
+				padding:8px;
+			}
+			html {
+				scroll-behavior: smooth;
+			}
+            #map .leaflet-draw-draw-polygon {
+                background-image: url('src/images/draw_fr.svg') !important;
+                background-position: 50%;
+                background-size: 90%;
+                width: 5em;
+                height: 5em;
+                
+            }
+
+	</style>
+	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
+	<link href="NCL-portal.css" rel="stylesheet" type="text/css">
+<!-- End DECoE customization -->
+
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<div id="def-top">
+			<!-- Write closure fall-back static file -->
+			<!-- transactTop-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defTop = document.getElementById("def-top");
+			defTop.outerHTML = wet.builder.top({
+				"cdnEnv": "esdcprod",
+				"lngLinks": [{
+					"lang": "en",
+					"href": "get_wkt.html",
+					"text": "English"
+				}],
+				"search": false,
+				"siteMenu": false,
+
+				"showPreContent": false
+			});
+		</script>
+
+        <script>
+            function copy() {
+				
+                let output = document.getElementById("WKT");
+				navigator.clipboard.writeText(output.textContent)
+				document.getElementById ( "copied-alert" ).removeAttribute("hidden")
+            }
+
+			// I am sure that there is a better, more efficient way of doing this...
+			document.addEventListener("click", (evt) => {
+				if (evt.target != document.getElementById ( "copy-button" )){
+					document.getElementById ( "copied-alert" ).setAttribute("hidden","hidden");
+				}
+      		});
+        </script>
+
+		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+<!-- Start page content -->
+
+	<div class="wb-frmvld">
+
+			<div class="wb-frm">
+				<div class="container">
+
+					<h1 property="name" id="wb-cont">Zones de licence dans le format WKT (Well Known Text)</h1>
+					<p>
+						Vous pouvez dessiner une zone de licence, avec jusqu'à 12 points de délimitation, sur la carte interactive ci-dessous.
+						Une fois la zone de licence définie, vous pouvez copier les coordonnées au format WKT dans votre presse-papiers.
+					</p>
+					
+						<div class="row">
+							<details id="map-instructions">
+								<summary>Comment utiliser la carte intéractive</summary>
+								<p>Pour naviguer la carte:</p>
+
+								<ul>
+									<li>Cliquez et glisser pour bouger la carte</li>
+									<li>Zoom:</li>
+									<ul>
+										<li>Double-clique</li>
+										<li>Défiler</li>
+										<li>Cliquez les icons de zoom en bas à gauche./li>
+									</ul>
+								</ul>
+								<p>Pour dessiner:</p>
+									<ol>
+										<li>Naviguer à votre position</li>
+										<li>Cliquez sur le boutton de dessin de dessin.
+											<img src="src/images/draw_fr.svg" alt="Draw Tool">
+										</li>
+										<li>Cliquez sur la carte pour ajouter des points. Ces dernières sont connecté avec les lignes droites.</li>
+										<li>Fermez votre zone de licence:</li>
+										<ul>
+											<li>Cliquez le premier points</li>
+											<li>Cliquez le boutton Finir à côté du boutton de dessin</li>
+										</ul>
+										<li>Modifier votre zone de licence:</li>
+										<ul>
+											<li>Glissez les points blanc pour les déplacer</li>
+											<li>Glissez les points translucide pour ajouter des points.</li>
+										</ul>
+									</ol>
+							</details>
+							<div id="map"></div>
+					</div>
+
+					<div class="form-group margin-top">
+
+						<div class="alert alert-info" id="medium-power-alert" hidden="hidden">
+							<p>Cette zone est entre 75 km<sup>2</sup> et 165 km<sup>2</sup>. Elle ne peut qu'être utilisé avec <b>pouvoir moyen</b>.</sup></p>
+						</div>
+
+						<div class="alert alert-info" id="low-power-alert" hidden="hidden">
+							<p>Cette zone est entre 0 km<sup>2</sup> et 15 km<sup>2</sup>. Elle ne peut qu'être utilisé avec <b>low power</b>.</sup></p>
+						</div>
+
+						<div class="alert alert-danger" id="too-large-alert" hidden="hidden">
+							<p>L'aire de votre zone est trop large.  S'il vous plaît réduire votre zone pour qu'elle soit moins que 165km<sup>2</sup></p>
+						</div>
+
+						<div class="alert alert-danger" id="between-alert" hidden="hidden">
+							<p>Cette zone est entre 15 km<sup>2</sup> et 75 km<sup>2</sup>. S'il vous plaît réduire ou augementer votre aire hors de ces limites.</p>
+						</div>
+
+						<div id="wkt-output" hidden="true">
+						<label for="WKT">
+							<span class="field-name" id="wkt-input">
+								Zone de licence en format WKT (Well Known Text)
+							</span>
+						</label>
+                        <output type="text" id="WKT" name="WKT" class="form-control"></output>
+						<button class="btn btn-primary" type="button" id="copy-button" onClick="copy()">Copier le WKT</button>
+
+						</div>
+
+						<div class="alert alert-success" id="copied-alert" hidden="true">
+							<p>Le WKT a été copié</p>
+						 </div>
+
+						
+                    </div>
+				</div>
+
+			</div>
+		</div>
+
+	<script src="catch-and-throw.js"></script>
+
+	</div>
+
+<!-- End page content -->
+
+			<div id="def-preFooter">
+				<!-- Write closure fall-back static file -->
+				<!-- preFooter-en.html -->
+			</div>
+			<!-- Write closure template -->
+			<script>
+				var defPreFooter = document.getElementById("def-preFooter");
+				defPreFooter.outerHTML = wet.builder.preFooter({
+					"cdnEnv": "esdcprod",
+					"versionIdentifier": "CD56",
+					"showPostContent": false,
+					"showFeedback": false,
+					"showShare": false
+				});
+			</script>
+		</main>
+		<div id="def-footer">
+			<!-- Write closure fall-back static file -->
+			<!-- transactFooter-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defFooter = document.getElementById("def-footer");
+			defFooter.outerHTML = wet.builder.footer({
+				"cdnEnv": "esdcprod",
+				"showFooter": false,
+				"showFeatures": false,
+				"termsLink": [{
+        			"newWindow": true,
+					"text": "Avis"
+				}],
+				"privacyLink": [{
+					"newWindow": true,
+					"text": "Confidentialité"
+				}],
+				"contextualFooter":{
+					"title": "Spectrum and Telecommunications Sector",
+					"links": [{
+						"text": "Contactez-nous",
+						"href":"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
+						"newWindow": true
+					}]
+				}
+			});
+		</script>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refFooter({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+		<script>
+
+
+		// Leaflet code
+
+			function reset_lat_lngs() {
+				document.getElementById("WKT").value = "";
+				document.getElementById ( "copied-alert" ).setAttribute("hidden","hidden");
+				area_size_spans = document.querySelectorAll(".area-size");
+
+				area_size_spans.forEach(element => {
+					element.innerText = element.textContent = "0";
+				});
+				document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
+				document.getElementById ( "wkt-output" ).setAttribute("hidden","hidden");
+				document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
+				document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
+				document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
+			}
+
+	
+
+			function change_lat_lngs(latlngs, layer) {
+				area = L.GeometryUtil.geodesicArea(latlngs);
+				lat_long_sliced = latlngs.slice(0,12)
+				let wkt = "POLYGON(("
+				for (let i = 0; i < 12; i++) {
+					if (i < lat_long_sliced.length) {
+						wkt += latlngs[i].lng.toFixed(6) + " " + latlngs[i].lat.toFixed(6) + ","
+					}
+					
+				}
+			
+				wkt = wkt.substring(0,wkt.length-1)
+				wkt += "))"
+
+				area_size_spans = document.querySelectorAll(".area-size");
+				area_number = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
+
+				area_size_spans.forEach(element => {
+					element.innerText = element.textContent = area_number
+				});
+
+				if (area >= 165000000) {
+					document.getElementById ( "too-large-alert" ).removeAttribute("hidden");
+					document.getElementById ( "wkt-output" ).setAttribute("hidden","hidden");
+					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
+
+					
+            
+            		drawnItems.setStyle({fillColor :'#760000',
+                    fillOpacity:0.65,
+                    color:"#4e0000",
+                    opacity: 1})
+
+
+					document.getElementById("WKT").value = "";
+				} else if (area >= 75000000 && area <= 165000000 ) {
+					document.getElementById ( "medium-power-alert" ).removeAttribute("hidden");
+					document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "wkt-output" ).removeAttribute("hidden");
+					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
+					document.getElementById("WKT").value = wkt;
+
+					drawnItems.setStyle({fillColor :'#33cc33',
+                    fillOpacity:0.65,
+                    color:"#248f24",
+                    opacity: 1})
+
+				} else if (area <= 15000000){
+					document.getElementById ( "low-power-alert" ).removeAttribute("hidden");
+					document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "between-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "wkt-output" ).removeAttribute("hidden");
+					document.getElementById("WKT").value = wkt;
+
+					drawnItems.setStyle({fillColor :'#33cc33',
+                    fillOpacity:0.65,
+                    color:"#248f24",
+                    opacity: 1})
+				} else {
+					document.getElementById ( "too-large-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "wkt-output" ).setAttribute("hidden","hidden");
+					document.getElementById ( "medium-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "low-power-alert" ).setAttribute("hidden","hidden");
+					document.getElementById ( "between-alert" ).removeAttribute("hidden");
+					document.getElementById("WKT").value = "";
+
+					drawnItems.setStyle({fillColor :'#760000',
+                    fillOpacity:0.65,
+                    color:"#4e0000",
+                    opacity: 1})
+
+				}
+
+			}
+
+			// create map and center to Muskeg
+            var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib}),
+                    map = new L.Map('map', {zoomControl:false, layers: [osm], center: new L.LatLng(63.27268094792591, -100.5815661012755), zoom: 3.3,selectedPathOptions: {
+                color:'#ff9900'
+                }});
+        
+			// add the polygon that will be drawn to the map
+            var drawnItems = new L.FeatureGroup();
+            map.addLayer(drawnItems);
+
+			
+        
+			// add zoom to the bottom right
+            new L.Control.Zoom({ position: 'bottomright', zoomInTitle:'Zoom avant', zoomOutTitle:'Zoom arrière'}).addTo(map);
+
+			// add Fullscreen to the top right. Currently broken
+            new L.Control.Fullscreen({pseudoFullscreen: true, position: 'topright', title:{'false':'Plein Écran','true':'Quitter Plein Écran'}}).addTo(map);
+
+
+
+			// Layers.
+
+			// Map layers. Not implemented.
+			const baseLayers = {
+				'Standard': osm,
+				'Terrain': osm
+			};
+
+			// Fee zone layer.
+			const feezone = L.layerGroup();
+			const overlays = {
+				'Fee Zones': feezone,
+			};
+
+			// Add layer buttom to the top right.
+			const layerControl = L.control.layers(baseLayers, overlays, {position: 'topleft'});
+
+			// Draw control, removes everything but polygon,
+			// and removes intersection from polygon.
+			// Add area and restrict to 12 points.
+        
+            var drawControl = new L.Control.Draw({
+                position: 'topleft',
+                draw: {
+                    polyline: false,
+                    polygon: true,
+                    circle: false,
+                    rectangle: false,
+                    marker: false,
+                    circlemarker: false,
+                polygon: {
+                        allowIntersection: false,
+                        showArea: true,
+                        maxPoints:12,
+                metric: "km",
+                precision: {km:5},
+                shapeOptions: {
+                        fillColor :'#bf00ff',
+                    fillOpacity:0.65,
+                    color:"#8600b3",
+                    opacity: 1
+                          }
+                }
+        
+                },
+            });
+
+			L.drawLocal.draw.toolbar.buttons.polygon = 'Dessiner un polygone'
+
+			L.drawLocal.draw.handlers.polygon.tooltip.start = 'Cliquez pour commencer le polygone'
+			L.drawLocal.draw.handlers.polygon.tooltip.cont = 'Cliquez pour continuer le polygone'
+			L.drawLocal.draw.handlers.polygon.tooltip.end = 'Cliquez le premier point pour finir le polygone'
+
+			L.drawLocal.draw.toolbar.finish.Title = 'Finir de dessiner'
+			L.drawLocal.draw.toolbar.finish.text = 'Finir'
+
+			L.drawLocal.draw.toolbar.undo.Title = 'Supprimer le dernier point dessiner'
+			L.drawLocal.draw.toolbar.undo.text = 'Supprimer le dernier point'
+
+			L.drawLocal.draw.toolbar.actions.Title = 'Annuler le dessin'
+			L.drawLocal.draw.toolbar.actions.text = 'Annuler'
+
+			// Add search, currently does not work well, as I have not added an API key.
+			var searchControl = L.esri.Geocoding.geosearch({
+				expanded: true,
+        	})
+
+            map.addControl(drawControl);
+
+			// add scale to the bottom left.
+            var scale = L.control.scale(); 
+        	scale.addTo(map); 
+		
+        
+			// When the user clicks the trashcan, remove everything and change the icon back to the polygon.
+            L.Control.RemoveAll = L.Control.extend({
+                options: {
+                    position: 'topleft',
+                },
+        
+                onAdd: function (map) {
+                    var controlDiv = L.DomUtil.create('div', 'leaflet-control leaflet-bar');
+                    var controlUI = L.DomUtil.create('a', 'leaflet-draw-edit-remove', controlDiv);
+                    controlUI.title = 'Enlever le polygon';
+                    controlUI.setAttribute('href', '#');
+
+                    controlUI.style.backgroundImage = 'url(src/images/delete_fr.svg)'
+
+                    controlUI.style.width = '5em'
+                    controlUI.style.height = '5em'
+                    controlUI.style.backgroundSize = '90%'
+        
+                    L.DomEvent
+                        .addListener(controlUI, 'click', L.DomEvent.stopPropagation)
+                        .addListener(controlUI, 'click', L.DomEvent.preventDefault)
+                        .addListener(controlUI, 'click', function () {
+							reset_lat_lngs();
+                            drawnItems.clearLayers();
+                            map.removeControl(removeAllControl);
+            				map.addControl(drawControl);
+                        });
+                    return controlDiv;
+                }
+            });
+        
+        removeAllControl = new L.Control.RemoveAll();
+
+		L.Control.textbox = L.Control.extend({
+			options: {
+				position:'bottomleft',
+			},
+
+			onAdd: function(map) {
+				
+			var text = L.DomUtil.create('div');
+			var area_text = document.createElement('div');
+			area_text.classList.add('area-size')
+			text.appendChild(area_text)
+			text.innerHTML = "<div class='text-on-map'> <strong>Aire de zone:</strong> <span class='area-size area-size-drawing'>0</span> <span>km²</span> </div>"
+			return text;
+			},
+		});
+		textboxControl = new L.Control.textbox();
+		map.addControl(textboxControl);
+        
+        
+        // Add area on hover
+        
+        // var getPopupContent = function(layer) {
+        
+        //           var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
+        //           area = L.GeometryUtil.geodesicArea(latlngs);
+        //           return "Area: "+ (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3) + " square kilometer";
+        
+        //         };
+        
+        // TODO : on mouseout finish the polygon
+        
+        // on draw
+
+			map.on( L.Draw.Event.DRAWVERTEX, function(e) {
+
+				let temp_lats=[]
+				let temp_longs=[]
+				let temp_latlongs=[]
+
+				layers = e.layers._layers
+				if (Object.keys(layers).length >=3 ) {
+					for (var vertex_id in layers) {
+					temp_lats.push(layers[vertex_id]._latlng.lat)
+					temp_longs.push(layers[vertex_id]._latlng.lng)
+					}
+					console.log(temp_latlongs)
+					for (let i = 0; i < temp_lats.length; i++) {
+						temp_latlongs.push({lat:temp_lats[i],lng:temp_longs[i]})
+					}
+					console.log(L.GeometryUtil.geodesicArea(temp_latlongs))
+					temp_areas = document.querySelectorAll(".area-size-drawing");
+					temp_areas.forEach(element => {
+						element.innerText = element.textContent = (L.GeometryUtil.geodesicArea(temp_latlongs)/1000000).toFixed(3)
+					});
+				}
+
+			}) 
+
+            map.on(L.Draw.Event.CREATED, function (e) {
+                var type = e.layerType,
+                layer = e.layer;
+						
+            map.removeControl(drawControl);
+            map.addControl(removeAllControl);
+
+			if (layer.getLatLngs()[0].length < 12) {
+				layer.editing.enable()
+			}
+			
+
+			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
+
+			drawnItems.addLayer(layer);
+
+
+			console.log(latlngs)
+			change_lat_lngs(latlngs, layer);
+            
+            });
+
+			// on edit:
+        
+            map.on(L.Draw.Event.EDITVERTEX, function(e){
+
+				drawnItems.eachLayer(function (layer) {
+
+					lat_lngs = layer.getLatLngs()[0]
+
+					// if (lat_lngs.length >= 12) {
+					// 	layer.editing.disable()
+					// }
+
+					change_lat_lngs(lat_lngs, layer)
+
+				})
+
+            })
+        
+         
+           map.on(L.Draw.Event.DELETED, function (e) {
+        
+            if (Object.keys(e.layers._layers).length != 0) {
+                map.removeControl(removeAllControl);
+                map.addControl(drawControl);
+            }
+        
+            
+        });
+
+		
+        
+        </script>
+
+</html>
