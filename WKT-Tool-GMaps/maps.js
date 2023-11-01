@@ -2,7 +2,7 @@
 // - Google's search
 // - Show Area
 //    - Show message based on area
-// - Fix button appearance and location
+// - Fix button location
 // - show scale
 // - remove street view
 
@@ -38,7 +38,7 @@ function initMap() {
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(drawControlDiv);
 
   removeControlDiv.index = 1;
-  
+
   var poly;
 
   // ON DRAW
@@ -83,7 +83,11 @@ function initMap() {
     controlUI.style.backgroundPosition = '40%';
     controlUI.style.width = '5em'
     controlUI.style.height = '5em'
-    controlUI.style.backgroundSize = '100%'
+    controlUI.style.backgroundSize = '95%'
+    controlUI.style.backgroundRepeat= "no-repeat";
+    controlUI.style.borderRadius= "2px";
+    controlUI.style.border= "2px solid rgba(0,0,0,0.2)"
+    controlUI.style.margin = "10px"
     controlDiv.appendChild(controlUI);
 
     google.maps.event.addDomListener(controlUI, 'click', function () {
@@ -100,10 +104,14 @@ function initMap() {
 
     controlUI.style.backgroundImage = 'url(images/draw.svg)'
     controlUI.style.backgroundColor = 'white';
-    controlUI.style.backgroundPosition = '40%';
+    controlUI.style.backgroundPosition = '50%';
     controlUI.style.width = '5em'
     controlUI.style.height = '5em'
     controlUI.style.backgroundSize = '80%'
+    controlUI.style.backgroundRepeat= "no-repeat";
+    controlUI.style.borderRadius= "2px";
+    controlUI.style.border= "2px solid rgba(0,0,0,0.2)"
+    controlUI.style.margin = "10px"
     controlDiv.appendChild(controlUI);
 
     google.maps.event.addDomListener(controlUI, 'click', function () {
