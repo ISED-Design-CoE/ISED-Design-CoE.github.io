@@ -53,8 +53,8 @@ function initMap() {
 
     let wkt = "POLYGON(("
     for (const elem of polygon.getPath().getArray()) {
-      wkt += elem.lng() + " "
-      wkt += elem.lat() + ","
+      wkt += elem.lng().toFixed(6) + " "
+      wkt += elem.lat().toFixed(6) + ","
     }
     wkt = wkt.substring(0, wkt.length - 1)
     wkt += "))"
@@ -81,12 +81,12 @@ function initMap() {
     controlUI.style.backgroundImage = 'url(images/delete.svg)'
     controlUI.style.backgroundColor = 'white';
     controlUI.style.backgroundPosition = '40%';
-    controlUI.style.width = '5em'
-    controlUI.style.height = '5em'
+    controlUI.style.width = '6em'
+    controlUI.style.height = '6em'
     controlUI.style.backgroundSize = '95%'
     controlUI.style.backgroundRepeat= "no-repeat";
     controlUI.style.borderRadius= "2px";
-    controlUI.style.border= "2px solid rgba(0,0,0,0.2)"
+    controlUI.style.border= "3px solid rgba(0,0,0,0.2)"
     controlUI.style.margin = "10px"
     controlDiv.appendChild(controlUI);
 
@@ -105,13 +105,14 @@ function initMap() {
     controlUI.style.backgroundImage = 'url(images/draw.svg)'
     controlUI.style.backgroundColor = 'white';
     controlUI.style.backgroundPosition = '50%';
-    controlUI.style.width = '5em'
-    controlUI.style.height = '5em'
+    controlUI.style.width = '6em'
+    controlUI.style.height = '6em'
     controlUI.style.backgroundSize = '80%'
     controlUI.style.backgroundRepeat= "no-repeat";
     controlUI.style.borderRadius= "2px";
-    controlUI.style.border= "2px solid rgba(0,0,0,0.2)"
+    controlUI.style.border= "3px solid rgba(0,0,0,0.2)"
     controlUI.style.margin = "10px"
+    controlUI.style.boxShadow = "0 0 0 2pt black;"
     controlDiv.appendChild(controlUI);
 
     google.maps.event.addDomListener(controlUI, 'click', function () {
