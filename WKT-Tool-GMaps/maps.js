@@ -1,7 +1,10 @@
-// look into google search
-// remove feature 
-// prevent multiple polygons
-// 
+// TODOs:
+// - Google's search
+// - Show Area
+//    - Show message based on area
+// - Fix button appearance and location
+// - show scale
+// - remove street view
 
 function initMap() {
   const map = new google.maps.Map(document.getElementById("map"), {
@@ -9,8 +12,8 @@ function initMap() {
     zoom: 4,
   });
   const drawingManager = new google.maps.drawing.DrawingManager({
-    drawingMode: google.maps.drawing.OverlayType.POLYGON,
-    drawingControl: true,
+    drawingMode: null,
+    drawingControl: false,
     polygonOptions: {
       editable: true,
       fillColor: '#bf00ff',
@@ -30,10 +33,18 @@ function initMap() {
   var removeControlDiv = document.createElement('div');
   var removeControl = new RemoveControl(removeControlDiv);
 
+  var drawControlDiv = document.createElement('div');
+  var drawControl = new DrawControl(drawControlDiv);
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(drawControlDiv);
+
   removeControlDiv.index = 1;
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(removeControlDiv);
+  
+  var poly;
+
+  // ON DRAW
 
   google.maps.event.addListener(drawingManager, "polygoncomplete", function (polygon) {
+    poly = polygon
     google.maps.event.addListener(polygon, 'click', function (mev) {
       if (mev.vertex != null) {
         polygon.getPath().removeAt(mev.vertex);
@@ -52,7 +63,16 @@ function initMap() {
       drawingMode: null,
       drawingControl: false,
     });
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(removeControlDiv);
+    document.getElementById("WKT").value = wkt;
+    document.getElementById ( "wkt-output" ).removeAttribute("hidden");
   });
+
+
+
+
+
+// BUTTONS
 
   function RemoveControl(controlDiv) {
     var controlUI = document.createElement('div');
@@ -67,7 +87,28 @@ function initMap() {
     controlDiv.appendChild(controlUI);
 
     google.maps.event.addDomListener(controlUI, 'click', function () {
-      console.log('remove poly')
+      poly.setMap(null);
+      map.controls[google.maps.ControlPosition.TOP_CENTER].pop()
+      map.controls[google.maps.ControlPosition.TOP_CENTER].push(drawControlDiv);
+    });
+
+  }
+
+  function DrawControl(controlDiv) {
+    var controlUI = document.createElement('div');
+    controlUI.title = 'Draw polygon';
+
+    controlUI.style.backgroundImage = 'url(images/draw.svg)'
+    controlUI.style.backgroundColor = 'white';
+    controlUI.style.backgroundPosition = '40%';
+    controlUI.style.width = '5em'
+    controlUI.style.height = '5em'
+    controlUI.style.backgroundSize = '80%'
+    controlDiv.appendChild(controlUI);
+
+    google.maps.event.addDomListener(controlUI, 'click', function () {
+      drawingManager.setOptions({drawingMode:google.maps.drawing.OverlayType.POLYGON})
+      map.controls[google.maps.ControlPosition.TOP_CENTER].pop()
     });
 
   }
