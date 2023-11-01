@@ -37,7 +37,10 @@ function initMap() {
   var drawControl = new DrawControl(drawControlDiv);
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(drawControlDiv);
 
-  removeControlDiv.index = 1;
+  var areaControlDiv = document.createElement('div');
+  var areaControl = new AreaControl(areaControlDiv);
+  map.controls[google.maps.ControlPosition.BOTTOM_LEFT].push(areaControlDiv);
+
 
   var poly;
 
@@ -66,6 +69,8 @@ function initMap() {
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(removeControlDiv);
     document.getElementById("WKT").value = wkt;
     document.getElementById ( "wkt-output" ).removeAttribute("hidden");
+
+    document.getElementById("area").innerHTML = "<b>Area Size</b>: "+ ((google.maps.geometry.spherical.computeArea(polygon.getPath())/1000000).toFixed(3)) + " km<sup>2</sup>"
   });
 
 
@@ -94,6 +99,8 @@ function initMap() {
       poly.setMap(null);
       map.controls[google.maps.ControlPosition.TOP_CENTER].pop()
       map.controls[google.maps.ControlPosition.TOP_CENTER].push(drawControlDiv);
+      document.getElementById ( "wkt-output" ).setAttribute("hidden",'true');
+
     });
 
   }
@@ -121,6 +128,27 @@ function initMap() {
     });
 
   }
+
+  // AREA
+
+  function AreaControl(controlDiv) {
+    var controlUI = document.createElement('div');
+    controlUI.title = 'Area size';
+
+    controlUI.style.backgroundColor = 'white';
+    controlUI.style.borderRadius= "4px";
+    controlUI.style.border= "2px solid rgba(0,0,0,0.2)"
+    controlUI.style.margin = "10px"
+    controlUI.style.padding = "8px"
+    controlUI.id = "area"
+    controlUI.innerHTML = '<b>Area Size: </b>'
+
+    controlDiv.appendChild(controlUI);
+
+  }
+
+
+
 }
 window.initMap = initMap;
 
