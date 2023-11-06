@@ -553,19 +553,6 @@ var urlQueries = baseQuery
 		textboxControl = new L.Control.textbox();
 		map.addControl(textboxControl);
         
-        
-        // Add area on hover
-        
-        // var getPopupContent = function(layer) {
-        
-        //           var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs(),
-        //           area = L.GeometryUtil.geodesicArea(latlngs);
-        //           return "Area: "+ (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3) + " square kilometer";
-        
-        //         };
-        
-        // TODO : on mouseout finish the polygon
-        
         // on draw
 
 			map.on( L.Draw.Event.DRAWVERTEX, function(e) {
@@ -593,25 +580,25 @@ var urlQueries = baseQuery
 
 			}) 
 
+			drawnItems.addLayer(layer);
+
             map.on(L.Draw.Event.CREATED, function (e) {
                 var type = e.layerType,
                 layer = e.layer;
 						
-            map.removeControl(drawControl);
-            map.addControl(removeAllControl);
+				map.removeControl(drawControl);
+				map.addControl(removeAllControl);
 
-			if (layer.getLatLngs()[0].length < 12) {
-				layer.editing.enable()
-			}
+				drawnItems.addLayer(layer);
+				if (layer.getLatLngs()[0].length < 12) {
+					layer.editing.enable()
+					map.editTools.stopDrawing();
+				}
 			
+				var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
 
-			var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
-
-			drawnItems.addLayer(layer);
-
-
-			console.log(latlngs)
-			change_lat_lngs(latlngs, layer);
+				console.log(latlngs)
+				change_lat_lngs(latlngs, layer);
             
             });
 
