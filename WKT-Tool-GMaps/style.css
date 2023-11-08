@@ -1,7 +1,6 @@
 #map {
   border: 1px solid black;
   height: 40em;
-  margin-bottom: 2em;
 }
 
 @media (min-width: 768px) {
