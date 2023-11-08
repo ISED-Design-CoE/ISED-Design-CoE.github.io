@@ -2,16 +2,37 @@
 // - Google's search (impossible with current key)
 // - remove street view (may be dependent on url for website, or key)
 
+
+
+let language = 'en'
+
+if (window.location.href.slice(-3) == '/fr') {language = 'fr'}
+
 let polygon;
 
 let ignore_drawing = false;
 
 let warnings = {
-  medium: "<p>The area is between 75 km<sup>2</sup> and 165 km<sup>2</sup>. It can only be used with <b>medium power</b>.</sup></p>",
-  low: "<p>The area is between 0 km<sup>2</sup> and 15 km<sup>2</sup>. It can only be used with <b>low power</b>.</sup></p>",
-  large: "<p>The area is too large. Please reduce the size of the polygon to be less than 165km<sup>2</sup></p>",
-  between: "<p>The area is between 15 km<sup>2</sup> and 75 km<sup>2</sup>. Please reduce or increase your area size beyond these limits.</p>",
-  morethantwelve: "<p>The polygon drawn contains <b>more than twelve points</b>. Please redraw or remove points</p>"
+  medium: {
+    'en': "<p>The area is between 75 km<sup>2</sup> and 165 km<sup>2</sup>. It can only be used with <b>medium power</b>.</sup></p>",
+    'fr': "<p>Cette zone est entre 75 km<sup>2</sup> et 165 km<sup>2</sup>. Elle ne peut qu'être utilisé avec les <b>bandes moyennes</b>.</sup></p>"},
+  low: {
+    'en': "<p>The area is between 0 km<sup>2</sup> and 15 km<sup>2</sup>. It can only be used with <b>low power</b>.</sup></p>",
+    'fr': "<p>Cette zone est entre 0 km<sup>2</sup> et 15 km<sup>2</sup>. Elle ne peut qu'être utilisé avec les <b>bandes basses</b>.</sup></p>"},
+  large: {
+    'en': "<p>The area is too large. Please reduce the size of the polygon to be less than 165km<sup>2</sup></p>",
+    'fr': "<p>L'aire de votre zone est trop large.  S'il vous plaît réduire votre zone pour qu'elle soit moins que 165km<sup>2</sup></p>"},
+  between: {
+    'en': "<p>The area is between 15 km<sup>2</sup> and 75 km<sup>2</sup>. Please reduce or increase your area size beyond these limits.</p>",
+    'fr': "<p>Cette zone est entre 15 km<sup>2</sup> et 75 km<sup>2</sup>. S'il vous plaît réduire ou augementer votre aire hors de ces limites.</p>"},
+  morethantwelve: {
+    'en': "<p>The polygon drawn contains <b>more than twelve points</b>. Please redraw or remove points</p>",
+    'fr': "<p>Le polygone déssiné contain <b>plus que douze points</b>. S'il vous plaît re-dessiner ou enlever des points</p>"}
+}
+
+let area_text = {
+  en: "Area size",
+  fr: "Taille de zone"
 }
 
 let polygon_colour = {
@@ -134,32 +155,32 @@ function initMap() {
   function updateArea() {
     let area = (google.maps.geometry.spherical.computeArea(polygon.getPath()) / 1000000).toFixed(3)
 
-    document.getElementById("area").innerHTML = "<b>Area size</b>: " + area + " km<sup>2</sup>"
+    document.getElementById("area").innerHTML = "<b>"+ area_text[language] +"</b>: " + area + " km<sup>2</sup>"
 
     document.getElementById("size-alert").removeAttribute('hidden')
 
     if (polygon.getPath().getLength() > 12){
-      document.getElementById("alert-text").innerHTML = warnings.morethantwelve
+      document.getElementById("alert-text").innerHTML = warnings.morethantwelve[language]
       document.getElementById("size-alert").classList = "alert alert-danger"
       document.getElementById("wkt-output").setAttribute("hidden", "true")
       polygon.setOptions(polygon_colour.notaccepted)
     } else if (area < 15) {
-      document.getElementById("alert-text").innerHTML = warnings.low
+      document.getElementById("alert-text").innerHTML = warnings.low[language]
       document.getElementById("size-alert").classList = "alert alert-info"
       document.getElementById("wkt-output").removeAttribute("hidden")
       polygon.setOptions(polygon.setOptions(polygon_colour.accepted))
     } else if (area >= 15 && area <= 75) {
-      document.getElementById("alert-text").innerHTML = warnings.between
+      document.getElementById("alert-text").innerHTML = warnings.between[language]
       document.getElementById("size-alert").classList = "alert alert-danger"
       document.getElementById("wkt-output").setAttribute("hidden", "true")
       polygon.setOptions(polygon.setOptions(polygon_colour.notaccepted))
     } else if (area < 165) {
-      document.getElementById("alert-text").innerHTML = warnings.medium
+      document.getElementById("alert-text").innerHTML = warnings.medium[language]
       document.getElementById("size-alert").classList = "alert alert-info"
       document.getElementById("wkt-output").removeAttribute("hidden")
       polygon.setOptions(polygon.setOptions(polygon_colour.accepted))
     } else {
-      document.getElementById("alert-text").innerHTML = warnings.large
+      document.getElementById("alert-text").innerHTML = warnings.large[language]
       document.getElementById("size-alert").classList = "alert alert-danger"
       document.getElementById("wkt-output").setAttribute("hidden", "true")
       polygon.setOptions(polygon.setOptions(polygon_colour.notaccepted))
@@ -184,7 +205,7 @@ function initMap() {
     map.controls[google.maps.ControlPosition.LEFT_TOP].push(drawControlDiv);
     document.getElementById("wkt-output").setAttribute("hidden", 'true');
     document.getElementById("size-alert").setAttribute("hidden", "true");
-    document.getElementById("area").innerHTML = "<b>Area size</b>:";
+    document.getElementById("area").innerHTML = "<b>"+area_text[language]+"</b>:";
   }
 
   // MAP UI ELEMENTS
@@ -193,7 +214,9 @@ function initMap() {
   function DrawActiveControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Remove polygon';
-    controlUI.classList = 'draw-active-button'
+    if (language = 'fr') {
+      controlUI.classList = 'draw-active-button draw-fr'
+    } else {controlUI.classList = 'draw-active-button'}
     controlDiv.appendChild(controlUI);
 
     google.maps.event.addDomListener(controlUI, 'click', function () {
@@ -207,7 +230,9 @@ function initMap() {
   function RemoveControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Remove polygon';
-    controlUI.classList = 'remove-button'
+    if (language = 'fr') {
+      controlUI.classList = 'remove-button remove-fr'
+    } else {controlUI.classList = 'remove-button'}
     
     controlDiv.appendChild(controlUI);
 
@@ -221,7 +246,10 @@ function initMap() {
   function DrawControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Draw polygon';
-    controlUI.classList = 'draw-button'
+    if (language = 'fr') {
+      controlUI.classList = 'draw-button draw-fr'
+    } else {controlUI.classList = 'draw-button'}
+    
     
     controlDiv.appendChild(controlUI);
 
@@ -236,16 +264,14 @@ function initMap() {
   // Area Textbox
   function AreaControl(controlDiv) {
     var controlUI = document.createElement('div');
-    controlUI.title = 'Area size';
+    controlUI.title = area_text[language];
     controlUI.classList='area-textbox'
     controlUI.id = "area"
-    controlUI.innerHTML = '<b>Area size: </b>'
+    controlUI.innerHTML = '<b>'+area_text[language]+'</b>:'
 
     controlDiv.appendChild(controlUI);
 
   }
-
-
 
 }
 window.initMap = initMap;

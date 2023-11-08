@@ -117,9 +117,9 @@
 		defTop.outerHTML = wet.builder.top({
 			"cdnEnv": "esdcprod",
 			"lngLinks": [{
-				"lang": "fr",
-				"href": "fr.html",
-				"text": "Français"
+				"lang": "en",
+				"href": "index.html",
+				"text": "English"
 			}],
 			"search": false,
 			"siteMenu": false,
@@ -153,73 +153,73 @@
 			<div class="wb-frm">
 				<div class="container">
 
-					<h1 property="name" id="wb-cont">Licence area in WKT (Well Known Text) Format</h1>
+					<h1 property="name" id="wb-cont">Zones de licence dans le format WKT (Well Known Text)</h1>
 					<p>
-						You may draw a licence area, with up to 12 boundary points on the interactive map below.
-						Once a licence area is defined, you may copy the coordinates in WKT format to your clipboard.
+						Vous pouvez dessiner une zone de licence, avec jusqu'à 12 points de délimitation, sur la carte
+						interactive ci-dessous.
+						Une fois la zone de licence définie, vous pouvez copier les coordonnées au format WKT dans votre
+						presse-papiers.
 					</p>
 
 					<div class="row">
 						<details id="map-instructions">
-							<summary>How to use the interactive map</summary>
-							<p>To navigate the map:</p>
+							<summary>Comment utiliser la carte intéractive</summary>
+							<p>Pour naviguer la carte:</p>
 
 							<ul>
-								<li>Click and drag to move the map</li>
-								<li>Zoom in:</li>
+								<li>Cliquez et glisser pour bouger la carte</li>
+								<li>Zoom:</li>
 								<ul>
-									<li>Double click</li>
-									<li>Scroll</li>
-									<li>Click the zoom icons on the bottom right</li>
+									<li>Double-clique</li>
+									<li>Défiler</li>
+									<li>Cliquez les icons de zoom en bas à gauche./li>
 								</ul>
 							</ul>
-							<p>To draw:</p>
+							<p>Pour dessiner:</p>
 							<ol>
-								<li>Navigate to your location</li>
-								<li>Click the draw tool
-									<img src="images/draw.svg" alt="Draw Tool">
+								<li>Naviguer à votre position</li>
+								<li>Cliquez sur le boutton de dessin de dessin.
+									<img src="src/images/draw_fr.svg" alt="Draw Tool">
 								</li>
-								<li>Click on the map to add points. These are connected by straight lines.</li>
-								<li>Close your boundary:</li>
+								<li>Cliquez sur la carte pour ajouter des points. Ces dernières sont connecté avec les
+									lignes droites.</li>
+								<li>Fermez votre zone de licence:</li>
 								<ul>
-									<li>Click the first point</li>
-									<li>Click the finish button next to the draw icon</li>
+									<li>Cliquez le premier points</li>
+									<li>Cliquez le boutton Finir à côté du boutton de dessin</li>
 								</ul>
-								<li>Edit your boundary:</li>
+								<li>Modifier votre zone de licence:</li>
 								<ul>
-									<li>Drag the white points to move them</li>
-									<li>Drag the translucent points to add new points</li>
+									<li>Glissez les points blanc pour les déplacer</li>
+									<li>Glissez les points translucide pour ajouter des points.</li>
 								</ul>
 							</ol>
 						</details>
 						<div id="map"></div>
 						<script
-
-							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtgL6wcFCT53e77HPUQnTBZRsDUKIafwE&callback=initMap&libraries=drawing&v=weekly"
+							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtgL6wcFCT53e77HPUQnTBZRsDUKIafwE&callback=initMap&language=fr-CA&libraries=drawing&v=weekly"
 							defer></script>
 					</div>
 
 					<div class="form-group margin-top">
 
 						<div class="alert alert-info" id="size-alert" hidden="hidden">
-							<p id="alert-text"> test The area is between 75 km<sup>2</sup> and 165 km<sup>2</sup>. It can only be used with
-								<b>medium power</b>.</sup></p>
+							<p id="alert-text">Erreur</p>
 						</div>
 
 						<div id="wkt-output" hidden="true">
 							<label for="WKT">
 								<span class="field-name" id="wkt-input">
-									Licence area in WKT (Well Known Text) format
+									Zone de licence en format WKT (Well Known Text)
 								</span>
 							</label>
 							<output type="text" id="WKT" name="WKT" class="form-control"></output>
-							<button class="btn btn-primary" type="button" id="copy-button" onClick="copy()">Copy
-								WKT</button>
+							<button class="btn btn-primary" type="button" id="copy-button" onClick="copy()">Copier le WKT</button>
 
 						</div>
 
 						<div class="alert alert-success" id="copied-alert" hidden="true">
-							<p>WKT Copied</p>
+							<p>Le WKT a été copié</p>
 						</div>
 
 
@@ -260,15 +260,17 @@
 			"showFooter": false,
 			"showFeatures": false,
 			"termsLink": [{
-				"newWindow": true
+				"newWindow": true,
+				"text": "Avis"
 			}],
 			"privacyLink": [{
-				"newWindow": true
+				"newWindow": true,
+				"text": "Confidentialité"
 			}],
 			"contextualFooter": {
 				"title": "Spectrum and Telecommunications Sector",
 				"links": [{
-					"text": "Contact us",
+					"text": "Contactez-nous",
 					"href": "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
 					"newWindow": true
 				}]
@@ -282,6 +284,6 @@
 		}));
 	</script>
 
-	
+
 
 </html>
