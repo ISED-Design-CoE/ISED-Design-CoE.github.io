@@ -40,10 +40,12 @@ let polygon_colour = {
   accepted: {
     fillColor: "#33cc33",
     fillOpacity: 0.65,
+    strokeColor:"#248f24",
   },
   notaccepted: {
     fillColor: "#760000",
     fillOpacity: 0.75,
+    strokeColor:"#4e0000",
   },
 };
 
