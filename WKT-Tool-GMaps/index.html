@@ -31,37 +31,11 @@
 	<meta name="language" lang="en"/>
 	<script type="module" src="./maps.js"></script>
 
-	<script>
-		const baseQuery = window.location.search
-		var urlQueries = baseQuery
-	</script>
-
 	<style>
-		/* Styles for all mockups */
-		.notesaboutmockup {
-			color: #333;
-			background: #FFD;
-			padding: 0 1em;
-			border-color: #FC6;
-			border-width: 2px;
-			border-style: solid;
-			margin-top: 3em;
-		}
-
-		.notesaboutmockup h2 {
-			font-size: inherit;
-			margin-top: 1em;
-		}
-
-		/* Styles for this mockup */
 		#map {
 			border: 1px solid black;
 			height: 40em;
 			margin-bottom: 2em;
-		}
-
-		#WKT {
-			width: 100%;
 		}
 
 		@media (min-width: 768px) {
@@ -70,33 +44,13 @@
 			}
 		}
 
-		.highlight {
-			background-color: yellow;
-		}
-
 		.margin-top,
 		#map-instructions {
 			margin-top: 38px;
 		}
 
-		.text-on-map {
-			background: white;
-			border-radius: 4px;
-			outline: 2px solid rgba(0, 0, 0, 0.2);
-			padding: 8px;
-		}
-
 		html {
 			scroll-behavior: smooth;
-		}
-
-		#map .leaflet-draw-draw-polygon {
-			background-image: url('images/draw.svg') !important;
-			background-position: 50%;
-			background-size: 60%;
-			width: 5em;
-			height: 5em;
-
 		}
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
