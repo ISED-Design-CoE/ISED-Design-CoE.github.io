@@ -2,11 +2,8 @@
 // - Google's search (impossible with current key)
 // - remove street view (may be dependent on url for website, or key)
 
-console.log(document.getElementsByName('language')[0].lang)
+let language = (document.getElementsByName('language')[0].lang)
 
-let language = 'en'
-
-if (window.location.href.slice(-8) == '/fr.html') {language = 'fr'}
 let polygon;
 
 let ignore_drawing = false;
