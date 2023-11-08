@@ -1,3 +1,23 @@
+#map {
+  border: 1px solid black;
+  height: 40em;
+  margin-bottom: 2em;
+}
+
+@media (min-width: 768px) {
+  .dl-horizontal dt {
+    width: 15em;
+  }
+}
+
+.margin-top,
+#map-instructions {
+  margin-top: 38px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 .remove-button {
   background-image: url(images/delete.svg);
