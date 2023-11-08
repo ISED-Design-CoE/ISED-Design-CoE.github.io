@@ -7,7 +7,6 @@
 let language = 'en'
 
 if (window.location.href.slice(-3) == '/fr') {language = 'fr'}
-
 let polygon;
 
 let ignore_drawing = false;
@@ -54,7 +53,6 @@ function initMap() {
     zoom: 4,
     scaleControl: true,
   });
-
   // create polygon drawing manager
   const drawingManager = new google.maps.drawing.DrawingManager({
     drawingMode: null,
@@ -72,7 +70,6 @@ function initMap() {
   });
 
   drawingManager.setMap(map);
-
   // create the custom elements on the map
   var removeControlDiv = document.createElement('div');
   var removeControl = new RemoveControl(removeControlDiv);
@@ -84,7 +81,7 @@ function initMap() {
   var drawControl = new DrawControl(drawControlDiv);
   map.controls[google.maps.ControlPosition.LEFT_TOP].push(drawControlDiv);
 
-
+  
   var areaControlDiv = document.createElement('div');
   var areaControl = new AreaControl(areaControlDiv);
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(areaControlDiv);
@@ -214,7 +211,7 @@ function initMap() {
   function DrawActiveControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Remove polygon';
-    if (language = 'fr') {
+    if (language == 'fr') {
       controlUI.classList = 'draw-active-button draw-fr'
     } else {controlUI.classList = 'draw-active-button'}
     controlDiv.appendChild(controlUI);
@@ -230,7 +227,7 @@ function initMap() {
   function RemoveControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Remove polygon';
-    if (language = 'fr') {
+    if (language == 'fr') {
       controlUI.classList = 'remove-button remove-fr'
     } else {controlUI.classList = 'remove-button'}
     
@@ -246,7 +243,7 @@ function initMap() {
   function DrawControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Draw polygon';
-    if (language = 'fr') {
+    if (language == 'fr') {
       controlUI.classList = 'draw-button draw-fr'
     } else {controlUI.classList = 'draw-button'}
     
