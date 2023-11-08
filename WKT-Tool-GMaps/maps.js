@@ -2,7 +2,7 @@
 // - Google's search
 // - Show Area X
 //    - Show message based on area X
-// - Fix button location
+// - Fix button location X
 // - show scale X
 // - remove street view
 // errors when more than 13 points
@@ -16,7 +16,7 @@ let warnings = {
   low: "<p>The area is between 0 km<sup>2</sup> and 15 km<sup>2</sup>. It can only be used with <b>low power</b>.</sup></p>",
   large: "<p>The area is too large. Please reduce the size of the polygon to be less than 165km<sup>2</sup></p>",
   between: "<p>The area is between 15 km<sup>2</sup> and 75 km<sup>2</sup>. Please reduce or increase your area size beyond these limits.</p>",
-  morethantwelve: "<p>The "
+  morethantwelve: "<p>The polygon drawn contains <b>more than twelve points</b>. Please redraw or remove points</p>"
 }
 
 function initMap() {
@@ -70,10 +70,6 @@ function initMap() {
       return;
     }
 
-    while (polygon.getPath().getLength() > 12) {
-      polygon.getPath().pop();
-    }
-
     google.maps.event.addListener(polygon, 'click', function (mev) {
       if (mev.vertex != null) {
         if (polygon.getPath().getLength() > 3) {
@@ -113,9 +109,9 @@ function initMap() {
   function onAddVertex() {
     google.maps.event.addListener(polygon.getPath(), "insert_at", function (index) {
       updateArea()
-      if (polygon.getPath().getLength() > 12) {
-        polygon.getPath().removeAt(index)
-      }
+      // if (polygon.getPath().getLength() > 12) {
+      //   polygon.getPath().removeAt(index)
+      // }
     })
   };
 
@@ -133,7 +129,15 @@ function initMap() {
     document.getElementById("area").innerHTML = "<b>Area size</b>: " + area + " km<sup>2</sup>"
 
     document.getElementById("size-alert").removeAttribute('hidden')
-    if (area < 15) {
+
+    if (polygon.getPath().getLength() > 12){
+      document.getElementById("alert-text").innerHTML = warnings.morethantwelve
+      document.getElementById("size-alert").classList = "alert alert-danger"
+      polygon.setOptions({
+        fillColor: '#760000',
+        fillOpacity: 0.50
+      })
+    } else if (area < 15) {
       document.getElementById("alert-text").innerHTML = warnings.low
       document.getElementById("size-alert").classList = "alert alert-info"
       document.getElementById("wkt-output").removeAttribute("hidden")
@@ -168,10 +172,10 @@ function initMap() {
 
 
 
-  // BUTTONS
+  // MAP UI ELEMENTS
 
 
-  // Draw is Active
+  // Draw is Active Button
   function DrawActiveControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Remove polygon';
@@ -201,7 +205,7 @@ function initMap() {
 
   }
 
-  // Remove Polygon
+  // Remove Polygon Button
   function RemoveControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Remove polygon';
@@ -229,6 +233,7 @@ function initMap() {
 
   }
 
+  // Draw Polygon Button
   function DrawControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Draw polygon';
@@ -255,8 +260,7 @@ function initMap() {
 
   }
 
-  // AREA
-
+  // Area Textbox
   function AreaControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Area size';
