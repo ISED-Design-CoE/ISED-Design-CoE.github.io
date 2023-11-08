@@ -5,7 +5,7 @@
 // - Fix button location X
 // - show scale X
 // - remove street view
-// errors when more than 13 points
+// errors when more than 13 points X
 
 let polygon;
 
@@ -80,15 +80,7 @@ function initMap() {
     });
 
 
-    // WKT
-    let wkt = "POLYGON(("
-    for (const elem of polygon.getPath().getArray()) {
-      wkt += elem.lng().toFixed(6) + " "
-      wkt += elem.lat().toFixed(6) + ","
-    }
-    wkt = wkt.substring(0, wkt.length - 1)
-    wkt += "))"
-    console.log(wkt)
+    
 
 
     drawingManager.setOptions({
@@ -97,7 +89,7 @@ function initMap() {
     });
     map.controls[google.maps.ControlPosition.LEFT_TOP].pop()
     map.controls[google.maps.ControlPosition.LEFT_TOP].push(removeControlDiv);
-    document.getElementById("WKT").value = wkt;
+    
 
     updateArea()
     onAddVertex()
@@ -133,6 +125,7 @@ function initMap() {
     if (polygon.getPath().getLength() > 12){
       document.getElementById("alert-text").innerHTML = warnings.morethantwelve
       document.getElementById("size-alert").classList = "alert alert-danger"
+      document.getElementById("wkt-output").setAttribute("hidden", "true")
       polygon.setOptions({
         fillColor: '#760000',
         fillOpacity: 0.50
@@ -148,6 +141,7 @@ function initMap() {
     } else if (area >= 15 && area <= 75) {
       document.getElementById("alert-text").innerHTML = warnings.between
       document.getElementById("size-alert").classList = "alert alert-danger"
+      document.getElementById("wkt-output").setAttribute("hidden", "true")
       polygon.setOptions({
         fillColor: '#760000',
         fillOpacity: 0.50
@@ -163,11 +157,22 @@ function initMap() {
     } else {
       document.getElementById("alert-text").innerHTML = warnings.large
       document.getElementById("size-alert").classList = "alert alert-danger"
+      document.getElementById("wkt-output").setAttribute("hidden", "true")
       polygon.setOptions({
         fillColor: '#760000',
         fillOpacity: 0.50
       })
     }
+
+    // WKT
+    let wkt = "POLYGON(("
+    for (const elem of polygon.getPath().getArray()) {
+      wkt += elem.lng().toFixed(6) + " "
+      wkt += elem.lat().toFixed(6) + ","
+    }
+    wkt = wkt.substring(0, wkt.length - 1)
+    wkt += "))"
+    document.getElementById("WKT").value = wkt;
   }
 
 
@@ -199,7 +204,8 @@ function initMap() {
       map.controls[google.maps.ControlPosition.LEFT_TOP].pop()
       map.controls[google.maps.ControlPosition.LEFT_TOP].push(drawControlDiv);
       document.getElementById("wkt-output").setAttribute("hidden", 'true');
-
+      document.getElementById("size-alert").setAttribute("hidden", "true");
+      document.getElementById("area").innerHTML = "<b>Area size</b>:";
 
     });
 
@@ -228,6 +234,8 @@ function initMap() {
       map.controls[google.maps.ControlPosition.LEFT_TOP].pop()
       map.controls[google.maps.ControlPosition.LEFT_TOP].push(drawControlDiv);
       document.getElementById("wkt-output").setAttribute("hidden", 'true');
+      document.getElementById("size-alert").setAttribute("hidden", "true")
+      document.getElementById("area").innerHTML = "<b>Area size</b>:"
 
     });
 
