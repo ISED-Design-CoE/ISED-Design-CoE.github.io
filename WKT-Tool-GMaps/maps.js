@@ -1,5 +1,5 @@
 // TODOs:
-// - Google's search
+// - Google's search (impossible with current key)
 // - Show Area X
 //    - Show message based on area X
 // - Fix button location X
