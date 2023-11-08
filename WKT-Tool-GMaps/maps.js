@@ -76,7 +76,10 @@ function initMap() {
 
     google.maps.event.addListener(polygon, 'click', function (mev) {
       if (mev.vertex != null) {
-        polygon.getPath().removeAt(mev.vertex);
+        if (polygon.getPath().getLength() > 3) {
+          polygon.getPath().removeAt(mev.vertex);
+          updateArea()
+        }
       }
     });
 
@@ -100,6 +103,31 @@ function initMap() {
     map.controls[google.maps.ControlPosition.LEFT_TOP].push(removeControlDiv);
     document.getElementById("WKT").value = wkt;
 
+    updateArea()
+    onAddVertex()
+    onMoveVertex()
+  });
+
+
+
+  function onAddVertex() {
+    google.maps.event.addListener(polygon.getPath(), "insert_at", function (index) {
+      updateArea()
+      if (polygon.getPath().getLength() > 12) {
+        polygon.getPath().removeAt(index)
+      }
+    })
+  };
+
+  function onMoveVertex() {
+    google.maps.event.addListener(polygon.getPath(), "set_at", function (index) {
+      updateArea()
+    })
+  };
+
+
+
+  function updateArea() {
     let area = (google.maps.geometry.spherical.computeArea(polygon.getPath()) / 1000000).toFixed(3)
 
     document.getElementById("area").innerHTML = "<b>Area size</b>: " + area + " km<sup>2</sup>"
@@ -109,44 +137,41 @@ function initMap() {
       document.getElementById("alert-text").innerHTML = warnings.low
       document.getElementById("size-alert").classList = "alert alert-info"
       document.getElementById("wkt-output").removeAttribute("hidden")
+      polygon.setOptions({
+        fillColor: '#33cc33',
+        fillOpacity: 0.65
+      })
     } else if (area >= 15 && area <= 75) {
       document.getElementById("alert-text").innerHTML = warnings.between
       document.getElementById("size-alert").classList = "alert alert-danger"
       polygon.setOptions({
         fillColor: '#760000',
-        fillOpacity: 0.65
+        fillOpacity: 0.50
       })
     } else if (area < 165) {
       document.getElementById("alert-text").innerHTML = warnings.medium
       document.getElementById("size-alert").classList = "alert alert-info"
       document.getElementById("wkt-output").removeAttribute("hidden")
+      polygon.setOptions({
+        fillColor: '#33cc33',
+        fillOpacity: 0.65
+      })
     } else {
       document.getElementById("alert-text").innerHTML = warnings.large
       document.getElementById("size-alert").classList = "alert alert-danger"
       polygon.setOptions({
         fillColor: '#760000',
-        fillOpacity: 0.65
+        fillOpacity: 0.50
       })
     }
-
-
-
-    checkVertexAmount()
-  });
-
-  function checkVertexAmount() {
-    google.maps.event.addListener(polygon.getPath(), "insert_at", function (index) {
-      console.log('test')
-      if (polygon.getPath().getLength() > 12) {
-        polygon.getPath().removeAt(index)
-      }
-    })
-  };
+  }
 
 
 
   // BUTTONS
 
+
+  // Draw is Active
   function DrawActiveControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Remove polygon';
@@ -170,12 +195,13 @@ function initMap() {
       map.controls[google.maps.ControlPosition.LEFT_TOP].pop()
       map.controls[google.maps.ControlPosition.LEFT_TOP].push(drawControlDiv);
       document.getElementById("wkt-output").setAttribute("hidden", 'true');
-      
+
 
     });
 
   }
 
+  // Remove Polygon
   function RemoveControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Remove polygon';
