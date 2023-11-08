@@ -1,11 +1,6 @@
 // TODOs:
 // - Google's search (impossible with current key)
-// - Show Area X
-//    - Show message based on area X
-// - Fix button location X
-// - show scale X
-// - remove street view
-// errors when more than 13 points X
+// - remove street view (may be dependent on url for website, or key)
 
 let polygon;
 
@@ -19,19 +14,32 @@ let warnings = {
   morethantwelve: "<p>The polygon drawn contains <b>more than twelve points</b>. Please redraw or remove points</p>"
 }
 
+let polygon_colour = {
+  accepted: {
+    fillColor: '#33cc33',
+    fillOpacity: 0.65
+  },
+  notaccepted: {
+    fillColor: '#760000',
+    fillOpacity: 0.75
+  }
+}
+
 function initMap() {
+
+  // create map
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 63.272, lng: -100.581 },
     zoom: 4,
     scaleControl: true,
   });
+
+  // create polygon drawing manager
   const drawingManager = new google.maps.drawing.DrawingManager({
     drawingMode: null,
     drawingControl: false,
     polygonOptions: {
       editable: true,
-      fillColor: '#33cc33',
-      fillOpacity: 0.65
     },
     drawingControlOptions: {
       position: google.maps.ControlPosition.LEFT_TOP,
@@ -44,6 +52,7 @@ function initMap() {
 
   drawingManager.setMap(map);
 
+  // create the custom elements on the map
   var removeControlDiv = document.createElement('div');
   var removeControl = new RemoveControl(removeControlDiv);
 
@@ -59,17 +68,20 @@ function initMap() {
   var areaControl = new AreaControl(areaControlDiv);
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(areaControlDiv);
 
-  // ON DRAW
 
+  // ON DRAW
   google.maps.event.addListener(drawingManager, "polygoncomplete", function (event) {
 
     polygon = event
+
+    // If the user stops the draw mode, don't add the current polygon, remove it instead.
     if (ignore_drawing) {
       ignore_drawing = false;
       polygon.setMap(null);
       return;
     }
 
+    // when the user clicks on a vertex, remove it if there are at least 3 other verticies.
     google.maps.event.addListener(polygon, 'click', function (mev) {
       if (mev.vertex != null) {
         if (polygon.getPath().getLength() > 3) {
@@ -82,7 +94,7 @@ function initMap() {
 
     
 
-
+    // remove the draw button and add the remove button. Set the drawingMode to edit 
     drawingManager.setOptions({
       drawingMode: null,
       drawingControl: false,
@@ -97,16 +109,20 @@ function initMap() {
   });
 
 
-
+  // When a vertex gets added, change the area and WKT
   function onAddVertex() {
     google.maps.event.addListener(polygon.getPath(), "insert_at", function (index) {
       updateArea()
+
+      // this code prevents the users from adding a 13th point. It is a somewhat inelegent solution
+
       // if (polygon.getPath().getLength() > 12) {
       //   polygon.getPath().removeAt(index)
       // }
     })
   };
 
+  // When a vertex is moved, change the area and WKT
   function onMoveVertex() {
     google.maps.event.addListener(polygon.getPath(), "set_at", function (index) {
       updateArea()
@@ -114,7 +130,7 @@ function initMap() {
   };
 
 
-
+  // Whenever this function is called, show the right alert and potentially show the WKT output
   function updateArea() {
     let area = (google.maps.geometry.spherical.computeArea(polygon.getPath()) / 1000000).toFixed(3)
 
@@ -126,42 +142,27 @@ function initMap() {
       document.getElementById("alert-text").innerHTML = warnings.morethantwelve
       document.getElementById("size-alert").classList = "alert alert-danger"
       document.getElementById("wkt-output").setAttribute("hidden", "true")
-      polygon.setOptions({
-        fillColor: '#760000',
-        fillOpacity: 0.50
-      })
+      polygon.setOptions(polygon_colour.notaccepted)
     } else if (area < 15) {
       document.getElementById("alert-text").innerHTML = warnings.low
       document.getElementById("size-alert").classList = "alert alert-info"
       document.getElementById("wkt-output").removeAttribute("hidden")
-      polygon.setOptions({
-        fillColor: '#33cc33',
-        fillOpacity: 0.65
-      })
+      polygon.setOptions(polygon.setOptions(polygon_colour.accepted))
     } else if (area >= 15 && area <= 75) {
       document.getElementById("alert-text").innerHTML = warnings.between
       document.getElementById("size-alert").classList = "alert alert-danger"
       document.getElementById("wkt-output").setAttribute("hidden", "true")
-      polygon.setOptions({
-        fillColor: '#760000',
-        fillOpacity: 0.50
-      })
+      polygon.setOptions(polygon.setOptions(polygon_colour.notaccepted))
     } else if (area < 165) {
       document.getElementById("alert-text").innerHTML = warnings.medium
       document.getElementById("size-alert").classList = "alert alert-info"
       document.getElementById("wkt-output").removeAttribute("hidden")
-      polygon.setOptions({
-        fillColor: '#33cc33',
-        fillOpacity: 0.65
-      })
+      polygon.setOptions(polygon.setOptions(polygon_colour.accepted))
     } else {
       document.getElementById("alert-text").innerHTML = warnings.large
       document.getElementById("size-alert").classList = "alert alert-danger"
       document.getElementById("wkt-output").setAttribute("hidden", "true")
-      polygon.setOptions({
-        fillColor: '#760000',
-        fillOpacity: 0.50
-      })
+      polygon.setOptions(polygon.setOptions(polygon_colour.notaccepted))
     }
 
     // WKT
@@ -175,38 +176,29 @@ function initMap() {
     document.getElementById("WKT").value = wkt;
   }
 
+  // Delete polygon when the button is pressed
 
+  function resetPolygon() {
+    drawingManager.setOptions({ drawingMode: null })
+    map.controls[google.maps.ControlPosition.LEFT_TOP].pop()
+    map.controls[google.maps.ControlPosition.LEFT_TOP].push(drawControlDiv);
+    document.getElementById("wkt-output").setAttribute("hidden", 'true');
+    document.getElementById("size-alert").setAttribute("hidden", "true");
+    document.getElementById("area").innerHTML = "<b>Area size</b>:";
+  }
 
   // MAP UI ELEMENTS
-
 
   // Draw is Active Button
   function DrawActiveControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Remove polygon';
-
-    controlUI.style.backgroundImage = 'url(images/draw.svg)'
-    controlUI.style.backgroundColor = '#EBEBEB';
-    controlUI.style.backgroundPosition = '50%';
-    controlUI.style.width = '6em'
-    controlUI.style.height = '6em'
-    controlUI.style.backgroundSize = '80%'
-    controlUI.style.backgroundRepeat = "no-repeat";
-    controlUI.style.borderRadius = "2px";
-    controlUI.style.border = "1px solid rgba(0,0,0,0.2)"
-    controlUI.style.margin = "10px"
-    controlUI.style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 1px 4px -1px"
+    controlUI.classList = 'draw-active-button'
     controlDiv.appendChild(controlUI);
 
     google.maps.event.addDomListener(controlUI, 'click', function () {
       ignore_drawing = true
-      drawingManager.setOptions({ drawingMode: null })
-      map.controls[google.maps.ControlPosition.LEFT_TOP].pop()
-      map.controls[google.maps.ControlPosition.LEFT_TOP].push(drawControlDiv);
-      document.getElementById("wkt-output").setAttribute("hidden", 'true');
-      document.getElementById("size-alert").setAttribute("hidden", "true");
-      document.getElementById("area").innerHTML = "<b>Area size</b>:";
-
+      resetPolygon()
     });
 
   }
@@ -215,49 +207,22 @@ function initMap() {
   function RemoveControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Remove polygon';
-
-    controlUI.style.backgroundImage = 'url(images/delete.svg)'
-    controlUI.style.backgroundColor = 'white';
-    controlUI.style.backgroundPosition = '40%';
-    controlUI.style.width = '6em'
-    controlUI.style.height = '6em'
-    controlUI.style.backgroundSize = '95%'
-    controlUI.style.backgroundRepeat = "no-repeat";
-    controlUI.style.borderRadius = "2px";
-    controlUI.style.border = "1px solid rgba(0,0,0,0.2)"
-    controlUI.style.margin = "10px"
-    controlUI.style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 1px 4px -1px"
+    controlUI.classList = 'remove-button'
+    
     controlDiv.appendChild(controlUI);
 
     google.maps.event.addDomListener(controlUI, 'click', function () {
       polygon.setMap(null);
-      map.controls[google.maps.ControlPosition.LEFT_TOP].pop()
-      map.controls[google.maps.ControlPosition.LEFT_TOP].push(drawControlDiv);
-      document.getElementById("wkt-output").setAttribute("hidden", 'true');
-      document.getElementById("size-alert").setAttribute("hidden", "true")
-      document.getElementById("area").innerHTML = "<b>Area size</b>:"
-
+      resetPolygon()
     });
-
   }
 
   // Draw Polygon Button
   function DrawControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Draw polygon';
-
-    controlUI.style.backgroundImage = 'url(images/draw.svg)'
-    controlUI.style.backgroundColor = 'white';
-    controlUI.style.backgroundPosition = '50%';
-    controlUI.style.width = '6em'
-    controlUI.style.height = '6em'
-    controlUI.style.backgroundSize = '80%'
-    controlUI.style.backgroundRepeat = "no-repeat";
-    controlUI.style.borderRadius = "2px";
-    controlUI.style.border = "1px solid rgba(0,0,0,0.2)"
-    controlUI.style.margin = "10px"
-    controlUI.style.boxShadow = "rgba(0, 0, 0, 0.3) 0px 1px 4px -1px"
-    controlUI.style.cursor = "pointer"
+    controlUI.classList = 'draw-button'
+    
     controlDiv.appendChild(controlUI);
 
     google.maps.event.addDomListener(controlUI, 'click', function () {
@@ -272,12 +237,7 @@ function initMap() {
   function AreaControl(controlDiv) {
     var controlUI = document.createElement('div');
     controlUI.title = 'Area size';
-
-    controlUI.style.backgroundColor = 'white';
-    controlUI.style.borderRadius = "4px";
-    controlUI.style.border = "2px solid rgba(0,0,0,0.2)"
-    controlUI.style.margin = "10px"
-    controlUI.style.padding = "8px"
+    controlUI.classList='area-textbox'
     controlUI.id = "area"
     controlUI.innerHTML = '<b>Area size: </b>'
 

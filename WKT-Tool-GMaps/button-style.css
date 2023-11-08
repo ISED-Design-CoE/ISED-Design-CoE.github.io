@@ -1,0 +1,65 @@
+
+.remove-button {
+  background-image: url(images/delete.svg);
+  background-color: white;
+  background-position: 40%;
+  width: 6em;
+  height: 6em;
+  background-size: 90%;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.2);
+  margin: 10px;
+  box-shadow: rgba(0,0,0,0.3) 0px 1px 4px -1px;
+  cursor: pointer;
+}  
+
+.remove-button:hover {
+  background-color: #EBEBEB;
+}
+
+.draw-active-button {
+  background-image: url(images/draw.svg);
+  background-color: #EBEBEB;
+  background-position: 50%;
+  width: 6em;
+  height: 6em;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.2);
+  margin: 10px;
+  box-shadow: rgba(0,0,0,0.3) 0px 1px 4px -1px;
+  cursor: pointer;
+}
+
+.draw-active-button:hover {
+  background-color: #dedede
+}
+
+.draw-button {
+  background-image: url(images/draw.svg);
+  background-color: white;
+  background-position: 50%;
+  width: 6em;
+  height: 6em;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.2);
+  margin: 10px;
+  box-shadow: rgba(0,0,0,0.3) 0px 1px 4px -1px;
+  cursor: pointer;
+}
+
+.draw-button:hover {
+  background-color: #EBEBEB;
+}
+  
+.area-textbox {
+    background-color: white;
+    border-radius: 4px;
+    border: 2px solid rgba(0,0,0,0.2);
+    margin: 10px;
+    padding: 8px;
+}
