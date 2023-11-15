@@ -264,6 +264,7 @@ function initMap() {
     controlDiv.appendChild(controlUI);
 
     google.maps.event.addDomListener(controlUI, "click", function () {
+      ignore_drawing = false;
       drawingManager.setOptions({
         drawingMode: google.maps.drawing.OverlayType.POLYGON,
       });
