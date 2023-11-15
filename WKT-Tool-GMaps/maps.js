@@ -2,6 +2,7 @@
 // - Google's search (impossible with current key)
 // try to prevent intersections
 // keep the polygon when you switch between french and english
+// sessionstorage seem to be the best option, but it's not so suitable for google maps.
 
 let language = document.getElementsByName("language")[0].lang;
 
@@ -11,20 +12,20 @@ let ignore_drawing = false;
 
 let warnings = {
   medium: {
-    en: `<p>The area of {area}km<sup>2</sup> is between 75 km<sup>2</sup> and 165 km<sup>2</sup>. It can only be used with <b>medium power</b>.</sup></p>`,
-    fr: `<p>Cette zone de {area}km <sup>2</sup> est entre 75 km<sup>2</sup> et 165 km<sup>2</sup>. Elle ne peut qu'être utilisé avec les <b>bandes moyennes</b>.</sup></p>`,
+    en: `<p>The area of {area} km<sup>2</sup> is between 75 km<sup>2</sup> and 165 km<sup>2</sup>. It can only be used with <b>medium power</b>.</sup></p>`,
+    fr: `<p>Cette zone de {area} km <sup>2</sup> est entre 75 km<sup>2</sup> et 165 km<sup>2</sup>. Elle ne peut qu'être utilisé avec les <b>bandes moyennes</b>.</sup></p>`,
   },
   low: {
-    en: `<p>The area of {area}km<sup>2</sup> is between 0 km<sup>2</sup> and 15 km<sup>2</sup>. It can only be used with <b>low power</b>.</sup></p>`,
-    fr: `<p>Cette zone de {area}km <sup>2</sup> est entre 0 km<sup>2</sup> et 15 km<sup>2</sup>. Elle ne peut qu'être utilisé avec les <b>bandes basses</b>.</sup></p>`,
+    en: `<p>The area of {area} km<sup>2</sup> is between 0 km<sup>2</sup> and 15 km<sup>2</sup>. It can only be used with <b>low power</b>.</sup></p>`,
+    fr: `<p>Cette zone de {area} km <sup>2</sup> est entre 0 km<sup>2</sup> et 15 km<sup>2</sup>. Elle ne peut qu'être utilisé avec les <b>bandes basses</b>.</sup></p>`,
   },
   large: {
-    en: `<p>The area of {area}km<sup>2</sup> is too large . Please reduce the size of the polygon to be less than 165km<sup>2</sup></p>`,
-    fr: `<p>L'aire de votre zone de {area}km <sup>2</sup> est trop large.  S'il vous plaît réduire votre zone pour qu'elle soit moins que 165km<sup>2</sup></p>`,
+    en: `<p>The area of {area} km<sup>2</sup> is too large . Please reduce the size of the polygon to be less than 165km<sup>2</sup></p>`,
+    fr: `<p>L'aire de votre zone de {area} km <sup>2</sup> est trop large.  S'il vous plaît réduire votre zone pour qu'elle soit moins que 165km<sup>2</sup></p>`,
   },
   between: {
-    en: `<p>The area of {area}km<sup>2</sup> is between 15 km<sup>2</sup> and 75 km<sup>2</sup>. Please reduce or increase your area size beyond these limits.</p>`,
-    fr: `<p>Cette zone de {area}km<sup>2</sup> est entre 15 km<sup>2</sup> et 75 km<sup>2</sup>. S'il vous plaît réduire ou augementer votre aire hors de ces limites.</p>`,
+    en: `<p>The area of {area} km<sup>2</sup> is between 15 km<sup>2</sup> and 75 km<sup>2</sup>. Please reduce or increase your area size beyond these limits.</p>`,
+    fr: `<p>Cette zone de {area} km<sup>2</sup> est entre 15 km<sup>2</sup> et 75 km<sup>2</sup>. S'il vous plaît réduire ou augementer votre aire hors de ces limites.</p>`,
   },
   morethantwelve: {
     en: "<p>The polygon drawn contains <b>more than twelve points</b>. Please redraw or remove points</p>",
