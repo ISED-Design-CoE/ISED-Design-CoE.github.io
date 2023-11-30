@@ -224,7 +224,7 @@
 								</td>
 							</tr>
 
-							<tr class="tenMHz MNSP" hidden>
+							<tr class="tenMHz NMSP" hidden>
 								<td>
 									<div class="radio">
 										<p align="right">A5 (3940–3950&nbsp;MHz)<br>
@@ -239,7 +239,7 @@
 								</td>
 							</tr>
 
-							<tr class="tenMHz not-MNSP" hidden>
+							<tr class="tenMHz not-NMSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a5" name="frequency" value="A5 (3940–3950 MHz)">
@@ -251,7 +251,7 @@
 								</td>
 							</tr>
 
-							<tr class="tenMHz not-MNSP" hidden>
+							<tr class="tenMHz not-NMSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a6" name="frequency" value="A6 (3950–3960 MHz)">
@@ -263,7 +263,7 @@
 								</td>
 							</tr>
 
-							<tr class="tenMHz not-MNSP" hidden>
+							<tr class="tenMHz not-NMSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a7" name="frequency" value="A7 (3960–3970 MHz)">
@@ -275,7 +275,7 @@
 								</td>
 							</tr>
 
-							<tr class="tenMHz not-MNSP" hidden>
+							<tr class="tenMHz not-NMSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a8" name="frequency" value="A8 (3970–3980 MHz)">
@@ -331,7 +331,7 @@
 								</td>
 							</tr>
 
-							<tr class="twentyMHz MNSP" hidden>
+							<tr class="twentyMHz NMSP" hidden>
 								<td>
 									<div class="radio">
 										<p align="right">A5 (3940–3950&nbsp;MHz)<br>
@@ -346,7 +346,7 @@
 								</td>
 							</tr>
 
-							<tr class="twentyMHz not-MNSP" hidden>
+							<tr class="twentyMHz not-NMSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a4-a5" name="frequency" value="A4-A5 (3930–3950 MHz)">
@@ -358,7 +358,7 @@
 								</td>
 							</tr>
 
-							<tr class="twentyMHz not-MNSP" hidden>
+							<tr class="twentyMHz not-NMSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a5-a6" name="frequency" value="A5-A6 (3940–3960 MHz)">
@@ -371,7 +371,7 @@
 								</td>
 							</tr>
 
-							<tr class="twentyMHz not-MNSP" hidden>
+							<tr class="twentyMHz not-NMSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a6-a7" name="frequency" value="A6-A7 (3950–3970 MHz)">
@@ -384,7 +384,7 @@
 								</td>
 							</tr>
 
-							<tr class="twentyMHz not-MNSP" hidden>
+							<tr class="twentyMHz not-NMSP" hidden>
 								<td>
 									<div class="radio">
 										<input type="radio" id="frequency-a7-a8" name="frequency" value="A7-A8 (3960–3980 MHz)">
@@ -449,13 +449,13 @@
 		}
 
 		// ...and then re-hide the ones that aren't appropriate to this company
-		const MNSP = urlParams.get ( "MNSP" )
-		if ( MNSP == "Yes" ) {
-			for ( let elem of document .getElementsByClassName ( "not-MNSP" ) ) {
+		const NMSP = urlParams.get ( "NMSP" )
+		if ( NMSP == "Yes" ) {
+			for ( let elem of document .getElementsByClassName ( "not-NMSP" ) ) {
 				elem .setAttribute ( "hidden", "hidden" )
 			}
 		} else {
-			for ( let elem of document .getElementsByClassName ( "MNSP" ) ) {
+			for ( let elem of document .getElementsByClassName ( "NMSP" ) ) {
 				elem .setAttribute ( "hidden", "hidden" )
 			}
 		}
