@@ -489,8 +489,8 @@ var urlQueries = baseQuery
 		var less_than_min_field = createHiddenField ( "less-than-min", false )
 		
 		const expiry_date = urlParams.get( "expiry-date" )
+		const effective_date = urlParams.get( "effective-date" )
 		if ( expiry_date ) {
-			const effective_date = urlParams.get( "effective-date" )
 			var duration = ((expiry_date.split("-")[0] - effective_date.split("-")[0]) * 12) + (expiry_date.split("-")[1] - effective_date.split("-")[1] + 1)
 
 			for ( let elem of document .getElementsByClassName ( "licence-duration" ) ) {
