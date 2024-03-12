@@ -91,7 +91,7 @@
 		<h2>Application <span class="app-number">01000139-001</span> has been successfully submitted</h2>
 		What happens next:
 		<ol>
-			<li>We will send a <strong>confirmation email</strong> to <span id="asu">john.dutton@thebestcompany.ca</span>.</li>
+			<li>We will send a <strong>confirmation email</strong> to john.dutton@yellowstone.com<span id="asu-present" hidden> and <span id="asu">sue.dutton@thebestcompany.ca</span></span>.</li>
 			<li>We will <strong>review</strong> the application and let you know the result. This will generally take less than two weeks but could take up to 12 weeks.</li>
 			<li>If the application is approved, we will send an <strong>invoice</strong> to <span id="lai">pierre.untel@thebestcompany.ca</span>.<br>
 				<strong>Paper invoices will <em>not</em> be sent.</strong></li>
@@ -143,10 +143,12 @@
 		const queryString = window.location.search
 		const urlParams = new URLSearchParams ( queryString )
 
+		const asuPresent = document .getElementById ( "asu-present" )
 		const asuEmail = document .getElementById ( "asu" )
 		const asuEmailParm = urlParams .get ( "asu" )
 		if ( asuEmailParm ) {
 			asuEmail .innerText = asuEmailParm
+			asuPresent .removeAttribute ( "hidden" )
 		}
 
 		const laiEmail = document .getElementById ( "lai" )
