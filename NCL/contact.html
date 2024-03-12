@@ -7,7 +7,7 @@
 
 <!-- Start DECoE customization -->
 		<title>
-			Contact information - NCL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+			Contact-3 information - NCL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
 		</title>
 <!-- End DECoE customization -->
 
@@ -54,6 +54,10 @@
 			}
 			.panel-body {
 				padding-top: 0;
+			}
+			cite {
+				font-weight: bold;
+				font-style: normal;
 			}
 		</style>
 <!-- End DECoE customization -->
@@ -108,66 +112,68 @@
 	<h1 property="name" id="wb-cont">Contact information</h1>
 	
 	<div class="wb-frmvld">
+		<p>The email address <cite>john.dutton@yellowstone.com</cite> is currently the “E-mail address to receive application status updates (and for licence/invoice delivery if selected)” for this licensee. You can also choose another additional address to receive updates about the application.</p>
+
 		<form action="technical-details.html" method="get">
 		<div class="wb-frm">
-			<section class="panel panel-default">
-				<header class=panel-heading>
-					<h3 class=panel-title>For updates about the application</h3>
-				</header>
-				<div class=panel-body>
-					<fieldset class="gc-chckbxrdio">
-						<legend class="wb-inv">For updates about the application</legend>
-						<details>
-							<summary>More information<span class="wb-inv"> about the email addresses for updates about the application</span></summary>
-							<p>The email address <cite>john.dutton@yellowstone.com</cite> is currently the “E-mail address to receive application status updates (and for licence/invoice delivery if selected)” for this licensee.</p>
-							<p>You may also select a second address to receive updates.</p>
-						</details>
-						<ul class="list-unstyled lst-spcd-2">
-							<li class="radio">
-								<input type="radio" name="asu" id="asu-1" value="john.dutton@yellowstone.com" checked>
-								<label for="asu-1">john.dutton@yellowstone.com</label>
-							</li>
-							<li class="radio">
-								<input type="radio" name="asu" id="asu-2" value="rip.wheeler@yellowstone.com, john.dutton@yellowstone.com">
-								<label for="asu-2">rip.wheeler@yellowstone.com, john.dutton@yellowstone.com</label>
-							</li>
-							<li class="radio">
-								<input type="radio" name="asu" id="asu-3" value="thomas.rainwater@yellowstone.com, john.dutton@yellowstone.com">
-								<label for="asu-3">thomas.rainwater@yellowstone.com, john.dutton@yellowstone.com</label>
-							</li>
-						</ul>
-					</fieldset>
-				</div>
-			</section>
-			<section class="panel panel-default">
-				<header class=panel-heading>
-					<h3 class=panel-title>For invoices</h3>
-				</header>
-				<div class=panel-body>
-					<fieldset class="gc-chckbxrdio">
-						<legend class="wb-inv">For invoices</legend>
-						<details>
-							<summary>More information<span class="wb-inv"> about the email address for invoices</span></summary>
-							<p>The email address <cite>john.dutton@yellowstone.com</cite> is currently the “E-mail address to receive application status updates (and for licence/invoice delivery if selected)” for this licensee.</p>
-							<p>You may instead select a different address to receive invoices.</p>
-						</details>
-						<ul class="list-unstyled lst-spcd-2">
-							<li class="radio">
-								<input type="radio" name="lai" id="lai-1" value="john.dutton@yellowstone.com" checked>
-								<label for="lai-1">john.dutton@yellowstone.com</label>
-							</li>
-							<li class="radio">
-								<input type="radio" name="lai" id="lai-2" value="beth.dutton@yellowstone.com">
-								<label for="lai-2">beth.dutton@yellowstone.com</label>
-							</li>
-						</ul>
-					</fieldset>
-				</div>
-			</section>
-			<div class="spaced">
-				<p>Note: To add an address not listed here, please contact one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
-			</div>
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
+						Do you want to select an additional address to receive updates about the application?
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" name="saa" id="saa-1" value="No" data-rule-required="true">
+						<label for="saa-1">No</label>
+					</li>
+					<li class="radio">
+						<input type="radio" name="saa" id="saa-2" value="Yes">
+						<label for="saa-2">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+			<fieldset class="gc-chckbxrdio" id="asu" hidden>
+				<legend class="required">
+					<span class="field-name">
+						Which additional address would you like to receive updates about the application?
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" name="asu" id="asu-1" value="rip.wheeler@yellowstone.com" data-rule-required="true">
+						<label for="asu-1">rip.wheeler@yellowstone.com</label>
+					</li>
+					<li class="radio">
+						<input type="radio" name="asu" id="asu-2" value="thomas.rainwater@yellowstone.com">
+						<label for="asu-2">thomas.rainwater@yellowstone.com</label>
+					</li>
+				</ul>
+				<p>To add an address not listed here, please contact one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
+			</fieldset>
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
+						Which email address would you like to receive invoices?
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" name="lai" id="lai-1" value="john.dutton@yellowstone.com" data-rule-required="true">
+						<label for="lai-1">john.dutton@yellowstone.com</label>
+					</li>
+					<li class="radio">
+						<input type="radio" name="lai" id="lai-2" value="beth.dutton@yellowstone.com">
+						<label for="lai-2">beth.dutton@yellowstone.com</label>
+					</li>
+				</ul>
+			</fieldset>
 		</div>
+		<p>To add an address not listed here, please contact one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a>.</p>
+
 		<section id="save-div" class="alert alert-success" hidden>
 			<p>Application saved as draft</p>
 		</section>
@@ -192,6 +198,33 @@
 		</form>
 	</div>
 	<script src="catch-and-throw.js"></script>
+	<script>
+		const noButton = document.getElementById ( "saa-1" )
+		const yesButton = document.getElementById ( "saa-2" )
+		const additionalAddressDiv = document.getElementById ( "asu" )
+		const lai1Field = document.getElementById ( "lai-1" )
+		const lai2Field = document.getElementById ( "lai-2" )
+
+
+		for ( const [ key, value ] of urlParams ) {
+			if (key == 'saa') {
+				if (value == 'saa-2') {
+					additionalAddressDiv .removeAttribute ( "hidden" )
+				}
+			}
+		}
+
+		noButton.addEventListener ( "click", (event) => {
+			additionalAddressDiv .setAttribute ( "hidden", "hidden" )
+			lai1Field .removeAttribute ( "required" )
+			lai2Field .removeAttribute ( "required" )
+		})
+		yesButton.addEventListener ( "click", (event) => {
+			lai1Field .setAttribute ( "required", "required" )
+			lai2Field .setAttribute ( "required", "required" )
+			additionalAddressDiv .removeAttribute ( "hidden" )
+		})
+	</script>
 	<script>
 		const saveButton = document.getElementById ( "save-button" )
 		const saveDiv = document.getElementById ( "save-div" )
