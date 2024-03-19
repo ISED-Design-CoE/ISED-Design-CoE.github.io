@@ -119,7 +119,25 @@
 		<div class="wb-frm">
 			<h2>Status updates</h2>
 			<p>The email address <cite>john.dutton@yellowstone.com</cite> will receive status updates for all NCL licence applications for The Best Company. You can also select an additional email address to receive status updates on this application in particular.</p>
-			<fieldset class="gc-chckbxrdio" id="asu">
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
+						Do you want to select an additional address to receive status updates about this licence application?
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" name="saa" id="saa-1" value="No" data-rule-required="true">
+						<label for="saa-1">No</label>
+					</li>
+					<li class="radio">
+						<input type="radio" name="saa" id="saa-2" value="Yes">
+						<label for="saa-2">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+			<fieldset class="gc-chckbxrdio" id="asu" hidden>
 				<legend class="required">
 					<span class="field-name">
 						Which additional address would you like to receive status updates about this licence application?
@@ -134,10 +152,6 @@
 					<li class="radio">
 						<input type="radio" name="asu" id="asu-2" value="thomas.rainwater@yellowstone.com">
 						<label for="asu-2">thomas.rainwater@yellowstone.com</label>
-					</li>
-					<li class="radio">
-						<input type="radio" name="asu" id="asu-3" value="">
-						<label for="asu-3">No additional address</label>
 					</li>
 				</ul>
 				<p>To add an address not listed here, please contact one of our <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices">Regional or District Offices</a> and ask them to add an Administrative Contact to your account.</p>
@@ -177,6 +191,7 @@
 			<h2>Notes about this mockup:</h2>
 			<ul>
 				<li>User can jump to previously visited pages using "step navigation" at top of screen</li>
+				<li>If user says Yes to selecting an additional address, then a list of names appears.</li>
 			</ul>
 			<h2>Changes from phase 2A BRD:</h2>
 			<ul>
@@ -188,6 +203,33 @@
 		</form>
 	</div>
 	<script src="catch-and-throw.js"></script>
+	<script>
+		const noButton = document.getElementById ( "saa-1" )
+		const yesButton = document.getElementById ( "saa-2" )
+		const additionalAddressDiv = document.getElementById ( "asu" )
+		const lai1Field = document.getElementById ( "lai-1" )
+		const lai2Field = document.getElementById ( "lai-2" )
+
+
+		for ( const [ key, value ] of urlParams ) {
+			if (key == 'saa') {
+				if (value == 'saa-2') {
+					additionalAddressDiv .removeAttribute ( "hidden" )
+				}
+			}
+		}
+
+		noButton.addEventListener ( "click", (event) => {
+			additionalAddressDiv .setAttribute ( "hidden", "hidden" )
+			lai1Field .removeAttribute ( "required" )
+			lai2Field .removeAttribute ( "required" )
+		})
+		yesButton.addEventListener ( "click", (event) => {
+			lai1Field .setAttribute ( "required", "required" )
+			lai2Field .setAttribute ( "required", "required" )
+			additionalAddressDiv .removeAttribute ( "hidden" )
+		})
+	</script>
 	<script>
 		const saveButton = document.getElementById ( "save-button" )
 		const saveDiv = document.getElementById ( "save-div" )
