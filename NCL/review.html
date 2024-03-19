@@ -144,12 +144,10 @@
 					<h2>Contact information</h2>
 					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'contact.html'+ window.location.search">Edit</button></span>
 					<dl>
-						<dt>Email address to receive updates about the application</dt>
-						<dd>john.dutton@yellowstone.com</dd>
-						<dt class="asu-present">Additional email address to receive updates about the application</dt>
-						<dd class="asu-present"><span class="asu">john.dutton@yellowstone.com</span></dd>
 						<dt>Email address to receive licences and invoices</dt>
 						<dd><span class="lai">beth.dutton@yellowstone.com</span></dd>
+						<dt>Email address<span class="asu-present">es</span> to receive status updates</dt>
+						<dd>john.dutton@yellowstone.com<span class="asu-present">, <span class="asu">rip.wheeler@yellowstone.com</span></span></dd>
 					</dl>
 				</section>
 				<section class="step">
@@ -349,18 +347,20 @@
 		}
 
 		var asuPresent = true
-		if ( urlParams .has ( "asu" ) ) {
-			const asu = urlParams .get ( "asu" )
-			if ( asu == "" ) {
+		if ( urlParams.size > 0 ) {
+			if ( urlParams .has ( "asu" ) ) {
+				const asu = urlParams .get ( "asu" )
+				if ( asu == "" ) {
+					asuPresent = false
+				}
+			} else {
 				asuPresent = false
 			}
-		} else {
-			asuPresent = false
-		}
-		if ( ! asuPresent ) {
-			for ( let elem of document .getElementsByClassName ( "asu-present" ) ) {
-					elem .setAttribute ( "hidden", "hidden" )
-				}
+			if ( ! asuPresent ) {
+				for ( let elem of document .getElementsByClassName ( "asu-present" ) ) {
+						elem .setAttribute ( "hidden", "hidden" )
+					}
+			}
 		}
 
 		var antennaHeightPresent = true
