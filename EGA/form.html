@@ -56,6 +56,21 @@
 			#wb-bc li {
 				padding-top: 0;
 			}
+
+		/* Form fields */
+			input[type=text],
+			input[type=date],
+			textarea.form-control {
+				border-color: #000;
+				border-radius: 0;
+			}
+			input[type=text] {
+				width: 40em;
+			}
+			input[type=text].full {
+				width: 100%;
+			}
+
 		/* Buttons */
 			#buttons {
 				margin-top: 1em;
@@ -103,7 +118,7 @@
 		<div class="wb-frm">
 			<h2>General information</h2>
 			<label for="proposal-title">Proposal title:</label>
-			<input type="text" class="form-control" id="proposal-title">
+			<input type="text" class="form-control full" id="proposal-title">
 
 			<label for="department">Department:</label>
 			<input type="text" class="form-control" id="department">
@@ -149,7 +164,7 @@
 				</ul>
 			</fieldset>
 			<label for="tm-other">If other, please specify:</label>
-			<input type="text" class="form-control" id="tm-other">
+			<input type="text" class="form-control full" id="tm-other">
 
 			<fieldset class="gc-chckbxrdio">
 				<legend class="required">
@@ -182,7 +197,7 @@
 				</ul>
 			</fieldset>
 			<label for="ta-other">If other, please specify:</label>
-			<input type="text" class="form-control" id="ta-other">
+			<input type="text" class="form-control full" id="ta-other">
 
 			<label for="analysis-date">Date GBA Plus analysis completed<span class="datepicker-format"> (<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span></label>
 			<input type="date" class="form-control" id="analysis-date" name="analysis-date">
@@ -190,11 +205,11 @@
 			<h2>Access</h2>
 			<label for="edit-access">Edit access names:</label>
 			<p>Besides yourself, who should have EDIT access to this form? Please enter their ISED email addresses separated with semicolons.</p>
-			<input type="text" class="form-control" id="edit-access">
+			<input type="text" class="form-control full" id="edit-access">
 
 			<label for="readonly-access">Read-only access names:</label>
 			<p>Besides yourself, who should have READ-ONLY access to this form? Please enter their ISED email addresses separated with semicolons.</p>
-			<input type="text" class="form-control" id="readonly-access">
+			<input type="text" class="form-control full" id="readonly-access">
 
 			<h2>Evaluation </h2>
 			<fieldset class="gc-chckbxrdio">
