@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+	<head>
+<!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
+	 <meta charset="utf-8">
+
+<!-- Start DECoE customization -->
+		<title>
+			Success - NCL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+		</title>
+<!-- End DECoE customization -->
+
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+		<noscript>
+			<!-- Write closure fall-back static file -->
+			<!-- refTop.html -->
+		</noscript>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refTop({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+<!-- Start DECoE customization -->
+	<style>
+		/* Styles for all mockups */
+			.notesaboutmockup {
+				color: #333;
+				background: #FFD;
+				padding: 0 1em;
+				border-color: #FC6;
+				border-width: 2px;
+				border-style: solid;
+				margin-top: 3em;
+			}
+			.notesaboutmockup h2 {
+				font-size: inherit;
+				margin-top: 1em;
+			}
+		/* Styles for this mockup */
+	</style>
+	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
+	<link href="ncl-portal.css" rel="stylesheet" type="text/css">
+<!-- End DECoE customization -->
+
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<div id="def-top">
+			<!-- Write closure fall-back static file -->
+			<!-- transactTop-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defTop = document.getElementById("def-top");
+			defTop.outerHTML = wet.builder.top({
+				"cdnEnv": "esdcprod",
+				"lngLinks": [{
+					"lang": "fr",
+					"href": "transactional-fr.shtml",
+					"text": "Français"
+				}],
+				"search": false,
+				"siteMenu": false,
+				"breadcrumbs": [{
+					"title": "Spectrum Management System",
+					"href": "index.html"
+				},
+				{
+					"title": "NCL portal",
+					"href": "portal.html"
+				}],
+				"showPreContent": false
+			});
+		</script>
+		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+<!-- Start page content -->
+
+	<div id="superhead">
+		<p>Non-competitive local licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Awaiting approval</span></p>
+	</div>
+
+	<h1 property="name" id="wb-cont">Success</h1>
+
+	<section class="alert alert-success">
+		<h2>Application <span class="app-number">01000139-001</span> has been successfully submitted</h2>
+		What happens next:
+		<ol>
+			<li>We will send a <strong>confirmation email</strong> to john.dutton@yellowstone.com<span id="asu-present" hidden> and <span id="asu">sue.dutton@thebestcompany.ca</span></span>.</li>
+			<li>We will <strong>review</strong> the application and let you know the result. This will generally take less than two weeks but could take up to 12 weeks.</li>
+			<li>If the application is approved, we will send an <strong>invoice</strong> to <span id="lai">pierre.untel@thebestcompany.ca</span>.<br>
+				<strong>Paper invoices will <em>not</em> be sent.</strong></li>
+		</ol>
+	</section>
+
+	<p>What would you like to do now?</p>
+	<ul>
+		<li>Go to the <a href="portal.html">NCL portal</a></li>
+		<li>Create a <a href="general.html">new application</a> </li>
+		<li><a href="general.html">Duplicate</a> this application</li>
+		<li>Give us <a href="https://forms.office.com/r/M2TmZPmJKq">feedback</a> about how to improve this application form</li>
+	</ul>	
+
+
+
+	<div class="notesaboutmockup">
+		<h2>Notes about this mockup:</h2>
+		<ul>
+			<li>The words "and your effective date has been reached" will only be displayed if the effective date is more than seven days in the future</li>
+			<li>The notice about paper invoices will only be displayed if the licensee had selected at account creation that they wanted paper invoices</li>
+			<li>If there is an additional address for confirmation email, it will be displayed</li>
+		</ul>
+		<h2>Changes from phase 2A BRD:</h2>
+		<ul>
+			<li>This page not included in Phase 2A BRD</li>
+		</ul>
+	</div>
+	<div id="change-licensee">
+		<div class="container">
+			<div class="col-md-offset-6 col-md-6">
+				<section id="wb-so">
+					<h2 class="wb-inv">Sign-on information</h2>
+					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licensee account</button>
+					<button class="btn btn-primary" type="button" onclick="window.location = 'login.html'">Sign out</button>
+					<p class="small mrgn-tp-sm">Licensee: <span class="nowrap">The Best Company</span><br>10000005465346</p>
+				</section>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		// Move #change-licensee to top of screen
+		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
+		const changeLicensee = document .getElementById ( "change-licensee" )
+		const wbBc = document .getElementById ( "wb-bc" )
+		wbBc .prepend ( changeLicensee )
+	</script>
+	<script>
+		const queryString = window.location.search
+		const urlParams = new URLSearchParams ( queryString )
+
+		const asuPresent = document .getElementById ( "asu-present" )
+		const asuEmail = document .getElementById ( "asu" )
+		const asuEmailParm = urlParams .get ( "asu" )
+		if ( asuEmailParm ) {
+			asuEmail .innerText = asuEmailParm
+			asuPresent .removeAttribute ( "hidden" )
+		}
+
+		const laiEmail = document .getElementById ( "lai" )
+		const laiEmailParm = urlParams .get ( "lai" )
+		if ( laiEmailParm ) {
+			laiEmail .innerText = laiEmailParm
+		}
+	</script>	
+	<script>
+		// Read application number from parameters if present
+		if ( urlParams .has ( "app-number" ) ) {
+			const appNumberText = urlParams .get ( "app-number" )
+			for ( let elem of document .getElementsByClassName ( "app-number" ) ) {
+				elem .innerText = appNumberText
+			}
+		}
+	</script>
+<!-- End page content -->
+
+			<div id="def-preFooter">
+				<!-- Write closure fall-back static file -->
+				<!-- preFooter-en.html -->
+			</div>
+			<!-- Write closure template -->
+			<script>
+				var defPreFooter = document.getElementById("def-preFooter");
+				defPreFooter.outerHTML = wet.builder.preFooter({
+					"cdnEnv": "esdcprod",
+					"versionIdentifier": "CD56",
+					"showPostContent": false,
+					"showFeedback": false,
+					"showShare": false
+				});
+			</script>
+		</main>
+		<div id="def-footer">
+			<!-- Write closure fall-back static file -->
+			<!-- transactFooter-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defFooter = document.getElementById("def-footer");
+			defFooter.outerHTML = wet.builder.footer({
+				"cdnEnv": "esdcprod",
+				"showFooter": false,
+				"showFeatures": false,
+				"termsLink": [{
+        			"newWindow": true
+				}],
+				"privacyLink": [{
+					"newWindow": true
+				}],
+				"contextualFooter":{
+					"title": "Spectrum and Telecommunications Sector",
+					"links": [{
+						"text": "Contact us",
+						"href":"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
+						"newWindow": true
+					}]
+				}
+			});
+		</script>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refFooter({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+	</body>
+</html>
