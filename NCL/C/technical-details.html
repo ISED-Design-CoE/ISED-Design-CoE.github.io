@@ -107,6 +107,33 @@
 				<fieldset class="gc-chckbxrdio">
 					<legend class="required">
 						<span class="field-name">
+							Spectrum band
+						</span>
+						<strong class="required small" aria-hidden="true">(required)</strong>
+					</legend>
+					<details>
+						<summary>More information<span class="wb-inv"> about selecting a spectrum band</span></summary>
+						<ul class="list-unstyled">
+							<li>Select the <cite>3900 MHz</cite> option if you need to cover a large area.</li>
+							<li>Select the <cite>mmWave</cite> (millimetre-wave) option if you need high throughput.</li>
+						</ul>
+						<p>For further information about the consequences of this choice, see <a href="javascript:alert('Link TBD')">page TBD</a>.</p>
+					</details>
+					<ul class="list-unstyled lst-spcd-2">
+						<li class="radio">
+							<input type="radio" id="mid-range" name="band" value="3900 MHz" data-rule-required="true">
+							<label for="mid-range">3900 MHz</label>
+						</li>
+						<li class="radio">
+							<input type="radio" id="mmWave" name="band" value="mmWave">
+							<label for="mmWave">mmWave</label>
+					</li>
+					</ul>
+				</fieldset>
+
+				<fieldset class="gc-chckbxrdio" id="mid-range-div" hidden>
+					<legend class="required">
+						<span class="field-name">
 							Bandwidth
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
@@ -124,6 +151,30 @@
 						<li class="radio">
 							<input type="radio" id="twentyMHz" name="bandwidth" value="20">
 							<label for="twentyMHz">20 MHz contiguous</label>
+						</li>
+					</ul>
+				</fieldset>
+
+				<fieldset class="gc-chckbxrdio" id="mmWave-div" hidden>
+					<legend class="required">
+						<span class="field-name">
+							Bandwidth
+						</span>
+						<strong class="required small" aria-hidden="true">(required)</strong>
+					</legend>
+					<details>
+						<summary>More information<span class="wb-inv"> about bandwidth</span></summary>
+						<p>You may request either 100MHz or 200MHz contiguous (i.e. adjacent frequency blocks).</p>
+						<p>If you require non-contiguous frequency blocks, please select 100MHz and then apply for a second licence.</p>
+					</details>
+					<ul class="list-unstyled lst-spcd-2">
+						<li class="radio">
+							<input type="radio" id="oneHundredMHz" name="bandwidth" value="100" data-rule-required="true">
+							<label for="oneHundredMHz">100 MHz</label>
+						</li>
+						<li class="radio">
+							<input type="radio" id="twoHundredMHz" name="bandwidth" value="200">
+							<label for="twoHundredMHz">200 MHz contiguous</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -213,6 +264,37 @@
 			</ul>
 		</div>
 		</form>
+		<script src="catch-and-throw.js"></script>
+		<script>
+			const midRangeButton = document.getElementById ( "mid-range" )
+			const mmWaveButton = document.getElementById ( "mmWave" )
+			const midRangeDiv = document.getElementById ( "mid-range-div" )
+			const mmWaveDiv = document.getElementById ( "mmWave-div" )
+
+			for ( const [ key, value ] of urlParams ) {
+				if (key == 'band') {
+					if (value == 'midRange') {
+						midRangeDiv .removeAttribute ( "hidden" )
+					} else if (value == 'mmWave') {
+						mmWaveDiv .removeAttribute ( "hidden" )
+					}
+				}
+			}
+
+			// const effectiveDateField = document.getElementById ( "effective-date" )
+			// const expiryDateField = document.getElementById ( "expiry-date" )
+			
+			midRangeButton.addEventListener ( "click", (event) => {
+				mmWaveDiv .setAttribute ( "hidden", "hidden" )
+				// expiryDateField .removeAttribute ( "required" )
+				midRangeDiv .removeAttribute ( "hidden" )
+			})
+			mmWaveButton.addEventListener ( "click", (event) => {
+				midRangeDiv .setAttribute ( "hidden", "hidden" )
+				// expiryDateField .removeAttribute ( "required" )
+				mmWaveDiv .removeAttribute ( "hidden" )
+			})
+		</script>
 		<script>
 			const saveButton = document.getElementById ( "save-button" )
 			const saveDiv = document.getElementById ( "save-div" )
@@ -220,7 +302,6 @@
 				saveDiv .removeAttribute ( "hidden" )
 			})
 		</script>
-		<script src="catch-and-throw.js"></script>
 		<script>
 			// Validate the interaction between the Scope of service and Power level fields
 			const indoorOnlyField = document.getElementById ( "indoor-only" )
