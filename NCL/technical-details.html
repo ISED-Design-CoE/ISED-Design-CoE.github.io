@@ -113,10 +113,19 @@
 					</legend>
 					<details>
 						<summary>More information<span class="wb-inv"> about bandwidth</span></summary>
-						<p>You may request either 10MHz or 20MHz contiguous (i.e. adjacent frequency blocks).</p>
-						<p>If you require non-contiguous frequency blocks, please select 10MHz and then apply for a second licence.</p>
+						<span class="3900Bandwidth">
+							<p>You may request either 10MHz or 20MHz contiguous (i.e. adjacent frequency blocks).</p>
+							<p>If you require non-contiguous frequency blocks, please select 10MHz and then apply for a second licence.</p>
+						</span>
+						<span class="mmwaveBandwidth" hidden="true">
+							<p>You may request either between 50MHz and 400MHz contiguous (i.e. adjacent frequency blocks).</p>
+							<p>If you require non-contiguous frequency blocks, apply for a multiple licences.</p>
+						</span>
+
 					</details>
-					<ul class="list-unstyled lst-spcd-2">
+					
+					<!-- Only show for 3900 MHz -->
+					<ul class="list-unstyled lst-spcd-2 3900Bandwidth">
 						<li class="radio">
 							<input type="radio" id="tenMHz" name="bandwidth" value="10" data-rule-required="true">
 							<label for="tenMHz">10 MHz</label>
@@ -126,6 +135,18 @@
 							<label for="twentyMHz">20 MHz contiguous</label>
 						</li>
 					</ul>
+
+					<!-- Only show for 28 GHz -->
+					<select class="form-control mmwaveBandwidth" name="radio" hidden="true">
+						<option value="50">50 MHz   </option>
+						<option value="100">100 MHz </option>
+						<option value="150">150 MHz </option>
+						<option value="200">200 MHz </option>
+						<option value="250">250 MHz </option>
+						<option value="300">300 MHz </option>
+						<option value="350">350 MHz </option>
+						<option value="400">400 MHz </option>
+					</select>
 				</fieldset>
 
 				<fieldset class="gc-chckbxrdio">
@@ -222,6 +243,17 @@
 		</script>
 		<script src="catch-and-throw.js"></script>
 		<script>
+			// Show the appropriate bandwidth input
+			const band = urlParams.get ( "band" )
+			if (band == "28 GHz") {
+				for ( let elem of document .getElementsByClassName ( "3900Bandwidth" ) ) {
+				elem .setAttribute ( "hidden", "true" )
+				}
+				for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
+				elem .removeAttribute ( "hidden" )
+				}
+			}
+
 			// Validate the interaction between the Scope of service and Power level fields
 			const indoorOnlyField = document.getElementById ( "indoor-only" )
 			const outdoorIndoorField = document.getElementById ( "outdoor" )
