@@ -384,7 +384,7 @@
 			frequency_select.innerHTML = '';
 			for (let i=0;i<(18-(jump/50));i++){
 				frequency_select.insertAdjacentHTML('beforeend',
-				`<option value="${(jump*i).toString()}">AA${(i+1).toString()} - ${((27500+(50*i))).toString()} GHz </option>`);
+				`<option value="${(jump*i).toString()}">AA${(i+1).toString()} - ${((27500+(50*i))).toString()} MHz </option>`);
 			}
 		}
 		document.getElementById('mmwaveBandwidth').addEventListener('change',generateStartingFrequencies);
