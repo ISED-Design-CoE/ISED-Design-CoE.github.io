@@ -359,39 +359,20 @@
 				// }
 			}
 
-		// helper function that imports f-string functionality from python.
-		// e.g. "Hello {text}".format('world') → "Hello world"
-		String.prototype.format = function () {
-			var args = arguments;
-			return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
-		};
-
-
 		// Generate choce for starting frequency
-		let jump = 50;
+		const frequency_select = document.getElementById('starting-frequency-select');
+		const starting_frequency = document.getElementById('mmwaveBandwidth');
 
-		// TODO read jump from form above.
-		// if (radio = urlParams.get("radio")) {
-		// 	jump = radio / 50
-		// }
-
-		default_option = `<option value="{0}">AA{1} - {2} GHz </option>`
-
-		const frequency_select = document.getElementById('starting-frequency-select')
-		for (let i=0;i<17;i++){
-			frequency_select.insertAdjacentHTML('beforeend',default_option.format((jump*i).toString(),i.toString(),((27500+(jump*i))).toString()));
-		}
-
-		function test() {
-			jump = parseInt(document.getElementById('mmwaveBandwidth').value)
-			console.log(jump)
+		function generateStartingFrequencies() {
+			jump = parseInt(starting_frequency.value);
 			frequency_select.innerHTML = '';
 			for (let i=0;i<(18-(jump/50));i++){
-				frequency_select.insertAdjacentHTML('beforeend',default_option.format((jump*i).toString(),i.toString(),((27500+(50*i))).toString()));
+				frequency_select.insertAdjacentHTML('beforeend',
+				`<option value="${(jump*i).toString()}">AA${i.toString()} - ${((27500+(50*i))).toString()} GHz </option>`);
+			}
 		}
-		}
-
-		document.getElementById('mmwaveBandwidth').addEventListener('change',test)
+		document.getElementById('mmwaveBandwidth').addEventListener('change',generateStartingFrequencies);
+		generateStartingFrequencies();
 
 		</script>
 	</div>
