@@ -218,18 +218,6 @@
 		};
 		// Show appropriate rows of the table
 
-		// Show the ones with the right bandwidth...
-		const bandwidth = urlParams.get ( "bandwidth" )
-		if ( bandwidth == "10" ) {
-			for ( let elem of document .getElementsByClassName ( "tenMHz" ) ) {
-				elem .removeAttribute ( "hidden" )
-			}
-		} else {
-			for ( let elem of document .getElementsByClassName ( "twentyMHz" ) ) {
-				elem .removeAttribute ( "hidden" )
-			}
-		}
-
 		// ...and then re-hide the ones that aren't appropriate to this company
 		const NMSP = urlParams.get ( "NMSP" )
 		if ( NMSP == "Yes" ) {
@@ -275,8 +263,10 @@
 
 		row += `<td></td></tr>`
 
-
-		let jump = 1;
+		let jump = 5;
+		if (radio = urlParams.get("radio")) {
+			jump = radio / 50
+		}
 
 		const table = document.getElementById('frequencyTable')
 		for (let i=0;i<(16-jump);i++){
@@ -285,7 +275,13 @@
 			} else {
 				rowHTML = row
 			}
-			table.insertAdjacentHTML('beforeend',rowHTML.format((i+1).toString(),(i+1+jump).toString(),(i*50).toString(),(i*50+(jump*50)).toString()));
+			index = (i+1)
+			start_bandwidth = i*50
+			table.insertAdjacentHTML('beforeend',rowHTML.format(
+				// A_       to    A_
+				index.toString(), (index+jump).toString(),
+				// 28 ___                  to              28 ___
+				start_bandwidth.toString().padStart(3, '0'), (start_bandwidth+(jump*50)).toString().padStart(3, '0')));
 		}
 
 	</script>
