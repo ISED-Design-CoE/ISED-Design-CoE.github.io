@@ -172,7 +172,7 @@
 					</ul>
 				</fieldset>
 
-				<fieldset class="gc-chckbxrdio">
+				<fieldset class="gc-chckbxrdio" id="starting-frequency-input" hidden>
 					<legend class="required">
 						<span class="field-name">
 							Choose your starting frequency
@@ -363,6 +363,22 @@
 		const frequency_select = document.getElementById('starting-frequency-select');
 		const starting_frequency = document.getElementById('mmwaveBandwidth');
 
+		const any_button = document.getElementById('any');
+		const any_NINP_button = document.getElementById('any-NINP');
+		const choose_button = document.getElementById('choose-frequency-block');
+		const starting_frequency_input = document.getElementById('starting-frequency-input')
+
+		//TODO: make this work by reading URL as well.
+		any_button.addEventListener ( "click", (event) => {
+			starting_frequency_input .setAttribute ( "hidden", null )
+		})
+		any_NINP_button.addEventListener ( "click", (event) => {
+			starting_frequency_input .setAttribute ( "hidden", null )
+		})
+		choose_button.addEventListener ( "click", (event) => {
+			starting_frequency_input .removeAttribute ( "hidden" )
+		})
+
 		function generateStartingFrequencies() {
 			jump = parseInt(starting_frequency.value);
 			frequency_select.innerHTML = '';
@@ -373,6 +389,8 @@
 		}
 		document.getElementById('mmwaveBandwidth').addEventListener('change',generateStartingFrequencies);
 		generateStartingFrequencies();
+
+		
 
 		</script>
 	</div>
