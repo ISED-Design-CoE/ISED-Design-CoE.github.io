@@ -4,6 +4,26 @@
 - Fix A1 warning
 - Add horizontal range input
 - Add NMSP
+- add a version of this page but horizontal
+
+
+## Drop down method ⭐
+- radio for bandwidth
+- radio for any, any but aa1 & aa2 or choose your block
+-- dropdown for the block
+
+## slider with radio button for bandwidth
+- radio button for bandwidth
+- radio for any, any but aa1 & aa2 or choose your block
+-- slider with fixed range
+
+## horizontal radio buttons
+- radio for bandwidth
+- radio for any, any but aa1 & aa2 or choose your block
+
+
+IF TIME PERMITS
+- replace frequency.html with this
 -->
 
 
@@ -239,13 +259,15 @@
 			}
 		}
 
+		// 27 500 to 28 350
+
 		row = `
 		<tr>
 			<td>
 				<div class="radio">
-					<input type="radio" id="A{0}" name="frequency" value="A1">
-						<label class="rowLabel" for="A{0}">
-							A{0} - A{1} <br>
+					<input type="radio" id="AA{0}" name="frequency" value="A1">
+						<label class="rowLabel" for="AA{0}">
+							AA{0} - AA{1} <br>
 								28 {2} - 28 {3}
 						</label>
 				</div>
