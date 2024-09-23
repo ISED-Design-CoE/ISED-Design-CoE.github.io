@@ -137,7 +137,7 @@
 					</ul>
 
 					<!-- Only show for 28 GHz -->
-					<select class="form-control mmwaveBandwidth" name="radio" hidden="true">
+					<select class="form-control mmwaveBandwidth" id="mmwaveBandwidth" name="radio" hidden="true">
 						<option value="50">50 MHz   </option>
 						<option value="100">100 MHz </option>
 						<option value="150">150 MHz </option>
@@ -148,6 +148,51 @@
 						<option value="400">400 MHz </option>
 					</select>
 				</fieldset>
+
+				<fieldset class="gc-chckbxrdio">
+					<legend class="required">
+						<span class="field-name">
+							Would you like ISED to assign you a frequency block?
+						</span>
+						<strong class="required small" aria-hidden="true">(required)</strong>
+					</legend>
+					<ul class="list-unstyled lst-spcd-2">
+						<li class="radio">
+							<input type="radio" id="any" name="any" value="any">
+							<label for="any">Yes, ISED can assign frequency block</label>
+						</li>
+						<li class="radio">
+							<input type="radio" id="any-NINP" name="any" value="any-NINP">
+							<label for="any-NINP">Yes, but not AA1 or AA2</label>
+						</li>
+						<li class="radio">
+							<input type="radio" id="choose-frequency-block" name="any" value="choose-frequency-block">
+							<label for="choose-frequency-block">No, I would like to choose myself</label>
+						</li>
+					</ul>
+				</fieldset>
+
+				<fieldset class="gc-chckbxrdio" id="starting-frequency-input" hidden>
+					<legend class="required">
+						<span class="field-name">
+							Choose your starting frequency
+						</span>
+						<strong class="required small" aria-hidden="true">(required)</strong>
+					</legend>
+					<details>
+						<summary>More information<span class="wb-inv"> about bandwidth</span></summary>
+						<span class="mmwaveBandwidth" hidden="true">
+							<p>You may request either between 50MHz and 400MHz contiguous (i.e. adjacent frequency blocks).</p>
+							<p>If you require non-contiguous frequency blocks, apply for a multiple licences.</p>
+						</span>
+
+					</details>
+					
+					<select id='starting-frequency-select' class="form-control " name="radio">
+					</select>
+				</fieldset>
+
+				
 
 				<fieldset class="gc-chckbxrdio">
 					<legend class="required">
@@ -313,6 +358,40 @@
 				// 	}
 				// }
 			}
+
+		// Generate choce for starting frequency
+		const frequency_select = document.getElementById('starting-frequency-select');
+		const starting_frequency = document.getElementById('mmwaveBandwidth');
+
+		const any_button = document.getElementById('any');
+		const any_NINP_button = document.getElementById('any-NINP');
+		const choose_button = document.getElementById('choose-frequency-block');
+		const starting_frequency_input = document.getElementById('starting-frequency-input')
+
+		//TODO: make this work by reading URL as well.
+		any_button.addEventListener ( "click", (event) => {
+			starting_frequency_input .setAttribute ( "hidden", null )
+		})
+		any_NINP_button.addEventListener ( "click", (event) => {
+			starting_frequency_input .setAttribute ( "hidden", null )
+		})
+		choose_button.addEventListener ( "click", (event) => {
+			starting_frequency_input .removeAttribute ( "hidden" )
+		})
+
+		function generateStartingFrequencies() {
+			jump = parseInt(starting_frequency.value);
+			frequency_select.innerHTML = '';
+			for (let i=0;i<(18-(jump/50));i++){
+				frequency_select.insertAdjacentHTML('beforeend',
+				`<option value="${(jump*i).toString()}">AA${i.toString()} - ${((27500+(50*i))).toString()} GHz </option>`);
+			}
+		}
+		document.getElementById('mmwaveBandwidth').addEventListener('change',generateStartingFrequencies);
+		generateStartingFrequencies();
+
+		
+
 		</script>
 	</div>
 	<div id="change-licensee">
