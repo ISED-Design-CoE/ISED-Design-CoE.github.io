@@ -197,7 +197,7 @@
 						<p>The NCLL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
 					</details>
 					
-					<select id='starting-frequency-select' class="form-control " name="radio">
+					<select id='starting-frequency-select' class="form-control " name="starting-frequency-block">
 					</select>
 				</fieldset>
 
@@ -399,7 +399,7 @@
 				frequency = (frequency =="28") ? frequency.concat('.00') : frequency.padEnd(5,'0')
 				frequency_end = (frequency_end =="28") ? frequency_end.concat('.00') : frequency_end.padEnd(5,'0')
 				frequency_select.insertAdjacentHTML('beforeend',
-				`<option value="${(jump*i).toString()}">AA${(i+1).toString()} to AA${(i+jump/50).toString()} - ${frequency} to ${frequency_end} GHz</option>`);
+				`<option value="${(i+1).toString()}">AA${(i+1).toString()} to AA${(i+jump/50).toString()} - ${frequency} to ${frequency_end} GHz</option>`);
 			}
 		}
 		document.getElementById('mmwaveBandwidth').addEventListener('change',generatemmWaveStartingFrequencies);
@@ -411,7 +411,7 @@
 			frequency_select.innerHTML = '';
 			for (let i=0; i<(9-(blockSize/10)); i++){
 				frequency_select.insertAdjacentHTML('beforeend',
-				`<option value="${(blockSize*i).toString()}">A${(i).toString()} to A${(i+(blockSize/10)).toString()} - 39${((i)*10).toString().padEnd(2,"0")} to 39${(i)*10+blockSize} MHz</option>`);
+				`<option value="${(i).toString()}">A${(i).toString()} to A${(i+(blockSize/10)).toString()} - 39${((i)*10).toString().padEnd(2,"0")} to 39${(i)*10+blockSize} MHz</option>`);
 			}
 		}
 
