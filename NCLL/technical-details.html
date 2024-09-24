@@ -45,6 +45,10 @@
 			.alert-info {
 				margin-left: 14px;
 			}
+
+			.glyphicon-warning-sign {
+				color: #ee7100;
+			}
 	</style>
 	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
 	<link href="ncl-portal.css" rel="stylesheet" type="text/css">
@@ -92,7 +96,6 @@
 			<li><a class="navbar-item" href="general.html">General information</a></li>
 			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
 			<li class="active" aria-current="step">Technical details</li>
-			<li><a class="navbar-item" href="frequency.html">Frequency</a></li>
 			<li><a class="navbar-item" href="licence-area.html">Licence area</a></li>
 			<li><a class="navbar-item" href="review.html">Review</a></li>
 		</ul>
@@ -101,7 +104,7 @@
 	<h1 property="name" id="wb-cont">Technical details</h1>
 
 	<div class="wb-frmvld">
-		<form id="technicalDetailForm" action="frequency.html" method="get">
+		<form id="technicalDetailForm" action="licence-area.html" method="get">
 
 			<div class="wb-frm">
 				<fieldset class="gc-chckbxrdio">
@@ -127,17 +130,17 @@
 					<!-- Only show for 3900 MHz -->
 					<ul class="list-unstyled lst-spcd-2 3900Bandwidth">
 						<li class="radio">
-							<input type="radio" id="tenMHz" name="bandwidth" value="10" data-rule-required="true">
+							<input type="radio" id="tenMHz" name="bandwidth" value="10" data-rule-required="true" onclick="generate3900StartingFrequency(10)">
 							<label for="tenMHz">10 MHz</label>
 						</li>
 						<li class="radio">
-							<input type="radio" id="twentyMHz" name="bandwidth" value="20">
+							<input type="radio" id="twentyMHz" name="bandwidth" value="20" onclick="generate3900StartingFrequency(20)">
 							<label for="twentyMHz">20 MHz contiguous</label>
 						</li>
 					</ul>
 
 					<!-- Only show for 28 GHz -->
-					<select class="form-control mmwaveBandwidth" name="radio" hidden="true">
+					<select class="form-control mmwaveBandwidth" id="mmwaveBandwidth" name="radio" hidden="true">
 						<option value="50">50 MHz   </option>
 						<option value="100">100 MHz </option>
 						<option value="150">150 MHz </option>
@@ -148,6 +151,57 @@
 						<option value="400">400 MHz </option>
 					</select>
 				</fieldset>
+
+				<fieldset class="gc-chckbxrdio">
+					<legend class="required">
+						<span class="field-name">
+							Would you like ISED to assign you a frequency block?
+						</span>
+						<strong class="required small" aria-hidden="true">(required)</strong>
+					</legend>
+					<ul class="list-unstyled lst-spcd-2">
+						<li class="radio">
+							<input type="radio" id="any" name="any" value="any">
+							<label for="any">Yes, ISED can assign a frequency block</label>
+						</li>
+						<li class="radio">
+							<input type="radio" id="any-NINP" name="any" value="any-NINP">
+							<label for="any-NINP" id="any-NINP-label">Yes, but not A1</label>
+						</li>
+						<li class="radio">
+							<input type="radio" id="choose-frequency-block" name="any" value="choose-frequency-block">
+							<label for="choose-frequency-block">No, I would like to choose myself</label>
+						</li>
+					</ul>
+				</fieldset>
+
+				<fieldset class="gc-chckbxrdio" id="starting-frequency-input" hidden>
+					<legend class="required">
+						<span class="field-name">
+							Choose your frequency blocks
+						</span>
+						<strong class="required small" aria-hidden="true">(required)</strong>
+					</legend>
+					<details class="mmwaveBandwidth" hidden>
+						<summary>
+							<span class="glyphicon glyphicon-warning-sign"></span>
+							Channel AA1 and AA2 are available on a no-protection, no-interference basis to 27 GHz flexible use operations.
+						</summary>
+						<p>The NCL licensees with operations on block AA1 and AA2 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 27 GHz band.</p>
+					</details>
+					<details class="3900Bandwidth">
+						<summary>
+							<span class="glyphicon glyphicon-warning-sign"></span>
+						Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations
+						</summary>
+						<p>The NCLL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
+					</details>
+					
+					<select id='starting-frequency-select' class="form-control " name="radio">
+					</select>
+				</fieldset>
+
+				
 
 				<fieldset class="gc-chckbxrdio">
 					<legend class="required">
@@ -247,12 +301,12 @@
 			const band = urlParams.get ( "band" )
 			if (band == "28 GHz") {
 				for ( let elem of document .getElementsByClassName ( "3900Bandwidth" ) ) {
-				elem .setAttribute ( "hidden", "true" )
+				elem .setAttribute ( "hidden", null )
 				}
 				for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
 				elem .removeAttribute ( "hidden" )
 				}
-				document.getElementById("technicalDetailForm").action= "frequency-mm.html"
+				document.getElementById("any-NINP-label").innerHTML= "Yes, but not AA1 or AA2"
 			}
 
 			// Validate the interaction between the Scope of service and Power level fields
@@ -313,6 +367,54 @@
 				// 	}
 				// }
 			}
+
+		// Generate choce for starting frequency
+		const frequency_select = document.getElementById('starting-frequency-select');
+		const starting_frequency = document.getElementById('mmwaveBandwidth');
+
+		const any_button = document.getElementById('any');
+		const any_NINP_button = document.getElementById('any-NINP');
+		const choose_button = document.getElementById('choose-frequency-block');
+		const starting_frequency_input = document.getElementById('starting-frequency-input')
+
+		//TODO: make this work by reading URL as well.
+		any_button.addEventListener ( "click", (event) => {
+			starting_frequency_input .setAttribute ( "hidden", null )
+		})
+		any_NINP_button.addEventListener ( "click", (event) => {
+			starting_frequency_input .setAttribute ( "hidden", null )
+		})
+		choose_button.addEventListener ( "click", (event) => {
+			starting_frequency_input .removeAttribute ( "hidden" )
+		})
+
+		// millimeter wave
+
+		function generatemmWaveStartingFrequencies() {
+			jump = parseInt(starting_frequency.value);
+			frequency_select.innerHTML = '';
+			for (let i=0;i<(18-(jump/50));i++){
+				frequency_end = ((27500+(50*i+(jump)))/1000).toString()
+				frequency = ((27500+(50*i))/1000).toString()
+				frequency = (frequency =="28") ? frequency.concat('.00') : frequency.padEnd(5,'0')
+				frequency_end = (frequency_end =="28") ? frequency_end.concat('.00') : frequency_end.padEnd(5,'0')
+				frequency_select.insertAdjacentHTML('beforeend',
+				`<option value="${(jump*i).toString()}">AA${(i+1).toString()} to AA${(i+jump/50).toString()} - ${frequency} to ${frequency_end} GHz</option>`);
+			}
+		}
+		document.getElementById('mmwaveBandwidth').addEventListener('change',generatemmWaveStartingFrequencies);
+		generatemmWaveStartingFrequencies();
+
+		// 3900
+
+		function generate3900StartingFrequency(blockSize) {
+			frequency_select.innerHTML = '';
+			for (let i=0; i<(9-(blockSize/10)); i++){
+				frequency_select.insertAdjacentHTML('beforeend',
+				`<option value="${(blockSize*i).toString()}">A${(i).toString()} to A${(i+(blockSize/10)).toString()} - 39${((i)*10).toString().padEnd(2,"0")} to 39${(i)*10+blockSize} MHz</option>`);
+			}
+		}
+
 		</script>
 	</div>
 	<div id="change-licensee">
