@@ -297,17 +297,10 @@
 		</script>
 		<script src="catch-and-throw.js"></script>
 		<script>
-			// Show the appropriate bandwidth input
-			const band = urlParams.get ( "band" )
-			if (band == "28 GHz") {
-				for ( let elem of document .getElementsByClassName ( "3900Bandwidth" ) ) {
-				elem .setAttribute ( "hidden", null )
-				}
-				for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
-				elem .removeAttribute ( "hidden" )
-				}
-				document.getElementById("any-NINP-label").innerHTML= "Yes, but not AA1 or AA2"
-			}
+			
+
+			if (urlParams.get("any") == 'choose-frequency-block') {document.getElementById('starting-frequency-input').removeAttribute('hidden')}
+
 
 			// Validate the interaction between the Scope of service and Power level fields
 			const indoorOnlyField = document.getElementById ( "indoor-only" )
@@ -398,21 +391,42 @@
 				frequency = ((27500+(50*i))/1000).toString()
 				frequency = (frequency =="28") ? frequency.concat('.00') : frequency.padEnd(5,'0')
 				frequency_end = (frequency_end =="28") ? frequency_end.concat('.00') : frequency_end.padEnd(5,'0')
+				ending_block = (jump == 50) ? `` : ` to AA${(i+(jump/50)).toString()}`
+
 				frequency_select.insertAdjacentHTML('beforeend',
-				`<option value="${(i+1).toString()}">AA${(i+1).toString()} to AA${(i+jump/50).toString()} - ${frequency} to ${frequency_end} GHz</option>`);
+				`<option value="${(i+1).toString()}">AA${(i+1).toString()}${ending_block} - ${frequency} to ${frequency_end} GHz</option>`);
 			}
 		}
 		document.getElementById('mmwaveBandwidth').addEventListener('change',generatemmWaveStartingFrequencies);
-		generatemmWaveStartingFrequencies();
+		
 
 		// 3900
 
 		function generate3900StartingFrequency(blockSize) {
 			frequency_select.innerHTML = '';
+			
 			for (let i=0; i<(9-(blockSize/10)); i++){
+				ending_block = (blockSize == 20) ? ` to A${(i+2).toString()}` : ``
 				frequency_select.insertAdjacentHTML('beforeend',
-				`<option value="${(i).toString()}">A${(i).toString()} to A${(i+(blockSize/10)).toString()} - 39${((i)*10).toString().padEnd(2,"0")} to 39${(i)*10+blockSize} MHz</option>`);
+					`<option value="${(i).toString()}">A${(i+1).toString()}${ending_block} - 39${((i)*10).toString().padEnd(2,"0")} to 39${(i)*10+blockSize} MHz</option>`);
 			}
+		}
+
+		base_bandwidth = (urlParams.get('bandwidth')) ? urlParams.get('bandwidth') : 10
+
+		generate3900StartingFrequency(base_bandwidth);
+
+		// Show the appropriate bandwidth input
+		const band = urlParams.get ( "band" )
+			if (band == "28 GHz") {
+				for ( let elem of document .getElementsByClassName ( "3900Bandwidth" ) ) {
+				elem .setAttribute ( "hidden", null )
+				}
+				for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
+				elem .removeAttribute ( "hidden" )
+				}
+				document.getElementById("any-NINP-label").innerHTML= "Yes, but not AA1 or AA2"
+				generatemmWaveStartingFrequencies()
 		}
 
 		</script>
