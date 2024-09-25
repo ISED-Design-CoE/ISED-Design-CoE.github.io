@@ -397,5 +397,23 @@
 			}));
 		</script>
 		<script src="queries-in-navbar.js"></script>
+		<a class="wb-lbx" id="invoke-lightbox" title="Example of inline content" href="#inline_content">Inline content</a>
+		<section id="inline_content" class="mfp-hide modal-dialog modal-content overlay-def">
+			<header class="modal-header">
+				<h2 class="modal-title">Select desired mockup</h2>
+			</header>
+			<div class="modal-body">
+				<ul>
+					<li><a href="javascript:$.magnificPopup.close()">Current state</a></li>
+					<li><a href="technical-details-mm.html">Dropdown list (3900 MHz band)</a></li>
+					<li><a href="technical-details-mm.html?band=28+GHz">Dropdown list (28 GHz band)</a></li>
+				</ul>
+			</div>
+		</section>
+		<script>
+			$( document ).on( "wb-ready.wb", function( event ) {
+				document.getElementById("invoke-lightbox").click()
+			});
+		</script>
 	</body>
 </html>
