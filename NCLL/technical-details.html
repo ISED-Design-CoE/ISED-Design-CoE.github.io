@@ -392,9 +392,10 @@
 				frequency = (frequency =="28") ? frequency.concat('.00') : frequency.padEnd(5,'0')
 				frequency_end = (frequency_end =="28") ? frequency_end.concat('.00') : frequency_end.padEnd(5,'0')
 				ending_block = (jump == 50) ? `` : ` to AA${(i+(jump/50)).toString()}`
+				value = `AA${(i+1).toString()}${ending_block} - ${frequency} to ${frequency_end} GHz`
 
 				frequency_select.insertAdjacentHTML('beforeend',
-				`<option value="${(i+1).toString()}">AA${(i+1).toString()}${ending_block} - ${frequency} to ${frequency_end} GHz</option>`);
+				`<option value="${value}"> ${value}</option>`);
 			}
 		}
 		document.getElementById('mmwaveBandwidth').addEventListener('change',generatemmWaveStartingFrequencies);
@@ -407,8 +408,9 @@
 			
 			for (let i=0; i<(9-(blockSize/10)); i++){
 				ending_block = (blockSize == 20) ? ` to A${(i+2).toString()}` : ``
+				value = `A${(i+1).toString()}${ending_block} - 39${((i)*10).toString().padEnd(2,"0")} to 39${(i)*10+blockSize} MHz`
 				frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${(i).toString()}">A${(i+1).toString()}${ending_block} - 39${((i)*10).toString().padEnd(2,"0")} to 39${(i)*10+blockSize} MHz</option>`);
+					`<option value="${value}"> ${value})</option>`);
 			}
 		}
 
