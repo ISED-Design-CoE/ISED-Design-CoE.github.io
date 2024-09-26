@@ -410,7 +410,7 @@
 				ending_block = (blockSize == 20) ? ` to A${(i+2).toString()}` : ``
 				value = `A${(i+1).toString()}${ending_block} - 39${((i)*10).toString().padEnd(2,"0")} to 39${(i)*10+blockSize} MHz`
 				frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${value}"> ${value})</option>`);
+					`<option value="${value}"> ${value}</option>`);
 			}
 		}
 
