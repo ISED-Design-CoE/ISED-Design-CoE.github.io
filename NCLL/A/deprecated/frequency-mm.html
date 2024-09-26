@@ -1,0 +1,399 @@
+<!-- TODO:
+- Fix the numbers to match the papers
+- Fix the choice in the review review
+- Fix A1 warning
+- Add horizontal range input
+- Add NMSP
+- add a version of this page but horizontal
+
+
+## Drop down method ⭐ ✅
+- radio for bandwidth
+- radio for any, any but aa1 & aa2 or choose your block
+-- dropdown for the block
+
+## slider with radio button for bandwidth
+- radio button for bandwidth
+- radio for any, any but aa1 & aa2 or choose your block
+-- slider with fixed range
+
+## horizontal radio buttons
+- radio for bandwidth
+- radio for any, any but aa1 & aa2 or choose your block
+
+
+IF TIME PERMITS
+- replace frequency.html with this
+-->
+
+
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+	<head>
+<!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
+	 <meta charset="utf-8">
+
+<!-- Start DECoE customization -->
+		<title>
+			Frequency - NCL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+		</title>
+<!-- End DECoE customization -->
+
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+		<noscript>
+			<!-- Write closure fall-back static file -->
+			<!-- refTop.html -->
+		</noscript>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refTop({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+<!-- Start DECoE customization -->
+	<style>
+		/* Styles for all mockups */
+			.notesaboutmockup {
+				color: #333;
+				background: #FFD;
+				padding: 0 1em;
+				border-color: #FC6;
+				border-width: 2px;
+				border-style: solid;
+				margin-top: 3em;
+			}
+			.notesaboutmockup h2 {
+				font-size: inherit;
+				margin-top: 1em;
+			}
+		/* Styles for this mockup */
+			.alert-warning {
+				border-left: 0px;
+			}
+			.glyphicon-warning-sign {
+				color: #ee7100;
+			}
+			.table.accentuate-dividers tr th,
+			.table.accentuate-dividers tr td {
+				border: 1px solid black;
+			}
+			.table.accentuate-dividers tr.table-spacer td {
+				border: none;
+				padding: 0;
+				height: 8px;
+			}
+			.table.accentuate-dividers tr.table-spacer {
+				border: 1px solid black;
+			}
+			.table.accentuate-dividers tr th:first-child,
+			.table.accentuate-dividers tr td:first-child {
+				white-space: nowrap;
+			}
+			.gc-chckbxrdio input[type=checkbox]+label::before, .gc-chckbxrdio input[type=radio]+label::before {
+				left: 1px;
+			}
+	</style>
+	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
+	<link href="ncl-portal.css" rel="stylesheet" type="text/css">
+<!-- End DECoE customization -->
+
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<div id="def-top">
+			<!-- Write closure fall-back static file -->
+			<!-- transactTop-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defTop = document.getElementById("def-top");
+			defTop.outerHTML = wet.builder.top({
+				"cdnEnv": "esdcprod",
+				"lngLinks": [{
+					"lang": "fr",
+					"href": "transactional-fr.shtml",
+					"text": "Français"
+				}],
+				"search": false,
+				"siteMenu": false,
+				"breadcrumbs": [{
+					"title": "Spectrum Management System",
+					"href": "index.html"
+				},
+				{
+					"title": "NCL portal",
+					"href": "portal.html"
+				}],
+				"showPreContent": false
+			});
+		</script>
+		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+<!-- Start page content -->
+
+	<div id="superhead">
+		<p>3900-MHz-band NCL licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
+	</div>
+	<div class="form-group">
+		<ul class="nav nav-wizard">
+			<li><a class="navbar-item"href="general.html">General information</a></li>
+			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
+			<li><a class="navbar-item" href="technical-details.html">Technical details</a></li>
+			<li class="active" aria-current="step">Frequency</li>
+			<li><a class="navbar-item" href="licence-area.html">Licence area</a></li>
+			<li><a class="navbar-item" href="review.html">Review</a></li>
+		</ul>
+	</div>
+
+	<div class="wb-frmvld">
+		<form action="licence-area.html" method="get">
+			<div class="wb-frm">
+				<div class="container">
+					<h1 property="name" id="wb-cont">Frequency</h1>
+					<fieldset class="gc-chckbxrdio">
+						<legend class="required">
+							<span class="field-name">
+								Select what frequency block<span class="twentyMHz" hidden>s</span> you prefer
+							</span>
+							<strong class="required small" aria-hidden="true">(required)</strong>
+						</legend>
+						<p>Choose whether you would like any <span class="twentyMHz" hidden>pair of</span> frequency block<span class="twentyMHz" hidden>s</span>, or only a specific <span class="twentyMHz" hidden>pair</span> <span class="tenMHz" hidden>block</span></p>
+						<table class="table form-group accentuate-dividers" id="frequencyTable">
+							<tr>
+								<th>Frequency block<span class="twentyMHz" hidden>s</span></th>
+								<th>Information</th>
+							</tr>
+
+							<tr>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-any" name="frequency" value="Any" data-rule-required="true">
+										<label for="frequency-any">Any</label>
+									</div>
+								</td>
+								<td>
+									<p>Allows ISED to automatically assign any <span class="twentyMHz" hidden>pair of</span> frequency block<span class="twentyMHz" hidden>s</span>.</p>
+									<details>
+										<summary>
+											<span class="glyphicon glyphicon-warning-sign"></span>
+										Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations
+										</summary>
+										<p>The NCL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
+									</details>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-any-except-a1" name="frequency" value="Any except A1">
+										<label for="frequency-any-except-a1">Any except A1<span class="twentyMHz" hidden>-A2</span></label>
+									</div>
+								</td>
+								<td>
+									<p>Allows ISED to automatically assign any <span class="twentyMHz" hidden>pair of</span> frequency block<span class="twentyMHz" hidden>s</span> except A1<span class="twentyMHz" hidden>-A2</span>.</p>
+								</td>
+							</tr>
+
+							<tr class="table-spacer" aria-hidden="hidden"><td></td><td></td></tr>
+
+						</table>
+					</fieldset>
+					
+				<section id="save-div" class="alert alert-success" hidden>
+					<p>Application saved as draft</p>
+				</section>
+				<button class="btn btn-primary" type="submit">Next ⯈</button>
+				<button class="btn btn-default" type="button" id="save-button">Save</button>
+				<br>
+				<button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details.html'+ window.location.search">⯇ Back</button>
+
+				<div class="notesaboutmockup">
+					<h2>Notes about this mockup:</h2>
+					<ul>
+						<li>Responses on previous screens determine the options available on this screen.</li>
+					</ul>
+					<h2>Changes from phase 2A BRD:</h2>
+					<ul>
+						<li>Ref. 5.8.5 Technical Details page</li>
+						<li>Split frequency selection out from other technical details</li>
+						<li>Reorganised how questions are asked</li>
+						<li>Made it impossible for user to select a channel where there is geographical overlap</li>
+						<li>Made it impossible for NMSPs to select channels A5 through A8</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</form>
+	<script>
+		const saveButton = document.getElementById ( "save-button" )
+		const saveDiv = document.getElementById ( "save-div" )
+		saveButton.addEventListener ( "click", (event) => {
+			saveDiv .removeAttribute ( "hidden" )
+		})
+	</script>
+	<script src="catch-and-throw.js"></script>
+	<script>
+		// helper function that imports f-string functionality from python.
+
+		// e.g. "Hello {text}".format('world') → "Hello world"
+		String.prototype.format = function () {
+			var args = arguments;
+			return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
+		};
+		// Show appropriate rows of the table
+
+		// ...and then re-hide the ones that aren't appropriate to this company
+		const NMSP = urlParams.get ( "NMSP" )
+		if ( NMSP == "Yes" ) {
+			for ( let elem of document .getElementsByClassName ( "not-NMSP" ) ) {
+				elem .setAttribute ( "hidden", "hidden" )
+			}
+		} else {
+			for ( let elem of document .getElementsByClassName ( "NMSP" ) ) {
+				elem .setAttribute ( "hidden", "hidden" )
+			}
+		}
+
+		// 27 500 to 28 350
+
+		row = `
+		<tr>
+			<td>
+				<div class="radio">
+					<input type="radio" id="AA{0}" name="frequency" value="A1">
+						<label class="rowLabel" for="AA{0}">
+							AA{0} - AA{1} <br>
+								28 {2} - 28 {3}
+						</label>
+				</div>
+			</td>
+			
+		`
+
+		a1_row = row + `
+			<td>
+				<details>
+					<summary>
+						<span class="glyphicon glyphicon-warning-sign"></span>
+						Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations to 3800 MHz flexible use operations.
+					</summary>
+					<p>The NCL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
+				</details>
+			</td>
+		</tr>
+		`
+
+		row += `<td></td></tr>`
+
+		let jump = 1;
+		if (radio = urlParams.get("radio")) {
+			jump = radio / 50
+		}
+
+		const table = document.getElementById('frequencyTable')
+		for (let i=0;i<(16-jump);i++){
+			if (i ==0) {
+				rowHTML = a1_row
+			} else {
+				rowHTML = row
+			}
+			index = (i+1)
+			start_bandwidth = i*50
+			table.insertAdjacentHTML('beforeend',rowHTML.format(
+				// A_       to    A_
+				index.toString(), (index+jump).toString(),
+				// 28 ___                  to              28 ___
+				start_bandwidth.toString().padStart(3, '0'), (start_bandwidth+(jump*50)).toString().padStart(3, '0')));
+		}
+
+	</script>
+	</div>
+	<div id="change-licensee">
+		<div class="container">
+			<div class="col-md-offset-6 col-md-6">
+				<section id="wb-so">
+					<h2 class="wb-inv">Sign-on information</h2>
+					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licensee account</button>
+					<button class="btn btn-primary" type="button" onclick="window.location = 'login.html'">Sign out</button>
+					<p class="small mrgn-tp-sm">User:  <span class="nowrap">John Dutton</span></p>
+					<p class="small mrgn-tp-sm">Licensee: <span class="nowrap">The Best Company</span><br>10000005465346</p>
+				</section>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		// Move #change-licensee to top of screen
+		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
+		const changeLicensee = document .getElementById ( "change-licensee" )
+		const wbBc = document .getElementById ( "wb-bc" )
+		wbBc .prepend ( changeLicensee )
+	</script>
+	<script>
+		// Read application number from parameters if present
+		if ( urlParams .has ( "app-number" ) ) {
+			const appNumberText = urlParams .get ( "app-number" )
+			for ( let elem of document .getElementsByClassName ( "app-number" ) ) {
+				elem .innerText = appNumberText
+			}
+		}
+	</script>
+<!-- End page content -->
+
+			<div id="def-preFooter">
+				<!-- Write closure fall-back static file -->
+				<!-- preFooter-en.html -->
+			</div>
+			<!-- Write closure template -->
+			<script>
+				var defPreFooter = document.getElementById("def-preFooter");
+				defPreFooter.outerHTML = wet.builder.preFooter({
+					"cdnEnv": "esdcprod",
+					"versionIdentifier": "CD56",
+					"showPostContent": false,
+					"showFeedback": false,
+					"showShare": false
+				});
+			</script>
+		</main>
+		<div id="def-footer">
+			<!-- Write closure fall-back static file -->
+			<!-- transactFooter-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defFooter = document.getElementById("def-footer");
+			defFooter.outerHTML = wet.builder.footer({
+				"cdnEnv": "esdcprod",
+				"showFooter": false,
+				"showFeatures": false,
+				"termsLink": [{
+        			"newWindow": true
+				}],
+				"privacyLink": [{
+					"newWindow": true
+				}],
+				"contextualFooter":{
+					"title": "Spectrum and Telecommunications Sector",
+					"links": [{
+						"text": "Contact us",
+						"href":"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
+						"newWindow": true
+					}]
+				}
+			});
+		</script>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refFooter({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+		<script src="queries-in-navbar.js"></script>
+	</body>
+</html>

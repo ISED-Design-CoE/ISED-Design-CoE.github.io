@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+	<head>
+<!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
+	 <meta charset="utf-8">
+
+<!-- Start DECoE customization -->
+		<title>
+			WKT tool - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+		</title>
+<!-- End DECoE customization -->
+
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+		<noscript>
+			<!-- Write closure fall-back static file -->
+			<!-- refTop.html -->
+		</noscript>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refTop({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+<!-- Start DECoE customization -->
+
+<link rel="stylesheet" href="libs/leaflet.css"/>
+<link rel="stylesheet" href="src/leaflet.draw.css"/>
+
+<script>
+const baseQuery = window.location.search
+var urlQueries = baseQuery
+</script>
+
+<!-- src does not work with folder, this is long but the best I can do because of 
+	how leaflet draw is designed. -->
+<script src="libs/leaflet-src.js"></script>
+<script src="src/Leaflet.draw.js"></script>
+<script src="src/Leaflet.Draw.Event.js"></script>
+<script src="src/edit/handler/Edit.Poly.js"></script>
+<script src="src/edit/handler/Edit.SimpleShape.js"></script>
+<script src="src/edit/handler/Edit.Rectangle.js"></script>
+<script src="src/draw/handler/Draw.Feature.js"></script>
+<script src="src/draw/handler/Draw.Polyline.js"></script>
+<script src="src/draw/handler/Draw.Polygon.js"></script>
+<script src="src/draw/handler/Draw.SimpleShape.js"></script>
+<script src="src/draw/handler/Draw.Rectangle.js"></script>
+<script src="src/draw/handler/Draw.Circle.js"></script>
+<script src="src/draw/handler/Draw.Marker.js"></script>
+<script src="src/draw/handler/Draw.CircleMarker.js"></script>
+<script src="src/ext/TouchEvents.js"></script>
+<script src="src/ext/LatLngUtil.js"></script>
+<script src="src/ext/GeometryUtil.js"></script>
+<script src="src/ext/LineUtil.Intersect.js"></script>
+<script src="src/ext/Polyline.Intersect.js"></script>
+<script src="src/ext/Polygon.Intersect.js"></script>
+<script src="src/Control.Draw.js"></script>
+<script src="src/Tooltip.js"></script>
+<script src="src/Toolbar.js"></script>
+<script src="src/draw/DrawToolbar.js"></script>
+<script src="src/edit/EditToolbar.js"></script>
+<script src="src/edit/handler/EditToolbar.Edit.js"></script>
+<script src="src/edit/handler/EditToolbar.Delete.js"></script>
+<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+
+<script src="https://unpkg.com/esri-leaflet"></script>
+
+<!-- Esri Leaflet Geocoder -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
+/>
+<script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+
+
+	<style>
+		/* Styles for all mockups */
+			.notesaboutmockup {
+				color: #333;
+				background: #FFD;
+				padding: 0 1em;
+				border-color: #FC6;
+				border-width: 2px;
+				border-style: solid;
+				margin-top: 3em;
+			}
+			.notesaboutmockup h2 {
+				font-size: inherit;
+				margin-top: 1em;
+			}
+		/* Styles for this mockup */
+			#map {
+				border: 1px solid black;
+				height: 65em;
+				margin-bottom: 2em;
+			}
+			#WKT {
+				width: 100%;
+			}
+			@media (min-width: 768px) {
+				.dl-horizontal dt {
+					width: 15em;
+				}
+			}
+			.highlight {
+				background-color: yellow;
+			}
+			.margin-top,
+			#map-instructions {
+				margin-top: 38px;	
+			}
+			.text-on-map{
+				background:white;
+				border-radius:4px;
+				outline:2px solid rgba(0,0,0,0.2);
+				padding:8px;
+			}
+			html {
+				scroll-behavior: smooth;
+			}
+            #map .leaflet-draw-draw-polygon {
+                background-image: url('src/images/draw.svg') !important;
+                background-position: 50%;
+                background-size: 60%;
+                width: 5em;
+                height: 5em;
+                
+            }
+
+			#map .leaflet-draw-edit-remove {
+				background-image: url('src/images/delete.svg') !important;
+				background-position: 50%;
+				width: 5em;
+				height: 5em;
+				background-size: 70%;
+
+			}
+
+	</style>
+	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
+	<link href="ncl-portal.css" rel="stylesheet" type="text/css">
+<!-- End DECoE customization -->
+
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<div id="def-top">
+			<!-- Write closure fall-back static file -->
+			<!-- transactTop-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defTop = document.getElementById("def-top");
+			defTop.outerHTML = wet.builder.top({
+				"cdnEnv": "esdcprod",
+				"lngLinks": [{
+					"lang": "fr",
+					"href": "transactional-fr.shtml",
+					"text": "Français"
+				}],
+				"search": false,
+				"siteMenu": false,
+
+				"showPreContent": false
+			});
+		</script>
+
+        <script>
+            function copy() {
+				
+                let textarea = document.getElementById("WKT");
+                textarea.select();
+				if (textarea.value != "") {
+					navigator.clipboard.writeText(textarea.value);
+					document.getElementById ( "copied-alert" ).removeAttribute("hidden")
+				}
+            }
+
+			// I am sure that there is a better, more efficient way of doing this...
+			document.addEventListener("click", (evt) => {
+				if (evt.target != document.getElementById ( "copy-button" )){
+					document.getElementById ( "copied-alert" ).setAttribute("hidden","hidden");
+				}
+      		});
+        </script>
+
+		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+<!-- Start page content -->
+
+	<div class="wb-frmvld">
+
+			<div class="wb-frm">
+				<div class="container">
+
+					<h1 property="name" id="wb-cont">Licence area in WKT (Well Known Text) Format</h1>
+					<p>
+					You may draw a licence area, with up to 12 boundary points on the interactive map below.
+					Once a licence area is defined, you may copy the coordinates in WKT format to your clipboard.
+					</p>
+					
+						<div class="row">
+							<details id="map-instructions">
+								<summary>How to use the interactive map</summary>
+								<p>To navigate the map:</p>
+
+								<ul>
+									<li>Click and drag to move the map</li>
+									<li>Zoom in:</li>
+									<ul>
+										<li>Double click</li>
+										<li>Scroll</li>
+										<li>Click the zoom icons on the bottom right</li>
+									</ul>
+								</ul>
+								<p>To draw:</p>
+									<ol>
+										<li>Navigate to your location</li>
+										<li>Click the draw tool
+											<img src="src/images/draw.svg" alt="Draw Tool">
+										</li>
+										<li>Click on the map to add points. These are connected by straight lines.</li>
+										<li>Close your boundary:</li>
+										<ul>
+											<li>Click the first point</li>
+											<li>Click the finish button next to the draw icon</li>
+										</ul>
+										<li>Edit your boundary:</li>
+										<ul>
+											<li>Drag the white points to move them</li>
+											<li>Drag the translucent points to add new points</li>
+										</ul>
+									</ol>
+							</details>
+							<div id="map"></div>
+					</div>
+
+					<div class="form-group margin-top">
+						<div class="alert alert-warning" id="medium-power-alert" hidden="hidden">
+							<p>The area is between 75 km<sup>2</sup> and 165 km<sup>2</sup>. It can only be used with <b>medium power</b>.</sup></p>
+						</div>
+
+						<div class="alert alert-warning" id="low-power-alert" hidden="hidden">
+							<p>The area is between 0 km<sup>2</sup> and 15 km<sup>2</sup>. It can only be used with <b>low power</b>.</sup></p>
+						</div>
+
+						<div class="alert alert-danger" id="too-large-alert" hidden="hidden">
+							<p>The area is too large. Please reduce the size of the polygon to be less than 165km<sup>2</sup></p>
+						</div>
+
+						<div class="alert alert-danger" id="between-alert" hidden="hidden">
+							<p>The area is between 15 km<sup>2</sup> and 75 km<sup>2</sup>. Please reduce or increase your area size beyond these limits.</p>
+						</div>
+
+						<div class="alert alert-success" id="copied-alert" hidden="true">
+							<p>WKT Copied</p>
+						 </div>
+                    </div>
+				</div>
+
+				<table class="wb-tables table" id="wkt-table" >
+					<thead>
+						<tr>
+							<th width="10%">ID</th>
+							<th width="75%" data-orderable="false">WKT</th>
+							<th data-orderable="false">Copy</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+						
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+
+		
+
+	<script src="catch-and-throw.js"></script>
+
+	</div>
+
+<!-- End page content -->
+
+			<div id="def-preFooter">
+				<!-- Write closure fall-back static file -->
+				<!-- preFooter-en.html -->
+			</div>
+			<!-- Write closure template -->
+			<script>
+				var defPreFooter = document.getElementById("def-preFooter");
+				defPreFooter.outerHTML = wet.builder.preFooter({
+					"cdnEnv": "esdcprod",
+					"versionIdentifier": "CD56",
+					"showPostContent": false,
+					"showFeedback": false,
+					"showShare": false
+				});
+			</script>
+		</main>
+		<div id="def-footer">
+			<!-- Write closure fall-back static file -->
+			<!-- transactFooter-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defFooter = document.getElementById("def-footer");
+			defFooter.outerHTML = wet.builder.footer({
+				"cdnEnv": "esdcprod",
+				"showFooter": false,
+				"showFeatures": false,
+				"termsLink": [{
+        			"newWindow": true
+				}],
+				"privacyLink": [{
+					"newWindow": true
+				}],
+				"contextualFooter":{
+					"title": "Spectrum and Telecommunications Sector",
+					"links": [{
+						"text": "Contact us",
+						"href":"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
+						"newWindow": true
+					}]
+				}
+			});
+		</script>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refFooter({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+
+		<script>
+
+    var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                    osm = L.tileLayer(osmUrl, {maxZoom: 18, attribution: osmAttrib}),
+                    map = new L.Map('map', {zoomControl:false, layers: [osm], center: new L.LatLng(63.27268094792591, -100.5815661012755), zoom: 3.3,selectedPathOptions: {
+                color:'#ff9900'
+                }});
+            drawnItems = L.featureGroup().addTo(map);
+
+    map.addControl(new L.Control.Draw({
+        edit: {
+            featureGroup: drawnItems,
+            poly: {
+                allowIntersection: false
+            },
+			edit: false
+        },
+        draw: {
+            polygon: {
+				allowIntersection: false,
+				showArea: true,
+				maxPoints:12,
+                metric: "km",
+                precision: {km:5},
+                shapeOptions: {
+                        fillColor :'#bf00ff',
+                    fillOpacity:0.65,
+                    color:"#8600b3",
+                    opacity: 1
+                          }
+			},
+			polyline: false,
+			circle: false,
+			rectangle: false,
+			marker: false,
+			circlemarker: false,
+        }
+    }));
+
+	function CopyRow(row) {
+		console.log(row)
+		var table = $('#wkt-table').DataTable();
+		console.log(table.cell(row,1).data())
+		navigator.clipboard.writeText(table.cell(row,1).data());
+	} 
+
+    map.on(L.Draw.Event.CREATED, function (event) {
+        var layer = event.layer;
+
+        drawnItems.addLayer(layer);
+
+		layer.editing.enable()
+
+		drawnItems.addLayer(layer);
+
+		var latlngs = layer._defaultShape ? layer._defaultShape() : layer.getLatLngs()
+
+		area = L.GeometryUtil.geodesicArea(latlngs);
+		lat_long_sliced = latlngs.slice(0,12)
+		let wkt = "POLYGON(("
+		for (let i = 0; i < 12; i++) {
+			if (i < lat_long_sliced.length) {
+				wkt += latlngs[i].lng.toFixed(6) + " " + latlngs[i].lat.toFixed(6) + ","
+			}
+			
+		}
+	
+		wkt = wkt.substring(0,wkt.length-1)
+		wkt += "))"
+            
+		drawnItems.setStyle({fillColor :'#33cc33',
+				fillOpacity:0.65,
+				color:"#248f24",
+				opacity: 1});
+
+		var table = $('#wkt-table').DataTable();
+
+		var count = table.rows().count() +1
+
+		console.log(count)
+
+		table.row.add([
+			layer._leaflet_id,
+			wkt,
+			"<button class='btn btn-primary' OnClick='(CopyRow("+(count-1)+"))'>Copy WKT</button>"]).draw();	
+
+    });
+
+	map.on(L.Draw.Event.DELETED, function (e) {
+		var table = $('#wkt-table').DataTable();
+		e.layers.eachLayer(layer => {
+			i = 0
+			table.rows().every( function ( rowIdx, tableLoop, rowLoop ) {
+				var data = this.data();
+				if(data[0]==layer._leaflet_id){
+
+					table.row(i).remove( {
+						title: 'Delete row of deleted poly'
+					}).draw();
+				}
+				i +=1
+			} );
+		});
+
+		
+
+		
+    });
+
+</script>
+
+</html>

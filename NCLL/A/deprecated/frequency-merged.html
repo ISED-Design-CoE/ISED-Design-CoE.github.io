@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+	<head>
+<!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
+	 <meta charset="utf-8">
+
+<!-- Start DECoE customization -->
+		<title>
+			Frequency - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+		</title>
+<!-- End DECoE customization -->
+
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+		<noscript>
+			<!-- Write closure fall-back static file -->
+			<!-- refTop.html -->
+		</noscript>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refTop({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+<!-- Start DECoE customization -->
+	<style>
+		/* Styles for all mockups */
+			.notesaboutmockup {
+				color: #333;
+				background: #FFD;
+				padding: 0 1em;
+				border-color: #FC6;
+				border-width: 2px;
+				border-style: solid;
+				margin-top: 3em;
+			}
+			.notesaboutmockup h2 {
+				font-size: inherit;
+				margin-top: 1em;
+			}
+		/* Styles for this mockup */
+			.alert-warning {
+				border-left: 0px;
+			}
+			.glyphicon-warning-sign {
+				color: #ee7100;
+			}
+			.table.accentuate-dividers tr th,
+			.table.accentuate-dividers tr td {
+				border: 1px solid black;
+			}
+			.table.accentuate-dividers tr.table-spacer td {
+				border: none;
+				padding: 0;
+				height: 8px;
+			}
+			.table.accentuate-dividers tr.table-spacer {
+				border: 1px solid black;
+			}
+			.table.accentuate-dividers tr th:first-child,
+			.table.accentuate-dividers tr td:first-child {
+				white-space: nowrap;
+			}
+			.gc-chckbxrdio input[type=checkbox]+label::before, .gc-chckbxrdio input[type=radio]+label::before {
+				left: 1px;
+			}
+	</style>
+	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
+	<link href="ncl-portal.css" rel="stylesheet" type="text/css">
+<!-- End DECoE customization -->
+
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<div id="def-top">
+			<!-- Write closure fall-back static file -->
+			<!-- transactTop-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defTop = document.getElementById("def-top");
+			defTop.outerHTML = wet.builder.top({
+				"cdnEnv": "esdcprod",
+				"lngLinks": [{
+					"lang": "fr",
+					"href": "transactional-fr.shtml",
+					"text": "Français"
+				}],
+				"search": false,
+				"siteMenu": false,
+				"breadcrumbs": [{
+					"title": "Spectrum Management System",
+					"href": "index.html"
+				},
+				{
+					"title": "NCLL portal",
+					"href": "portal.html"
+				}],
+				"showPreContent": false
+			});
+		</script>
+		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+<!-- Start page content -->
+
+	<div id="superhead">
+		<p>3900-MHz-band NCLL licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
+	</div>
+	<div class="form-group">
+		<ul class="nav nav-wizard">
+			<li><a class="navbar-item"href="general.html">General information</a></li>
+			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
+			<li><a class="navbar-item" href="technical-details.html">Technical details</a></li>
+			<li class="active" aria-current="step">Frequency</li>
+			<li><a class="navbar-item" href="licence-area.html">Licence area</a></li>
+			<li><a class="navbar-item" href="review.html">Review</a></li>
+		</ul>
+	</div>
+
+	<div class="wb-frmvld">
+		<form action="licence-area.html" method="get">
+			<div class="wb-frm">
+				<div class="container">
+					<button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details.html'+ window.location.search">⯇ Back</button>
+					<br>
+					<h1 property="name" id="wb-cont">Frequency</h1>
+					<fieldset class="gc-chckbxrdio">
+						<legend class="required">
+							<span class="field-name">
+								Select what frequency block<span class="twentyMHz" hidden>s</span> you prefer
+							</span>
+							<strong class="required small" aria-hidden="true">(required)</strong>
+						</legend>
+						<p>Choose whether you would like any <span class="twentyMHz" hidden>pair of</span> frequency block<span class="twentyMHz" hidden>s</span>, or only a specific <span class="twentyMHz" hidden>pair</span> <span class="tenMHz" hidden>block</span></p>
+						<table class="table form-group accentuate-dividers">
+							<tr>
+								<th>Frequency block<span class="twentyMHz" hidden>s</span></th>
+								<th>Information</th>
+							</tr>
+							<tr>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-any" name="frequency" value="Any" data-rule-required="true">
+										<label for="frequency-any">Any</label>
+									</div>
+								</td>
+								<td>
+									<p>Allows ISED to automatically assign any <span class="twentyMHz" hidden>pair of</span> frequency block<span class="twentyMHz" hidden>s</span>.</p>
+									<details>
+										<summary>
+											<span class="glyphicon glyphicon-warning-sign"></span>
+										Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations
+										</summary>
+										<p>The NCLL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
+									</details>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-any-except-a1" name="frequency" value="Any except A1">
+										<label for="frequency-any-except-a1">Any except A1<span class="twentyMHz" hidden>and A2</span></label>
+									</div>
+								</td>
+								<td>
+									<p>Allows ISED to automatically assign any <span class="twentyMHz" hidden>pair of</span> frequency block<span class="twentyMHz" hidden>s</span> except A1<span class="twentyMHz" hidden>and A2</span>.</p>
+								</td>
+							</tr>
+
+							<tr class="table-spacer" aria-hidden="hidden"><td></td><td></td></tr>
+
+							<tr class="tenMHz" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a1" name="frequency" value="A1 (3900–3910 MHz)">
+										<label for="frequency-a1">A1 (3900–3910&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<details>
+										<summary>
+											<span class="glyphicon glyphicon-warning-sign"></span>
+										Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations to 3800 MHz flexible use operations.
+										</summary>
+										<p>The NCLL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
+									</details>
+								</td>
+							</tr>
+
+							<tr class="tenMHz" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a2" name="frequency" value="A2 (3910–3920 MHz)">
+										<label for="frequency-a2">A2 (3910–3920&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a3" name="frequency" value="A3 (3920–3930 MHz)">
+										<label for="frequency-a3">A3 (3920–3930&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a4" name="frequency" value="A4 (3930–3940 MHz)">
+										<label for="frequency-a4">A4 (3930–3940&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+
+							<tr class="tenMHz NMSP" hidden>
+								<td>
+									<div class="radio">
+										<p align="right">A5 (3940–3950&nbsp;MHz)<br>
+											A6 (3950–3960&nbsp;MHz)<br>
+											A7 (3960–3970&nbsp;MHz)<br>
+											A8 (3970–3980&nbsp;MHz)
+										</p>
+									</div>
+								</td>
+								<td>
+									<p>Any entity, or affiliate of that entity, with 100,000 or more retail mobile phone subscribers is ineligible to hold a licence for the blocks from 3940&nbsp;MHz to 3980&nbsp;MHz.</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-NMSP" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a5" name="frequency" value="A5 (3940–3950 MHz)">
+										<label for="frequency-a5">A5 (3940–3950&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-NMSP" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a6" name="frequency" value="A6 (3950–3960 MHz)">
+										<label for="frequency-a6">A6 (3950–3960&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-NMSP" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a7" name="frequency" value="A7 (3960–3970 MHz)">
+										<label for="frequency-a7">A7 (3960–3970&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-NMSP" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a8" name="frequency" value="A8 (3970–3980 MHz)">
+										<label for="frequency-a8">A8 (3970–3980&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a1-a2" name="frequency" value="A1-A2 (3900–3920 MHz)">
+										<label for="frequency-a1-a2">A1 and A2 (3900–3920&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<details>
+										<summary>
+											<span class="glyphicon glyphicon-warning-sign"></span>
+										Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations.
+										</summary>
+										<p>The NCLL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
+									</details>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a2-a3" name="frequency" value="A2-A3 (3910–3930 MHz)">
+										<label for="frequency-a2-a3">A2 and A3 (3910–3930&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a3-a4" name="frequency" value="A3-A4 (3920–3940 MHz)">
+										<label for="frequency-a3-a4">A3 and A4 (3920–3940&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz NMSP" hidden>
+								<td>
+									<div class="radio">
+										<p align="right">A5–A8 (3940–3980&nbsp;MHz)</p>
+									</div>
+								</td>
+								<td>
+									<p>Any entity, or affiliate of that entity, with 100,000 or more retail mobile phone subscribers is ineligible to hold a licence for the blocks from 3940&nbsp;MHz to 3980&nbsp;MHz.</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz not-NMSP" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a4-a5" name="frequency" value="A4-A5 (3930–3950 MHz)">
+										<label for="frequency-a4-a5">A4 and A5 (3930–3950&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz not-NMSP" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a5-a6" name="frequency" value="A5-A6 (3940–3960 MHz)">
+										<label for="frequency-a5-a6">A5 and A6 (3940–3960&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz not-NMSP" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a6-a7" name="frequency" value="A6-A7 (3950–3970 MHz)">
+										<label for="frequency-a6-a7">A6 and A7 (3950–3970&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="twentyMHz not-NMSP" hidden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a7-a8" name="frequency" value="A7-A8 (3960–3980 MHz)">
+										<label for="frequency-a7-a8">A7 and A8 (3960–3980&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+						</table>
+					</fieldset>
+					
+				<section id="save-div" class="alert alert-success" hidden>
+					<p>Application saved as draft</p>
+				</section>
+				<button class="btn btn-primary" type="submit">Save and next ⯈</button>
+				<button class="btn btn-default" type="button" id="save-button">Save</button>
+
+				<div class="notesaboutmockup">
+					<h2>Notes about this mockup:</h2>
+					<ul>
+						<li>Responses on previous screens determine the options available on this screen.</li>
+					</ul>
+					<h2>Changes from phase 2A BRD:</h2>
+					<ul>
+						<li>Ref. 5.8.5 Technical Details page</li>
+						<li>Split frequency selection out from other technical details</li>
+						<li>Reorganised how questions are asked</li>
+						<li>Made it impossible for user to select a channel where there is geographical overlap</li>
+						<li>Made it impossible for NMSPs to select channels A5 through A8</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</form>
+	<script>
+		const saveButton = document.getElementById ( "save-button" )
+		const saveDiv = document.getElementById ( "save-div" )
+		saveButton.addEventListener ( "click", (event) => {
+			saveDiv .removeAttribute ( "hidden" )
+		})
+	</script>
+	<script src="catch-and-throw.js"></script>
+	<script>
+		// Show appropriate rows of the table
+
+		// Show the ones with the right bandwidth...
+		const bandwidth = urlParams.get ( "bandwidth" )
+		if ( bandwidth == "10" ) {
+			for ( let elem of document .getElementsByClassName ( "tenMHz" ) ) {
+				elem .removeAttribute ( "hidden" )
+			}
+		} else {
+			for ( let elem of document .getElementsByClassName ( "twentyMHz" ) ) {
+				elem .removeAttribute ( "hidden" )
+			}
+		}
+
+		// ...and then re-hide the ones that aren't appropriate to this company
+		const NMSP = urlParams.get ( "NMSP" )
+		if ( NMSP == "Yes" ) {
+			for ( let elem of document .getElementsByClassName ( "not-NMSP" ) ) {
+				elem .setAttribute ( "hidden", "hidden" )
+			}
+		} else {
+			for ( let elem of document .getElementsByClassName ( "NMSP" ) ) {
+				elem .setAttribute ( "hidden", "hidden" )
+			}
+		}
+
+	</script>
+	</div>
+	<div id="change-licensee">
+		<div class="container">
+			<div class="col-md-offset-6 col-md-6">
+				<section id="wb-so">
+					<h2 class="wb-inv">Sign-on information</h2>
+					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licensee account</button>
+					<button class="btn btn-primary" type="button" onclick="window.location = 'login.html'">Sign out</button>
+					<p class="small mrgn-tp-sm">User:  <span class="nowrap">John Dutton</span></p>
+					<p class="small mrgn-tp-sm">Licensee: <span class="nowrap">The Best Company</span><br>10000005465346</p>
+				</section>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		// Move #change-licensee to top of screen
+		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
+		const changeLicensee = document .getElementById ( "change-licensee" )
+		const wbBc = document .getElementById ( "wb-bc" )
+		wbBc .prepend ( changeLicensee )
+	</script>
+	<script>
+		// Read application number from parameters if present
+		if ( urlParams .has ( "app-number" ) ) {
+			const appNumberText = urlParams .get ( "app-number" )
+			for ( let elem of document .getElementsByClassName ( "app-number" ) ) {
+				elem .innerText = appNumberText
+			}
+		}
+	</script>
+<!-- End page content -->
+
+			<div id="def-preFooter">
+				<!-- Write closure fall-back static file -->
+				<!-- preFooter-en.html -->
+			</div>
+			<!-- Write closure template -->
+			<script>
+				var defPreFooter = document.getElementById("def-preFooter");
+				defPreFooter.outerHTML = wet.builder.preFooter({
+					"cdnEnv": "esdcprod",
+					"versionIdentifier": "CD56",
+					"showPostContent": false,
+					"showFeedback": false,
+					"showShare": false
+				});
+			</script>
+		</main>
+		<div id="def-footer">
+			<!-- Write closure fall-back static file -->
+			<!-- transactFooter-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defFooter = document.getElementById("def-footer");
+			defFooter.outerHTML = wet.builder.footer({
+				"cdnEnv": "esdcprod",
+				"showFooter": false,
+				"showFeatures": false,
+				"termsLink": [{
+        			"newWindow": true
+				}],
+				"privacyLink": [{
+					"newWindow": true
+				}],
+				"contextualFooter":{
+					"title": "Spectrum and Telecommunications Sector",
+					"links": [{
+						"text": "Contact us",
+						"href":"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
+						"newWindow": true
+					}]
+				}
+			});
+		</script>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refFooter({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+		<script src="queries-in-navbar.js"></script>
+	</body>
+</html>

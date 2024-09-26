@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+	<head>
+<!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
+	 <meta charset="utf-8">
+
+<!-- Start DECoE customization -->
+		<title>
+			General information - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+		</title>
+<!-- End DECoE customization -->
+
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+		<noscript>
+			<!-- Write closure fall-back static file -->
+			<!-- refTop.html -->
+		</noscript>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refTop({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+<!-- Start DECoE customization -->
+	<style>
+		/* Styles for all mockups */
+			.notesaboutmockup {
+				color: #333;
+				background: #FFD;
+				padding: 0 1em;
+				border-color: #FC6;
+				border-width: 2px;
+				border-style: solid;
+				margin-top: 3em;
+			}
+			.notesaboutmockup h2 {
+				font-size: inherit;
+				margin-top: 1em;
+			}
+		/* Styles for this mockup */
+	</style>
+	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+	<link href="ncl-portal.css" rel="stylesheet" type="text/css">
+	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
+<!-- End DECoE customization -->
+
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<div id="def-top">
+			<!-- Write closure fall-back static file -->
+			<!-- transactTop-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defTop = document.getElementById("def-top");
+			defTop.outerHTML = wet.builder.top({
+				"cdnEnv": "esdcprod",
+				"lngLinks": [{
+					"lang": "fr",
+					"href": "transactional-fr.shtml",
+					"text": "Français"
+				}],
+				"search": false,
+				"siteMenu": false,
+				"breadcrumbs": [{
+					"title": "Spectrum Management System",
+					"href": "index.html"
+				},
+				{
+					"title": "NCLL portal",
+					"href": "portal.html"
+				}],
+				"showPreContent": false
+			});
+		</script>
+		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+<!-- Start page content -->
+
+	<div id="superhead">
+		<p>3900-MHz-band NCLL licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
+	</div>
+	<div class="form-group">
+		<ul class="nav nav-wizard">
+			<li class="active" aria-current="step">General information</li>
+			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
+			<li><a class="navbar-item" href="technical-details.html">Technical details</a></li>
+			<li><a class="navbar-item" href="licence-area.html">Licence area</a></li>
+			<li><a class="navbar-item" href="review.html">Review</a></li>
+		</ul>
+	</div>
+
+	<h1 property="name" id="wb-cont">General information</h1>
+
+	<div class="wb-frmvld">
+		<form action="contact.html" method="get">
+
+		<div class="wb-frm">
+			<div class="form-group">
+				<label for="ari">
+					<span class="field-name">
+						Application identifier
+					</span>
+				</label>
+				<p>Internal identifier for your own use. (However, like all data entered on this form, this will become publicly viewable if the licence is granted.)</p>
+				<input id="ari" name="ari" class="form-control " value="" type="text">
+			</div>
+
+			<div class="form-group">
+				<label for="effective-date" class="required">
+					<span class="field-name">
+						Effective date<span class="datepicker-format">
+							(<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span>
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</label>
+				<input type="date" id="effective-date" name="effective-date" class="form-control" required="required">
+			</div>
+
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
+						Renewable or temporary licence
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<details>
+					<summary>More information<span class="wb-inv"> about renewable and temporary licences</span></summary>
+					<ul class="list-unstyled">
+						<li><strong>Renewable</strong> licences expire on March 31 each year and have a high expectation to be renewed for another year.</li>
+						<li><strong>Temporary</strong> licences last up to 11 months.</li>
+					</ul>
+				</details>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" id="renewable" name="renewable-temporary" value="Renewable" data-rule-required="true">
+						<label for="renewable">Renewable</label>
+					</li>
+					<li class="radio">
+						<input type="radio" id="temporary" name="renewable-temporary" value="Temporary">
+						<label for="temporary">Temporary</label>
+					</li>
+				</ul>
+			</fieldset>
+
+			<div class="form-group" id="expiry-date-div" hidden>
+				<label for="expiry-date" class="required">
+					<span class="field-name">
+						Expiry date<span class="datepicker-format">
+							(<abbr title="Four digits year, dash, two digits month, dash, two digits day">YYYY-MM-DD</abbr>)</span>
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</label>
+				<input type="date" id="expiry-date" name="expiry-date" class="form-control">
+			</div>
+
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
+						Does The Best Company or any of its affiliates or subsidiaries currently have 100,000 or more retail mobile phone subscribers?
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<details>
+					<summary>Why are we asking this question?</summary>
+					<p>Any entity, or affiliate of that entity (as defined in section 6.2 in <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/decision-non-competitive-local-licensing-framework-including-spectrum-3900-3980-mhz-band-and" target="_blank">SPB-001-23</a>), with 100,000 or more retail mobile phone subscribers as reported to the CRTC through its Annual Telecommunications Survey is ineligible to hold a licence for the blocks from 3940 MHz to 3980 MHz.</p>
+				</details>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" id="NMSP-yes" name="NMSP" value="Yes" data-rule-required="true">
+						<label for="NMSP-yes">Yes</label>
+					</li>
+					<li class="radio">
+						<input type="radio" id="NMSP-no" name="NMSP" value="No">
+						<label for="NMSP-no">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</div>
+		<section id="save-div" class="alert alert-success" hidden>
+			<p>Application saved as draft</p>
+		</section>
+		<button class="btn btn-primary" type="submit">Next ⯈</button>
+		<button class="btn btn-default" type="button" id="save-button">Save</button>
+		<br>
+		<button class="btn btn-default" type="button" onclick="history.back()">⯇ Back</button>
+
+		<div class="notesaboutmockup">
+			<h2>Notes about this mockup:</h2>
+			<ul>
+				<li>When user selects "Temporary", show the "Expiry date" field</li>
+				<li>Step navigation in heading based on <a href="https://sms-sgs.ic.gc.ca/registration/applicationWizard?execution=e1s2">new user registration form</a></li>
+			</ul>
+			<h2>Changes from phase 2A BRD:</h2>
+			<ul>
+				<li>Ref. 5.8.2 General information page</li>
+				<li>Removed application number field</li>
+				<li>Made expiry date field conditional</li>
+			</ul>
+		</div>
+		</form>
+		<script src="catch-and-throw.js"></script>
+		<script>
+			const renewableButton = document.getElementById ( "renewable" )
+			const temporaryButton = document.getElementById ( "temporary" )
+			const expiryDateDiv = document.getElementById ( "expiry-date-div" )
+
+			for ( const [ key, value ] of urlParams ) {
+				if (key == 'renewable-temporary') {
+					if (value == 'Temporary') {
+						expiryDateDiv .removeAttribute ( "hidden" )
+					}
+				}
+			}
+
+			function convertDateToISO ( date, offset ) {
+				let fullDate = new Date()
+				fullDate.setTime ( date.getTime() - (offset*60*1000))
+				return fullDate.toISOString().substring(0,10)
+			}
+			const effectiveDateField = document.getElementById ( "effective-date" )
+			const expiryDateField = document.getElementById ( "expiry-date" )
+
+			// Set minimum value for Effective date (=today)
+			const currentDate = new Date()
+			const offset = currentDate.getTimezoneOffset() // we will reuse this
+			const currentDateISO = convertDateToISO ( currentDate, offset )
+			effectiveDateField .setAttribute ( "min", currentDateISO )
+			
+			// Set maximum value for Effective date (= 60 days in future)
+			const maxEffectiveDate = new Date()
+			maxEffectiveDate.setDate ( currentDate.getDate() + 60 )
+			const maxEffectiveDateISO = convertDateToISO ( maxEffectiveDate, offset )
+			effectiveDateField .setAttribute ( "max", maxEffectiveDateISO )
+			
+			effectiveDateField.addEventListener ( "change", (event) => {
+				let effectiveDateValue = event.target.value
+
+				// Set minimum value for Expiry date (= Effective date)
+				expiryDateField .setAttribute ( "min", effectiveDateValue )
+			
+				// Set maximum value for Expiry date (= 11 months from Effective date)
+				const maxExpiryDate = new Date( effectiveDateValue )
+				maxExpiryDate.setMonth ( maxExpiryDate.getMonth() + 11 )
+				const maxExpiryDateISO = convertDateToISO ( maxExpiryDate, offset )
+				console.log(maxExpiryDate)
+				expiryDateField .setAttribute ( "max", maxExpiryDateISO )
+			})
+			renewableButton.addEventListener ( "click", (event) => {
+				expiryDateDiv .setAttribute ( "hidden", "hidden" )
+				expiryDateField .removeAttribute ( "required" )
+			})
+			temporaryButton.addEventListener ( "click", (event) => {
+				expiryDateField .setAttribute ( "required", "required" )
+				expiryDateDiv .removeAttribute ( "hidden" )
+			})
+		</script>
+		<script>
+			const saveButton = document.getElementById ( "save-button" )
+			const saveDiv = document.getElementById ( "save-div" )
+			saveButton .addEventListener ( "click", ( event ) => {
+				saveDiv .removeAttribute ( "hidden" )
+			})
+		</script>
+		
+	</div>
+	<div id="change-licensee">
+		<div class="container">
+			<div class="col-md-offset-6 col-md-6">
+				<section id="wb-so">
+					<h2 class="wb-inv">Sign-on information</h2>
+					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licensee account</button>
+					<button class="btn btn-primary" type="button" onclick="window.location = 'login.html'">Sign out</button>
+					<p class="small mrgn-tp-sm">User:  <span class="nowrap">John Dutton</span></p>
+					<p class="small mrgn-tp-sm">Licensee: <span class="nowrap">The Best Company</span><br>10000005465346</p>
+				</section>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		// Move #change-licensee to top of screen
+		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
+		const changeLicensee = document .getElementById ( "change-licensee" )
+		const wbBc = document .getElementById ( "wb-bc" )
+		wbBc .prepend ( changeLicensee )
+	</script>
+	<script>
+		// Read application number from parameters if present
+		if ( urlParams .has ( "app-number" ) ) {
+			const appNumberText = urlParams .get ( "app-number" )
+			for ( let elem of document .getElementsByClassName ( "app-number" ) ) {
+				elem .innerText = appNumberText
+			}
+		}
+	</script>
+<!-- End page content -->
+
+			<div id="def-preFooter">
+				<!-- Write closure fall-back static file -->
+				<!-- preFooter-en.html -->
+			</div>
+			<!-- Write closure template -->
+			<script>
+				var defPreFooter = document.getElementById("def-preFooter");
+				defPreFooter.outerHTML = wet.builder.preFooter({
+					"cdnEnv": "esdcprod",
+					"versionIdentifier": "CD56",
+					"showPostContent": false,
+					"showFeedback": false,
+					"showShare": false
+				});
+			</script>
+		</main>
+		<div id="def-footer">
+			<!-- Write closure fall-back static file -->
+			<!-- transactFooter-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defFooter = document.getElementById("def-footer");
+			defFooter.outerHTML = wet.builder.footer({
+				"cdnEnv": "esdcprod",
+				"showFooter": false,
+				"showFeatures": false,
+				"termsLink": [{
+        			"newWindow": true
+				}],
+				"privacyLink": [{
+					"newWindow": true
+				}],
+				"contextualFooter":{
+					"title": "Spectrum and Telecommunications Sector",
+					"links": [{
+						"text": "Contact us",
+						"href":"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
+						"newWindow": true
+					}]
+				}
+			});
+		</script>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refFooter({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+		<script src="queries-in-navbar.js"></script>
+
+		<script>
+			if (urlParams.get('effective-date') != null) {
+
+				let effectiveDateValue =urlParams.get('effective-date')
+
+				// Set minimum value for Expiry date (= Effective date)
+				expiryDateField .setAttribute ( "min", effectiveDateValue )
+			
+				// Set maximum value for Expiry date (= 11 months from Effective date)
+				const maxExpiryDate = new Date( effectiveDateValue )
+				maxExpiryDate.setMonth ( maxExpiryDate.getMonth() + 11 )
+				const maxExpiryDateISO = convertDateToISO ( maxExpiryDate, offset )
+				console.log(maxExpiryDate)
+				expiryDateField .setAttribute ( "max", maxExpiryDateISO )
+			}
+		</script>
+	</body>
+</html>
