@@ -162,7 +162,7 @@ var urlQueries = baseQuery
 <!-- Start page content -->
 
 	<div id="superhead">
-		<p>3900-MHz-band NCLL licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
+		<p><span class="mmwaveBandwidth" hidden="true">mm-wave-band</span><span class="3900Bandwidth">3900-MHz-band</span>  NCLL licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
 	</div>
 	<div class="form-group">
 		<ul class="nav nav-wizard">
@@ -751,6 +751,18 @@ var urlQueries = baseQuery
 			document.write(wet.builder.refFooter({
 				"cdnEnv": "esdcprod"
 			}));
+		</script>
+
+		<script>
+			const band = urlParams.get ( "band" )
+			if (band == "28 GHz") {
+				for ( let elem of document .getElementsByClassName ( "3900Bandwidth" ) ) {
+				elem .setAttribute ( "hidden", null )
+				}
+				for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
+				elem .removeAttribute ( "hidden" )
+				}
+			}
 		</script>
 		<script>
 
