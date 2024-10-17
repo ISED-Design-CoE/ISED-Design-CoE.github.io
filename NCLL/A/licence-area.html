@@ -321,8 +321,12 @@ var urlQueries = baseQuery
 								<p>We are unable to calculate a fee for this application, because we do not know how much bandwidth you require.</p>
 								<p>Please return to the <a href="technical-details.html">Technical details</a> screen to provide this information.</p>
 							</div>
+							<div id="mmWave-error-message" class="alert alert-warning" hidden>
+								<p>Fee calculations for mmWave (28 GHz) is not currently implemented in the mockup</p>
+								<p>As such, a <b>placeholder</b> price of 48$ will be used in the following screens.</p>
+							</div>
 					
-
+							
 							<div id="licence-fee-text">
 								<h2>Licence fee</h2>
 
@@ -519,6 +523,7 @@ var urlQueries = baseQuery
 		errorMessages [ "Too large for MP" ] = document.getElementById ( "MP-too-large-message" )
 		errorMessages [ "No duration" ] = document.getElementById ( "No-duration-message" )
 		errorMessages [ "No bandwidth" ] = document.getElementById ( "No-bandwidth-message" )
+		errorMessages [ "mmWave"] = document.getElementById( "mmWave-error-message" )
 		const licenceFeeText = document.getElementById ( "licence-fee-text" )
 
 		function calculate_area_info () {
@@ -528,6 +533,7 @@ var urlQueries = baseQuery
 			document.getElementById ( "renew-cost" ).setAttribute("hidden","hidden")
 			document.getElementById ( "renew-min-cost" ).setAttribute("hidden","hidden")
 			document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
+			document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
 			document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
 
 			urlQueries = baseQuery 
@@ -574,9 +580,17 @@ var urlQueries = baseQuery
 
 			let noErrors = true
 			// As appropriate, show error message
+
+			
 			if ( area_field .value == 0 ) { // If no area drawn, there can be no other errors
 				noErrors = false
 				errorMessages [ "Zero area" ] .removeAttribute ( "hidden" )
+			} else if ( band == "28 GHz" ) {
+				// TODO: implement pricing for 28 GHz
+				noErrors = false
+				errorMessages [ "mmWave" ] .removeAttribute ( "hidden" )
+				nextButton .removeAttribute ( "hidden" )
+
 			} else {
 
 				if ( false ) { // This should check if any part of the drawn area is outside Canada
