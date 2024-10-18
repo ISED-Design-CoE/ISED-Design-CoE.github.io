@@ -107,7 +107,7 @@
 		<form id="technicalDetailForm" action="licence-area.html" method="get">
 
 			<div class="wb-frm">
-				<fieldset class="gc-chckbxrdio">
+				<fieldset class="gc-chckbxrdio" onchange="selectBandwidth()">
 					<legend class="required">
 						<span class="field-name">
 							Bandwidth
@@ -140,7 +140,7 @@
 					</ul>
 
 					<!-- Only show for 28 GHz -->
-					<select class="form-control mmwaveBandwidth" id="mmwaveBandwidth" name="radio" hidden="true">
+					<select class="form-control mmwaveBandwidth" id="mmwaveBandwidth" name="radio" hidden="true" onchange="selectBandwidth()">
 						<option value="50" disabled selected="selected">Select bandwidth</option>
 						<option value="50">50 MHz   </option>
 						<option value="100">100 MHz </option>
@@ -190,13 +190,14 @@
 					</ul>
 				</fieldset>
 
-				<fieldset class="gc-chckbxrdio" id="starting-frequency-input" hidden>
+				<fieldset class="gc-chckbxrdio" id="starting-frequency-input" hidden disabled="true">
 					<legend class="required">
 						<span class="field-name">
-							Choose your frequency blocks
+							Select your frequency block(s)
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
+					<div id="bandwidth-warning"> In order to select your frequency block(s) you must first select your bandwidth</div>
 					<select id='starting-frequency-select' class="form-control " name="starting-frequency-block">
 					</select>
 				</fieldset>
@@ -288,6 +289,14 @@
 			</ul>
 		</div>
 		</form>
+		<script>
+			// TODO: only run once.
+			function selectBandwidth () {
+				document.getElementById("starting-frequency-input").removeAttribute("disabled")
+				document.getElementById("bandwidth-warning").setAttribute("hidden", null)
+			}
+		</script>
+
 		<script>
 			const saveButton = document.getElementById ( "save-button" )
 			const saveDiv = document.getElementById ( "save-div" )
@@ -386,6 +395,9 @@
 		function generatemmWaveStartingFrequencies() {
 			jump = parseInt(starting_frequency.value);
 			frequency_select.innerHTML = '';
+			plural = (jump == 50) ? "" : "s"
+			frequency_select.insertAdjacentHTML('beforeend',
+				`<option value="50" disabled selected="selected">Select frequency block${plural}</option>`);
 			for (let i=0;i<(18-(jump/50));i++){
 				frequency_end = ((27500+(50*i+(jump)))/1000).toString()
 				frequency = ((27500+(50*i))/1000).toString()
@@ -405,6 +417,9 @@
 
 		function generate3900StartingFrequency(blockSize) {
 			frequency_select.innerHTML = '';
+			plural = (blockSize == 10) ? "" : "s"
+			frequency_select.insertAdjacentHTML('beforeend',
+				`<option value="50" disabled selected="selected">Select frequency block${plural}</option>`);
 			
 			for (let i=0; i<(9-(blockSize/10)); i++){
 				ending_block = (blockSize == 20) ? ` to A${(i+2).toString()}` : ``
