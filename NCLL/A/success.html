@@ -82,7 +82,7 @@
 <!-- Start page content -->
 
 	<div id="superhead">
-		<p>3900-MHz-band NCLL licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Awaiting approval</span></p>
+		<p><span class="mmwaveBandwidth" hidden="true">mm-wave-band</span><span class="3900Bandwidth">3900-MHz-band</span>  NCLL licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
 	</div>
 
 	<h1 property="name" id="wb-cont">Success</h1>
@@ -134,6 +134,17 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		const band = urlParams.get ( "band" )
+			if (band == "28 GHz") {
+				for ( let elem of document .getElementsByClassName ( "3900Bandwidth" ) ) {
+				elem .setAttribute ( "hidden", null )
+				}
+				for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
+				elem .removeAttribute ( "hidden" )
+				}
+			}
+	</script>
 	<script>
 		// Move #change-licensee to top of screen
 		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing

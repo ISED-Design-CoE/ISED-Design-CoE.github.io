@@ -1,32 +1,3 @@
-<!-- TODO:
-- Fix the numbers to match the papers
-- Fix the choice in the review review
-- Fix A1 warning
-- Add horizontal range input
-- Add NMSP
-- add a version of this page but horizontal
-
-
-## Drop down method ⭐ ✅
-- radio for bandwidth
-- radio for any, any but aa1 & aa2 or choose your block
--- dropdown for the block
-
-## slider with radio button for bandwidth
-- radio button for bandwidth
-- radio for any, any but aa1 & aa2 or choose your block
--- slider with fixed range
-
-## horizontal radio buttons
-- radio for bandwidth
-- radio for any, any but aa1 & aa2 or choose your block
-
-
-IF TIME PERMITS
-- replace frequency.html with this
--->
-
-
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
@@ -36,7 +7,7 @@ IF TIME PERMITS
 
 <!-- Start DECoE customization -->
 		<title>
-			Frequency - NCL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+			Frequency - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
 		</title>
 <!-- End DECoE customization -->
 
@@ -125,7 +96,7 @@ IF TIME PERMITS
 					"href": "index.html"
 				},
 				{
-					"title": "NCL portal",
+					"title": "NCLL portal",
 					"href": "portal.html"
 				}],
 				"showPreContent": false
@@ -136,16 +107,16 @@ IF TIME PERMITS
 <!-- Start page content -->
 
 	<div id="superhead">
-		<p>mm-wave-band NCL licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
+		<p>3900-MHz-band NCLL licence application (<span class="app-number">01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
 	</div>
 	<div class="form-group">
 		<ul class="nav nav-wizard">
 			<li><a class="navbar-item"href="general.html">General information</a></li>
 			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
 			<li><a class="navbar-item" href="technical-details.html">Technical details</a></li>
-			<li class="active" aria-current="step">Frequency</li>
 			<li><a class="navbar-item" href="licence-area.html">Licence area</a></li>
-			<li><a class="navbar-item" href="review.html">Review application</a></li>
+			<li class="active" aria-current="step">Frequency</li>
+			<li><a class="navbar-item" href="review.html">Review</a></li>
 		</ul>
 	</div>
 
@@ -161,13 +132,12 @@ IF TIME PERMITS
 							</span>
 							<strong class="required small" aria-hidden="true">(required)</strong>
 						</legend>
-						<p>Choose whether you would like any <span class="twentyMHz" hidden>pair of</span> frequency block<span class="twentyMHz" hidden>s</span>, or only a specific <span class="twentyMHz" hidden>pair</span> <span class="tenMHz" hidden>block</span></p>
-						<table class="table form-group accentuate-dividers" id="frequencyTable">
+						<p>Choose whether you would like any frequency block</span></p>
+						<table class="table form-group accentuate-dividers">
 							<tr>
 								<th>Frequency block<span class="twentyMHz" hidden>s</span></th>
 								<th>Information</th>
 							</tr>
-
 							<tr>
 								<td>
 									<div class="radio">
@@ -182,7 +152,7 @@ IF TIME PERMITS
 											<span class="glyphicon glyphicon-warning-sign"></span>
 										Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations
 										</summary>
-										<p>The NCL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
+										<p>The NCLL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
 									</details>
 								</td>
 							</tr>
@@ -201,6 +171,107 @@ IF TIME PERMITS
 
 							<tr class="table-spacer" aria-hidden="hidden"><td></td><td></td></tr>
 
+							<tr class="tenMHz" >
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a1" name="frequency" value="A1 (3900–3910 MHz)">
+										<label for="frequency-a1">A1 (3900–3910&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<details>
+										<summary>
+											<span class="glyphicon glyphicon-warning-sign"></span>
+										Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations to 3800 MHz flexible use operations.
+										</summary>
+										<p>The NCLL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
+									</details>
+								</td>
+							</tr>
+
+							<tr class="tenMHz" >
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a2" name="frequency" value="A2 (3910–3920 MHz)">
+										<label for="frequency-a2">A2 (3910–3920&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz" >
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a3" name="frequency" value="A3 (3920–3930 MHz)">
+										<label for="frequency-a3">A3 (3920–3930&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz" >
+								<td>
+									<div class="radio">
+										<input type="radio" disabled id="frequency-a4" name="frequency" value="A4 (3930–3940 MHz)">
+										<label for="frequency-a4">A4 (3930–3940&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td style=" vertical-align: middle;">
+									<p>&nbsp;&nbsp;<span class="glyphicon glyphicon-warning-sign"></span>&nbsp;&nbsp;&nbsp;&nbsp;The requested licence area <strong>overlaps</strong> an existing licence with block A4</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-NMSP" hiden>
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a5" name="frequency" value="A5 (3940–3950 MHz)">
+										<label for="frequency-a5">A5 (3940–3950&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-NMSP" >
+								<td>
+									<div class="radio">
+										<input type="radio" disabled id="frequency-a6" name="frequency" value="A6 (3950–3960 MHz)">
+										<label for="frequency-a6">A6 (3950–3960&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td style=" vertical-align: middle;">
+									<p>&nbsp;&nbsp;<span class="glyphicon glyphicon-warning-sign"></span>&nbsp;&nbsp;&nbsp;&nbsp;The requested licence area <strong>overlaps</strong> an existing licence with block A6</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-NMSP" >
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a7" name="frequency" value="A7 (3960–3970 MHz)">
+										<label for="frequency-a7">A7 (3960–3970&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
+
+							<tr class="tenMHz not-NMSP" >
+								<td>
+									<div class="radio">
+										<input type="radio" id="frequency-a8" name="frequency" value="A8 (3970–3980 MHz)">
+										<label for="frequency-a8">A8 (3970–3980&nbsp;MHz)</label>
+									</div>
+								</td>
+								<td>
+									<p class="wb-inv">Available</p>
+								</td>
+							</tr>
 						</table>
 					</fieldset>
 					
@@ -238,87 +309,7 @@ IF TIME PERMITS
 	</script>
 	<script src="catch-and-throw.js"></script>
 	<script>
-		// helper function that imports f-string functionality from python.
-
-		// e.g. "Hello {text}".format('world') → "Hello world"
-		String.prototype.format = function () {
-			var args = arguments;
-			return this.replace(/\{(\d+)\}/g, function (m, n) { return args[n]; });
-		};
 		// Show appropriate rows of the table
-
-		// ...and then re-hide the ones that aren't appropriate to this company
-		const NMSP = urlParams.get ( "NMSP" )
-		if ( NMSP == "Yes" ) {
-			for ( let elem of document .getElementsByClassName ( "not-NMSP" ) ) {
-				elem .setAttribute ( "hidden", "hidden" )
-			}
-		} else {
-			for ( let elem of document .getElementsByClassName ( "NMSP" ) ) {
-				elem .setAttribute ( "hidden", "hidden" )
-			}
-		}
-
-		// 27 500 to 28 350
-
-		row = `
-		<tr>
-			<td>
-				<div class="radio">
-					<input type="radio" id="AA{0}" name="frequency" value="A1">
-						<label class="rowLabel" for="AA{0}">
-								{0}
-								{1} - {2}
-						</label>
-				</div>
-			</td>
-			
-		`
-
-		a1_row = row + `
-			<td>
-				<details>
-					<summary>
-						<span class="glyphicon glyphicon-warning-sign"></span>
-						Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations to 3800 MHz flexible use operations.
-					</summary>
-					<p>The NCL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
-				</details>
-			</td>
-		</tr>
-		`
-
-		row += `<td></td></tr>`
-
-		let jump = 1;
-		if (radio = urlParams.get("radio")) {
-			jump = (radio / 50) -1
-		}
-
-		const table = document.getElementById('frequencyTable')
-		for (let i=0;i<(17-jump);i++){
-			console.log('jump:'+ jump)
-			if (i ==0) {
-				rowHTML = a1_row
-			} else {
-				rowHTML = row
-			}
-
-			
-			index = (i+1)
-			start_bandwidth = i*50
-			if (jump == 0) {
-				blocks = "AA{0}<br>".format(index.toString(), (index+jump).toString())
-			} else {
-				blocks = "AA{0} - AA{1}<br>".format(index.toString(), (index+jump).toString())
-			}
-			table.insertAdjacentHTML('beforeend',rowHTML.format(
-				// A_       to    A_
-				blocks,
-				// 28 ___                  to              28 ___
-				(27500+start_bandwidth).toString(), (27500+start_bandwidth+(jump*50)+50).toString()+" MHz"));
-		}
-
 	</script>
 	</div>
 	<div id="change-licensee">
