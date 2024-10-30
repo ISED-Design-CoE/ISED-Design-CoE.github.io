@@ -39,4 +39,5 @@ function toggleStatus(status) {
 		currentStatus.splice(currentStatus.indexOf(status),1)
 	}
 	console.log(currentStatus)
+	filterTable()
 }
