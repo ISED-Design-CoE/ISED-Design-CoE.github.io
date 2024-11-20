@@ -115,7 +115,7 @@
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
 					
-					<select class="form-control mmwaveBandwidth" id="mmwaveBandwidth" name="radio" hidden="true">
+					<select class="form-control mmwaveBandwidth" id="mmwaveBandwidth" name="radio">
 						<option value="50">50 MHz   </option>
 						<option value="100">100 MHz </option>
 						<option value="150">150 MHz </option>
@@ -134,18 +134,25 @@
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
+					<details>
+						<summary>
+							<span class="glyphicon glyphicon-warning-sign"></span>
+							Blocks AA1 and AA2 are available on a no-protection, no-interference basis to 27&nbsp;GHz flexible use operations.
+						</summary>
+						<p>The NCL licensees with operations on blocks AA1 and AA2 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 27 GHz band.</p>
+					</details>
 					<ul class="list-unstyled lst-spcd-2">
 						<li class="radio">
 							<input type="radio" id="any" name="any" value="any">
-							<label for="any">Yes, ISED can assign a frequency block</label>
+							<label for="any">Yes, please assign me any available frequency block</label>
 						</li>
 						<li class="radio">
 							<input type="radio" id="any-NINP" name="any" value="any-NINP">
-							<label for="any-NINP" id="any-NINP-label">Yes, but not A1</label>
+							<label for="any-NINP">Yes, but please do not assign me block AA1 or AA2</label>
 						</li>
 						<li class="radio">
 							<input type="radio" id="choose-frequency-block" name="any" value="choose-frequency-block">
-							<label for="choose-frequency-block">No, I would like to choose myself</label>
+							<label for="choose-frequency-block">No, I will choose a frequency block myself</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -157,14 +164,7 @@
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
-					<details>
-						<summary>
-							<span class="glyphicon glyphicon-warning-sign"></span>
-							Channel AA1 and AA2 are available on a no-protection, no-interference basis to 27 GHz flexible use operations.
-						</summary>
-						<p>The NCL licensees with operations on block AA1 and AA2 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 27 GHz band.</p>
-					</details>
-					
+				
 					<select id='starting-frequency-select' class="form-control " name="radio">
 					</select>
 				</fieldset>
@@ -243,18 +243,6 @@
 		<br>
 		<button class="btn btn-default" type="button" onclick="window.location.href = 'contact.html'+ window.location.search">⯇ Back</button>
 
-		<div class="notesaboutmockup">
-			<h2>Notes about this mockup:</h2>
-			<ul>
-				<li>Location of antennas field and Licence type field are interdependent</li>
-				<!-- <li>Antenna height field only displays if location of antennas is indoor-only</li> -->
-			</ul>
-			<h2>Changes from phase 2A BRD:</h2>
-			<ul>
-				<li>Ref. 5.8.5 Technical details page</li>
-				<li>Moved questions about frequency to a separate page, "Frequency"</li>
-			</ul>
-		</div>
 		</form>
 		<script>
 			const saveButton = document.getElementById ( "save-button" )
@@ -265,20 +253,6 @@
 		</script>
 		<script src="catch-and-throw.js"></script>
 		<script>
-			// Show the appropriate bandwidth input
-			const band = urlParams.get ( "band" )
-			if (band == "28 GHz") {
-				for ( let elem of document .getElementsByClassName ( "3900Bandwidth" ) ) {
-				elem .setAttribute ( "hidden", null )
-				}
-				for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
-				elem .removeAttribute ( "hidden" )
-				}
-				document.getElementById("technicalDetailForm").action= "frequency-mm.html"
-
-				document.getElementById("any-NINP-label").innerHTML= "Yes, but not AA1 or AA2"
-			}
-
 			// Validate the interaction between the Scope of service and Power level fields
 			const indoorOnlyField = document.getElementById ( "indoor-only" )
 			const outdoorIndoorField = document.getElementById ( "outdoor" )
