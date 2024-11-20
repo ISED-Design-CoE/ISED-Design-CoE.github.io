@@ -89,7 +89,7 @@
 <!-- Start page content -->
 
 	<div id="superhead">
-		<p>NCLL application <span class="app-number">01000139-001</span> (3900 MHz band) <span class="pull-right" id="status">Draft</span></p>
+		<p>NCLL application <span class="app-number">01000139-001</span> (28 GHz band) <span class="pull-right" id="status">Draft</span></p>
 	</div>
 	<div class="form-group">
 		<ul class="nav nav-wizard">
@@ -114,32 +114,7 @@
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
-					<details>
-						<summary>More information<span class="wb-inv"> about bandwidth</span></summary>
-						<span class="3900Bandwidth">
-							<p>You may request either 10MHz or 20MHz contiguous (i.e. adjacent frequency blocks).</p>
-							<p>If you require non-contiguous frequency blocks, please select 10MHz and then apply for a second licence.</p>
-						</span>
-						<span class="mmwaveBandwidth" hidden="true">
-							<p>You may request either between 50MHz and 400MHz contiguous (i.e. adjacent frequency blocks).</p>
-							<p>If you require non-contiguous frequency blocks, apply for a multiple licences.</p>
-						</span>
-
-					</details>
 					
-					<!-- Only show for 3900 MHz -->
-					<ul class="list-unstyled lst-spcd-2 3900Bandwidth">
-						<li class="radio">
-							<input type="radio" id="tenMHz" name="bandwidth" value="10" data-rule-required="true" onclick="generate3900StartingFrequency(10)">
-							<label for="tenMHz">10 MHz</label>
-						</li>
-						<li class="radio">
-							<input type="radio" id="twentyMHz" name="bandwidth" value="20" onclick="generate3900StartingFrequency(20)">
-							<label for="twentyMHz">20 MHz contiguous</label>
-						</li>
-					</ul>
-
-					<!-- Only show for 28 GHz -->
 					<select class="form-control mmwaveBandwidth" id="mmwaveBandwidth" name="radio" hidden="true">
 						<option value="50">50 MHz   </option>
 						<option value="100">100 MHz </option>
@@ -182,19 +157,12 @@
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
-					<details class="mmwaveBandwidth" hidden>
+					<details>
 						<summary>
 							<span class="glyphicon glyphicon-warning-sign"></span>
 							Channel AA1 and AA2 are available on a no-protection, no-interference basis to 27 GHz flexible use operations.
 						</summary>
 						<p>The NCL licensees with operations on block AA1 and AA2 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 27 GHz band.</p>
-					</details>
-					<details class="3900Bandwidth">
-						<summary>
-							<span class="glyphicon glyphicon-warning-sign"></span>
-						Channel A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations
-						</summary>
-						<p>The NCLL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
 					</details>
 					
 					<select id='starting-frequency-select' class="form-control " name="radio">
@@ -218,8 +186,8 @@
 						<li class="radio">
 							<input type="radio" id="indoor-only" name="antenna" value="Indoor only" data-rule-required="true">
 							<label for="indoor-only">No, all antennas will be indoors</label>
-							<!-- <div id="medium-power-message" class="alert alert-info" hidden>
-								<p>Medium power licences must have at least one outdoor antenna.</p>
+							<!-- <div id="high-power-message" class="alert alert-info" hidden>
+								<p>High power licences must have at least one outdoor antenna.</p>
 							</div> -->
 						</li>
 					</ul>
@@ -247,7 +215,7 @@
 						<summary>More information<span class="wb-inv"> about licence type</span></summary>
 						<ul class="list-unstyled">
 							<li>A <strong>low-power</strong> licence can be up to 15 km² in area.</li>
-							<li>A <strong>medium-power</strong> licence can be between 75 and 165 km², but is not allowed in urban areas.</li>
+							<li>A <strong>high-power</strong> licence can be between 75 and 165 km², but is not allowed in urban areas.</li>
 						</ul>
 						<p>For further information about the consequences of this choice, including maximum permissible e.i.r.p. and maximum antenna height above ground level, see <a href="javascript:alert('Link TBD')">SRSP-521</a>.</p>
 					</details>
@@ -257,8 +225,8 @@
 							<label for="low-power">Low power</label>
 						</li>
 						<li class="radio">
-							<input type="radio" id="medium-power" name="power-level" value="Medium power">
-							<label for="medium-power">Medium power</label>
+							<input type="radio" id="high-power" name="power-level" value="High power">
+							<label for="high-power">High power</label>
 							<div id="indoor-only-message" class="alert alert-info" hidden>
 								<p>Indoor-only licences must be low power.</p>
 							</div>
@@ -316,23 +284,23 @@
 			const outdoorIndoorField = document.getElementById ( "outdoor" )
 
 			const lowPowerField = document.getElementById ( "low-power" )
-			const mediumPowerField = document.getElementById ( "medium-power" )
+			const highPowerField = document.getElementById ( "high-power" )
 			// const antennaHeightField = document.getElementById ( "antenna-height" )
 
 			const indoorOnlyMessage = document.getElementById ( "indoor-only-message" )
-			// const mediumPowerMessage = document.getElementById ( "medium-power-message" )
+			// const mediumPowerMessage = document.getElementById ( "high-power-message" )
 			// const antennaHeightDiv = document.getElementById ( "antenna-height-div" )
 
 			indoorOnlyField .addEventListener ( "click", ( event ) => {
 				indoorOnlyMessage .removeAttribute ( "hidden" )
-				mediumPowerField .disabled = true
+				highPowerField .disabled = true
 				// antennaHeightDiv .removeAttribute ( "hidden" )
 				// antennaHeightField .setAttribute ( "required" , "required" )
 			})
 
 			outdoorIndoorField .addEventListener ( "click", ( event ) => {
 				indoorOnlyMessage .setAttribute ( "hidden", "hidden" )
-				mediumPowerField .disabled = false
+				highPowerField .disabled = false
 				// antennaHeightDiv .setAttribute ( "hidden", "hidden" )
 				// antennaHeightField .removeAttribute ( "required" )
 			})
@@ -342,7 +310,7 @@
 			// 	indoorOnlyField .disabled = false
 			// })
 
-			// mediumPowerField .addEventListener ( "click", ( event ) => {
+			// highPowerField .addEventListener ( "click", ( event ) => {
 			// 	mediumPowerMessage .removeAttribute ( "hidden" )
 			// 	indoorOnlyField .disabled = true
 			// })
@@ -351,11 +319,11 @@
 				if (key == 'antenna') {
 					if (value == 'Outdoor and indoor') {
 						indoorOnlyMessage .setAttribute ( "hidden", "hidden" )
-						mediumPowerField .disabled = false
+						highPowerField .disabled = false
 					}
 					if (value == 'Indoor only') {
 						indoorOnlyMessage .removeAttribute ( "hidden" )
-						mediumPowerField .disabled = true
+						highPowerField .disabled = true
 					}
 				}
 				// if (key == 'power-level') {
@@ -363,7 +331,7 @@
 				// 		mediumPowerMessage .setAttribute ( "hidden", "hidden" )
 				// 		indoorOnlyField .disabled = false
 				// 	}
-				// 	if (value == 'Medium power') {
+				// 	if (value == 'High power') {
 				// 		mediumPowerMessage .removeAttribute ( "hidden" )
 				// 		indoorOnlyField .disabled = true
 				// 	}
@@ -390,8 +358,6 @@
 			starting_frequency_input .removeAttribute ( "hidden" )
 		})
 
-		// millimeter wave
-
 		function generatemmWaveStartingFrequencies() {
 			jump = parseInt(starting_frequency.value);
 			frequency_select.innerHTML = '';
@@ -406,16 +372,6 @@
 		}
 		document.getElementById('mmwaveBandwidth').addEventListener('change',generatemmWaveStartingFrequencies);
 		generatemmWaveStartingFrequencies();
-
-		// 3900
-
-		function generate3900StartingFrequency(blockSize) {
-			frequency_select.innerHTML = '';
-			for (let i=0; i<(9-(blockSize/10)); i++){
-				frequency_select.insertAdjacentHTML('beforeend',
-				`<option value="${(blockSize*i).toString()}">A${(i).toString()} to A${(i+(blockSize/10)).toString()} - 39${((i)*10).toString().padEnd(2,"0")} to 39${(i)*10+blockSize} MHz</option>`);
-			}
-		}
 
 		</script>
 	</div>
