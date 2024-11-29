@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+	<head>
+<!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
+	 <meta charset="utf-8">
+
+<!-- Start DECoE customization -->
+		<title>
+			NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+		</title>
+<!-- End DECoE customization -->
+
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+		<noscript>
+			<!-- Write closure fall-back static file -->
+			<!-- refTop.html -->
+		</noscript>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refTop({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+<!-- Start DECoE customization -->
+		<style>
+		/* Styles for all mockups */
+			.notesaboutmockup {
+				color: #333;
+				background: #FFD;
+				padding: 0 1em;
+				border-color: #FC6;
+				border-width: 2px;
+				border-style: solid;
+				margin-top: 3em;
+			}
+			.notesaboutmockup h2 {
+				font-size: inherit;
+				margin-top: 1em;
+			}
+		/* Styles for this mockup */
+		</style>
+		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+		<link href="ncl-portal.css" rel="stylesheet" type="text/css">
+	<!-- End DECoE customization -->
+
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<div id="def-top">
+			<!-- Write closure fall-back static file -->
+			<!-- transactTop-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defTop = document.getElementById("def-top");
+			defTop.outerHTML = wet.builder.top({
+				"cdnEnv": "esdcprod",
+				"lngLinks": [{
+					"lang": "fr",
+					"href": "transactional-fr.shtml",
+					"text": "Français"
+				}],
+				"search": false,
+				"siteMenu": false,
+				"breadcrumbs": [{
+					"title": "Spectrum Management System",
+					"href": "index.html"
+				}],
+				"showPreContent": false
+			});
+		</script>
+		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+<!-- Start page content -->
+	<h1 property="name" id="wb-cont">NCLL portal</h1>
+	<!-- <div class="alert alert-warning">
+		<p>You currently have <a href="applications.html?filter=payment">2 applications</a> with outstanding balances. These applications will not be granted until payment is received.</p>
+	</div>
+	<div class="alert alert-warning">
+		<p>You currently have <a href="licences.html?filter=payment">3 licence renewals</a> with outstanding balances. These licences will not be renewed until payment is received.</p>
+	</div>
+	<div class="alert alert-warning">
+		<p>You currently have <a href="licences.html?filter=station">3 licences</a> with station data overdue. These licences will not be eligible for automatic renewal until station data is received. <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data/how-upload-spectrum-licence-site-data" target="_blank">How to upload spectrum licence site data</a></p>
+	</div>
+	<div class="alert alert-warning">
+		<p>You currently have <a href="applications.html?filter=payment">1 licence</a> with an outstanding deployment requirement. These licences will not be eligible for automatic renewal until you upload station data demonstrating deployment. <a href="javascript:alert('URL TBD')">What are my deployment requirements?</a></p>
+	</div> -->
+	<div class="wb-eqht row">
+		<div class="col-md-6 col-lg-4">
+			<h3><a href="javascript:alert('URL TBD')">Applying for an NCLL</a></h3>
+			<p>Learn what you'll need in order to apply for a non-competitive local licence</p>
+		</div>
+		<div class="col-md-6 col-lg-4">
+			<h3><a href="SLAB-en-leaflet.html">NCLL spectrum browser</a></h3>
+			<p>Use the NCLL spectrum browser to plan your non-competitive local licences</p>
+		</div>
+		<div class="col-md-6 col-lg-4">
+			<h3><a href="select-band.html">Start new application</a></h3>
+			<p>Apply for a non-competitive local licence</p>
+		</div>
+	</div>
+	<div class="wb-eqht row">
+		<div class="col-md-6 col-lg-4">
+			<h3><a href="applications.html?filter=draft">Draft applications</a></h3>
+			<p>View and manage applications that you have saved but not submitted</p>
+		</div>
+		<div class="col-md-6 col-lg-4">
+			<h3><a href="applications.html">Submitted applications</a></h3>
+			<p>View and manage applications that you have submitted</p>
+		</div>
+		<div class="col-md-6 col-lg-4">
+			<h3><a href="licences.html">Licences</a></h3>
+			<p>View and manage your granted NCLL licences</p>
+		</div>
+	</div>
+
+ <div id="change-licensee">
+	<div class="container">
+		<div class="col-md-offset-6 col-md-6">
+			<section id="wb-so">
+				<h2 class="wb-inv">Sign-on information</h2>
+				<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licensee account</button>
+				<button class="btn btn-primary" type="button" onclick="window.location = 'login.html'">Sign out</button>
+				<p class="small mrgn-tp-sm">User:  <span class="nowrap">John Dutton</span></p>
+				<p class="small mrgn-tp-sm">Licensee: <span class="nowrap">The Best Company</span><br>10000005465346</p>
+			</section>
+		</div>
+	</div>
+</div>
+	<script>
+		// Move #change-licensee to top of screen
+		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
+		const changeLicensee = document .getElementById ( "change-licensee" )
+		const wbBc = document .getElementById ( "wb-bc" )
+		wbBc .prepend ( changeLicensee )
+	</script>
+<!-- End page content -->
+
+			<div id="def-preFooter">
+				<!-- Write closure fall-back static file -->
+				<!-- preFooter-en.html -->
+			</div>
+			<!-- Write closure template -->
+			<script>
+				var defPreFooter = document.getElementById("def-preFooter");
+				defPreFooter.outerHTML = wet.builder.preFooter({
+					"cdnEnv": "esdcprod",
+					"versionIdentifier": "CD56",
+					"showPostContent": false,
+					"showFeedback": false,
+					"showShare": false
+				});
+			</script>
+		</main>
+		<div id="def-footer">
+			<!-- Write closure fall-back static file -->
+			<!-- transactFooter-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defFooter = document.getElementById("def-footer");
+			defFooter.outerHTML = wet.builder.footer({
+				"cdnEnv": "esdcprod",
+				"showFooter": false,
+				"showFeatures": false,
+				"termsLink": [{
+        			"newWindow": true
+				}],
+				"privacyLink": [{
+					"newWindow": true
+				}],
+				"contextualFooter":{
+					"title": "Spectrum and Telecommunications Sector",
+					"links": [{
+						"text": "Contact us",
+						"href":"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
+						"newWindow": true
+					}]
+				}
+			});
+		</script>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refFooter({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+	</body>
+</html>
