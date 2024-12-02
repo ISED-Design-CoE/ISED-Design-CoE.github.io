@@ -53,6 +53,9 @@
 				padding: 15px;
 				margin-bottom: 30px;
 			}
+			.unstyled {
+				list-style: none
+			}
 		</style>
 		<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
 		<link href="ncl-portal.css" rel="stylesheet" type="text/css">
@@ -98,19 +101,23 @@
 		<div class="col-md-6">
 			<section class="hght-inhrt">
 				<h2>Applications</h2>
-				<p><a href="applications.html?filter=review">Awaiting approval</a>: 0</p>
-				<p><a href="applications.html?filter=failed">Failed or rejected</a>: 0</p>
-				<p><a href="applications.html">All submitted applications</a>: 0</p>
 				<p><a href="applications.html?filter=draft">Draft applications</a>: 1</p>
+				<p><a href="applications.html">All submitted applications</a>: 0</p>
+				<ul class="unstyled">
+					<li><a href="applications.html?filter=review">Awaiting approval</a>: 0</li>
+					<li><a href="applications.html?filter=failed">Failed or rejected</a>: 0</li>
+				</ul>
 			</section>
 		</div>
 		<div class="col-md-6">
 			<section class="hght-inhrt">
 				<h2>Licences</h2>
-				<p><a href="licences.html?filter=awaiting">Awaiting effective date</a>: 1</p>
-				<p><a href="licences.html?filter=active">Active</a>: 2</p>
-				<p><a href="licences.html?filter=inactive">Inactive</a>: 1</p>
-				<p><a href="licences.html">All licences</a>: 4</p>
+				<p class="border-top"><a href="licences.html">All licences</a>: 4</p>
+				<ul class="unstyled">
+					<li><a href="licences.html?filter=awaiting">Awaiting effective date</a>: 1</li>
+					<li><a href="licences.html?filter=active">Active</a>: 2</li>
+					<li><a href="licences.html?filter=inactive">Inactive</a>: 1</li>
+				</ul>
 			</section>
 		</div>
 	</div>
