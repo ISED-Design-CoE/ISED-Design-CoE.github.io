@@ -121,6 +121,9 @@
 	<div class="wb-frmvld">
 		<form action="success-mm.html" method="get">
 			<div class="wb-frm">
+				<section id="save-div" class="alert alert-success" hidden>
+					<p>Application saved as draft</p>
+				</section>
 				<h1 property="name" id="wb-cont">Review application</h1>
 
 				<section class="step">
@@ -198,13 +201,13 @@
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
 							<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
 							<dt>Requested bandwidth</dt>
 							<dd><span class="bandwidth">50</span> MHz</dd>
 							<dt>Area size</dt>
 							<dd><span class="area-size">0</span> km²</dd>
 							<dt>Total cost per year</dt>
-							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 						</dl>
 					</div>
 
@@ -213,13 +216,13 @@
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
 							<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
 							<dt>Requested bandwidth</dt>
-							<dd><span class="bandwidth">10</span> MHz</dd>
+							<dd><span class="bandwidth">50</span> MHz</dd>
 							<dt>Area size</dt>
 							<dd><span class="area-size">0</span> km²</dd>
 							<dt>Calculated cost</dt>
-							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 						</dl>
 						<br>
 						<dl class="dl-horizontal">
@@ -235,17 +238,17 @@
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
 							<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
-							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
 							<dt>Requested bandwidth</dt>
-							<dd><span class="bandwidth">10</span> MHz</dd>
+							<dd><span class="bandwidth">50</span> MHz</dd>
 							<dt>Area size</dt>
 							<dd><span class="area-size">0</span> km²</dd>
 							<dt>Calculated cost per calendar month</dt>
-							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
 							<dt>Licence duration</dt>
 							<dd><span class="licence-duration">8</span> calendar months</dd>
 							<dt>Total cost</dt>
-							<dd>$<span class="temp-cost">0.45</span> &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+							<dd>$<span class="temp-cost">0.045</span> &times; <span class="licence-duration">50</span> = $<span class="total-cost">0.00</span> </dd>
 						</dl>
 
 					</div>
@@ -255,13 +258,13 @@
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
 							<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
-							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
 							<dt>Requested bandwidth</dt>
-							<dd><span class="bandwidth">10</span> MHz</dd>
+							<dd><span class="bandwidth">50</span> MHz</dd>
 							<dt>Area size</dt>
 							<dd><span class="area-size">0</span> km²</dd>
 							<dt>Calculated cost per calendar month</dt>
-							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
 						</dl>
 						<br>
 						<dl class="dl-horizontal">
@@ -270,18 +273,15 @@
 							<dt>Licence duration</dt>
 							<dd><span class="licence-duration">8</span> calendar months</dd>
 							<dt>Total cost</dt>
-							<dd>$4.00 &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+							<dd>$4.00 &times; <span class="licence-duration">50</span> = $<span class="total-cost">0.00</span> </dd>
 						</dl>
 					</div>
 
 				</section>
 
-				<section id="save-div" class="alert alert-success" hidden>
-					<p>Application saved as draft</p>
-				</section>
 				<button class="btn btn-primary" type="submit" id="next-button">Submit</button>
 				<button class="btn btn-default" type="button" id="save-button">Save</button>
-				<button class="btn btn-default" type="button" onclick="print()">Print</button>
+				<button class="btn btn-default" type="button" onclick="alert('Same effect as selecting \'Download application\' in the Submitted applications page')">Download application</button>
 				<br>
 				<button class="btn btn-default" type="button" onclick="window.location.href = 'licence-area-mm.html'+ window.location.search">⯇ Back</button>
 				<div class="notesaboutmockup">

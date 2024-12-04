@@ -177,6 +177,9 @@ var urlQueries = baseQuery
 	<div class="wb-frmvld">
 		<form action="review-mm.html" method="get">
 			<div class="wb-frm">
+				<section id="save-div" class="alert alert-success" hidden>
+					<p>Application saved as draft</p>
+				</section>
 				<div class="container">
 					<h1 property="name" id="wb-cont">Licence area</h1>
 					<p>Define your licence area, with up to 12 boundary points, in any of the following ways:</p>
@@ -185,8 +188,8 @@ var urlQueries = baseQuery
 						<li>Enter the latitudes and longitudes of the <a href="#coords-input"> boundary points</a></li>
 						<li>Draw the licence area on the <a href="#map-instructions">interactive map</a></li>
 					</ul>
-					<p class="lp" hidden>You have requested a low power licence, so your licence area can be up to 15 km². You may only request a licence for the area you intend to cover.</p>
-					<p class="mp" hidden>You have requested a medium power licence, so your licence area can be between 75 and 165 km² and may not overlap an urban area. You may only request a licence for the area you intend to cover. If this is not what you want, then consider applying for multiple low-power licences.</p>
+					<p class="lp" hidden>You have requested a low power licence, so your licence area can be up to 1 km². You may only request a licence for the area you intend to cover.</p>
+					<p class="mp" hidden>You have requested a medium power licence, so your licence area can be between 5 and 50 km². You may only request a licence for the area you intend to cover. If this is not what you want, then consider applying for multiple low-power licences.</p>
 					<p>Once your area is entered, click <kbd><samp>Calculate fee</samp></kbd> to calculate the licence fee</p>
 						
 					<div class="form-group margin-top">
@@ -198,7 +201,7 @@ var urlQueries = baseQuery
 						<details>
 							<summary>More information<span class="wb-inv"> about WKT</span></summary>
 							<p>WKT is a compact format for describing mathematical shapes, including polygons. Each vertex is a longitude-latitude pair.</p>
-							<p>e.g. POLYGON((<span class="highlight">-113.956370 50.880852</span>,<span class="highlight">-113.952550 50.880744</span>,<span class="highlight">-113.944869 50.882288</span>,<span class="highlight">-113.945942 50.884372</span>,<span class="highlight">-113.951950 50.883398</span>,<span class="highlight">-113.956885 50.882369</span>,<span class="highlight">-113.956370 50.880852</span>))</p>
+							<p>e.g. POLYGON((<span class="highlight">-113.956370 50.880852</span>, <span class="highlight">-113.952550 50.880744</span>, <span class="highlight">-113.944869 50.882288</span>, <span class="highlight">-113.945942 50.884372</span>, <span class="highlight">-113.951950 50.883398</span>, <span class="highlight">-113.956885 50.882369</span>, <span class="highlight">-113.956370 50.880852</span>))</p>
 							<p>The input field below accepts a polygon with up to 12 pairs.</p>
 							<p>You can obtain a WKT description of your licence area using the <a href="SLAB-en-leaflet.html" target="_blank">NCLL spectrum browser</a>.</p>
 						</details>
@@ -292,30 +295,30 @@ var urlQueries = baseQuery
 								<p>The licence area extends beyond national borders.</p>
 								<p>Please adjust the licence area to be fully within Canada.</p>
 							</div>
-							<div id="MP-in-urban-message" class="alert alert-danger" hidden>
+							<!-- <div id="MP-in-urban-message" class="alert alert-danger" hidden>
 								<p>You have requested a medium power licence, which is not allowed in urban areas.</p>
 								<p>Please adjust the licence area to be fully outside any urban areas.</p>
 								<p>Alternatively, you may go back to the previous screen and change to a low power licence.</p>
-							</div>
+							</div> -->
 							<div id="LP-too-large-message" class="alert alert-danger" hidden>
-								<p>You have requested a low power licence, which means the licence area can be at most 15 km² in area.</p>
-								<p>Your current area size is <span class='area-size'>##</span> km². Please apply for multiple low power licences, as described at <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a>.</p>
+								<p>You have requested a low power licence, which means the licence area can be at most 1 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
+								<p>To cover this area, you may apply for multiple licences. For instructions, see our <a href="how-to-split.html" target="_blank">FAQ page</a>.</p>
 							</div>
 							<div id="MP-too-small-but-LP-OK-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area.</p>
-								<p>Your current area size is <span class='area-size'>##</span> km². Please go back to the previous screen and change to a low power licence.</p>
+								<p>You have requested a high power licence, which means the licence area must be between 5 km² and 50 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
+								<p>Please go back to the <a href="technical-details-mm.html">Technical details</a> screen and change to a low power licence.</p>
 							</div>
 							<div id="MP-too-small-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area.</p>
-								<p>Your current area size is <span class='area-size'>##</span> km². Please apply for multiple low power licences, as described at <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a>.</p>
+								<p>You have requested a high power licence, which means the licence area must be between 5 km² and 50 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
+								<p>To cover this area, you may apply for multiple low power licences. For instructions, see our <a href="how-to-split.html" target="_blank">FAQ page</a>.</p>
 							</div>
 							<div id="MP-too-large-message" class="alert alert-danger" hidden>
-								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area.</p>
-								<p>Your current area size is <span class='area-size'>##</span> km². Please apply for multiple low or medium power licences, as described at <a href="how-to-split.html" target="_blank">Duplicating an NCLL licence application</a>.</p>
+								<p>You have requested a high power licence, which means the licence area must be between 5 km² and 50 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
+								<p>To cover this area, you may apply for multiple licences. For instructions, see our <a href="how-to-split.html" target="_blank">FAQ page</a>.</p>
 							</div>
 							<div id="No-duration-message" class="alert alert-danger" hidden>
 								<p>We are unable to calculate a fee for this application, because we do not know how long you need the licence for.</p>
-								<p>Please return to the <a href="general.html">General information</a> screen to provide this information.</p>
+								<p>Please return to the <a href="general-mm.html">General information</a> screen to provide this information.</p>
 							</div>
 							<div id="No-bandwidth-message" class="alert alert-danger" hidden>
 								<p>We are unable to calculate a fee for this application, because we do not know how much bandwidth you require.</p>
@@ -331,13 +334,13 @@ var urlQueries = baseQuery
 										<dt>Area type</dt>
 										<dd><span class="fee-zone">Rural</span></dd>
 										<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
-										<dd><span class="bandwidth">10</span> MHz</dd>
+										<dd><span class="bandwidth">50</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Total cost per year</dt>
-										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 									</dl>
 								</div>
 
@@ -346,13 +349,13 @@ var urlQueries = baseQuery
 										<dt>Area type</dt>
 										<dd><span class="fee-zone">Rural</span></dd>
 										<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
-										<dd><span class="bandwidth">10</span> MHz</dd>
+										<dd><span class="bandwidth">50</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Calculated cost</dt>
-										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 									</dl>
 									<br>
 									<dl class="dl-horizontal">
@@ -368,17 +371,17 @@ var urlQueries = baseQuery
 										<dt>Area type</dt>
 										<dd><span class="fee-zone">Rural</span></dd>
 										<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
-										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
-										<dd><span class="bandwidth">10</span> MHz</dd>
+										<dd><span class="bandwidth">50</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Calculated cost per calendar month</dt>
-										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
 										<dt>Licence duration</dt>
 										<dd><span class="licence-duration">8</span> calendar months</dd>
 										<dt>Total cost</dt>
-										<dd>$<span class="temp-cost">0.45</span> &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+										<dd>$<span class="temp-cost">0.045</span> &times; <span class="licence-duration">50</span> = $<span class="total-cost">0.00</span> </dd>
 									</dl>
 
 								</div>
@@ -388,13 +391,13 @@ var urlQueries = baseQuery
 										<dt>Area type</dt>
 										<dd><span class="fee-zone">Rural</span></dd>
 										<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
-										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
-										<dd><span class="bandwidth">10</span> MHz</dd>
+										<dd><span class="bandwidth">50</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Calculated cost per calendar month</dt>
-										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
 									</dl>
 									<br>
 									<dl class="dl-horizontal">
@@ -403,7 +406,7 @@ var urlQueries = baseQuery
 										<dt>Licence duration</dt>
 										<dd><span class="licence-duration">8</span> calendar months</dd>
 										<dt>Total cost</dt>
-										<dd>$4.00 &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+										<dd>$4.00 &times; <span class="licence-duration">50</span> = $<span class="total-cost">0.00</span> </dd>
 									</dl>
 								</div>
 								
@@ -412,13 +415,10 @@ var urlQueries = baseQuery
 					</div>
 				</div>
 
-				<section id="save-div" class="alert alert-success" hidden>
-					<p>Application saved as draft</p>
-				</section>
 				<button class="btn btn-primary" type="submit" id="next-button" hidden>Next ⯈</button>
 				<button class="btn btn-default" type="button" id="save-button">Save</button>
 				<br>
-				<button class="btn btn-default" type="button" onclick="window.location.href = 'frequency.html'+ urlQueries">⯇ Back</button>
+				<button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details-mm.html'+ urlQueries">⯇ Back</button>
 
 				<div class="notesaboutmockup">
 					<h2>Notes about this mockup:</h2>
@@ -458,7 +458,7 @@ var urlQueries = baseQuery
 
 		let baseRate = urlParams.get ( "base-rate" ) 
 
-		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
+		if (baseRate == null) {baseRate = 0.045} // this is the rural rate
 
 		createHiddenField ( "base-rate", baseRate )
 
@@ -512,7 +512,7 @@ var urlQueries = baseQuery
 		const errorMessages = {}
 		errorMessages [ "Zero area" ] = document.getElementById ( "zero-area-message" )
 		errorMessages [ "Out of Canada" ] = document.getElementById ( "Out-of-Canada-message" )
-		errorMessages [ "MP in urban area" ] = document.getElementById ( "MP-in-urban-message" )
+		// errorMessages [ "MP in urban area" ] = document.getElementById ( "MP-in-urban-message" )
 		errorMessages [ "Too large for LP" ] = document.getElementById ( "LP-too-large-message" )
 		errorMessages [ "Too small for MP but LP is OK" ] = document.getElementById ( "MP-too-small-but-LP-OK-message" )
 		errorMessages [ "Too small for MP" ] = document.getElementById ( "MP-too-small-message" )
@@ -585,25 +585,25 @@ var urlQueries = baseQuery
 				}
 
 				if ( powerLevel == "Low power" ) {
-					if ( area_field .value > 15 ) {
+					if ( area_field .value > 1 ) {
 						noErrors = false
 						errorMessages [ "Too large for LP" ] .removeAttribute ( "hidden" )
 					}
 
-				} else { // powerLevel == "Medium power"
+				} else { // powerLevel == "High power"
 
-					if ( feeZone == "Urban" ) {
-						noErrors = false
-						errorMessages [ "MP in urban area" ] .removeAttribute ( "hidden" )
-					}
+					// if ( feeZone == "Urban" ) {
+					// 	noErrors = false
+					// 	errorMessages [ "MP in urban area" ] .removeAttribute ( "hidden" )
+					// }
 
-					if ( area_field .value <= 15 ) {
+					if ( area_field .value <= 5 ) {
 						noErrors = false
 						errorMessages [ "Too small for MP but LP is OK" ] .removeAttribute ( "hidden" )
-					} else if ( area_field .value < 75 ) {
+					} else if ( area_field .value < 5 ) {
 						noErrors = false
 						errorMessages [ "Too small for MP" ] .removeAttribute ( "hidden" )
-					} else if ( area_field .value > 165 ) {
+					} else if ( area_field .value > 50 ) {
 						noErrors = false
 						errorMessages [ "Too large for MP" ] .removeAttribute ( "hidden" )
 					}
@@ -694,7 +694,7 @@ var urlQueries = baseQuery
 				for ( let elem of document .getElementsByClassName ( "lp" ) ) {
 					elem .removeAttribute ( "hidden" )
 				}
-			} else if ( powerLevel == "Medium power" ) {
+			} else if ( powerLevel == "High power" ) {
 				for ( let elem of document .getElementsByClassName ( "mp" ) ) {
 					elem .removeAttribute ( "hidden" )
 				}
