@@ -340,8 +340,13 @@
 				frequency = ((27500+(50*i))/1000).toString()
 				frequency = (frequency =="28") ? frequency.concat('.00') : frequency.padEnd(5,'0')
 				frequency_end = (frequency_end =="28") ? frequency_end.concat('.00') : frequency_end.padEnd(5,'0')
-				frequency_select.insertAdjacentHTML('beforeend',
-				`<option value="${(jump*i).toString()}">AA${(i+1).toString()} to AA${(i+jump/50).toString()} - ${frequency} to ${frequency_end} GHz</option>`);
+				if ( jump == 50 ) { // just one channel
+					frequency_select.insertAdjacentHTML('beforeend',
+					`<option value="${(jump*i).toString()}">AA${(i+1).toString()} (${frequency} to ${frequency_end} GHz)</option>`);
+				} else {
+					frequency_select.insertAdjacentHTML('beforeend',
+					`<option value="${(jump*i).toString()}">AA${(i+1).toString()} to AA${(i+jump/50).toString()} (${frequency} to ${frequency_end} GHz)</option>`);
+				}
 			}
 		}
 		document.getElementById('mmwaveBandwidth').addEventListener('change',generatemmWaveStartingFrequencies);
