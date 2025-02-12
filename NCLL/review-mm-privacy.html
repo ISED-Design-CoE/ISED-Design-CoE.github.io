@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+	<head>
+<!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
+	 <meta charset="utf-8">
+
+<!-- Start DECoE customization -->
+		<title>
+			Review application - NCLL portal - Spectrum licensing services - Innovation, Science and Economic Development Canada
+		</title>
+<!-- End DECoE customization -->
+
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+		<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+		<noscript>
+			<!-- Write closure fall-back static file -->
+			<!-- refTop.html -->
+		</noscript>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refTop({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+<!-- Start DECoE customization -->
+	<link href="fix-wet-styles.css" rel="stylesheet" type="text/css">
+	<link href="ncl-portal.css" rel="stylesheet" type="text/css">
+	<link href="https://sms-sgs.ic.gc.ca/static/css/wizard.css" rel="stylesheet" type="text/css">
+	<style>
+		/* Styles for all mockups */
+			.notesaboutmockup {
+				color: #333;
+				background: #FFD;
+				padding: 0 1em;
+				border-color: #FC6;
+				border-width: 2px;
+				border-style: solid;
+				margin-top: 3em;
+			}
+			.notesaboutmockup h2 {
+				font-size: inherit;
+				margin-top: 1em;
+			}
+		/* Styles for this mockup */
+			h2 {
+				display: inline;
+			}
+			#map {
+				border: 1px solid black;
+				height: 60em;
+				width: 60em;
+			}
+			@media (min-width: 768px) {
+				.dl-horizontal dt {
+					width: 15em;
+				}
+			}
+			section.step {
+				border: 1px solid #d4d4d4;
+				padding: 1em 1em 0 1em;
+				border-radius: 6px;
+				margin-bottom: 1em;
+			}
+	</style>
+
+	<!-- Leaflet -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<!-- End DECoE customization -->
+
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<div id="def-top">
+			<!-- Write closure fall-back static file -->
+			<!-- transactTop-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defTop = document.getElementById("def-top");
+			defTop.outerHTML = wet.builder.top({
+				"cdnEnv": "esdcprod",
+				"lngLinks": [{
+					"lang": "fr",
+					"href": "transactional-fr.shtml",
+					"text": "Français"
+				}],
+				"search": false,
+				"siteMenu": false,
+				"breadcrumbs": [{
+					"title": "Spectrum Management System",
+					"href": "index.html"
+				},
+				{
+					"title": "NCLL portal",
+					"href": "portal.html"
+				}],
+				"showPreContent": false
+			});
+		</script>
+		<main property="mainContentOfPage" typeof="WebPageElement" class="container">
+
+<!-- Start page content -->
+
+	<div id="superhead">
+		<p>3900-MHz-band NCLL licence application (<span class="app-number"></span>01000139-001</span>) <span class="pull-right" id="status">Draft</span></p>
+	</div>
+	<div class="form-group">
+		<ul class="nav nav-wizard">
+			<li><a class="navbar-item" href="general.html">General information</a></li>
+			<li><a class="navbar-item" href="contact-mm.html">Contact information</a></li>
+			<li><a class="navbar-item" href="technical-details-mm.html">Technical details</a></li>
+			<li><a class="navbar-item" href="licence-area-mm.html">Licence area</a></li>
+			<li class="active" aria-current="step">Review application</li>
+		</ul>
+	</div>
+
+	<div class="wb-frmvld">
+		<form action="success-mm.html" method="get">
+			<div class="wb-frm">
+				<section id="save-div" class="alert alert-success" hidden>
+					<p>Application saved as draft</p>
+				</section>
+				<h1 property="name" id="wb-cont">Review application</h1>
+
+				<section class="step">
+					<h2>General information</h2>
+					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'general.html'+ window.location.search">Edit</button></span>
+					<dl>
+						<dt>Application identifier</dt>
+						<dd><span class="ari">-</span></dd>
+						<dt>Effective date</dt>
+						<dd><span class="effective-date">2024-04-28</span></dd>
+						<dt>Renewable or temporary licence</dt>
+						<dd><span class="renewable-temporary">Temporary</span></dd>
+						<dt class="expiry-date-present">Expiry date</dt>
+						<dd class="expiry-date-present"><span class="expiry-date">2024-10-24</span></dd>
+						<dt>Does The best company or any of its affiliates or subsidiaries currently have 100,000 or more retail mobile phone subscribers?</dt>
+						<dd><span class="NMSP">Yes</span></dd>
+					</dl>
+				</section>
+				<section class="step">
+					<h2>Contact information</h2>
+					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'contact-mm.html'+ window.location.search">Edit</button></span>
+					<dl>
+						<dt>Email address to receive invoices and the licence</dt>
+						<dd><span class="lai">beth.dutton@yellowstone.com</span></dd>
+						<dt>Email address<span class="asu-present">es</span> to receive status updates</dt>
+						<dd><span class="asu-present"><span class="asu">rip.wheeler@yellowstone.com</span>;</span>john.dutton@yellowstone.com</dd>
+					</dl>
+				</section>
+				<section class="step">
+					<h2>Technical details</h2>
+					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details-mm.html'+ window.location.search">Edit</button></span>
+					<dl>
+						<dt>Bandwidth</dt>
+						<dd><span class="bandwidth">50</span> MHz</dd>
+						<dt>Requested frequency blocks</dt>
+						<dd><span class="frequency">AA3 - 27.60 to 27.65&nbsp;GHz</span></dd>
+						<dt>Location of antennas</dt>
+						<dd><span class="antenna">Outdoor and indoor</span></dd>
+						<dt class="antenna-height-present">Maximum antenna height</dt>
+						<dd class="antenna-height-present"><span class="antenna-height">10</span> m</dd>
+						<dt>Licence type</dt>
+						<dd><span class="power-level">High power</span></dd>
+					</dl>
+				</section>
+				<section class="step">
+					<h2>Licence area</h2>
+					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'licence-area-mm.html'+ window.location.search">Edit</button></span>
+					<div id="map">
+						Map
+					</div>
+					<h3>Boundary points</h3>
+					<table class="table">
+						<tr>
+							<th><span class="wb-inv">Number</span></th>
+							<th>Latitude</th>
+							<th>Longitude</th>
+						</tr>
+						<tr><td>1</td><td><span class="lat1">48.233463</span></td><td><span class="long1">-89.750008</td></tr>
+						<tr><td>2</td><td><span class="lat2">48.291512</span></td><td><span class="long2">-89.721282</td></tr>
+						<tr><td>3</td><td><span class="lat3">48.281911</span></td><td><span class="long3">-89.658390</td></tr>
+						<tr><td>4</td><td><span class="lat4">48.254440</span></td><td><span class="long4">-89.614391</td></tr>
+						<tr><td>5</td><td><span class="lat5">48.216475</span></td><td><span class="long5">-89.593922</td></tr>
+						<tr><td>6</td><td><span class="lat6">48.234064</span></td><td><span class="long6">-89.683164</td></tr>
+						<tr><td>7</td><td><span class="lat7">48.234065</span></td><td><span class="long7">-89.683164</td></tr>
+						<tr><td>8</td><td><span class="lat8">48.234066</span></td><td><span class="long8">-89.683164</td></tr>
+						<tr><td>9</td><td><span class="lat9">48.234067</span></td><td><span class="long9">-89.683164</td></tr>
+						<tr><td>10</td><td><span class="lat10">48.233463</span></td><td><span class="long10">-89.750008</td></tr>
+						<tr><td>11</td><td><span class="lat11">48.233464</span></td><td><span class="long11">-89.750008</td></tr>
+						<tr><td>12</td><td><span class="lat12">48.233465</span></td><td><span class="long12">-89.750008</td></tr>
+					</table>
+			
+					<h3>Licence fee</h3>
+					<div id="renew-cost">
+						<dl class="dl-horizontal">
+							<dt>Area type</dt>
+							<dd><span class="fee-zone">Rural</span></dd>
+							<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
+							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+							<dt>Requested bandwidth</dt>
+							<dd><span class="bandwidth">50</span> MHz</dd>
+							<dt>Area size</dt>
+							<dd><span class="area-size">0</span> km²</dd>
+							<dt>Total cost per year</dt>
+							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+						</dl>
+					</div>
+
+					<div id="renew-min-cost">
+						<dl class="dl-horizontal">
+							<dt>Area type</dt>
+							<dd><span class="fee-zone">Rural</span></dd>
+							<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
+							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+							<dt>Requested bandwidth</dt>
+							<dd><span class="bandwidth">50</span> MHz</dd>
+							<dt>Area size</dt>
+							<dd><span class="area-size">0</span> km²</dd>
+							<dt>Calculated cost</dt>
+							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+						</dl>
+						<br>
+						<dl class="dl-horizontal">
+							<dt>Minimum fee per year</dt>
+							<dd>$48.00</span></dd>
+							<dt>Total cost per year</dt>
+							<dd><b>$48.00</b></dd>
+						</dl>
+					</div>
+
+					<div id="temp-cost">
+						<dl class="dl-horizontal">
+							<dt>Area type</dt>
+							<dd><span class="fee-zone">Rural</span></dd>
+							<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
+							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+							<dt>Requested bandwidth</dt>
+							<dd><span class="bandwidth">50</span> MHz</dd>
+							<dt>Area size</dt>
+							<dd><span class="area-size">0</span> km²</dd>
+							<dt>Calculated cost per calendar month</dt>
+							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+							<dt>Licence duration</dt>
+							<dd><span class="licence-duration">8</span> calendar months</dd>
+							<dt>Total cost</dt>
+							<dd>$<span class="temp-cost">0.045</span> &times; <span class="licence-duration">50</span> = $<span class="total-cost">0.00</span> </dd>
+						</dl>
+
+					</div>
+
+					<div id="temp-min-cost">
+						<dl class="dl-horizontal">
+							<dt>Area type</dt>
+							<dd><span class="fee-zone">Rural</span></dd>
+							<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
+							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+							<dt>Requested bandwidth</dt>
+							<dd><span class="bandwidth">50</span> MHz</dd>
+							<dt>Area size</dt>
+							<dd><span class="area-size">0</span> km²</dd>
+							<dt>Calculated cost per calendar month</dt>
+							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+						</dl>
+						<br>
+						<dl class="dl-horizontal">
+							<dt>Minimum fee per calendar month</dt>
+							<dd>$4.00</dd>
+							<dt>Licence duration</dt>
+							<dd><span class="licence-duration">8</span> calendar months</dd>
+							<dt>Total cost</dt>
+							<dd>$4.00 &times; <span class="licence-duration">50</span> = $<span class="total-cost">0.00</span> </dd>
+						</dl>
+					</div>
+
+				</section>
+				<section>
+					<h2>Privacy notice statement<br>
+					Non-competitive local licensing</h2>
+
+					<p>Your personal information is being collected pursuant to the <cite>Department of Industry Act</cite> and the <cite>Radiocommunications Act</cite>. It will be used to communicate with you in respect of your application for spectrum licensing, or an application for which you have self-identified as the authorized business or organizational contact person. The provision of your personal information is voluntary; however, should you choose not to provide it, Innovation, Science and Economic Development Canada (ISED) will be unable to process your application for spectrum licensing.  Your personal information is held in Personal Information Bank No. ICU PPU 021 <u>Spectrum/Telecommunications Client Operation File (Radio Station/Spectrum Licensing)</u>.
+
+					You have the right to request that corrections be made to your personal information, if required, by sending an email to ISED ATIP Services at <a href="mailto:ic.atip-aiprp.ic@ised-isde.gc.ca">ic.atip-aiprp.ic@ised-isde.gc.ca</a>.  You further have the right to file a complaint with the Privacy Commissioner of Canada with regard to our handling of your personal information.  Further information can be found online at <a href="http://www.priv.gc.ca">www.priv.gc.ca</a>.
+
+					By submitting this application, you acknowledge that you have read and understood the above-noted Privacy Notice Statement, and consent to the collection and use of your personal information for the reasons stated.
+				</section>
+
+				<button class="btn btn-primary" type="submit" id="next-button">Submit</button>
+				<button class="btn btn-default" type="button" id="save-button">Save</button>
+				<button class="btn btn-default" type="button" onclick="alert('Same effect as selecting \'Download application\' in the Submitted applications page')">Download application</button>
+				<br>
+				<button class="btn btn-default" type="button" onclick="window.location.href = 'licence-area-mm.html'+ window.location.search">⯇ Back</button>
+				<div class="notesaboutmockup">
+					<h2>Notes about this mockup:</h2>
+					<ul>
+						<li>None</li>
+					</ul>
+					<h2>Changes from phase 2A BRD:</h2>
+					<ul>
+						<li>Ref. 5.8.8 Review application page</li>
+						<li>Removed 5.8.6 Supporting documents page and 5.8.7 Terms and conditions page</li>
+						<li>Include information from all previous pages, including Contacts page</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</form>
+	<script src="catch-and-throw.js"></script>
+	<script>
+		var lats = [];
+		var longs = [];
+		var lat_longs = [];
+
+		for ( const [ key, value ] of urlParams ) {
+			// add lat longs to the variable
+			if (value != "") {
+				if (key.startsWith('lat')) {
+					lats.push(value);
+				} else if (key.startsWith('long')) {
+					longs.push(value);
+				}
+			}
+
+			for ( const elem of document .getElementsByClassName ( key ) ) {
+				if ( value == "" ) {
+					elem .innerText = "-"
+				} else {
+					elem .innerText = value
+				}
+			}
+		}
+
+		var expiryDatePresent = true
+		if ( urlParams .has ( "expiry-date" ) ) {
+			const expDate = urlParams .get ( "expiry-date" )
+			if ( expDate == "" ) {
+				expiryDatePresent = false
+			}
+		} else {
+			expiryDatePresent = false
+		}
+		if ( ! expiryDatePresent ) {
+			for ( let elem of document .getElementsByClassName ( "expiry-date-present" ) ) {
+					elem .setAttribute ( "hidden", "hidden" )
+				}
+		}
+
+		var asuPresent = true
+		if ( urlParams.size > 0 ) {
+			if ( urlParams .has ( "asu" ) ) {
+				const asu = urlParams .get ( "asu" )
+				if ( asu == "" ) {
+					asuPresent = false
+				}
+			} else {
+				asuPresent = false
+			}
+			if ( ! asuPresent ) {
+				for ( let elem of document .getElementsByClassName ( "asu-present" ) ) {
+						elem .setAttribute ( "hidden", "hidden" )
+					}
+			}
+		}
+
+		var antennaHeightPresent = true
+		if ( urlParams .has ( "antenna-height" ) ) {
+			const expDate = urlParams .get ( "antenna-height" )
+			if ( expDate == "" ) {
+				antennaHeightPresent = false
+			}
+		} else {
+			antennaHeightPresent = false
+		}
+		if ( ! antennaHeightPresent ) {
+			for ( let elem of document .getElementsByClassName ( "antenna-height-present" ) ) {
+					elem .setAttribute ( "hidden", "hidden" )
+				}
+		}
+
+		// Hide unneeded boundary point pairs
+		// Yes there are probably slicker ways to do this. This is prototype code, not production code
+		if ( lats .length > 0 ) {
+			for ( let i = lats .length +1; i < 13; i++ ) {			
+				let children = document .getElementsByClassName ( "lat" + i )
+				for ( let j = 0; j < children .length; j++ ) {
+					children [j] .parentNode .parentNode .remove()
+				}			
+			}
+
+			// combine lat longs into an array for leaflet.
+			for (let i = 0; i < lats.length; i++) {
+				lat_longs.push([lats[i],longs[i]])
+			}
+		}
+
+	</script>
+	<script>
+		const saveButton = document.getElementById ( "save-button" )
+		const saveDiv = document.getElementById ( "save-div" )
+		saveButton.addEventListener ( "click", (event) => {
+			saveDiv .removeAttribute ( "hidden" )
+		})
+	</script>
+	</div>
+	<div id="change-licensee">
+		<div class="container">
+			<div class="col-md-offset-6 col-md-6">
+				<section id="wb-so">
+					<h2 class="wb-inv">Sign-on information</h2>
+					<button class="btn btn-default" type="button" onclick="window.location = 'select-licensee.html'" >Switch licensee account</button>
+					<button class="btn btn-primary" type="button" onclick="window.location = 'login.html'">Sign out</button>
+					<p class="small mrgn-tp-sm">User:  <span class="nowrap">John Dutton</span></p>
+					<p class="small mrgn-tp-sm">Licensee: <span class="nowrap">The Best Company</span><br>10000005465346</p>
+				</section>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		// Move #change-licensee to top of screen
+		// We want it to be immediately under the dark horizontal line, but that line is added by WET so we can't access it until after WET does its thing
+		const changeLicensee = document .getElementById ( "change-licensee" )
+		const wbBc = document .getElementById ( "wb-bc" )
+		wbBc .prepend ( changeLicensee )
+	</script>
+	<script>
+		// Read application number from parameters if present
+		if ( urlParams .has ( "app-number" ) ) {
+			const appNumberText = urlParams .get ( "app-number" )
+			for ( let elem of document .getElementsByClassName ( "app-number" ) ) {
+				elem .innerText = appNumberText
+			}
+		}
+	</script>
+<!-- End page content -->
+
+			<div id="def-preFooter">
+				<!-- Write closure fall-back static file -->
+				<!-- preFooter-en.html -->
+			</div>
+			<!-- Write closure template -->
+			<script>
+				var defPreFooter = document.getElementById("def-preFooter");
+				defPreFooter.outerHTML = wet.builder.preFooter({
+					"cdnEnv": "esdcprod",
+					"versionIdentifier": "CD56",
+					"showPostContent": false,
+					"showFeedback": false,
+					"showShare": false
+				});
+			</script>
+		</main>
+		<div id="def-footer">
+			<!-- Write closure fall-back static file -->
+			<!-- transactFooter-en.html -->
+		</div>
+		<!-- Write closure template -->
+		<script>
+			var defFooter = document.getElementById("def-footer");
+			defFooter.outerHTML = wet.builder.footer({
+				"cdnEnv": "esdcprod",
+				"showFooter": false,
+				"showFeatures": false,
+				"termsLink": [{
+        			"newWindow": true
+				}],
+				"privacyLink": [{
+					"newWindow": true
+				}],
+				"contextualFooter":{
+					"title": "Spectrum and Telecommunications Sector",
+					"links": [{
+						"text": "Contact us",
+						"href":"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
+						"newWindow": true
+					}]
+				}
+			});
+		</script>
+		<!-- Write closure template -->
+		<script>
+			document.write(wet.builder.refFooter({
+				"cdnEnv": "esdcprod"
+			}));
+		</script>
+
+		<!-- Leaflet js -->
+		<script>
+			if ( lat_longs .length > 0 ) {
+				var map = L.map('map', {zoomControl: false});
+			
+				var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+				}).addTo(map);
+			
+				var polygon = L.polygon(lat_longs).addTo(map);
+
+				// zoom into the polygon
+				map.fitBounds(polygon.getBounds());
+
+				// disable map interaction
+				map.dragging.disable();
+				map.touchZoom.disable();
+				map.doubleClickZoom.disable();
+				map.scrollWheelZoom.disable();
+				map.boxZoom.disable();
+				map.keyboard.disable();
+				if (map.tap) map.tap.disable();
+				document.getElementById('map').style.cursor='default';
+			}
+		</script>
+		<script src="queries-in-navbar.js"></script>
+
+
+		<!-- show the right fee calculation -->
+
+		<script>
+
+			document.getElementById ( "renew-cost" ).setAttribute("hidden","hidden")
+			document.getElementById ( "renew-min-cost" ).setAttribute("hidden","hidden")
+			document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
+			document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
+
+			if (urlParams.get('renewable-temporary') == 'Renewable') {
+				if (urlParams.get('less-than-min') == "true") {
+					document.getElementById ( "renew-min-cost" ).removeAttribute("hidden")
+				} else {
+					document.getElementById ( "renew-cost" ).removeAttribute("hidden")
+				}
+			} else {
+				if (urlParams.get('less-than-min') == "true") {
+					document.getElementById ( "temp-min-cost" ).removeAttribute("hidden")
+				} else {
+					document.getElementById ( "temp-cost" ).removeAttribute("hidden")
+				}
+			}
+
+		</script>
+	</body>
+</html>
