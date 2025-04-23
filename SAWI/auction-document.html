@@ -117,7 +117,7 @@
                             ><input
                               type="checkbox"
                               id="consultation_checkbox"
-                              onchange="toggleStatus('consultation')"
+                              onchange="toggleFilter('Consultation','doc_type')"
                             />
                             Consultations</label
                           >
@@ -127,7 +127,7 @@
                             ><input
                               type="checkbox"
                               id="decision_checkbox"
-                              onchange="toggleStatus('decision')"
+                              onchange="toggleFilter('Decision','doc_type')"
                             />
                             Decision</label
                           >
@@ -137,7 +137,7 @@
                             ><input
                               type="checkbox"
                               id="result_checkbox"
-                              onchange="toggleStatus('result')"
+                              onchange="toggleFilter('Final result','doc_type')"
                             />
                             Final result</label
                           >
@@ -150,40 +150,37 @@
                   <div class="form-group">
                     <fieldset>
                       <legend>
-                        <span class="field-name">Payment/compliance</span>
+                        <span class="field-name">Auctions</span>
                       </legend>
                       <ul class="list-unstyled">
                         <li class="checkbox">
-                          <label for="payment_checkbox"
+                          <label for="mm_checkbox"
                             ><input
                               type="checkbox"
-                              id="payment_checkbox"
-                              name="status"
-                              onchange=""
+                              id="mm_checkbox"
+                              onchange="toggleFilter('Millimeter wave','auction')"
                             />
-                            Payment due</label
+                            Millimeter wave</label
                           >
                         </li>
                         <li class="checkbox">
-                          <label for="station_data_checkbox"
+                          <label for="3800_checkbox"
                             ><input
                               type="checkbox"
-                              id="station_data_checkbox"
-                              name="status"
-                              onchange=""
+                              id="3800_checkbox"
+                              onchange="toggleFilter('3800 MHz','auction')"
                             />
-                            Station data overdue</label
+                            3800 MHz</label
                           >
                         </li>
                         <li class="checkbox">
-                          <label for="deployment_checkbox"
+                          <label for="res_24_checkbox"
                             ><input
                               type="checkbox"
-                              id="deployment_checkbox"
-                              name="status"
-                              onchange=""
+                              id="res_24_checkbox"
+                              onchange="toggleFilter('2024 Residual','auction')"
                             />
-                            Deployment required</label
+                            2024 Residual</label
                           >
                         </li>
                       </ul>
@@ -292,22 +289,31 @@
           date: "2025-03-06",
           title: "Consultation on the 26 GHz and 38 GHz Bands",
           type: "Consultation",
-          type_filter: "consultation",
-          auction: "Millimeter Wave",
+          auction: "Millimeter wave",
         },
         {
           date: "2025-03-06",
           title: "Consultation on the 26 GHz and 38 GHz Bands",
           type: "Consultation",
-          type_filter: "consultation",
-          auction: "Millimeter Wave",
+          auction: "Millimeter wave",
         },
         {
           date: "2025-03-06",
           title: "Consultation on the 26 GHz and 38 GHz Bands",
           type: "Consultation",
-          type_filter: "consultation",
-          auction: "Millimeter Wave",
+          auction: "Millimeter wave",
+        },
+        {
+          date: "2025-03-06",
+          title: "Consultation on the 26 GHz and 38 GHz Bands",
+          type: "Consultation",
+          auction: "2024 Residual",
+        },
+        {
+          date: "2025-03-06",
+          title: "Consultation on the 26 GHz and 38 GHz Bands",
+          type: "Decision",
+          auction: "3800 MHz",
         },
       ];
 
@@ -316,7 +322,8 @@
       jsonData.forEach((item) => {
         const row = document.createElement("tr");
         row.classList = "data_row";
-        row.setAttribute("type", item.type_filter);
+        row.setAttribute("doc_type", item.type);
+        row.setAttribute("auction", item.auction);
         row.innerHTML = `
       <td>${item.date}</td>
       <td>${item.title}</td>
