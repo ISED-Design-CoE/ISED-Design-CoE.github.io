@@ -29,20 +29,6 @@
     <link href="fix-wet-styles.css" rel="stylesheet" type="text/css" />
     <link href="ncl-portal.css" rel="stylesheet" type="text/css" />
     <style>
-      /* Styles for all mockups */
-      .notesaboutmockup {
-        color: #333;
-        background: #ffd;
-        padding: 0 1em;
-        border-color: #fc6;
-        border-width: 2px;
-        border-style: solid;
-        margin-top: 3em;
-      }
-      .notesaboutmockup h2 {
-        font-size: inherit;
-        margin-top: 1em;
-      }
       /* Styles for this mockup */
       #dataset-filter1_wrapper table {
         margin-top: 1em;
@@ -92,7 +78,7 @@
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">All spectrum auction documents</h1>
+      <h1 property="name" id="wb-cont">Spectrum auction documents</h1>
       <p>
         If you want to find information about a specific auction, go to the
         <a href="#">Spectrum Auction page</a>.
@@ -109,40 +95,9 @@
                   <div class="form-group">
                     <fieldset>
                       <legend>
-                        <span class="field-name">Document type</span>
+                        <span class="field-name">Type</span>
                       </legend>
-                      <ul class="list-unstyled">
-                        <li class="checkbox">
-                          <label for="consultation_checkbox"
-                            ><input
-                              type="checkbox"
-                              id="consultation_checkbox"
-                              onchange="toggleFilter('Consultation','doc_type')"
-                            />
-                            Consultations</label
-                          >
-                        </li>
-                        <li class="checkbox">
-                          <label for="decision_checkbox"
-                            ><input
-                              type="checkbox"
-                              id="decision_checkbox"
-                              onchange="toggleFilter('Decision','doc_type')"
-                            />
-                            Decision</label
-                          >
-                        </li>
-                        <li class="checkbox">
-                          <label for="result_checkbox"
-                            ><input
-                              type="checkbox"
-                              id="result_checkbox"
-                              onchange="toggleFilter('Final result','doc_type')"
-                            />
-                            Final result</label
-                          >
-                        </li>
-                      </ul>
+                      <ul class="list-unstyled" id="type-checkboxes"></ul>
                     </fieldset>
                   </div>
                 </div>
@@ -152,38 +107,7 @@
                       <legend>
                         <span class="field-name">Auctions</span>
                       </legend>
-                      <ul class="list-unstyled">
-                        <li class="checkbox">
-                          <label for="mm_checkbox"
-                            ><input
-                              type="checkbox"
-                              id="mm_checkbox"
-                              onchange="toggleFilter('Millimeter wave','auction')"
-                            />
-                            Millimeter wave</label
-                          >
-                        </li>
-                        <li class="checkbox">
-                          <label for="3800_checkbox"
-                            ><input
-                              type="checkbox"
-                              id="3800_checkbox"
-                              onchange="toggleFilter('3800 MHz','auction')"
-                            />
-                            3800 MHz</label
-                          >
-                        </li>
-                        <li class="checkbox">
-                          <label for="res_24_checkbox"
-                            ><input
-                              type="checkbox"
-                              id="res_24_checkbox"
-                              onchange="toggleFilter('2024 Residual','auction')"
-                            />
-                            2024 Residual</label
-                          >
-                        </li>
-                      </ul>
+                      <ul class="list-unstyled" id="auction-checkboxes"></ul>
                     </fieldset>
                   </div>
                 </div>
@@ -208,12 +132,15 @@
           </details>
         </div>
         <div class="col-md-12">
-          <table class="wb-tables table" id="document-table">
+          <table
+            class="wb-tables table filterEmphasis provisional"
+            id="document-table"
+          >
             <thead>
               <tr>
-                <th>Last updates</th>
-                <th>Document title</th>
-                <th>Document type</th>
+                <th>Last updated</th>
+                <th>Name</th>
+                <th>Type</th>
                 <th>Auction</th>
               </tr>
             </thead>
@@ -282,56 +209,8 @@
     </script>
 
     <script src="filter-rows.js"></script>
-
-    <script>
-      const jsonData = [
-        {
-          date: "2025-03-06",
-          title: "Consultation on the 26 GHz and 38 GHz Bands",
-          type: "Consultation",
-          auction: "Millimeter wave",
-        },
-        {
-          date: "2025-03-06",
-          title: "Consultation on the 26 GHz and 38 GHz Bands",
-          type: "Consultation",
-          auction: "Millimeter wave",
-        },
-        {
-          date: "2025-03-06",
-          title: "Consultation on the 26 GHz and 38 GHz Bands",
-          type: "Consultation",
-          auction: "Millimeter wave",
-        },
-        {
-          date: "2025-03-06",
-          title: "Consultation on the 26 GHz and 38 GHz Bands",
-          type: "Consultation",
-          auction: "2024 Residual",
-        },
-        {
-          date: "2025-03-06",
-          title: "Consultation on the 26 GHz and 38 GHz Bands",
-          type: "Decision",
-          auction: "3800 MHz",
-        },
-      ];
-
-      const tbody = document.querySelector("#document-table tbody");
-
-      jsonData.forEach((item) => {
-        const row = document.createElement("tr");
-        row.classList = "data_row";
-        row.setAttribute("doc_type", item.type);
-        row.setAttribute("auction", item.auction);
-        row.innerHTML = `
-      <td>${item.date}</td>
-      <td>${item.title}</td>
-      <td>${item.type}</td>
-      <td>${item.auction}</td>
-       `;
-        tbody.appendChild(row);
-      });
-    </script>
   </body>
 </html>
+
+<script type="text/javascript" src="populate-checkboxes.js"></script>
+<script type="text/javascript" src="populate-table.js"></script>
