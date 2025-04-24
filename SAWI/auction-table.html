@@ -88,7 +88,7 @@
           >
             <thead>
               <tr>
-                <th>Name</th>
+                <th>Auction</th>
                 <th>Start date</th>
                 <th>End date</th>
                 <th data-orderable="false">Band</th>
@@ -215,5 +215,14 @@
 
     // Append row to the table body
     tableBody.appendChild(row);
+  });
+</script>
+
+<script>
+  $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
+    document
+      .getElementById("document-table_filter")
+      .setAttribute("hidden", true);
+    document.getElementById("document-table_info").setAttribute("hidden", true);
   });
 </script>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
 
     <!-- Start DECoE customization -->
-    <title>All auction spectrum documents</title>
+    <title>Auction spectrum documents</title>
     <!-- End DECoE customization -->
 
     <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -79,10 +79,6 @@
     >
       <!-- Start page content -->
       <h1 property="name" id="wb-cont">Spectrum auction documents</h1>
-      <p>
-        If you want to find information about a specific auction, go to the
-        <a href="#">Spectrum Auction page</a>.
-      </p>
 
       <div class="row">
         <div class="col-md-12">
@@ -139,7 +135,7 @@
             <thead>
               <tr>
                 <th>Last updated</th>
-                <th>Name</th>
+                <th>Title</th>
                 <th>Type</th>
                 <th>Auction</th>
               </tr>
@@ -214,3 +210,11 @@
 
 <script type="text/javascript" src="populate-checkboxes.js"></script>
 <script type="text/javascript" src="populate-table.js"></script>
+
+<script>
+  $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
+    document
+      .getElementById("document-table_filter")
+      .setAttribute("hidden", true);
+  });
+</script>
