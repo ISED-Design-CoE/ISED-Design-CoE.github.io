@@ -114,18 +114,18 @@
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
-					<details>
-						<summary>More information<span class="wb-inv"> about bandwidth</span></summary>
-						<span class="3900Bandwidth">
+					<!-- <details>
+						<summary>More information<span class="wb-inv"> about bandwidth</span></summary> -->
+						<!-- <span class="3900Bandwidth">
 							<p>You may request either 10MHz or 20MHz contiguous (i.e. adjacent frequency blocks).</p>
 							<p>If you require non-contiguous frequency blocks, please select 10MHz and then apply for a second licence.</p>
 						</span>
-						<span class="mmwaveBandwidth" hidden="true">
-							<p>You may request either between 50MHz and 400MHz contiguous (i.e. adjacent frequency blocks).</p>
-							<p>If you require non-contiguous frequency blocks, apply for a multiple licences.</p>
-						</span>
+						<span class="mmwaveBandwidth" hidden="true"> -->
+							<p>You may request contiguous (i.e. adjacent) frequency blocks between 50MHz and 400MHz in size.</p>
+							<p>If you require non-contiguous frequency blocks, please apply for multiple licences.</p>
+						<!-- </span> -->
 
-					</details>
+					<!-- </details> -->
 					
 					<!-- Only show for 3900 MHz -->
 					<ul class="list-unstyled lst-spcd-2 3900Bandwidth">
@@ -193,11 +193,11 @@
 				<fieldset class="gc-chckbxrdio" id="starting-frequency-input" hidden disabled="true">
 					<legend class="required">
 						<span class="field-name">
-							Select your frequency block(s)
+							Choose your frequency blocks
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
-					<div id="bandwidth-warning"> In order to select your frequency block(s) you must first select your bandwidth</div>
+					<div id="bandwidth-warning"> In order to choose your frequency blocks you must first select your bandwidth</div>
 					<select id='starting-frequency-select' class="form-control " name="starting-frequency-block">
 					</select>
 				</fieldset>

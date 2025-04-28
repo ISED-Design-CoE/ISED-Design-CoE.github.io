@@ -117,8 +117,21 @@
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
+					<!-- <details>
+						<summary>More information<span class="wb-inv"> about bandwidth</span></summary> -->
+						<!-- <span class="3900Bandwidth">
+							<p>You may request either 10MHz or 20MHz contiguous (i.e. adjacent frequency blocks).</p>
+							<p>If you require non-contiguous frequency blocks, please select 10MHz and then apply for a second licence.</p>
+						</span>
+						<span class="mmwaveBandwidth" hidden="true"> -->
+							<p>You may request contiguous (i.e. adjacent) frequency blocks between 50MHz and 400MHz in size.</p>
+							<p>If you require non-contiguous frequency blocks, please apply for multiple licences.</p>
+						<!-- </span> -->
+
+					<!-- </details> -->
 					
 					<select class="form-control mmwaveBandwidth" id="mmwaveBandwidth" name="bandwidth">
+						<option value="none">Please select&hellip;</option>
 						<option value="50">50 MHz   </option>
 						<option value="100">100 MHz </option>
 						<option value="150">150 MHz </option>
@@ -220,7 +233,7 @@
 							<li>A <strong>low-power</strong> licence can be up to 1 km² in area.</li>
 							<li>A <strong>high-power</strong> licence can be between 5 and 50 km² in area.</li>
 						</ul>
-						<!-- <p>For further information about the consequences of this choice, including maximum permissible e.i.r.p. and maximum antenna height above ground level, see <a href="javascript:alert('Link TBD')">SRSP-521</a>.</p> -->
+						<p>For further information about the consequences of this choice, including maximum permissible e.i.r.p. and maximum antenna height above ground level, see <a href="javascript:alert('Link TBD')">SRSP-522</a>.</p>
 					</details>
 					<ul class="list-unstyled lst-spcd-2">
 						<li class="radio">
