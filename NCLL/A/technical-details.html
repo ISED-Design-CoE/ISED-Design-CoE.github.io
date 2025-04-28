@@ -197,8 +197,8 @@
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
-					<div id="bandwidth-warning"> In order to choose your frequency blocks you must first select your bandwidth</div>
-					<select id='starting-frequency-select' class="form-control " name="starting-frequency-block">
+					<div id="bandwidth-warning" class="alert alert-warning"> In order to choose your frequency blocks you must first select your bandwidth (see above)</div>
+					<select id='starting-frequency-select' class="form-control " name="starting-frequency-block" hidden>
 					</select>
 				</fieldset>
 
@@ -293,6 +293,7 @@
 			// TODO: only run once.
 			function selectBandwidth () {
 				document.getElementById("starting-frequency-input").removeAttribute("disabled")
+				document.getElementById("starting-frequency-select").removeAttribute("hidden")
 				document.getElementById("bandwidth-warning").setAttribute("hidden", null)
 			}
 		</script>
