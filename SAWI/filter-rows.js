@@ -1,5 +1,7 @@
 var filters = { doc_type: [], auction: [] };
 
+// change number in document-table_info
+
 function filterTable() {
   const rows = document.querySelectorAll(".data_row");
   rows.forEach((row) => {
