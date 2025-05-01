@@ -41,8 +41,26 @@
       .nowrap {
         white-space: nowrap;
       }
+
+      .bg-info {
+        background-color: #ffffff;
+      }
     </style>
     <!-- End DECoE customization -->
+
+    <!-- Start GC Design System-->
+
+    <!-- Icons Font Awesome (to access icons, import Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
+
+    <!-- GC Design System -->
+    <link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.css">
+    <script type="module" src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.esm.js"></script>
+    <script nomodule src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.js"></script>
+
+    <!-- End GC Design System-->
+
+
   </head>
 
   <body vocab="http://schema.org/" typeof="WebPage">
@@ -84,35 +102,42 @@
     >
       <!-- Start page content -->
       <h1 property="name" id="wb-cont">Auction of 3800 MHz</h1>
-      <p>The auction of 3800 Mhz...</p>
+      <!--<p>The auction of 3800 Mhz...</p>-->
 
       <h4>On this page</h4>
       <ul>
         <li><a href="#summary">Summary table</a></li>
-        <li><a href="#data">Auction data</a></li>
+        <li><a href="#data">Auction details</a></li>
         <li><a href="#related">Related auctions</a></li>
       </ul>
 
       <h2 id="summary">Summary table</h2>
-      <table class="table table-bordered small">
+    
+      <table class="table small" style="width: 100%">
         <tbody>
           <tr>
-            <th class="bg-info">Start Date</th>
+            <th class="bg-info">Start date</th>
             <td>October 24, 2023</td>
+            <th class="bg-info">Applicants</th>
+            <td>22</td>
           </tr>
           <tr>
-            <th class="bg-info">Completed Date</th>
+            <th class="bg-info">Completed date</th>
             <td>November 24, 2023</td>
+            <th class="bg-info">Number of rounds</th>
+            <td>98</td>
           </tr>
           <tr>
             <th class="bg-info">Total number of licences</th>
             <td>4300 Tier 4</td>
+            <th class="bg-info">Licences won</th>
+            <td>4099</td>
           </tr>
           <tr>
             <th class="bg-info">Spectrum</th>
             <td>
               <details>
-                <summary>all spectrum bands</summary>
+                <summary>All spectrum bands</summary>
                 <ul>
                   <li>Block X - 10 MHz</li>
                   <li>Block Y - 10 MHz</li>
@@ -141,80 +166,85 @@
                 </ul>
               </details>
             </td>
-          </tr>
-          <tr>
-            <th class="bg-info">Applicants</th>
-            <td>22</td>
-          </tr>
-          <tr>
-            <th class="bg-info">Number of Rounds</th>
-            <td>98</td>
-          </tr>
-          <tr>
-            <th class="bg-info">Licences won</th>
-            <td>4099</td>
-          </tr>
-          <tr>
-            <th class="bg-info">Final Price ($)</th>
+            <th class="bg-info">Final price ($)</th>
             <td>2,157,696,532</td>
           </tr>
+          
         </tbody>
       </table>
 
-      <h2 id="data">Auction data</h2>
+      <section class="well well-lg">
+
+      <h2 id="data" style="margin-top: 0px;">Auction details</h2>
+
       <div class="wb-eqht row wb-init">
-        <div class="col-md-5" style="vertical-align: top; min-height: 139px">
+        <div class="col-md-5" style="vertical-align: top; min-height: 139px; width: 100%;">
           <section class="gc-drmt">
-            <h3 class="h5"><a href="#">Final results</a></h3>
+            <h3 class="h5"><a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/3800-mhz-auction-provisional-results">Final results</a></h3>
+            <span class="label label-warning">Updated on June 05, 2024</span>
             <p>
-              Use action verbs, or simply list keywords to summarize the
-              information or tasks that can be accomplished on the page it links
-              to.
+              List of winning bidders, licence details, and auction outcomes for the 3800 MHz band.
             </p>
           </section>
         </div>
-        <div class="col-md-5" style="vertical-align: top; min-height: 139px">
+      </div>
+
+      <div class="wb-eqht row wb-init">
+        <div class="col-md-5" style="vertical-align: top; min-height: 139px; width: 100%">
           <section class="gc-drmt">
-            <h3 class="h5"><a href="#">Bidding information</a></h3>
+            <h3 class="h5"><a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/sites/default/files/documents/3800_bidding-information.zip">Bidding data  </a><gcds-icon name="download" size="h2" >
+            </gcds-icon></h3>
+            <span class="label label-warning">Updated on April 03, 2024</span>
             <p>
-              Use action verbs, or simply list keywords to summarize the
-              information or tasks that can be accomplished on the page it links
-              to.
+              Detailed information on bidding activity and results from the 3800 MHz auction.
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <div class="wb-eqht row wb-init">
+        <div class="col-md-5" style="vertical-align: top; min-height: 139px; width: 100%">
+          <section class="gc-drmt">
+            <h3 class="h5"><a href="/auction-document.html">Documents</a></h3>
+            <p>
+              Documents related to spectrum auctions, such as consultations,
+              decisions, results and applicant information.
             </p>
           </section>
         </div>
       </div>
       <div class="wb-eqht row wb-init">
-        <div class="col-md-5" style="vertical-align: top; min-height: 139px">
+        <div class="col-md-5" style="vertical-align: top; min-height: 139px; width: 100%">
           <section class="gc-drmt">
-            <h3 class="h5"><a href="#">Documents</a></h3>
+            <h3 class="h5"><a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/applicants-auction-spectrum-licences-3800-mhz-band">Applicants</a></h3>
+            <span class="label label-warning">Updated on August 16, 2023</span>
             <p>
-              Use action verbs, or simply list keywords to summarize the
-              information or tasks that can be accomplished on the page it links
-              to.
-            </p>
-          </section>
-        </div>
-        <div class="col-md-5" style="vertical-align: top; min-height: 139px">
-          <section class="gc-drmt">
-            <h3 class="h5"><a href="#">Applicants</a></h3>
-            <p>
-              Use action verbs, or simply list keywords to summarize the
-              information or tasks that can be accomplished on the page it links
-              to. licences.
+              List of all Applicants for the 3800 MHz Spectrum Auction
             </p>
           </section>
         </div>
       </div>
+      <div class="wb-eqht row wb-init">
+        <div class="col-md-5" style="vertical-align: top; min-height: 139px; width: 100%">
+          <section class="gc-drmt">
+            <h3 class="h5"><a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/policy-and-licensing-framework-spectrum-3800-mhz-band-table-key-dates">Table of key dates</a></h3>
+            <span class="label label-warning">Updated on November 03, 2022</span>
+            <p>
+              Important deadlines and milestones for the 3800 MHz auction process.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+    </div>
+    
       <h2 id="related">Related auctions</h2>
       <div class="wb-eqht row wb-init">
         <div class="col-md-5" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
             <h3 class="h5"><a href="#">2024 Residual auctions</a></h3>
             <p>
-              Use action verbs, or simply list keywords to summarize the
-              information or tasks that can be accomplished on the page it links
-              to.
+              Information on available licences, applicants, and results from the 2024 residual spectrum auction.
             </p>
           </section>
         </div>
@@ -222,9 +252,7 @@
           <section class="gc-drmt">
             <h3 class="h5"><a href="#">2023 Residual auctions</a></h3>
             <p>
-              Use action verbs, or simply list keywords to summarize the
-              information or tasks that can be accomplished on the page it links
-              to. licences.
+              Information on available licences, applicants, and results from the 2023 residual spectrum auction.
             </p>
           </section>
         </div>
