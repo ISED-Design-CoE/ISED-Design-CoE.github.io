@@ -12,6 +12,21 @@
     <meta content="width=device-width,initial-scale=1" name="viewport" />
     <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
     <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+
+    <!-- GC Design System -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.js"
+    ></script>
+
     <noscript>
       <!-- Write closure fall-back static file -->
       <!-- refTop.html -->
@@ -88,10 +103,8 @@
       <!-- Start page content -->
       <h1 property="name" id="wb-cont">Auction of 3800 MHz</h1>
 
-      <p>Last updated page: <a href="#">Framework</a></p>
-
       <!--<p><a href="#">Final results</a></p>-->
-      <li>Date of auction: November 9, 2021</li>
+      <p><strong>Status:</strong>Completed</p>
 
       <br />
 
@@ -99,15 +112,13 @@
         <div class="tabpanels">
           <details id="details-panel10">
             <summary>Auction results</summary>
-            <p>
-              <a href="#">Bidding information </a>
-            </p>
             <p><a href="#">Final results</a></p>
             <p>
-              <a href="#"
-                >Applicants - Auction of Spectrum Licences in the 3800 MHz
-                Band</a
-              >
+              <a href="#">Bidding data </a
+              ><gcds-icon name="download" size="h2"></gcds-icon>
+            </p>
+            <p>
+              <a href="#">Applicants</a>
             </p>
             <table class="table table-bordered small">
               <caption class="bg-primary">
