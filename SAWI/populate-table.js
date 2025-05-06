@@ -48,11 +48,14 @@ document.addEventListener("DOMContentLoaded", function () {
         tdType.textContent = row.Type || "";
         tr.appendChild(tdType);
 
-        // Auction (Subject)
         tr.setAttribute("auction", row.Subject);
-        const tdAuction = document.createElement("td");
-        tdAuction.textContent = auction_mapping[row.Subject] || "";
-        tr.appendChild(tdAuction);
+        if (tbody.classList == "auction-row") {
+          // Auction (Subject)
+
+          const tdAuction = document.createElement("td");
+          tdAuction.textContent = auction_mapping[row.Subject] || "";
+          tr.appendChild(tdAuction);
+        }
 
         tbody.appendChild(tr);
       }
