@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" dir="ltr">
+  <!--<![endif]-->
+
   <head>
     <!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
     <meta charset="utf-8" />
@@ -34,12 +37,14 @@
         margin-top: 1em;
         border-top: 1px solid #111;
       }
+
       .nowrap {
         white-space: nowrap;
       }
     </style>
     <!-- End DECoE customization -->
   </head>
+
   <body vocab="http://schema.org/" typeof="WebPage">
     <div id="def-top">
       <!-- Write closure fall-back static file -->
@@ -53,7 +58,7 @@
         lngLinks: [
           {
             lang: "fr",
-            href: "transactional-fr.shtml",
+            href: "#",
             text: "Français",
           },
         ],
@@ -61,12 +66,16 @@
         siteMenu: false,
         breadcrumbs: [
           {
-            title: "Spectrum Management System",
-            href: "#",
+            title: "Spectrum management and telecommunications",
+            href: "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en",
           },
           {
-            title: "Auctions",
-            href: "#",
+            title: "Spectrum allocation",
+            href: "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation",
+          },
+          {
+            title: "Spectrum auctions",
+            href: "/SAWI/auction-landing-page.html",
           },
         ],
         showPreContent: false,
@@ -88,7 +97,7 @@
           >
             <thead>
               <tr>
-                <th>Auction</th>
+                <th data-orderable="false">Auction</th>
                 <th>Start date</th>
                 <th>End date</th>
                 <th data-orderable="false">Band</th>
@@ -165,19 +174,25 @@
 <script>
   auctions = [
     {
-      name: "19 -<a href='https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/auction-spectrum-licences-millimetre-wave-bands-26-28-and-38-ghz'>Auction of spectrum licences in the millimetre wave bands </a>",
+      name: "<a href='/SAWI/3800-scroll.html'>(scroll) Auction of spectrum licences in the 3800 MHz band </a>",
       start_date: "2025-04-24",
       end_date: "2025-04-30",
       band: "26, 38 GHz",
     },
     {
-      name: "18 -<a href='https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/auction-spectrum-licences-millimetre-wave-bands-26-28-and-38-ghz'>Auction of spectrum licences in the millimetre wave bands </a>",
+      name: "<a href='/SAWI/millimetre-scroll.html'>(scroll) Auction of spectrum licences in the millimetre wave bands </a>",
       start_date: "2024-02-22",
       end_date: "2024-02-28",
       band: "3800 MHz",
     },
     {
-      name: "17 -<a href='https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/auction-spectrum-licences-millimetre-wave-bands-26-28-and-38-ghz'>Auction of spectrum licences in the millimetre wave bands </a>",
+      name: "<a href='/SAWI/millimetre.html'>(tabs) Auction of spectrum licences in the millimetre wave bands </a>",
+      start_date: "2024-02-22",
+      end_date: "2024-02-28",
+      band: "3800 MHz",
+    },
+    {
+      name: "<a href='/SAWI/3800-tabs.html'>(tabs) Auction of Spectrum Licences in the 3800 MHz Band</a>",
       start_date: "2025-04-24",
       end_date: "2025-04-30",
       band: "26, 38 GHz",

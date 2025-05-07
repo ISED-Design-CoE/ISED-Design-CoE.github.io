@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" dir="ltr">
+  <!--<![endif]-->
+
   <head>
     <!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
     <meta charset="utf-8" />
 
     <!-- Start DECoE customization -->
-    <title>Auction spectrum documents</title>
+    <title>Auction of millimetre wave bands</title>
     <!-- End DECoE customization -->
 
     <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -34,12 +37,32 @@
         margin-top: 1em;
         border-top: 1px solid #111;
       }
+
       .nowrap {
         white-space: nowrap;
       }
+
+      .bg-info {
+        background-color: #ffffff;
+      }
     </style>
     <!-- End DECoE customization -->
+
+    <!-- Start GC Design System-->
+
+    <!-- Icons Font Awesome (to access icons, import Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
+
+    <!-- GC Design System -->
+    <link rel="stylesheet" href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.css">
+    <script type="module" src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.esm.js"></script>
+    <script nomodule src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.js"></script>
+
+    <!-- End GC Design System-->
+
+
   </head>
+
   <body vocab="http://schema.org/" typeof="WebPage">
     <div id="def-top">
       <!-- Write closure fall-back static file -->
@@ -72,6 +95,10 @@
             title: "Spectrum auctions",
             href: "/SAWI/auction-landing-page.html",
           },
+          {
+            title: "All spectrum auctions",
+            href: "/SAWI/auction-table.html",
+          },
         ],
         showPreContent: false,
       });
@@ -82,70 +109,73 @@
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">Spectrum auction documents</h1>
-
-      <div class="row">
-        <div class="col-md-12">
-          <h4 class="wb-inv">Filtering options</h4>
-          <details>
-            <summary><h4 class="h4">Filter options</h4></summary>
-            <form class="wb-tables-filter" data-bind-to="dataset-filter1">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <fieldset>
-                      <legend>
-                        <span class="field-name">Type</span>
-                      </legend>
-                      <ul class="list-unstyled" id="type-checkboxes"></ul>
-                    </fieldset>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <fieldset>
-                      <legend>
-                        <span class="field-name">Auctions</span>
-                      </legend>
-                      <ul class="list-unstyled" id="auction-checkboxes"></ul>
-                    </fieldset>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  aria-controls="dataset-filter1"
-                  onclick="filterTable()"
-                >
-                  Filter
-                </button>
-                <button
-                  onclick="window.location.href = 'auction-document.html'"
-                  class="btn btn-default"
-                >
-                  Clear all filters
-                </button>
-              </div>
-            </form>
-          </details>
+      <h1 property="name" id="wb-cont">Auction of millimetre wave bands</h1>  
+      <h4>On this page</h4>
+      <ul>
+        <li><a href="#summary">Summary table</a></li>
+        <li><a href="#data">Auction details</a></li>
+        <li><a href="#related">Related auctions</a></li>
+      </ul>  
+      <h2>Summary table</h2>
+      <table class="table small" style="width: 100%">
+        <tbody>
+          <tr>
+            <th class="bg-info">Status</th>
+            <td>Upcoming</td>
+          </tr>
+          <tr>
+            <th class="bg-info">Date</th>
+            <td>--</td>
+          </tr>
+          
+          <tr>
+            <th class="bg-info">Applicants</th>
+            <td>--</td>
+          </tr>
+          
+          <tr>
+            <th class="bg-info">Number of rounds</th>
+            <td>--</td>
+          </tr>
+          
+          <tr>
+            <th class="bg-info">Licences won</th>
+            <td>--</td>
+          </tr>
+          
+          <tr>
+            <th class="bg-info">Final price ($)</th>
+            <td>--</td>
+          </tr>
+          
+          
+        </tbody>
+      </table>
+      <section class="well well-lg">
+        <h2 id="data" style="margin-top: 0px;">Auction details</h2>
+        <div class="wb-eqht row wb-init">
+          <div class="col-md-5" style="vertical-align: top; min-height: 139px; width: 100%">
+            <section class="gc-drmt">
+              <h3 class="h5"><a href="auction-document.html">All documents</a></h3>
+              <p>
+                All documents related to this auction, such as consultation,
+                decisions, the result and applicant information.
+              </p>
+            </section>
+          </div>
         </div>
-        <div class="col-md-12">
-          <table
-            class="wb-tables table filterEmphasis provisional"
-            id="document-table"
-          >
-            <thead>
-              <tr>
-                <th>Last updated</th>
-                <th>Title</th>
-                <th>Type</th>
-                <th>Auction</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+      </section>
+      </div>
+    
+      <h2 id="related">Related auctions</h2>
+      <div class="wb-eqht row wb-init">
+        <div class="col-md-5" style="vertical-align: top; min-height: 139px">
+          <section class="gc-drmt">
+            <h3 class="h5"><a href="https://webarchiveweb.wayback.bac-lac.canada.ca/web/20211111162920/https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/h_sf01797.html">Auction of Spectrum Licences for Broadband Wireless Access (BWA)</a></h3>
+            <p>
+              Information on available licences, applicants, and results from the auction of spectrum licences for broadband wireless access (BWA).
+            </p>
+          </section>
         </div>
       </div>
       <!-- End page content -->
@@ -211,14 +241,3 @@
     <script src="filter-rows.js"></script>
   </body>
 </html>
-
-<script type="text/javascript" src="populate-checkboxes.js"></script>
-<script type="text/javascript" src="populate-table.js"></script>
-
-<script>
-  $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
-    document
-      .getElementById("document-table_filter")
-      .setAttribute("hidden", true);
-  });
-</script>
