@@ -163,9 +163,9 @@
 					<details class="mmwaveBandwidth" hidden>
 						<summary>
 							<span class="glyphicon glyphicon-warning-sign"></span>
-							Channel AA1 and AA2 are available on a no-protection, no-interference basis to 27 GHz flexible use operations.
+							Blocks AA1 and AA2 are available on a no-protection, no-interference basis to upper 26 GHz flexible use operations.
 						</summary>
-						<p>The NCL licensees with operations on block AA1 and AA2 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 27 GHz band.</p>
+						<p>The NCL licensees with operations on blocks AA1 and AA2 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the upper 26 GHz band.</p>
 					</details>
 					<details class="3900Bandwidth">
 						<summary>
@@ -177,7 +177,7 @@
 					<ul class="list-unstyled lst-spcd-2">
 						<li class="radio">
 							<input type="radio" id="any" name="any" value="any">
-							<label for="any">Yes, ISED can assign a frequency block</label>
+							<label for="any">Yes, please assign me any available frequency block</label>
 						</li>
 						<li class="radio">
 							<input type="radio" id="any-NINP" name="any" value="any-NINP">
@@ -185,7 +185,7 @@
 						</li>
 						<li class="radio">
 							<input type="radio" id="choose-frequency-block" name="any" value="choose-frequency-block">
-							<label for="choose-frequency-block">No, I would like to choose myself</label>
+							<label for="choose-frequency-block">No, I will choose a frequency block myself</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -249,10 +249,11 @@
 					<details>
 						<summary>More information<span class="wb-inv"> about licence type</span></summary>
 						<ul class="list-unstyled">
-							<li>A <strong>low-power</strong> licence can be up to 15 km² in area.</li>
-							<li>A <strong><span class="mmwaveBandwidth" hidden="true">high</span><span class="3900Bandwidth">medium</span>-power</strong> licence can be between 75 and 165 km², but is not allowed in urban areas.</li>
+							<li>A <strong>low-power</strong> licence can be up to <span class="mmwaveBandwidth" hidden="true">1</span><span class="3900Bandwidth">15</span> km² in area.</li>
+							<li class="3900Bandwidth">A <strong>medium-power</strong> licence can be between 75 and 165 km², but is not allowed in urban areas.</li>
+							<li class="mmwaveBandwidth" hidden="true">A <strong>high-power</strong> licence can be between 5 and 50 km².</li>
 						</ul>
-						<p>For further information about the consequences of this choice, including maximum permissible e.i.r.p. and maximum antenna height above ground level, see <a href="javascript:alert('Link TBD')">SRSP-521</a>.</p>
+						<p>For further information about the licence types, including the associated maximum permissible e.i.r.p. and maximum antenna height above ground level, see <a href="javascript:alert('Link TBD')">SRSP-522</a>.</p>
 					</details>
 					<ul class="list-unstyled lst-spcd-2">
 						<li class="radio">
@@ -445,7 +446,7 @@
 				for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
 				elem .removeAttribute ( "hidden" )
 				}
-				document.getElementById("any-NINP-label").innerHTML= "Yes, but not AA1 or AA2"
+				document.getElementById("any-NINP-label").innerHTML= "Yes, but please do not assign me block AA1 or AA2"
 				generatemmWaveStartingFrequencies()
 		}
 
