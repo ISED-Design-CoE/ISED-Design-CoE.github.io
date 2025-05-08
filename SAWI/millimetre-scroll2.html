@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
 
     <!-- Start DECoE customization -->
-    <title>All auction spectrum documents</title>
+    <title>Auction of millimetre wave bands</title>
     <!-- End DECoE customization -->
 
     <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -41,8 +41,37 @@
       .nowrap {
         white-space: nowrap;
       }
+
+      .bg-info {
+        background-color: #ffffff;
+      }
     </style>
     <!-- End DECoE customization -->
+
+    <!-- Start GC Design System-->
+
+    <!-- Icons Font Awesome (to access icons, import Font Awesome) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- GC Design System -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.js"
+    ></script>
+
+    <!-- End GC Design System-->
   </head>
 
   <body vocab="http://schema.org/" typeof="WebPage">
@@ -77,6 +106,10 @@
             title: "Spectrum auctions",
             href: "/SAWI/auction-landing-page.html",
           },
+          {
+            title: "All spectrum auctions",
+            href: "/SAWI/auction-table.html",
+          },
         ],
         showPreContent: false,
       });
@@ -87,24 +120,84 @@
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">All spectrum auctions</h1>
+      <h1 property="name" id="wb-cont">Auction of millimetre wave bands</h1>
+      <h4>On this page</h4>
+      <ul>
+        <li><a href="#summary">Summary table</a></li>
+        <li><a href="#data">Auction details</a></li>
+        <li><a href="#related">Related auctions</a></li>
+      </ul>
+      <h2>Summary table</h2>
+      <table class="table small" style="width: 100%">
+        <tbody>
+          <tr>
+            <th class="bg-info">Status</th>
+            <td>Upcoming</td>
+          </tr>
+          <tr>
+            <th class="bg-info">Date</th>
+            <td>--</td>
+          </tr>
+
+          <tr>
+            <th class="bg-info">Applicants</th>
+            <td>--</td>
+          </tr>
+
+          <tr>
+            <th class="bg-info">Number of rounds</th>
+            <td>--</td>
+          </tr>
+
+          <tr>
+            <th class="bg-info">Licences won</th>
+            <td>--</td>
+          </tr>
+
+          <tr>
+            <th class="bg-info">Final price ($)</th>
+            <td>--</td>
+          </tr>
+        </tbody>
+      </table>
 
       <div class="row">
+        <div class="col-md-12"></div>
         <div class="col-md-12">
+          <h2>Documents</h2>
           <table
             class="wb-tables table filterEmphasis provisional"
             id="document-table"
           >
             <thead>
               <tr>
-                <th data-orderable="false">Auction</th>
-                <th>Start date</th>
-                <th>End date</th>
-                <th data-orderable="false">Band</th>
+                <th>Last updated</th>
+                <th>Title</th>
+                <th>Document type</th>
               </tr>
             </thead>
             <tbody></tbody>
           </table>
+        </div>
+      </div>
+
+      <h2 id="related">Related auctions</h2>
+      <div class="wb-eqht row wb-init">
+        <div class="col-md-5" style="vertical-align: top; min-height: 139px">
+          <section class="gc-drmt">
+            <h3 class="h5">
+              <a
+                href="https://webarchiveweb.wayback.bac-lac.canada.ca/web/20211111162920/https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/h_sf01797.html"
+                >Auction of Spectrum Licences for Broadband Wireless Access
+                (BWA)</a
+              >
+            </h3>
+            <p>
+              Information on available licences, applicants, and results from
+              the auction of spectrum licences for broadband wireless access
+              (BWA).
+            </p>
+          </section>
         </div>
       </div>
       <!-- End page content -->
@@ -171,79 +264,8 @@
   </body>
 </html>
 
-<script>
-  auctions = [
-    {
-      name: "<a href='/SAWI/3800-scroll.html'>(scroll) Auction of spectrum licences in the 3800 MHz band </a>",
-      start_date: "2025-04-24",
-      end_date: "2025-04-30",
-      band: "26, 38 GHz",
-    },
-    {
-      name: "<a href='/SAWI/millimetre-scroll.html'>(scroll) Auction of spectrum licences in the millimetre wave bands </a>",
-      start_date: "2024-02-22",
-      end_date: "2024-02-28",
-      band: "3800 MHz",
-    },
-    {
-      name: "<a href='/SAWI/3800-scroll2.html'>(scroll with documents table) Auction of spectrum licences in the 3800 MHz band </a>",
-      start_date: "2025-04-24",
-      end_date: "2025-04-30",
-      band: "26, 38 GHz",
-    },
-    {
-      name: "<a href='/SAWI/millimetre-scroll2.html'>(scroll with documents table) Auction of spectrum licences in the millimetre wave bands </a>",
-      start_date: "2024-02-22",
-      end_date: "2024-02-28",
-      band: "3800 MHz",
-    },
-    {
-      name: "<a href='/SAWI/millimetre.html'>(tabs) Auction of spectrum licences in the millimetre wave bands </a>",
-      start_date: "2024-02-22",
-      end_date: "2024-02-28",
-      band: "3800 MHz",
-    },
-    {
-      name: "<a href='/SAWI/3800-tabs.html'>(tabs) Auction of Spectrum Licences in the 3800 MHz Band</a>",
-      start_date: "2025-04-24",
-      end_date: "2025-04-30",
-      band: "26, 38 GHz",
-    },
-  ];
-
-  const tableBody = document.querySelector("#document-table tbody");
-
-  // Clear existing table rows
-  tableBody.innerHTML = "";
-
-  // Populate the table with auction data
-  auctions.forEach((auction) => {
-    const row = document.createElement("tr");
-
-    // Name (contains HTML, so use innerHTML)
-    const nameCell = document.createElement("td");
-    nameCell.innerHTML = auction.name;
-    row.appendChild(nameCell);
-
-    // Start Date
-    const startDateCell = document.createElement("td");
-    startDateCell.textContent = auction.start_date;
-    row.appendChild(startDateCell);
-
-    // End Date
-    const endDateCell = document.createElement("td");
-    endDateCell.textContent = auction.end_date;
-    row.appendChild(endDateCell);
-
-    // Band
-    const bandCell = document.createElement("td");
-    bandCell.textContent = auction.band;
-    row.appendChild(bandCell);
-
-    // Append row to the table body
-    tableBody.appendChild(row);
-  });
-</script>
+<script type="text/javascript" src="populate-checkboxes.js"></script>
+<script type="text/javascript" src="populate-table.js"></script>
 
 <script>
   $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
@@ -251,5 +273,8 @@
       .getElementById("document-table_filter")
       .setAttribute("hidden", true);
     document.getElementById("document-table_info").setAttribute("hidden", true);
+
+    toggleFilter("Auction19", "auction");
+    filterTable();
   });
 </script>
