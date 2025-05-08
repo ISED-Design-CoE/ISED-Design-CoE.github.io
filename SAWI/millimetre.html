@@ -97,55 +97,7 @@
           <details id="details-panel30">
             <summary>Documentation</summary>
             <div class="row">
-              <div class="col-md-12">
-                <h4 class="wb-inv">Filtering options</h4>
-                <details>
-                  <summary><h4 class="h4">Filter options</h4></summary>
-                  <form class="wb-tables-filter" data-bind-to="dataset-filter1">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <fieldset>
-                            <legend>
-                              <span class="field-name">Document type</span>
-                            </legend>
-                            <ul class="list-unstyled" id="type-checkboxes"></ul>
-                          </fieldset>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <fieldset>
-                            <legend>
-                              <span class="field-name">Auctions</span>
-                            </legend>
-                            <ul
-                              class="list-unstyled"
-                              id="auction-checkboxes"
-                            ></ul>
-                          </fieldset>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <button
-                        type="submit"
-                        class="btn btn-primary"
-                        aria-controls="dataset-filter1"
-                        onclick="filterTable()"
-                      >
-                        Filter
-                      </button>
-                      <button
-                        onclick="window.location.href = 'auction-document.html'"
-                        class="btn btn-default"
-                      >
-                        Clear all filters
-                      </button>
-                    </div>
-                  </form>
-                </details>
-              </div>
+              <div class="col-md-12"></div>
               <div class="col-md-12">
                 <table
                   class="wb-tables table filterEmphasis provisional"
@@ -242,11 +194,10 @@
     document
       .getElementById("document-table_filter")
       .setAttribute("hidden", true);
+    document.getElementById("document-table_info").setAttribute("hidden", true);
 
-    //Radia code to get an idea of how the prefiltered table could look like
-    const auctionCheckbox = document.getElementById("auction19_checkbox");
-    auctionCheckbox.checked = true;
     toggleFilter("Auction19", "auction");
     filterTable();
   });
 </script>
+git commit -m "remove filter from mmwave"
