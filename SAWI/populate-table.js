@@ -50,9 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Auction (Subject)
         tr.setAttribute("auction", row.Subject);
-        const tdAuction = document.createElement("td");
-        tdAuction.textContent = auction_mapping[row.Subject] || "";
-        tr.appendChild(tdAuction);
+        if (tbody.classList == "auction-column") {
+          const tdAuction = document.createElement("td");
+          tdAuction.textContent = auction_mapping[row.Subject] || "";
+          tr.appendChild(tdAuction);
+        }
 
         tbody.appendChild(tr);
       }
