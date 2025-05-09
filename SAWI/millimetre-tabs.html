@@ -94,6 +94,49 @@
 
       <div class="wb-tabs ignore-session">
         <div class="tabpanels">
+          <details id="details-panel10">
+            <summary>Auction results</summary>
+            <p><a href="#">Final results</a></p>
+            <p>
+              <a href="#">Bidding data </a
+              ><gcds-icon name="download" size="h2"></gcds-icon>
+            </p>
+            <p>
+              <a href="#">Applicants</a>
+            </p>
+            <table class="table table-bordered small">
+              <caption class="bg-primary">
+                Summary table
+              </caption>
+              <tbody>
+                <tr>
+                  <th class="bg-info">Status</th>
+                  <td>Upcoming</td>
+                </tr>
+                <tr>
+                  <th class="bg-info">Date</th>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <th class="bg-info">Applicants</th>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <th class="bg-info">Number of rounds</th>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <th class="bg-info">Licences won</th>
+                  <td>--</td>
+                </tr>
+                <tr>
+                  <th class="bg-info">Final price ($)</th>
+                  <td>--</td>
+                </tr>
+              </tbody>
+            </table>
+          </details>
+
           <details id="details-panel30">
             <summary>Documentation</summary>
             <div class="row">
@@ -114,6 +157,33 @@
                 </table>
               </div>
             </div>
+          </details>
+
+          <details id="details-panel40">
+            <summary>Related auctions</summary>
+            <section id="details-elements">
+              <div class="wb-eqht row wb-init" style="width: 95%">
+                <div
+                  class="col-md-5"
+                  style="vertical-align: top; min-height: 139px"
+                >
+                  <section class="gc-drmt">
+                    <h3 class="h5">
+                      <a
+                        href="https://webarchiveweb.wayback.bac-lac.canada.ca/web/20211111162920/https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/h_sf01797.html"
+                        >Auction of Spectrum Licences for Broadband Wireless
+                        Access (BWA)</a
+                      >
+                    </h3>
+                    <p>
+                      Information on available licences, applicants, and results
+                      from the auction of spectrum licences for broadband
+                      wireless access.
+                    </p>
+                  </section>
+                </div>
+              </div>
+            </section>
           </details>
         </div>
       </div>
@@ -198,5 +268,9 @@
 
     toggleFilter("Auction19", "auction");
     filterTable();
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("details-panel30").setAttribute("open", "open");
   });
 </script>
