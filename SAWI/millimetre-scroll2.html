@@ -132,7 +132,7 @@
         <tbody>
           <tr>
             <th class="bg-info">Status</th>
-            <td>Upcoming</td>
+            <td>Consulting</td>
           </tr>
           <tr>
             <th class="bg-info">Date</th>
@@ -276,5 +276,7 @@
 
     toggleFilter("Auction19", "auction");
     filterTable();
+
+    $("#document-table").DataTable().order([0, "desc"]).draw();
   });
 </script>

@@ -504,5 +504,7 @@
 
     toggleFilter("Auction16", "auction");
     filterTable();
+
+    $("#document-table").DataTable().order([0, "desc"]).draw();
   });
 </script>

@@ -220,5 +220,7 @@
     document
       .getElementById("document-table_filter")
       .setAttribute("hidden", true);
+
+    $("#document-table").DataTable().order([0, "desc"]).draw();
   });
 </script>
