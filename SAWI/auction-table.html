@@ -97,10 +97,10 @@
           >
             <thead>
               <tr>
-                <th data-orderable="false" class="col-md-8">Auction</th>
-                <th>Start date</th>
-                <th>End date</th>
-                <th data-orderable="false">Band</th>
+                <th data-orderable="false" class="col-md-6">Auction</th>
+                <th class="col-md-2">Start date</th>
+                <th class="col-md-2">End date</th>
+                <th data-orderable="false" class="col-md-2">Band</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -175,27 +175,27 @@
   auctions = [
     {
       name: "<a href='/SAWI/auction-3800.html'>3800 MHz</a>",
-      start_date: "2025-04-24",
-      end_date: "2025-04-30",
+      start_date: "2023-10-24",
+      end_date: "2023-11-24",
       band: "3800 MHz",
     },
     {
       name: "<a href='/SAWI/auction-millimetrewave.html'>Millimetre wave</a>",
-      start_date: "2024-02-22",
-      end_date: "2024-02-28",
+      start_date: "TBD",
+      end_date: "TBD",
       band: "26, 38 GHz",
     },
     {
       name: "<a href='/SAWI/auction-3500.html'>3500 MHz</a>",
-      start_date: "2025-04-24",
-      end_date: "2025-04-30",
+      start_date: "2021-06-15",
+      end_date: "2021-07-23",
       band: "3500 MHz",
     },
     {
       name: "<a href='/SAWI/auction-2024.html'>2024 residual spectrum auction</a>",
-      start_date: "2024-02-22",
-      end_date: "2024-02-28",
-      band: "3800 MHz",
+      start_date: "2024-07-16",
+      end_date: "2024-07-19",
+      band: "600, 2300, 3500, 3800 MHz",
     },
   ];
 
@@ -239,5 +239,7 @@
       .getElementById("document-table_filter")
       .setAttribute("hidden", true);
     document.getElementById("document-table_info").setAttribute("hidden", true);
+
+    $("#document-table").DataTable().order([1, "desc"]).draw();
   });
 </script>
