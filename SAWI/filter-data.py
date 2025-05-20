@@ -35,7 +35,11 @@ def process_json_file(input_file_path, encoding="utf-8"):
                 if s != "":
                     subject_values.add(s)
 
-    return filtered_data, sorted(list(type_values)), sorted(list(subject_values))
+    return (
+        filtered_data,
+        sorted(list(type_values)),
+        sorted(list(subject_values), reverse=True),
+    )
 
 
 input_file = "websitemasterlist.json"
