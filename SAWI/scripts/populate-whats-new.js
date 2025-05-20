@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
         dt.appendChild(span);
         whats_new_dl.appendChild(dt);
         const dd = document.createElement("dd");
-        dd.innerHTML = row.Title;
+        const match = row.Title.match(/>([^<]*)</);
+        const name = match ? match[1] : "";
+        dd.innerHTML = "<a href=#>" + name + "</a>";
         whats_new_dl.appendChild(dd);
       }
     })

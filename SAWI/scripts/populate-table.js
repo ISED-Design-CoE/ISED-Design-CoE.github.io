@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("filtered_output.json")
+  fetch("/SAWI/scrape/filtered_output.json")
     .then((res) => {
       if (!res.ok) throw new Error("Failed to fetch filtered_output.json");
       return res.json();
@@ -39,7 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Name (Title) -- may contain HTML
         const tdName = document.createElement("td");
-        tdName.innerHTML = row.Title || "";
+        const match = row.Title.match(/>([^<]*)</);
+        const name = match ? match[1] : "";
+        tdName.innerHTML = "<a href='#' class='wrong-way'>" + name + "</a>";
+        // tdName.innerHTML = row.Title || "";
         tr.appendChild(tdName);
 
         // Type
