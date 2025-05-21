@@ -10,8 +10,7 @@
 
     <!-- Start DECoE customization -->
     <title>
-      Auction of spectrum licences for broadband radio services (BRS) in
-      the 2500-2690 MHz band
+      Auction of residual spectrum licences in the 700 MHz and AWS-3 bands
     </title>
     <!-- End DECoE customization -->
 
@@ -124,8 +123,7 @@
     >
       <!-- Start page content -->
       <h1 property="name" id="wb-cont">
-        Auction of spectrum licences for broadband radio services (BRS) in
-        the 2500-2690 MHz band
+        Auction of residual spectrum licences in the 700 MHz and AWS-3 bands
       </h1>
       <!--<p>The auction of 3800 Mhz...</p>-->
 
@@ -178,10 +176,7 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a
-                  href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/2024-auction-residual-spectrum-licences-provisional-results"
-                  >Final results</a
-                >
+                <a href="#" class="wrong-way">Final results</a>
               </h3>
               <span class="label label-warning"
                 >Updated on September 26, 2024</span
@@ -201,9 +196,7 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a
-                  href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/sites/default/files/documents/Residual2024_bidding_information.zip"
-                  >Bidding data </a
+                <a href="#" class="wrong-way">Bidding data </a
                 ><gcds-icon name="download" size="h2"> </gcds-icon>
               </h3>
               <span class="label label-warning"
@@ -223,10 +216,7 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a
-                  href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/applicants-2024-auction-residual-spectrum-licences"
-                  >Applicants</a
-                >
+                <a href="#" class="wrong-way">Applicants</a>
               </h3>
               <span class="label label-warning">Updated on June 20, 2024</span>
               <p>
@@ -242,10 +232,7 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a
-                  href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/2024-auction-residual-spectrum-licences-table-key-dates"
-                  >Table of key dates</a
-                >
+                <a href="#" class="wrong-way">Table of key dates</a>
               </h3>
               <span class="label label-warning">Updated on March 16, 2024</span>
               <p>
@@ -262,10 +249,7 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a
-                  href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/notice-upcoming-auction-residual-spectrum-licences"
-                  >Notice of auction</a
-                >
+                <a href="#" class="wrong-way">Notice of auction</a>
               </h3>
               <span class="label label-warning">Updated on March 15, 2024</span>
               <p>
@@ -302,7 +286,7 @@
       <div class="wb-eqht row wb-init">
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
-            <h3 class="h5"><a href="#">3800 MHz</a></h3>
+            <h3 class="h5"><a href="#" class="wrong-way">3800 MHz</a></h3>
             <p>
               Information on available licences, applicants, and results from
               the 3800 MHz band spectrum auction.
@@ -311,7 +295,7 @@
         </div>
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
-            <h3 class="h5"><a href="#">3500 MHz</a></h3>
+            <h3 class="h5"><a href="#" class="wrong-way">3500 MHz</a></h3>
             <p>
               Information on available licences, applicants, and results from
               the 3500 MHz band spectrum auction.
@@ -320,7 +304,7 @@
         </div>
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
-            <h3 class="h5"><a href="#">600 MHz</a></h3>
+            <h3 class="h5"><a href="#" class="wrong-way">600 MHz</a></h3>
             <p>
               Information on available licences, applicants, and results from
               the 600 MHz band spectrum auction.
@@ -330,7 +314,7 @@
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
             <h3 class="h5">
-              <a href="#"
+              <a href="#" class="wrong-way"
                 >Residual auction in the 700, 2500, 2300 MHz bands and PCS-g
                 Block</a
               >
@@ -404,11 +388,15 @@
       );
     </script>
 
-    <script src="filter-rows.js"></script>
+    <script src="/SAWI/scripts/filter-rows.js"></script>
   </body>
 </html>
-<script type="text/javascript" src="populate-table.js"></script>
-<script type="text/javascript" src="populate-checkboxes.js"></script>
+<script type="text/javascript" src="/SAWI/scripts/populate-table.js"></script>
+<script
+  type="text/javascript"
+  src="/SAWI/scripts/populate-checkboxes.js"
+></script>
+<script type="text/javascript" src="/SAWI/scripts/alert-wrong-way.js"></script>
 
 <script>
   $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
@@ -417,9 +405,10 @@
       .setAttribute("hidden", true);
     document.getElementById("document-table_info").setAttribute("hidden", true);
 
-    toggleFilter("Auction10", "auction");
+    toggleFilter("Auction11", "auction");
     filterTable();
 
     $("#document-table").DataTable().order([0, "desc"]).draw();
+    add_alert();
   });
 </script>

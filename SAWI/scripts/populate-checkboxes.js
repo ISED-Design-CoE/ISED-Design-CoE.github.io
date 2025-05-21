@@ -41,6 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error(err);
       });
   }
-  loadCheckboxes("auctions.json", "auction-checkboxes", "auction");
-  loadCheckboxes("types.json", "type-checkboxes", "doc_type");
+  loadCheckboxes("/SAWI/scrape/auctions.json", "auction-checkboxes", "auction");
+  loadCheckboxes("/SAWI/scrape/types.json", "type-checkboxes", "doc_type");
 });
