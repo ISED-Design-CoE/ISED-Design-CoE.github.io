@@ -104,7 +104,7 @@
       <h1 property="name" id="wb-cont">Auction of 3800 MHz</h1>
 
       <!--<p><a href="#">Final results</a></p>-->
-      <p><strong>Status:</strong>Completed</p>
+      <p><strong>Status:</strong> Completed</p>
 
       <br />
 
@@ -195,7 +195,7 @@
             <summary>Table of key dates</summary>
 
             <section id="details-elements">
-              <a
+              <!-- <a
                 class="btn bg-info"
                 data-entity-substitution="canonical"
                 data-entity-type="node"
@@ -211,7 +211,11 @@
                 href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/policy-and-licensing-framework-spectrum-3800-mhz-band-annexes"
                 title="Policy and Licensing Framework for Spectrum in the 3800 MHz Band — Annexes"
                 >Annexes</a
-              ><!--&nbsp;<a class="btn bg-info"  href="/site/spectrum-management-telecommunications/sites/default/files/attachments/2022/SPB-002-22-2022-06EN.pdf">PDF</a>-->
+              >&nbsp;<a
+                class="btn bg-info"
+                href="/site/spectrum-management-telecommunications/sites/default/files/attachments/2022/SPB-002-22-2022-06EN.pdf"
+                >PDF</a
+              > -->
 
               <div class="clearfix mrgn-tp-lg">&nbsp;</div>
               <!--NEW SECTION-->
@@ -367,56 +371,9 @@
 
           <details id="details-panel30">
             <summary>Documentation</summary>
-            <div class="row">
-              <div class="col-md-12">
-                <h4 class="wb-inv">Filtering options</h4>
-                <details>
-                  <summary><h4 class="h4">Filter options</h4></summary>
-                  <form class="wb-tables-filter" data-bind-to="dataset-filter1">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <fieldset>
-                            <legend>
-                              <span class="field-name">Type</span>
-                            </legend>
-                            <ul class="list-unstyled" id="type-checkboxes"></ul>
-                          </fieldset>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <fieldset>
-                            <legend>
-                              <span class="field-name">Auctions</span>
-                            </legend>
-                            <ul
-                              class="list-unstyled"
-                              id="auction-checkboxes"
-                            ></ul>
-                          </fieldset>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <button
-                        type="submit"
-                        class="btn btn-primary"
-                        aria-controls="dataset-filter1"
-                        onclick="filterTable()"
-                      >
-                        Filter
-                      </button>
-                      <button
-                        onclick="window.location.href = '/SAWI/3800mhz.html'"
-                        class="btn btn-default"
-                      >
-                        Clear all filters
-                      </button>
-                    </div>
-                  </form>
-                </details>
-              </div>
+
+            <div class="row" style="width: 100%">
+              <div class="col-md-12"></div>
               <div class="col-md-12">
                 <table
                   class="wb-tables table filterEmphasis provisional"
@@ -426,14 +383,44 @@
                     <tr>
                       <th>Last updated</th>
                       <th>Title</th>
-                      <th>Type</th>
-                      <th>Auction</th>
+                      <th>Document type</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
                 </table>
               </div>
             </div>
+          </details>
+          <details id="details-panel40">
+            <summary>Related auctions</summary>
+            <section id="details-elements">
+              <div class="wb-eqht row wb-init" style="width: 95%">
+                <div
+                  class="col-md-5"
+                  style="vertical-align: top; min-height: 139px"
+                >
+                  <section class="gc-drmt">
+                    <h3 class="h5"><a href="#">2024 Residual auctions</a></h3>
+                    <p>
+                      Information on available licences, applicants, and results
+                      from the 2024 residual spectrum auction.
+                    </p>
+                  </section>
+                </div>
+                <div
+                  class="col-md-5"
+                  style="vertical-align: top; min-height: 139px"
+                >
+                  <section class="gc-drmt">
+                    <h3 class="h5"><a href="#">2023 Residual auctions</a></h3>
+                    <p>
+                      Information on available licences, applicants, and results
+                      from the 2023 residual spectrum auction.
+                    </p>
+                  </section>
+                </div>
+              </div>
+            </section>
           </details>
         </div>
       </div>
@@ -505,20 +492,19 @@
     <script src="filter-rows.js"></script>
   </body>
 </html>
-
-<script type="text/javascript" src="populate-checkboxes.js"></script>
 <script type="text/javascript" src="populate-table.js"></script>
+<script type="text/javascript" src="populate-checkboxes.js"></script>
 
 <script>
   $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
     document
       .getElementById("document-table_filter")
       .setAttribute("hidden", true);
+    document.getElementById("document-table_info").setAttribute("hidden", true);
 
-    //Radia code to get an idea of how the prefiltered table could look like
-    const auctionCheckbox = document.getElementById("auction16_checkbox");
-    auctionCheckbox.checked = true;
     toggleFilter("Auction16", "auction");
     filterTable();
+
+    $("#document-table").DataTable().order([0, "desc"]).draw();
   });
 </script>

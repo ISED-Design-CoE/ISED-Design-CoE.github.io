@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" dir="ltr">
+  <!--<![endif]-->
+
   <head>
     <!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
     <meta charset="utf-8" />
 
     <!-- Start DECoE customization -->
-    <title>Auction of Millimetre Wave Bands</title>
+    <title>Residual Auctions</title>
     <!-- End DECoE customization -->
 
     <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -34,12 +37,14 @@
         margin-top: 1em;
         border-top: 1px solid #111;
       }
+
       .nowrap {
         white-space: nowrap;
       }
     </style>
     <!-- End DECoE customization -->
   </head>
+
   <body vocab="http://schema.org/" typeof="WebPage">
     <div id="def-top">
       <!-- Write closure fall-back static file -->
@@ -72,10 +77,6 @@
             title: "Spectrum auctions",
             href: "/SAWI/auction-landing-page.html",
           },
-          {
-            title: "All spectrum auctions",
-            href: "/SAWI/auction-table.html",
-          },
         ],
         showPreContent: false,
       });
@@ -86,90 +87,78 @@
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">Auction of millimetre wave bands</h1>
+      <h1 property="name" id="wb-cont">Residual auctions process</h1>
+      <p>
+        Residual auctions are auctions of licences that remain unallocated at
+        the conclusion of an auction, or of previously assigned licences that
+        have been returned to ISED. Residual auctions follow the general
+        approach described in the
+        <a href="#"
+          >Streamlined Framework for Auctioning Residual Spectrum Licences</a
+        >, and generally do not require a consultation process.
+      </p>
+      <p>
+        The process for residual auctions by sealed bid generally includes the
+        following steps:
+      </p>
 
-      <p>Last updated page: <a href="#">Consultation</a></p>
+      <h3>1. Publication of notice/decision</h3>
+      <h3>2. Deadline for the receipt of applications</h3>
+      <p>
+        Submission period when prospective participants file their completed
+        application forms with required documentation, including beneficial
+        ownership information and financial deposits. The specific application
+        requirements are detailed in the auction's consultation documents and
+        the published licensing framework.
+      </p>
 
-      <br />
+      <h3>
+        3. Publication of the list of applicants, beneficial ownership and
+        affiliate associate information
+      </h3>
+      <p>
+        Shortly after the application submission deadline, ISED publishes a
+        comprehensive list of all applicants on its website. This disclosure
+        includes information about beneficial ownership and affiliations between
+        applicants, but does not indicate qualification status for auction
+        participation.
+      </p>
 
-      <div class="wb-tabs ignore-session">
-        <div class="tabpanels">
-          <details id="details-panel30">
-            <summary>Documentation</summary>
-            <div class="row">
-              <div class="col-md-12">
-                <h4 class="wb-inv">Filtering options</h4>
-                <details>
-                  <summary><h4 class="h4">Filter options</h4></summary>
-                  <form class="wb-tables-filter" data-bind-to="dataset-filter1">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <fieldset>
-                            <legend>
-                              <span class="field-name">Type</span>
-                            </legend>
-                            <ul class="list-unstyled" id="type-checkboxes"></ul>
-                          </fieldset>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <fieldset>
-                            <legend>
-                              <span class="field-name">Auctions</span>
-                            </legend>
-                            <ul
-                              class="list-unstyled"
-                              id="auction-checkboxes"
-                            ></ul>
-                          </fieldset>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <button
-                        type="submit"
-                        class="btn btn-primary"
-                        aria-controls="dataset-filter1"
-                        onclick="filterTable()"
-                      >
-                        Filter
-                      </button>
-                      <button
-                        onclick="window.location.href = 'auction-document.html'"
-                        class="btn btn-default"
-                      >
-                        Clear all filters
-                      </button>
-                    </div>
-                  </form>
-                </details>
-              </div>
-              <div class="col-md-12">
-                <table
-                  class="wb-tables table filterEmphasis provisional"
-                  id="document-table"
-                >
-                  <thead>
-                    <tr>
-                      <th>Last updated</th>
-                      <th>Title</th>
-                      <th>Type</th>
-                      <th>Auction</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
+      <h3>4. Publication of the list of qualified bidders</h3>
+      <p>
+        ISED publishes the official list of qualified bidders on its website,
+        specifying the licenses each bidder is eligible to bid on and their
+        initial eligibility points for the auction.
+      </p>
 
-      <!-- End page content -->
+      <h3>5. Start of auction (sealed bid deadline)</h3>
+      <h3>6. Conclusion of auction</h3>
+      <h3>7. Publication of provisional licence winners</h3>
+      <p>
+        Official announcement of auction results, including disclosure of
+        winning bidders, licenses won, and final prices, with a summary of the
+        auction process.
+      </p>
 
-      <!-- Banner start -->
+      <h3>8. Initial payment deadline</h3>
+      <p>
+        Date by which winners must submit their first payment installment,
+        typically a percentage of the total winning bid amount. Failure to meet
+        this deadline may result in forfeiture of winning bids.
+      </p>
+
+      <h3>9. Final payment deadline</h3>
+      <p>
+        Due date for the remaining balance of winning bids, which may occur in
+        multiple stages for high-value auctions and must be completed before
+        licenses can be issued.
+      </p>
+
+      <h3>10. Issuance of licences</h3>
+      <p>
+        Formal granting of licenses to winning bidders who have fulfilled all
+        payment obligations. This marks the conclusion of the auction process.
+      </p>
 
       <!-- End page content -->
 
@@ -182,7 +171,7 @@
         var defPreFooter = document.getElementById("def-preFooter");
         defPreFooter.outerHTML = wet.builder.preFooter({
           cdnEnv: "esdcprod",
-          versionIdentifier: "CD56",
+          dateModified: "2025-05-07",
           showPostContent: false,
           showFeedback: false,
           showShare: false,
@@ -230,24 +219,5 @@
         })
       );
     </script>
-
-    <script src="filter-rows.js"></script>
   </body>
 </html>
-
-<script type="text/javascript" src="populate-checkboxes.js"></script>
-<script type="text/javascript" src="populate-table.js"></script>
-
-<script>
-  $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
-    document
-      .getElementById("document-table_filter")
-      .setAttribute("hidden", true);
-
-    //Radia code to get an idea of how the prefiltered table could look like
-    const auctionCheckbox = document.getElementById("auction19_checkbox");
-    auctionCheckbox.checked = true;
-    toggleFilter("Auction19", "auction");
-    filterTable();
-  });
-</script>
