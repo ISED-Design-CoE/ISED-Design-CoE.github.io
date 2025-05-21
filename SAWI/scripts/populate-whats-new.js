@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("filtered_output.json")
+  fetch("/SAWI/scrape/filtered_output.json")
     .then((res) => {
       if (!res.ok) throw new Error("Failed to fetch filtered_output.json");
       return res.json();
@@ -22,6 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const match = row.Title.match(/>([^<]*)</);
         const name = match ? match[1] : "";
         dd.innerHTML = "<a href=#>" + name + "</a>";
+        dd.addEventListener("click", function (e) {
+          e.preventDefault(); // Prevent default link navigation/scroll
+          alert("You've clicked a link that brings you out of the mockup."); // Show the alert
+        });
         whats_new_dl.appendChild(dd);
       }
     })

@@ -41,9 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const tdName = document.createElement("td");
         const match = row.Title.match(/>([^<]*)</);
         const name = match ? match[1] : "";
-        tdName.innerHTML = "<a href='#' class='wrong-way'>" + name + "</a>";
+        tdName.innerHTML = "<a href='#'>" + name + "</a>";
         // tdName.innerHTML = row.Title || "";
         tr.appendChild(tdName);
+
+        tr.addEventListener("click", function (e) {
+          e.preventDefault(); // Prevent default link navigation/scroll
+          alert("You've clicked a link that brings you out of the mockup."); // Show the alert
+        });
 
         // Type
         tr.setAttribute("doc_type", row.Type);
