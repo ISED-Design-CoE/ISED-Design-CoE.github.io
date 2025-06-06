@@ -37,6 +37,15 @@
       .nowrap {
         white-space: nowrap;
       }
+      details > summary {
+        border: none;
+      }
+      details{
+        border: none;
+      }
+      fieldset {
+        border: none;
+      }
     </style>
     <!-- End DECoE customization -->
   </head>
@@ -85,33 +94,51 @@
       <h1 property="name" id="wb-cont">Spectrum auction documents</h1>
 
       <div class="row">
-        <div class="col-md-12">
-          <h4 class="wb-inv">Filtering options</h4>
-          <details>
-            <summary><h4 class="h4">Filter options</h4></summary>
+        
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-md-6">
+              <h3>Filter by:</h3>
+            </div>
+            <div class="col-md-6" style="margin-top: 22px;">
+              <button
+                  type="submit"
+                  class="btn btn-default"
+                  aria-controls="dataset-filter1"
+                  onclick="document.querySelectorAll('details').forEach(d => d.open = true)"
+                >
+                  Expand all
+                </button>
+            </div>
+          </div>
             <form class="wb-tables-filter" data-bind-to="dataset-filter1">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <fieldset>
-                      <legend>
-                        <span class="field-name">Document type</span>
-                      </legend>
-                      <ul class="list-unstyled" id="type-checkboxes"></ul>
-                    </fieldset>
-                  </div>
+
+                <div class="row">
+                  <details style="border: none;">
+                    <summary><h3 class="h3">Document type</h3></summary>
+                      <div class="form-group">
+                        <fieldset>
+                          <legend>
+                          </legend>
+                          <ul class="list-unstyled" id="type-checkboxes"></ul>
+                        </fieldset>
+                      </div>
+                  </details>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <fieldset>
-                      <legend>
-                        <span class="field-name">Auctions</span>
-                      </legend>
-                      <ul class="list-unstyled" id="auction-checkboxes"></ul>
-                    </fieldset>
-                  </div>
+
+                <div class="row" >
+                  <details style="border: none;">
+                    <summary><h3 class="h3">Auctions</h3></summary>
+                      <div class="form-group">
+                        <fieldset>
+                          <legend>
+                          </legend>
+                          <ul class="list-unstyled" id="auction-checkboxes"></ul>
+                        </fieldset>
+                      </div>
+                  </details>
                 </div>
-              </div>
+
               <div class="form-group">
                 <button
                   type="submit"
@@ -131,7 +158,7 @@
             </form>
           </details>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-8"  style="border-left: 1px solid;">
           <table
             class="wb-tables table filterEmphasis provisional"
             id="document-table"
