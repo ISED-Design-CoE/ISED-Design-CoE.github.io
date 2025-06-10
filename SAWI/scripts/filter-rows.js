@@ -20,8 +20,8 @@ function filterTable() {
       ) {
         if (
           filters["doc_type"].includes(row.getAttribute("doc_type")) &&
-          filters["auction"].includes(row.getAttribute("auction")) &&
-          filters["residual_auction"].includes(row.getAttribute("auction"))
+          (filters["auction"].includes(row.getAttribute("auction")) ||
+          filters["residual_auction"].includes(row.getAttribute("auction")))
         ) {
           row.removeAttribute("hidden");
           match = true;
