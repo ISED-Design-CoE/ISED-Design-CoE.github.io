@@ -53,7 +53,7 @@ function filterTable() {
         filters["residual_auction"].length != 0
       ) {
         if (
-          filters["auction"].includes(row.getAttribute("auction")) &&
+          filters["auction"].includes(row.getAttribute("auction")) ||
           filters["residual_auction"].includes(row.getAttribute("auction"))
         ) {
           row.removeAttribute("hidden");
