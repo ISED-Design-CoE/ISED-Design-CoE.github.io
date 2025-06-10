@@ -1,15 +1,35 @@
-var filters = { doc_type: [], auction: [] };
+var filters = { doc_type: [], auction: [], residual_auction: [] };
 
 // change number in document-table_info
 
 function filterTable() {
   const rows = document.querySelectorAll(".data_row");
   rows.forEach((row) => {
-    if (filters["doc_type"].length == 0 && filters["auction"].length == 0) {
+    if (
+      filters["doc_type"].length == 0 &&
+      filters["auction"].length == 0 &&
+      filters["residual_auction"].length == 0
+    ) {
       row.removeAttribute("hidden");
     } else {
       match = false;
-      if (filters["doc_type"].length != 0 && filters["auction"].length != 0) {
+      if (
+        filters["doc_type"].length != 0 &&
+        filters["auction"].length != 0 &&
+        filters["residual_auction"].length != 0
+      ) {
+        if (
+          filters["doc_type"].includes(row.getAttribute("doc_type")) &&
+          (filters["auction"].includes(row.getAttribute("auction")) ||
+          filters["residual_auction"].includes(row.getAttribute("auction")))
+        ) {
+          row.removeAttribute("hidden");
+          match = true;
+        }
+      } else if (
+        filters["doc_type"].length != 0 &&
+        filters["auction"].length != 0
+      ) {
         if (
           filters["doc_type"].includes(row.getAttribute("doc_type")) &&
           filters["auction"].includes(row.getAttribute("auction"))
@@ -17,8 +37,35 @@ function filterTable() {
           row.removeAttribute("hidden");
           match = true;
         }
+      } else if (
+        filters["doc_type"].length != 0 &&
+        filters["residual_auction"].length != 0
+      ) {
+        if (
+          filters["doc_type"].includes(row.getAttribute("doc_type")) &&
+          filters["residual_auction"].includes(row.getAttribute("auction"))
+        ) {
+          row.removeAttribute("hidden");
+          match = true;
+        }
+      } else if (
+        filters["auction"].length != 0 &&
+        filters["residual_auction"].length != 0
+      ) {
+        if (
+          filters["auction"].includes(row.getAttribute("auction")) &&
+          filters["residual_auction"].includes(row.getAttribute("auction"))
+        ) {
+          row.removeAttribute("hidden");
+          match = true;
+        }
       } else if (filters["doc_type"].length != 0) {
         if (filters["doc_type"].includes(row.getAttribute("doc_type"))) {
+          row.removeAttribute("hidden");
+          match = true;
+        }
+      } else if (filters["residual_auction"].length != 0) {
+        if (filters["residual_auction"].includes(row.getAttribute("auction"))) {
           row.removeAttribute("hidden");
           match = true;
         }
