@@ -45,69 +45,95 @@
     <!-- End DECoE customization -->
   </head>
 
+  <header>
+<div id="wb-bnr" class="container"><div class="row">
+<section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+	<h2 class="wb-inv">Language selection</h2>
+	<ul class="list-inline mrgn-bttm-0">
+		<li><a lang="fr" hreflang="fr" href="?">
+				<span class="hidden-xs" translate="no" id="lang-toggle">Français</span>
+				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+		</a></li>
+	</ul>
+</section>
+
+<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+	<a href="#" property="url">
+		<img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+	</a>
+	<meta property="name" content="Government of Canada">
+	<meta property="areaServed" typeof="Country" content="Canada" />
+	<link property="logo" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" />
+</div>
+
+</div></div>
+<hr>
+<div class="container"><div class="row"><div class="col-md-8">
+
+  <nav id="wb-bc" property="breadcrumb">
+	<h2>You are here:</h2>
+	<div class="container">
+		<ol class="breadcrumb" typeof="BreadcrumbList">
+			<li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name">Canada.ca</span>
+				</a>
+				<meta property="position" content="1">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name" data-i18n="smt"></span>
+				</a>
+				<meta property="position" content="2">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name" data-i18n="spectrum-allocation"></span>
+				</a>
+				<meta property="position" content="3">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="/SAWI/auction-landing-page.html" style="font-size:16px">
+					<span property="name" data-i18n="spectrum-auctions"></span>
+				</a>
+				<meta property="position" content="4">
+			</li>
+		</ol>
+	</div>
+</nav>
+
+</header>
+
+
   <body vocab="http://schema.org/" typeof="WebPage">
     <div id="def-top">
       <!-- Write closure fall-back static file -->
       <!-- transactTop-en.html -->
     </div>
     <!-- Write closure template -->
-    <script>
-      var defTop = document.getElementById("def-top");
-      defTop.outerHTML = wet.builder.top({
-        cdnEnv: "esdcprod",
-        lngLinks: [
-          {
-            lang: "fr",
-            href: "#",
-            text: "Français",
-          },
-        ],
-        search: false,
-        siteMenu: false,
-        breadcrumbs: [
-          {
-            title: "Spectrum management and telecommunications",
-            href: "#",
-          },
-          {
-            title: "Spectrum allocation",
-            href: "#",
-          },
-          {
-            title: "Spectrum auctions",
-            href: "/SAWI/auction-landing-page.html",
-          },
-        ],
-        showPreContent: false,
-      });
-    </script>
+    
     <main
       property="mainContentOfPage"
       typeof="WebPageElement"
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">About spectrum auctions</h1>
+      <h1 property="name" data-i18n="about-title"></h1>
 
       <div class="row">
         <div class="col-md-6">
-          <p>
-            Innovation, Science and Economic Development Canada (ISED) manages
-            spectrum to maximize economic and social benefits for Canadians.
-            Auctions are a competitive licensing process generally used to award
-            spectrum licences when the demand for spectrum is expected to exceed
-            supply.
+          <p data-i18n="about-intro">
           </p>
 
-          <h3>On this page:</h3>
+          <h3 data-i18n="about-table-of-contents"></h3>
 
           <ul>
             <li>
-              <a href="#general-process">How does a spectrum auction work?</a>
+              <a href="#general-process" data-i18n="about-table-item1"></a>
             </li>
             <!-- <li><a href="#auction-types">Auction types</a></li> -->
-            <li><a href="#auction-formats">Auction formats</a></li>
-            <li><a href="#frameworks-outlooks">Frameworks and outlooks</a></li>
+            <li><a href="#auction-formats" data-i18n="about-table-item2"></a></li>
+            <li><a href="#frameworks-outlooks" data-i18n="about-table-item3"></a></li>
           </ul>
         </div>
 
@@ -117,17 +143,13 @@
       </div>
 
       <section class="well well-lg" style="margin-top: 5%" id="general-process">
-        <h2 style="margin-top: 0%">How does a spectrum auction work?</h2>
+        <h2 style="margin-top: 0%" data-i18n="about-auctions-process"></h2>
 
-        <p>
-          Through a structured process involving stakeholder consultation,
-          competitive bidding, and regulatory oversight, these auctions enable
-          efficient distribution of limited spectrum to service providers while
-          maximizing public benefit and fostering innovation in wireless
-          communications.
+        <p data-i18n="about-auctions-process-intro">
+          
         </p>
 
-        <p>
+        <p data-i18n="about-auction-process-intro-continued">
           The following is a summary of the auction process as described in the
           <a href="#" class="wrong-way">
             Framework for spectrum auctions in Canada</a
@@ -137,155 +159,95 @@
         <div class="wb-tabs ignore-session">
           <div class="tabpanels">
             <details id="details-panel10" style="background-color: #ffffff">
-              <summary>Auctions</summary>
-              <p>
-                Auctions release or reallocate significant amounts of spectrum
-                for commercial use, typically across the country. Before an
-                auction begins, a public consultation process takes place to
-                determine its attributes and design, such as the exact frequency
-                ranges to be auctioned, the number and size of frequency blocks,
-                reserve prices, and measures to support competition. Once an
-                auction begins, it can take several weeks of bidding before it
-                concludes. Spectrum auctions follow the approach described in
-                the
-                <a href="#">Framework for Spectrum Auctions in Canada</a> and
-                generally take place according to the steps below.
+              <summary data-i18n="about-auctions-tab1"></summary>
+              <p data-i18n="a/bout-auctions-tab1-description">
+                Auctions release or reallocate significant amounts of spectrum for commercial use, typically across the country. 
+                Before an auction begins, a public consultation process takes place to determine its attributes and design, such 
+                s the exact frequency ranges to be auctioned, the number and size of frequency blocks, reserve prices, and measures 
+                to support competition. Once an auction begins, it can take several weeks of bidding before it concludes. Spectrum auctions 
+                follow the approach described in the <a href="#">Framework for Spectrum Auctions in Canada</a> and generally take place according to the steps below.              
               </p>
-              <h3>
-                1. Consultations on the proposed policy and licensing procedures
+              <h3 data-i18n="about-auctions-step1">
               </h3>
-              <p>
-                A formal consultation paper is published proposing all aspects
-                of the upcoming auction. This document outlines the proposed
-                spectrum policy, auction design, and licensing procedures and
-                rules. The consultation process provides interested stakeholders
-                with the opportunity to review and comment on these proposals
-                before the auction framework is finalized.
+              <p data-i18n="about-auctions-step1-description">
+                
               </p>
 
-              <h3>2. Comment period</h3>
-              <p>
-                During this time, interested parties can submit written comments
-                on the proposed auction design and rules. All stakeholders
-                including potential bidders, industry associations and public
-                interest groups may participate. After the closing date for
-                receipt of comments, copies of all the comments received are
-                posted on ISED’s website.
+              <h3 data-i18n="about-auctions-step2"></h3>
+              <p data-i18n="about-auctions-step2-description">
+
               </p>
 
-              <h3>3. Reply comment period</h3>
-              <p>
-                During this time, stakeholders can respond to comments submitted
-                during the initial comment period. This provides an opportunity
-                for addressing concerns or refining proposals based on feedback.
-                After the closing date for receipt of reply comments, copies of
-                all the reply comments received are posted on ISED’s website.
+              <h3 data-i18n="about-auctions-step3"></h3>
+              <p data-i18n="about-auctions-step3-description">
               </p>
 
-              <h3>4. Publication of the licensing framework/decision</h3>
-              <p>
-                After all submitted feedback has been reviewed, the final
-                auction framework is published. This document discusses the
-                comments received from the consultation process and describes
-                the auction format, bidding rules and licence conditions. A
-                table of key dates associated with the auction accompanies this
-                document.
+              <h3 ata-i18n="about-auctions-step4"></h3>
+              <p data-i18n="about-auctions-step4-description">
+                
               </p>
 
-              <h3>5. Clarification questions</h3>
-              <p>
-                Stakeholders have an opportunity to submit written questions
-                asking for clarification of rules or policies related to the
-                auction. Questions received by the deadline and ISED’s written
-                answers to these questions are published online.
+              <h3 data-i18n="about-auctions-step5"></h3>
+              <p data-i18n="about-auctions-step5-description">
+               
               </p>
 
-              <h3>6. Deadline for the receipt of applications</h3>
-              <p>
-                Prospective participants must submit their completed application
-                forms, supporting documentation and financial deposit by the
-                published deadline. The specific application requirements are
-                detailed in the auction framework.
+              <h3 data-i18n="about-auctions-step6"></h3>
+              <p data-i18n="about-auctions-step6-description">
+               
               </p>
 
-              <h3>7. Publication of the list of applicants</h3>
-              <p>
-                Shortly after the application submission deadline, ISED
-                publishes online a comprehensive list of all applicants, as well
-                as information about their beneficial ownership, affiliations
-                and associations. This step does not imply that participants
-                have been qualified to participate in the auction.
+              <h3 data-i18n="about-auctions-step7"></h3>
+              <p data-i18n="about-auctions-step7-description">
+        
               </p>
 
-              <h3>8. Publication of the list of qualified bidders</h3>
-              <p>
-                ISED publishes the official list of qualified bidders on its
-                website. After this time, bidders receive training materials and
-                a schedule for the first week of the auction.
+              <h3 data-i18n="about-auctions-step8"></h3>
+              <p data-i18n="about-auctions-step8-description"> 
+                
               </p>
 
-              <h3>9. Bidder information sessions and mock auctions</h3>
-              <p>
-                Qualified bidders receive training and become familiar with the
-                auction rules, software platform and bidding procedures. Bidders
-                participate in practice sessions on the actual auction software
-                so they may identify and resolve any technical issues before the
-                start of the auction.
+              <h3 data-i18n="about-auctions-step9"></h3>
+              <p data-i18n="about-auctions-step9-description">
+                
               </p>
 
-              <h3>10. Start of auction</h3>
-              <p>
-                The auction starts on the date specified in the auction’s table
-                of key dates.
+              <h3 data-i18n="about-auctions-step10"></h3>
+              <p data-i18n="about-auctions-step10-description">
+                
               </p>
 
-              <h3>11. Conclusion of auction</h3>
-              <p>
-                The duration and conclusion of an auction depend on its design
-                and format as well as bidding activity. Details on the closure
-                of an auction are provided in the framework.
+              <h3 data-i18n="about-auctions-step11"></h3>
+              <p data-i18n="about-auctions-step11-description">
+                
               </p>
 
-              <h3>12. Publication of provisional licence winners</h3>
-              <p>
-                Shortly after the conclusion of the auction, the provisional
-                results, including provisional winning bidders, prices and their
-                licences are published online. Results are not considered final
-                until all payments have been received.
+              <h3 data-i18n="about-auctions-step12"></h3>
+              <p data-i18n="about-auctions-step12-description">
+                
               </p>
 
-              <h3>13. Initial payment deadline</h3>
-              <p>
-                Provisional winners must submit their first payment by the
-                published deadline. Failure to do so may result in forfeiture of
-                licences won.
+              <h3 data-i18n="about-auctions-step13"></h3>
+              <p data-i18n="about-auctions-step13-description">
+                
               </p>
 
-              <h3>14. Final payment deadline</h3>
-              <p>
-                Provisional winners must submit their final payment (balance
-                owing) by the published deadline. Failure to do so may result in
-                forfeiture of licences won.
+              <h3 data-i18n="about-auctions-step14"></h3>
+              <p data-i18n="about-auctions-step14-description">
               </p>
 
-              <h3>15. Issuance of licences</h3>
-              <p>
-                Once provisional winning bidders have submitted all payments on
-                the final payment deadline, their licences are issued. At this
-                time, all auction results are deemed final.
+              <h3 data-i18n="about-auctions-step15"></h3>
+              <p data-i18n="about-auctions-step15-description">
+                
               </p>
-              <h3>16. Publication of bidding data</h3>
-              <p>
-                A few months after issuing licences, ISED publishes on its
-                website detailed bidding data, which includes bidders'
-                identities and all bids submitted for the concluded auction.
-                This is done in the interest of transparency of the auction
-                process.
+              <h3 data-i18n="about-auctions-step16"></h3>
+              <p data-i18n="about-auctions-step16-description">
+               
               </p>
             </details>
 
             <details id="details-panel20" style="background-color: #ffffff">
-              <summary>Residual auctions</summary>
+              <summary data-i18n="about-auction-tab2"></summary>
               <p>
                 Residual auctions are auctions of licences that remain
                 unallocated at the conclusion of an auction, or of previously
@@ -301,91 +263,64 @@
                 includes the steps below.
               </p>
 
-              <h3>1. Publication of notice/decision</h3>
-              <p>
-                A formal notice is published announcing an upcoming auction of
-                residual licences. The notice details the auction format and
-                bidding rules (generally a sealed-bid auction with a
-                second-price rule). A table of key dates associated with the
-                residual auction accompanies this document.
-              </p>
-              <h3>2. Clarification questions</h3>
-              <p>
-                Stakeholders have an opportunity to submit written questions
-                asking for clarification of rules related to the residual
-                auction. Questions received by the deadline and ISED’s written
-                answers to these questions are published online.
+              <h3 data-i18n="about-residual-auctions-step1">
+              </h3>
+              <p data-i18n="about-residual-auctions-step1-description">
+                
               </p>
 
-              <h3>3. Deadline for the receipt of applications</h3>
-              <p>
-                Prospective participants must submit their completed application
-                forms, supporting documentation and financial deposit by the
-                published deadline. The specific application requirements are
-                detailed in the residual auction notice.
+              <h3 data-i18n="about-auctions-step2"></h3>
+              <p data-i18n="about-auctions-step2-description">
+
               </p>
 
-              <h3>4. Publication of the list of applicants</h3>
-              <p>
-                Shortly after the application submission deadline, ISED
-                publishes online a comprehensive list of all applicants, as well
-                as information about their beneficial ownership, affiliations
-                and associations. This step does not imply that participants
-                have been qualified to participate in the residual auction.
+              <h3 data-i18n="about-residual-auctions-step3"></h3>
+              <p data-i18n="about-residual-auctions-step3-description">
               </p>
 
-              <h3>5. Publication of the list of qualified bidders</h3>
-              <p>
-                ISED publishes the official list of qualified bidders on its
-                website. After this time, bidders receive an information
-                package.
-              </p>
-              <h3>6. Start of residual auction (sealed bid deadline)</h3>
-              <p>
-                The deadline for receipt of sealed bids marks the start of the
-                residual auction. This deadline is specified in the residual
-                auction’s table of key dates.
-              </p>
-              <h3>7. Conclusion of residual auction</h3>
-              <p>
-                The conclusion of the residual auction depends on its design and
-                format. It generally concludes within two weeks.
-              </p>
-              <h3>8. Publication of provisional licence winners</h3>
-              <p>
-                Shortly after the conclusion of the auction, the provisional
-                results, including provisional winning bidders, prices and their
-                licences, are published online. Results are not considered final
-                until all payments have been received.
+              <h3 ata-i18n="about-residual-auctions-step4"></h3>
+              <p data-i18n="about-residual-auctions-step4-description">
+                
               </p>
 
-              <h3>9. Initial payment deadline</h3>
-              <p>
-                Provisional winners must submit their first payment by the
-                published deadline. Failure to do so may result in forfeiture of
-                licences won.
+              <h3 data-i18n="about-residual-auctions-step5"></h3>
+              <p data-i18n="about-residual-auctions-step5-description">
+               
               </p>
 
-              <h3>10. Final payment deadline</h3>
-              <p>
-                Provisional winners must submit their final payment (balance
-                owing) by the published deadline. Failure to do so may result in
-                forfeiture of licences won.
+              <h3 data-i18n="about-residual-auctions-step6"></h3>
+              <p data-i18n="about-residual-auctions-step6-description">
+               
               </p>
-              <h3>11. Issuance of licences</h3>
-              <p>
-                Once provisional winning bidders have submitted all payments on
-                the final payment deadline, their licences are issued. At this
-                time, all residual auction results are deemed final.
+
+              <h3 data-i18n="about-residual-auctions-step7"></h3>
+              <p data-i18n="about-residual-auctions-step7-description">
+        
               </p>
-              <h3>12. Publishing bidding data</h3>
-              <p>
-                A few months after issuing licences, ISED publishes on its
-                website detailed bidding data, which includes bidders'
-                identities and all bids submitted for the concluded residual
-                auction. This is done in the interest of transparency of the
-                auction process.
+
+              <h3 data-i18n="about-residual-auctions-step8"></h3>
+              <p data-i18n="about-residual-auctions-step8-description"> 
+                
               </p>
+
+              <h3 data-i18n="about-residual-auctions-step9"></h3>
+              <p data-i18n="about-residual-auctions-step9-description">
+                
+              </p>
+
+              <h3 data-i18n="about-residual-auctions-step10"></h3>
+              <p data-i18n="about-residual-auctions-step10-description">
+                
+              </p>
+
+              <h3 data-i18n="about-residual-auctions-step11"></h3>
+              <p data-i18n="about-residual-auctions-step11-description">
+                
+              </p>
+
+              <h3 data-i18n="about-residual-auctions-step12"></h3>
+              <p data-i18n="about-residual-auctions-step12-description">
+                </p>
             </details>
           </div>
         </div>
@@ -426,14 +361,13 @@
 
       <div class="col-md-12">
         <section class="gc-features" id="auction-formats">
-          <h2>Auction formats</h2>
-          <p>
-            The following links bring you to the framework for residual
-            auctions.
+          <h2 data-i18n="about-auctions-formats-heading"></h2>
+          <p data-i18n="about-auctions-formats-intro">
+            
           </p>
 
           <details>
-            <summary><h3>Clock auction (CA) format</h3></summary>
+            <summary><h3 data-i18n="about-auctions-formats-tab1"></h3></summary>
             <p>
               The clock auction format is a bidding process that includes two
               stages: a clock stage and an assignment stage.<br /><br />
@@ -453,7 +387,7 @@
           </details>
           <details>
             <summary>
-              <h3>Combinatorial clock auction (CCA) format</h3>
+              <h3 data-i18n="about-auctions-formats-tab2"></h3>
             </summary>
             <p>
               The combinatorial clock auction format is a bidding process that
@@ -478,8 +412,8 @@
 
           <details>
             <summary>
-              <h3>
-                Simultaneous multiple-round ascending auction (SMRA) format
+              <h3 data-i18n="about-auctions-formats-tab3">
+                
               </h3>
             </summary>
 
@@ -503,7 +437,7 @@
 
           <details>
             <summary>
-              <h3>Sealed-bid format</h3>
+              <h3 data-i18n="about-auctions-formats-tab4"></h3>
             </summary>
 
             <p>
@@ -522,32 +456,28 @@
       </div>
 
       <section class="col-md-12" id="frameworks-outlooks">
-        <h2>Frameworks and outlooks</h2>
+        <h2 data-i18n="about-auctions-frameworks-heading"></h2>
         <div class="row wb-init">
           <div class="col-md-6" style="vertical-align: top; min-height: 139px">
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way"
-                  >Framework for spectrum auctions</a
+                <a href="#" class="wrong-way" data-i18n="about-auctions-frameworks-link1"
+                  ></a
                 >
               </h3>
-              <p>
-                Document outlining the general approaches ISED uses to auction
-                spectrum licences.
+              <p data-i18n="about-auctions-frameworks-link1-description">
               </p>
             </section>
           </div>
           <div class="col-md-6" style="vertical-align: top; min-height: 139px">
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way"
-                  >Decision on a Streamlined Framework for Auctioning Residual
-                  Spectrum Licences
+                <a href="#" class="wrong-way" data-i18n="about-auctions-frameworks-link1"
+                  >
                 </a>
               </h3>
-              <p>
-                Document outlining ISED’s streamlined approach for auctioning
-                residual spectrum licences.
+              <p data-i18n="about-auctions-frameworks-link2-description">
+
               </p>
             </section>
           </div>
@@ -556,29 +486,21 @@
           <div class="col-md-6" style="vertical-align: top; min-height: 139px">
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way">Spectrum outlook 2023 to 2027</a>
+                <a href="#" class="wrong-way" data-i18n="about-auctions-frameworks-link1"></a>
               </h3>
-              <p>
-                Document outlining ISED’s overall approach and planning
-                activities related to its management of Canada’s radio spectrum
-                over a 5-year period, including measures to support competition
-                in its auction processes.
+              <p data-i18n="about-auctions-frameworks-link3-description">
+
               </p>
             </section>
           </div>
           <div class="col-md-6" style="vertical-align: top; min-height: 139px">
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way"
-                  >Spectrum Policy Framework for Canada
+                <a href="#" class="wrong-way" data-i18n="about-auctions-frameworks-link1"
+                  >
                 </a>
               </h3>
-              <p>
-                Document outlining policy and spectrum management direction for
-                wireless applications, services and uses, ranging from national
-                defence and security to commercial, consumer, scientific and
-                private radio. It contains core objectives and policy guidelines
-                that form the basis for ISED’s Spectrum Management Program.
+              <p data-i18n="about-auctions-frameworks-link4-description">
               </p>
             </section>
           </div>
@@ -653,6 +575,7 @@
       );
     </script>
     <script src="scripts/alert-wrong-way.js"></script>
+    <script src="scripts/i18n.js"></script>
     <script>
       window.addEventListener("load", (event) => {
         add_alert();

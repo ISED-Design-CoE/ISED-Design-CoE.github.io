@@ -74,46 +74,78 @@
     <!-- End GC Design System-->
   </head>
 
+  <header>
+<div id="wb-bnr" class="container"><div class="row">
+<section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+	<h2 class="wb-inv">Language selection</h2>
+	<ul class="list-inline mrgn-bttm-0">
+		<li><a lang="fr" hreflang="fr" href="?">
+				<span class="hidden-xs" translate="no" id="lang-toggle">Français</span>
+				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+		</a></li>
+	</ul>
+</section>
+
+<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+	<a href="#" property="url">
+		<img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+	</a>
+	<meta property="name" content="Government of Canada">
+	<meta property="areaServed" typeof="Country" content="Canada" />
+	<link property="logo" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" />
+</div>
+
+</div></div>
+<hr>
+<div class="container"><div class="row"><div class="col-md-8">
+
+  <nav id="wb-bc" property="breadcrumb">
+	<h2>You are here:</h2>
+	<div class="container">
+		<ol class="breadcrumb" typeof="BreadcrumbList">
+			<li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name">Canada.ca</span>
+				</a>
+				<meta property="position" content="1">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name" data-i18n="smt"></span>
+				</a>
+				<meta property="position" content="2">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name" data-i18n="spectrum-allocation"></span>
+				</a>
+				<meta property="position" content="3">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="/SAWI/auction-landing-page.html" style="font-size:16px">
+					<span property="name" data-i18n="spectrum-auctions"></span>
+				</a>
+				<meta property="position" content="4">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="/SAWI/auction-table.html" style="font-size:16px">
+					<span property="name" data-i18n="auctions-table"></span>
+				</a>
+				<meta property="position" content="5">
+			</li>
+		</ol>
+	</div>
+</nav>
+
+</header>
+
   <body vocab="http://schema.org/" typeof="WebPage">
     <div id="def-top">
       <!-- Write closure fall-back static file -->
       <!-- transactTop-en.html -->
     </div>
     <!-- Write closure template -->
-    <script>
-      var defTop = document.getElementById("def-top");
-      defTop.outerHTML = wet.builder.top({
-        cdnEnv: "esdcprod",
-        lngLinks: [
-          {
-            lang: "fr",
-            href: "#",
-            text: "Français",
-          },
-        ],
-        search: false,
-        siteMenu: false,
-        breadcrumbs: [
-          {
-            title: "Spectrum management and telecommunications",
-            href: "#",
-          },
-          {
-            title: "Spectrum allocation",
-            href: "#",
-          },
-          {
-            title: "Spectrum auctions",
-            href: "/SAWI/auction-landing-page.html",
-          },
-          {
-            title: "All spectrum auctions",
-            href: "/SAWI/auction-table.html",
-          },
-        ],
-        showPreContent: false,
-      });
-    </script>
+    
     <main
       property="mainContentOfPage"
       typeof="WebPageElement"
@@ -286,6 +318,7 @@
     </script>
 
     <script src="/SAWI/scripts/filter-rows.js"></script>
+    <script src="/SAWI/scripts/i18n.js"></script>
   </body>
 </html>
 
