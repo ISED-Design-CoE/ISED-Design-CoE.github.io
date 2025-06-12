@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     Auction06: "2009 | air-ground",
     Auction07: "2009 | residual",
     Auction08: "2014 | 700 MHz (MBS)",
-    Auction09: "2025 | AWS-3",
+    Auction09: "2015 | AWS-3",
     Auction10: "2015 | 2500 MHz-2690 MHz (BRS)",
     Auction11: "2015 | residual",
     Auction12: "2018 | residual",
