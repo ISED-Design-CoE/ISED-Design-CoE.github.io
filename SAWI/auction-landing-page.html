@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
 
     <!-- Start DECoE customization -->
-    <title>Spectrum auctions</title>
+    <title data-i18n="landing-title"></title>
     <!-- End DECoE customization -->
 
     <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -45,45 +45,78 @@
     <!-- End DECoE customization -->
   </head>
 
+  <header>
+<div id="wb-bnr" class="container"><div class="row">
+<section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+	<h2 class="wb-inv">Language selection</h2>
+	<ul class="list-inline mrgn-bttm-0">
+		<li><a lang="fr" hreflang="fr" href="?">
+				<span class="hidden-xs" translate="no" id="lang-toggle">Français</span>
+				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+		</a></li>
+	</ul>
+</section>
+
+<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+	<a href="#" property="url">
+		<img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+	</a>
+	<meta property="name" content="Government of Canada">
+	<meta property="areaServed" typeof="Country" content="Canada" />
+	<link property="logo" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" />
+</div>
+
+</div></div>
+<hr>
+<div class="container"><div class="row"><div class="col-md-8">
+
+  <nav id="wb-bc" property="breadcrumb">
+	<h2>You are here:</h2>
+	<div class="container">
+		<ol class="breadcrumb" typeof="BreadcrumbList">
+			<li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name">Canada.ca</span>
+				</a>
+				<meta property="position" content="1">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name" data-i18n="smt"></span>
+				</a>
+				<meta property="position" content="2">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name" data-i18n="spectrum-allocation"></span>
+				</a>
+				<meta property="position" content="3">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name" data-i18n="spectrum-auctions"></span>
+				</a>
+				<meta property="position" content="4">
+			</li>
+		</ol>
+	</div>
+</nav>
+
+</header>
+
   <body vocab="http://schema.org/" typeof="WebPage">
     <div id="def-top">
       <!-- Write closure fall-back static file -->
       <!-- transactTop-en.html -->
     </div>
     <!-- Write closure template -->
-    <script>
-      var defTop = document.getElementById("def-top");
-      defTop.outerHTML = wet.builder.top({
-        cdnEnv: "esdcprod",
-        lngLinks: [
-          {
-            lang: "fr",
-            href: "#",
-            text: "Français",
-          },
-        ],
-        search: false,
-        siteMenu: false,
-        breadcrumbs: [
-          {
-            title: "Spectrum management and telecommunications",
-            href: "#",
-          },
-          {
-            title: "Spectrum allocation",
-            href: "#",
-          },
-        ],
-        showPreContent: false,
-      });
-    </script>
     <main
       property="mainContentOfPage"
       typeof="WebPageElement"
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">Spectrum auctions</h1>
+      <h1 property="name" data-i18n="landing-heading"></h1>
 
       <!-- End page content -->
 
@@ -101,13 +134,7 @@
 
       <br />
 
-      <p>
-        A spectrum auction is a competitive process, where applicants bid on the
-        spectrum licences they would like to acquire.
-        <a href="/SAWI/about-auctions.html"
-          >Learn more about spectrum auctions.</a
-        >
-      </p>
+      <p data-i18n="landing-intro">A spectrum auction is a competitive process, where applicants bid on the spectrum licences they would like to acquire. <a href='/SAWI/about-auctions.html'>Learn more about spectrum auctions.</a></p>
 
       <br />
 
@@ -137,10 +164,10 @@
           >
             <h3 style="text-align: center">
               <a class="stretched-link" href="/SAWI/auction-table.html"
-                >Auctions</a
+                data-i18n="landing-auctions-link"></a
               >
             </h3>
-            <p>Table of all upcoming and completed spectrum auctions.</p>
+            <p data-i18n="landing-auctions-description"></p>
             <!--<dd><p><span class="label label-danger">Currently in bidding:</span> Millimetre wave </p></dd>-->
           </div>
         </div>
@@ -161,13 +188,11 @@
             id="wb-auto-5"
           >
             <h3 style="text-align: center">
-              <a href="/SAWI/auction-document.html" class="stretched-link"
-                >Documents</a
+              <a href="/SAWI/auction-document.html" class="stretched-link" data-i18n="landing-documents-link"
+                ></a
               >
             </h3>
-            <p>
-              Documents related to spectrum auctions, such as consultations,
-              decisions, results and applicant information.
+            <p data-i18n="landing-documents-description">
             </p>
           </div>
         </div>
@@ -187,13 +212,11 @@
             id="wb-auto-6"
           >
             <h3 style="text-align: center">
-              <a href="/SAWI/about-auctions.html" class="stretched-link"
-                >About auctions</a
+              <a href="/SAWI/about-auctions.html" class="stretched-link" data-i18n="landing-about-link"
+                ></a
               >
             </h3>
-            <p>
-              Information on how spectrum auctions work and their key frameworks
-              and outlook.
+            <p data-i18n="landing-about-description">
             </p>
           </div>
         </div>
@@ -214,29 +237,28 @@
       </section>
 
       <section class="related-links">
-        <h2>Related links</h2>
+        <h2 data-i18n="landing-related-links-heading">Related links</h2>
         <div class="col-md-8 row wb-init">
           <div class="col-md-6" style="vertical-align: top; min-height: 139px">
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way"
-                  >Service areas for competitive licensing</a
+                <a href="#" class="wrong-way" data-i18n="landing-service-areas-link"
+                  ></a
                 >
               </h3>
-              <p>
-                The defined service areas used for all competitive licensing
-                processes, displayed in an interactive map and table.
+              <p data-i18n="landing-service-areas-description">
+                
               </p>
             </section>
           </div>
           <div class="col-md-6" style="vertical-align: top; min-height: 139px">
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way"
-                  >CPC-2-1-23 &mdash; Licensing procedure</a
+                <a href="#" class="wrong-way" data-i18n="landing-licensing-procedure-link"
+                  ></a
                 >
               </h3>
-              <p>Licensing procedure for spectrum licences.</p>
+              <p data-i18n="landing-licensing-procedure-description"></p>
             </section>
           </div>
         </div>
@@ -244,22 +266,19 @@
           <div class="col-md-6" style="vertical-align: top; min-height: 139px">
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way">Conditions of licence</a>
+                <a href="#" class="wrong-way" data-i18n="landing-col-link"></a>
               </h3>
-              <p>
-                Conditions that apply to your spectrum, radio or satellite
-                licence or broadcasting certificate.
+              <p data-i18n="landing-col-description">
+                
               </p>
             </section>
           </div>
           <div class="col-md-6" style="vertical-align: top; min-height: 139px">
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way">Spectrum allocation tool </a>
+                <a href="#" class="wrong-way" data-i18n="landing-spectrum-allocation-link"></a>
               </h3>
-              <p>
-                Tool for searching spectrum documentation, such as technical
-                standards and conditions of licence, by frequency range.
+              <p data-i18n="landing-spectrum-allocation-description">
               </p>
             </section>
           </div>
@@ -268,25 +287,20 @@
           <div class="col-md-6" style="vertical-align: top; min-height: 139px">
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way"
-                  >Spectrum licensing (terrestrial)</a
+                <a href="#" class="wrong-way" data-i18n="landing-terrestrial-licensing-link"
+                  ></a
                 >
               </h3>
-              <p>
-                Other terrestrial licensing processes, such as Non-Competitive
-                Local Licensing, Access Spectrum Licensing, the Indigenous
-                Priority Window and the secondary market.
+              <p data-i18n="landing-terrestrial-licensing-description">
               </p>
             </section>
           </div>
           <div class="col-md-6" style="vertical-align: top; min-height: 139px">
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way">Spectrum licence browser</a>
+                <a href="#" class="wrong-way" data-i18n="landing-spectrum-browser-link"></a>
               </h3>
-              <p>
-                Tool for searching existing spectrum licences and spectrum
-                licences available for application.
+              <p data-i18n="landing-spectrum-browser-description"></p>
               </p>
             </section>
           </div>
@@ -357,6 +371,7 @@
     <script src="scripts/alert-wrong-way.js"></script>
     <script src="scripts/filter-rows.js"></script>
     <script src="scripts/populate-whats-new.js"></script>
+    <script src="scripts/i18n.js"></script>
     <script>
       add_alert();
     </script>

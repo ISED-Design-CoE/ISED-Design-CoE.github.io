@@ -45,49 +45,79 @@
     <!-- End DECoE customization -->
   </head>
 
+  <header>
+<div id="wb-bnr" class="container"><div class="row">
+<section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+	<h2 class="wb-inv">Language selection</h2>
+	<ul class="list-inline mrgn-bttm-0">
+		<li><a lang="fr" hreflang="fr" href="?">
+				<span class="hidden-xs" translate="no" id="lang-toggle">Français</span>
+				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+		</a></li>
+	</ul>
+</section>
+
+<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+	<a href="#" property="url">
+		<img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
+	</a>
+	<meta property="name" content="Government of Canada">
+	<meta property="areaServed" typeof="Country" content="Canada" />
+	<link property="logo" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" />
+</div>
+
+</div></div>
+<hr>
+<div class="container"><div class="row"><div class="col-md-8">
+
+  <nav id="wb-bc" property="breadcrumb">
+	<h2>You are here:</h2>
+	<div class="container">
+		<ol class="breadcrumb" typeof="BreadcrumbList">
+			<li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name">Canada.ca</span>
+				</a>
+				<meta property="position" content="1">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name" data-i18n="smt"></span>
+				</a>
+				<meta property="position" content="2">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
+					<span property="name" data-i18n="spectrum-allocation"></span>
+				</a>
+				<meta property="position" content="3">
+			</li>
+      <li property="itemListElement" typeof="ListItem">
+				<a property="item" typeof="WebPage" href="/SAWI/auction-landing-page.html" style="font-size:16px">
+					<span property="name" data-i18n="spectrum-auctions"></span>
+				</a>
+				<meta property="position" content="4">
+			</li>
+		</ol>
+	</div>
+</nav>
+
+</header>
+
   <body vocab="http://schema.org/" typeof="WebPage">
     <div id="def-top">
       <!-- Write closure fall-back static file -->
       <!-- transactTop-en.html -->
     </div>
     <!-- Write closure template -->
-    <script>
-      var defTop = document.getElementById("def-top");
-      defTop.outerHTML = wet.builder.top({
-        cdnEnv: "esdcprod",
-        lngLinks: [
-          {
-            lang: "fr",
-            href: "#",
-            text: "Français",
-          },
-        ],
-        search: false,
-        siteMenu: false,
-        breadcrumbs: [
-          {
-            title: "Spectrum management and telecommunications",
-            href: "#",
-          },
-          {
-            title: "Spectrum allocation",
-            href: "#",
-          },
-          {
-            title: "Spectrum auctions",
-            href: "/SAWI/auction-landing-page.html",
-          },
-        ],
-        showPreContent: false,
-      });
-    </script>
+    
     <main
       property="mainContentOfPage"
       typeof="WebPageElement"
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">All spectrum auctions</h1>
+      <h1 property="name" id="wb-cont">List of spectrum auctions</h1>
 
       <div class="row">
         <div class="col-md-12">
@@ -168,6 +198,7 @@
     </script>
 
     <script src="filter-rows.js"></script>
+    <script src="scripts/i18n.js"></script>
   </body>
 </html>
 
@@ -217,67 +248,67 @@
       band: "746–751 MHz<br>777–782 MHz<br>1670-1675 MHz<br>1910-1915MHz<br>1990-1995 MHz<br>2305-2320 MHz<br>2345-2360 MHz<br>2500 2690 MHz<br>",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-2015.html'>700 MHz & AWS-3 residual auction</a>",
+      name: "<a href='#'>700 MHz & AWS-3 residual auction</a>",
       start_date: "2015-08-15",
       end_date: "2015-08-15",
       band: "746-751 MHz<br>777-782 MHz<br>1755-1780MHz <br>2155-2180 MHz",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-brs.html'>2500-2690 MHz (BRS) auction</a>",
+      name: "<a href='#'>2500-2690 MHz (BRS) auction</a>",
       start_date: "2015-04-14",
       end_date: "2015-05-05",
       band: "2500-2690 MHz",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-aws.html'>1755-1780 MHz & 2155-2180 MHz (AWS-3) auction</a>",
+      name: "<a href='#'>1755-1780 MHz & 2155-2180 MHz (AWS-3) auction</a>",
       start_date: "2015-03-03",
       end_date: "2015-03-03",
       band: "1755-1780 MHz<br>2155-2180 MHz<br>",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-mbs.html'>700 MHz (MBS) auction</a>",
+      name: "<a href='#'>700 MHz (MBS) auction</a>",
       start_date: "2014-01-14",
       end_date: "2014-02-13",
       band: "698-756 MHz<br>777-787 MHz<br>",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-2009.html'>2300 MHz & 3500 MHz second residual auction</a>",
+      name: "<a href='#'>2300 MHz & 3500 MHz second residual auction</a>",
       start_date: "2009-06-26",
       end_date: "2009-06-26",
       band: "2305-2320 MHz<br>2345-2360 MHz<br>3475-3650 MHz",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-ag.html'>849-851 MHz & 894-896 MHz (air-ground) auction</a>",
+      name: "<a href='#'>849-851 MHz & 894-896 MHz (air-ground) auction</a>",
       start_date: "2009-05-20",
       end_date: "2009-05-20",
       band: "849-851MHz<br>894-896 MHz",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-aws-1.html'>2 GHz (AWS-1 & PCS) auction</a>",
+      name: "<a href='#'>2 GHz (AWS-1 & PCS) auction</a>",
       start_date: "2008-05-27",
       end_date: "2008-07-21",
       band: "1670-1675 MHz<br>1710-1755 MHz <br>2110-2155 MHz<br>1910-1915 MHz<br>1990-1995 MHz",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-2005.html'>2300 MHz & 3500 MHz first residual auction</a>", //This auction was done in 2 phases
+      name: "<a href='#'>2300 MHz & 3500 MHz first residual auction</a>", //This auction was done in 2 phases
       start_date: "2004-08-23",
       end_date: "2005-01-27",
       band: "2305-2320 MHz<br>2345-2360 MHz<br>3475-3650 MHz",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-2004.html'>2300 MHz & 3500 MHz auction</a>",
+      name: "<a href='#'>2300 MHz & 3500 MHz auction</a>",
       start_date: "2004-02-09",
       end_date: "2004-02-16",
       band: "2305-2320 MHz<br>2320-2345 MHz<br>2345-2360 MHz<br>3475-3650 MHz<br>3500 -3700 MHz",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-pcs.html'>2 GHz (PCS) auction</a>",
+      name: "<a href='#'>2 GHz (PCS) auction</a>",
       start_date: "2001-01-15",
       end_date: "2001-02-01",
       band: "1850-1910 MHz<br>1930-1990 MHz",
     },
     {
-      name: "<a href='/SAWI/auction-pages/auction-1999.html'>24 GHz & 38 GHz auction</a>",
+      name: "<a href='#'>24 GHz & 38 GHz auction</a>",
       start_date: "1999-10-18",
       end_date: "1999-11-19",
       band: "24250 - 25250 MHz<br>27350 - 28350 MHz<br>38700 - 39100 MHz<br>39400 - 39800 MHz  ",
@@ -328,3 +359,5 @@
     $("#document-table").DataTable().order([1, "desc"]).draw();
   });
 </script>
+
+<script type="text/javascript" src="scripts/alert-wrong-way.js"></script></scripts>
