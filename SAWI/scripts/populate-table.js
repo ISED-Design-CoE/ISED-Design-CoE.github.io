@@ -71,13 +71,14 @@ document.addEventListener("DOMContentLoaded", function () {
           "Decision / Framework": "Cadre de délivrance",
           "Decision / Framework / Outlook": "Perspectives",
           FAQ: "FAQ",
-          "Landing page": "Landing Page",
-          Manual: "Manual",
-          Map: "Map",
-          Notice: "Notice",
+          "Landing page": "Page d'atterrissage",
+          Manual: "Manuel",
+          Map: "Carte",
+          Notice: "Notification",
           Results: "Résultats",
-          "Spectrum Advisory Bulletins (SAB)": "Spectrum Advisory Bulletins ",
-          "Table of key dates": "Table of Key Dates",
+          "Spectrum Advisory Bulletins (SAB)":
+            "Bulletins consultatifs sur le spectre",
+          "Table of key dates": "Tableau des dates",
         },
       };
 
@@ -111,7 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Type
         tr.setAttribute("doc_type", row.Type);
         const tdType = document.createElement("td");
-        tdType.textContent = row.Type || "";
+        tdType.textContent =
+          type_mapping[document.documentElement.lang][row.Type] || "";
         tr.appendChild(tdType);
 
         // Auction (Subject)

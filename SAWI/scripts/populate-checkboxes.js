@@ -58,13 +58,14 @@ document.addEventListener("DOMContentLoaded", function () {
       "Decision / Framework": "Cadre de délivrance",
       "Decision / Framework / Outlook": "Perspectives",
       FAQ: "FAQ",
-      "Landing page": "Landing Page",
-      Manual: "Manual",
-      Map: "Map",
-      Notice: "Notice",
+      "Landing page": "Page d'atterrissage",
+      Manual: "Manuel",
+      Map: "Carte",
+      Notice: "Notification",
       Results: "Résultats",
-      "Spectrum Advisory Bulletins (SAB)": "Spectrum Advisory Bulletins ",
-      "Table of key dates": "Table of Key Dates",
+      "Spectrum Advisory Bulletins (SAB)":
+        "Bulletins consultatifs sur le spectre",
+      "Table of key dates": "Tableau des dates",
     },
   };
   function loadCheckboxes(url, containerId, filterType) {
