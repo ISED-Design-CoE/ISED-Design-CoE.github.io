@@ -70,7 +70,7 @@
 
         document.querySelectorAll("[data-i18n]").forEach((el) => {
           const key = el.getAttribute("data-i18n");
-          if (strings[key]) el.textContent = strings[key];
+          if (strings[key]) el.innerHTML = strings[key];
         });
       })
       .catch((err) => console.error("Error loading translations:", err));

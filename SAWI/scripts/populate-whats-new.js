@@ -15,11 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const dt = document.createElement("dt");
         dt.classList = "label label-warning";
         const span = document.createElement("span");
-        span.innerHTML = "Updated on " + row.Date;
+        if (document.documentElement.lang == "en") {
+          span.innerHTML = "Updated on " + row.Date;
+        } else {
+          span.innerHTML = "Mis à jour le " + row.Date;
+        }
         dt.appendChild(span);
         whats_new_dl.appendChild(dt);
         const dd = document.createElement("dd");
-        const match = row.Title.match(/>([^<]*)</);
+        if (document.documentElement.lang == "en") {
+          match = row.Title.match(/>([^<]*)</);
+        } else {
+          match = row.Titre.match(/>([^<]*)</);
+        }
         const name = match ? match[1] : "";
         dd.innerHTML = "<a href=#>" + name + "</a>";
         dd.addEventListener("click", function (e) {
