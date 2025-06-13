@@ -1,30 +1,33 @@
 (function () {
-  const defaultLang = 'en';
-  const supportedLangs = ['en', 'fr'];
+  const defaultLang = "en";
+  const supportedLangs = ["en", "fr"];
 
   // Get lang from URL, fallback to default
   const urlParams = new URLSearchParams(window.location.search);
-  const lang = supportedLangs.includes(urlParams.get('lang')) ? urlParams.get('lang') : defaultLang;
+  const lang = supportedLangs.includes(urlParams.get("lang"))
+    ? urlParams.get("lang")
+    : defaultLang;
+  document.documentElement.lang = lang;
 
   // Language to toggle to
-  const toggleLang = lang === 'en' ? 'fr' : 'en';
+  const toggleLang = lang === "en" ? "fr" : "en";
 
   // Text for toggle display
-  const toggleText = toggleLang === 'en' ? 'English' : 'Français';
+  const toggleText = toggleLang === "en" ? "English" : "Français";
   const toggleAbbr = toggleLang;
 
   // Wait for DOM
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggleEl = document.getElementById('lang-toggle');
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleEl = document.getElementById("lang-toggle");
     if (!toggleEl) return;
 
     // Find parent <a> if exists
-    const parentLink = toggleEl.closest('a');
+    const parentLink = toggleEl.closest("a");
 
     if (parentLink) {
       // Update href with toggled lang param
       const url = new URL(window.location.href);
-      url.searchParams.set('lang', toggleLang);
+      url.searchParams.set("lang", toggleLang);
       parentLink.href = url.toString();
 
       // Update lang and hreflang attributes
@@ -33,7 +36,7 @@
 
       // Update inner texts
       toggleEl.textContent = toggleText;
-      const abbr = parentLink.querySelector('abbr');
+      const abbr = parentLink.querySelector("abbr");
       if (abbr) {
         abbr.textContent = toggleAbbr;
         abbr.title = toggleText;
@@ -43,33 +46,33 @@
       toggleEl.textContent = toggleText;
 
       // If you have an <abbr> inside toggleEl, update it too
-      const abbr = toggleEl.querySelector('abbr');
+      const abbr = toggleEl.querySelector("abbr");
       if (abbr) {
         abbr.textContent = toggleAbbr;
         abbr.title = toggleText;
       }
 
       // Add click handler to redirect
-      toggleEl.style.cursor = 'pointer';
-      toggleEl.addEventListener('click', () => {
+      toggleEl.style.cursor = "pointer";
+      toggleEl.addEventListener("click", () => {
         const url = new URL(window.location.href);
-        url.searchParams.set('lang', toggleLang);
+        url.searchParams.set("lang", toggleLang);
         window.location.href = url.toString();
       });
     }
 
     // Load translations and apply
-    fetch('/SAWI/scrape/text.json')
-      .then(res => res.json())
-      .then(translations => {
+    fetch("/SAWI/scrape/text.json")
+      .then((res) => res.json())
+      .then((translations) => {
         const strings = translations[lang];
         if (!strings) return;
 
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const key = el.getAttribute('data-i18n');
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
           if (strings[key]) el.textContent = strings[key];
         });
       })
-      .catch(err => console.error('Error loading translations:', err));
+      .catch((err) => console.error("Error loading translations:", err));
   });
 })();
