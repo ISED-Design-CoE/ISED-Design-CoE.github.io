@@ -122,7 +122,19 @@
     "about-auctions-frameworks-link3": "Spectrum outlook 2023 to 2027",
     "about-auctions-frameworks-link3-description": "Document outlining ISED’s overall approach and planning activities related to its management of Canada’s radio spectrum over a 5-year period, including measures to support competition in its auction processes.",
     "about-auctions-frameworks-link4": "Spectrum Policy Framework for Canada",
-    "about-auctions-frameworks-link4-description": "Document outlining policy and spectrum management direction for wireless applications, services and uses, ranging from national defence and security to commercial, consumer, scientific and private radio. It contains core objectives and policy guidelines that form the basis for ISED’s Spectrum Management Program."
+    "about-auctions-frameworks-link4-description": "Document outlining policy and spectrum management direction for wireless applications, services and uses, ranging from national defence and security to commercial, consumer, scientific and private radio. It contains core objectives and policy guidelines that form the basis for ISED’s Spectrum Management Program.",
+
+    "doc-title": "Spectrum auction documents",
+    "doc-filter-by": "Filter by",
+    "doc-type": "Document type",
+    "doc-auctions": "Auctions",
+    "doc-residual": "Residual auctions",
+    "doc-filter": "Filter",
+    "doc-clear": "Clear all filters",
+    "doc-table-update": "Clear all filters",
+    "doc-table-title": "Clear all filters",
+    "doc-table-type": "Clear all filters",
+    "doc-table-auction": "Clear all filters"
   },
 
   "fr": {
@@ -248,6 +260,18 @@
     "about-auctions-frameworks-link3": "Spectrum outlook 2023 to 2027",
     "about-auctions-frameworks-link3-description": "Document outlining ISED’s overall approach and planning activities related to its management of Canada’s radio spectrum over a 5-year period, including measures to support competition in its auction processes.",
     "about-auctions-frameworks-link4": "Spectrum Policy Framework for Canada",
-    "about-auctions-frameworks-link4-description": "Document outlining policy and spectrum management direction for wireless applications, services and uses, ranging from national defence and security to commercial, consumer, scientific and private radio. It contains core objectives and policy guidelines that form the basis for ISED’s Spectrum Management Program."
+    "about-auctions-frameworks-link4-description": "Document outlining policy and spectrum management direction for wireless applications, services and uses, ranging from national defence and security to commercial, consumer, scientific and private radio. It contains core objectives and policy guidelines that form the basis for ISED’s Spectrum Management Program.",
+
+    "doc-title": "Repérage des publications liées aux enchères du spectre ",
+    "doc-filter-by": "Filtrer",
+    "doc-type": "Type de renseignement",
+    "doc-auctions": "Enchères",
+    "doc-residual": "Enchères de licences de spectre restantes",
+    "doc-filter": "Filter",
+    "doc-clear": "Effacer tous les filtres",
+    "doc-table-update": "Mis à jour",
+    "doc-table-title": "Titre",
+    "doc-table-type": "Type de renseignement",
+    "doc-table-auction": "Enchère"
   }
 }
