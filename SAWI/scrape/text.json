@@ -45,7 +45,6 @@
     "about-auctions-tab2-description": "Residual auctions are auctions of licences that remain unallocated at the conclusion of an auction, or of previously assigned licences that have been returned to ISED. Residual auctions follow the general approach described in the <a href='#' class='wrong-way' >Streamlined Framework for Auctioning Residual Spectrum Licences</a >, and generally do not require a consultation process.",
     "about-auctions-tab2-description-continued": "The process for residual auctions by sealed bid generally includes the steps below.",
 
-
     "about-auctions-step1": "1. Consultations on the proposed policy and licensing procedures",
     "about-auctions-step1-description": "A formal consultation paper is published proposing all aspects of the upcoming auction. This document outlines the proposed spectrum policy, auction design, and licensing procedures and rules. The consultation process provides interested stakeholders with the opportunity to review and comment on these proposals before the auction framework is finalized.",
     "about-auctions-step2": "2. Comment period",
@@ -126,12 +125,11 @@
     "about-auctions-frameworks-link4": "Spectrum Policy Framework for Canada",
     "about-auctions-frameworks-link4-description": "Document outlining policy and spectrum management direction for wireless applications, services and uses, ranging from national defence and security to commercial, consumer, scientific and private radio. It contains core objectives and policy guidelines that form the basis for ISED’s Spectrum Management Program.",
 
-
     "auctions-heading": "List of spectrum auctions",
     "auctions-column1": "Auction",
     "auctions-column2": "Start date",
     "auctions-column3": "End date",
-    "auctions-column4": "Band"
+    "auctions-column4": "Band",
 
     "doc-title": "Spectrum auction documents",
     "doc-filter-by": "Filter by",
@@ -144,7 +142,6 @@
     "doc-table-title": "Clear all filters",
     "doc-table-type": "Clear all filters",
     "doc-table-auction": "Clear all filters"
-
   },
 
   "fr": {
@@ -192,7 +189,6 @@
     "about-auctions-tab2": "Enchères de licences restantes",
     "about-auctions-tab2-description": "Les enchères de licences restantes s’appliquent aux licences qui demeurent non attribuées à l’issue d’une mise aux enchères et aux licences remises à ISDE par un titulaire avant la fin de la période de validité des licences. Les enchères de licences restantes suivent le processus décrit dans la <a href='#' class='wrong-way'>Décision sur un cadre simplifié pour effectuer la mise aux enchères des licences de spectre restantes</a> et, généralement, ne requièrent pas de processus de consultation.  ",
     "about-auctions-tab2-description-continued": "Le processus d’enchères de licences restantes par offres scellées comprend les étapes ci-dessous.",
-
 
     "about-auctions-step1": "1. Consultations sur la politique et les procédures de délivrance de licences proposées",
     "about-auctions-step1-description": "Un document de consultation formelle est publié, proposant tous les aspects de la mise aux enchères. Ce document décrit les propositions liées à la politique, à la conception, à la délivrance de licences et aux règles des enchères. L’objectif est de donner aux intéressés l’occasion d’évaluer les propositions et de faire part de leurs commentaires avant que le cadre politique soit finalisé.",
@@ -278,18 +274,7 @@
     "auctions-column1": "Enchères",
     "auctions-column2": "Début",
     "auctions-column3": "Fin",
-    "auctions-column4": "Fréquences "
-
-    "about-auctions-frameworks-heading": "Frameworks and outlooks",
-    "about-auctions-frameworks-link1": "Framework for spectrum auctions",
-    "about-auctions-frameworks-link1-description": "Document outlining the general approaches ISED uses to auction spectrum licences.",
-    "about-auctions-frameworks-link2": "Decision on a Streamlined Framework for Auctioning Residual Spectrum Licences",
-    "about-auctions-frameworks-link2-description": "Document outlining ISED’s streamlined approach for auctioning residual spectrum licences.",
-    "about-auctions-frameworks-link3": "Spectrum outlook 2023 to 2027",
-    "about-auctions-frameworks-link3-description": "Document outlining ISED’s overall approach and planning activities related to its management of Canada’s radio spectrum over a 5-year period, including measures to support competition in its auction processes.",
-    "about-auctions-frameworks-link4": "Spectrum Policy Framework for Canada",
-    "about-auctions-frameworks-link4-description": "Document outlining policy and spectrum management direction for wireless applications, services and uses, ranging from national defence and security to commercial, consumer, scientific and private radio. It contains core objectives and policy guidelines that form the basis for ISED’s Spectrum Management Program.",
-
+    "auctions-column4": "Fréquences ",
     "doc-title": "Repérage des publications liées aux enchères du spectre ",
     "doc-filter-by": "Filtrer",
     "doc-type": "Type de renseignement",
@@ -301,6 +286,5 @@
     "doc-table-title": "Titre",
     "doc-table-type": "Type de renseignement",
     "doc-table-auction": "Enchère"
-
   }
 }
