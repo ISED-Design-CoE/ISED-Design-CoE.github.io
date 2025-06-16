@@ -2,11 +2,21 @@
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
 <!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
   <head>
+    <script>
+      // BEFORE any other CSS or JS!
+      const supportedLangs = ["en", "fr"]; // example
+      const defaultLang = "en"; // or "en"
+      const urlParams = new URLSearchParams(window.location.search);
+      const lang = supportedLangs.includes(urlParams.get("lang"))
+        ? urlParams.get("lang")
+        : defaultLang;
+      document.documentElement.setAttribute("lang", lang);
+    </script>
     <!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
     <meta charset="utf-8" />
 
     <!-- Start DECoE customization -->
-    <title>Auction spectrum documents</title>
+    <title data-i18n="doc-title">Auction spectrum documents</title>
     <!-- End DECoE customization -->
 
     <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -17,6 +27,7 @@
       <!-- refTop.html -->
     </noscript>
     <!-- Write closure template -->
+
     <script>
       document.write(
         wet.builder.refTop({
@@ -170,13 +181,15 @@
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">Spectrum auction documents</h1>
+      <h1 property="name" id="wb-cont" data-i18n="doc-title">
+        Spectrum auction documents
+      </h1>
 
       <div class="row">
         <div class="col-md-3">
           <div class="row">
             <div class="col-md-6">
-              <h3>Filter by:</h3>
+              <h3 data-i18n="doc-filter-by">Filter by:</h3>
             </div>
             <!-- <div class="col-md-6" style="margin-top: 22px;">
               <button
@@ -192,7 +205,9 @@
           <form class="wb-tables-filter" data-bind-to="dataset-filter1">
             <div class="row">
               <details style="border: none">
-                <summary><h3 class="h3">Document type</h3></summary>
+                <summary>
+                  <h3 class="h3" data-i18n="doc-type">Document type</h3>
+                </summary>
                 <div class="form-group">
                   <fieldset>
                     <legend></legend>
@@ -204,15 +219,21 @@
 
             <div class="row">
               <details style="border: none">
-                <summary><h3 class="h3">Auctions</h3></summary>
+                <summary>
+                  <h3 class="h3" data-i18n="doc-auctions">Auctions</h3>
+                </summary>
                 <div class="form-group">
                   <fieldset>
                     <legend></legend>
                     <ul class="list-unstyled">
-                      <li style="font-size: 18px"><strong>Auctions</strong></li>
+                      <li style="font-size: 18px" data-i18n="doc-auctions">
+                        <strong>Auctions</strong>
+                      </li>
                       <ul class="list-unstyled" id="auction-checkboxes"></ul>
                       <li style="font-size: 18px; padding-top: 25px">
-                        <strong>Residual Auctions</strong>
+                        <strong data-i18n="doc-residual"
+                          >Residual Auctions</strong
+                        >
                       </li>
                       <ul
                         class="list-unstyled"
@@ -243,12 +264,14 @@
                 class="btn btn-primary"
                 aria-controls="dataset-filter1"
                 onclick="filterTable()"
+                data-i18n="doc-filter"
               >
                 Filter
               </button>
               <button
                 onclick="window.location.href = 'auction-document.html'"
                 class="btn btn-default"
+                data-i18n="doc-clear"
               >
                 Clear all filters
               </button>
@@ -262,10 +285,12 @@
           >
             <thead>
               <tr>
-                <th>Last updated</th>
-                <th data-orderable="false">Title</th>
-                <th>Document type</th>
-                <th>Auction</th>
+                <th data-i18n="doc-table-update">Last updated</th>
+                <th data-orderable="false" data-i18n="doc-table-title">
+                  Title
+                </th>
+                <th data-i18n="doc-table-type">Document type</th>
+                <th data-i18n="doc-talbe-auction">Auction</th>
               </tr>
             </thead>
             <tbody class="auction-column"></tbody>

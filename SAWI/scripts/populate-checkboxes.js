@@ -18,21 +18,22 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     fr: {
       Auction05: "2008 - 2 GHz (AWS-1 & PCS)",
-      Auction06: "2009 - air-ground",
-      Auction07: "2009 - restantes",
-      Auction08: "2014 - 700 MHz (MBS)",
+      Auction06: "2009 - air-sol",
+      Auction07: "2009 - licences restantes",
+      Auction08: "2014 - 700 MHz (SMLB)",
       Auction09: "2015 - AWS-3",
-      Auction10: "2015 - 2500 MHz-2690 MHz (BRS)",
-      Auction11: "2015 - restantes",
-      Auction12: "2018 - restantes",
+      Auction10: "2015 - 2500 MHz-2690 MHz (SRLB)",
+      Auction11: "2015 - licences restantes",
+      Auction12: "2018 - licences restantes",
       Auction13: "2019 - 600 MHz",
       Auction14: "2021 - 3500 MHz",
-      Auction15: "2023 - restantes",
+      Auction15: "2023 - licences restantes",
       Auction16: "2023 - 3800 MHz",
-      Auction17: "2024 - restantes",
-      Auction19: "bandes millimétriques",
+      Auction17: "2024 - licences restantes",
+      Auction19: "Ondes millimétriques",
     },
   };
+
   type_mapping = {
     en: {
       Applicants: "Applicants",
@@ -58,14 +59,14 @@ document.addEventListener("DOMContentLoaded", function () {
       "Decision / Framework": "Cadre de délivrance",
       "Decision / Framework / Outlook": "Perspectives",
       FAQ: "FAQ",
-      "Landing page": "Page d'atterrissage",
+      "Landing page": "Page d'accueil",
       Manual: "Manuel",
       Map: "Carte",
-      Notice: "Notification",
+      Notice: "Avis",
       Results: "Résultats",
       "Spectrum Advisory Bulletins (SAB)":
         "Bulletins consultatifs sur le spectre",
-      "Table of key dates": "Tableau des dates",
+      "Table of key dates": "Tableau des dates clés",
     },
   };
   function loadCheckboxes(url, containerId, filterType) {
