@@ -5,6 +5,19 @@
   <!--<![endif]-->
 
   <head>
+
+    <script>
+      // BEFORE any other CSS or JS!
+      const supportedLangs = ["en", "fr"]; // example
+      const defaultLang = "en"; // or "en"
+      const urlParams = new URLSearchParams(window.location.search);
+      const lang = supportedLangs.includes(urlParams.get("lang"))
+        ? urlParams.get("lang")
+        : defaultLang;
+      document.documentElement.setAttribute("lang", lang);
+    </script>
+
+
     <!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
     <meta charset="utf-8" />
 
@@ -156,12 +169,12 @@
         Auction of spectrum licences in the 3500 MHz band 
       </h1>
 
-      <h4>On this page</h4>
+      <h4 data-i18n="table-of-contents">On this page</h4>
       <ul>
-        <li><a href="#summary">Summary table</a></li>
-        <li><a href="#data">Auction details</a></li>
-        <li><a href="#document-table">Documents</a></li>
-        <li><a href="#related">Related auctions</a></li>
+        <li><a href="#summary"  data-i18n="auctions-summary-table">Summary table</a></li>
+        <li><a href="#data" data-i18n="auctions-details">Auction details</a></li>
+        <li><a href="#document-table" data-i18n="auctions-documents-table">Documents</a></li>
+        <li><a href="#related" data-i18n="auctions-related-auctions">Related auctions</a></li>
       </ul>
 
       <h2 id="summary">Summary table</h2>

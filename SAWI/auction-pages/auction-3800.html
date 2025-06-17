@@ -5,6 +5,19 @@
   <!--<![endif]-->
 
   <head>
+
+    <script>
+      // BEFORE any other CSS or JS!
+      const supportedLangs = ["en", "fr"]; // example
+      const defaultLang = "en"; // or "en"
+      const urlParams = new URLSearchParams(window.location.search);
+      const lang = supportedLangs.includes(urlParams.get("lang"))
+        ? urlParams.get("lang")
+        : defaultLang;
+      document.documentElement.setAttribute("lang", lang);
+    </script>
+
+
     <!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
     <meta charset="utf-8" />
 
@@ -157,15 +170,15 @@
       </h1>
       <!--<p>The auction of 3800 Mhz...</p>-->
 
-      <h4>On this page</h4>
+      <h4 data-i18n="table-of-contents">On this page</h4>
       <ul>
-        <li><a href="#summary">Summary table</a></li>
-        <li><a href="#data">Auction details</a></li>
-        <li><a href="#document-table">Documents</a></li>
-        <li><a href="#related">Related auctions</a></li>
+        <li><a href="#summary"  data-i18n="auctions-summary-table">Summary table</a></li>
+        <li><a href="#data" data-i18n="auctions-details">Auction details</a></li>
+        <li><a href="#document-table" data-i18n="auctions-documents-table">Documents</a></li>
+        <li><a href="#related" data-i18n="auctions-related-auctions">Related auctions</a></li>
       </ul>
 
-      <h2 id="summary">Summary table</h2>
+      <h2 id="summary" data-i18n="auctions-summary-table">Summary table</h2>
 
       <table class="table small" style="width: 100%">
         <tbody>
@@ -197,7 +210,7 @@
       </table>
 
       <section class="well well-lg">
-        <h2 id="data" style="margin-top: 0px">Auction details</h2>
+        <h2 id="data" style="margin-top: 0px" data-i18n="auctions-details">Auction details</h2>
 
         <div class="wb-eqht row wb-init">
           <div
@@ -293,7 +306,7 @@
       <div class="row" style="width: 100%">
         <div class="col-md-12"></div>
         <div class="col-md-12">
-          <h2>Documents</h2>
+          <h2 data-i18n="auctions-documents-table">Documents</h2>
           <table
             class="wb-tables table filterEmphasis provisional"
             id="document-table"
@@ -310,7 +323,7 @@
         </div>
       </div>
 
-      <h2 id="related">Related auctions</h2>
+      <h2 id="related" data-i18n="auctions-related-auctions">Related auctions</h2>
       <div class="wb-eqht row wb-init">
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">

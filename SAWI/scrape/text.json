@@ -7,13 +7,13 @@
 
     "landing-title": "Spectrum Auctions",
     "landing-heading": "Spectrum auctions",
-    "landing-intro": "A spectrum auction is a competitive process, where applicants bid on the spectrum licences they would like to acquire. <a href='/SAWI/about-auctions.html'>Learn more about spectrum auctions.</a>",
-    "landing-auctions-link": "List of spectrum auctions",
-    "landing-auctions-description": "Table of all upcoming and completed spectrum auctions.",
-    "landing-documents-link": "Documents",
-    "landing-documents-description": "Documents related to spectrum auctions, such as consultations, decisions, results and applicant information.",
-    "landing-about-link": "How auctions work",
-    "landing-about-description": "Information on how spectrum auctions work and their key frameworks and outlook.",
+    "landing-intro": "This page provides information about spectrum auctions, their related publications and on how they work.",
+    "landing-auctions-link": "Spectrum auctions list",
+    "landing-auctions-description": "Access  to all completed, upcoming and potential spectrum auctions, organized by date and frequency band.",
+    "landing-documents-link": "Publication look-up ",
+    "landing-documents-description": "Look-up of all auction-related publications, such as consultations, decisions, results and applicant information.",
+    "landing-about-link": "How spectrum auctions work ",
+    "landing-about-description": "Overview of the auction process and formats, and access to general frameworks.",
     "landing-related-links-heading": "Related links",
     "landing-service-areas-link": "Service areas for competitive licensing",
     "landing-service-areas-description": "The defined service areas used for all competitive licensing processes, displayed in an interactive map and table.",
@@ -30,17 +30,17 @@
     "landing-latest-pub": "Last publications",
     "landing-view-all": "View all auction documents",
 
-    "about-title": "How auctions work",
-    "about-intro": "Innovation, Science and Economic Development Canada (ISED) manages spectrum to maximize economic and social benefits for Canadians. Auctions are a competitive licensing process generally used to award spectrum licences when the demand for spectrum is expected to exceed supply.",
-    "about-table-of-contents": "On this page: ",
+    "about-title": "How spectrum auctions work",
+    "about-intro": "Innovation, Science and Economic Development Canada (ISED) manages spectrum to maximize economic and social benefits for Canadians. Auctions are a competitive licensing process generally used to award spectrum licences when the demand for spectrum is expected to exceed supply. This page describes the auction process and different auction formats, and provides access to general frameworks. ",
+    "table-of-contents": "On this page: ",
     "about-table-item1": "Auction process",
     "about-table-item2": "Auction formats",
     "about-table-item3": "Frameworks and outlooks",
     "about-auctions-process": "Auction process",
     "about-auctions-tab1": "Auctions",
-    "about-auctions-tab1-description": "Auctions release or reallocate significant amounts of spectrum for commercial use, typically across the country. Before an auction begins, a public consultation process takes place to determine its attributes and design, such s the exact frequency ranges to be auctioned, the number and size of frequency blocks, reserve prices, and measures to support competition. Once an auction begins, it can take several weeks of bidding before it concludes. Spectrum auctions follow the approach described in the <a href='#'>Framework for Spectrum Auctions in Canada</a> and generally take place according to the steps below.",
+    "about-auctions-tab1-description": "Auctions release or reallocate significant amounts of spectrum for commercial use, typically across the country. Before an auction begins, a public consultation process takes place to determine its attributes and design, such as the exact frequency ranges to be auctioned, the number and size of frequency blocks, reserve prices, and measures to support competition. Once an auction begins, it can take several weeks of bidding before it concludes. Spectrum auctions follow the process described in the <a href='#'>Framework for Spectrum Auctions in Canada</a> and generally take place according to the steps below.",
     "about-auctions-tab2": "Residual auctions",
-    "about-auctions-tab2-description": "Residual auctions are auctions of licences that remain unallocated at the conclusion of an auction, or of previously assigned licences that have been returned to ISED. Residual auctions follow the general approach described in the <a href='#' class='wrong-way' >Streamlined Framework for Auctioning Residual Spectrum Licences</a >, and generally do not require a consultation process.",
+    "about-auctions-tab2-description": "Residual auctions are auctions of licences that remain unallocated at the conclusion of an auction, or of previously assigned licences that have been returned to ISED. Residual auctions follow the general process described in the <a href='#' class='wrong-way' >Streamlined Framework for Auctioning Residual Spectrum Licences</a >, and generally do not require a consultation process.",
     "about-auctions-tab2-description-continued": "The process for residual auctions by sealed bid generally includes the steps below.",
 
     "about-auctions-step1": "1. Consultations on the proposed policy and licensing procedures",
@@ -98,11 +98,10 @@
     "about-residual-auctions-step10-description": "Provisional winners must submit their final payment (balance owing) by the published deadline. Failure to do so may result in forfeiture of licences won.",
     "about-residual-auctions-step11": "11. Issuance of licences",
     "about-residual-auctions-step11-description": "Once provisional winning bidders have submitted all payments on the final payment deadline, their licences are issued. At this time, all residual auction results are deemed final.",
-    "about-residual-auctions-step12": "12. Publishing bidding data",
+    "about-residual-auctions-step12": "12. Publication of bidding data",
     "about-residual-auctions-step12-description": "A few months after issuing licences, ISED publishes on its website detailed bidding data, which includes bidders' identities and all bids submitted for the concluded residual auction. This is done in the interest of transparency of the auction process.",
 
     "about-auctions-formats-heading": "Auction formats",
-    "about-auctions-formats-intro": "The following links bring you to the framework for residual auctions.",
 
     "about-auctions-formats-tab1": "Clock auction (CA) format",
     "about-auctions-formats-tab1-description": "The clock auction format is a bidding process that includes two stages: a clock stage and an assignment stage.<br /><br /> The clock stage determines the number of generic blocks that a bidder will win and the price for these blocks. The assignment stage determines the specific frequencies that will be assigned to each winning bidder and the additional price for the specific frequencies.<br /><br /> As an example, this format is detailed in section 10 and annexes D and E of the <a href='https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/consultation-policy-and-licensing-framework-spectrum-3800-mhz-band'>Consultation on a Policy and Licensing Framework for Spectrum in the 3800 MHz Band</a >.",
@@ -114,7 +113,7 @@
     "about-auctions-formats-tab4-description": "This format is generally used for residual auctions. In a sealed-bid auction, bidders simultaneously submit sealed bids on the licence(s) they are interested in so that no bidder knows the bids of any other participant. <br /><br />As an example, this format is detailed in section 8 of the <a href='https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/notice-upcoming-auction-residual-spectrum-licences#s8'>2024 Notice of Upcoming Auction of Residual Spectrum Licences. </a>",
 
     "about-auctions-frameworks-heading": "Frameworks and outlooks",
-    "about-auctions-frameworks-link1": "Framework for spectrum auctions",
+    "about-auctions-frameworks-link1": "Framework for Spectrum Auctions in Canada ",
     "about-auctions-frameworks-link1-description": "Document outlining the general approaches ISED uses to auction spectrum licences.",
     "about-auctions-frameworks-link2": "Decision on a Streamlined Framework for Auctioning Residual Spectrum Licences",
     "about-auctions-frameworks-link2-description": "Document outlining ISED’s streamlined approach for auctioning residual spectrum licences.",
@@ -139,18 +138,23 @@
     "doc-table-update": "Clear all filters",
     "doc-table-title": "Clear all filters",
     "doc-table-type": "Clear all filters",
-    "doc-table-auction": "Clear all filters"
+    "doc-table-auction": "Clear all filters",
+
+    "auctions-summary-table": "Summary table",
+    "auctions-details": "Auction details",
+    "auctions-documents-table": "Documents",
+    "auctions-related-auctions": "Related auctions"
   },
 
   "fr": {
     "smt": "Gestion du spectre et télécommunications",
     "spectrum-allocation": "Attribution de spectre",
-    "spectrum-auctions": "Spectrum auctions",
-    "auctions-table": "All spectrum auctions",
+    "spectrum-auctions": "Enchères du spectre",
+    "auctions-table": "Toutes les enchères du spectre",
 
     "landing-title": "Enchères du spectre",
     "landing-heading": "Enchères du spectre",
-    "landing-intro": "Cette page donne accès aux enchères du spectre, à leurs publications connexes et à de l’information sur leur fonctionnement.",
+    "landing-intro": "Cette page vous informe à propos des enchères de spectre, à leurs publications connexes et à leur fonctionnement.",
     "landing-auctions-link": "Liste des enchères du spectre",
     "landing-auctions-description": "Accès à toutes les enchères du spectre achevées, à venir et potentielles, organisées par date et bande de fréquence.",
     "landing-documents-link": "Repérage de publications",
@@ -173,9 +177,9 @@
     "landing-latest-pub": "Dernières publications",
     "landing-view-all": "Voir tous les documents",
 
-    "about-title": "Fonctionnement des enchères",
+    "about-title": "Fonctionnement des enchères du spectre ",
     "about-intro": "Innovation, Sciences et Développement économique Canada (ISDE) gère le spectre pour optimiser les avantages économiques et sociaux pour les Canadiens. La mise aux enchères est un processus de délivrance de licences concurrentielle employé généralement quand il est prévu que la demande de spectre excédera l’offre. Cette page décrit le processus et les formats d’enchères et donne accès aux politiques cadres générales.",
-    "about-table-of-contents": "Sur cette page: ",
+    "table-of-contents": "Sur cette page: ",
     "about-table-item1": "Processus d’enchères",
     "about-table-item2": "Formats d’enchères",
     "about-table-item3": "Politiques cadres et perspectives",
@@ -245,7 +249,6 @@
     "about-residual-auctions-step12-description": "Quelques mois suivant la délivrance des licences, ISDE publie sur son site Web les données détaillées sur les offres. Ces données comprennent l’identité des soumissionnaires et toutes les offres déposées. Ceci est fait par souci de transparence.  ",
 
     "about-auctions-formats-heading": "Formats d’enchères ",
-    "about-auctions-formats-intro": "The following links bring you to the framework for residual auctions.",
 
     "about-auctions-formats-tab1": "Format des enchères au cadran",
     "about-auctions-formats-tab1-description": "Le format des enchères au cadran est un processus d'enchères à deux étapes : l'étape de l'attribution au cadran et l'étape de l'assignation. À l'étape de l'attribution au cadran, le nombre de blocs génériques qu'un soumissionnaire remportera pour chaque produit ainsi que le prix de ces blocs sont déterminés. À l'étape de l'assignation, les fréquences précises qui seront assignées à chaque soumissionnaire gagnant et le prix additionnel pour ces fréquences sont établis. À titre d’exemple, ce format est décrit à la section 10 et aux annexes D et E de la <a href='#' class='wrong-way'> Consultation sur un cadre politique et de délivrance de licences concernant le spectre de la bande de 3 800 MHz.  </a >.",
@@ -282,5 +285,7 @@
     "doc-table-title": "Titre",
     "doc-table-type": "Type de renseignement",
     "doc-table-auction": "Enchère"
+
+
   }
 }
