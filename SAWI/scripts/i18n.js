@@ -4,10 +4,27 @@
 
   // Get lang from URL, fallback to default
   const urlParams = new URLSearchParams(window.location.search);
-  const lang = supportedLangs.includes(urlParams.get("lang"))
-    ? urlParams.get("lang")
-    : defaultLang;
-  document.documentElement.lang = lang;
+  let lang = urlParams.get("lang");
+  if (!supportedLangs.includes(lang)) {
+  const referrer = document.referrer;
+  if (referrer) {
+    const refUrl = new URL(referrer);
+    const refLang = refUrl.searchParams.get("lang");
+    if (supportedLangs.includes(refLang)) {
+      lang = refLang;
+
+      // Optional: Update the current URL to reflect this inherited lang
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set("lang", lang);
+      window.history.replaceState({}, "", currentUrl.toString());
+    } else{
+        lang = defaultLang;
+      }
+  } else{
+    lang = defaultLang;
+  }
+} 
+
 
   // Language to toggle to
   const toggleLang = lang === "en" ? "fr" : "en";
