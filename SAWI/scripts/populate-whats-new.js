@@ -32,7 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
         dd.innerHTML = "<a href=#>" + name + "</a>";
         dd.addEventListener("click", function (e) {
           e.preventDefault(); // Prevent default link navigation/scroll
-          alert("You've clicked a link that brings you out of the mockup."); // Show the alert
+          fetch("/SAWI/scrape/text.json")
+            .then((res) => res.json())
+            .then((translations) => {
+              alert(
+                translations[
+                  new URLSearchParams(window.location.search).get("lang")
+                ]["alert"]
+              ); // Show the alert
+            });
         });
         whats_new_dl.appendChild(dd);
       }

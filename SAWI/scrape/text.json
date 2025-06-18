@@ -235,7 +235,9 @@
     "2024-residual": "Auction of residual spectrum licences in the 600 MHz, 2300 MHz, 3500 MHz & 3800 MHz bands",
     "2023-residual": "Auction of residual spectrum licences in the 600 MHz, 2500 MHz & 3500 MHz bands",
     "2018-residual": "Auction of residual spectrum licences in the 700 MHz, 2500 MHz, 2300 MHz and PCS-G block",
-    "600": "Auction of spectrum licences in the 600 MHz band"
+    "600": "Auction of spectrum licences in the 600 MHz band",
+
+    "alert": "You've clicked a link that brings you out of the mockup."
   },
 
   "fr": {
@@ -475,6 +477,8 @@
     "2024-residual": "Auction of residual spectrum licences in the 600 MHz, 2300 MHz, 3500 MHz & 3800 MHz bands",
     "2023-residual": "Auction of residual spectrum licences in the 600 MHz, 2500 MHz & 3500 MHz bands",
     "2018-residual": "Enchères des licences de spectre restantes dans les bandes de 700 MHz, 2 500 MHz, 2 300 MHz et SCP-G",
-    "600": "Enchères des licences de spectre de la bande de 600 MHz"
+    "600": "Enchères des licences de spectre de la bande de 600 MHz",
+
+    "alert": "Vous avez cliqué sur un lien qui vous fait quitter la maquette."
   }
 }
