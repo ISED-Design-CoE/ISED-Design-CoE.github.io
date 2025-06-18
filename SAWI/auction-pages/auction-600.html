@@ -5,6 +5,19 @@
   <!--<![endif]-->
 
   <head>
+
+    <script>
+      // BEFORE any other CSS or JS!
+      const supportedLangs = ["en", "fr"]; // example
+      const defaultLang = "en"; // or "en"
+      const urlParams = new URLSearchParams(window.location.search);
+      const lang = supportedLangs.includes(urlParams.get("lang"))
+        ? urlParams.get("lang")
+        : defaultLang;
+      document.documentElement.setAttribute("lang", lang);
+    </script>
+
+
     <!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
     <meta charset="utf-8" />
 
@@ -151,52 +164,48 @@
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">
-        Auction of spectrum licences in the 600 MHz band
+      <h1 property="name" id="wb-cont" data-i18n="600">
+
       </h1>
       <!--<p>The auction of 3800 Mhz...</p>-->
 
-      <h4>On this page</h4>
+      <h4 data-i18n="table-of-contents">On this page</h4>
       <ul>
-        <li><a href="#summary">Summary table</a></li>
-        <li><a href="#data">Auction details</a></li>
-        <li><a href="#document-table">Documents</a></li>
-        <li><a href="#related">Related auctions</a></li>
+        <li><a href="#summary"  data-i18n="auctions-summary-table">Summary table</a></li>
+        <li><a href="#data" data-i18n="auctions-details">Auction details</a></li>
+        <li><a href="#document-table" data-i18n="auctions-documents-table">Documents</a></li>
+        <li><a href="#related" data-i18n="auctions-related-auctions">Related auctions</a></li>
       </ul>
 
-      <h2 id="summary">Summary table</h2>
+      <h2 id="summary" data-i18n="auctions-summary-table">Summary table</h2>
 
       <table class="table small" style="width: 100%">
         <tbody>
           <tr>
-            <th class="br-info">Status</th>
-            <td>Closed</td>
+            <th class="br-info" data-i18n="auctions-summary-status"></th>
+            <td data-i18n="auctions-summary-status-closed">Closed</td>
           </tr>
           <tr>
-            <th class="bg-info">Date</th>
-            <td>July 16, 2024 to July 19, 2024</td>
+            <th class="bg-info" data-i18n="auctions-summary-date">Date</th>
+            <td  data-i18n="auctions-summary-2024-date">October 24, 2023 to November 24, 2023</td>
           </tr>
           <tr>
-            <th class="bg-info">Applicants</th>
+            <th class="bg-info" data-i18n="auctions-summary-applicants">Applicants</th>
             <td>12</td>
           </tr>
-          <!-- <tr>
-            <th class="bg-info">Number of rounds</th>
-            <td>103</td>
-          </tr> -->
           <tr>
-            <th class="bg-info">Licences won</th>
+            <th class="bg-info" data-i18n="auctions-summary-licences-won">Licences won</th>
             <td>56 of 225</td>
           </tr>
           <tr>
-            <th class="bg-info">Final price ($)</th>
+            <th class="bg-info" data-i18n="auctions-summary-final-price">Final price ($)</th>
             <td>5,611,066</td>
           </tr>
         </tbody>
       </table>
 
       <section class="well well-lg">
-        <h2 id="data" style="margin-top: 0px">Auction details</h2>
+        <h2 id="data" style="margin-top: 0px" data-i18n="auctions-details"></h2>
 
         <div class="wb-eqht row wb-init">
           <div
@@ -205,14 +214,13 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#">Final results</a>
+                <a href="#" class="wrong-way" data-i18n="auctions-details-final-results">Final results</a>
               </h3>
-              <span class="label label-warning"
-                >Updated on September 26, 2024</span
+              <span class="label label-warning" data-i18n="2024-updated1"
+                ></span
               >
-              <p>
-                List of winning bidders, licence details, and auction outcomes
-                for the 2024 residual spectrum auction.
+              <p data-i18n="auctions-details-2024-final-results">
+                
               </p>
             </section>
           </div>
@@ -225,15 +233,14 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way">Bidding data </a
+                <a href="#" class="wrong-way" data-i18n="auctions-details-bidding-data">Bidding data </a
                 ><gcds-icon name="download" size="h2"> </gcds-icon>
               </h3>
-              <span class="label label-warning"
-                >Updated on December 03, 2024</span
+              <span class="label label-warning" data-i18n="2024-updated2"
+                ></span
               >
-              <p>
-                Detailed information on bidding activity and results from the
-                2024 residual spectrum auction.
+              <p data-i18n="auctions-details-2024-bidding-data">
+                
               </p>
             </section>
           </div>
@@ -245,11 +252,11 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way">Applicants</a>
+                <a href="#" class="wrong-way" data-i18n="auctions-summary-applicants">Applicants</a>
               </h3>
-              <span class="label label-warning">Updated on June 20, 2024</span>
-              <p>
-                List of all applicants for the 2024 residual spectrum auction.
+              <span class="label label-warning" data-i18n="2024-updated3"></span>
+              <p data-i18n="auctions-details-2024-applicants">
+                
               </p>
             </section>
           </div>
@@ -261,12 +268,11 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way">Table of key dates</a>
+                <a href="#" class="wrong-way" data-i18n="auctions-details-table-key-dates">Table of key dates</a>
               </h3>
-              <span class="label label-warning">Updated on March 16, 2024</span>
-              <p>
-                Important deadlines and milestones for the 2024 residual
-                spectrum auction.
+              <span class="label label-warning" data-i18n="2024-updated4"></span>
+              <p data-i18n="auctions-details-2024-table-key-dates">
+                
               </p>
             </section>
           </div>
@@ -278,13 +284,11 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way">Notice of auction</a>
+                <a href="#" class="wrong-way" data-i18n="auctions-details-notice"></a>
               </h3>
-              <span class="label label-warning">Updated on March 15, 2024</span>
-              <p>
-                Notice of the 2024 residual spectrum auction with details on
-                auction format, eligibility, application process, and licence
-                conditions for prospective bidders.
+              <span class="label label-warning" data-i18n="2024-updated5"></span>
+              <p data-i18n="auctions-details-2024-notice">
+                
               </p>
             </section>
           </div>
@@ -294,16 +298,16 @@
       <div class="row" style="width: 100%">
         <div class="col-md-12"></div>
         <div class="col-md-12">
-          <h2>Documents</h2>
+          <h2 data-i18n="auctions-documents-table">Documents</h2>
           <table
             class="wb-tables table filterEmphasis provisional"
             id="document-table"
           >
             <thead>
               <tr>
-                <th>Last updated</th>
-                <th>Title</th>
-                <th>Document type</th>
+                <th data-i18n="doc-table-update">Last updated</th>
+                <th data-i18n="doc-table-title">Title</th>
+                <th data-i18n="doc-table-type">Document type</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -311,49 +315,41 @@
         </div>
       </div>
 
-      <h2 id="related">Related auctions</h2>
+      <h2 id="related" data-i18n="auctions-related-auctions">Related auctions</h2>
       <div class="wb-eqht row wb-init">
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
-            <h3 class="h5"><a href="#">3800 MHz</a></h3>
-            <p>
-              Information on available licences, applicants, and results from
-              the 3800 MHz band spectrum auction.
+            <h3 class="h5">
+              <a href="#" class="wrong-way" data-i18n="2024-related-auction1"></a>
+            </h3>
+            <p data-i18n="2024-related-auction-description1">
             </p>
           </section>
         </div>
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
             <h3 class="h5">
-              <a href="#" class="wrong-way" href="#">3500 MHz</a>
+              <a href="#" class="wrong-way" data-i18n="2024-related-auction2"></a>
             </h3>
-            <p>
-              Information on available licences, applicants, and results from
-              the 3500 MHz band spectrum auction.
-            </p>
-          </section>
-        </div>
-        <div class="col-md-6" style="vertical-align: top; min-height: 139px">
-          <section class="gc-drmt">
-            <h3 class="h5"><a href="#" class="wrong-way">600 MHz</a></h3>
-            <p>
-              Information on available licences, applicants, and results from
-              the 600 MHz band spectrum auction.
+            <p data-i18n="2024-related-auction-description2">
             </p>
           </section>
         </div>
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
             <h3 class="h5">
-              <a href="#" class="wrong-way"
-                >Residual auction in the 700, 2500, 2300 MHz bands and PCS-g
-                Block</a
-              >
+              <a href="#" class="wrong-way" data-i18n="2024-related-auction3"></a>
             </h3>
-            <p>
-              Information on available licences, applicants, and results from
-              the Residual auction in the 700, 2500, 2300 MHz bands and PCS-g
-              Block.
+            <p data-i18n="2024-related-auction-description3">
+            </p>
+          </section>
+        </div>
+        <div class="col-md-6" style="vertical-align: top; min-height: 139px">
+          <section class="gc-drmt">
+            <h3 class="h5">
+              <a href="#" class="wrong-way" data-i18n="2024-related-auction4"></a>
+            </h3>
+            <p data-i18n="2024-related-auction-description4">
             </p>
           </section>
         </div>
