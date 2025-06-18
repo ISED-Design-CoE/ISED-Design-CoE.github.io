@@ -21,7 +21,7 @@
     <meta charset="utf-8" />
 
     <!-- Start DECoE customization -->
-    <title>Auction of spectrum licences in the millimetre wave bands</title>
+    <title data-i18n="mmwave"></title>
     <!-- End DECoE customization -->
 
     <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -164,8 +164,8 @@
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">
-        Auction of spectrum licences in the millimetre wave bands
+      <h1 property="name" id="wb-cont" data-i18n="mmwave">
+        
       </h1>
       <h4 data-i18n="table-of-contents">On this page</h4>
       <ul>
@@ -174,42 +174,39 @@
         <li><a href="#document-table" data-i18n="auctions-documents-table">Documents</a></li>
         <li><a href="#related" data-i18n="auctions-related-auctions">Related auctions</a></li>
       </ul>
-      <h2>Summary table</h2>
+      <h2 id="summary" data-i18n="auctions-summary-table">Summary table</h2>
+
       <table class="table small" style="width: 100%">
         <tbody>
           <tr>
-            <th class="bg-info">Status</th>
-            <td>Consulting</td>
+            <th class="br-info" data-i18n="auctions-summary-status"></th>
+            <td data-i18n="auctions-summary-status-open"></td>
           </tr>
           <tr>
-            <th class="bg-info">Date</th>
+            <th class="bg-info" data-i18n="auctions-summary-date">Date</th>
             <td>--</td>
           </tr>
-
           <tr>
-            <th class="bg-info">Applicants</th>
+            <th class="bg-info" data-i18n="auctions-summary-applicants">Applicants</th>
             <td>--</td>
           </tr>
-
           <tr>
-            <th class="bg-info">Number of rounds</th>
+            <th class="bg-info" data-i18n="auctions-summary-rounds">Number of rounds</th>
             <td>--</td>
           </tr>
-
           <tr>
-            <th class="bg-info">Licences won</th>
+            <th class="bg-info" data-i18n="auctions-summary-licences-won">Licences won</th>
             <td>--</td>
           </tr>
-
           <tr>
-            <th class="bg-info">Final price ($)</th>
+            <th class="bg-info" data-i18n="auctions-summary-final-price">Final price ($)</th>
             <td>--</td>
           </tr>
         </tbody>
       </table>
 
       <section class="well well-lg">
-        <h2 id="data" style="margin-top: 0px">Auction details</h2>
+        <h2 id="data" style="margin-top: 0px"  data-i18n="auctions-details">Auction details</h2>
 
         <div class="wb-eqht row wb-init">
           <div
@@ -218,31 +215,29 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way">Consultation</a>
+                <a href="#" class="wrong-way"  data-i18n="auctions-details-consultation">Consultation</a>
               </h3>
-              <span class="label label-warning">Updated on March 06, 2025</span>
-              <p>
-                Consultation on licensing and use of 26 GHz and 38 GHz spectrum
-                bands for advanced wireless services.
+              <span class="label label-warning" data-i18n="mmwave-updated"></span>
+              <p data-i18n="auctions-details-mmwave-consultation">
               </p>
             </section>
           </div>
         </div>
       </section>
 
-      <div class="row">
+      <div class="row" style="width: 100%">
         <div class="col-md-12"></div>
         <div class="col-md-12">
-          <h2>Documents</h2>
+          <h2 data-i18n="auctions-documents-table">Documents</h2>
           <table
             class="wb-tables table filterEmphasis provisional"
             id="document-table"
           >
             <thead>
               <tr>
-                <th>Last updated</th>
-                <th>Title</th>
-                <th>Document type</th>
+                <th data-i18n="doc-table-update">Last updated</th>
+                <th data-i18n="doc-table-title">Title</th>
+                <th data-i18n="doc-table-type">Document type</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -250,24 +245,18 @@
         </div>
       </div>
 
-      <h2 id="related">Related auctions</h2>
+      <h2 id="related" data-i18n="auctions-related-auctions">Related auctions</h2>
       <div class="wb-eqht row wb-init">
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
             <h3 class="h5">
-              <a
-                href="https://webarchiveweb.wayback.bac-lac.canada.ca/web/20211111162920/https://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/h_sf01797.html"
-                >Auction of Spectrum Licences for Broadband Wireless Access
-                (BWA)</a
-              >
+              <a href="#" class="wrong-way" data-i18n="mmwave-related-auction"></a>
             </h3>
-            <p>
-              Information on available licences, applicants, and results from
-              the auction of spectrum licences for broadband wireless access
-              (BWA).
+            <p data-i18n="mmwave-related-auction-description">
             </p>
           </section>
         </div>
+        
       </div>
       <!-- End page content -->
 
