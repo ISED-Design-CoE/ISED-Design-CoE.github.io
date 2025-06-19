@@ -106,7 +106,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         tr.addEventListener("click", function (e) {
           e.preventDefault(); // Prevent default link navigation/scroll
-          alert("You've clicked a link that brings you out of the mockup."); // Show the alert
+          fetch("/SAWI/scrape/text.json")
+            .then((res) => res.json())
+            .then((translations) => {
+              alert(
+                translations[
+                  new URLSearchParams(window.location.search).get("lang")
+                ]["alert"]
+              ); // Show the alert
+            });
         });
 
         // Type

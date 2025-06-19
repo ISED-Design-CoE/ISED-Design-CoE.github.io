@@ -176,10 +176,18 @@
           >
             <thead>
               <tr>
-                <th data-orderable="false" class="col-md-6" data-i18n="auctions-column1"></th>
+                <th
+                  data-orderable="false"
+                  class="col-md-6"
+                  data-i18n="auctions-column1"
+                ></th>
                 <th class="col-md-2" data-i18n="auctions-column2"></th>
                 <th class="col-md-2" data-i18n="auctions-column3"></th>
-                <th data-orderable="false" class="col-md-2" data-i18n="auctions-column4"></th>
+                <th
+                  data-orderable="false"
+                  class="col-md-2"
+                  data-i18n="auctions-column4"
+                ></th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -394,8 +402,7 @@
 
     // Name (contains HTML, so use innerHTML)
     const nameCell = document.createElement("td");
-    const lang = new URLSearchParams(window.location.search).get("lang");
-    if (lang === "fr") {
+    if (new URLSearchParams(window.location.search).get("lang") === "fr") {
       nameCell.innerHTML = auction.nom; // Use French name if available
     } else {
       nameCell.innerHTML = auction.name; // Use English name by default
