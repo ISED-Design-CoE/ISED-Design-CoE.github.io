@@ -29,7 +29,7 @@
     "landing-spectrum-browser-link": "Spectrum licence browser",
     "landing-spectrum-browser-description": "Tool for searching existing spectrum licences and spectrum licences available for application.",
     "landing-latest-pub": "Last publications",
-    "landing-view-all": "View all auction documents",
+    "landing-view-all": "View all auction publicationsd",
 
     "about-title": "How spectrum auctions work",
     "about-intro": "Innovation, Science and Economic Development Canada (ISED) manages spectrum to maximize economic and social benefits for Canadians. Auctions are a competitive licensing process generally used to award spectrum licences when the demand for spectrum is expected to exceed supply. This page describes the auction process and different auction formats, and provides access to general frameworks. ",
@@ -129,7 +129,7 @@
     "auctions-column3": "End date",
     "auctions-column4": "Band",
 
-    "doc-title": "Spectrum auction documents",
+    "doc-title": "Publication look-up",
     "doc-filter-by": "Filter by",
     "doc-type": "Document type",
     "doc-auctions": "Auctions",
@@ -280,7 +280,7 @@
     "landing-spectrum-browser-link": "Navigateur de licences de spectre",
     "landing-spectrum-browser-description": "Outil de recherche de licences de spectre existantes et des licences disponibles que l’on peut demander.",
     "landing-latest-pub": "Dernières publications",
-    "landing-view-all": "Voir tous les documents",
+    "landing-view-all": "Voir tous les publications",
 
     "about-title": "Fonctionnement des enchères du spectre ",
     "about-intro": "Innovation, Sciences et Développement économique Canada (ISDE) gère le spectre pour optimiser les avantages économiques et sociaux pour les Canadiens. La mise aux enchères est un processus de délivrance de licences concurrentielle employé généralement quand il est prévu que la demande de spectre excédera l’offre. Cette page décrit le processus et les formats d’enchères et donne accès aux politiques cadres générales.",
