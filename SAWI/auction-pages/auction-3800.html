@@ -5,7 +5,6 @@
   <!--<![endif]-->
 
   <head>
-
     <script>
       // BEFORE any other CSS or JS!
       const supportedLangs = ["en", "fr"]; // example
@@ -16,7 +15,6 @@
         : defaultLang;
       document.documentElement.setAttribute("lang", lang);
     </script>
-
 
     <!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
     <meta charset="utf-8" />
@@ -88,69 +86,123 @@
   </head>
 
   <header>
-<div id="wb-bnr" class="container"><div class="row">
-<section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
-	<h2 class="wb-inv">Language selection</h2>
-	<ul class="list-inline mrgn-bttm-0">
-		<li><a lang="fr" hreflang="fr" href="?">
-				<span class="hidden-xs" translate="no" id="lang-toggle">Français</span>
-				<abbr title="Français" translate="no" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
-		</a></li>
-	</ul>
-</section>
+    <div id="wb-bnr" class="container">
+      <div class="row">
+        <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+          <h2 class="wb-inv">Language selection</h2>
+          <ul class="list-inline mrgn-bttm-0">
+            <li>
+              <a lang="fr" hreflang="fr" href="?">
+                <span class="hidden-xs" translate="no" id="lang-toggle"
+                  >Français</span
+                >
+                <abbr
+                  title="Français"
+                  translate="no"
+                  class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase"
+                  >fr</abbr
+                >
+              </a>
+            </li>
+          </ul>
+        </section>
 
-<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
-	<a href="#" property="url">
-		<img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span>
-	</a>
-	<meta property="name" content="Government of Canada">
-	<meta property="areaServed" typeof="Country" content="Canada" />
-	<link property="logo" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" />
-</div>
-
-</div></div>
-<hr>
-<div class="container"><div class="row"><div class="col-md-8">
-
-  <nav id="wb-bc" property="breadcrumb">
-	<h2>You are here:</h2>
-	<div class="container">
-		<ol class="breadcrumb" typeof="BreadcrumbList">
-			<li property="itemListElement" typeof="ListItem">
-				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
-					<span property="name">Canada.ca</span>
-				</a>
-				<meta property="position" content="1">
-			</li>
-      <li property="itemListElement" typeof="ListItem">
-				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
-					<span property="name" data-i18n="smt"></span>
-				</a>
-				<meta property="position" content="2">
-			</li>
-      <li property="itemListElement" typeof="ListItem">
-				<a property="item" typeof="WebPage" href="#" style="font-size:16px">
-					<span property="name" data-i18n="spectrum-allocation"></span>
-				</a>
-				<meta property="position" content="3">
-			</li>
-      <li property="itemListElement" typeof="ListItem">
-				<a property="item" typeof="WebPage" href="/SAWI/auction-landing-page.html" style="font-size:16px">
-					<span property="name" data-i18n="spectrum-auctions"></span>
-				</a>
-				<meta property="position" content="4">
-			</li>
-      <li property="itemListElement" typeof="ListItem">
-				<a property="item" typeof="WebPage" href="/SAWI/auction-table.html" style="font-size:16px">
-					<span property="name" data-i18n="auctions-table"></span>
-				</a>
-				<meta property="position" content="5">
-			</li>
-		</ol>
-	</div>
-</nav>
-
-</header>
+        <div
+          class="brand col-xs-9 col-sm-5 col-md-4"
+          property="publisher"
+          typeof="GovernmentOrganization"
+        >
+          <a href="#" property="url">
+            <img
+              src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg"
+              alt="Government of Canada"
+              property="logo"
+            /><span class="wb-inv">
+              / <span lang="fr">Gouvernement du Canada</span></span
+            >
+          </a>
+          <meta property="name" content="Government of Canada" />
+          <meta property="areaServed" typeof="Country" content="Canada" />
+          <link
+            property="logo"
+            href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg"
+          />
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <nav id="wb-bc" property="breadcrumb">
+            <h2>You are here:</h2>
+            <div class="container">
+              <ol class="breadcrumb" typeof="BreadcrumbList">
+                <li property="itemListElement" typeof="ListItem">
+                  <a
+                    property="item"
+                    typeof="WebPage"
+                    href="#"
+                    style="font-size: 16px"
+                  >
+                    <span property="name">Canada.ca</span>
+                  </a>
+                  <meta property="position" content="1" />
+                </li>
+                <li property="itemListElement" typeof="ListItem">
+                  <a
+                    property="item"
+                    typeof="WebPage"
+                    href="#"
+                    style="font-size: 16px"
+                  >
+                    <span property="name" data-i18n="smt"></span>
+                  </a>
+                  <meta property="position" content="2" />
+                </li>
+                <li property="itemListElement" typeof="ListItem">
+                  <a
+                    property="item"
+                    typeof="WebPage"
+                    href="#"
+                    style="font-size: 16px"
+                  >
+                    <span
+                      property="name"
+                      data-i18n="spectrum-allocation"
+                    ></span>
+                  </a>
+                  <meta property="position" content="3" />
+                </li>
+                <li property="itemListElement" typeof="ListItem">
+                  <a
+                    property="item"
+                    typeof="WebPage"
+                    href="/SAWI/auction-landing-page.html"
+                    style="font-size: 16px"
+                  >
+                    <span property="name" data-i18n="spectrum-auctions"></span>
+                  </a>
+                  <meta property="position" content="4" />
+                </li>
+                <li property="itemListElement" typeof="ListItem">
+                  <a
+                    property="item"
+                    typeof="WebPage"
+                    href="/SAWI/auction-table.html"
+                    style="font-size: 16px"
+                  >
+                    <span property="name" data-i18n="auctions-table"></span>
+                  </a>
+                  <meta property="position" content="5" />
+                </li>
+              </ol>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <body vocab="http://schema.org/" typeof="WebPage">
     <div id="def-top">
@@ -158,23 +210,36 @@
       <!-- transactTop-en.html -->
     </div>
     <!-- Write closure template -->
-    
+
     <main
       property="mainContentOfPage"
       typeof="WebPageElement"
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont" data-i18n="3800">
-      </h1>
+      <h1 property="name" id="wb-cont" data-i18n="3800"></h1>
       <!--<p>The auction of 3800 Mhz...</p>-->
 
       <h4 data-i18n="table-of-contents">On this page</h4>
       <ul>
-        <li><a href="#summary"  data-i18n="auctions-summary-table">Summary table</a></li>
-        <li><a href="#data" data-i18n="auctions-details">Auction details</a></li>
-        <li><a href="#document-table" data-i18n="auctions-documents-table">Documents</a></li>
-        <li><a href="#related" data-i18n="auctions-related-auctions">Related auctions</a></li>
+        <li>
+          <a href="#summary" data-i18n="auctions-summary-table"
+            >Summary table</a
+          >
+        </li>
+        <li>
+          <a href="#data" data-i18n="auctions-details">Auction details</a>
+        </li>
+        <li>
+          <a href="#document-table" data-i18n="auctions-documents-table"
+            >Documents</a
+          >
+        </li>
+        <li>
+          <a href="#related" data-i18n="auctions-related-auctions"
+            >Related auctions</a
+          >
+        </li>
       </ul>
 
       <h2 id="summary" data-i18n="auctions-summary-table">Summary table</h2>
@@ -187,29 +252,41 @@
           </tr>
           <tr>
             <th class="bg-info" data-i18n="auctions-summary-date">Date</th>
-            <td  data-i18n="auctions-summary-3800-date">October 24, 2023 to November 24, 2023</td>
+            <td data-i18n="auctions-summary-3800-date">
+              October 24, 2023 to November 24, 2023
+            </td>
           </tr>
           <tr>
-            <th class="bg-info" data-i18n="auctions-summary-applicants">Applicants</th>
+            <th class="bg-info" data-i18n="auctions-summary-applicants">
+              Applicants
+            </th>
             <td>22</td>
           </tr>
           <tr>
-            <th class="bg-info" data-i18n="auctions-summary-rounds">Number of rounds</th>
+            <th class="bg-info" data-i18n="auctions-summary-rounds">
+              Number of rounds
+            </th>
             <td>98</td>
           </tr>
           <tr>
-            <th class="bg-info" data-i18n="auctions-summary-licences-won">Licences won</th>
+            <th class="bg-info" data-i18n="auctions-summary-licences-won">
+              Licences won
+            </th>
             <td>4099 of 4300</td>
           </tr>
           <tr>
-            <th class="bg-info" data-i18n="auctions-summary-final-price">Final price ($)</th>
+            <th class="bg-info" data-i18n="auctions-summary-final-price">
+              Final price ($)
+            </th>
             <td>2,157,696,532</td>
           </tr>
         </tbody>
       </table>
 
       <section class="well well-lg">
-        <h2 id="data" style="margin-top: 0px" data-i18n="auctions-details">Auction details</h2>
+        <h2 id="data" style="margin-top: 0px" data-i18n="auctions-details">
+          Auction details
+        </h2>
 
         <div class="wb-eqht row wb-init">
           <div
@@ -218,12 +295,15 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way" data-i18n="auctions-details">Final results</a>
+                <a href="#" class="wrong-way" data-i18n="auctions-details"
+                  >Final results</a
+                >
               </h3>
-              <span class="label label-warning"data-i18n="3800-updated1"></span>
-              <p data-i18n="auctions-details-3800-final-results">
-                
-              </p>
+              <span
+                class="label label-warning"
+                data-i18n="3800-updated1"
+              ></span>
+              <p data-i18n="auctions-details-3800-final-results"></p>
             </section>
           </div>
         </div>
@@ -235,13 +315,18 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way" data-i18n="auctions-details-bidding-data">Bidding data </a
+                <a
+                  href="#"
+                  class="wrong-way"
+                  data-i18n="auctions-details-bidding-data"
+                  >Bidding data </a
                 ><gcds-icon name="download" size="h2"> </gcds-icon>
               </h3>
-              <span class="label label-warning"data-i18n="3800-updated2"></span>
-              <p data-i18n="auctions-details-3800-bidding-data">
-                
-              </p>
+              <span
+                class="label label-warning"
+                data-i18n="3800-updated2"
+              ></span>
+              <p data-i18n="auctions-details-3800-bidding-data"></p>
             </section>
           </div>
         </div>
@@ -252,11 +337,17 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way" data-i18n="auctions-summary-applicants">Applicants</a>
+                <a
+                  href="#"
+                  class="wrong-way"
+                  data-i18n="auctions-summary-applicants"
+                  >Applicants</a
+                >
               </h3>
-              <span class="label label-warning"
-                 data-i18n="3800-updated3"></span
-              >
+              <span
+                class="label label-warning"
+                data-i18n="3800-updated3"
+              ></span>
               <p data-i18n="auctions-details-3800-applicants"></p>
             </section>
           </div>
@@ -268,15 +359,18 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way" data-i18n="auctions-details-table-key-dates">Table of key dates</a>
+                <a
+                  href="#"
+                  class="wrong-way"
+                  data-i18n="auctions-details-table-key-dates"
+                  >Table of key dates</a
+                >
               </h3>
-              <span class="label label-warning"
-                 data-i18n="3800-updated4"></span
-              >
-              <p data-i18n="auctions-details-3800-table-key-dates">
-                
-                
-              </p>
+              <span
+                class="label label-warning"
+                data-i18n="3800-updated4"
+              ></span>
+              <p data-i18n="auctions-details-3800-table-key-dates"></p>
             </section>
           </div>
         </div>
@@ -287,12 +381,18 @@
           >
             <section class="gc-drmt">
               <h3 class="h5">
-                <a href="#" class="wrong-way" data-i18n="auctions-details-policy-framework">Policy and licensing framework</a>
+                <a
+                  href="#"
+                  class="wrong-way"
+                  data-i18n="auctions-details-policy-framework"
+                  >Policy and licensing framework</a
+                >
               </h3>
-              <span class="label label-warning" data-i18n="3800-updated5"></span>
-              <p data-i18n="auctions-details-3800-policy-framework">
-                
-              </p>
+              <span
+                class="label label-warning"
+                data-i18n="3800-updated5"
+              ></span>
+              <p data-i18n="auctions-details-3800-policy-framework"></p>
             </section>
           </div>
         </div>
@@ -318,24 +418,32 @@
         </div>
       </div>
 
-      <h2 id="related" data-i18n="auctions-related-auctions">Related auctions</h2>
+      <h2 id="related" data-i18n="auctions-related-auctions">
+        Related auctions
+      </h2>
       <div class="wb-eqht row wb-init">
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
             <h3 class="h5">
-              <a href="#" class="wrong-way" data-i18n="3800-related-auction1"></a>
+              <a
+                href="#"
+                class="wrong-way"
+                data-i18n="3800-related-auction1"
+              ></a>
             </h3>
-            <p data-i18n="3800-related-auction-description1">
-            </p>
+            <p data-i18n="3800-related-auction-description1"></p>
           </section>
         </div>
         <div class="col-md-6" style="vertical-align: top; min-height: 139px">
           <section class="gc-drmt">
             <h3 class="h5">
-              <a href="#" class="wrong-way" data-i18n="3800-related-auction2"></a>
+              <a
+                href="#"
+                class="wrong-way"
+                data-i18n="3800-related-auction2"
+              ></a>
             </h3>
-            <p data-i18n="3800-related-auction-description2">
-            </p>
+            <p data-i18n="3800-related-auction-description2"></p>
           </section>
         </div>
       </div>

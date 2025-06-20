@@ -4,6 +4,7 @@
     "spectrum-allocation": "Spectrum allocations",
     "spectrum-auctions": "Spectrum auctions",
     "auctions-table": "All spectrum auctions",
+    "brs-auction": "2500-2690 MHz (BRS) auction",
 
     "landing-title": "Spectrum Auctions",
     "landing-heading": "Spectrum auctions",
@@ -228,6 +229,15 @@
     "brs-updated4": "Updated on January 10, 2014",
     "brs-updated5": "Updated on April 1, 2015",
 
+    "brs-applicants-table-heading": "Applicants and Status of Applications",
+    "brs-applicants-table-column1": "Applicant*",
+    "brs-applicants-table-column2": "Status",
+    "brs-applicants-status": "Qualified",
+
+    "brs-applicants-text1": "Posted on Industry Canada website: February 5, 2015",
+    "brs-applicants-text2": "Updated on February 13, 2015",
+    "brs-applicants-text3": " *For more information related to the applicants, click on the applicant name below:",
+
     "brs": "Auction of spectrum licences for broadband radio services (BRS) in the 2500-2690 MHz band",
     "mmwave": "Auction of spectrum licences in the millimetre wave bands",
     "3800": "Auction of spectrum licences in the 3800 MHz band",
@@ -245,6 +255,7 @@
     "spectrum-allocation": "Attribution de spectre",
     "spectrum-auctions": "Enchères du spectre",
     "auctions-table": "Toutes les enchères du spectre",
+    "brs-auction": "2500-2690 MHz (SRLB)",
 
     "landing-title": "Enchères du spectre",
     "landing-heading": "Enchères du spectre",
@@ -467,6 +478,15 @@
     "brs-updated3": "Mis à jour le 13 fevrier 2015",
     "brs-updated4": "Mis à jour le 10 janvier 2014",
     "brs-updated5": "Mis à jour le 1 avril 2015",
+
+    "brs-applicants-table-heading": "Requérants et état des demandes",
+    "brs-applicants-table-column1": "Requérant*",
+    "brs-applicants-table-column2": "État",
+    "brs-applicants-status": "Qualifié",
+
+    "brs-applicants-text1": "Affiché sur le site Web d'Industrie Canada : le 5 février 2015",
+    "brs-applicants-text2": "Mis à jour le 13 février 2015",
+    "brs-applicants-text3": "*Pour de plus amples renseignements au sujet des requérants, cliquez sur le nom du requérant ci-dessous :",
 
     "comment2": "Some headings below need to be translated",
 
