@@ -35,11 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
           fetch("/SAWI/scrape/text.json")
             .then((res) => res.json())
             .then((translations) => {
-              alert(
-                translations[
-                  new URLSearchParams(window.location.search).get("lang")
-                ]["alert"]
-              ); // Show the alert
+              let whats_new_lang = new URLSearchParams(
+                window.location.search
+              ).get("lang");
+              if (!whats_new_lang) {
+                whats_new_lang = "en";
+              }
+              alert(translations[whats_new_lang]["alert"]); // Show the alert
             });
         });
         whats_new_dl.appendChild(dd);

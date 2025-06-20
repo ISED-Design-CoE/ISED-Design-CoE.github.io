@@ -1,4 +1,8 @@
-const lang_alert = new URLSearchParams(window.location.search).get("lang");
+let lang_alert = new URLSearchParams(window.location.search).get("lang");
+console.log(lang_alert);
+if (!lang_alert) {
+  lang_alert = "en";
+}
 
 function add_alert() {
   const breadcrumbItems = document.querySelectorAll(".breadcrumb li");

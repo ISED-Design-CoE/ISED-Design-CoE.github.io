@@ -109,11 +109,13 @@ document.addEventListener("DOMContentLoaded", function () {
           fetch("/SAWI/scrape/text.json")
             .then((res) => res.json())
             .then((translations) => {
-              alert(
-                translations[
-                  new URLSearchParams(window.location.search).get("lang")
-                ]["alert"]
-              ); // Show the alert
+              let table_translation = new URLSearchParams(
+                window.location.search
+              ).get("lang");
+              if (!table_translation) {
+                table_translation = "en";
+              }
+              alert(translations[table_translation]["alert"]); // Show the alert
             });
         });
 
