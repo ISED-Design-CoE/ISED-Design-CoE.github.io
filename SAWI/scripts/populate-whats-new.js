@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
       return res.json();
     })
     .then((data) => {
+      let whats_new_lang = new URLSearchParams(window.location.search).get(
+        "lang"
+      );
+      if (!whats_new_lang) {
+        whats_new_lang = "en";
+      }
+
       const whats_new_dl = document.getElementById("whats-new-dl");
       if (!whats_new_dl) return console.error("Missing whats-new-dl");
 
@@ -15,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const dt = document.createElement("dt");
         dt.classList = "label label-warning";
         const span = document.createElement("span");
-        if (document.documentElement.lang == "en") {
+        if (whats_new_lang == "en") {
           span.innerHTML = "Updated on " + row.Date;
         } else {
           span.innerHTML = "Mis à jour le " + row.Date;
@@ -23,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         dt.appendChild(span);
         whats_new_dl.appendChild(dt);
         const dd = document.createElement("dd");
-        if (document.documentElement.lang == "en") {
+        if (whats_new_lang == "en") {
           match = row.Title.match(/>([^<]*)</);
         } else {
           match = row.Titre.match(/>([^<]*)</);
@@ -35,12 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
           fetch("/SAWI/scrape/text.json")
             .then((res) => res.json())
             .then((translations) => {
-              let whats_new_lang = new URLSearchParams(
-                window.location.search
-              ).get("lang");
-              if (!whats_new_lang) {
-                whats_new_lang = "en";
-              }
               alert(translations[whats_new_lang]["alert"]); // Show the alert
             });
         });
