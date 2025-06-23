@@ -412,12 +412,29 @@
 
     // Start Date
     const startDateCell = document.createElement("td");
-    startDateCell.textContent = auction.start_date;
+    if (auction.start_date === "TBD") {
+      if (new URLSearchParams(window.location.search).get("lang") === "fr") {
+        startDateCell.textContent = "s.o.";
+      } else {
+        startDateCell.textContent = auction.start_date;
+      }
+    } else {
+      startDateCell.textContent = auction.start_date;
+    }
+
     row.appendChild(startDateCell);
 
     // End Date
     const endDateCell = document.createElement("td");
-    endDateCell.textContent = auction.end_date;
+    if (auction.end_date === "TBD") {
+      if (new URLSearchParams(window.location.search).get("lang") === "fr") {
+        endDateCell.textContent = "s.o.";
+      } else {
+        endDateCell.textContent = auction.end_date;
+      }
+    } else {
+      endDateCell.textContent = auction.end_date;
+    }
     row.appendChild(endDateCell);
 
     // Band
