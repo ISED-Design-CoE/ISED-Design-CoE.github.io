@@ -190,6 +190,7 @@
 
         <div class="col-md-6">
           <img
+            id="about-auctions-image"
             alt=""
             class="img-responsive"
             src="imgs/about_auctions_V03.png"
@@ -498,6 +499,15 @@
       window.addEventListener("load", (event) => {
         add_alert();
       });
+    </script>
+    <script>
+      if (new URLSearchParams(window.location.search).get("lang") === "fr") {
+        document.getElementById("about-auctions-image").alt =
+          "Ondes spectrales se propageant au-dessus d'un maillet en bois sur une table, avec une enchère de spectre active en arrière-plan.";
+      } else {
+        document.getElementById("about-auctions-image").alt =
+          "Spectrum waves running over a wooden gavel on a table with an active spectrum auction in the background.";
+      }
     </script>
   </body>
 </html>
