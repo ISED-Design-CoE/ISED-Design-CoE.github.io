@@ -414,7 +414,7 @@
     const startDateCell = document.createElement("td");
     if (auction.start_date === "TBD") {
       if (new URLSearchParams(window.location.search).get("lang") === "fr") {
-        startDateCell.textContent = "s.o.";
+        startDateCell.textContent = "à déterminer";
       } else {
         startDateCell.textContent = auction.start_date;
       }
@@ -428,7 +428,7 @@
     const endDateCell = document.createElement("td");
     if (auction.end_date === "TBD") {
       if (new URLSearchParams(window.location.search).get("lang") === "fr") {
-        endDateCell.textContent = "s.o.";
+        endDateCell.textContent = "à déterminer";
       } else {
         endDateCell.textContent = auction.end_date;
       }
