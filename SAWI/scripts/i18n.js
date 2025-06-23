@@ -23,6 +23,7 @@
   } else{
     lang = defaultLang;
   }
+   location.reload(); // Reload to apply the lang param
 } 
 
 
