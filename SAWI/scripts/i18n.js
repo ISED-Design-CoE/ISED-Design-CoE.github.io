@@ -17,13 +17,16 @@
       const currentUrl = new URL(window.location.href);
       currentUrl.searchParams.set("lang", lang);
       window.history.replaceState({}, "", currentUrl.toString());
+      location.reload(); // Reload to apply the lang param
     } else{
         lang = defaultLang;
+        location.reload(); // Reload to apply the lang param
       }
   } else{
     lang = defaultLang;
+    location.reload(); // Reload to apply the lang param
   }
-   location.reload(); // Reload to apply the lang param
+   
 } 
 
 
