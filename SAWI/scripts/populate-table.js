@@ -49,19 +49,19 @@ document.addEventListener("DOMContentLoaded", function () {
       type_mapping = {
         en: {
           Applicants: "Applicants",
-          "Band plan": "Band Plan",
+          "Band plan": "Band plan",
           Comments: "Comments",
           Consultation: "Consultation",
           "Decision / Framework": "Framework",
           "Decision / Framework / Outlook": "Outlook",
           FAQ: "FAQ",
-          "Landing page": "Landing Page",
+          "Landing page": "Landing page",
           Manual: "Manual",
           Map: "Map",
           Notice: "Notice",
           Results: "Results",
-          "Spectrum Advisory Bulletins (SAB)": "Spectrum Advisory Bulletins ",
-          "Table of key dates": "Table of Key Dates",
+          "Spectrum Advisory Bulletins (SAB)": "Spectrum advisory bulletins ",
+          "Table of key dates": "Table of key dates",
         },
         fr: {
           Applicants: "Requérants",

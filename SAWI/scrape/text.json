@@ -9,9 +9,9 @@
     "landing-title": "Spectrum Auctions",
     "landing-heading": "Spectrum auctions",
     "landing-intro": "This page provides information about spectrum auctions, their related publications and on how they work.",
-    "landing-auctions-link": "Spectrum auctions list",
+    "landing-auctions-link": "List of spectrum auctions",
     "landing-auctions-description": "Access  to all completed, upcoming and potential spectrum auctions, organized by date and frequency band.",
-    "landing-documents-link": "Publication look-up ",
+    "landing-documents-link": "Publications ",
     "landing-documents-description": "Look-up of all auction-related publications, such as consultations, decisions, results and applicant information.",
     "landing-about-link": "How spectrum auctions work ",
     "landing-about-description": "Overview of the auction process and formats, and access to general frameworks.",
@@ -28,7 +28,7 @@
     "landing-terrestrial-licensing-description": "Other terrestrial licensing processes, such as Non-Competitive Local Licensing, Access Spectrum Licensing, the Indigenous Priority Window and the secondary market.",
     "landing-spectrum-browser-link": "Spectrum licence browser",
     "landing-spectrum-browser-description": "Tool for searching existing spectrum licences and spectrum licences available for application.",
-    "landing-latest-pub": "Last publications",
+    "landing-latest-pub": "Latest publications",
     "landing-view-all": "View all auction publications",
 
     "about-title": "How spectrum auctions work",
@@ -129,7 +129,7 @@
     "auctions-column3": "End date",
     "auctions-column4": "Band",
 
-    "doc-title": "Publication look-up",
+    "doc-title": "Spectrum auction publications",
     "doc-filter-by": "Filter by",
     "doc-type": "Publication type",
     "doc-auctions": "Auctions",
@@ -143,7 +143,7 @@
 
     "auctions-summary-table": "Summary table",
     "auctions-details": "Auction details",
-    "auctions-documents-table": "Documents",
+    "auctions-documents-table": "Publications",
     "auctions-related-auctions": "Related auctions",
 
     "auctions-summary-status": "Status",
@@ -262,7 +262,7 @@
     "landing-intro": "Cette page vous informe à propos des enchères de spectre, à leurs publications connexes et à leur fonctionnement.",
     "landing-auctions-link": "Liste des enchères du spectre",
     "landing-auctions-description": "Accès à toutes les enchères du spectre achevées, à venir et potentielles, organisées par date et bande de fréquence.",
-    "landing-documents-link": "Repérage de publications",
+    "landing-documents-link": "Publications",
     "landing-documents-description": "Repérage des publications liées aux enchères du spectre, telles que les consultations, les décisions, les résultats et l’information sur les requérants.",
     "landing-about-link": "Fonctionnement des enchères",
     "landing-about-description": "Aperçu du processus et des formats d’enchères du spectre et accès aux politiques-cadres générales.",
@@ -379,7 +379,7 @@
     "auctions-column2": "Début",
     "auctions-column3": "Fin",
     "auctions-column4": "Fréquences ",
-    "doc-title": "Repérage des publications liées aux enchères du spectre ",
+    "doc-title": "Publications liées aux enchères du spectre ",
     "doc-filter-by": "Filtrer",
     "doc-type": "Type de publication",
     "doc-auctions": "Enchères",
@@ -393,7 +393,7 @@
 
     "auctions-summary-table": "Tableau récapitulatif",
     "auctions-details": "Détails des enchères",
-    "auctions-documents-table": "Documents",
+    "auctions-documents-table": "Publications",
     "auctions-related-auctions": "Enchères connexes",
 
     "auctions-summary-status": "Statut",
