@@ -6,35 +6,33 @@
   const urlParams = new URLSearchParams(window.location.search);
   let lang = urlParams.get("lang");
   if (!supportedLangs.includes(lang)) {
-  const referrer = document.referrer;
-  if (referrer) {
-    const refUrl = new URL(referrer);
-    const refLang = refUrl.searchParams.get("lang");
-    if (supportedLangs.includes(refLang)) {
-      lang = refLang;
+    const referrer = document.referrer;
+    if (referrer) {
+      const refUrl = new URL(referrer);
+      const refLang = refUrl.searchParams.get("lang");
+      if (supportedLangs.includes(refLang)) {
+        lang = refLang;
 
-      // Optional: Update the current URL to reflect this inherited lang
+        // Optional: Update the current URL to reflect this inherited lang
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set("lang", lang);
+        window.history.replaceState({}, "", currentUrl.toString());
+        location.reload(); // Reload to apply the lang param
+      } else {
+        lang = defaultLang;
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set("lang", lang);
+        window.history.replaceState({}, "", currentUrl.toString());
+        location.reload(); // Reload to apply the lang param
+      }
+    } else {
+      lang = defaultLang;
       const currentUrl = new URL(window.location.href);
       currentUrl.searchParams.set("lang", lang);
       window.history.replaceState({}, "", currentUrl.toString());
       location.reload(); // Reload to apply the lang param
-    } else{
-        lang = defaultLang;
-         const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.set("lang", lang);
-      window.history.replaceState({}, "", currentUrl.toString());
-      location.reload(); // Reload to apply the lang param
-      }
-  } else{
-    lang = defaultLang;
-     const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.set("lang", lang);
-      window.history.replaceState({}, "", currentUrl.toString());
-      location.reload(); // Reload to apply the lang param
+    }
   }
-   
-} 
-
 
   // Language to toggle to
   const toggleLang = lang === "en" ? "fr" : "en";
