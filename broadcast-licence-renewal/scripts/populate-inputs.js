@@ -9,24 +9,28 @@ function populate_input(record_id) {
       record = data[record_id];
 
       for (const [key, value] of Object.entries(record)) {
-        try {
+        if (document.getElementById(key) != null) {
+          document.getElementById(key).innerHTML = value;
+        }
+        if (document.getElementsByName(key)[0] != null) {
           document.getElementsByName(key)[0].value = value;
-        } catch (err) {
-          console.log(err);
         }
       }
-
-      document.getElementById("main-form").removeAttribute("hidden");
+      if (document.getElementById("main-form") != null) {
+        document.getElementById("main-form").removeAttribute("hidden");
+      }
     });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document
-    .getElementById("record-form")
-    .addEventListener("submit", function (event) {
-      event.preventDefault(); // Stop the page from reloading
-      const formData = new FormData(this); // 'this' refers to the form element
-      console.log(document.getElementsByName("record")[0].value);
-      populate_input(document.getElementsByName("record")[0].value);
-    });
+  if (document.getElementById("record-form") != null) {
+    document
+      .getElementById("record-form")
+      .addEventListener("submit", function (event) {
+        event.preventDefault(); // Stop the page from reloading
+        const formData = new FormData(this); // 'this' refers to the form element
+        console.log(document.getElementsByName("record")[0].value);
+        populate_input(document.getElementsByName("record")[0].value);
+      });
+  }
 });

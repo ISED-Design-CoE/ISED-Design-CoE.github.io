@@ -19,6 +19,9 @@
       src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.37.0/dist/gcds/gcds.esm.js"
     ></script>
 
+    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+
     <style>
       /* Custom styles for spacing and layout */
 
@@ -74,80 +77,29 @@
         </form>
 
         <div id="main-form" hidden>
-          <form id="contact-form" action="#" method="post">
-            <gcds-heading tag="h2">Contact information</gcds-heading>
+          <gcds-heading tag="h2">Contact information</gcds-heading>
 
-            <gcds-input
-              input-id="company-code-input"
-              label="Company code"
-              name="company_code"
-              required
-              type="number"
-              hint="Enter your company's internal code."
-            ></gcds-input>
+          <!-- NOTE: dd, dl etc do not work with GC Design, it seems. -Jacob -->
 
-            <gcds-input
-              input-id="business-name-input"
-              label="Business name"
-              name="business_name"
-              required
-              type="text"
-            ></gcds-input>
+          <gcds-text>
+            <b>Company code</b><br /><span id="company_code"></span><br />
+            <b>Business name</b><br /><span id="business_name"></span><br />
+            <b>Address</b><br /><span id="address"></span><br />
+            <b>Email</b><br /><span id="email[]"></span><br />
+            <b>Business phone number</b><br /><span id="business_phone"></span
+            ><br />
+            <b>Personal phone number</b><br /><span id="personal_phone"></span
+            ><br />
+            <b>Language</b><br /><span id="language"></span><br />
+          </gcds-text>
 
-            <gcds-textarea
-              textarea-id="address-textarea"
-              label="Address"
-              name="address"
-              required
-              hint="Include street, city, province, and postal code."
-            ></gcds-textarea>
+          <gcds-button
+            onclick="window.location.href = '/broadcast-licence-renewal/edit-contact.html'"
+          >
+            Edit</gcds-button
+          >
 
-            <div id="email-fields-container">
-              <div class="email-input-wrapper">
-                <gcds-input
-                  input-id="email-1-input"
-                  label="Email address"
-                  name="email[]"
-                  required
-                  type="email"
-                ></gcds-input>
-                <div class="remove-email-button-container">
-                  <!-- Remove button for the first email will be hidden by CSS -->
-                </div>
-              </div>
-            </div>
-
-            <gcds-button id="add-email-button" type="button">
-              Add another email
-            </gcds-button>
-            <br /><br />
-
-            <gcds-input
-              input-id="business-number"
-              label="Business phone number"
-              name="business_phone"
-              required
-              type=""
-            ></gcds-input>
-
-            <gcds-input
-              input-id="personal-number"
-              label="Personal phone number"
-              name="personal_phone"
-              required
-              type=""
-            ></gcds-input>
-
-            <gcds-radios
-              name="language"
-              legend="Preferred language"
-              options='[
-                        { "label": "French", "id": "fr", "value": "French"},
-                        { "label": "English", "id": "en", "value": "English"}
-                    ]'
-            >
-            </gcds-radios>
-
+          <form>
             <gcds-heading tag="h2">Certificate information table</gcds-heading>
 
             <gcds-heading tag="h2">SC6 table</gcds-heading>
@@ -218,8 +170,6 @@
       contextual-links='{ "Contact us": "#"}'
     >
     </gcds-footer>
-
-    <script src="scripts/email.js"></script>
 
     <script src="scripts/populate-inputs.js"></script>
   </body>
