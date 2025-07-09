@@ -57,147 +57,153 @@
       <section>
         <gcds-heading tag="h1">Broadcast licence renewal</gcds-heading>
 
-        <form id="contact-form" action="#" method="post">
+        <form id="record-form" method="post">
           <gcds-heading tag="h2">Record</gcds-heading>
           <gcds-select
             select-id="select-props"
             label="Select record to load"
-            name="select"
+            name="record"
             default-value="Select a record"
           >
-            <option value="1">Broadcasting test</option>
-            <option value="2">Broadcasting 123</option>
-            <option value="3">Broadcasting stations</option>
+            <option value="record-1">Broadcasting test</option>
+            <option value="record-2">Broadcasting 123</option>
+            <option value="record-3">Broadcasting stations</option>
           </gcds-select>
 
-          <gcds-heading tag="h2">Contact information</gcds-heading>
+          <gcds-button type="submit">Load record</gcds-button>
+        </form>
 
-          <gcds-input
-            input-id="company-code-input"
-            label="Company code"
-            name="company_code"
-            required
-            type="number"
-            hint="Enter your company's internal code."
-          ></gcds-input>
+        <div id="main-form" hidden>
+          <form id="contact-form" action="#" method="post">
+            <gcds-heading tag="h2">Contact information</gcds-heading>
 
-          <gcds-input
-            input-id="business-name-input"
-            label="Business name"
-            name="business_name"
-            required
-            type="text"
-          ></gcds-input>
+            <gcds-input
+              input-id="company-code-input"
+              label="Company code"
+              name="company_code"
+              required
+              type="number"
+              hint="Enter your company's internal code."
+            ></gcds-input>
 
-          <gcds-textarea
-            textarea-id="address-textarea"
-            label="Address"
-            name="address"
-            required
-            hint="Include street, city, province, and postal code."
-          ></gcds-textarea>
+            <gcds-input
+              input-id="business-name-input"
+              label="Business name"
+              name="business_name"
+              required
+              type="text"
+            ></gcds-input>
 
-          <div id="email-fields-container">
-            <div class="email-input-wrapper">
-              <gcds-input
-                input-id="email-1-input"
-                label="Email address"
-                name="email[]"
-                required
-                type="email"
-              ></gcds-input>
-              <div class="remove-email-button-container">
-                <!-- Remove button for the first email will be hidden by CSS -->
+            <gcds-textarea
+              textarea-id="address-textarea"
+              label="Address"
+              name="address"
+              required
+              hint="Include street, city, province, and postal code."
+            ></gcds-textarea>
+
+            <div id="email-fields-container">
+              <div class="email-input-wrapper">
+                <gcds-input
+                  input-id="email-1-input"
+                  label="Email address"
+                  name="email[]"
+                  required
+                  type="email"
+                ></gcds-input>
+                <div class="remove-email-button-container">
+                  <!-- Remove button for the first email will be hidden by CSS -->
+                </div>
               </div>
             </div>
-          </div>
 
-          <gcds-button id="add-email-button" type="button">
-            Add another email
-          </gcds-button>
-          <br /><br />
+            <gcds-button id="add-email-button" type="button">
+              Add another email
+            </gcds-button>
+            <br /><br />
 
-          <gcds-input
-            input-id="business-number"
-            label="Business phone number"
-            name="business_phone"
-            required
-            type="number"
-          ></gcds-input>
+            <gcds-input
+              input-id="business-number"
+              label="Business phone number"
+              name="business_phone"
+              required
+              type=""
+            ></gcds-input>
 
-          <gcds-input
-            input-id="personal-number"
-            label="Personal phone number"
-            name="personal_phone"
-            required
-            type="number"
-          ></gcds-input>
+            <gcds-input
+              input-id="personal-number"
+              label="Personal phone number"
+              name="personal_phone"
+              required
+              type=""
+            ></gcds-input>
 
-          <gcds-radios
-            name="radio"
-            legend="Preferred language"
-            options='[
-                        { "label": "French", "id": "fr", "value": "fr"},
-                        { "label": "English", "id": "en", "value": "en"}
+            <gcds-radios
+              name="language"
+              legend="Preferred language"
+              options='[
+                        { "label": "French", "id": "fr", "value": "French"},
+                        { "label": "English", "id": "en", "value": "English"}
                     ]'
-          >
-          </gcds-radios>
+            >
+            </gcds-radios>
 
-          <gcds-heading tag="h2">Certificate information table</gcds-heading>
+            <gcds-heading tag="h2">Certificate information table</gcds-heading>
 
-          <gcds-heading tag="h2">SC6 table</gcds-heading>
+            <gcds-heading tag="h2">SC6 table</gcds-heading>
 
-          <gcds-heading tag="h2">Attestation</gcds-heading>
+            <gcds-heading tag="h2">Attestation</gcds-heading>
 
-          <gcds-checkboxes
-            name="checkbox"
-            legend="Attestation"
-            options='[
+            <gcds-checkboxes
+              name="checkbox"
+              legend="Attestation"
+              options='[
                         { "label": "The information on this form is true, accurate and complete.", "id": "checkbox1", "value": "checkbox1"},
                         { "label": "The station(s) will be used only as authorized and compliant.", "id": "checkbox2", "value": "checkbox2"},
                         { "label": "SC6 compliance info available on request.", "id": "checkbox3", "value": "checkbox3"},
                         { "label": "No changes to environment or equipment since SC6 compliance.", "id": "checkbox4", "value": "checkbox4"},
                         { "label": "My installation(s) is/are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
                     ]'
-          >
-          </gcds-checkboxes>
+            >
+            </gcds-checkboxes>
 
-          <gcds-heading tag="h2">Comments</gcds-heading>
-          <gcds-textarea
-            textarea-id="comments-textarea"
-            label="Additional information"
-            name="comments"
-          ></gcds-textarea>
+            <gcds-heading tag="h2">Comments</gcds-heading>
+            <gcds-textarea
+              textarea-id="comments-textarea"
+              label="Additional information"
+              name="comments"
+            ></gcds-textarea>
 
-          <gcds-heading tag="h2">Signature</gcds-heading>
+            <gcds-heading tag="h2">Signature</gcds-heading>
 
-          <gcds-input
-            input-id="sig-name"
-            label="Name (print)"
-            name="sig_name"
-            required
-            type="text"
-          ></gcds-input>
+            <gcds-input
+              input-id="sig-name"
+              label="Name (print)"
+              name="sig_name"
+              required
+              type="text"
+            ></gcds-input>
 
-          <gcds-input
-            input-id="sig-email"
-            label="Email"
-            name="sig_email"
-            required
-            type="email"
-          ></gcds-input>
+            <gcds-input
+              input-id="sig-email"
+              label="Email"
+              name="sig_email"
+              required
+              type="email"
+            ></gcds-input>
 
-          <!-- TODO: derive date from when signature is made. -->
-          <gcds-input
-            input-id="sig-date"
-            label="Date"
-            name="sig-date"
-            required
-            type="date"
-          ></gcds-input>
+            <!-- TODO: derive date from when signature is made. -->
+            <gcds-input
+              input-id="sig-date"
+              label="Date"
+              name="sig-date"
+              required
+              type="date"
+            ></gcds-input>
 
-          <gcds-button type="submit">Submit</gcds-button>
-        </form>
+            <gcds-button type="submit">Submit</gcds-button>
+          </form>
+        </div>
       </section>
 
       <!-- TODO: Update the date to reflect the page's most recent change. -->
@@ -213,74 +219,8 @@
     >
     </gcds-footer>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const emailFieldsContainer = document.getElementById(
-          "email-fields-container"
-        );
-        const addEmailButton = document.getElementById("add-email-button");
-        const maxEmails = 3;
-        let emailCount = 1; // Start with the first email input
+    <script src="scripts/email.js"></script>
 
-        // Function to create a new email input and its remove button
-        const createEmailField = () => {
-          emailCount++;
-
-          // Create a new wrapper for the email input and remove button
-          const emailWrapper = document.createElement("div");
-          emailWrapper.classList.add("email-input-wrapper");
-
-          // Create the new email input
-          const newEmailInput = document.createElement("gcds-input");
-          newEmailInput.setAttribute("input-id", `email-${emailCount}-input`);
-          newEmailInput.setAttribute("label", "Email Address");
-          newEmailInput.setAttribute("name", "email[]"); // Use array notation for multiple emails
-          newEmailInput.setAttribute("type", "email");
-          newEmailInput.setAttribute("hint", "Optional"); // All additional emails are optional
-
-          // Create a container for the remove button to manage alignment
-          const removeButtonContainer = document.createElement("div");
-          removeButtonContainer.classList.add("remove-email-button-container");
-
-          // Create the remove button as a gcds-button
-          const removeButton = document.createElement("gcds-button");
-          removeButton.setAttribute("type", "button");
-          removeButton.setAttribute("variant", "secondary"); // Use secondary for a less prominent style
-          removeButton.textContent = "Remove"; // Text for the button
-
-          removeButton.addEventListener("click", (e) => {
-            e.preventDefault(); // Prevent form submission
-            emailWrapper.remove();
-            // Disable the add button if we are now below the max count
-            if (emailCount <= maxEmails) {
-              addEmailButton.disabled = false;
-            }
-            emailCount--; // Decrement count when an email is removed
-          });
-
-          // Append the remove button to its container
-          removeButtonContainer.appendChild(removeButton);
-
-          // Append the input and the remove button container to the wrapper
-          emailWrapper.appendChild(newEmailInput);
-          emailWrapper.appendChild(removeButtonContainer);
-
-          return emailWrapper;
-        };
-
-        addEmailButton.addEventListener("click", () => {
-          // Check if we've reached the maximum number of emails
-          if (emailCount < maxEmails) {
-            const newEmailField = createEmailField();
-            emailFieldsContainer.appendChild(newEmailField);
-
-            // Disable the add button if we've reached the maximum
-            if (emailCount === maxEmails) {
-              addEmailButton.disabled = true;
-            }
-          }
-        });
-      });
-    </script>
+    <script src="scripts/populate-inputs.js"></script>
   </body>
 </html>

@@ -1,0 +1,29 @@
+{
+  "record-1": {
+    "company_code": "0075123456789",
+    "business_name": "My Broadcasting Test",
+    "address": "123 Road Ottawa Ontario",
+    "email[]": "123@test.ca",
+    "business_phone": "506-123-4567",
+    "personal_phone": "506-321-4567",
+    "language": "English"
+  },
+  "record-2": {
+    "company_code": "2",
+    "business_name": "My second Broadcasting Test",
+    "address": "123 Road Ottawa Ontario",
+    "email[]": "123@test.ca",
+    "business_phone": "506-123-4567",
+    "personal_phone": "506-321-4567",
+    "language": "English"
+  },
+  "record-3": {
+    "company_code": "3",
+    "business_name": "My third Broadcasting Test",
+    "address": "123 Road Ottawa Ontario",
+    "email[]": "123@test.ca",
+    "business_phone": "506-123-4567",
+    "personal_phone": "506-321-4567",
+    "language": "English"
+  }
+}
