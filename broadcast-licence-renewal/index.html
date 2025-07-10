@@ -19,8 +19,7 @@
       src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.37.0/dist/gcds/gcds.esm.js"
     ></script>
 
-    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
-    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+    
 
     <style>
       /* Custom styles for spacing and layout */
@@ -63,7 +62,8 @@
         <form id="record-form" method="post">
           <gcds-heading tag="h2">Record</gcds-heading>
           <gcds-select
-            select-id="select-props"
+            select-id="select-record"
+            id="select-record"
             label="Select record to load"
             name="record"
             default-value="Select a record"
@@ -76,7 +76,7 @@
           <gcds-button type="submit">Load record</gcds-button>
         </form>
 
-        <div id="main-form" hidden>
+        <div id="contact-info" hidden>
           <gcds-heading tag="h2">Contact information</gcds-heading>
 
           <!-- NOTE: dd, dl etc do not work with GC Design, it seems. -Jacob -->
@@ -99,8 +99,56 @@
             Edit</gcds-button
           >
 
+          <gcds-button
+            button-role="secondary"
+            onclick="document.getElementById('main-form').removeAttribute('hidden')"
+            >Validate</gcds-button
+          >
+        </div>
+        <div id="main-form" hidden>
           <form>
             <gcds-heading tag="h2">Certificate information table</gcds-heading>
+
+            <table>
+              <caption>
+                Front-end web developer course 2021
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Person</th>
+                  <th scope="col">Most interest in</th>
+                  <th scope="col">Age</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Chris</th>
+                  <td>HTML tables</td>
+                  <td>22</td>
+                </tr>
+                <tr>
+                  <th scope="row">Dennis</th>
+                  <td>Web accessibility</td>
+                  <td>45</td>
+                </tr>
+                <tr>
+                  <th scope="row">Sarah</th>
+                  <td>JavaScript frameworks</td>
+                  <td>29</td>
+                </tr>
+                <tr>
+                  <th scope="row">Karen</th>
+                  <td>Web performance</td>
+                  <td>36</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row" colspan="2">Average age</th>
+                  <td>33</td>
+                </tr>
+              </tfoot>
+            </table>
 
             <gcds-heading tag="h2">SC6 table</gcds-heading>
 
