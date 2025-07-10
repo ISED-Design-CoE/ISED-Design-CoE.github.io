@@ -60,7 +60,8 @@
         <form id="record-form" method="post">
           <gcds-heading tag="h2">Record</gcds-heading>
           <gcds-select
-            select-id="select-props"
+            select-id="select-record"
+            id="select-record"
             label="Select record to load"
             name="record"
             default-value="Select a record"
@@ -73,82 +74,83 @@
           <gcds-button type="submit">Load record</gcds-button>
         </form>
 
+        <div id="contact-info" hidden>
+          <gcds-heading tag="h2">Contact information</gcds-heading>
+
+          <!-- NOTE: dd, dl etc do not work with GC Design, it seems. -Jacob -->
+
+          <gcds-text>
+            <b>Company code</b><br /><span id="company_code"></span><br />
+            <b>Business name</b><br /><span id="business_name"></span><br />
+            <b>Address</b><br /><span id="address"></span><br />
+            <b>Email</b><br /><span id="email[]"></span><br />
+            <b>Business phone number</b><br /><span id="business_phone"></span
+            ><br />
+            <b>Personal phone number</b><br /><span id="personal_phone"></span
+            ><br />
+            <b>Language</b><br /><span id="language"></span><br />
+          </gcds-text>
+
+          <gcds-button
+            onclick="window.location.href = '/broadcast-licence-renewal/edit-contact.html'"
+          >
+            Edit</gcds-button
+          >
+
+          <gcds-button
+            button-role="secondary"
+            onclick="document.getElementById('main-form').removeAttribute('hidden')"
+            >Validate</gcds-button
+          >
+        </div>
         <div id="main-form" hidden>
-          <form id="contact-form" action="#" method="post">
-            <gcds-heading tag="h2">Contact information</gcds-heading>
-
-            <gcds-input
-              input-id="company-code-input"
-              label="Company code"
-              name="company_code"
-              required
-              type="number"
-              hint="Enter your company's internal code."
-            ></gcds-input>
-
-            <gcds-input
-              input-id="business-name-input"
-              label="Business name"
-              name="business_name"
-              required
-              type="text"
-            ></gcds-input>
-
-            <gcds-textarea
-              textarea-id="address-textarea"
-              label="Address"
-              name="address"
-              required
-              hint="Include street, city, province, and postal code."
-            ></gcds-textarea>
-
-            <div id="email-fields-container">
-              <div class="email-input-wrapper">
-                <gcds-input
-                  input-id="email-1-input"
-                  label="Email address"
-                  name="email[]"
-                  required
-                  type="email"
-                ></gcds-input>
-                <div class="remove-email-button-container">
-                  <!-- Remove button for the first email will be hidden by CSS -->
-                </div>
-              </div>
-            </div>
-
-            <gcds-button id="add-email-button" type="button">
-              Add another email
-            </gcds-button>
-            <br /><br />
-
-            <gcds-input
-              input-id="business-number"
-              label="Business phone number"
-              name="business_phone"
-              required
-              type=""
-            ></gcds-input>
-
-            <gcds-input
-              input-id="personal-number"
-              label="Personal phone number"
-              name="personal_phone"
-              required
-              type=""
-            ></gcds-input>
-
-            <gcds-radios
-              name="language"
-              legend="Preferred language"
-              options='[
-                        { "label": "French", "id": "fr", "value": "French"},
-                        { "label": "English", "id": "en", "value": "English"}
-                    ]'
+          <form>
+            <gcds-heading tag="h2" id="certificate-info"
+              >Certificate information table</gcds-heading
             >
-            </gcds-radios>
 
-            <gcds-heading tag="h2">Certificate information table</gcds-heading>
+            <!-- <gcds-text>
+              <table>
+                <caption>
+                  Front-end web developer course 2021
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Person</th>
+                    <th scope="col">Most interest in</th>
+                    <th scope="col">Age</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Chris</th>
+                    <td>HTML tables</td>
+                    <td>22</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Dennis</th>
+                    <td>Web accessibility</td>
+                    <td>45</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sarah</th>
+                    <td>JavaScript frameworks</td>
+                    <td>29</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Karen</th>
+                    <td>Web performance</td>
+                    <td>36</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th scope="row" colspan="2">Average age</th>
+                    <td>33</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </gcds-text> -->
 
             <gcds-heading tag="h2">SC6 table</gcds-heading>
 
@@ -164,6 +166,7 @@
                         { "label": "No changes to environment or equipment since SC6 compliance.", "id": "checkbox4", "value": "checkbox4"},
                         { "label": "My installation(s) is/are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
                     ]'
+              required
             >
             </gcds-checkboxes>
 
@@ -201,7 +204,11 @@
               type="date"
             ></gcds-input>
 
-            <gcds-button type="submit">Submit</gcds-button>
+            <gcds-button
+              type="submit"
+              onClick="window.location.href = '/broadcast-licence-renewal/review.html'"
+              >Continue to Review</gcds-button
+            >
           </form>
         </div>
       </section>
@@ -219,8 +226,19 @@
     >
     </gcds-footer>
 
-    <script src="scripts/email.js"></script>
-
     <script src="scripts/populate-inputs.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let params = new URLSearchParams(document.location.search);
+        if (params.get("record") != null) {
+          populate_input(params.get("record"));
+          document.getElementById("main-form").removeAttribute("hidden");
+          console.log(document.getElementById("main-form"));
+          document.getElementById("select-record").value = params.get("record");
+          document.getElementById("certificate-info").scrollIntoView();
+        }
+      });
+    </script>
   </body>
 </html>
