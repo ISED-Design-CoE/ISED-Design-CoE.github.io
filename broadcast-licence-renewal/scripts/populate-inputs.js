@@ -19,9 +19,6 @@ function populate_input(record_id) {
       if (document.getElementById("contact-info") != null) {
         document.getElementById("contact-info").removeAttribute("hidden");
       }
-      if (document.getElementById("main-form") != null) {
-        document.getElementById("main-form").setAttribute("hidden", true);
-      }
     });
 }
 
@@ -34,6 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const formData = new FormData(this); // 'this' refers to the form element
         console.log(document.getElementsByName("record")[0].value);
         populate_input(document.getElementsByName("record")[0].value);
+        if (document.getElementById("main-form") != null) {
+          document.getElementById("main-form").setAttribute("hidden", true);
+        }
       });
   }
 

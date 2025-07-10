@@ -19,8 +19,6 @@
       src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.37.0/dist/gcds/gcds.esm.js"
     ></script>
 
-    
-
     <style>
       /* Custom styles for spacing and layout */
 
@@ -107,7 +105,9 @@
         </div>
         <div id="main-form" hidden>
           <form>
-            <gcds-heading tag="h2">Certificate information table</gcds-heading>
+            <gcds-heading tag="h2" id="certificate-info"
+              >Certificate information table</gcds-heading
+            >
 
             <table>
               <caption>
@@ -164,6 +164,7 @@
                         { "label": "No changes to environment or equipment since SC6 compliance.", "id": "checkbox4", "value": "checkbox4"},
                         { "label": "My installation(s) is/are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
                     ]'
+              required
             >
             </gcds-checkboxes>
 
@@ -201,7 +202,11 @@
               type="date"
             ></gcds-input>
 
-            <gcds-button type="submit">Submit</gcds-button>
+            <gcds-button
+              type="submit"
+              onClick="window.location.href = '/broadcast-licence-renewal/review.html'"
+              >Continue to Review</gcds-button
+            >
           </form>
         </div>
       </section>
@@ -220,5 +225,18 @@
     </gcds-footer>
 
     <script src="scripts/populate-inputs.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let params = new URLSearchParams(document.location.search);
+        if (params.get("record") != null) {
+          populate_input(params.get("record"));
+          document.getElementById("main-form").removeAttribute("hidden");
+          console.log(document.getElementById("main-form"));
+          document.getElementById("select-record").value = params.get("record");
+          document.getElementById("certificate-info").scrollIntoView();
+        }
+      });
+    </script>
   </body>
 </html>
