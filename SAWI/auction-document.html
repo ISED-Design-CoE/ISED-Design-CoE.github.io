@@ -57,6 +57,12 @@
       fieldset {
         border: none;
       }
+
+      .filter-divider {
+        border-bottom: solid #bababa 2px;
+        margin-bottom: 4px;
+        margin-top: 4px;
+      }
     </style>
     <!-- End DECoE customization -->
   </head>
@@ -188,7 +194,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10">
               <h3 data-i18n="doc-filter-by">Filter by:</h3>
             </div>
             <!-- <div class="col-md-6" style="margin-top: 22px;">
@@ -203,8 +209,9 @@
             </div> -->
           </div>
           <form class="wb-tables-filter" data-bind-to="dataset-filter1">
+            <div class="filter-divider"></div>
             <div class="row">
-              <details style="border: none">
+              <details style="border: none; padding-bottom: 0px">
                 <summary>
                   <h3 class="h3" data-i18n="doc-type">Document type</h3>
                 </summary>
@@ -215,9 +222,9 @@
                 </div>
               </details>
             </div>
-
+            <div class="filter-divider"></div>
             <div class="row">
-              <details style="border: none">
+              <details style="border: none; padding-bottom: 0px">
                 <summary>
                   <h3 class="h3" data-i18n="doc-auctions">Auctions</h3>
                 </summary>
@@ -242,6 +249,7 @@
                 </div>
               </details>
             </div>
+            <div class="filter-divider" style="margin-bottom: 12px"></div>
 
             <!-- <div class="row" >
                   <details style="border: none;">
@@ -277,7 +285,7 @@
             </div>
           </form>
         </div>
-        <div class="col-md-8" style="border-left: 1px solid">
+        <div class="col-md-8">
           <table
             class="wb-tables table filterEmphasis provisional"
             id="document-table"
@@ -367,10 +375,6 @@
 
 <script>
   $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
-    document
-      .getElementById("document-table_filter")
-      .setAttribute("hidden", true);
-
     $("#document-table").DataTable().order([0, "desc"]).draw();
   });
 

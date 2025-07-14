@@ -449,9 +449,6 @@
 
 <script>
   $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
-    document
-      .getElementById("document-table_filter")
-      .setAttribute("hidden", true);
     document.getElementById("document-table_info").setAttribute("hidden", true);
 
     $("#document-table").DataTable().order([1, "desc"]).draw();
