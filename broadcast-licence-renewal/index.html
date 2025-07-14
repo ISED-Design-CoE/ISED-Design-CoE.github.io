@@ -91,17 +91,40 @@
             <b>Language</b><br /><span id="language"></span><br />
           </gcds-text>
 
-          <gcds-button
-            onclick="window.location.href = '/broadcast-licence-renewal/edit-contact.html'"
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              gap: var(--gcds-spacing-200);
+            "
           >
-            Edit</gcds-button
-          >
+            <gcds-button
+              onclick="window.location.href = '/broadcast-licence-renewal/edit-contact.html'"
+            >
+              Edit</gcds-button
+            >
 
-          <gcds-button
-            button-role="secondary"
-            onclick="document.getElementById('main-form').removeAttribute('hidden')"
-            >Validate</gcds-button
-          >
+            <div id="validation-button">
+              <gcds-button
+                button-role="secondary"
+                onclick="document.getElementById('main-form').removeAttribute('hidden');
+             document.getElementById('validation-notice').removeAttribute('hidden')
+             document.getElementById('validation-button').setAttribute('hidden',true)"
+                >Validate</gcds-button
+              >
+            </div>
+          </div>
+
+          <div id="validation-notice" hidden>
+            <div style="margin-top: var(--gcds-spacing-400)"></div>
+            <gcds-notice
+              type="success"
+              notice-title-tag="h2"
+              notice-title="Contact information validated"
+            >
+              <gcds-text>Contact information has been validated</gcds-text>
+            </gcds-notice>
+          </div>
         </div>
         <div id="main-form" hidden>
           <form>
@@ -160,12 +183,12 @@
               name="checkbox"
               legend="Attestation"
               options='[
-                        { "label": "The information on this form is true, accurate and complete.", "id": "checkbox1", "value": "checkbox1"},
-                        { "label": "The station(s) will be used only as authorized and compliant.", "id": "checkbox2", "value": "checkbox2"},
-                        { "label": "SC6 compliance info available on request.", "id": "checkbox3", "value": "checkbox3"},
-                        { "label": "No changes to environment or equipment since SC6 compliance.", "id": "checkbox4", "value": "checkbox4"},
-                        { "label": "My installation(s) is/are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
-                    ]'
+                          { "label": "The information on this form is true, accurate and complete.", "id": "checkbox1", "value": "checkbox1"},
+                          { "label": "The station(s) will be used only as authorized and compliant.", "id": "checkbox2", "value": "checkbox2"},
+                          { "label": "SC6 compliance info available on request.", "id": "checkbox3", "value": "checkbox3"},
+                          { "label": "No changes to environment or equipment since SC6 compliance.", "id": "checkbox4", "value": "checkbox4"},
+                          { "label": "My installation(s) is/are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
+                      ]'
               required
             >
             </gcds-checkboxes>
@@ -237,6 +260,12 @@
           console.log(document.getElementById("main-form"));
           document.getElementById("select-record").value = params.get("record");
           document.getElementById("certificate-info").scrollIntoView();
+          document
+            .getElementById("validation-notice")
+            .removeAttribute("hidden");
+          document
+            .getElementById("validation-button")
+            .setAttribute("hidden", true);
         }
       });
     </script>
