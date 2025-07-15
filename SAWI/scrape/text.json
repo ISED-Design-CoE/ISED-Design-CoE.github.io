@@ -124,9 +124,9 @@
     "about-auctions-frameworks-link4-description": "Policy and spectrum management direction for wireless applications, services and uses.",
 
     "auctions-heading": "List of spectrum auctions",
-    "auctions-column1": "Auction",
-    "auctions-column2": "Start date",
-    "auctions-column3": "End date",
+    "auctions-column1": "Year",
+    "auctions-column2": "Auction",
+    "auctions-column3": "Auction type",
     "auctions-column4": "Band",
 
     "doc-title": "Spectrum auction publications",
