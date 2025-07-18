@@ -156,7 +156,7 @@
     "auctions-summary-brs-date": "April 14, 2015 to May 5, 2015",
     "auctions-summary-applicants": "Applicants",
     "auctions-summary-rounds": "Number of rounds",
-    "auctions-summary-bands": "Bands",
+    "auctions-summary-bands": "Spectrum",
     "auctions-summary-licences-won": "Licences won",
     "auctions-summary-final-price": "Net winning bids ($)",
 
@@ -407,6 +407,7 @@
     "auctions-summary-brs-date": "14 avril 2015 au 5 mai 2015",
     "auctions-summary-applicants": "Requérants",
     "auctions-summary-rounds": "Nombre de rondes",
+    "auctions-summary-bands": "Spectre",
     "auctions-summary-licences-won": "Licences gagnées",
     "auctions-summary-final-price": "Offres gagnantes nettes ($)",
 
