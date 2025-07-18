@@ -28,9 +28,6 @@
       );
     </script>
 
-    <!-- Start DECoE customization -->
-    <link href="fix-wet-styles.css" rel="stylesheet" type="text/css" />
-    <link href="ncl-portal.css" rel="stylesheet" type="text/css" />
     <style>
       /* Styles for this mockup */
       #dataset-filter1_wrapper table {
@@ -40,6 +37,12 @@
 
       .nowrap {
         white-space: nowrap;
+      }
+
+      #document-table_filter {
+        background-color: white;
+        padding-bottom: 0;
+        margin-bottom: 0;
       }
     </style>
     <!-- End DECoE customization -->
@@ -176,17 +179,11 @@
           >
             <thead>
               <tr>
+                <th class="col-md-1" data-i18n="auctions-column1"></th>
                 <th
                   data-orderable="false"
-                  class="col-md-6"
-                  data-i18n="auctions-column1"
-                ></th>
-                <th class="col-md-2" data-i18n="auctions-column2"></th>
-                <th class="col-md-2" data-i18n="auctions-column3"></th>
-                <th
-                  data-orderable="false"
-                  class="col-md-2"
-                  data-i18n="auctions-column4"
+                  class="col-md-9"
+                  data-i18n="auctions-column2"
                 ></th>
               </tr>
             </thead>
@@ -254,7 +251,6 @@
       );
     </script>
 
-    <script src="filter-rows.js"></script>
     <script src="scripts/i18n.js"></script>
   </body>
 </html>
@@ -264,130 +260,93 @@
     {
       name: "<a href='/SAWI/auction-pages/auction-3800.html'>3800 MHz</a>",
       nom: "<a href='/SAWI/auction-pages/auction-3800.html?lang=fr'>3800 MHz</a>",
-      start_date: "2023-10-24",
-      end_date: "2023-11-24",
-      band: "3650 - 3900 MHz<br>3700 - 4200 MHz",
+      start_date: "2023",
     },
     {
       name: "<a href='/SAWI/auction-pages/auction-millimetrewave.html'>mmWave - 26, 28 & 38 GHz</a>",
       nom: "<a href='/SAWI/auction-pages/auction-millimetrewave.html?lang=fr'>26 GHz, 28 GHz & 38 GHz (ondes millimétriques)</a>",
       start_date: "TBD",
-      end_date: "TBD",
-      band: "24250 - 28350 MHz<br>37600 - 40000 MHz",
     },
     {
       name: "<a href='/SAWI/auction-pages/auction-3500.html'>3500 MHz</a>",
       nom: "<a href='/SAWI/auction-pages/auction-3500.html?lang=fr'>3500 MHz</a>",
-      start_date: "2021-06-15",
-      end_date: "2021-07-23",
-      band: "3450 - 3650 MHz",
+      start_date: "2021",
     },
     {
       name: "<a href='/SAWI/auction-pages/auction-2024.html'>2024 Residual: 600, 2300, 3500 & 3800 MHz</a>",
       nom: "<a href='/SAWI/auction-pages/auction-2024.html?lang=fr'>Licences restantes (2024) : 600 MHz, 2300 MHz, 3500 MHz & 3800 MHz</a>",
-      start_date: "2024-07-16",
-      end_date: "2024-07-19",
-      band: "614 - 698 MHz<br>2305 - 2360 MHz<br>3450 - 3650 MHz<br>3650 - 3900 MHz<br>",
+      start_date: "2024",
     },
 
     {
       name: "<a href='/SAWI/auction-pages/auction-2023.html'>2023 Residual: 600, 2500 & 3500 MHz</a>",
       nom: "<a href='/SAWI/auction-pages/auction-2023.html?lang=fr'>Licences restantes (2023) : 600 MHz, 2500 MHz & 3500 MHz</a>",
-      start_date: "2023-01-17",
-      end_date: "2023-01-17",
-      band: "614 - 698 MHz<br>2500 - 2690 MHz<br>3450 - 3650 MHz",
+      start_date: "2023",
     },
     {
       name: "<a href='/SAWI/auction-pages/auction-600.html'>600 MHz</a>",
       nom: "<a href='/SAWI/auction-pages/auction-600.html?lang=fr'>600 MHz </a>",
-      start_date: "2019-03-12",
-      end_date: "2019-04-04",
-      band: "614 - 698 MHz",
+      start_date: "2019",
     },
     {
       name: "<a href='/SAWI/auction-pages/auction-2018.html'>2018 Residual: 700, 2300, 2500 MHz & PCS G</a>",
       nom: "<a href='/SAWI/auction-pages/auction-2018.html?lang=fr'>Licences restantes (2018) : 700 MHz, 2500 MHz, 2300 MHz & SCP-G</a>",
-      start_date: "2018-05-15",
-      end_date: "2018-05-15",
-      band: "746–751 MHz<br>777–782 MHz<br>1670-1675 MHz<br>1910-1915MHz<br>1990-1995 MHz<br>2305-2320 MHz<br>2345-2360 MHz<br>2500 2690 MHz<br>",
-      nom: "",
+      start_date: "2018",
     },
     {
       name: "<a href='#'>2015 Residual: 700 MHz & AWS-3</a>",
       nom: "<a href='#'>Licences restantes (2015) : 700 MHz & SSFE-3</a>",
-      start_date: "2015-08-15",
-      end_date: "2015-08-15",
-      band: "746-751 MHz<br>777-782 MHz<br>1755-1780MHz <br>2155-2180 MHz",
+      start_date: "2015",
     },
     {
       name: "<a href='/SAWI/auction-pages/auction-brs.html'>BRS - 2500 MHz</a>",
       nom: "<a href='/SAWI/auction-pages/auction-brs.html?lang=fr'>2500-2690 MHz (SRLB)  </a>",
-      start_date: "2015-04-14",
-      end_date: "2015-05-05",
-      band: "2500-2690 MHz",
+      start_date: "2015",
     },
     {
       name: "<a href='#'>AWS-3 - 1755-1780 & 2155-2180 MHz</a>",
       nom: "<a href='#'>1755-1780 MHz & 2155-2180 MHz (SSFE-3)</a>",
-      start_date: "2015-03-03",
-      end_date: "2015-03-03",
-      band: "1755-1780 MHz<br>2155-2180 MHz<br>",
+      start_date: "2015",
     },
     {
       name: "<a href='#'>MBS - 700 MHz</a>",
       nom: "<a href='#'>700 MHz (SMLB)  </a>",
-      start_date: "2014-01-14",
-      end_date: "2014-02-13",
-      band: "698-756 MHz<br>777-787 MHz<br>",
+      start_date: "2014",
     },
     {
       name: "<a href='#'>2009 Residual: 2300 & 3500 MHz</a>",
       nom: "<a href='#'>Licences restantes (2009) : 2300 MHz & 3500 MHz</a>",
-      start_date: "2009-06-26",
-      end_date: "2009-06-26",
-      band: "2305-2320 MHz<br>2345-2360 MHz<br>3475-3650 MHz",
+      start_date: "2009",
     },
     {
       name: "<a href='#'>Air-Ground - 849-851 & 894-896 MHz</a>",
       nom: "<a href='#'>849–851 MHz & 894–896 MHz (air sol) </a>",
-      start_date: "2009-05-20",
-      end_date: "2009-05-20",
-      band: "849-851MHz<br>894-896 MHz",
+      start_date: "2009",
     },
     {
       name: "<a href='#'>AWS-1 - 2 GHz</a>",
       nom: "<a href='#'>2 GHz (SSFE-1 & SCP) </a>",
-      start_date: "2008-05-27",
-      end_date: "2008-07-21",
-      band: "1670-1675 MHz<br>1710-1755 MHz <br>2110-2155 MHz<br>1910-1915 MHz<br>1990-1995 MHz",
+      start_date: "2008",
     },
     {
       name: "<a href='#'>2005 Residual: 2300 & 3500 MHz</a>", //This auction was done in 2 phases
       nom: "<a href='#'>Licences restantes (2005) : 2300 MHz & 3500 MHz </a>",
-      start_date: "2004-08-23",
-      end_date: "2005-01-27",
-      band: "2305-2320 MHz<br>2345-2360 MHz<br>3475-3650 MHz",
+      start_date: "2004-05",
     },
     {
       name: "<a href='#'>2300 & 3500 MHz</a>",
       nom: "<a href='#'>2300 MHz & 3500 MHz</a>",
-      start_date: "2004-02-09",
-      end_date: "2004-02-16",
-      band: "2305-2320 MHz<br>2320-2345 MHz<br>2345-2360 MHz<br>3475-3650 MHz<br>3500 -3700 MHz",
+      start_date: "2004",
     },
     {
       name: "<a href='#'>PCS - 2 GHz</a>",
       nom: "<a href='#'>2 GHz (SCP)</a>",
-      start_date: "2001-01-15",
-      end_date: "2001-02-01",
-      band: "1850-1910 MHz<br>1930-1990 MHz",
+      start_date: "2001",
     },
     {
       name: "<a href='#'>24 & 38 GHz </a>",
       nom: "<a href='#'>24 & 38 GHz</a>",
-      start_date: "1999-10-18",
-      end_date: "1999-11-19",
-      band: "24250 - 25250 MHz<br>27350 - 28350 MHz<br>38700 - 39100 MHz<br>39400 - 39800 MHz  ",
+      start_date: "1999",
     },
   ];
 
@@ -399,16 +358,6 @@
   // Populate the table with auction data
   auctions.forEach((auction) => {
     const row = document.createElement("tr");
-
-    // Name (contains HTML, so use innerHTML)
-    const nameCell = document.createElement("td");
-    if (new URLSearchParams(window.location.search).get("lang") === "fr") {
-      nameCell.innerHTML = auction.nom; // Use French name if available
-    } else {
-      nameCell.innerHTML = auction.name; // Use English name by default
-    }
-    // nameCell.innerHTML = auction.name;
-    row.appendChild(nameCell);
 
     // Start Date
     const startDateCell = document.createElement("td");
@@ -424,23 +373,15 @@
 
     row.appendChild(startDateCell);
 
-    // End Date
-    const endDateCell = document.createElement("td");
-    if (auction.end_date === "TBD") {
-      if (new URLSearchParams(window.location.search).get("lang") === "fr") {
-        endDateCell.textContent = "à déterminer";
-      } else {
-        endDateCell.textContent = auction.end_date;
-      }
+    // Name (contains HTML, so use innerHTML)
+    const nameCell = document.createElement("td");
+    if (new URLSearchParams(window.location.search).get("lang") === "fr") {
+      nameCell.innerHTML = auction.nom; // Use French name if available
     } else {
-      endDateCell.textContent = auction.end_date;
+      nameCell.innerHTML = auction.name; // Use English name by default
     }
-    row.appendChild(endDateCell);
-
-    // Band
-    const bandCell = document.createElement("td");
-    bandCell.innerHTML = auction.band;
-    row.appendChild(bandCell);
+    // nameCell.innerHTML = auction.name;
+    row.appendChild(nameCell);
 
     // Append row to the table body
     tableBody.appendChild(row);
@@ -449,12 +390,9 @@
 
 <script>
   $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
-    document
-      .getElementById("document-table_filter")
-      .setAttribute("hidden", true);
     document.getElementById("document-table_info").setAttribute("hidden", true);
 
-    $("#document-table").DataTable().order([1, "desc"]).draw();
+    $("#document-table").DataTable().order([0, "desc"]).draw();
   });
 </script>
 
