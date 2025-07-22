@@ -8,9 +8,9 @@
 
     "landing-title": "Spectrum Auctions",
     "landing-heading": "Spectrum auctions",
-    "landing-intro": "This page provides information about spectrum auctions, their related publications and on how they work.",
+    "landing-intro": "This page provides access to all spectrum auctions, their related publications and information on how they work.",
     "landing-auctions-link": "List of spectrum auctions",
-    "landing-auctions-description": "Access  to all completed, upcoming and potential spectrum auctions, organized by date and frequency band.",
+    "landing-auctions-description": "Access to all completed, upcoming and potential spectrum auctions, organized by date.",
     "landing-documents-link": "Publications ",
     "landing-documents-description": "Look-up of all auction-related publications, such as consultations, decisions, results and applicant information.",
     "landing-about-link": "How spectrum auctions work ",
@@ -239,14 +239,14 @@
     "brs-applicants-text2": "Updated on February 13, 2015",
     "brs-applicants-text3": " *For more information related to the applicants, click on the applicant name below:",
 
-    "brs": "Auction of spectrum licences for broadband radio services (BRS) in the 2500-2690 MHz band",
-    "mmwave": "Auction of spectrum licences in the millimetre wave bands",
-    "3800": "Auction of spectrum licences in the 3800 MHz band",
-    "3500": "Auction of spectrum licences in the 3500 MHz band",
-    "2024-residual": "Auction of residual spectrum licences in the 600 MHz, 2300 MHz, 3500 MHz & 3800 MHz bands",
-    "2023-residual": "Auction of residual spectrum licences in the 600 MHz, 2500 MHz & 3500 MHz bands",
-    "2018-residual": "Auction of residual spectrum licences in the 700 MHz, 2500 MHz, 2300 MHz and PCS-G block",
-    "600": "Auction of spectrum licences in the 600 MHz band",
+    "brs": "Auction: 2500 MHz (BRS)",
+    "mmwave": "Auction: millimetre wave",
+    "3800": "Auction: 3800 MHz",
+    "3500": "Auction: 3500 MHz",
+    "2024-residual": "Residual auction: 600, 2300, 3500 and 3800 MHz",
+    "2023-residual": "Residual auction: 600, 2500 and 3500 MHz",
+    "2018-residual": "Residual auction: 700, 2300 and 2500 MHz, and PCS-G",
+    "600": "Auction: 600 MHz",
 
     "alert": "You've clicked a link that brings you out of the mockup."
   },
@@ -260,9 +260,9 @@
 
     "landing-title": "Enchères du spectre",
     "landing-heading": "Enchères du spectre",
-    "landing-intro": "Cette page vous informe à propos des enchères de spectre, à leurs publications connexes et à leur fonctionnement.",
+    "landing-intro": "Cette page donne accès aux enchères du spectre, à leurs publications connexes et à de l’information sur leur fonctionnement.   ",
     "landing-auctions-link": "Liste des enchères du spectre",
-    "landing-auctions-description": "Accès à toutes les enchères du spectre achevées, à venir et potentielles, organisées par date et bande de fréquence.",
+    "landing-auctions-description": "Accès à toutes les enchères du spectre achevées, à venir et potentielles, organisées par date.",
     "landing-documents-link": "Publications",
     "landing-documents-description": "Repérage des publications liées aux enchères du spectre, telles que les consultations, les décisions, les résultats et l’information sur les requérants.",
     "landing-about-link": "Fonctionnement des enchères",
@@ -281,7 +281,7 @@
     "landing-spectrum-browser-link": "Navigateur de licences de spectre",
     "landing-spectrum-browser-description": "Outil de recherche de licences de spectre existantes et des licences disponibles que l’on peut demander.",
     "landing-latest-pub": "Dernières publications",
-    "landing-view-all": "Voir tous les publications",
+    "landing-view-all": "Voir toutes les publications",
 
     "about-title": "Fonctionnement des enchères du spectre ",
     "about-intro": "Innovation, Sciences et Développement économique Canada (ISDE) gère le spectre pour optimiser les avantages économiques et sociaux pour les Canadiens. La mise aux enchères est un processus de délivrance de licences concurrentielle employé généralement quand il est prévu que la demande de spectre excédera l’offre. Cette page décrit le processus et les formats d’enchères et donne accès aux politiques cadres générales.",
@@ -292,8 +292,8 @@
     "about-auctions-process": "Processus d’enchères",
     "about-auctions-tab1": "Enchères ",
     "about-auctions-tab1-description": "Les enchères libèrent ou réattribuent un montant important de spectre pour utilisation commerciale partout au pays. Avant la tenue des enchères, un processus de consultation publique a lieu pour en déterminer les attributs et la conception, y compris les fréquences exactes, le nombre et la taille des blocs de fréquence, les mises à prix et les mesures favorables à la concurrence. Une fois entamées, les enchères peuvent prendre plusieurs semaines avant de tirer à leur fin. Les enchères du spectre suivent le processus décrit dans la <a href='#' class='wrong-way'> Politique cadre sur la vente aux enchères du spectre au Canada </a> et se déroulent généralement selon les étapes ci-dessous.  ",
-    "about-auctions-tab2": "Enchères de licences restantes",
-    "about-auctions-tab2-description": "Les enchères de licences restantes s’appliquent aux licences qui demeurent non attribuées à l’issue d’une mise aux enchères et aux licences remises à ISDE par un titulaire avant la fin de la période de validité des licences. Les enchères de licences restantes suivent le processus décrit dans la <a href='#' class='wrong-way'>Décision sur un cadre simplifié pour effectuer la mise aux enchères des licences de spectre restantes</a> et, généralement, ne requièrent pas de processus de consultation.  ",
+    "about-auctions-tab2": "Enchères résiduelles",
+    "about-auctions-tab2-description": "Les enchères de licences restantes, aussi appelées enchères résiduelles,  s’appliquent aux licences qui demeurent non attribuées à l’issue d’une mise aux enchères et aux licences remises à ISDE par un titulaire avant la fin de la période de validité des licences. Les enchères de licences restantes suivent le processus décrit dans la <a href='#' class='wrong-way'>Décision sur un cadre simplifié pour effectuer la mise aux enchères des licences de spectre restantes</a> et, généralement, ne requièrent pas de processus de consultation.  ",
     "about-auctions-tab2-description-continued": "Le processus d’enchères de licences restantes par offres scellées comprend les étapes ci-dessous.",
 
     "about-auctions-step1": "1. Consultations sur la politique et les procédures de délivrance de licences proposées",
@@ -339,7 +339,7 @@
     "about-residual-auctions-step4-description": "Peu après la date limite de présentation des demandes, ISDE publie la liste complète de tous les requérants, ainsi que de l’information sur leur propriété effective et leurs entités affiliées et associées. La publication de cette liste ne signifie pas que les requérants sont admissibles à participer aux enchères de licences restantes.",
     "about-residual-auctions-step5": "5. Publication de la liste des soumissionnaires qualifiés ",
     "about-residual-auctions-step5-description": "ISDE publie la liste officielle des soumissionnaires qualifiés sur son site Web. Après cette étape, les soumissionnaires reçoivent une trousse d’information. ",
-    "about-residual-auctions-step6": "6. Début des enchères de licences restantes",
+    "about-residual-auctions-step6": "6. Début des enchères de licences restantes (date limite de présentation des offres scellées) ",
     "about-residual-auctions-step6-description": "La date du début des enchères est précisée dans le tableau des dates clés.",
     "about-residual-auctions-step7": "7. Fin des enchères de licences restantes",
     "about-residual-auctions-step7-description": "La durée et la fin des enchères dépendent de la conception, du format et de l’activité des enchères. Les details sur la fin des enchères de licences restantes sont précisés dans l’avis. ",
@@ -357,7 +357,7 @@
     "about-auctions-formats-heading": "Formats d’enchères ",
 
     "about-auctions-formats-tab1": "Format des enchères au cadran",
-    "about-auctions-formats-tab1-description": "Le format des enchères au cadran est un processus d'enchères à deux étapes : l'étape de l'attribution au cadran et l'étape de l'assignation. À l'étape de l'attribution au cadran, le nombre de blocs génériques qu'un soumissionnaire remportera pour chaque produit ainsi que le prix de ces blocs sont déterminés. À l'étape de l'assignation, les fréquences précises qui seront assignées à chaque soumissionnaire gagnant et le prix additionnel pour ces fréquences sont établis. À titre d’exemple, ce format est décrit à la section 10 et aux annexes D et E de la <a href='#' class='wrong-way'> Consultation sur un cadre politique et de délivrance de licences concernant le spectre de la bande de 3 800 MHz.  </a >.",
+    "about-auctions-formats-tab1-description": "Le format des enchères au cadran est un processus d'enchères à deux étapes : l'étape de l'attribution au cadran et l'étape de l'assignation. À l'étape de l'attribution au cadran, le nombre de blocs génériques qu'un soumissionnaire remportera pour chaque produit ainsi que le prix de ces blocs sont déterminés. À l'étape de l'assignation, les fréquences précises qui seront assignées à chaque soumissionnaire gagnant et le prix additionnel pour ces fréquences sont établis. À titre d’exemple, ce format est décrit à la section 10 et aux annexes D et E de la <a href='#' class='wrong-way'> Consultation sur un cadre politique et de délivrance de licences concernant le spectre de la bande de 3 800 MHz.  </a >",
     "about-auctions-formats-tab2": "Format des enchères combinatoires au cadran (ECC)  ",
     "about-auctions-formats-tab2-description": "Le format des enchères combinatoires au cadran est un processus d’enchères qui permet aux soumissionnaires de présenter des offres pour des ensembles de licences au lieu de licences individuelles, ce qui élimine le risque qu’un soumissionnaire n’obtienne que certaines des licences voulues. Le format des ECC comprend l'étape de l'attribution au cadran et l'étape de l'assignation. À l'étape de l'attribution au cadran, il y a une ronde supplémentaire donnant aux soumissionnaires la flexibilité de présenter des offres additionnelles pour des ensembles de licences qu’ils n’ont pas pu présenter pendant les rondes au cadran. Toute offre présentée dans les rondes au cadran et la ronde supplémentaire est contraignante et prise en compte pour déterminer les gagnants et les prix à payer. À titre d’exemple, ce format est décrit à la section 7 et à l’annexe C du <a href='#' class='wrong-way'> Cadre technique, politique et de délivrance de licences concernant le spectre de la bande de 600 MHz</a>.",
     "about-auctions-formats-tab3": "Format des enchères ascendantes à rondes multiples simultanées (EARMS) ",
@@ -373,7 +373,7 @@
     "about-auctions-frameworks-link3": "Perspectives du spectre de 2023 à 2027 ",
     "about-auctions-frameworks-link3-description": "L’approche générale et les activités de planification d’ISDE liées à sa gestion du spectre des radiocommunications canadiennes au cours d’une période de 5 ans, y compris les mesures favorables à la concurrence dans ses processus d’enchères.  ",
     "about-auctions-frameworks-link4": "Cadre de la politique canadienne du spectre  ",
-    "about-auctions-frameworks-link4-description": "La politique et la gestion du spectre qui donnent une direction aux applications, aux services et aux usages sans fil",
+    "about-auctions-frameworks-link4-description": "La politique et la gestion du spectre qui donnent une direction aux applications, aux services et aux usages sans fil.",
 
     "auctions-heading": "Liste des enchères du spectre ",
     "auctions-column1": "Année",
@@ -492,14 +492,14 @@
 
     "comment2": "Some headings below need to be translated",
 
-    "brs": "Mise aux enchères de licences pour services radio à large bande (SRLB) — bande de 2 500 MHz",
-    "mmwave": "Enchères des licences de spectre dans les bandes des ondes millimétriques",
-    "3800": "Enchères des licences de spectre de la bande de 3800 MHz",
-    "3500": "Enchères des licences de spectre de la bande de 3500 MHz",
-    "2024-residual": "Auction of residual spectrum licences in the 600 MHz, 2300 MHz, 3500 MHz & 3800 MHz bands",
-    "2023-residual": "Auction of residual spectrum licences in the 600 MHz, 2500 MHz & 3500 MHz bands",
-    "2018-residual": "Enchères des licences de spectre restantes dans les bandes de 700 MHz, 2 500 MHz, 2 300 MHz et SCP-G",
-    "600": "Enchères des licences de spectre de la bande de 600 MHz",
+    "brs": "Enchères : 2500 MHz (SRLB)",
+    "mmwave": "Enchères : ondes millimétriques",
+    "3800": "Enchères : 3800 MHz",
+    "3500": "Enchères : 3500 MHz",
+    "2024-residual": "Enchères résiduelles : 600, 2300, 3500 et 3800 MHz",
+    "2023-residual": "Enchères résiduelles : 600, 2500 et 3500 MHz",
+    "2018-residual": "Enchères résiduelles : 700, 2300 et 2500 MHz, et SCP-G",
+    "600": "Enchères : 600 MHz",
 
     "alert": "Vous avez cliqué sur un lien qui vous fait quitter la maquette."
   }
