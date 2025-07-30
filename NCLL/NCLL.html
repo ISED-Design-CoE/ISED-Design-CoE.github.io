@@ -1921,12 +1921,14 @@ You can apply for a licence 90 days in advance of the start date.</p>
 					</ul>
 				</div>
 			</section>
+      <!-- Seems a shame to load all of jquery for one line of code. But the documentation (https://wet-boew.github.io/v4.0-ci/docs/ref/overlay/overlay-en.html) doesn't give a non-jQuery way to open the overlay on page load -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
             <script>
                 $(document).ready(function () {
 					$("#chat-button-bar").trigger("open.wb-overlay");
 				});
             </script>
+      <!-- That was the line -->
           <div class="row">
   <div class="pagedetails region region-content-footer">
     <div class="row">
