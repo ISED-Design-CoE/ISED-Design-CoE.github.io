@@ -18,6 +18,10 @@
       type="module"
       src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.37.0/dist/gcds/gcds.esm.js"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-utility@1.9.0/dist/gcds-utility.min.css"
+    />
 
     <style>
       /* Custom styles for spacing and layout */
@@ -25,6 +29,23 @@
       /* Adjust GCDS button styling for removal */
       .remove-email-button-container {
         margin-bottom: var(--gcds-spacing-400);
+      }
+
+      table > tbody > tr:nth-of-type(even) {
+        background-color: var(--gcds-bg-light);
+      }
+
+      table > tbody > tr {
+        border-top: solid var(--gcds-border-default) 1px;
+        border-bottom: solid var(--gcds-border-default) 1px;
+      }
+
+      table > thead > tr > th {
+        padding: var(--gcds-spacing-100);
+      }
+
+      table > tbody > tr > td {
+        padding: var(--gcds-spacing-100);
       }
     </style>
   </head>
@@ -109,50 +130,27 @@
               >Certificate information table</gcds-heading
             >
 
-            <!-- <gcds-text>
-              <table>
-                <caption>
-                  Front-end web developer course 2021
-                </caption>
-                <thead>
-                  <tr>
-                    <th scope="col">Person</th>
-                    <th scope="col">Most interest in</th>
-                    <th scope="col">Age</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Chris</th>
-                    <td>HTML tables</td>
-                    <td>22</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Dennis</th>
-                    <td>Web accessibility</td>
-                    <td>45</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Sarah</th>
-                    <td>JavaScript frameworks</td>
-                    <td>29</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Karen</th>
-                    <td>Web performance</td>
-                    <td>36</td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th scope="row" colspan="2">Average age</th>
-                    <td>33</td>
-                  </tr>
-                </tfoot>
-              </table>
-            </gcds-text> -->
+            <table id="certificate">
+              <script>
+                fetch("certificate-table.html")
+                  .then((response) => response.text())
+                  .then((html) => {
+                    document.getElementById("certificate").innerHTML = html;
+                  });
+              </script>
+            </table>
 
             <gcds-heading tag="h2">SC6 table</gcds-heading>
+
+            <table id="sc6">
+              <script>
+                fetch("sc6-table.html")
+                  .then((response) => response.text())
+                  .then((html) => {
+                    document.getElementById("sc6").innerHTML = html;
+                  });
+              </script>
+            </table>
 
             <gcds-heading tag="h2">Attestation</gcds-heading>
 
