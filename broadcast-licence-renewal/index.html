@@ -96,6 +96,8 @@
         </form>
 
         <div id="contact-info" hidden>
+          <div style="height: var(--gcds-spacing-400)"></div>
+          <hr />
           <gcds-heading tag="h2">Contact information</gcds-heading>
 
           <!-- NOTE: dd, dl etc do not work with GC Design, it seems. -Jacob -->
@@ -125,6 +127,14 @@
           >
         </div>
         <div id="main-form" hidden>
+          <div style="height: var(--gcds-spacing-300)"></div>
+          <gcds-notice
+            type="success"
+            notice-title-tag="h5"
+            notice-title="Contact information validated"
+          >
+            <div style="height: var(--gcds-spacing-200)"></div>
+          </gcds-notice>
           <form>
             <gcds-heading tag="h2" id="certificate-info"
               >Certificate information table</gcds-heading
