@@ -86,7 +86,7 @@
             "
           >
             <gcds-text
-              ><i>This section is only for mockup purposes</i></gcds-text
+              ><i>This section is for mockup purposes only</i></gcds-text
             >
             <gcds-heading tag="h2" margin-top="0">Record</gcds-heading>
             <gcds-select
@@ -147,18 +147,106 @@
           </gcds-notice>
           <form>
             <gcds-heading tag="h2" id="certificate-info"
-              >Certificate information table</gcds-heading
+              >Certificate information</gcds-heading
             >
 
-            <table id="certificate">
-              <script>
-                fetch("tables/certificate-table.html")
-                  .then((response) => response.text())
-                  .then((html) => {
-                    document.getElementById("certificate").innerHTML = html;
-                  });
-              </script>
+            <gcds-heading tag="h3"> Certificate 010299066-001</gcds-heading>
+
+            <gcds-text>
+              <b>Service Area</b><br />Calgary, AB<br />
+              <b>Call sign</b><br />CBR<br />
+              <b>Frequency</b><br />1.01<br />
+              <b>Max level</b><br />0.01<br />
+            </gcds-text>
+
+            <gcds-button
+              onclick="document.getElementById('main-form').removeAttribute('hidden')"
+              >Renew</gcds-button
+            >
+            <gcds-button
+              button-role="secondary"
+              onclick="window.location.href = '/broadcast-licence-renewal/edit-contact.html'"
+            >
+              Edit and Renew</gcds-button
+            >
+            <gcds-button
+              button-role="secondary"
+              onclick="document.getElementById('main-form').removeAttribute('hidden')"
+              >Cancel</gcds-button
+            >
+
+            <gcds-heading tag="h3"> Certificate 010299066-001</gcds-heading>
+
+            <table style="margin-bottom: 20px">
+              <thead>
+                <tr>
+                  <th>Service area</th>
+                  <th>Call sign</th>
+                  <th>Frequency</th>
+                  <th>Main / alternate</th>
+                  <th>LPFM</th>
+                  <th>Max level</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Calgary, AB<input
+                      type="hidden"
+                      name="serviceArea[]"
+                      value="Calgary, AB"
+                    />
+                  </td>
+                  <td>
+                    CBR<input type="hidden" name="callSign[]" value="CBR" />
+                  </td>
+                  <td>
+                    1.01<input
+                      type="hidden"
+                      name="frequencyMHz[]"
+                      value="1.01"
+                    />
+                  </td>
+                  <td>
+                    Main<input type="hidden" name="mainAux[]" value="Main" />
+                  </td>
+                  <td class="lp-icon">✔</td>
+                  <td>0.012</td>
+                </tr>
+              </tbody>
             </table>
+
+            <div style="display: flex; gap: var(--gcds-spacing-100)">
+              <span
+                class="gcds-icon gcds-icon-checkmark-circle"
+                style="
+                  color: var(--gcds-notice-success-text);
+                  font-size: var(--gcds-icon-font-size-h2);
+                "
+                role="img"
+                aria-hidden="true"
+              ></span>
+
+              <gcds-text>
+                Certificate 010299066-001 is set for renewal</gcds-text
+              >
+            </div>
+
+            <gcds-button
+              onclick="document.getElementById('main-form').removeAttribute('hidden')"
+              >Renew</gcds-button
+            >
+            <gcds-button
+              button-role="secondary"
+              onclick="window.location.href = '/broadcast-licence-renewal/edit-contact.html'"
+            >
+              Edit and Renew</gcds-button
+            >
+            <gcds-button
+              button-role="secondary"
+              onclick="document.getElementById('main-form').removeAttribute('hidden')"
+              >Cancel</gcds-button
+            >
 
             <gcds-heading tag="h2">SC6 table</gcds-heading>
 
