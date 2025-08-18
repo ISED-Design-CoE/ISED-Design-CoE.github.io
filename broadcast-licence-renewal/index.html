@@ -79,25 +79,35 @@
         <gcds-heading tag="h1">Broadcast licence renewal</gcds-heading>
 
         <form id="record-form" method="post">
-          <gcds-heading tag="h2">Record</gcds-heading>
-          <gcds-select
-            select-id="select-record"
-            id="select-record"
-            label="Select record to load"
-            name="record"
-            default-value="Select a record"
+          <div
+            style="
+              background-color: var(--gcds-color-grayscale-50);
+              padding: 20px;
+            "
           >
-            <option value="record-1">Broadcasting test</option>
-            <option value="record-2">Broadcasting 123</option>
-            <option value="record-3">Broadcasting stations</option>
-          </gcds-select>
+            <gcds-text
+              ><i>This section is only for mockup purposes</i></gcds-text
+            >
+            <gcds-heading tag="h2" margin-top="0">Record</gcds-heading>
+            <gcds-select
+              select-id="select-record"
+              id="select-record"
+              label="Select record to load"
+              name="record"
+              default-value="Select a record"
+            >
+              <option value="record-1">Broadcasting test</option>
+              <option value="record-2">Broadcasting 123</option>
+              <option value="record-3">Broadcasting stations</option>
+            </gcds-select>
 
-          <gcds-button type="submit">Load record</gcds-button>
+            <gcds-button type="submit">Load record</gcds-button>
+          </div>
         </form>
 
         <div id="contact-info" hidden>
-          <div style="height: var(--gcds-spacing-400)"></div>
-          <hr />
+          <gcds-heading tag="h2">Record</gcds-heading>
+          <gcds-text>Broadcasting test</gcds-text>
           <gcds-heading tag="h2">Contact information</gcds-heading>
 
           <!-- NOTE: dd, dl etc do not work with GC Design, it seems. -Jacob -->
