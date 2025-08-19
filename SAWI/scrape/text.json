@@ -247,6 +247,14 @@
     "2023-residual": "Residual auction: 600, 2500 and 3500 MHz",
     "2018-residual": "Residual auction: 700, 2300 and 2500 MHz, and PCS-G",
     "600": "Auction: 600 MHz",
+    "brs-description": "This auction allocated paired and unpaired spectrum in the 2500 to 2690 MHz range for flexible use in the Broadband Radio Service (BRS). Up to 125 MHz of spectrum was made available across the country, depending on the service area. ",
+    "mmwave-description": "This auction intends to allocate mmWave spectrum for flexible use to increase the capacity and quality of wireless networks and to promote innovation in wireless communications by supporting new technologies and business models.",
+    "3800-description": "This auction allocated 250 MHz of unpaired spectrum in the 3650 to 3900 MHz range for flexible use. The auction provided additional mid-range spectrum for the deployment of 5G services in Canada. ",
+    "3500-description": "This auction allocated 200 MHz of unpaired spectrum in the 3450 to 3650 MHz range for flexible use to facilitate the deployment of 5G services in Canada. ",
+    "2024-residual-description": "This auction allocated residual licences in the 600 MHz band, the 2300 MHz band, the 3500 MHz band and the 3800 MHz band. ",
+    "2023-residual-description": "This auction allocated residual licences in the 600 MHz band, the 2500 MHz band and the 3500 MHz band. ",
+    "2018-residual-description": "This auction allocated residual licences in the 700 MHz band, the 2300 MHz band, the 2500 MHz band and the G block for Personal Communication Services (PCS-G). ",
+    "600-description": "This auction allocated 70 MHz of unpaired spectrum in the 600 MHz band for flexible use. ",
 
     "alert": "You've clicked a link that brings you out of the mockup."
   },
@@ -500,6 +508,14 @@
     "2023-residual": "Enchères résiduelles : 600, 2500 et 3500 MHz",
     "2018-residual": "Enchères résiduelles : 700, 2300 et 2500 MHz, et SCP-G",
     "600": "Enchères : 600 MHz",
+    "brs-description": "Ces enchères ont attribué du spectre apparié et non apparié dans la gamme de 2500 à 2690 MHz aux fins d’utilisation flexible dans le service radio à large bande (SRLB). Jusqu’à 125 MHz de spectre ont été offerts partout au pays, selon la zone de service. ",
+    "mmwave-description": "Ces enchères visent à attribuer du spectre dans la bande des ondes millimétriques aux fins d’utilisation flexible pour accroître la capacité et la qualité des réseaux sans fil et promouvoir l’innovation dans les communications sans fil en soutenant de nouvelles technologies et de nouveaux modèles économiques. ",
+    "3800-description": "Ces enchères ont attribué 250 MHz de spectre non apparié dans la gamme de 3650 à 3900 MHz aux fins d’utilisation flexible. Ces enchères ont fourni du spectre de bande moyenne supplémentaire pour le déploiement des services 5G au Canada. ",
+    "3500-description": "Ces enchères ont attribué 200 MHz de spectre non apparié dans la gamme de 3450 à 3650 MHz aux fins d’utilisation flexible pour favoriser le déploiement des services 5G au Canada. ",
+    "2024-residual-description": "Ces enchères ont attribué des licences restantes dans les bandes de 600 MHz, de 2300 MHz, de 3500 MHz et de 3800 MHz. ",
+    "2023-residual-description": "Ces enchères ont attribué des licences restantes dans les bandes de 600 MHz, de 2500 MHz et de 3500 MHz. ",
+    "2018-residual-description": "Ces enchères ont attribué des licences restantes dans les bandes de 700 MHz, de 2300 MHz, de 2500 MHz et du bloc G des services de communications personnelles (SCP-G). ",
+    "600-description": "Ces enchères ont attribué 70 MHz de spectre non apparié dans la bande de 600 MHz aux fins d’utilisation flexible. ",
 
     "alert": "Vous avez cliqué sur un lien qui vous fait quitter la maquette."
   }
