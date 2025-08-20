@@ -59,10 +59,11 @@
       <gcds-search slot="search"></gcds-search>
 
       <!-- The slot="breadcrumb" attribute adds the breadcrumbs component to the header. -->
-      <gcds-breadcrumbs slot="breadcrumb">
+      <gcds-breadcrumbs hide-canada-link="true" slot="breadcrumb">
         <!-- TODO: Adjust the breadcrumb links with the correct ones for your site. -->
-        <gcds-breadcrumbs-item href="#">Home</gcds-breadcrumbs-item>
-        <gcds-breadcrumbs-item href="#">Forms</gcds-breadcrumbs-item>
+        <gcds-breadcrumbs-item href="#"
+          >Broadcast licence renewal form</gcds-breadcrumbs-item
+        >
       </gcds-breadcrumbs>
     </gcds-header>
 
@@ -77,7 +78,7 @@
     >
       <section>
         <gcds-heading tag="h1">Broadcast licence renewal</gcds-heading>
-
+        <!-- 
         <form id="record-form" method="post">
           <div
             style="
@@ -103,9 +104,9 @@
 
             <gcds-button type="submit">Load record</gcds-button>
           </div>
-        </form>
+        </form> -->
 
-        <div id="contact-info" hidden>
+        <div id="contact-info">
           <gcds-heading tag="h2">Contact information</gcds-heading>
 
           <!-- NOTE: dd, dl etc do not work with GC Design, it seems. -Jacob -->
@@ -150,7 +151,13 @@
 
             <gcds-button onclick="checkall()"> Renew all </gcds-button>
 
-            <table id="cert" style="margin-bottom: var(--gcds-spacing-300)">
+            <table
+              id="cert"
+              style="
+                margin-top: var(--gcds-spacing-300);
+                margin-bottom: var(--gcds-spacing-300);
+              "
+            >
               <script>
                 fetch("tables/certificate-table.html")
                   .then((response) => response.text())
@@ -160,10 +167,27 @@
               </script>
             </table>
 
-            <gcds-text
-              >You're set to renew <span id="renewedLicences">0</span> out of 5
-              licences</gcds-text
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: var(--gcds-spacing-100);
+                margin-top: var(--gcds-spacing-100);
+                margin-left: var(--gcds-spacing-200);
+                margin-bottom: var(--gcds-spacing-200);
+              "
             >
+              <gcds-icon
+                style="color: hsla(194, 67%, 35%, 1)"
+                name="info-circle"
+                size="h3"
+              ></gcds-icon>
+              <gcds-text margin-bottom="0" margin-top="0"
+                >You're set to renew
+                <b><span id="renewedLicences">0</span> out of 5</b>
+                certificate.</gcds-text
+              >
+            </div>
 
             <gcds-button
               onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
@@ -171,11 +195,15 @@
             >
 
             <div id="sc6andmore" hidden>
-              <gcds-heading tag="h2">Safety code 6 (SC6) table</gcds-heading>
+              <gcds-heading tag="h2">Safety code 6 (SC6)</gcds-heading>
 
               <gcds-text>
-                Only main, low power FM certificates require Safety code 6
-                compliance.</gcds-text
+                All main certificates that are not low power FM must comply with
+                <gcds-link
+                  target="_blank"
+                  href="https://www.canada.ca/en/health-canada/services/health-risks-safety/radiation/occupational-exposure-regulations/safety-code-6-radiofrequency-exposure-guidelines.html"
+                  >Safety Code 6 compliance</gcds-link
+                >.</gcds-text
               >
 
               <table id="sc6">
@@ -248,6 +276,7 @@
     <script src="scripts/populate-inputs.js"></script>
 
     <script>
+      populate_input("record-1");
       document.addEventListener("DOMContentLoaded", () => {
         let params = new URLSearchParams(document.location.search);
         if (params.get("record") != null) {
@@ -269,6 +298,7 @@
             .getElementById("change" + (i + 1))
             .removeAttribute("disabled");
           document.getElementById("renewedLicences").innerHTML = 5;
+          document.getElementById("sc6andmore").setAttribute("hidden", true);
         }
       }
     </script>
