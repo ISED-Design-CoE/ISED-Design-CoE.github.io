@@ -56,15 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   addpersonalButton.addEventListener("click", () => {
-    // Check if we've reached the maximum number of personals
-    if (personalCount < maxpersonals) {
-      const newpersonalField = createpersonalField();
-      personalFieldsContainer.appendChild(newpersonalField);
-
-      // Disable the add button if we've reached the maximum
-      if (personalCount === maxpersonals) {
-        addpersonalButton.disabled = true;
-      }
-    }
+    const newpersonalField = createpersonalField();
+    personalFieldsContainer.appendChild(newpersonalField);
   });
 });

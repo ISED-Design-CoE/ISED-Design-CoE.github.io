@@ -56,15 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   addbusinessButton.addEventListener("click", () => {
-    // Check if we've reached the maximum number of businesss
-    if (businessCount < maxbusinesss) {
-      const newbusinessField = createbusinessField();
-      businessFieldsContainer.appendChild(newbusinessField);
-
-      // Disable the add button if we've reached the maximum
-      if (businessCount === maxbusinesss) {
-        addbusinessButton.disabled = true;
-      }
-    }
+    const newbusinessField = createbusinessField();
+    businessFieldsContainer.appendChild(newbusinessField);
   });
 });

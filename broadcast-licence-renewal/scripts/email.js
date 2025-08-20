@@ -53,15 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   addEmailButton.addEventListener("click", () => {
-    // Check if we've reached the maximum number of emails
-    if (emailCount < maxEmails) {
-      const newEmailField = createEmailField();
-      emailFieldsContainer.appendChild(newEmailField);
-
-      // Disable the add button if we've reached the maximum
-      if (emailCount === maxEmails) {
-        addEmailButton.disabled = true;
-      }
-    }
+    const newEmailField = createEmailField();
+    emailFieldsContainer.appendChild(newEmailField);
   });
 });
