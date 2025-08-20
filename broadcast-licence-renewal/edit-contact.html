@@ -29,6 +29,12 @@
       .remove-email-button-container {
         margin-bottom: var(--gcds-spacing-400);
       }
+      .remove-business-button-container {
+        margin-bottom: var(--gcds-spacing-400);
+      }
+      .remove-personal-button-container {
+        margin-bottom: var(--gcds-spacing-400);
+      }
     </style>
   </head>
 
@@ -97,21 +103,45 @@
           </gcds-button>
           <br /><br />
 
-          <gcds-input
-            input-id="business-number"
-            label="Business phone number"
-            name="business_phone"
-            required
-            type=""
-          ></gcds-input>
+          <div id="business-fields-container">
+            <div class="business-input-wrapper">
+              <gcds-input
+                input-id="business-number"
+                label="Business phone number"
+                name="business_phone"
+                required
+                type=""
+              ></gcds-input>
+              <div class="remove-business-button-container">
+                <!-- Remove button for the first business number will be hidden by CSS -->
+              </div>
+            </div>
+          </div>
 
-          <gcds-input
-            input-id="personal-number"
-            label="Mobile phone number"
-            name="personal_phone"
-            required
-            type=""
-          ></gcds-input>
+          <gcds-button id="add-business-button" type="button">
+            Add another business phone number
+          </gcds-button>
+          <br /><br />
+
+          <div id="personal-fields-container">
+            <div class="personal-input-wrapper">
+              <gcds-input
+                input-id="personal-number"
+                label="Mobile phone number"
+                name="personal_phone"
+                required
+                type=""
+              ></gcds-input>
+              <div class="remove-personal-button-container">
+                <!-- Remove button for the first personal number will be hidden by CSS -->
+              </div>
+            </div>
+          </div>
+
+          <gcds-button id="add-personal-button" type="button">
+            Add another mobile phone number
+          </gcds-button>
+          <br /><br />
 
           <gcds-radios
             name="language"
@@ -145,6 +175,8 @@
     </gcds-footer>
 
     <script src="scripts/email.js"></script>
+    <script src="scripts/business.js"></script>
+    <script src="scripts/personal.js"></script>
 
     <script src="scripts/populate-inputs.js"></script>
 

@@ -66,8 +66,9 @@
         >
           <gcds-text
             >Your renewal of record <b>Broadcasting test</b> has been
-            successfully submitted</gcds-text
-          >
+            successfully submitted. It was submitted on
+            <gcds-text id="date"></gcds-text
+          ></gcds-text>
         </gcds-notice>
 
         <div style="margin-bottom: var(--gcds-spacing-600)"></div>
@@ -95,6 +96,12 @@
     <script src="scripts/populate-inputs.js"></script>
     <script>
       populate_input("record-1");
+    </script>
+    <script>
+      var date = new Date();
+      var dateTime = date.toDateString();
+
+      document.getElementById("date").innerHTML = dateTime;
     </script>
   </body>
 </html>
