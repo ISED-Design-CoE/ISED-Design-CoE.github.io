@@ -66,8 +66,7 @@
         >
           <gcds-text
             >Your renewal of record <b>Broadcasting test</b> has been
-            successfully submitted. It was submitted on
-            <gcds-text id="date"></gcds-text
+            successfully submitted. It was submitted on <span id="date"></span
           ></gcds-text>
         </gcds-notice>
 
@@ -99,7 +98,11 @@
     </script>
     <script>
       var date = new Date();
-      var dateTime = date.toDateString();
+      var dateTime = date.toLocaleString("en-CA", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
 
       document.getElementById("date").innerHTML = dateTime;
     </script>
