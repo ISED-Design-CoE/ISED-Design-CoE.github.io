@@ -37,7 +37,7 @@
         <gcds-checkboxes
           name="checkbox"
           legend="Legend"
-          onclick="if (document.getElementById('change1').getAttribute('disabled') != null){ document.getElementById('change1').removeAttribute('disabled')} else {document.getElementById('change1').setAttribute('disabled', true);document.getElementById('change1').setAttribute('value', []) }"
+          onclick="document.getElementById('sc6andmore').setAttribute('hidden', true); if (document.getElementById('change1').getAttribute('disabled') != null){ document.getElementById('change1').removeAttribute('disabled');document.getElementById('renewedLicences').innerHTML = Number(document.getElementById('renewedLicences').innerHTML) + 1} else {document.getElementById('change1').setAttribute('disabled', true);document.getElementById('change1').setAttribute('value', []);document.getElementById('renewedLicences').innerHTML = Number(document.getElementById('renewedLicences').innerHTML) - 1}"
           options='[
     { "label": "Yes", "id": "checkbox5", "value": "checkbox1"}
   ]'
@@ -84,7 +84,7 @@
         <gcds-checkboxes
           name="checkbox"
           legend="Legend"
-          onclick="if (document.getElementById('change2').getAttribute('disabled') != null){ document.getElementById('change2').removeAttribute('disabled')} else {document.getElementById('change2').setAttribute('disabled', true);document.getElementById('change2').setAttribute('value', [])}"
+          onclick="document.getElementById('sc6andmore').setAttribute('hidden', true);if (document.getElementById('change2').getAttribute('disabled') != null){ document.getElementById('change2').removeAttribute('disabled'); document.getElementById('renewedLicences').innerHTML = Number(document.getElementById('renewedLicences').innerHTML) + 1} else {document.getElementById('change2').setAttribute('disabled', true);document.getElementById('change2').setAttribute('value', []); document.getElementById('renewedLicences').innerHTML = Number(document.getElementById('renewedLicences').innerHTML) - 1}"
           options='[
     { "label": "Yes", "id": "checkbox41", "value": "checkbox1"}
   ]'
@@ -130,7 +130,7 @@
       <div style="margin-left: 30px; margin-top: 15px">
         <gcds-checkboxes
           name="checkbox"
-          onclick="if (document.getElementById('change3').getAttribute('disabled') != null){ document.getElementById('change3').removeAttribute('disabled')} else {document.getElementById('change3').setAttribute('disabled', true);document.getElementById('change3').setAttribute('value', [])}"
+          onclick="document.getElementById('sc6andmore').setAttribute('hidden', true);if (document.getElementById('change3').getAttribute('disabled') != null){ document.getElementById('change3').removeAttribute('disabled'); document.getElementById('renewedLicences').innerHTML = Number(document.getElementById('renewedLicences').innerHTML) + 1} else {document.getElementById('change3').setAttribute('disabled', true);document.getElementById('change3').setAttribute('value', []); document.getElementById('renewedLicences').innerHTML = Number(document.getElementById('renewedLicences').innerHTML) - 1}"
           legend="Legend"
           options='[
     { "label": "Yes", "id": "checkbox1", "value": "checkbox1"}
@@ -177,7 +177,7 @@
       <div style="margin-left: 30px; margin-top: 15px">
         <gcds-checkboxes
           name="checkbox"
-          onclick="if (document.getElementById('change4').getAttribute('disabled') != null){ document.getElementById('change4').removeAttribute('disabled')} else {document.getElementById('change4').setAttribute('disabled', true);document.getElementById('change4').setAttribute('value', [])}"
+          onclick="document.getElementById('sc6andmore').setAttribute('hidden', true);if (document.getElementById('change4').getAttribute('disabled') != null){ document.getElementById('change4').removeAttribute('disabled'); document.getElementById('renewedLicences').innerHTML = Number(document.getElementById('renewedLicences').innerHTML) + 1} else {document.getElementById('change4').setAttribute('disabled', true);document.getElementById('change4').setAttribute('value', []); document.getElementById('renewedLicences').innerHTML = Number(document.getElementById('renewedLicences').innerHTML) - 1}"
           legend="Legend"
           options='[
     { "label": "Yes", "id": "checkbox2", "value": "checkbox1"}
@@ -225,7 +225,7 @@
         <gcds-checkboxes
           name="checkbox"
           legend="Legend"
-          onclick="if (document.getElementById('change5').getAttribute('disabled') != null){ document.getElementById('change5').removeAttribute('disabled')} else {document.getElementById('change5').setAttribute('disabled', true);document.getElementById('change5').setAttribute('value', [])}"
+          onclick="document.getElementById('sc6andmore').setAttribute('hidden', true);if (document.getElementById('change5').getAttribute('disabled') != null){ document.getElementById('change5').removeAttribute('disabled'); document.getElementById('renewedLicences').innerHTML = Number(document.getElementById('renewedLicences').innerHTML) + 1} else {document.getElementById('change5').setAttribute('disabled', true);document.getElementById('change5').setAttribute('value', []); document.getElementById('renewedLicences').innerHTML = Number(document.getElementById('renewedLicences').innerHTML) - 1}"
           options='[
     { "label": "Yes", "id": "checkbox3", "value": "checkbox1"}
   ]'

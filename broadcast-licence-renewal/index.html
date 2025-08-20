@@ -164,7 +164,10 @@
               </script>
             </table>
 
-            <gcds-text>You're set to renew 5 out of 5 licences</gcds-text>
+            <gcds-text
+              >You're set to renew <span id="renewedLicences">0</span> out of 5
+              licences</gcds-text
+            >
 
             <gcds-button
               onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
@@ -172,7 +175,12 @@
             >
 
             <div id="sc6andmore" hidden>
-              <gcds-heading tag="h2">SC6 table</gcds-heading>
+              <gcds-heading tag="h2">Safety code 6 (SC6) table</gcds-heading>
+
+              <gcds-text>
+                Only main, low power FM certificates require Safety code 6
+                compliance.</gcds-text
+              >
 
               <table id="sc6">
                 <script>
