@@ -106,7 +106,6 @@
         </form>
 
         <div id="contact-info" hidden>
-          <gcds-heading tag="h2">Record: Broadcasting test</gcds-heading>
           <gcds-heading tag="h2">Contact information</gcds-heading>
 
           <!-- NOTE: dd, dl etc do not work with GC Design, it seems. -Jacob -->
@@ -118,7 +117,7 @@
             <b>Email</b><br /><span id="email[]"></span><br />
             <b>Business phone number</b><br /><span id="business_phone"></span
             ><br />
-            <b>Personal phone number</b><br /><span id="personal_phone"></span
+            <b>Mobile phone number</b><br /><span id="personal_phone"></span
             ><br />
             <b>Language</b><br /><span id="language"></span><br />
           </gcds-text>
@@ -149,10 +148,7 @@
               >Certificate information</gcds-heading
             >
 
-            <gcds-button
-              onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
-              >Renew all</gcds-button
-            >
+            <gcds-button onclick="checkall()"> Renew all </gcds-button>
 
             <table id="cert" style="margin-bottom: var(--gcds-spacing-300)">
               <script>
@@ -226,23 +222,6 @@
                 type="text"
               ></gcds-input>
 
-              <gcds-input
-                input-id="sig-email"
-                label="Email"
-                name="sig_email"
-                required
-                type="email"
-              ></gcds-input>
-
-              <!-- TODO: derive date from when signature is made. -->
-              <gcds-input
-                input-id="sig-date"
-                label="Date"
-                name="sig-date"
-                required
-                type="date"
-              ></gcds-input>
-
               <gcds-button
                 type="submit"
                 onClick="window.location.href = '/broadcast-licence-renewal/review.html'"
@@ -279,6 +258,18 @@
           document.getElementById("certificate-info").scrollIntoView();
         }
       });
+    </script>
+    <script>
+      function checkall() {
+        for (let i = 0; i < 5; i++) {
+          document
+            .getElementById("renew-" + i)
+            .setAttribute("value", '["checkbox1"]');
+          document
+            .getElementById("change" + (i + 1))
+            .removeAttribute("disabled");
+        }
+      }
     </script>
   </body>
 </html>

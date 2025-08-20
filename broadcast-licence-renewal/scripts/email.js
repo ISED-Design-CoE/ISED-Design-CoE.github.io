@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "email-fields-container"
   );
   const addEmailButton = document.getElementById("add-email-button");
-  const maxEmails = 3;
   let emailCount = 1; // Start with the first email input
 
   // Function to create a new email input and its remove button
@@ -53,15 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   addEmailButton.addEventListener("click", () => {
-    // Check if we've reached the maximum number of emails
-    if (emailCount < maxEmails) {
-      const newEmailField = createEmailField();
-      emailFieldsContainer.appendChild(newEmailField);
-
-      // Disable the add button if we've reached the maximum
-      if (emailCount === maxEmails) {
-        addEmailButton.disabled = true;
-      }
-    }
+    const newEmailField = createEmailField();
+    emailFieldsContainer.appendChild(newEmailField);
   });
 });
