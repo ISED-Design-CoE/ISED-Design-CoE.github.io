@@ -59,10 +59,11 @@
       <gcds-search slot="search"></gcds-search>
 
       <!-- The slot="breadcrumb" attribute adds the breadcrumbs component to the header. -->
-      <gcds-breadcrumbs slot="breadcrumb">
+      <gcds-breadcrumbs hide-canada-link="true" slot="breadcrumb">
         <!-- TODO: Adjust the breadcrumb links with the correct ones for your site. -->
-        <gcds-breadcrumbs-item href="#">Home</gcds-breadcrumbs-item>
-        <gcds-breadcrumbs-item href="#">Forms</gcds-breadcrumbs-item>
+        <gcds-breadcrumbs-item href="#"
+          >Broadcast licence renewal form</gcds-breadcrumbs-item
+        >
       </gcds-breadcrumbs>
     </gcds-header>
 
@@ -77,7 +78,7 @@
     >
       <section>
         <gcds-heading tag="h1">Broadcast licence renewal</gcds-heading>
-
+        <!-- 
         <form id="record-form" method="post">
           <div
             style="
@@ -86,7 +87,7 @@
             "
           >
             <gcds-text
-              ><i>This section is only for mockup purposes</i></gcds-text
+              ><i>This section is for mockup purposes only</i></gcds-text
             >
             <gcds-heading tag="h2" margin-top="0">Record</gcds-heading>
             <gcds-select
@@ -103,11 +104,9 @@
 
             <gcds-button type="submit">Load record</gcds-button>
           </div>
-        </form>
+        </form> -->
 
-        <div id="contact-info" hidden>
-          <gcds-heading tag="h2">Record</gcds-heading>
-          <gcds-text>Broadcasting test</gcds-text>
+        <div id="contact-info">
           <gcds-heading tag="h2">Contact information</gcds-heading>
 
           <!-- NOTE: dd, dl etc do not work with GC Design, it seems. -Jacob -->
@@ -119,7 +118,7 @@
             <b>Email</b><br /><span id="email[]"></span><br />
             <b>Business phone number</b><br /><span id="business_phone"></span
             ><br />
-            <b>Personal phone number</b><br /><span id="personal_phone"></span
+            <b>Mobile phone number</b><br /><span id="personal_phone"></span
             ><br />
             <b>Language</b><br /><span id="language"></span><br />
           </gcds-text>
@@ -147,87 +146,116 @@
           </gcds-notice>
           <form>
             <gcds-heading tag="h2" id="certificate-info"
-              >Certificate information table</gcds-heading
+              >Certificate information</gcds-heading
             >
 
-            <table id="certificate">
+            <gcds-button onclick="checkall()"> Renew all </gcds-button>
+
+            <table
+              id="cert"
+              style="
+                margin-top: var(--gcds-spacing-300);
+                margin-bottom: var(--gcds-spacing-300);
+              "
+            >
               <script>
                 fetch("tables/certificate-table.html")
                   .then((response) => response.text())
                   .then((html) => {
-                    document.getElementById("certificate").innerHTML = html;
+                    document.getElementById("cert").innerHTML = html;
                   });
               </script>
             </table>
 
-            <gcds-heading tag="h2">SC6 table</gcds-heading>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: var(--gcds-spacing-100);
+                margin-top: var(--gcds-spacing-100);
+                margin-left: var(--gcds-spacing-200);
+                margin-bottom: var(--gcds-spacing-200);
+              "
+            >
+              <gcds-icon
+                style="color: hsla(194, 67%, 35%, 1)"
+                name="info-circle"
+                size="h3"
+              ></gcds-icon>
+              <gcds-text margin-bottom="0" margin-top="0"
+                >You're set to renew
+                <b><span id="renewedLicences">0</span> out of 5</b>
+                certificate.</gcds-text
+              >
+            </div>
 
-            <table id="sc6">
-              <script>
-                fetch("tables/sc6-table.html")
-                  .then((response) => response.text())
-                  .then((html) => {
-                    document.getElementById("sc6").innerHTML = html;
-                  });
-              </script>
-            </table>
+            <gcds-button
+              onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+              >Validate</gcds-button
+            >
 
-            <gcds-heading tag="h2">Attestation</gcds-heading>
+            <div id="sc6andmore" hidden>
+              <gcds-heading tag="h2">Safety code 6 (SC6)</gcds-heading>
 
-            <gcds-checkboxes
-              name="checkbox"
-              legend="Attestation"
-              options='[
+              <gcds-text>
+                All main certificates that are not low power FM must comply with
+                <gcds-link
+                  target="_blank"
+                  href="https://www.canada.ca/en/health-canada/services/health-risks-safety/radiation/occupational-exposure-regulations/safety-code-6-radiofrequency-exposure-guidelines.html"
+                  >Safety Code 6 compliance</gcds-link
+                >.</gcds-text
+              >
+
+              <table id="sc6">
+                <script>
+                  fetch("tables/sc6-table.html")
+                    .then((response) => response.text())
+                    .then((html) => {
+                      document.getElementById("sc6").innerHTML = html;
+                    });
+                </script>
+              </table>
+
+              <gcds-heading tag="h2">Attestation</gcds-heading>
+
+              <gcds-checkboxes
+                name="checkbox"
+                legend="Attestation"
+                options='[
                         { "label": "The information on this form is true, accurate and complete.", "id": "checkbox1", "value": "checkbox1"},
                         { "label": "The station(s) will be used only as authorized and compliant.", "id": "checkbox2", "value": "checkbox2"},
                         { "label": "SC6 compliance info available on request.", "id": "checkbox3", "value": "checkbox3"},
                         { "label": "No changes to environment or equipment since SC6 compliance.", "id": "checkbox4", "value": "checkbox4"},
                         { "label": "My installation(s) is/are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
                     ]'
-              required
-            >
-            </gcds-checkboxes>
+                required
+              >
+              </gcds-checkboxes>
 
-            <gcds-heading tag="h2">Comments</gcds-heading>
-            <gcds-textarea
-              textarea-id="comments-textarea"
-              label="Additional information"
-              name="comments"
-            ></gcds-textarea>
+              <gcds-heading tag="h2">Comments</gcds-heading>
+              <gcds-textarea
+                textarea-id="comments-textarea"
+                label="Additional information"
+                name="comments"
+              ></gcds-textarea>
 
-            <gcds-heading tag="h2">Signature</gcds-heading>
+              <gcds-heading tag="h2">Signature</gcds-heading>
 
-            <gcds-input
-              input-id="sig-name"
-              label="Name (print)"
-              name="sig_name"
-              required
-              hint="Your name below acts as a digital signature."
-              type="text"
-            ></gcds-input>
+              <gcds-input
+                input-id="sig-name"
+                label="Name (print)"
+                name="sig_name"
+                required
+                hint="Your name below acts as a digital signature."
+                type="text"
+              ></gcds-input>
 
-            <gcds-input
-              input-id="sig-email"
-              label="Email"
-              name="sig_email"
-              required
-              type="email"
-            ></gcds-input>
-
-            <!-- TODO: derive date from when signature is made. -->
-            <gcds-input
-              input-id="sig-date"
-              label="Date"
-              name="sig-date"
-              required
-              type="date"
-            ></gcds-input>
-
-            <gcds-button
-              type="submit"
-              onClick="window.location.href = '/broadcast-licence-renewal/review.html'"
-              >Continue to review</gcds-button
-            >
+              <gcds-button
+                type="submit"
+                onClick="window.location.href = '/broadcast-licence-renewal/review.html'"
+                >Continue to review</gcds-button
+              >
+            </div>
           </form>
         </div>
       </section>
@@ -248,6 +276,7 @@
     <script src="scripts/populate-inputs.js"></script>
 
     <script>
+      populate_input("record-1");
       document.addEventListener("DOMContentLoaded", () => {
         let params = new URLSearchParams(document.location.search);
         if (params.get("record") != null) {
@@ -258,6 +287,20 @@
           document.getElementById("certificate-info").scrollIntoView();
         }
       });
+    </script>
+    <script>
+      function checkall() {
+        for (let i = 0; i < 5; i++) {
+          document
+            .getElementById("renew-" + i)
+            .setAttribute("value", '["checkbox1"]');
+          document
+            .getElementById("change" + (i + 1))
+            .removeAttribute("disabled");
+          document.getElementById("renewedLicences").innerHTML = 5;
+          document.getElementById("sc6andmore").setAttribute("hidden", true);
+        }
+      }
     </script>
   </body>
 </html>

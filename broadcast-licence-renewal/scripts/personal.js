@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "input-id",
       `personal-${personalCount}-input`
     );
-    newpersonalInput.setAttribute("label", "personal Address");
+    newpersonalInput.setAttribute("label", "Mobile phone number");
     newpersonalInput.setAttribute("name", "personal[]"); // Use array notation for multiple personals
     newpersonalInput.setAttribute("type", "personal");
     newpersonalInput.setAttribute("hint", "Optional"); // All additional personals are optional

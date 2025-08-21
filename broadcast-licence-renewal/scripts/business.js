@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "input-id",
       `business-${businessCount}-input`
     );
-    newbusinessInput.setAttribute("label", "business Address");
+    newbusinessInput.setAttribute("label", "Business phone number");
     newbusinessInput.setAttribute("name", "business[]"); // Use array notation for multiple businesss
     newbusinessInput.setAttribute("type", "business");
     newbusinessInput.setAttribute("hint", "Optional"); // All additional businesss are optional
