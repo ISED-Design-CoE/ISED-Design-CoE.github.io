@@ -195,26 +195,29 @@
             >
 
             <div id="sc6andmore" hidden>
-              <gcds-heading tag="h2">Safety code 6</gcds-heading>
+              <div id="sc6-table" hidden>
+                <gcds-heading tag="h2">Safety code 6</gcds-heading>
 
-              <gcds-text character-limit="false">
-                All main certificates that are not low power FM must comply with
-                <gcds-link
-                  target="_blank"
-                  href="https://www.canada.ca/en/health-canada/services/health-risks-safety/radiation/occupational-exposure-regulations/safety-code-6-radiofrequency-exposure-guidelines.html"
-                  >Safety Code 6 compliance</gcds-link
-                >.</gcds-text
-              >
+                <gcds-text character-limit="false">
+                  All main certificates that are not low power FM must comply
+                  with
+                  <gcds-link
+                    target="_blank"
+                    href="https://www.canada.ca/en/health-canada/services/health-risks-safety/radiation/occupational-exposure-regulations/safety-code-6-radiofrequency-exposure-guidelines.html"
+                    >Safety Code 6 compliance</gcds-link
+                  >.</gcds-text
+                >
 
-              <table id="sc6">
-                <script>
-                  fetch("tables/sc6-table.html")
-                    .then((response) => response.text())
-                    .then((html) => {
-                      document.getElementById("sc6").innerHTML = html;
-                    });
-                </script>
-              </table>
+                <table id="sc6">
+                  <script>
+                    fetch("tables/sc6-table.html")
+                      .then((response) => response.text())
+                      .then((html) => {
+                        document.getElementById("sc6").innerHTML = html;
+                      });
+                  </script>
+                </table>
+              </div>
 
               <gcds-heading tag="h2">Attestation</gcds-heading>
 
@@ -288,19 +291,6 @@
         }
       });
     </script>
-    <script>
-      function checkall() {
-        for (let i = 0; i < 5; i++) {
-          document
-            .getElementById("renew-" + i)
-            .setAttribute("value", '["checkbox1"]');
-          document
-            .getElementById("change" + (i + 1))
-            .removeAttribute("disabled");
-          document.getElementById("renewedLicences").innerHTML = 5;
-          document.getElementById("sc6andmore").setAttribute("hidden", true);
-        }
-      }
-    </script>
+    <script type="text/javascript" src="scripts/toggle-table.js"></script>
   </body>
 </html>
