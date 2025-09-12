@@ -1,0 +1,79 @@
+<!-- sc6 table. Seperated to make main html legible. -->
+
+<thead>
+  <tr>
+    <th>Certificate number</th>
+    <th>Service area</th>
+    <th>Call sign</th>
+    <th>Frequency</th>
+    <th>Max level</th>
+    <th>Date of SC6 report</th>
+    <th>Analysis company or person</th>
+  </tr>
+</thead>
+<tbody>
+  <tr id="sc6-row-1">
+    <td>
+      010299066-001<input
+        type="hidden"
+        name="sc6certNum[]"
+        value="010299066-001"
+      />
+    </td>
+    <td>
+      Calgary, AB<input
+        type="hidden"
+        name="sc6serviceArea[]"
+        value="Calgary, AB"
+      />
+    </td>
+    <td>CBR<input type="hidden" name="sc6callSign[]" value="CBR" /></td>
+    <td>1.01<input type="hidden" name="sc6Freq[]" value="1.01" /></td>
+    <td>
+      <gcds-input
+        disabled
+        type="number"
+        min="0"
+        step="0.01"
+        name="sc6max[]"
+        size="5"
+        aria-label="SC6 Max Level (%)"
+      />
+    </td>
+    <td><gcds-input disabled type="date" name="sc6date[]" /></td>
+    <td><gcds-input disabled type="text" name="sc6person[]" /></td>
+  </tr>
+  <tr id="sc6-row-2">
+    <td>
+      010301305-002<input
+        type="hidden"
+        name="sc6certNum[]"
+        value="010301305-002"
+      />
+    </td>
+    <td>
+      Crowsnest Pass, AB<input
+        type="hidden"
+        name="sc6serviceArea[]"
+        value="Crowsnest Pass, AB"
+      />
+    </td>
+    <td>
+      CBR-2-FM<input type="hidden" name="sc6callSign[]" value="CBR-2-FM" />
+    </td>
+    <td>102.3<input type="hidden" name="sc6Freq[]" value="102.3" /></td>
+    <td>
+      <gcds-input
+        disabled
+        type="number"
+        min="0"
+        step="0.01"
+        name="sc6max[]"
+        size="5"
+        aria-label="SC6 Max Level (%)"
+      />
+    </td>
+    <td><gcds-input disabled type="date" name="sc6date[]" /></td>
+    <td><gcds-input disabled type="text" name="sc6person[]" /></td>
+  </tr>
+</tbody>
