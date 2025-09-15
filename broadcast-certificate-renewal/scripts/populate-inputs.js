@@ -1,5 +1,6 @@
 function populate_input(record_id) {
-  fetch("../data/data.json")
+  console.log(window.location.pathname)
+  fetch("/broadcast-certificate-renewal/data/data.json")
     .then((res) => {
       if (!res.ok) throw new Error("Failed to fetch filtered_output.json");
       return res.json();
