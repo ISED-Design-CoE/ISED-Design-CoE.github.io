@@ -139,31 +139,6 @@
           Edit</gcds-button
         >
 
-        <gcds-heading tag="h2">Safety code 6</gcds-heading>
-
-        <table
-          id="sc6"
-          style="
-            margin-top: var(--gcds-spacing-300);
-            margin-bottom: var(--gcds-spacing-300);
-          "
-        >
-          <script>
-            fetch("tables/sc6-table-review.html")
-              .then((response) => response.text())
-              .then((html) => {
-                document.getElementById("sc6").innerHTML = html;
-              });
-          </script>
-        </table>
-
-        <gcds-button
-          onclick="window.location.href = 'edit-contact.html'"
-          button-role="secondary"
-        >
-          Edit</gcds-button
-        >
-
         <gcds-heading tag="h2">Changes to approved parameters</gcds-heading>
         <gcds-radios
           id="modify-radio"
@@ -198,6 +173,31 @@
             after submitting the form.</gcds-text
           >
         </div>
+
+        <gcds-button
+          onclick="window.location.href = 'edit-contact.html'"
+          button-role="secondary"
+        >
+          Edit</gcds-button
+        >
+
+        <gcds-heading tag="h2">Safety code 6</gcds-heading>
+
+        <table
+          id="sc6"
+          style="
+            margin-top: var(--gcds-spacing-300);
+            margin-bottom: var(--gcds-spacing-300);
+          "
+        >
+          <script>
+            fetch("tables/sc6-table-review.html")
+              .then((response) => response.text())
+              .then((html) => {
+                document.getElementById("sc6").innerHTML = html;
+              });
+          </script>
+        </table>
 
         <gcds-button
           onclick="window.location.href = 'edit-contact.html'"
