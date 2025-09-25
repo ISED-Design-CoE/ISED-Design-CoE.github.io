@@ -47,6 +47,10 @@
       table > tbody > tr > td {
         padding: var(--gcds-spacing-100);
       }
+
+      [hidden] {
+        display: none !important;
+      }
     </style>
   </head>
 
@@ -193,6 +197,62 @@
             >
 
             <div id="sc6andmore" hidden>
+              <gcds-heading tag="h2"
+                >Changes to approved parameters</gcds-heading
+              >
+              <gcds-radios
+                id="modify-radio"
+                name="modify"
+                legend="Have you already submitted the request to modify your certificate?"
+                options='[
+                        { "label": "Yes", "id": "y", "value": "Yes"},
+                        { "label": "No", "id": "n", "value": "No"}
+                    ]'
+              >
+              </gcds-radios>
+
+              <script>
+                document
+                  .getElementById("modify-radio")
+                  .addEventListener("change", function (e) {
+                    console.log("info:");
+                    if (e.target.value == "No") {
+                      document
+                        .getElementById("modify-warning")
+                        .removeAttribute("hidden");
+                    } else {
+                      document
+                        .getElementById("modify-warning")
+                        .setAttribute("hidden", true);
+                    }
+                  });
+              </script>
+
+              <div
+                hidden
+                id="modify-warning"
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: var(--gcds-spacing-100);
+                  margin-top: var(--gcds-spacing-100);
+                  margin-bottom: var(--gcds-spacing-200);
+                "
+              >
+                <gcds-icon
+                  style="color: hsla(194, 67%, 35%, 1)"
+                  name="info-circle"
+                  size="h3"
+                ></gcds-icon>
+                <gcds-text
+                  margin-bottom="0"
+                  margin-top="0"
+                  character-limit="false"
+                  >You will be provided information on how to submit the
+                  modification after submitting the form.</gcds-text
+                >
+              </div>
+
               <div id="sc6-table" hidden>
                 <gcds-heading tag="h2">Safety code 6</gcds-heading>
 

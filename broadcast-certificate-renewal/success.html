@@ -97,6 +97,33 @@
           ></gcds-text>
         </gcds-notice>
 
+        <div style="height: var(--gcds-spacing-400)"></div>
+
+        <gcds-notice
+          type="info"
+          notice-title-tag="h2"
+          notice-title="Modify your certificates"
+          id="modify-your-cert"
+        >
+          <gcds-text
+            >To modify your certificates, visit
+            <gcds-link
+              external="true"
+              href="https://ised-isde.canada.ca/site/spectrum-management-system/en/broadcasting-services/modify-your-broadcasting-certificate"
+              >Modify your broadcasting certificate</gcds-link
+            >.</gcds-text
+          >
+          <!-- Not sure if we need the following... - Jacob -->
+          <gcds-text
+            >For guidance, refer to
+            <gcds-link
+              external="true"
+              href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radio-authorizations/broadcasting-certification/how-apply-broadcasting-certificate"
+              >How to apply for a broadcasting certificate</gcds-link
+            >.
+          </gcds-text>
+        </gcds-notice>
+
         <gcds-heading tag="h2">Contact information</gcds-heading>
 
         <!-- NOTE: dd, dl etc do not work with GC Design, it seems. -Jacob -->
@@ -128,6 +155,55 @@
               });
           </script>
         </table>
+
+        <gcds-heading tag="h2">Changes to approved parameters</gcds-heading>
+        <gcds-radios
+          id="modify-radio"
+          name="modify"
+          legend="Have you already submitted the request to modify your certificate?"
+          options='[
+                        { "label": "Yes", "id": "y", "value": "Yes"},
+                        { "label": "No", "id": "n", "value": "No"}
+                    ]'
+          disabled
+          value="No"
+        >
+        </gcds-radios>
+
+        <div
+          id="modify-warning"
+          style="
+            display: flex;
+            align-items: center;
+            gap: var(--gcds-spacing-100);
+            margin-top: var(--gcds-spacing-100);
+            margin-bottom: var(--gcds-spacing-200);
+          "
+        >
+          <gcds-icon
+            style="color: hsla(194, 67%, 35%, 1)"
+            name="info-circle"
+            size="h3"
+          ></gcds-icon>
+          <gcds-text margin-bottom="0" margin-top="0" character-limit="false"
+            >See the
+            <gcds-link id="scroll-to-mod" href="#modify-your-cert"
+              >notice above</gcds-link
+            >
+            to learn how to modify your certificates.</gcds-text
+          >
+        </div>
+
+        <script>
+          document
+            .getElementById("scroll-to-mod")
+            .addEventListener("click", (e) => {
+              e.preventDefault();
+              document
+                .querySelector(e.currentTarget.href)
+                .scrollIntoView({ behavior: "smooth", inline: "nearest" });
+            });
+        </script>
 
         <gcds-heading tag="h2">Safety code 6</gcds-heading>
 
