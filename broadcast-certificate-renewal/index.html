@@ -129,7 +129,8 @@
           >
 
           <gcds-button
-            onclick="document.getElementById('main-form').removeAttribute('hidden')"
+            id="validate-button"
+            onclick="document.getElementById('main-form').removeAttribute('hidden'); document.getElementById('validate-button').style.display = 'none';"
             >Validate</gcds-button
           >
         </div>
@@ -281,11 +282,14 @@
       document.addEventListener("DOMContentLoaded", () => {
         let params = new URLSearchParams(document.location.search);
         if (params.get("record") != null) {
+          console.log("test");
           populate_input(params.get("record"));
           document.getElementById("main-form").removeAttribute("hidden");
           console.log(document.getElementById("main-form"));
-          document.getElementById("select-record").value = params.get("record");
           document.getElementById("certificate-info").scrollIntoView();
+          console.log("test");
+          document.getElementById("validate-button").style.display = "none";
+          document.getElementById("select-record").value = params.get("record");
         }
       });
     </script>
