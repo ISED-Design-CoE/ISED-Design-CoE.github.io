@@ -11,7 +11,7 @@
     <th>Analysis company or person</th>
   </tr>
 </thead>
-<tbody>
+<tbody id="sc6-tbody">
   <tr id="sc6-row-1" hidden>
     <td>
       010299066-001<input
@@ -37,6 +37,7 @@
         name="sc6max[]"
         size="5"
         aria-label="SC6 Max Level (%)"
+        id="firstmax"
       />
     </td>
     <td><gcds-input type="date" name="sc6date[]" /></td>
@@ -69,6 +70,7 @@
         name="sc6max[]"
         size="5"
         aria-label="SC6 Max Level (%)"
+        id="secondmax"
       />
     </td>
     <td><gcds-input type="date" name="sc6date[]" /></td>
@@ -93,7 +95,7 @@
       CBXP-FM<gcds-input type="hidden" name="sc6callSign[]" value="CBXP-FM" />
     </td>
     <td>102.5<gcds-input type="hidden" name="sc6Freq[]" value="102.5" /></td>
-    <td>
+    <td class="level-container">
       <gcds-input
         type="number"
         min="0"
@@ -101,6 +103,7 @@
         name="sc6max[]"
         size="5"
         aria-label="SC6 Max Level (%)"
+        id="thirdmax"
       />
     </td>
     <td><gcds-input type="date" name="sc6date[]" /></td>

@@ -213,9 +213,68 @@
                       .then((response) => response.text())
                       .then((html) => {
                         document.getElementById("sc6").innerHTML = html;
+
+                        var warning = {};
+
+                        const container = document.getElementById("sc6-tbody");
+
+                        const inputs = container.querySelectorAll("gcds-input");
+
+                        inputs.forEach((input) => {
+                          input.addEventListener("gcdsInput", (event) => {
+                            if (input.getAttribute("name") == "sc6max[]") {
+                              if (event.detail > 100) {
+                                warning[input.getAttribute("id")] = true;
+                                document.getElementById(
+                                  "sc6-warning"
+                                ).style.display = "flex";
+                              } else {
+                                warning[input.getAttribute("id")] = false;
+
+                                // if all values are below 100, hide the warning
+                                if (
+                                  Object.values(warning).every(
+                                    (value) => value === false
+                                  )
+                                ) {
+                                  document.getElementById(
+                                    "sc6-warning"
+                                  ).style.display = "none";
+                                }
+                              }
+                            }
+                          });
+                        });
                       });
                   </script>
                 </table>
+
+                <div style="height: var(--gcds-spacing-200)"></div>
+
+                <div
+                  id="sc6-warning"
+                  style="
+                    display: none;
+                    align-items: center;
+                    gap: var(--gcds-spacing-100);
+                    margin-top: var(--gcds-spacing-100);
+                    margin-left: var(--gcds-spacing-200);
+                    margin-bottom: var(--gcds-spacing-200);
+                  "
+                >
+                  <gcds-icon
+                    style="color: var(--gcds-notice-warning-text)"
+                    name="warning-triangle"
+                    size="h3"
+                  ></gcds-icon>
+                  <gcds-text
+                    margin-bottom="0"
+                    margin-top="0"
+                    character-limit="false"
+                    >It appears that the site is potentially not conform to SC6.
+                    Please contact our nearest district office.</gcds-text
+                  >
+                </div>
               </div>
 
               <gcds-heading tag="h2">Attestation</gcds-heading>
@@ -282,14 +341,10 @@
       document.addEventListener("DOMContentLoaded", () => {
         let params = new URLSearchParams(document.location.search);
         if (params.get("record") != null) {
-          console.log("test");
           populate_input(params.get("record"));
           document.getElementById("main-form").removeAttribute("hidden");
-          console.log(document.getElementById("main-form"));
           document.getElementById("certificate-info").scrollIntoView();
-          console.log("test");
           document.getElementById("validate-button").style.display = "none";
-          document.getElementById("select-record").value = params.get("record");
         }
       });
     </script>
