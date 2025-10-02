@@ -116,7 +116,7 @@
             <b>Business name</b><br /><span id="business_name"></span><br />
             <b>Address</b><br /><span id="address"></span><br />
             <b>Email</b><br /><span id="email[]"></span><br />
-            <b>Business phone number</b><br /><span id="business_phone"></span
+            <b>Phone number</b><br /><span id="business_phone"></span
             ><br />
             <b>Language</b><br /><span id="language"></span><br />
           </gcds-text>
@@ -129,7 +129,8 @@
           >
 
           <gcds-button
-            onclick="document.getElementById('main-form').removeAttribute('hidden')"
+            id="validate-button"
+            onclick="document.getElementById('main-form').removeAttribute('hidden'); document.getElementById('validate-button').style.display = 'none';"
             >Validate</gcds-button
           >
         </div>
@@ -202,7 +203,7 @@
                   <gcds-link
                     target="_blank"
                     href="https://www.canada.ca/en/health-canada/services/health-risks-safety/radiation/occupational-exposure-regulations/safety-code-6-radiofrequency-exposure-guidelines.html"
-                    >Safety Code 6 compliance</gcds-link
+                    >Safety Code 6</gcds-link
                   >.</gcds-text
                 >
 
@@ -212,9 +213,68 @@
                       .then((response) => response.text())
                       .then((html) => {
                         document.getElementById("sc6").innerHTML = html;
+
+                        var warning = {};
+
+                        const container = document.getElementById("sc6-tbody");
+
+                        const inputs = container.querySelectorAll("gcds-input");
+
+                        inputs.forEach((input) => {
+                          input.addEventListener("gcdsInput", (event) => {
+                            if (input.getAttribute("name") == "sc6max[]") {
+                              if (event.detail > 100) {
+                                warning[input.getAttribute("id")] = true;
+                                document.getElementById(
+                                  "sc6-warning"
+                                ).style.display = "flex";
+                              } else {
+                                warning[input.getAttribute("id")] = false;
+
+                                // if all values are below 100, hide the warning
+                                if (
+                                  Object.values(warning).every(
+                                    (value) => value === false
+                                  )
+                                ) {
+                                  document.getElementById(
+                                    "sc6-warning"
+                                  ).style.display = "none";
+                                }
+                              }
+                            }
+                          });
+                        });
                       });
                   </script>
                 </table>
+
+                <div style="height: var(--gcds-spacing-200)"></div>
+
+                <div
+                  id="sc6-warning"
+                  style="
+                    display: none;
+                    align-items: center;
+                    gap: var(--gcds-spacing-100);
+                    margin-top: var(--gcds-spacing-100);
+                    margin-left: var(--gcds-spacing-200);
+                    margin-bottom: var(--gcds-spacing-200);
+                  "
+                >
+                  <gcds-icon
+                    style="color: var(--gcds-notice-warning-text)"
+                    name="warning-triangle"
+                    size="h3"
+                  ></gcds-icon>
+                  <gcds-text
+                    margin-bottom="0"
+                    margin-top="0"
+                    character-limit="false"
+                    >It appears that one or more of these sites might not conform to Safety Code 6.
+                    Please contact our nearest district office.</gcds-text
+                  >
+                </div>
               </div>
 
               <gcds-heading tag="h2">Attestation</gcds-heading>
@@ -224,9 +284,9 @@
                 legend="Attestation"
                 options='[
                         { "label": "The information on this form is true, accurate and complete.", "id": "checkbox1", "value": "checkbox1"},
-                        { "label": "The stations will be used only as authorized and compliant.", "id": "checkbox2", "value": "checkbox2"},
-                        { "label": "Safety code 6 compliance info available on request.", "id": "checkbox3", "value": "checkbox3"},
-                        { "label": "No changes to environment or equipment since safety code 6 compliance.", "id": "checkbox4", "value": "checkbox4"},
+                        { "label": "The stations will be used only as authorized.", "id": "checkbox2", "value": "checkbox2"},
+                        { "label": "I will provide Safety Code 6 compliance information on request.", "id": "checkbox3", "value": "checkbox3"},
+                        { "label": "My environment and equipment have not changed since they were last assessed for Safety Code 6 compliance.", "id": "checkbox4", "value": "checkbox4"},
                         { "label": "My installations are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
                     ]'
                 required
@@ -262,7 +322,7 @@
       </section>
 
       <!-- TODO: Update the date to reflect the page's most recent change. -->
-      <gcds-date-modified>2024-08-22</gcds-date-modified>
+      <gcds-date-modified>2025-10-01</gcds-date-modified>
     </gcds-container>
 
     <!---------- Footer ---------->
@@ -283,9 +343,8 @@
         if (params.get("record") != null) {
           populate_input(params.get("record"));
           document.getElementById("main-form").removeAttribute("hidden");
-          console.log(document.getElementById("main-form"));
-          document.getElementById("select-record").value = params.get("record");
           document.getElementById("certificate-info").scrollIntoView();
+          document.getElementById("validate-button").style.display = "none";
         }
       });
     </script>

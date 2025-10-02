@@ -92,9 +92,16 @@
           notice-title="Renewal has been submitted"
         >
           <gcds-text
-            >Your broadcast certificate renewal has been successfully submitted.
-            It was submitted on <span id="date"></span
-          ></gcds-text>
+            >We acknowledge receipt of your request to renew your
+            broadcasting certificates, as of
+            <span id="date"></span> (confirmation #634529).</gcds-text
+          >
+          <gcds-text
+            >We will contact you if further information or documentation is
+            required. Otherwise, we will send you a confirmation email including a link to print
+            your certificates by the last week of
+            August.</gcds-text
+          >
         </gcds-notice>
 
         <gcds-heading tag="h2">Contact information</gcds-heading>
@@ -106,7 +113,7 @@
           <b>Business name</b><br /><span id="business_name"></span><br />
           <b>Address</b><br /><span id="address"></span><br />
           <b>Email</b><br /><span id="email[]"></span><br />
-          <b>Business phone number</b><br /><span id="business_phone"></span
+          <b>Phone number</b><br /><span id="business_phone"></span
           ><br />
           <b>Language</b><br /><span id="language"></span><br />
         </gcds-text>
@@ -129,7 +136,7 @@
           </script>
         </table>
 
-        <gcds-heading tag="h2">Safety code 6</gcds-heading>
+        <gcds-heading tag="h2">Safety Code 6</gcds-heading>
 
         <table
           id="sc6"
@@ -147,6 +154,31 @@
           </script>
         </table>
 
+        <div
+          id="sc6-warning"
+          style="
+            display: flex;
+            align-items: center;
+            gap: var(--gcds-spacing-100);
+            margin-top: var(--gcds-spacing-100);
+            margin-left: var(--gcds-spacing-200);
+            margin-bottom: var(--gcds-spacing-200);
+          "
+        >
+          <gcds-icon
+            style="color: var(--gcds-notice-warning-text)"
+            name="warning-triangle"
+            size="h3"
+          ></gcds-icon>
+            <gcds-text
+              margin-bottom="0"
+              margin-top="0"
+              character-limit="false"
+              >It appears that one or more of these sites might not conform to Safety Code 6.
+              Please contact our nearest district office.</gcds-text
+            >
+        </div>
+
         <gcds-heading tag="h2">Attestation</gcds-heading>
 
         <gcds-checkboxes
@@ -154,9 +186,9 @@
           legend="Attestation"
           options='[
                         { "label": "The information on this form is true, accurate and complete.", "id": "checkbox1", "value": "checkbox1"},
-                        { "label": "The stations will be used only as authorized and compliant.", "id": "checkbox2", "value": "checkbox2"},
-                        { "label": "Safety code 6 compliance info available on request.", "id": "checkbox3", "value": "checkbox3"},
-                        { "label": "No changes to environment or equipment since safety code 6 compliance.", "id": "checkbox4", "value": "checkbox4"},
+                        { "label": "The stations will be used only as authorized.", "id": "checkbox2", "value": "checkbox2"},
+                        { "label": "I will provide Safety Code 6 compliance information on request.", "id": "checkbox3", "value": "checkbox3"},
+                        { "label": "My environment and equipment have not changed since they were last assessed for Safety Code 6 compliance.", "id": "checkbox4", "value": "checkbox4"},
                         { "label": "My installations are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
                     ]'
           value='["checkbox1","checkbox2","checkbox3","checkbox4","checkbox5"]'
@@ -167,8 +199,8 @@
         <gcds-heading tag="h2">Comments</gcds-heading>
 
         <gcds-text>
-          <b>Additional information</b><br /><span id="comments"
-            >You should know this and that.</span
+          <span id="comments"
+            >(comments provided by certificate holder).</span
           ><br />
         </gcds-text>
 
@@ -183,7 +215,7 @@
         <div style="margin-bottom: var(--gcds-spacing-600)"></div>
       </section>
       <!-- TODO: Update the date to reflect the page's most recent change. -->
-      <gcds-date-modified>2024-08-22</gcds-date-modified>
+      <gcds-date-modified>2025-10-01</gcds-date-modified>
     </gcds-container>
 
     <!---------- Footer ---------->
