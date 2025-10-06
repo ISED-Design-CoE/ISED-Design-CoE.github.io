@@ -129,9 +129,7 @@
 
           <gcds-button
             id="validate-button"
-            onclick="document.getElementById('main-form').removeAttribute('hidden');
-             document.getElementById('validate-button').style.display = 'none';
-             document.getElementById('save-and-clear').removeAttribute('hidden')"
+            onclick="document.getElementById('main-form').removeAttribute('hidden'); document.getElementById('validate-button').style.display = 'none';"
             >Validate</gcds-button
           >
         </div>
@@ -189,10 +187,28 @@
               >
             </div>
 
-            <gcds-button
-              onclick="document.getElementById('sc6andmore').removeAttribute('hidden');"
-              >Validate</gcds-button
-            >
+            <div>
+              <gcds-button
+                class="first-button"
+                onclick="document.getElementById('sc6andmore').removeAttribute('hidden');
+                [...document.getElementsByClassName('first-button')].forEach(el => {
+                  el.style.display = 'none';
+                })"
+                >Validate</gcds-button
+              >
+              <gcds-button
+                class="first-button"
+                button-role="secondary"
+                onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+                >Save</gcds-button
+              >
+              <gcds-button
+                class="first-button"
+                button-role="secondary"
+                onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+                >Clear form</gcds-button
+              >
+            </div>
 
             <div id="sc6andmore" hidden>
               <div id="sc6-table" hidden>
@@ -313,32 +329,25 @@
                 type="text"
               ></gcds-input>
 
-              <gcds-button
-                type="submit"
-                onClick="window.location.href = 'review.html'"
-                >Continue to review</gcds-button
-              >
+              <div>
+                <gcds-button
+                  type="submit"
+                  onClick="window.location.href = 'review.html'"
+                  >Continue to review</gcds-button
+                >
+                <gcds-button
+                  button-role="secondary"
+                  onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+                  >Save</gcds-button
+                >
+                <gcds-button
+                  button-role="secondary"
+                  onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+                  >Clear form</gcds-button
+                >
+              </div>
             </div>
           </form>
-        </div>
-
-        <div
-          id="save-and-clear"
-          style="margin-top: var(--gcds-spacing-200)"
-          hidden
-        >
-          <gcds-button
-            class="first-button"
-            button-role="secondary"
-            onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
-            >Save</gcds-button
-          >
-          <gcds-button
-            class="first-button"
-            button-role="secondary"
-            onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
-            >Clear form</gcds-button
-          >
         </div>
       </section>
 
@@ -366,7 +375,6 @@
           document.getElementById("main-form").removeAttribute("hidden");
           document.getElementById("certificate-info").scrollIntoView();
           document.getElementById("validate-button").style.display = "none";
-          document.getElementById("save-and-clear").removeAttribute("hidden");
         }
       });
     </script>

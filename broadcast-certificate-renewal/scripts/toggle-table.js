@@ -2,6 +2,9 @@ sc6Rows = 0;
 
 function toggleTable(changeId, sc6RowId = null) {
   document.getElementById("sc6andmore").setAttribute("hidden", true);
+  [...document.getElementsByClassName("first-button")].forEach(
+    (el) => (el.style.display = "inline")
+  );
   if (document.getElementById(changeId).getAttribute("disabled") != null) {
     document.getElementById(changeId).removeAttribute("disabled");
     document.getElementById("renewedLicences").innerHTML =
@@ -37,6 +40,9 @@ function checkall() {
   }
   document.getElementById("renewedLicences").innerHTML = 5;
   document.getElementById("sc6andmore").setAttribute("hidden", true);
+  [...document.getElementsByClassName("first-button")].forEach(
+    (el) => (el.style.display = "inline")
+  );
   document.getElementById("sc6-row-1").removeAttribute("hidden");
   document.getElementById("sc6-row-2").removeAttribute("hidden");
   document.getElementById("sc6-row-3").removeAttribute("hidden");
