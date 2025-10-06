@@ -116,8 +116,7 @@
             <b>Business name</b><br /><span id="business_name"></span><br />
             <b>Address</b><br /><span id="address"></span><br />
             <b>Email</b><br /><span id="email[]"></span><br />
-            <b>Phone number</b><br /><span id="business_phone"></span
-            ><br />
+            <b>Phone number</b><br /><span id="business_phone"></span><br />
             <b>Language</b><br /><span id="language"></span><br />
           </gcds-text>
 
@@ -130,7 +129,9 @@
 
           <gcds-button
             id="validate-button"
-            onclick="document.getElementById('main-form').removeAttribute('hidden'); document.getElementById('validate-button').style.display = 'none';"
+            onclick="document.getElementById('main-form').removeAttribute('hidden');
+             document.getElementById('validate-button').style.display = 'none';
+             document.getElementById('save-and-clear').removeAttribute('hidden')"
             >Validate</gcds-button
           >
         </div>
@@ -189,7 +190,7 @@
             </div>
 
             <gcds-button
-              onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+              onclick="document.getElementById('sc6andmore').removeAttribute('hidden');"
               >Validate</gcds-button
             >
 
@@ -271,8 +272,9 @@
                     margin-bottom="0"
                     margin-top="0"
                     character-limit="false"
-                    >It appears that one or more of these sites might not conform to Safety Code 6.
-                    Please contact our nearest district office.</gcds-text
+                    >It appears that one or more of these sites might not
+                    conform to Safety Code 6. Please contact our nearest
+                    district office.</gcds-text
                   >
                 </div>
               </div>
@@ -319,6 +321,25 @@
             </div>
           </form>
         </div>
+
+        <div
+          id="save-and-clear"
+          style="margin-top: var(--gcds-spacing-200)"
+          hidden
+        >
+          <gcds-button
+            class="first-button"
+            button-role="secondary"
+            onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+            >Save</gcds-button
+          >
+          <gcds-button
+            class="first-button"
+            button-role="secondary"
+            onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+            >Clear form</gcds-button
+          >
+        </div>
       </section>
 
       <!-- TODO: Update the date to reflect the page's most recent change. -->
@@ -345,6 +366,7 @@
           document.getElementById("main-form").removeAttribute("hidden");
           document.getElementById("certificate-info").scrollIntoView();
           document.getElementById("validate-button").style.display = "none";
+          document.getElementById("save-and-clear").removeAttribute("hidden");
         }
       });
     </script>
