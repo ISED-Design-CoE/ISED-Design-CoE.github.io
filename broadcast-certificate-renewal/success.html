@@ -92,14 +92,14 @@
           notice-title="Renewal has been submitted"
         >
           <gcds-text
-            >We acknowledge receipt of your request to renew your
-            broadcasting certificates, as of
-            <span id="date"></span> (confirmation #634529).</gcds-text
+            >We acknowledge receipt of your request to renew your broadcasting
+            certificates, as of <span id="date"></span> (confirmation
+            #634529).</gcds-text
           >
           <gcds-text
             >We will contact you if further information or documentation is
-            required. Otherwise, we will send you a confirmation email including a link to print
-            your certificates by the last week of
+            required. Otherwise, we will send you a confirmation email including
+            a link to print your certificates by the last week of
             August.</gcds-text
           >
         </gcds-notice>
@@ -113,8 +113,7 @@
           <b>Business name</b><br /><span id="business_name"></span><br />
           <b>Address</b><br /><span id="address"></span><br />
           <b>Email</b><br /><span id="email[]"></span><br />
-          <b>Phone number</b><br /><span id="business_phone"></span
-          ><br />
+          <b>Phone number</b><br /><span id="business_phone"></span><br />
           <b>Language</b><br /><span id="language"></span><br />
         </gcds-text>
 
@@ -165,18 +164,17 @@
             margin-bottom: var(--gcds-spacing-200);
           "
         >
-          <gcds-icon
-            style="color: var(--gcds-notice-warning-text)"
-            name="warning-triangle"
-            size="h3"
-          ></gcds-icon>
+          <gcds-notice
+            type="danger"
+            notice-title-tag="h5"
+            notice-title="Max level beyond 100."
+          >
             <gcds-text
-              margin-bottom="0"
-              margin-top="0"
-              character-limit="false"
-              >It appears that one or more of these sites might not conform to Safety Code 6.
-              Please contact our nearest district office.</gcds-text
+              >It appears that one or more of these sites might not conform to
+              Safety Code 6. Please contact our nearest district
+              office.</gcds-text
             >
+          </gcds-notice>
         </div>
 
         <gcds-heading tag="h2">Attestation</gcds-heading>
@@ -199,8 +197,7 @@
         <gcds-heading tag="h2">Comments</gcds-heading>
 
         <gcds-text>
-          <span id="comments"
-            >(comments provided by certificate holder).</span
+          <span id="comments">(comments provided by certificate holder).</span
           ><br />
         </gcds-text>
 

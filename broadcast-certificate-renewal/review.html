@@ -167,16 +167,17 @@
             margin-bottom: var(--gcds-spacing-200);
           "
         >
-          <gcds-icon
-            style="color: var(--gcds-notice-warning-text)"
-            name="warning-triangle"
-            size="h3"
-          ></gcds-icon>
-          <gcds-text margin-bottom="0" margin-top="0" character-limit="false"
-            >It appears that one or more of these sites might not conform to
-            Safety Code 6. Please contact our nearest district
-            office.</gcds-text
+          <gcds-notice
+            type="danger"
+            notice-title-tag="h5"
+            notice-title="Max level beyond 100."
           >
+            <gcds-text
+              >It appears that one or more of these sites might not conform to
+              Safety Code 6. Please contact our nearest district
+              office.</gcds-text
+            >
+          </gcds-notice>
         </div>
 
         <gcds-button
