@@ -116,8 +116,7 @@
             <b>Business name</b><br /><span id="business_name"></span><br />
             <b>Address</b><br /><span id="address"></span><br />
             <b>Email</b><br /><span id="email[]"></span><br />
-            <b>Phone number</b><br /><span id="business_phone"></span
-            ><br />
+            <b>Phone number</b><br /><span id="business_phone"></span><br />
             <b>Language</b><br /><span id="language"></span><br />
           </gcds-text>
 
@@ -188,10 +187,28 @@
               >
             </div>
 
-            <gcds-button
-              onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
-              >Validate</gcds-button
-            >
+            <div>
+              <gcds-button
+                class="first-button"
+                onclick="document.getElementById('sc6andmore').removeAttribute('hidden');
+                [...document.getElementsByClassName('first-button')].forEach(el => {
+                  el.style.display = 'none';
+                })"
+                >Validate</gcds-button
+              >
+              <gcds-button
+                class="first-button"
+                button-role="secondary"
+                onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+                >Save</gcds-button
+              >
+              <gcds-button
+                class="first-button"
+                button-role="secondary"
+                onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+                >Clear form</gcds-button
+              >
+            </div>
 
             <div id="sc6andmore" hidden>
               <div id="sc6-table" hidden>
@@ -271,8 +288,9 @@
                     margin-bottom="0"
                     margin-top="0"
                     character-limit="false"
-                    >It appears that one or more of these sites might not conform to Safety Code 6.
-                    Please contact our nearest district office.</gcds-text
+                    >It appears that one or more of these sites might not
+                    conform to Safety Code 6. Please contact our nearest
+                    district office.</gcds-text
                   >
                 </div>
               </div>
@@ -311,11 +329,23 @@
                 type="text"
               ></gcds-input>
 
-              <gcds-button
-                type="submit"
-                onClick="window.location.href = 'review.html'"
-                >Continue to review</gcds-button
-              >
+              <div>
+                <gcds-button
+                  type="submit"
+                  onClick="window.location.href = 'review.html'"
+                  >Continue to review</gcds-button
+                >
+                <gcds-button
+                  button-role="secondary"
+                  onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+                  >Save</gcds-button
+                >
+                <gcds-button
+                  button-role="secondary"
+                  onclick="document.getElementById('sc6andmore').removeAttribute('hidden')"
+                  >Clear form</gcds-button
+                >
+              </div>
             </div>
           </form>
         </div>
