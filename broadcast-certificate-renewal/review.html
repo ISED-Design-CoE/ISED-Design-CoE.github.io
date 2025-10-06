@@ -102,8 +102,7 @@
           <b>Business name</b><br /><span id="business_name"></span><br />
           <b>Address</b><br /><span id="address"></span><br />
           <b>Email</b><br /><span id="email[]"></span><br />
-          <b>Phone number</b><br /><span id="business_phone"></span
-          ><br />
+          <b>Phone number</b><br /><span id="business_phone"></span><br />
           <b>Language</b><br /><span id="language"></span><br />
         </gcds-text>
 
@@ -173,13 +172,11 @@
             name="warning-triangle"
             size="h3"
           ></gcds-icon>
-            <gcds-text
-              margin-bottom="0"
-              margin-top="0"
-              character-limit="false"
-              >It appears that one or more of these sites might not conform to Safety Code 6.
-              Please contact our nearest district office.</gcds-text
-            >
+          <gcds-text margin-bottom="0" margin-top="0" character-limit="false"
+            >It appears that one or more of these sites might not conform to
+            Safety Code 6. Please contact our nearest district
+            office.</gcds-text
+          >
         </div>
 
         <gcds-button
@@ -200,45 +197,27 @@
                         { "label": "My environment and equipment have not changed since they were last assessed for Safety Code 6 compliance.", "id": "checkbox4", "value": "checkbox4"},
                         { "label": "My installations are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
                     ]'
-          value='["checkbox1","checkbox2","checkbox3","checkbox4","checkbox5"]'
-          disabled
+          required
         >
         </gcds-checkboxes>
 
-        <gcds-button
-          onclick="window.location.href = 'edit-contact.html'"
-          button-role="secondary"
-        >
-          Edit</gcds-button
-        >
-
         <gcds-heading tag="h2">Comments</gcds-heading>
-
-        <gcds-text>
-          <span id="comments"
-            >(comments provided by certificate holder).</span
-          ><br />
-        </gcds-text>
-
-        <gcds-button
-          onclick="window.location.href = 'edit-contact.html'"
-          button-role="secondary"
-        >
-          Edit</gcds-button
-        >
+        <gcds-textarea
+          textarea-id="comments-textarea"
+          label="Additional information"
+          name="comments"
+        ></gcds-textarea>
 
         <gcds-heading tag="h2">Signature</gcds-heading>
 
-        <gcds-text>
-          <b>Name (print)</b><br /><span id="comments">John Doe</span><br />
-        </gcds-text>
-
-        <gcds-button
-          onclick="window.location.href = 'edit-contact.html'"
-          button-role="secondary"
-        >
-          Edit</gcds-button
-        >
+        <gcds-input
+          input-id="sig-name"
+          label="Name (print)"
+          name="sig_name"
+          required
+          hint="Your name below acts as a digital signature."
+          type="text"
+        ></gcds-input>
 
         <div style="margin-bottom: var(--gcds-spacing-400)"></div>
 
