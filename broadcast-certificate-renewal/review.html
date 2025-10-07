@@ -247,5 +247,34 @@
     <script>
       populate_input("record-1");
     </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => {
+          console.log("test!!");
+          all_radio = document.getElementsByClassName("hide-legend");
+
+          Array.from(all_radio).forEach((element) => {
+            const shadow = element.shadowRoot;
+            if (!shadow) {
+              console.warn("No shadowRoot found for", element);
+              return;
+            }
+            const fieldset = shadow.querySelector("fieldset");
+            if (!fieldset) {
+              console.warn("No <fieldset> found in shadowRoot for", element);
+              return;
+            }
+            const legend = fieldset.querySelector("legend");
+            if (!legend) {
+              console.warn("No <legend> found in <fieldset> for", element);
+              return;
+            }
+            // Boolean attribute, either use .hidden = true or setAttribute("hidden", "")
+            legend.hidden = true; // or legend.setAttribute("hidden", "");
+          });
+        }, 350);
+      });
+    </script>
   </body>
 </html>

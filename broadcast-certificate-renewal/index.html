@@ -129,9 +129,80 @@
 
           <gcds-button
             id="validate-button"
-            onclick="document.getElementById('main-form').removeAttribute('hidden'); document.getElementById('validate-button').style.display = 'none';"
+            onclick="document.getElementById('main-form').removeAttribute('hidden'); document.getElementById('validate-button').style.display = 'none'; test()"
             >Validate</gcds-button
           >
+
+          <script>
+            sc6Rows = 0;
+            function test() {
+              [...document.getElementsByClassName("hide-legend")].forEach(
+                (el) => {
+                  console.log(el);
+                  el.shadowRoot
+                    .querySelector("fieldset")
+                    .querySelector("legend")
+                    .setAttribute("hidden", true);
+                  el.addEventListener("gcdsInput", (event) => {
+                    document
+                      .getElementById("sc6andmore")
+                      .setAttribute("hidden", true);
+                    [
+                      ...document.getElementsByClassName("first-button"),
+                    ].forEach((el) => (el.style.display = "inline"));
+                    if (event.detail == "yes") {
+                      event.target.setAttribute("previous", "yes");
+                      document
+                        .getElementById(event.target.getAttribute("change"))
+                        .removeAttribute("disabled");
+                      document.getElementById("renewedLicences").innerHTML =
+                        Number(
+                          document.getElementById("renewedLicences").innerHTML
+                        ) + 1;
+                      sc6RowId = event.target.getAttribute("row-id");
+                      if (sc6RowId != null) {
+                        document
+                          .getElementById(sc6RowId)
+                          .removeAttribute("hidden");
+                        if (sc6Rows == 0) {
+                          document
+                            .getElementById("sc6-table")
+                            .removeAttribute("hidden");
+                        }
+                        sc6Rows += 1;
+                      }
+                    } else {
+                      if (event.target.getAttribute("previous") == "yes") {
+                        event.target.setAttribute("previous", "no");
+                        document
+                          .getElementById(event.target.getAttribute("change"))
+                          .setAttribute("disabled", true);
+                        document
+                          .getElementById(event.target.getAttribute("change"))
+                          .setAttribute("value", []);
+                        document.getElementById("renewedLicences").innerHTML =
+                          Number(
+                            document.getElementById("renewedLicences").innerHTML
+                          ) - 1;
+                        sc6RowId = event.target.getAttribute("row-id");
+                        if (sc6RowId != null) {
+                          document
+                            .getElementById(sc6RowId)
+                            .setAttribute("hidden", true);
+                          sc6Rows -= 1;
+                          if (sc6Rows == 0) {
+                            document
+                              .getElementById("sc6-table")
+                              .setAttribute("hidden", true);
+                          }
+                        }
+                      }
+                    }
+                  });
+                }
+              );
+            }
+          </script>
         </div>
         <div id="main-form" hidden>
           <div style="height: var(--gcds-spacing-300)"></div>
@@ -154,6 +225,7 @@
               style="
                 margin-top: var(--gcds-spacing-300);
                 margin-bottom: var(--gcds-spacing-300);
+                width: 110%;
               "
             >
               <script>
@@ -224,7 +296,7 @@
                   >.</gcds-text
                 >
 
-                <table id="sc6">
+                <table id="sc6" style="width: 110%">
                   <script>
                     fetch("tables/sc6-table.html")
                       .then((response) => response.text())
@@ -296,6 +368,7 @@
               <div>
                 <gcds-button
                   type="submit"
+                  button-role="start"
                   onClick="window.location.href = 'review.html'"
                   >Continue to review</gcds-button
                 >
