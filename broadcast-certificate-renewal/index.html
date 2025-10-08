@@ -129,9 +129,80 @@
 
           <gcds-button
             id="validate-button"
-            onclick="document.getElementById('main-form').removeAttribute('hidden'); document.getElementById('validate-button').style.display = 'none';"
+            onclick="document.getElementById('main-form').removeAttribute('hidden'); document.getElementById('validate-button').style.display = 'none'; test()"
             >Validate</gcds-button
           >
+
+          <script>
+            sc6Rows = 0;
+            function test() {
+              [...document.getElementsByClassName("hide-legend")].forEach(
+                (el) => {
+                  console.log(el);
+                  el.shadowRoot
+                    .querySelector("fieldset")
+                    .querySelector("legend")
+                    .setAttribute("hidden", true);
+                  el.addEventListener("gcdsInput", (event) => {
+                    document
+                      .getElementById("sc6andmore")
+                      .setAttribute("hidden", true);
+                    [
+                      ...document.getElementsByClassName("first-button"),
+                    ].forEach((el) => (el.style.display = "inline"));
+                    if (event.detail == "yes") {
+                      event.target.setAttribute("previous", "yes");
+                      document
+                        .getElementById(event.target.getAttribute("change"))
+                        .removeAttribute("disabled");
+                      document.getElementById("renewedLicences").innerHTML =
+                        Number(
+                          document.getElementById("renewedLicences").innerHTML
+                        ) + 1;
+                      sc6RowId = event.target.getAttribute("row-id");
+                      if (sc6RowId != null) {
+                        document
+                          .getElementById(sc6RowId)
+                          .removeAttribute("hidden");
+                        if (sc6Rows == 0) {
+                          document
+                            .getElementById("sc6-table")
+                            .removeAttribute("hidden");
+                        }
+                        sc6Rows += 1;
+                      }
+                    } else {
+                      if (event.target.getAttribute("previous") == "yes") {
+                        event.target.setAttribute("previous", "no");
+                        document
+                          .getElementById(event.target.getAttribute("change"))
+                          .setAttribute("disabled", true);
+                        document
+                          .getElementById(event.target.getAttribute("change"))
+                          .setAttribute("value", []);
+                        document.getElementById("renewedLicences").innerHTML =
+                          Number(
+                            document.getElementById("renewedLicences").innerHTML
+                          ) - 1;
+                        sc6RowId = event.target.getAttribute("row-id");
+                        if (sc6RowId != null) {
+                          document
+                            .getElementById(sc6RowId)
+                            .setAttribute("hidden", true);
+                          sc6Rows -= 1;
+                          if (sc6Rows == 0) {
+                            document
+                              .getElementById("sc6-table")
+                              .setAttribute("hidden", true);
+                          }
+                        }
+                      }
+                    }
+                  });
+                }
+              );
+            }
+          </script>
         </div>
         <div id="main-form" hidden>
           <div style="height: var(--gcds-spacing-300)"></div>
@@ -154,6 +225,7 @@
               style="
                 margin-top: var(--gcds-spacing-300);
                 margin-bottom: var(--gcds-spacing-300);
+                width: 110%;
               "
             >
               <script>
@@ -224,7 +296,7 @@
                   >.</gcds-text
                 >
 
-                <table id="sc6">
+                <table id="sc6" style="width: 110%">
                   <script>
                     fetch("tables/sc6-table.html")
                       .then((response) => response.text())
@@ -279,59 +351,24 @@
                     margin-bottom: var(--gcds-spacing-200);
                   "
                 >
-                  <gcds-icon
-                    style="color: var(--gcds-notice-warning-text)"
-                    name="warning-triangle"
-                    size="h3"
-                  ></gcds-icon>
-                  <gcds-text
-                    margin-bottom="0"
-                    margin-top="0"
-                    character-limit="false"
-                    >It appears that one or more of these sites might not
-                    conform to Safety Code 6. Please contact our nearest
-                    district office.</gcds-text
+                  <gcds-notice
+                    type="danger"
+                    notice-title-tag="h5"
+                    notice-title="Max level beyond 100."
                   >
+                    <gcds-text
+                      >It appears that one or more of these sites might not
+                      conform to Safety Code 6. Please contact our nearest
+                      district office.</gcds-text
+                    >
+                  </gcds-notice>
                 </div>
               </div>
-
-              <gcds-heading tag="h2">Attestation</gcds-heading>
-
-              <gcds-checkboxes
-                name="checkbox"
-                legend="Attestation"
-                options='[
-                        { "label": "The information on this form is true, accurate and complete.", "id": "checkbox1", "value": "checkbox1"},
-                        { "label": "The stations will be used only as authorized.", "id": "checkbox2", "value": "checkbox2"},
-                        { "label": "I will provide Safety Code 6 compliance information on request.", "id": "checkbox3", "value": "checkbox3"},
-                        { "label": "My environment and equipment have not changed since they were last assessed for Safety Code 6 compliance.", "id": "checkbox4", "value": "checkbox4"},
-                        { "label": "My installations are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
-                    ]'
-                required
-              >
-              </gcds-checkboxes>
-
-              <gcds-heading tag="h2">Comments</gcds-heading>
-              <gcds-textarea
-                textarea-id="comments-textarea"
-                label="Additional information"
-                name="comments"
-              ></gcds-textarea>
-
-              <gcds-heading tag="h2">Signature</gcds-heading>
-
-              <gcds-input
-                input-id="sig-name"
-                label="Name (print)"
-                name="sig_name"
-                required
-                hint="Your name below acts as a digital signature."
-                type="text"
-              ></gcds-input>
 
               <div>
                 <gcds-button
                   type="submit"
+                  button-role="start"
                   onClick="window.location.href = 'review.html'"
                   >Continue to review</gcds-button
                 >

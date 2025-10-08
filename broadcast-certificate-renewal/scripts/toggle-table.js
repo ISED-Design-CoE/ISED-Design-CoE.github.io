@@ -33,9 +33,8 @@ function toggleTable(changeId, sc6RowId = null) {
 
 function checkall() {
   for (let i = 0; i < 5; i++) {
-    document
-      .getElementById("renew-" + i)
-      .setAttribute("value", '["checkbox1"]');
+    document.getElementById("renew-" + i).setAttribute("value", "yes");
+    document.getElementById("renew-" + i).setAttribute("previous", "yes");
     document.getElementById("change" + (i + 1)).removeAttribute("disabled");
   }
   document.getElementById("renewedLicences").innerHTML = 5;
