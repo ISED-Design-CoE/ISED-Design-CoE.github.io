@@ -102,8 +102,7 @@
           <b>Business name</b><br /><span id="business_name"></span><br />
           <b>Address</b><br /><span id="address"></span><br />
           <b>Email</b><br /><span id="email[]"></span><br />
-          <b>Business phone number</b><br /><span id="business_phone"></span
-          ><br />
+          <b>Phone number</b><br /><span id="business_phone"></span><br />
           <b>Language</b><br /><span id="language"></span><br />
         </gcds-text>
 
@@ -157,6 +156,30 @@
           </script>
         </table>
 
+        <div
+          id="sc6-warning"
+          style="
+            display: flex;
+            align-items: center;
+            gap: var(--gcds-spacing-100);
+            margin-top: var(--gcds-spacing-100);
+            margin-left: var(--gcds-spacing-200);
+            margin-bottom: var(--gcds-spacing-200);
+          "
+        >
+          <gcds-notice
+            type="danger"
+            notice-title-tag="h5"
+            notice-title="Max level beyond 100."
+          >
+            <gcds-text
+              >It appears that one or more of these sites might not conform to
+              Safety Code 6. Please contact our nearest district
+              office.</gcds-text
+            >
+          </gcds-notice>
+        </div>
+
         <gcds-button
           onclick="window.location.href = 'edit-contact.html'"
           button-role="secondary"
@@ -167,53 +190,35 @@
 
         <gcds-checkboxes
           name="checkbox"
-          legend="Attestation"
+          legend="I certify that:"
           options='[
-                        { "label": "The information on this form is true, accurate and complete.", "id": "checkbox1", "value": "checkbox1"},
-                        { "label": "The stations will be used only as authorized and compliant.", "id": "checkbox2", "value": "checkbox2"},
-                        { "label": "Safety code 6 compliance info available on request.", "id": "checkbox3", "value": "checkbox3"},
-                        { "label": "No changes to environment or equipment since safety code 6 compliance.", "id": "checkbox4", "value": "checkbox4"},
-                        { "label": "My installations are currently compliant and will remain so.", "id": "checkbox5", "value": "checkbox5"}
+                        { "label": "The information on this form is true, accurate, and complete.", "id": "checkbox1", "value": "checkbox1"},
+                        { "label": "The stations will be used only as authorized by ISED.", "id": "checkbox2", "value": "checkbox2"},
+                        { "label": "I will provide Safety Code 6 compliance information on request by ISED within 5 days, as per the condition of authorization for the given station(s).", "id": "checkbox3", "value": "checkbox3"},
+                        { "label": "The local radio environment and equipment for the given station(s) has not changed since they were last assessed for Safety Code 6 compliance.", "id": "checkbox4", "value": "checkbox4"},
+                        { "label": "My installations are currently compliant with Safety Code 6 and will remain compliant at all times.", "id": "checkbox5", "value": "checkbox5"}
                     ]'
-          value='["checkbox1","checkbox2","checkbox3","checkbox4","checkbox5"]'
-          disabled
+          required
         >
         </gcds-checkboxes>
 
-        <gcds-button
-          onclick="window.location.href = 'edit-contact.html'"
-          button-role="secondary"
-        >
-          Edit</gcds-button
-        >
-
         <gcds-heading tag="h2">Comments</gcds-heading>
-
-        <gcds-text>
-          <b>Additional information</b><br /><span id="comments"
-            >You should know this and that.</span
-          ><br />
-        </gcds-text>
-
-        <gcds-button
-          onclick="window.location.href = 'edit-contact.html'"
-          button-role="secondary"
-        >
-          Edit</gcds-button
-        >
+        <gcds-textarea
+          textarea-id="comments-textarea"
+          label="Additional information"
+          name="comments"
+        ></gcds-textarea>
 
         <gcds-heading tag="h2">Signature</gcds-heading>
 
-        <gcds-text>
-          <b>Name (print)</b><br /><span id="comments">John Doe</span><br />
-        </gcds-text>
-
-        <gcds-button
-          onclick="window.location.href = 'edit-contact.html'"
-          button-role="secondary"
-        >
-          Edit</gcds-button
-        >
+        <gcds-input
+          input-id="sig-name"
+          label="Name (print)"
+          name="sig_name"
+          required
+          hint="Your name below acts as a digital signature."
+          type="text"
+        ></gcds-input>
 
         <div style="margin-bottom: var(--gcds-spacing-400)"></div>
 
@@ -226,7 +231,7 @@
       </section>
 
       <!-- TODO: Update the date to reflect the page's most recent change. -->
-      <gcds-date-modified>2024-08-22</gcds-date-modified>
+      <gcds-date-modified>2025-10-01</gcds-date-modified>
     </gcds-container>
 
     <!---------- Footer ---------->
@@ -241,6 +246,35 @@
     <script src="scripts/populate-inputs.js"></script>
     <script>
       populate_input("record-1");
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => {
+          console.log("test!!");
+          all_radio = document.getElementsByClassName("hide-legend");
+
+          Array.from(all_radio).forEach((element) => {
+            const shadow = element.shadowRoot;
+            if (!shadow) {
+              console.warn("No shadowRoot found for", element);
+              return;
+            }
+            const fieldset = shadow.querySelector("fieldset");
+            if (!fieldset) {
+              console.warn("No <fieldset> found in shadowRoot for", element);
+              return;
+            }
+            const legend = fieldset.querySelector("legend");
+            if (!legend) {
+              console.warn("No <legend> found in <fieldset> for", element);
+              return;
+            }
+            // Boolean attribute, either use .hidden = true or setAttribute("hidden", "")
+            legend.hidden = true; // or legend.setAttribute("hidden", "");
+          });
+        }, 350);
+      });
     </script>
   </body>
 </html>

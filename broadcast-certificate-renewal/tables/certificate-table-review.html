@@ -1,6 +1,6 @@
 <!-- Certificate info table. Seperated to make main html legible. -->
 
-<thead>
+<thead class="font-size-text-small">
   <tr>
     <th>Certificate number</th>
     <th>Service area</th>
@@ -12,7 +12,7 @@
     <th>Change the certificate's approved parameters?</th>
   </tr>
 </thead>
-<tbody>
+<tbody class="font-size-text-small">
   <tr>
     <td>
       010299066-001<input
@@ -34,18 +34,23 @@
     <td class="lp-icon">✔</td>
     <td>
       <div style="margin-left: 30px; margin-top: 15px">
-        <gcds-checkboxes
-          disabled
-          name="checkbox"
-          legend="Legend"
-          value='["checkbox1"]'
-          id="renew-0"
-          onclick="toggleTable('change1')"
+        <gcds-radios
+          class="hide-legend"
+          name="renew[4]"
+          id="renew-4"
+          legend="Renew this certificate?"
           options='[
-    { "label": "Yes", "id": "checkbox5", "value": "checkbox1"}
-  ]'
-        >
-        </gcds-checkboxes>
+            { "label": "Yes", "id": "renew-4-yes", "value": "yes" },
+            { "label": "No", "id": "renew-4-no", "value": "no" },
+            { "label": "Decide later", "id": "renew-4-later", "value": "later" }
+          ]'
+          value="yes"
+          change="change5"
+          row-id="sc6-row-3"
+          previous="none"
+          previous="none"
+          disabled
+        ></gcds-radios>
       </div>
     </td>
     <td>
@@ -84,18 +89,23 @@
     <td class="lp-icon"></td>
     <td>
       <div style="margin-left: 30px; margin-top: 15px">
-        <gcds-checkboxes
-          disabled
-          name="checkbox"
-          legend="Legend"
-          value='["checkbox1"]'
-          id="renew-1"
-          onclick="toggleTable('change2','sc6-row-1')"
+        <gcds-radios
+          class="hide-legend"
+          name="renew[4]"
+          id="renew-4"
+          legend="Renew this certificate?"
           options='[
-    { "label": "Yes", "id": "checkbox41", "value": "checkbox1"}
-  ]'
-        >
-        </gcds-checkboxes>
+            { "label": "Yes", "id": "renew-4-yes", "value": "yes" },
+            { "label": "No", "id": "renew-4-no", "value": "no" },
+            { "label": "Decide later", "id": "renew-4-later", "value": "later" }
+          ]'
+          value="yes"
+          change="change5"
+          row-id="sc6-row-3"
+          previous="none"
+          previous="none"
+          disabled
+        ></gcds-radios>
       </div>
     </td>
     <td>
@@ -134,18 +144,23 @@
     <td class="lp-icon"></td>
     <td>
       <div style="margin-left: 30px; margin-top: 15px">
-        <gcds-checkboxes
-          disabled
-          value='["checkbox1"]'
-          name="checkbox"
-          id="renew-2"
-          onclick="toggleTable('change3','sc6-row-2')"
-          legend="Legend"
+        <gcds-radios
+          class="hide-legend"
+          name="renew[4]"
+          id="renew-4"
+          legend="Renew this certificate?"
           options='[
-    { "label": "Yes", "id": "checkbox1", "value": "checkbox1"}
-  ]'
-        >
-        </gcds-checkboxes>
+            { "label": "Yes", "id": "renew-4-yes", "value": "yes" },
+            { "label": "No", "id": "renew-4-no", "value": "no" },
+            { "label": "Decide later", "id": "renew-4-later", "value": "later" }
+          ]'
+          value="yes"
+          change="change5"
+          row-id="sc6-row-3"
+          previous="none"
+          previous="none"
+          disabled
+        ></gcds-radios>
       </div>
     </td>
     <td>
@@ -184,17 +199,23 @@
     <td class="lp-icon">✔</td>
     <td>
       <div style="margin-left: 30px; margin-top: 15px">
-        <gcds-checkboxes
-          disabled
-          name="checkbox"
-          id="renew-3"
-          onclick="toggleTable('change4')"
-          legend="Legend"
+        <gcds-radios
+          class="hide-legend"
+          name="renew[4]"
+          id="renew-4"
+          legend="Renew this certificate?"
           options='[
-    { "label": "Yes", "id": "checkbox2", "value": "checkbox1"}
-  ]'
-        >
-        </gcds-checkboxes>
+            { "label": "Yes", "id": "renew-4-yes", "value": "yes" },
+            { "label": "No", "id": "renew-4-no", "value": "no" },
+            { "label": "Decide later", "id": "renew-4-later", "value": "later" }
+          ]'
+          value="later"
+          change="change5"
+          row-id="sc6-row-3"
+          previous="none"
+          previous="none"
+          disabled
+        ></gcds-radios>
       </div>
     </td>
     <td>
@@ -233,17 +254,23 @@
     <td class="lp-icon"></td>
     <td>
       <div style="margin-left: 30px; margin-top: 15px">
-        <gcds-checkboxes
-          disabled
-          name="checkbox"
-          legend="Legend"
+        <gcds-radios
+          class="hide-legend"
+          name="renew[4]"
           id="renew-4"
-          onclick="toggleTable('change5', 'sc6-row-3')"
+          legend="Renew this certificate?"
           options='[
-    { "label": "Yes", "id": "checkbox3", "value": "checkbox1"}
-  ]'
-        >
-        </gcds-checkboxes>
+            { "label": "Yes", "id": "renew-4-yes", "value": "yes" },
+            { "label": "No", "id": "renew-4-no", "value": "no" },
+            { "label": "Decide later", "id": "renew-4-later", "value": "later" }
+          ]'
+          value="later"
+          change="change5"
+          row-id="sc6-row-3"
+          previous="none"
+          previous="none"
+          disabled
+        ></gcds-radios>
       </div>
     </td>
     <td>
