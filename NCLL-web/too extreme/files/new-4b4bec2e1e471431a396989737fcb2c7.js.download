@@ -1,0 +1,181 @@
+/**
+ * Common JavaScript functionality for navigation and UI interaction
+ * 
+ * This script handles:
+ * 1. Button icon additions (except print)
+ * 2. Mobile menu functionality
+ */
+
+// Wait for DOM to be fully loaded before executing
+document.addEventListener('DOMContentLoaded', function() {
+  // ===================================================
+  // INITIALIZATION
+  // ===================================================
+  
+  /**
+   * Add icons to various buttons throughout the interface
+   */
+  initButtonIcons();
+  
+  /**
+   * Initialize mobile menu toggle and dropdown functionality
+   */
+  initMobileMenu();
+});
+
+// ===================================================
+// BUTTON INITIALIZATION
+// ===================================================
+
+/**
+ * Initialize all button icons
+ */
+function initButtonIcons() {
+  // Add icons to buttons with appropriate carets
+  addIconsToButton('btn-contents', 'glyphicon glyphicon-list mrgn-rght-sm', true);
+  addIconsToButton('btn-expand', 'glyphicon glyphicon-sort mrgn-rght-sm', false);
+  addIconsToButton('btn-related', 'glyphicon glyphicon-folder-open mrgn-rght-sm', true);
+  addIconsToButton('printToPDF-button', 'glyphicon glyphicon-print mrgn-rght-sm', false);
+  // Note: Print button icon is now handled in PrintToPDF.js
+}
+
+/**
+ * Add icon to a button with optional caret
+ * 
+ * @param {string} buttonId - The ID of the button to modify
+ * @param {string} iconClass - CSS classes for the icon
+ * @param {boolean} hasCaretAtEnd - Whether to add a caret at the end
+ */
+function addIconsToButton(buttonId, iconClass, hasCaretAtEnd = false) {
+  const button = document.getElementById(buttonId);
+  
+  if (button) {
+    // Create the icon span
+    const iconSpan = document.createElement('span');
+    iconSpan.className = iconClass;
+    
+    // Get the current text content
+    const buttonText = button.textContent;
+    
+    // Clear the button's content
+    button.textContent = '';
+    
+    // Add the icon span first
+    button.appendChild(iconSpan);
+    
+    // Add a text node for the button text with a space
+    button.appendChild(document.createTextNode(' ' + buttonText));
+    
+    // Add caret if needed
+    if (hasCaretAtEnd) {
+      // Add a space before the caret
+      button.appendChild(document.createTextNode(' '));
+      
+      // Create and add the caret span
+      const caretSpan = document.createElement('span');
+      caretSpan.className = 'caret';
+      button.appendChild(caretSpan);
+    }
+  }
+}
+
+// ===================================================
+// MOBILE MENU FUNCTIONALITY
+// ===================================================
+
+/**
+ * Initialize mobile menu toggle and dropdown functionality
+ */
+function initMobileMenu() {
+  // Add mobile menu toggle functionality
+  initMobileMenuToggle();
+  
+  // Add dropdown toggle functionality for mobile
+  initMobileDropdowns();
+  
+  // Close dropdowns when clicking outside
+  initOutsideClickHandler();
+  
+  // Close mobile menu when a menu item is clicked
+  initMenuItemClickHandler();
+}
+
+/**
+ * Initialize the mobile menu toggle button
+ */
+function initMobileMenuToggle() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const tabNav = document.querySelector('.tab-nav');
+  
+  if (menuToggle && tabNav) {
+    menuToggle.addEventListener('click', function() {
+      tabNav.classList.toggle('show-mobile-menu');
+    });
+  }
+}
+
+/**
+ * Initialize dropdown toggles for mobile view
+ */
+function initMobileDropdowns() {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+      // Only handle click events on mobile
+      if (window.innerWidth <= 767) {
+        e.preventDefault();
+        
+        // Find the dropdown menu associated with this toggle
+        const dropdownMenu = this.nextElementSibling;
+        
+        // Toggle the 'show' class
+        if (dropdownMenu && dropdownMenu.classList.contains('dropdown-menu')) {
+          dropdownMenu.classList.toggle('show');
+        }
+      }
+    });
+  });
+}
+
+/**
+ * Initialize handler to close dropdowns when clicking outside
+ */
+function initOutsideClickHandler() {
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth <= 767) {
+      // If the click is not on a dropdown toggle or inside a dropdown menu
+      if (!e.target.closest('.dropdown-toggle') && !e.target.closest('.dropdown-menu')) {
+        // Close all dropdown menus
+        document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+          menu.classList.remove('show');
+        });
+      }
+    }
+  });
+}
+
+/**
+ * Initialize handler to close mobile menu when a menu item is clicked
+ */
+function initMenuItemClickHandler() {
+  const tabNav = document.querySelector('.tab-nav');
+  const menuItems = document.querySelectorAll('.tab-nav a, .dropdown-menu a');
+  
+  menuItems.forEach(item => {
+    item.addEventListener('click', function() {
+      // Only in mobile mode
+      if (window.innerWidth <= 767) {
+        // Close the mobile menu
+        if (tabNav) {
+          tabNav.classList.remove('show-mobile-menu');
+        }
+        
+        // Close any open dropdown menus
+        document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+          menu.classList.remove('show');
+        });
+      }
+    });
+  });
+}

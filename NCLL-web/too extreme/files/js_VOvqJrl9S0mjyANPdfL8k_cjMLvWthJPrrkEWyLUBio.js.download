@@ -1,0 +1,81 @@
+async function loadCSV(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
+    return parseCSV(data);
+  } catch (error) {
+    console.error('Fetch Error:', error);
+  }
+}
+
+function parseCSV(data) {
+  const lines = data.split('\n');
+  return lines.map(line => line.split(','));
+}
+
+function generateTable(csvData) {
+  const table = document.getElementById('csvTable');
+  const thead = table.querySelector('thead');
+  const tbody = table.querySelector('tbody');
+
+  thead.innerHTML = '';
+  tbody.innerHTML = '';
+
+  const headerRow = csvData[0];
+  const headerTr = document.createElement('tr');
+  headerRow.forEach(cell => {
+    const th = document.createElement('th');
+    th.textContent = cell.trim();
+    headerTr.appendChild(th);
+  });
+  thead.appendChild(headerTr);
+
+  csvData.slice(1).forEach(row => {
+    const tr = document.createElement('tr');
+    row.forEach(cell => {
+      const td = document.createElement('td');
+      td.textContent = cell.trim();
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+
+  // Trigger custom event after table is populated
+  document.dispatchEvent(new Event('tableGenerated'));
+}
+
+function filterTable() {
+  const input = document.getElementById('searchInput');
+  const filter = input.value.toUpperCase();
+  const table = document.getElementById('csvTable');
+  const tr = table.getElementsByTagName('tr');
+
+  for (let i = 1; i < tr.length; i++) {
+    const cells = tr[i].getElementsByTagName('td');
+    let match = false;
+    for (let j = 0; j < cells.length; j++) {
+      if (cells[j]) {
+        if (cells[j].textContent.toUpperCase().indexOf(filter) > -1) {
+          match = true;
+          break;
+        }
+      }
+    }
+    tr[i].style.display = match ? "" : "none";
+  }
+}
+
+document.getElementById('searchInput').addEventListener('keyup', filterTable);
+
+// Get CSV URL from data attribute
+const csvUrl = document.getElementById('csvTable').getAttribute('data-csv-url');
+
+loadCSV(csvUrl)
+  .then(data => {
+    if (data && data.length > 0) {
+      generateTable(data);
+    } else {
+      console.error('Error: No data found or unable to parse.');
+    }
+  })
+  .catch(err => console.error('Error loading CSV:', err));;
