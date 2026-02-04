@@ -1,0 +1,481 @@
+<head>
+    <meta charset="utf-8">
+    <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+
+    <title>Text format for spectrum licence site data upload
+    </title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!-- Custom code starts here (Metadata) / Code personalisé commence ici (Métadonnées) -->
+    <!-- Custom code ends here (Metadata) / Code personalisé termine ici (Métadonnées)-->
+
+    <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css">
+    <noscript>
+        <link rel="stylesheet" href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css" />
+    </noscript>
+
+    <!-- Custom code starts here (Analytics) / Code personalisé commence ici (Analytiques) -->
+
+    <!-- Provider configuration - each is evaluated independently -->
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/deps/json-patch.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/deps/jsonpointer.min.js"></script>
+    <!-- jQuery (required by many plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <!-- Custom code ends here (Analytics) / Code personalisé termine ici (Analytiques) -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #toc {
+            /* 1. Set the position to sticky */
+            position: sticky;
+
+            /* 2. Define where the element should stop when scrolling */
+            /* This tells the browser to stick the top edge of the ToC 
+       to the top edge of the viewport once it reaches 10px from the top.
+    */
+            top: -30px;
+            /* 4. Ensure the ToC doesn't overflow its container horizontally */
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body vocab="http://schema.org/" resource="#wb-webpage" typeof="WebPage">
+
+    <nav>
+        <ul id="wb-tphp">
+            <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
+            <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to About this
+                    site</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div id="wb-bnr" class="container">
+            <div class="row">
+                <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+                    <h2 class="wb-inv">Language selection</h2>
+                    <ul class="list-inline mrgn-bttm-0">
+                        <li><a lang="fr" hreflang="fr" href="header-docs-fr.html">
+                                <span class="hidden-xs" translate="no">Français</span>
+                                <abbr title="Français" translate="no"
+                                    class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+                            </a></li>
+                    </ul>
+                </section>
+
+                <div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+                    <a href="https://www.canada.ca/en.html" property="url">
+                        <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg"
+                            alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span
+                                lang="fr">Gouvernement du Canada</span></span>
+                    </a>
+                    <meta property="name" content="Government of Canada">
+                    <meta property="areaServed" typeof="Country" content="Canada" />
+                    <link property="logo"
+                        href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg" />
+                </div>
+
+                <section id="wb-srch"
+                    class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
+                    <h2>Search</h2>
+                    <form action="https://www.canada.ca/en/sr/srb.html" name="cse-search-box" role="search">
+                        <div class="form-group wb-srch-qry">
+                            <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+                            <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q"
+                                type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca" />
+                            <datalist id="wb-srch-q-ac"></datalist>
+                        </div>
+                        <div class="form-group submit">
+                            <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small"
+                                name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span
+                                    class="wb-inv">Search</span></button>
+                        </div>
+                    </form>
+                </section>
+
+            </div>
+        </div>
+        <hr>
+        <nav id="wb-bc" property="breadcrumb">
+            <h2>You are here:</h2>
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="https://www.canada.ca/en.html">Canada.ca</a>
+                    </li>
+                    <li>
+                        <a href="https://www.canada.ca/en/services/business.html">Business and industry</a>
+                    </li>
+                    <li>
+                        <a href="https://www.canada.ca/en/services/business/permits.html">Permits, licences and
+                            regulations</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors.html">Federally
+                            regulated industry sectors</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors/broadcastingtelecommunicationsregulation.html">Broadcasting
+                            and telecommunications regulation</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system">Spectrum
+                            Management System</a>
+                    </li>
+                    <li>
+                        <a
+                            href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data">Spectrum
+                            Management System Data</a>
+                    </li>
+                </ol>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div id="toc">
+                <aside class="col-md-4" style="padding-right: 40px; z-index: 10;">
+                    <nav class="wb-sec">
+                        <details class="wb-details-close" style="border:none; margin-top: 40px;" open>
+                            <summary style="border: none;">
+                                <h5>Table of contents</h5>
+                            </summary>
+                            <p>
+                            <ul class="list-unstyled" id="table-of-contents"
+                                style="max-height: 75vh; overflow-y: auto;">
+                            </ul>
+                            </p>
+                        </details>
+                    </nav>
+                    <button class="btn btn-secondary btn-lg"
+                        onclick="window.scrollTo({ top: 220, behavior: 'smooth' })">
+                        Back to top
+                    </button>
+                </aside>
+            </div>
+
+            <main class="col-md-8" style="padding: none;">
+                <h1 id="wb-cont" style="margin-bottom: 24px ;"> Text format for spectrum licence site data upload</h1>
+                <p style=" margin-bottom: 24px;"> Learn about the format, validation rules, and errors when uploading
+                    spectrum licence site data.</p>
+                <!-- Alert 
+                <section class="alert alert-info">
+                    <h3>Station data has not changed or not active</h3>
+                    <p>If your station data has not changed since the last upload, not deployed yet, or being
+                        decomissioned see <a href="#F">F - Station location</a>.</p>
+                </section>
+                -->
+                <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
+                    <table class="wb-tables table wb-init wb-tables-inited dataTable no-footer" id="wb-auto-1">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width: 80px;">
+                                    <h5>Letter</h5>
+                                </th>
+                                <th rowspan="1" colspan="1" style="width: 600px;">
+                                    <h5>Name</h5>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+    <br>
+
+    <!-- Start of footer-->
+    <footer id="wb-info" style="z-index: 1">
+        <h2 class="wb-inv">About this site</h2>
+
+        <div class="gc-main-footer">
+            <div class="container">
+                <nav>
+                    <h3>Government of Canada</h3>
+                    <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+                        <li><a href="https://www.canada.ca/en/contact.html">All contacts</a></li>
+                        <li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+                        <li><a href="https://www.canada.ca/en/government/system.html">About government</a></li>
+                    </ul>
+                    <h4><span class="wb-inv">Themes and topics</span></h4>
+                    <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+                        <li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
+                        <li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and
+                                citizenship</a></li>
+                        <li><a href="https://travel.gc.ca/">Travel and tourism</a></li>
+                        <li><a href="https://www.canada.ca/en/services/business.html">Business</a></li>
+                        <li><a href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+                        <li><a href="https://www.canada.ca/en/services/health.html">Health</a></li>
+                        <li><a href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+                        <li><a href="https://www.canada.ca/en/services/environment.html">Environment and natural
+                                resources</a></li>
+                        <li><a href="https://www.canada.ca/en/services/defence.html">National security and defence</a>
+                        </li>
+                        <li><a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+                        <li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and
+                                emergencies</a></li>
+                        <li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a>
+                        </li>
+                        <li><a href="https://www.international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the
+                                world</a></li>
+                        <li><a href="https://www.canada.ca/en/services/finance.html">Money and finances</a></li>
+                        <li><a href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
+                        <li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous Peoples</a>
+                        </li>
+                        <li><a href="https://www.canada.ca/en/services/veterans-military.html">Veterans and military</a>
+                        </li>
+                        <li><a href="https://www.canada.ca/en/services/youth.html">Youth</a></li>
+                        <li><a href="https://www.canada.ca/en/services/life-events.html">Manage life events</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="gc-sub-footer">
+            <div class="container d-flex align-items-center">
+                <nav>
+                    <h3 class="wb-inv">Government of Canada Corporate</h3>
+                    <ul>
+                        <li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+                        <li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+                        <li><a href="https://design.canada.ca/about">About Canada.ca</a></li>
+                        <li><a href="https://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                        <li><a href="https://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+                    </ul>
+                </nav>
+                <div class="wtrmrk align-self-end">
+                    <img src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg"
+                        alt="Symbol of the Government of Canada" />
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End of footer-->
+
+    <!-- Start of search and filtering scripts for DataTables -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        let dataTable = null;
+        let allRows = [];
+
+
+
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Generate table of contents entry from CSV row
+        function createTableOfContents(row) {
+            const colA = escapeHtml(row['Column'] || '');
+            const colB = escapeHtml(row['Field Name'] || '');
+            return `<li style="margin-bottom: 20px;" ><a href="#${colA}">${colA} - ${colB}</a></li>`;
+        }
+
+
+        // ** NEW FUNCTION **: Updates ToC based on DataTables visible rows
+        function updateTableOfContentsOnDraw() {
+            if (!dataTable) return;
+
+            const tocList = $('#table-of-contents');
+            // Clear ONLY the dynamic entries - assuming the first two are static links
+            //tocList.find('li').slice(2).remove();
+            tocList.empty();
+            // Get the data for the rows currently being displayed (filtered)
+            // The 'search()' method gets the filtered data, 'data()' gets the original row objects.
+            const filteredData = dataTable.rows({ search: 'applied' }).data();
+
+            filteredData.each(function (row) {
+                // We assume the row data is still the original CSV object structure
+                // DataTables automatically maintains the original data object in the array 
+                // if you pass an array of objects to its 'data' option or use a 
+                // 'rowCallback' to store the original data. Since your current setup 
+                // uses `allRows` as an array of objects, this should work.
+
+                // Find the original data object from the allRows array
+                const originalRow = allRows.find(item => item['Column'] === row[0].split('h5 id="')[1].split('"')[0]);
+
+                if (originalRow && originalRow['Column'] && originalRow['Column'].trim()) {
+                    tocList.append($(createTableOfContents(originalRow)));
+                }
+            });
+        }
+
+        //array of strings to find in the CSV to turn into hyperlinks 
+        const allNames = [
+            "H - Radio Technology",
+            "S - Tx Channel Frequency"
+        ];
+
+        // Function to replace allNames with hyperlinks in text
+        function replaceNamesWithLinks(text) {
+            let result = text;
+            allNames.forEach(function (name) {
+                // Extract the column letter (first character before the dash)
+                const columnLetter = name.split(' - ')[0].trim();
+                const regex = new RegExp('\\b' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'g');
+                const replacement = '<a href="#' + columnLetter + '">' + name + '</a>';
+                result = result.replace(regex, replacement);
+            });
+            return result;
+        }
+
+        // Generate table row HTML from CSV row
+        function createTableRow(row) {
+            const colA = escapeHtml(row['Column'] || '');
+            const colB = escapeHtml(row['Field Name'] || '');
+            const colCRaw = replaceNamesWithLinks(row['Description'] || '');
+            const colD = escapeHtml(row['Example(s)'] || row['Example'] || '');
+            const colE = replaceNamesWithLinks(row['Validation'] || '');
+            const colF = replaceNamesWithLinks(escapeHtml(row['Validation Error'] || ''));
+
+            // Process column C - split on "|" and create list format if multiple items
+            let colCHTML = '';
+            const colCItems = colCRaw
+                .split('|')
+                .map(s => s.trim())
+                .filter(s => s.length > 0);
+
+            if (colCItems.length > 1) {
+                // First item as paragraph, rest as list
+                colCHTML = '<p>' + colCItems[0] + '</p>';
+                colCHTML += '<ul>';
+                for (let i = 1; i < colCItems.length; i++) {
+                    colCHTML += '<li>' + colCItems[i] + '</li>';
+                }
+                colCHTML += '</ul>';
+            } else {
+                colCHTML = '<p>' + colCRaw + '</p>';
+            }
+
+            // Split validation rules on "." and filter empty items
+            const validationRules = colE
+                .split('.')
+                .map(s => s.trim())
+                .filter(s => s.length > 0);
+
+            // Build validation list items
+            let validationListHTML = '';
+            validationRules.forEach(function (rule) {
+                validationListHTML += '<li>' + rule + '</li>';
+            });
+
+            // Build and return row HTML
+            return `<tr class="gradeA">
+                        <td class="sorting_1" >
+                            <h3 id="${colA}" style="text-align:left; scroll-margin-top: 35px; ">${colA}</h3>
+                        </td>
+                        <td style="padding-bottom:40px;">
+                            <h3>${colB}</h3>
+                            <p>${colCHTML}</p>
+                            <h4>Example</h4>
+                            <p>${colD}</p>
+                            <h4>Format</h4>
+                            <ul>
+                            ${validationListHTML}
+                            </ul>
+                            <h4>Potential errors</h4>
+                            <code>${colF}</code>
+                        </td>
+                    </tr>`;
+        }
+
+        function populateTableOfContents(csvData) {
+            const tocList = $('#table-of-contents');
+            // Clear previous dynamic entries (keep first two static items)
+            //tocList.find('li').slice(2).remove();
+            tocList.empty();
+            csvData.forEach(function (row) {
+                if (row['Column'] && row['Column'].trim()) {
+                    tocList.append($(createTableOfContents(row)));
+                }
+            });
+        }
+
+        // Populate table from CSV data
+        function populateTable(csvData) {
+            const tbody = $('#wb-auto-1 tbody');
+            tbody.empty();
+            allRows = [];
+
+            // Filter and store valid rows
+            csvData.forEach(function (row) {
+                if (row['Column'] && row['Column'].trim()) {
+                    allRows.push(row);
+                }
+            });
+
+            // Create table rows in CSV order
+            allRows.forEach(function (row) {
+                tbody.append(createTableRow(row));
+            });
+
+            // Destroy existing DataTable if present
+            if ($.fn.DataTable.isDataTable('#wb-auto-1')) {
+                dataTable.destroy();
+            }
+
+            // Reinitialize DataTable
+            dataTable = $('#wb-auto-1').DataTable({
+                layout: {
+                    topStart: {
+                        topStart: 'info',
+                    }
+                },
+                paging: false,
+                autoWidth: false,
+                searching: true,
+                order: [],
+                columnDefs: [{ orderable: false, targets: '_all' }],
+                language: {
+                    search: "Filter"
+                }
+            });
+        }
+        // ** NEW EVENT LISTENER **: Updates ToC on any DataTables action (filter, sort, page)
+        $('#wb-auto-1').on('draw.dt', function () {
+            updateTableOfContentsOnDraw();
+        });
+
+        // Auto-load CSV on page load
+        $(document).ready(function () {
+            // Fetch CSV file
+            fetch('spectrum_licence_data.csv')
+                .then(response => response.text())
+                .then(csvText => {
+                    Papa.parse(csvText, {
+                        header: true,
+                        complete: function (results) {
+                            populateTableOfContents(results.data);
+                            populateTable(results.data);
+                        },
+                        error: function (error) {
+                            console.error('CSV parse error:', error);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Failed to load CSV file:', error);
+                });
+
+            // header search button
+            $('#wb-srch-sub .wb-inv').text('Filter');
+        });
+    </script>
+    <!-- End of search and filtering scripts for DataTables -->
+
+</body>

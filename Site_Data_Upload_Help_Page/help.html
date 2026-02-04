@@ -1,0 +1,278 @@
+<!-- TODO: Remove all comments before deploying your code to production. -->
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- TODO: Add a description of the page for better SEO and sharing previews. -->
+    <meta name="description" content="Add a description to provide a brief summary of the content." />
+
+    <!-- TODO: Insert a concise, descriptive title that summarizes your page's content. -->
+    <title>Commercial mobile spectrum browser</title>
+
+    <!---------- GC Design System Utility ---------->
+    <!-- TODO: Replace <version-number> with the latest version number to receive corresponding updates of the GC Design System utility framework. All notable changes will be documented in the changelog: https://github.com/cds-snc/gcds-utility/blob/main/CHANGELOG.md -->
+    <link rel="stylesheet"
+        href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-utility@1.9.2/dist/gcds-utility.min.css" />
+
+    <!---------- GC Design System Components ---------->
+    <!-- TODO: Replace <version-number> with the latest version number to receive corresponding updates of GC Design System Components. All notable changes will be documented in the changelog: https://github.com/cds-snc/gcds-components/blob/main/CHANGELOG.md -->
+    <link rel="stylesheet"
+        href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.40.0/dist/gcds/gcds.css" />
+    <script type="module"
+        src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.40.0/dist/gcds/gcds.esm.js"></script>
+
+    <link rel="stylesheet" href="https://design-system.alpha.canada.ca/styles/style.css"> <!-- Custom styles -->
+    <!-- TODO: If needed, uncomment and link your custom CSS file here. -->
+    <!-- <link rel="stylesheet" href="path/to/custom.css" /> -->
+
+    <style>
+        table>tbody>tr:nth-of-type(even) {
+            background-color: var(--gcds-bg-light);
+        }
+
+        table>tbody>tr {
+            border-top: solid var(--gcds-border-default) 1px;
+            border-bottom: solid var(--gcds-border-default) 1px;
+        }
+    </style>
+</head>
+
+<body style="margin:0">
+    <gcds-header lang-href="#" skip-to-href="#main-content" role="banner" class="hydrated">
+        <!-- The slot="search" attribute adds the search component to the header. -->
+        <gcds-search slot="search" class="hydrated"></gcds-search>
+
+        <!-- The slot="breadcrumb" attribute adds the breadcrumbs component to the header. -->
+        <gcds-breadcrumbs hide-canada-link="true" slot="breadcrumb" class="hydrated">
+            <!-- TODO: Adjust the breadcrumb links with the correct ones for your site. -->
+            <gcds-breadcrumbs-item href="#">Canada.ca</gcds-breadcrumbs-item>
+            <gcds-breadcrumbs-item href="index.html" role="listitem" class="gcds-breadcrumbs-item hydrated">Spectrum
+                management system</gcds-breadcrumbs-item>
+
+        </gcds-breadcrumbs>
+    </gcds-header>
+
+    <gcds-container id="main-content" main-container="" size="xl" centered="" tag="main" class="hydrated"
+        style="margin-bottom: var(--gcds-spacing-300);">
+
+        <gcds-notice type="warning" notice-title-tag="h2" notice-title="DRAFT">
+            <gcds-text>This is a draft page for the commercial mobile spectrum browser landing page.</gcds-text>
+        </gcds-notice>
+
+        <gcds-heading tag="h1">
+            How to submit station data</gcds-heading>
+
+        <section>
+            <gcds-text>
+                Browse commercial mobile licensing data to find opportunities for subordinate and access licensing. The
+                browser
+                displays licence area boundaries, site locations, and details about licensees on an interactive map.
+            </gcds-text>
+            <gcds-button button-role="start" style="
+                margin-bottom: var(--gcds-spacing-300);">
+                Browse commercial mobile licences
+            </gcds-button>
+        </section>
+
+        <section>
+            <gcds-heading tag="h2">On this page</gcds-heading>
+            <!-- TODO: Adjust the link id's with the correct id for each section. -->
+            <ul class="list-disc mb-300">
+                <li class="mb-75">
+                    <gcds-link href="#">Disclaimer</gcds-link>
+                </li>
+                <li class="mb-75">
+                    <gcds-link href="#">Included bands</gcds-link>
+                </li>
+                <li class="mb-75">
+                    <gcds-link href="#">Learn more</gcds-link>
+                </li>
+                <li class="mb-75">
+                    <gcds-link href="#">Resources</gcds-link>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <gcds-heading tag="h2">Disclaimer</gcds-heading>
+            <gcds-text>Licensee information is refreshed on a monthly basis. When pursuing a subordinate licence
+                agreement,
+                it's important to verify site information directly with the primary licence holder as there may be
+                discrepancies
+                between what is displayed on the browser and what has been deployed by the licensee. </gcds-text>
+        </section>
+
+        <section>
+            <gcds-heading tag="h2">Included bands</gcds-heading>
+            <gcds-details details-title="Low-band (Below 1 GHz)">
+                <div style="padding-right:28px">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="padding-left:18px">Allocation</th>
+                                <th>Abbreviation</th>
+                                <th>Band (MHz)</th>
+                                <th>Tiers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding-left:18px">Flexible broadband service</td>
+                                <td>600</td>
+                                <td>600</td>
+                                <td>2 or 4</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:18px">Mobile broadband service</td>
+                                <td>MBS</td>
+                                <td>700</td>
+                                <td>2 or 4</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:18px">Cellular</td>
+                                <td>Cell</td>
+                                <td>800
+                                    (824-849 MHz /
+                                    869-894 MHz)</td>
+                                <td>2 or 4 or TEL</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </gcds-details>
+            <gcds-details details-title="Mid-band (Above 1 GHz)">
+                <div style="padding-right:28px">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="padding-left:18px">Allocation</th>
+                                <th>Abbreviation</th>
+                                <th>Band (MHz)</th>
+                                <th>Tiers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding-left:18px">Advanced wireless services</td>
+                                <td>AWS-1</td>
+                                <td>1710 / 2155</td>
+                                <td>2 or 3</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:18px">Advanced wireless services</td>
+                                <td>AWS-3</td>
+                                <td>1755 / 2180</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:18px">Personal communication services</td>
+                                <td>PCS</td>
+                                <td>1900
+                                    (1850-1910 MHz /
+                                    1930-1990 MHz)</td>
+                                <td>2, 3, 4, or TEL</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:18px">Advanced wireless services</td>
+                                <td>AWS-4</td>
+                                <td>2000</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:18px">Wireless communication services</td>
+                                <td>WCS</td>
+                                <td>2300</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:18px">Broadband radio service</td>
+                                <td>BRS</td>
+                                <td>2500</td>
+                                <td>3 or 4</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:18px">Flexible broadband service</td>
+                                <td>3500</td>
+                                <td>3500</td>
+                                <td>4</td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:18px">Flexible broadband service</td>
+                                <td>3800</td>
+                                <td>3800</td>
+                                <td>4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </gcds-details>
+        </section>
+
+        <section>
+            <gcds-heading tag="h2">Learn more</gcds-heading>
+            <gcds-grid columns="1fr" columns-tablet="1fr 1fr" columns-desktop="1fr 1fr 1fr">
+                <gcds-container>
+                    <gcds-text margin-top="25" margin-bottom="100">
+                        <a href><b>CPC-2-1-23 — Licensing procedure for spectrum licences for terrestrial
+                                services</b></a>
+                    </gcds-text>
+                    <gcds-text>
+                        CPC-2-1-23 section 5.6 outlines the rules, regulations, application process and more on
+                        subordinate
+                        licensing.
+                    </gcds-text>
+                </gcds-container>
+
+                <gcds-container>
+                    <gcds-text margin-top="25" margin-bottom="100">
+                        <a href><b>Access licensing</b></a>
+                    </gcds-text>
+                    <gcds-text>
+                        View the rules, eligibility, application process and more on access licensing.
+                    </gcds-text>
+                </gcds-container>
+            </gcds-grid>
+        </section>
+
+        <section>
+            <gcds-heading tag="h2">Resources</gcds-heading>
+            <gcds-grid columns="1fr" columns-tablet="1fr 1fr" columns-desktop="1fr 1fr 1fr">
+                <gcds-container>
+                    <gcds-text margin-top="25" margin-bottom="100">
+                        <a href><b>Search for virtual licence or certificate</b></a>
+                    </gcds-text>
+                    <gcds-text>
+                        View different virtual licences or certificates.
+                    </gcds-text>
+                </gcds-container>
+
+                <gcds-container>
+                    <gcds-text margin-top="25" margin-bottom="100">
+                        <a href><b>Service areas for competitive licensing</b></a>
+                    </gcds-text>
+                    <gcds-text>
+                        View the different service areas and tiers for competitive licensing on an interactive map.
+                    </gcds-text>
+                </gcds-container>
+
+                <gcds-container>
+                    <gcds-text margin-top="25" margin-bottom="0">
+                        <a href><b>Download SMS data</b></a>
+                    </gcds-text>
+                    <gcds-text>
+                        Download Spectrum Management System (SMS) data on different radio authorizations. </gcds-text>
+                </gcds-container>
+            </gcds-grid>
+        </section>
+
+        <gcds-date-modified class="hydrated">2024-08-22</gcds-date-modified>
+    </gcds-container>
+    <gcds-footer display="full" contextual-heading="Innovation, Science and Economic Development"
+        contextual-links="{ &quot;Contact us&quot;: &quot;#&quot;}" role="contentinfo" aria-label="Footer"
+        class="hydrated">
+    </gcds-footer>
+</body>
