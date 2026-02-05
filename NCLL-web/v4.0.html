@@ -54,6 +54,18 @@
 <script src="./files/v4-shims.js.download" defer="" crossorigin="anonymous"></script>
 <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
 <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+<noscript>
+	<!-- Write closure fall-back static file -->
+	<!-- refTop.html -->
+</noscript>
+<!-- Write closure template -->
+<script>
+	document.write(
+	wet.builder.refTop({
+		cdnEnv: "esdcprod",
+	})
+	);
+</script>
 
 <style>
 .banner-heading {
@@ -935,7 +947,6 @@ Skip to "About this site"
 <li role="presentation"><button aria-controls="tab3-content" aria-selected="false" id="tab3-btn" role="tab">FAQ</button></li>
 <li role="presentation"><button aria-controls="tab4-content" aria-selected="false" id="tab4-btn" role="tab">Resources</button></li>
 <li role="presentation"><button aria-controls="tab5-content" aria-selected="false" id="tab5-btn" role="tab">Licensing Process</button></li>
-<li role="presentation"><button aria-controls="tab7-content" aria-selected="false" id="tab7-btn" role="tab">Obligations of licensees</button></li>
 <!-- Note that the tabs are not in numerical order. This is because of URLs in the NCLL portal that reference #tab3-content -->
 </ul>
 </div>
@@ -965,7 +976,7 @@ in Canada</a>.</p>
 &nbsp;
 
 <div class="row">
-<div class="col-xs-12 col-sm-6 col-md-3"><img alt="decorative image" class="img-responsive" src="/site/spectrum-management-telecommunications/sites/default/files/image/Simple%20licence%20application%20process.png">
+<div class="col-xs-12 col-sm-6 col-md-3"><img alt="decorative image" class="img-responsive" src="./files/Simple licence application process.png">
 <h4>Simple licence application process</h4>
 
 <p>Provides a simple, automated and easy-to-understand licensing application process.</p>
@@ -973,19 +984,19 @@ in Canada</a>.</p>
 <p><a data-scroll-to="tab5-content" href="#tab5-content">How to apply</a></p>
 </div>
 
-<div class="col-xs-12 col-sm-6 col-md-3"><img alt="decorative image" class="img-responsive" src="/site/spectrum-management-telecommunications/sites/default/files/image/For%20business%20and%20industry.png">
+<div class="col-xs-12 col-sm-6 col-md-3"><img alt="decorative image" class="img-responsive" src="./files/For business and industry.png">
 <h4>Created for communities, businesses and industry</h4>
 
 <p>Offers small communities, businesses, industry verticals (e.g. campuses, factories or farms), and small wireless service providers a solution to meet their unique needs.</p>
 </div>
 
-<div class="col-xs-12 col-sm-6 col-md-3"><img alt="decorative image" class="img-responsive" src="/site/spectrum-management-telecommunications/sites/default/files/image/Designed%20for%20success.png">
+<div class="col-xs-12 col-sm-6 col-md-3"><img alt="decorative image" class="img-responsive" src="./files/Designed for success.png">
 <h4>Designed for success</h4>
 
 <p>Facilitates the coexistence between NCLL operations through ISED's automated licensing system.</p>
 </div>
 
-<div class="col-xs-12 col-sm-6 col-md-3"><img alt="decorative image" class="img-responsive" src="/site/spectrum-management-telecommunications/sites/default/files/image/Affordable%20licence%20fees.png">
+<div class="col-xs-12 col-sm-6 col-md-3"><img alt="decorative image" class="img-responsive" src="./files/Affordable licence fees.png">
 <h4>Affordable licence fees</h4>
 
 <p>Offers affordable <a data-scroll-to="tab2-content-LicenceFees" href="#tab2-content-LicenceFees">licence fees</a>&nbsp;to encourage innovative solutions.</p>
@@ -1097,7 +1108,7 @@ in Canada</a>.</p>
      application process. Whether it's a single building, a large mine or farm, or an entire remote
       community, you tell us what area you want to cover. </p>
 
-<h3 id="Flexible_licence_terms ">Flexible licence terms </h3>
+<h3 id="Flexible_licence_terms">Flexible licence terms </h3>
 
 <p><strong>Licences can be renewable or temporary. </strong></p>
 <p>Renewable licences can be renewed annually as long as the  licence conditions (<a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/r3-spectrum-licences-issued-non-competitive-local-licensing-band-3900-3980-mhz">3900 MHz band </a>/ <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/r5-conditions-licence-non-competitive-local-licences-275-2835-ghz-band">28 GHz band</a>) are met. </p>
@@ -1124,7 +1135,6 @@ in Canada</a>.</p>
     spectrum browser can be a valuable tool for planning and can also generate your
      coordinates in WKT format, which can be easily copied directly into the licence application form. </p>
 
-     <a class="btn btn-primary" href="https://ised-isde.canada.ca/site/spectrum-management-system/en/NCL">NCLL services page</a>
 
 
 
@@ -1360,8 +1370,10 @@ in Canada</a>.</p>
     Block A3 (3920-3930 MHz) and Block A7 (3960-3970 MHz). </p>
 
 <p>In general, NCL licensees in the 3900 MHz band may not have a total of more than 20 MHz in any location. However, under certain circumstances 
-    it is possible to request that this limit be waived. Please see SAB-03-25 — Notice of amendment to spectrum limit condition of licence in the 
-    3900 MHz band under the non-competitive local (NCL) licensing framework for details. </p>
+    it is possible to request that this limit be waived. Please see 
+	<a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/spectrum-advisory-bulletins-sab/
+	sab-03-25-notice-amendment-spectrum-limit-condition-licence-3900-mhz-band-under-non-competitive">SAB-03-25 — Notice of amendment to spectrum limit condition of licence in the 
+    3900 MHz band under the non-competitive local (NCL) licensing framework</a> for details. </p>
 <h4>Licence types</h4>
 <p>The 3900 MHz band offers two licence types, low power and medium power. A low power licence might be ideal for industrial and enterprise applications, 
     particularly for localized or indoor activities. On the other hand, a medium power licence could be more appropriate to service larger outdoor areas. </p>
@@ -1509,24 +1521,26 @@ in Canada</a>.</p>
 
 <div aria-labelledby="tab3-btn" class="tab-pane active" id="tab3-content" role="tabpanel">
 <div class="div_tab_bg">
-<h2 id="General " data-parent-tab="tab3-content">General</h2>
+<h2 id="FAQ" data-parent-tab="tab3-content">FAQ</h2>
+
+<h3 id="General ">General</h3>
 
 <section>
 <details><summary>
-<h2 class="h3" id="General" data-parent-tab="tab3-content">Is 3900 MHz a 5G band?</h2>
+<p id="General" data-parent-tab="tab3-content">Is 3900 MHz a 5G band?</p>
 </summary>
 
 <p>Yes, the 3900 MHz band is a 5G band.</p>
 
-<p>The 3rd Generation Partnership Project (3GPP) has identified a 5G frequency band that covers the 3900-3980 MHz (i.e., n77), resulting in access to an equipment ecosystems that could support different types of networks or use cases. Following this, in May 2021, ISED published the <a href="/site/spectrum-management-telecommunications/en/spectrum-allocation/3650-4200-mhz/decision-technical-and-policy-framework-3650-4200-mhz-band-and-changes-frequency-allocation-3500"><cite>Decision on the Technical and Policy Framework for the 3650-4200 MHz Band and Changes to the Frequency Allocation of the 3500-3650 MHz Band</cite></a>. In this policy framework, ISED designated the 3900-3980 MHz band for shared usage to leverage the emerging equipment ecosystems for 5G technology and provide opportunities for users including wireless Internet service providers (WISPs), utilities, and industry verticals.</p>
+<p>The 3rd Generation Partnership Project (3GPP) has identified a 5G frequency band that covers the 3900-3980 MHz (i.e. n77), resulting in access to an equipment ecosystems that could support different types of networks or use cases. Following this, in May 2021, ISED published the <a href="/site/spectrum-management-telecommunications/en/spectrum-allocation/3650-4200-mhz/decision-technical-and-policy-framework-3650-4200-mhz-band-and-changes-frequency-allocation-3500"><cite>Decision on the Technical and Policy Framework for the 3650-4200 MHz Band and Changes to the Frequency Allocation of the 3500-3650 MHz Band</cite></a>. In this policy framework, ISED designated the 3900-3980 MHz band for shared usage to leverage the emerging equipment ecosystems for 5G technology and provide opportunities for users including wireless Internet service providers (WISPs), utilities, and industry verticals.</p>
 
-<p>Note that licensees can deploy 5G or other wireless technologies as long as ISED's technical standards are met (i.e., SRSP-521, <a href="/site/spectrum-management-telecommunications/en/devices-and-equipment/standard-radio-system-plans/srsp-521"><cite>Technical Requirements for Non-Competitive Local Licensed Services, including Fixed and/or Mobile Systems, and Flexible Use Broadband Systems, in the Band 3900-3980 MHz</cite></a>, RSS-198, <a href="/site/spectrum-management-telecommunications/en/devices-and-equipment/radio-equipment-standards/flexible-use-broadband-equipment-operating-band-3900-3980-mhz"><cite>Flexible Use Broadband Equipment Operating in the Band 3900-3980 MHz</cite></a>).</p>
+<p>Note that licensees can deploy 5G or other wireless technologies as long as ISED's technical standards are met (i.e. SRSP-521, <a href="/site/spectrum-management-telecommunications/en/devices-and-equipment/standard-radio-system-plans/srsp-521"><cite>Technical Requirements for Non-Competitive Local Licensed Services, including Fixed and/or Mobile Systems, and Flexible Use Broadband Systems, in the Band 3900-3980 MHz</cite></a>, RSS-198, <a href="/site/spectrum-management-telecommunications/en/devices-and-equipment/radio-equipment-standards/flexible-use-broadband-equipment-operating-band-3900-3980-mhz"><cite>Flexible Use Broadband Equipment Operating in the Band 3900-3980 MHz</cite></a>).</p>
 </details>
 </section>
 
 <section>
 <details><summary>
-<h2 class="h3">Is there a list of current licensees?</h2>
+<p>Is there a list of current licensees?</p>
 </summary>
 
 <p>Yes, there is a list of current licensees.</p>
@@ -1537,7 +1551,7 @@ in Canada</a>.</p>
 
 <section>
 <details><summary>
-<h2 class="h3">Where do I find information about site upload requirements?</h2>
+<p>Where do I find information about site upload requirements?</p>
 </summary>
 
 <p>ISED is adopting a simple demonstration of deployment (a "yes/no" system) to meet the condition of licence on deployment. Details on how to upload information will be found on the <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-licensing-services#Upload">SMS site data upload</a> website. Alternatively, you will also be able to find information in this <a href="https://www.youtube.com/watch?v=s7ey7BQy_UY">video</a>.</p>
@@ -1546,7 +1560,7 @@ in Canada</a>.</p>
 
 <section>
 <details><summary>
-<h2 class="h3">How can I create multiple adjacent licence areas?</h2>
+<p>How can I create multiple adjacent licence areas?</p>
 </summary>
 
 <p>You can create multiple adjacent licence areas by performing the following steps in the NCLL portal:</p>
@@ -1563,7 +1577,7 @@ in Canada</a>.</p>
 
 <section>
 <details><summary>
-<h2 class="h3">What are my important licence deadlines?</h2>
+<p>What are my important licence deadlines?</p>
 </summary>
 
 <p>There are two important deadlines you should keep in mind as a licensee. They are as follows:</p>
@@ -1579,11 +1593,11 @@ in Canada</a>.</p>
 </section>
 <!--SECTION 2-->
 
-<h2 id="Fees and invoices" data-parent-tab="tab3-content">Fees and invoices</h2>
+<h3 id="Fees and invoices" data-parent-tab="tab3-content">Fees and invoices</h3>
 
 <section>
 <details><summary>
-<h2 class="h3">How are the licence fees calculated?</h2>
+<p>How are the licence fees calculated?</p>
 </summary>
 
 <p>A <a data-scroll-to="tab2-content-Licencefeecalculator" href="#tab2-content-Licencefeecalculator">licence fee calculator</a> is available to determine the total licence fee.</p>
@@ -1594,7 +1608,7 @@ in Canada</a>.</p>
 
 <section>
 <details><summary>
-<h2 class="h3">How are fees calculated if an area overlaps two different area types?</h2>
+<p>How are fees calculated if an area overlaps two different area types?</p>
 </summary>
 
 <p>If any portion of an NCL licence falls within a remote area, the fees are calculated using the <strong>remote</strong> base rate. Otherwise, if any portion of an NCL licence is located in a <strong>metro/urban</strong> area, then fees are calculated using the metro/urban base rate.</p>
@@ -1630,7 +1644,7 @@ in Canada</a>.</p>
 
 <section>
 <details><summary>
-<h2 class="h3">How do I pay an NCLL invoice</h2>
+<p>How do I pay an NCLL invoice</p>
 </summary>
 
 <p>Payments must be made on the <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/online-payment-and-view-invoices">Online Payment and View Invoices</a> webpage.<br>
@@ -1646,7 +1660,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">How do I cancel an NCLL invoice?</h2>
+<p>How do I cancel an NCLL invoice?</p>
 </summary>
 
 <p>For a new application, you can cancel the invoice by withdrawing the application. In the <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/NCL">NCLL services page</a>, navigate to the NCLL portal, find the application, and under the "Actions" menu select "Withdraw". The application withdrawal will automatically cancel the invoice.</p>
@@ -1656,11 +1670,11 @@ There are several ways you can reach that page:</p>
 </section>
 <!--SECTION 3-->
 
-<h2 id="Application Process" data-parent-tab="tab3-content">Application process</h2>
+<h3 id="Application Process" data-parent-tab="tab3-content">Application process</h3>
 
 <section>
 <details><summary>
-<h2 class="h3">How long does it take to obtain a licence?</h2>
+<p>How long does it take to obtain a licence?</p>
 </summary>
 
 <p>Our service commitment is to provide your NCL licence within 12 weeks.</p>
@@ -1671,7 +1685,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">Why might an application be rejected?</h2>
+<p>Why might an application be rejected?</p>
 </summary>
 
 <p>An NCL licence application may be rejected if it does not conform to policy, technical or other requirements.</p>
@@ -1693,7 +1707,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">Are licences renewed automatically?</h2>
+<p>Are licences renewed automatically?</p>
 </summary>
 
 <p>Yes, licences will be automatically renewed if all conditions of licence are met and the renewal invoice is paid in full. The system will send an email to the licensee if it detects an issue that may impact the renewal.</p>
@@ -1702,7 +1716,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">Can I edit a submitted application?</h2>
+<p>Can I edit a submitted application?</p>
 </summary>
 
 <p>No, it is not possible to edit a submitted application. You can withdraw an application even after you've received an invoice. In the <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/NCL">NCLL services page</a>, navigate to the NCLL portal, then find the application, and under the "Actions" menu select "Withdraw".</p>
@@ -1711,7 +1725,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">Can I edit a licence?</h2>
+<p>Can I edit a licence?</p>
 </summary>
 
 <p>No, it is not possible to edit a licence. If you wish to acquire a licence that covers the same area as another licence that you already hold, but with a different technical configuration, then you have two options available to you:</p>
@@ -1751,7 +1765,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">What is the maximum licence area permitted in the 3900 MHz band?</h2>
+<p>What is the maximum licence area permitted in the 3900 MHz band?</p>
 </summary>
 
 <p>The maximum area size per licence is as follows:</p>
@@ -1767,7 +1781,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">Can I apply for the full 3900-3980 MHz band?</h2>
+<p>Can I apply for the full 3900-3980 MHz band?</p>
 </summary>
 
 <p>No. In the 3900 MHz band, ISED has implemented a limit of 20 MHz of spectrum that a licensee can acquire in any given geographic area.</p>
@@ -1777,11 +1791,11 @@ There are several ways you can reach that page:</p>
 </section>
 <!--SECTION 4-->
 
-<h2 id="Equipment" data-parent-tab="tab3-content">Equipment</h2>
+<h3 id="Equipment" data-parent-tab="tab3-content">Equipment</h3>
 
 <section>
 <details><summary>
-<h2 class="h3">Is there equipment available?</h2>
+<p>Is there equipment available?</p>
 </summary>
 
 <p>Yes. ISED offers a <a href="https://sms-sgs.ic.gc.ca/equipmentSearch/searchRadioEquipments?execution=e1s1&amp;lang=en">radio equipment search</a> function to determine availability of equipment. Select advanced search, in the Radio Specification (BETS99-RSS999) box select RSS-198, <a href="/site/spectrum-management-telecommunications/en/devices-and-equipment/radio-equipment-standards/flexible-use-broadband-equipment-operating-band-3900-3980-mhz"><cite>Flexible Use Broadband Equipment Operating in the Band 3900-3980 MHz</cite></a> (the equipment standard for 3900 MHz), then hit search.</p>
@@ -1790,7 +1804,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">Can I use my existing equipment?</h2>
+<p>Can I use my existing equipment?</p>
 </summary>
 
 <p>You can use existing equipment so long as it complies with RSS-198, &nbsp;<a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/devices-and-equipment/radio-equipment-standards/flexible-use-broadband-equipment-operating-band-3900-3980-mhz"><cite>Flexible Use Broadband Equipment Operating in the Band 3900-3980 MHz</cite></a>, and is certified accordingly. To determine if your equipment is already certified, check the <a href="https://sms-sgs.ic.gc.ca/equipmentSearch/searchRadioEquipments?execution=e1s1&amp;lang=en">Radio Equipment Search</a>.</p>
@@ -1800,11 +1814,11 @@ There are several ways you can reach that page:</p>
 </section>
 <!--SECTION 5-->
 
-<h2 id="Technical requirements" data-parent-tab="tab3-content">Technical requirements</h2>
+<h3 id="Technical requirements" data-parent-tab="tab3-content">Technical requirements</h3>
 
 <section>
 <details><summary>
-<h2 class="h3">What is the maximum power and antenna height permitted for an NCLL licence area?</h2>
+<p>What is the maximum power and antenna height permitted for an NCLL licence area?</p>
 </summary>
 
 <p>The maximum power and antenna height is determined based on licence type and specific bands of operation. Details on this can be found on our landing page (About NCLL) section or for more details about the 3900-3980 MHz band see SRSP-521, <a href="/site/spectrum-management-telecommunications/en/devices-and-equipment/standard-radio-system-plans/srsp-521"><cite>Technical Requirements for Non-Competitive Local Licensed Services, including Fixed and/or Mobile Systems, and Flexible Use Broadband Systems, in the Band 3900-3980 MHz</cite></a>.</p>
@@ -1812,11 +1826,11 @@ There are several ways you can reach that page:</p>
 </section>
 <!--SECTION 6-->
 
-<h2 id="Licence areas" data-parent-tab="tab3-content">Licence areas</h2>
+<h3 id="Licence areas" data-parent-tab="tab3-content">Licence areas</h3>
 
 <section>
 <details><summary>
-<h2 class="h3">What are the rules for the use of 3900-3980 MHz frequencies near the Canada-United States border?</h2>
+<p>What are the rules for the use of 3900-3980 MHz frequencies near the Canada-United States border?</p>
 </summary>
 
 <p>Specific coordination rules (including coordination distances) and procedures for the sharing of the 3900-3980 MHz band between Canadian and United States (US) licensees are under negotiation between ISED and the Federal Communications Commission. Until the international agreements are finalized, NCLL licensees planning to establish or modify a fixed or base station along the Canada-US border shall be required to meet the technical requirements outlined in section 10 of SRSP-521, <a href="/site/spectrum-management-telecommunications/en/devices-and-equipment/standard-radio-system-plans/srsp-521"><cite>Technical Requirements for Non-Competitive Local Licensed Services, including Fixed and/or Mobile Systems, and Flexible Use Broadband Systems, in the Band 3900-3980 MHz</cite></a>.</p>
@@ -1825,7 +1839,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">How do I determine if a service area is in a metro, urban, rural, or remote Tier 5 area?</h2>
+<p>How do I determine if a service area is in a metro, urban, rural, or remote Tier 5 area?</p>
 </summary>
 
 <p>To determine if a service area is in a metro, urban, rural, or remote Tier 5 area, see <a href="/site/spectrum-management-telecommunications/en/spectrum-allocation/service-areas-competitive-licensing#tierMap">service areas for competitive licensing</a>. The category breakdown can be viewed by selecting a geographical point on the map or by scrolling through the table.</p>
@@ -1834,7 +1848,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">Are there concerns if my area crosses into another tier area?</h2>
+<p>Are there concerns if my area crosses into another tier area?</p>
 </summary>
 
 <p>There are no concerns if your area crosses into another tier area.</p>
@@ -1842,11 +1856,11 @@ There are several ways you can reach that page:</p>
 </section>
 <!--SECTION 7-->
 
-<h2>NCLL portal</h2>
+<h3>NCLL portal</h3>
 
 <section>
 <details><summary>
-<h2 class="h3">What do the statuses on the NCLL portal mean?</h2>
+<p>What do the statuses on the NCLL portal mean?</p>
 </summary>
 
 <p>You will see various application and licence statuses in the portal. The table below explains what each status means.</p>
@@ -1941,7 +1955,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">What do the metrics on the portal mean?</h2>
+<p>What do the metrics on the portal mean?</p>
 </summary>
 
 <p>The portal presents 4 information summary cards, titled "Applications", "Licences", "Payment due", and "Compliance".</p>
@@ -2006,7 +2020,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">What do the compliance statuses mean?</h2>
+<p>What do the compliance statuses mean?</p>
 </summary>
 
 <p>You will see a compliance status listed for licences in the portal. There are three possible compliance statuses, detailed in the table below.</p>
@@ -2040,7 +2054,7 @@ There are several ways you can reach that page:</p>
 
 <section>
 <details><summary>
-<h2 class="h3">What is the summary report?</h2>
+<p>What is the summary report?</p>
 </summary>
 
 <p>If we have rejected your application due to limited spectrum availability, then we will provide you with a summary report that details ISED's spectrum availability analysis. You can download this report by clicking "Download summary report" under "Actions" in the portal.</p>
@@ -2065,7 +2079,7 @@ There are several ways you can reach that page:</p>
 <p>Learn about spectrum, wireless technology, and how the Government of Canada regulates spectrum. </p>
 <a href="https://ised-isde.canada.ca/site/communications-research-centre-canada/en/what-5g">What is 5G? </a>
 <p>Learn about the 5th generation wireless communication technology. </p>
-<a href="">NCLL presentation</a>
+<a href="">NCLL presentation</a>  <!-- Need to add in the link to the NCLL presentation -->
 <p>This PowerPoint presentation describes what NCLL is and how it works. </p>
 
 <h3>Spectrum Management System (SMS) </h3>
@@ -2086,10 +2100,13 @@ There are several ways you can reach that page:</p>
 <p>Contains the list of wireless equipment certified for use in Canada. </p>
 
 <h3>Licensing frameworks, standards and procedures related to NCLL </h3>
-<a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/decision-non-competitive-local-licensing-framework-including-spectrum-3900-3980-mhz-band-and">Decision on a Non-Competitive Local Licensing Framework, Including Spectrum in the 3900-3980 MHz Band and Portions of the 26, 28 and 38 GHz Bands </a>
-<a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/addendum-non-competitive-local-licensing-framework-include-spectrum-275-2835-ghz-band">Addendum to the Non-Competitive Local Licensing Framework to include Spectrum in the 27.5-28.35 GHz Band </a>
-<a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/spectrum-advisory-bulletins-sab/sab-xx-25-notice-opening-application-process-spectrum-licences-3900-3980-mhz-band-under-non">SAB-01-25 — Notice of Opening the Application Process for Spectrum Licences in the 3900-3980 MHz Band under the Non-Competitive Local Licensing Framework </a>
-<a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/spectrum-advisory-bulletins-sab/sab-03-25-notice-amendment-spectrum-limit-condition-licence-3900-mhz-band-under-non-competitive">SAB-03-25 — Notice of amendment to spectrum limit condition of licence in the 3900 MHz band under the non-competitive local (NCL) licensing framework </a>
+<ul>
+<li><a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/decision-non-competitive-local-licensing-framework-including-spectrum-3900-3980-mhz-band-and">Decision on a Non-Competitive Local Licensing Framework, Including Spectrum in the 3900-3980 MHz Band and Portions of the 26, 28 and 38 GHz Bands </a></li>
+<li><a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/addendum-non-competitive-local-licensing-framework-include-spectrum-275-2835-ghz-band">Addendum to the Non-Competitive Local Licensing Framework to include Spectrum in the 27.5-28.35 GHz Band </a></li>
+<li><a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/spectrum-advisory-bulletins-sab/sab-xx-25-notice-opening-application-process-spectrum-licences-3900-3980-mhz-band-under-non">SAB-01-25 — Notice of Opening the Application Process for Spectrum Licences in the 3900-3980 MHz Band under the Non-Competitive Local Licensing Framework </a></li>
+<li><a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/spectrum-advisory-bulletins-sab/sab-03-25-notice-amendment-spectrum-limit-condition-licence-3900-mhz-band-under-non-competitive">SAB-03-25 — Notice of amendment to spectrum limit condition of licence in the 3900 MHz band under the non-competitive local (NCL) licensing framework </a></li>
+</ul>
+
 <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/devices-and-equipment/standard-radio-system-plans/srsp-521">SRSP-521 </a>
 <p>Technical Requirements for Non-Competitive Local Licensing Services, including Fixed and/or Mobile Systems, and Flexible Use Broadband Systems, in the Band 3900-3980 MHz </p>
 <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/node/2359">SRSP-522 </a>
@@ -2133,7 +2150,7 @@ There are several ways you can reach that page:</p>
 <h5>Frequency band</h5>
 <p>If you’d like to see which bands and frequency blocks may be available in your desired licence area, please use the <a href="https://smp-pgs.ic.gc.ca/NCLLBrowser/index">Non-Competitive Local Licensing Spectrum Browser</a>. </p>
 <p>Amount of bandwidth required and frequency block if applicable </p>
-<p>If you want two frequency blocks that aren't contiguous (e.g., A2 and A4), then you must submit two separate applications. </p>
+<p>If you want two frequency blocks that aren't contiguous (e.g. A2 and A4), then you must submit two separate applications. </p>
 <p>You can request to have a specific frequency block or have us automatically select one for you. Note that large mobile service providers are not eligible to apply for blocks A5-A8 (i.e. 3940-3980 MHz) or blocks AA9-AA17 (i.e. 27.90 to 28.35 GHz). </p>
 
 <h5>Licence duration</h5>
@@ -2155,12 +2172,8 @@ There are several ways you can reach that page:</p>
 <p>If your application is approved, then we will send you an invoice, and you will receive your licence once full payment is received. </p>
 <p>If your application is not approved, we will keep you informed. </p>
 
-</div>
-</div>
 
-<div aria-labelledby="tab7-btn" class="tab-pane active" id="tab7-content" role="tabpanel">
-<div class="div_tab_bg">
-<h2 id="Obligations" data-parent-tab="tab7-content">Obligations of licensees</h2>
+<h3 id="Obligations" data-parent-tab="tab7-content">Obligations of licensees</h3>
 <p>Once your licence is granted, you will be responsible for meeting the conditions of licence. These are band-specific and are printed on the licence. They can also be found here: </p>
 <ul>
     <li>3900 MHz: <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/r3-spectrum-licences-issued-non-competitive-local-licensing-band-3900-3980-mhz">R3 — Spectrum Licences issued via Non-Competitive Local Licensing in the Band 3900-3980 MHz</a> </li>
@@ -2170,13 +2183,13 @@ There are several ways you can reach that page:</p>
 
 <h4>Upload your site data information </h4>
 <p>Within one month of receiving your licence, and continuing on a monthly basis, you will need to provide information about your stations to ISED. Instructions can be found at <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/terrestrial-spectrum-licensing-services/how-submit-monthly-update-technical-data">How to submit a monthly update of technical data</a>. </p>
-<p>If you haven’t deployed any stations yet, see instructions at <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data/faq-spectrum-licence-site-data-upload#q15">What if I haven’t deployed any stations or am decommissioning stations at the time that my monthly report is due?</a>. </p>
+<p>If you haven’t deployed any stations yet, see instructions at <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data/faq-spectrum-licence-site-data-upload#q15">What if I haven’t deployed any stations or am decommissioning stations at the time that my monthly report is due?</a> </p>
 <p>If you have previously submitted site data and you haven’t made any changes to your stations since then, see instructions at <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data/faq-spectrum-licence-site-data-upload#q16">What if I don’t have any changes to the data that was previously submitted?</a> </p>
 
-<h5>Deploy stations</h5>
+<h4>Deploy stations</h4>
 <p>You must deploy at least one station within two years of the effective date of your licence, and start using your network to continuously provide services. This can be for your own internal purposes, or to provide cellular service or wireless Internet service to paying subscribers, or both. </p>
 
-<h5>Follow the antenna tower siting procedure </h5>
+<h4>Follow the antenna tower siting procedure </h4>
 <p>If you are placing or changing any outdoor antennas, you will need to follow the rules provided in <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/procedures/client-procedures-circulars-cpc/cpc-2-0-03-radiocommunication-and-broadcasting-antenna-systems">CPC-2-0-03 — Radiocommunication and Broadcasting Antenna Systems</a>. This includes the following: </p>
 <ul>
     <li>Following the rules provided by the appropriate land-use authority </li>
@@ -2185,23 +2198,24 @@ There are several ways you can reach that page:</p>
 </ul>
 <p>Owners of existing towers are required to allow other organizations to lease space on their towers. For more information see <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/procedures/client-procedures-circulars-cpc/cpc-2-0-17-conditions-licence-mandatory-roaming-and-antenna-tower-and-site-sharing-and-prohibit">CPC-2-0-17 – Conditions of Licence for Mandatory Roaming and Antenna Tower and Site Sharing and to Prohibit Exclusive Site Arrangements</a>. </p>
 
-<h5 id="comply_with_safety">Comply with Safety Code 6 </h5>
+<h4 id="comply_with_safety">Comply with Safety Code 6 </h4>
 <p>Health Canada’s Safety Code 6 guidelines provide limits for safe human exposure to radio frequency energy. Your equipment must comply with Safety Code 6 at all times. Note that it’s not just your own emissions that you have to be aware of: Safety Code 6 requires you to take into account the combined effects of nearby installations within the local radio environment. </p>
 <p>For more information see <a href="https://www.canada.ca/en/health-canada/services/publications/health-risks-safety/limits-human-exposure-radiofrequency-electromagnetic-energy-range-3-300.html">Limits of Human Exposure to Radiofrequency Electromagnetic Energy in the Frequency Range from 3 kHz to 300 GHz - Canada.ca</a></p>
 
-<h5>Comply with cross-border requirements </h5>
+<h4>Comply with cross-border requirements </h4>
 <p>If your licence area is close to the Canada-U.S. border, you may need to coordinate with operators on the other side of the border in order to reduce the risk of radio interference. Arrangements between ISED and the U.S.’s Federal Communications Commission (FCC) are made on a band-by-band basis, and you will be required to abide by any arrangements that we make. </p>
 <p>For the 3900 MHz band, see <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/3900-mhz-ncll-cross-border-best-practices">3900 MHz NCLL cross-border best practices</a>. </p>
 <p>For the 28 GHz band, see the <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/node/2359#s10">International coordination</a> section in SRSP-522. </p>
 
-<h5>Register as a telecommunications provider </h5>
+<h4>Register as a telecommunications provider </h4>
 <p>If you are offering or providing telecommunications services to the public, you may need to register with the Canadian Radio-television and Telecommunications Commission (CRTC). </p>
 <p>See <a href="https://crtc.gc.ca/eng/comm/telecom/registr.htm">Register as a Telecommunications provider</a> to register. </p>
 
-<h5>Obtain a Mobile Network Code (MNC) </h5>
+<h4>Obtain a Mobile Network Code (MNC) </h4>
 <p>If you operate equipment that requires an International Mobile Subscription Identity (IMSI) such as LTE or 5G systems, you may qualify for a Canadian-administered Mobile Network Code (MNC) assigned by the <a href="https://cnac.ca/index.htm">Canadian Numbering Administration Consortium (CNAC)</a>. A Canadian-administered MNC can be used with Canada's Mobile Country Code (302).</p>
 <p>To see if you qualify for a Canadian MNC, see section 7 of the <a href="https://crtc.gc.ca/public/cisc/cn/CNODGL0004E.docx">Canadian International Mobile Subscription Identity (IMSI) Assignment Guideline</a>. Note: this is a DOCX document and is in English only. </p>
 <p>If you plan to operate a private network and don't qualify for a Canadian-administered MNC, you can consider using Mobile Country Code (MCC) 999, which is a globally shared country code for private networks. With this country code, you can use an MNC of your choice. For more information, see Appendix III of <a href="https://www.itu.int/itu-t/recommendations/rec.aspx?rec=E.212">Recommendation ITU-T E.212 (06/2024)</a>. </p>
+
 
 </div>
 </div>
