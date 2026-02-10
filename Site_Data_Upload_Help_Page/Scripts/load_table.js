@@ -71,11 +71,12 @@
     const col = escapeHtml(entry.column || "");
     const fieldName = escapeHtml(entry["field-name"] || "");
     const descRaw = replaceNamesWithLinks(entry.description || "");
+    const requiredWhen = replaceNamesWithLinks(entry["required-when"] || "");
     const example = escapeHtml(entry["example-data"] || "");
     const validationRaw = replaceNamesWithLinks(entry.validation || "");
-    const errorMsg = replaceNamesWithLinks(
-      escapeHtml(entry["error-description"] || ""),
-    );
+    const formatRaw = replaceNamesWithLinks(entry["format-rules"] || "");
+    const errorMsg = replaceNamesWithLinks(entry["error-description"] || "");
+    const note = replaceNamesWithLinks(entry["note"] || "");
 
     // Process description - split on "|" if multiple items
     let descHTML = "";
@@ -113,14 +114,11 @@
         <td style="padding-bottom:40px;">
           <h3>${fieldName}</h3>
           <p>${descHTML}</p>
-          <h4>Example</h4>
-          <p>${example}</p>
-          <h4>Format</h4>
-          <ul>
-          ${validationListHTML}
-          </ul>
-          <h4>Potential errors</h4>
-          <code>${errorMsg}</code>
+          ${requiredWhen ? "<h4>Required when</h4><p>" + requiredWhen + "</p>" : ""}
+          ${formatRaw && formatRaw.trim() ? "<h4>Format</h4><p>" + formatRaw + "</p>" : ""}
+          ${example && example.trim() ? "<h4>Example</h4><p>" + example + "</p>" : ""}
+          ${errorMsg && errorMsg.trim() ? "<h4>Potential error(s)</h4><p><code>" + errorMsg + "</code></p>" : ""}
+          ${note && note.trim() ? note + "</p>" : ""}
         </td>
       </tr>`;
   }
