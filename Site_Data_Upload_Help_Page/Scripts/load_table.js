@@ -117,7 +117,7 @@
           ${requiredWhen ? "<h4>Required when</h4><p>" + requiredWhen + "</p>" : ""}
           ${formatRaw && formatRaw.trim() ? "<h4>Format</h4><p>" + formatRaw + "</p>" : ""}
           ${example && example.trim() ? "<h4>Example</h4><p>" + example + "</p>" : ""}
-          ${errorMsg && errorMsg.trim() ? "<h4>Potential error(s)</h4><p><code>" + errorMsg + "</code></p>" : ""}
+          ${errorMsg && errorMsg.trim() ? "<h4>Potential error(s)</h4><p><code style='display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap'>" + errorMsg + "</code></p>" : ""}
           ${note && note.trim() ? note + "</p>" : ""}
         </td>
       </tr>`;
