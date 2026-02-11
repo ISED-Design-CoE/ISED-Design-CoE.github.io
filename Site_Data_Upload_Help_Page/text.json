@@ -73,8 +73,8 @@
     "TR9": {
       "column": "I",
       "field-name": "Cell ID",
-      "description": "<p>Enter the mobile network cell global identity following the 3GPP notation for the given radio technology: </p> <b>GSM, CDMA, HSPA</b> <li>(CGI): PLMN-LAC-CID</li> <br> <b>LTE</b> <li>(ECGI): PLMN-TAC-ECI</li> <br> <b>5GNR, 5GDSS</b> <li>(NCGI): PLMN-TAC-NCI</li>",
-      "required-when": "This field is required only when <a href=\"#H\">H - Radio Technology</a> is  any of the following: <ul><li>GSM</li> <li>CDMA </li> <li>HSPA </li> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
+      "description": "<p>Enter the mobile network cell global identity following the 3GPP notation for the given radio technology: </p> <b>GSM, CDMA, HSPA</b> <ul><li>(CGI): PLMN-LAC-CID</li></ul> <b>LTE</b> <ul><li>(ECGI): PLMN-TAC-ECI</li></ul> <b>5GNR, 5GDSS</b> <ul><li>(NCGI): PLMN-TAC-NCI</li></ul>",
+      "required-when": "This field is required only when H - Radio Technology is  any of the following: <ul><li>GSM</li> <li>CDMA </li> <li>HSPA </li> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
       "format-rules": "<ul> <li>Must be in the format of 999999-99999999-99999999999 </li> <li>Minimum of 11 characters </li> <li>Maximum of 27 characters </li></ul>",
       "example-data": "302610-1051200-25381093417 ",
       "error-description": "The Cell ID is missing or not in the expected format or length."
@@ -83,7 +83,7 @@
       "column": "J",
       "field-name": "Physical cell ID",
       "description": "Enter the Physical Cell Identity (PCI) for LTE or 5G systems.",
-      "required-when": "This field is required only when <a href=\"#H\">H - Radio Technology</a> is  any of the following: <ul> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
+      "required-when": "This field is required only when H - Radio Technology is  any of the following: <ul> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
       "format-rules": "<p>Must be a number from either: <ul><li>0 to 503 for <b>LTE</b> systems</li><li>0 to 1007 for <b>5GNR</b> and <b>5GD</b> systems</li></ul></p>",
       "example-data": "204",
       "error-description": "The Physical Cell ID is missing or not within the expected range of values."

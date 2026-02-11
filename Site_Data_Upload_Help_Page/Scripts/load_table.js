@@ -73,13 +73,11 @@
     const descRaw = replaceNamesWithLinks(entry.description || "");
     const requiredWhen = replaceNamesWithLinks(entry["required-when"] || "");
     const example = escapeHtml(entry["example-data"] || "");
-    const validationRaw = replaceNamesWithLinks(entry.validation || "");
     const formatRaw = replaceNamesWithLinks(entry["format-rules"] || "");
     const errorMsg = replaceNamesWithLinks(entry["error-description"] || "");
     const note = replaceNamesWithLinks(entry["note"] || "");
 
     // Process description - split on "|" if multiple items
-    let descHTML = "";
     const descItems = descRaw
       .split("|")
       .map((s) => s.trim())
@@ -95,17 +93,6 @@
     } else {
       descHTML = "<p>" + descRaw + "</p>";
     }
-
-    // Process validation rules - split on "."
-    const validationRules = validationRaw
-      .split(".")
-      .map((s) => s.trim())
-      .filter((s) => s.length > 0);
-
-    let validationListHTML = "";
-    validationRules.forEach(function (rule) {
-      validationListHTML += "<li>" + rule + "</li>";
-    });
 
     return `<tr class="gradeA">
         <td class="sorting_1">
