@@ -47,8 +47,8 @@
     });
   }
 
-  // Array of field names to convert to hyperlinks
-  const allNames = ["H - Radio Technology", "S - Tx Channel Frequency"];
+  // Array of field names to convert to hyperlinks — populated from JSON at runtime
+  let allNames = [];
 
   // Replace field name references with hyperlinks
   function replaceNamesWithLinks(text) {
@@ -96,10 +96,10 @@
 
     return `<tr class="gradeA">
         <td class="sorting_1">
-          <h3 id="${col}" style="text-align:left; scroll-margin-top: 35px;">${col}</h3>
+          <h2 id="${col}" style="text-align:left; scroll-margin-top: 35px;">${col}</h2>
         </td>
         <td style="padding-bottom:40px;">
-          <h3>${fieldName}</h3>
+          <h2>${fieldName}</h2>
           <p>${descHTML}</p>
           ${requiredWhen ? "<h4>Required when</h4><p>" + requiredWhen + "</p>" : ""}
           ${formatRaw && formatRaw.trim() ? "<h4>Format</h4><p>" + formatRaw + "</p>" : ""}
@@ -207,6 +207,12 @@
           console.error("No TR entries found in JSON");
           return;
         }
+
+        // Build the `allNames` lookup from the JSON entries so
+        // `replaceNamesWithLinks` matches the full "<Column> - <Field Name>" strings.
+        allNames = entries
+          .filter((e) => e.column && e.column.toString().trim())
+          .map((e) => `${e.column} - ${e["field-name"]}`);
 
         populateTableOfContents(entries);
         populateTable(entries);

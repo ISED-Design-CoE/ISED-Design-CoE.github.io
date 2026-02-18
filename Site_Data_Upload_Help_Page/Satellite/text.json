@@ -1,6 +1,6 @@
 {
   "en": {
-    "page-heading": "Text format for spectrum licence site data upload",
+    "page-heading": "Text format for satellite spectrum licence site data upload",
     "page-description": "Learn about the format, validation rules, and errors when uploading spectrum licence site data.",
     "toc-heading": "Table of contents",
     "back-to-top": "Back to top",
@@ -48,7 +48,7 @@
       "column": "F",
       "field-name": "Station location",
       "description": "Enter the station is located or specify if there are no changes or no stations. ",
-      "format-rules": "<ul><li><b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (Maximum length of 63 characters). </li><li><b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> </li><li><b>If you have no stations deployed</b> <br> If you have no station deployed or being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty</li></ul>",
+      "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (Maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty",
       "example-data": "WR0123 - Strandherd Repeater Site ",
       "error-description": "The Station Location is missing or exceeds the character limit.",
       "note": "An error in this field may also introduce errors in the following fields: <ul><li><a href=\"\">L – Latitude </a></li><li><a href=\"\">M – Longitude </a></li><li><a href=\"\">AD – Download resource allocation </a></li></ul>"
@@ -56,42 +56,42 @@
     "TR7": {
       "column": "G",
       "field-name": "Station type",
-      "description": "Enter the station type of either fixed or earth station.  ",
-      "format-rules": "Must be either: <ul><li>FX - Fixed station</li><li>TC - Earth station </li></ul>",
-      "example-data": "FX",
+      "description": "Enter the station type.  ",
+      "format-rules": "Must enter TC.",
+      "example-data": "TC",
       "error-description": "The Station Type is not input as CAPS, is missing or is not an accepted Station Type value. "
     },
     "TR8": {
       "column": "H",
       "field-name": "Radio technology",
       "description": "The mode of operation (provisioning) for the radio apparatus at the site. ",
-      "format-rules": "<ul> <li>GSM – Global System for Mobile Communications</li> <li>CDMA – Code Division Multiple Access</li> <li>HSPA – High Speed Packet Access</li> <li>LTE – Long Term Evolution</li> <li>5GNR – 5G New Radio </li> <li>5GDSS – 5G Dynamic Spectrum Sharing</li> <li>WIMAX – Worldwide Interoperability for Microwave Access</li> <li>WI-FI</li> <li>OTHER</li></ul>",
-      "example-data": "LTE ",
+      "format-rules": "Must enter OTHER.",
+      "example-data": "OTHER ",
       "error-description": "The Radio Technology value is missing, not in ALL CAPS, or not one of the allowed values. "
     },
     "TR9": {
       "column": "I",
       "field-name": "Cell ID",
       "description": "<p>The mobile network Cell Global Identity (CGI) following the 3GPP notation for the given radio technology.</p> ",
-      "required-when": "This field is required when H - Radio Technology is  any of the following: <ul><li>GSM</li> <li>CDMA </li> <li>HSPA </li> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
+      "required-when": "This field is required when H - Radio technology is  any of the following: <ul><li>GSM</li> <li>CDMA </li> <li>HSPA </li> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
       "format-rules": "<b>For GSM, CDMA, HSPA</b> <br>(CGI): PLMN-LAC-CID <br><br> <b>For 5GNR, 5GDSS</b> <br>(NCGI): PLMN-TAC-NCI<br><br> <b>For LTE</b> <br>(ECGI): PLMN-TAC-ECI <ul> <li>Must be in the format of 999999-99999999-99999999999 </li> <li>Minimum of 11 characters </li> <li>Maximum of 27 characters </li></ul>",
       "example-data": "302610-1051200-25381093417 ",
       "error-description": "The Cell ID is missing or not in the expected format or length."
     },
     "TR10": {
       "column": "J",
-      "field-name": "Physical cell ID",
-      "description": "Enter the Physical Cell Identity (PCI) for LTE or 5G systems.",
-      "required-when": "This field is required only when H - Radio Technology is  any of the following: <ul> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
-      "format-rules": "<p>Must be a number from either: <ul><li>0 to 503 for <b>LTE</b> systems</li><li>0 to 1007 for <b>5GNR</b> or <b>5GDSS</b> systems</li></ul></p>",
+      "field-name": "Filter code",
+      "description": "The filter codes for earth stations operating in the band 3700-4200 MHz. ",
+      "required-when": "This field is required only when H - Radio technology is  any of the following: <ul> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
+      "format-rules": "<p>Must be one of the following filter codes:  <ul><li>0 – Non-Transitioned </li><li>1 – Transitioned </li> <li>2 – New </li></ul></p>",
       "example-data": "204",
-      "error-description": "The Physical Cell ID is missing or not within the expected range of values."
+      "error-description": "Earth station filter code is missing or not within the expected range of values."
     },
     "TR11": {
       "column": "K",
       "field-name": "Province/Territory code",
       "description": "Enter the two-character abbreviation of the province or territory your station is located in. ",
-      "format-rules": "<p>Your licence coordinates must be within the province or territory <br><br> Must be one of the following provincial or territorial codes: <ul><li>AB – Alberta</li> <li>BC – British Columbia</li> <li>MB – Manitoba </li> <li>NB – New Brunswick </li> <li>NL–  Newfoundland and Labrador </li> <li>NS – Nova Scotia </li> <li>ON – Ontario </li> <li>PE – Prince Edward Island </li> <li>QC – Quebec </li> <li>SK – Saskatchewan </li> <li>NT – Northwest Territories  </li> <li>NU – Nunavut </li> <li>YT – Yukon</li></ul></li> For transportable stations, includes \"IP\" for interprovincial and \"CA\" for Canada-wide.) </p>",
+      "format-rules": "<p>Your licence coordinates must be within the province or territory <br><br> Must be one of the following provincial or territorial codes: <ul><li>AB - Alberta</li> <li>BC - British Columbia</li> <li>MB - Manitoba </li> <li>NB - New Brunswick </li> <li>NL-  Newfoundland and Labrador </li> <li>NS - Nova Scotia </li> <li>ON - Ontario </li> <li>PE - Prince Edward Island </li> <li>QC - Quebec </li> <li>SK - Saskatchewan </li> <li>NT - Northwest Territories  </li> <li>NU - Nunavut </li> <li>YT - Yukon</li></ul></li> For transportable stations, includes \"IP\" for interprovincial and \"CA\" for Canada-wide.) </p>",
       "example-data": "ON ",
       "error-description": "The Province/Territory is not input as CAPS, is missing or is not an accepted Province/Territory abbreviation."
     },
@@ -115,7 +115,7 @@
       "column": "N",
       "field-name": "Site type code",
       "description": "The general type of site associated with the installation. ",
-      "format-rules": "Must be one of the following site types: <ul><li>U – Underground (E.g. a mine or a subway) </li> <li>O – Outdoor (E.g. a tower or rooftop) </li> <li>I – Indoor (E.g. a stadium or office) </li></ul>",
+      "format-rules": "Must be O - Outdoor",
       "example-data": "O",
       "error-description": "The Site Type Code is not input as CAPS, is missing or is not an accepted Site Type Code value. "
     },
@@ -127,13 +127,13 @@
       "format-rules": "<ul><li>Must be greater than the antenna height</li><li>Must be between 1 to 600 m</li><li>For equipment mounted on top of a building or its boundaries, add together the total height of the building and the antenna’s supporting structure.</li></ul>",
       "example-data": "15",
       "error-description": "The Structure Height is missing or not within the expected range of values. ",
-      "note": "An error in this field may also give errors in the following fields: <ul><li><a href=\"\">AM – Tx Antenna Height </a></li><li><a href=\"\">AN – Rx Antenna Height </a></li></ul>"
+      "note": "An error in this field may also give errors in the following fields: <ul><li><a href=\"\">AM - Tx Antenna Height </a></li><li><a href=\"\">AN - Rx Antenna Height </a></li></ul>"
     },
     "TR16": {
       "column": "P",
       "field-name": "Site structure type code",
       "description": "The type of structure in use at the site. ",
-      "format-rules": "Must be one of the following structure types: <ul><li>T – Purpose-built tower </li> <li>R – Outside of building or rooftop </li> <li>P – Light pole, other street electrical, or utility pole </li> <li>S – Water tower or farm silo </li> <li>F – Furniture </li> <li>M – Transportable (Report the current operating location only and not the radius of operation) </li> <li>O – Other (E.g. indoor) </li></ul>",
+      "format-rules": "Must be one of the following structure types: <ul><li>T - Purpose-built tower </li> <li>R - Outside of building or rooftop </li> <li>P - Light pole, other street electrical, or utility pole </li> <li>S - Water tower or farm silo </li> <li>F - Furniture </li> <li>M - Transportable (Report the current operating location only and not the radius of operation) </li> <li>O - Other (E.g. indoor) </li></ul>",
       "example-data": "T",
       "error-description": "The Structure Type Code is not input as CAPS, is missing or is not an accepted Structure Type Code value. "
     },
@@ -143,7 +143,8 @@
       "description": "The date that the installation went into service. This date helps investigate possible sources of technical issues. ",
       "format-rules": "<ul><li>Must be a date in the past</li><li>Must be in the format of YYYY-MM-DD</li></ul>",
       "example-data": "2022-02-14 ",
-      "error-description": "The date is missing or not in the expected format or range.  <br><br> ORA-01841: (full) year must be between -4713 and +9999, and not be 0 <br><br> If you have an improper date format, other errors may not be shown."
+      "error-description": "The date is missing or not in the expected format or range.",
+      "note": "ORA-01841: (full) year must be between -4713 and +9999, and not be 0 <br><br> If you have an improper date format, other errors may not be shown."
     },
     "TR18": {
       "column": "R",
@@ -155,7 +156,7 @@
     },
     "TR19": {
       "column": "S",
-      "field-name": "Tx Channel Frequency",
+      "field-name": "Tx channel frequency",
       "description": "The centre frequency (MHz) of the occupied bandwidth as well as any installations that are used unidirectionally for transmission or reception only.",
       "format-rules": "<ul><li>If your antenna is receive only and not transmitting enter 0 </li> <li>Must be within an authorized frequency band for this licence </li> <li>Must be the centre frequency </li></ul>",
       "example-data": "1925.3 ",
@@ -163,7 +164,7 @@
     },
     "TR20": {
       "column": "T",
-      "field-name": "Rx Channel Frequency",
+      "field-name": "Rx channel frequency",
       "description": "The centre frequency (MHz) of the occupied bandwidth for the given antenna installation, as well as any installations that are used unidirectionally for transmission or reception only.",
       "format-rules": "<ul><li>Must be within an authorized frequency band for this licence </li> <li>Must be the centre frequency</li> <li>If your antenna is transmit only and not receiving enter 0</li></ul>",
       "example-data": "1875.3 ",
@@ -171,56 +172,52 @@
     },
     "TR21": {
       "column": "U",
-      "field-name": "Tx Radio HVIN",
+      "field-name": "Tx radio HVIN",
       "description": "The transmitting radio’s Hardware Version Identification Number (HVIN) certified by ISED.",
-      "required-when": "This field is required when S - Tx Channel Frequency is larger than 0.",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0.",
       "format-rules": "<ul><li>Maximum length 128 characters </li> <li>If the radio is certification-exempt, you must provide the manufacturer's radio model number or a system configuration name </li></ul>",
       "example-data": "T99W175MC ",
       "error-description": "The Tx Radio HVIN is missing or exceeds the character limit. "
     },
     "TR22": {
       "column": "V",
-      "field-name": "Rx Radio HVIN",
+      "field-name": "Rx radio HVIN",
       "description": "The receiving radio’s Hardware Version Identification Number (HVIN) certified by ISED. If the radio is certification-exempt, please provide the manufacturer's radio model number or a system configuration name. ",
-      "required-when": "This field is required when T - Rx Channel Frequency is larger than 0.",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0.",
       "format-rules": "<ul><li>Maximum length 128 characters </li> <li>If the radio is certification-exempt, you must provide the manufacturer's radio model number or a system configuration name </li></ul>",
       "example-data": "T99W175MC",
       "error-description": "The Rx Radio HVIN is missing or exceeds the character limit. "
     },
     "TR23": {
       "column": "W",
-      "field-name": "Tx Radio Manufacturer code",
+      "field-name": "Tx radio manufacturer code",
       "description": "The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the radio transmitter.",
-      "required-when": "This field is required when G - Station Type is FX and S – Tx Channel Frequency is larger than 0.  ",
-      "format-rules": "<ul><li>Must be a valid manufacturer company number </li></ul>",
-      "example-data": "109AB ",
+      "format-rules": "Must enter code 31913.",
+      "example-data": "31913 ",
       "error-description": "The Tx Radio Manufacturer Code is missing or is not an accepted Manufacturer Code value. "
     },
     "TR24": {
       "column": "X",
-      "field-name": "Rx Radio Manufacturer code",
+      "field-name": "Rx radio manufacturer code",
       "description": "The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the radio receiver.",
-      "required-when": "This field is required when G - Station Type is FX and T – Rx Channel Frequency is larger than 0.  ",
-      "format-rules": "<ul><li>Must be a valid manufacturer company number </li></ul>",
-      "example-data": "109AB ",
+      "format-rules": "Must enter code 31913.",
+      "example-data": "31913 ",
       "error-description": "The Rx Radio Manufacturer Code is missing or is not an accepted Manufacturer Code value. "
     },
     "TR25": {
       "column": "Y",
-      "field-name": "Tx Radio Certification Number",
+      "field-name": "Tx radio certification number",
       "description": "The Certification Number assigned by ISED to the radio transmitter and listed in the <a href=\"https://ised-isde.canada.ca/site/certification-engineering-bureau/en/wireless-program/radio-equipment-list-rel\">Radio Equipment List (REL)</a>.",
-      "required-when": "This field is required when G - Station Type is FX and S – Tx Channel Frequency is larger than 0.  ",
-      "format-rules": "<ul><li>Must be a valid certification number from the Radio Equipment List (subservice 12-142)  </li> <li>If your equipment is exempt from certification, you must enter \"Exempt\" </li> <li>Maximum length 31 characters </li></ul>",
-      "example-data": "24374-T99W175M ",
+      "format-rules": "Must enter Exempt.",
+      "example-data": "Exempt",
       "error-description": "The Tx Radio Certification Number is missing or exceeds the character limit. "
     },
     "TR26": {
       "column": "Z",
-      "field-name": "Rx Radio Certification Number",
+      "field-name": "Rx radio certification number",
       "description": "The Certification Number assigned by ISED to the radio receiver and listed in the <a href=\"https://ised-isde.canada.ca/site/certification-engineering-bureau/en/wireless-program/radio-equipment-list-rel\">Radio Equipment List (REL)</a>.",
-      "required-when": "This field is required when G - Station Type is FX and T – Rx Channel Frequency is larger than 0.  ",
-      "format-rules": "<ul><li>Must be a valid certification number from the Radio Equipment List (subservice 12-142)  </li> <li>If your equipment is exempt from certification, you must enter \"Exempt\" </li> <li>Maximum length 31 characters </li></ul>",
-      "example-data": "24374-T99W175M ",
+      "format-rules": "Must enter Exempt.",
+      "example-data": "Exempt",
       "error-description": "The Rx Radio Certification Number is missing or exceeds the character limit. "
     },
     "TR27": {
@@ -233,7 +230,7 @@
     },
     "TR28": {
       "column": "AB",
-      "field-name": "Class of Emission",
+      "field-name": "Class of emission",
       "description": "The International Telecommunication Union (ITU) designation for the class of emission.  ",
       "format-rules": "<ul><li>Must be a valid emission code as described in <a href=\"https://ised-isde.canada.ca/site/spectrum-management-system/en/radiocommunication-licensing-services/text-format-upload-technical-data-stations-authorized-under-spectrum-licences\">Valid Class of Emission Codes</a>.</li> <li>Enter the emission class that uses the largest bandwidth </li> </ul>",
       "example-data": "F3WET  ",
@@ -243,14 +240,14 @@
       "column": "AC",
       "field-name": "Transmitter TCP–TRP",
       "description": "The Total Radiated Power (TRP) or Total Conducted Power (TCP) in dBm. <br><br> Ensure the value entered is expressed in dBm. Wrong units will cause incorrect representation of power levels, and may be flagged for suspected non-compliance. ",
-      "required-when": "This field is required when S - Tx Channel Frequency is larger than 0.",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0.",
       "format-rules": "Must be one of the following: <ul><li>Enter TRP for AAS equipment (as defined in the applicable SRSP)</li><li>Enter TCP for non-AAS equipment</li></ul>",
       "example-data": "21.4",
       "error-description": "The Transmitter TCP or TRP is missing, or not within the expected range. "
     },
     "TR30": {
       "column": "AD",
-      "field-name": "Downlink Resource Allocation",
+      "field-name": "Downlink resource allocation",
       "description": "The percentage of time transmitting.",
       "format-rules": "<ul><li>For bidirectional systems that transmit and receive on the same frequency (TDD), enter the percentage of time transmitting (see <a>GL-01</a>) from 1 to 99.</li> <li>For full duplex systems, enter 100.</li></ul>",
       "example-data": "89",
@@ -258,218 +255,218 @@
     },
     "TR31": {
       "column": "AE",
-      "field-name": "Tx Antenna Type Code",
+      "field-name": "Tx antenna type code",
       "description": "The type of antenna associated with a transmitting radio installation.",
-      "required-when": "This field is required when G - Station Type is FX and S – Tx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when G - Station type is FX and S - Tx channel frequency is greater than 0. ",
       "format-rules": "Entry must be one of the following: <ul><li>AAS – Active antenna systems</li> <li>NAC – Non-AAS correlated </li> <li>NAU – Non-ASS uncorrelated </li></ul> <br> If deploying a hybrid mode, enter NAC.  ",
       "example-data": "NAU",
       "error-description": "The Tx Antenna Type Code is not input as CAPS, is missing or is not an accepted Antenna Type Code value. "
     },
     "TR32": {
       "column": "AF",
-      "field-name": "Rx Antenna Type Code",
+      "field-name": "Rx antenna type code",
       "description": "The type of antenna associated with a receiving radio installation.",
-      "required-when": "This field is required when G - Station Type is FX and T – Rx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when G - Station type is FX and T - Rx channel frequency is greater than 0. ",
       "format-rules": "Entry must be one of the following: <ul><li>AAS – Active antenna systems</li> <li>NAC – Non-AAS correlated </li> <li>NAU – Non-ASS uncorrelated </li></ul> <br> If deploying a hybrid mode, enter NAC.  ",
       "example-data": "NAU",
       "error-description": "The Rx Antenna Type Code is not input as CAPS, is missing or is not an accepted Antenna Type Code value. "
     },
     "TR33": {
       "column": "AG",
-      "field-name": "Tx Number of Antennas",
+      "field-name": "Tx number of antennas",
       "description": "The total number of Tx antennas.",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0. ",
-      "format-rules": "<ul><li>For a single-input and single-output (SISO) system enter 1</li><li>For a traditional antenna diversity enter 2 or any number larger </li><li>For MIMO systems, enter the number of antenna elements in the antenna panel</li>",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0. ",
+      "format-rules": "<ul><li>For a single-input and single-output (SISO) system enter 1</li><li>For a traditional antenna diversity enter 2 or any numbes greater </li><li>For MIMO systems, enter the number of antenna elements in the antenna panel</li>",
       "example-data": "1",
       "error-description": "The Number of Tx Antennas is missing or not within the expected range. "
     },
     "TR34": {
       "column": "AH",
-      "field-name": "Rx Number of Antennas",
+      "field-name": "Rx number of antennas",
       "description": "The total number of Rx antennas.",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0. ",
-      "format-rules": "<ul><li>For a single-input and single-output (SISO) system enter 1</li><li>For a traditional antenna diversity enter 2 or any number larger </li><li>For MIMO systems, enter the number of antenna elements in the antenna panel</li>",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0. ",
+      "format-rules": "<ul><li>For a single-input and single-output (SISO) system enter 1</li><li>For a traditional antenna diversity enter 2 or any numbes greater </li><li>For MIMO systems, enter the number of antenna elements in the antenna panel</li>",
       "example-data": "1",
       "error-description": "The Number of Rx Antennas is missing or not within the expected range. "
     },
     "TR35": {
       "column": "AI",
-      "field-name": "Tx Antenna Model Number",
+      "field-name": "Tx antenna model number",
       "description": "The model number of the transmitter antenna.",
-      "required-when": "This field is required when S – Tx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0. ",
       "format-rules": "Maximum length of 80 characters.",
       "example-data": "SV460-SF1 (V) ",
       "error-description": "The Tx Antenna Model Number is missing or exceeds the character limit. "
     },
     "TR36": {
       "column": "AJ",
-      "field-name": "Rx Antenna Model Number",
+      "field-name": "Rx antenna model number",
       "description": "The model number of the receiver antenna.",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0. ",
       "format-rules": "Maximum length of 80 characters.",
       "example-data": "SV460-SF1 (V) ",
       "error-description": "The Rx Antenna Model Number is missing or exceeds the character limit. "
     },
     "TR37": {
       "column": "AK",
-      "field-name": "Tx Antenna Manufacturer ",
+      "field-name": "Tx antenna manufacturer",
       "description": "The full name of the manufacturer of the transmitter antenna.",
-      "required-when": "This field is required when G - Station Type is FX and S – Tx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when G - Station type is FX and S - Tx channel frequency is greater than 0. ",
       "format-rules": "Maximum length of 255 characters.",
       "example-data": "XYZ antenna manufacturer ",
       "error-description": "The Tx Antenna Manufacturer is missing or exceeds the character limit. "
     },
     "TR38": {
       "column": "AL",
-      "field-name": "Rx Antenna Manufacturer",
+      "field-name": "Rx antenna manufacturer",
       "description": "The full name of the manufacturer of the receiver antenna. ",
-      "required-when": "This field is required when G - Station Type is FX and T – Rx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when G - Station type is FX and T - Rx channel frequency is greater than 0. ",
       "format-rules": "Maximum length of 255 characters.",
       "example-data": "XYZ antenna manufacturer ",
       "error-description": "The Rx Antenna Manufacturer is missing or exceeds the character limit. "
     },
     "TR39": {
       "column": "AM",
-      "field-name": "Tx Antenna Height",
+      "field-name": "Tx antenna height",
       "description": "Height (m) of physical centre of the transmitter antenna above or below ground level in meters including the structure/building on which the antenna is mounted. ",
-      "required-when": "This field is required when S – Tx Channel Frequency is larger than 0. ",
-      "format-rules": "<ul><li><b>If N – Site Type Code is O (Outdoor):</b> <br> The antenna height must be between 0 to 600 m and no more than 5 m taller than the O – Structure height.</li><li><b>If N – Site Type Code is I (Indoor):</b> <br> The antenna height must be between 0 to 600 m. <br> </li><li><b>If N – Site Type Code is U (Underground):</b> <br> The antenna height must be between -100 to 0 m. </li></ul>",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0. ",
+      "format-rules": "<b>If N - Site Type Code is O (Outdoor):</b> <br> The antenna height must be between 0 to 600 m and no more than 5 m taller than the O - Structure height.<br><br> <b>If N - Site Type Code is I (Indoor):</b> <br> The antenna height must be between 0 to 600 m. <br> <br> <b>If N - Site Type Code is U (Underground):</b> <br> The antenna height must be between -100 to 0 m.",
       "example-data": "15",
       "error-description": "The Tx Antenna Height is missing or not within the expected range. "
     },
     "TR40": {
       "column": "AN",
-      "field-name": "Rx Antenna Height",
+      "field-name": "Rx antenna height",
       "description": "Height (m) of physical centre of the receiver antenna above or below ground level in meters including the structure/building on which the antenna is mounted. ",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0. ",
-      "format-rules": "<ul><li><b>If N – Site Type Code is O (Outdoor):</b> <br> The antenna height must be between 0 to 600 m and no more than 5 m taller than the O – Structure height.</li><li><b>If N – Site Type Code is I (Indoor):</b> <br> The antenna height must be between 0 to 600 m. <br> </li><li><b>If N – Site Type Code is U (Underground):</b> <br> The antenna height must be between -100 to 0 m. </li></ul>",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0. ",
+      "format-rules": "<b>If N - Site Type Code is O (Outdoor):</b> <br> The antenna height must be between 0 to 600 m and no more than 5 m taller than the O - Structure height.<br><br> <b>If N - Site Type Code is I (Indoor):</b> <br> The antenna height must be between 0 to 600 m. <br> <br> <b>If N - Site Type Code is U (Underground):</b> <br> The antenna height must be between -100 to 0 m.",
       "example-data": "15",
       "error-description": "The Rx Antenna Height is missing or not within the expected range. "
     },
     "TR41": {
       "column": "AO",
-      "field-name": "Tx Antenna Omnidirectional Pattern Indicator",
+      "field-name": "Tx antenna omnidirectional pattern indicator",
       "description": "Whether the transmitter antenna is omnidirectional or directional. ",
-      "required-when": "This field is required when S – Tx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0. ",
       "format-rules": "Must be either: <ul><li>D - Directional</li><li>N - Non-directional</li></ul>",
       "example-data": "D",
       "error-description": "The Tx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
-      "note": "An error in this field may also give errors for the following fields: <ul><li><a>AQ – Tx antenna horizontal beamwidth </a></li> <li><a>AS – Tx antenna vertical beamwidth </a></li> <li><a>AU – Tx antenna azimuth </a></li> <li><a>AW – Tx antenna elevation angle </a></li></ul>"
+      "note": "An error in this field may also give errors for the following fields: <ul><li><a>AQ - Tx antenna horizontal beamwidth </a></li> <li><a>AS - Tx antenna vertical beamwidth </a></li> <li><a>AU - Tx antenna azimuth </a></li> <li><a>AW - Tx antenna elevation angle </a></li></ul>"
     },
     "TR42": {
       "column": "AP",
-      "field-name": "Rx Antenna Omnidirectional Pattern Indicator",
+      "field-name": "Rx antenna omnidirectional pattern indicator",
       "description": "Whether the receiver antenna is omnidirectional or directional. ",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when T – Rx channel frequency is greater than 0. ",
       "format-rules": "Must be either: <ul><li>D - Directional</li><li>N - Non-directional</li></ul>",
       "example-data": "D",
       "error-description": "The Rx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
-      "note": "An error in this field may also give errors for the following fields: <ul><li><a>AR – Rx antenna horizontal beamwidth  </a></li> <li><a>AT – Rx antenna vertical beamwidth </a></li> <li><a>AV – Rx antenna azimuth </a></li> <li><a>AX – Rx antenna elevation angle </a></li></ul>"
+      "note": "An error in this field may also give errors for the following fields: <ul><li><a>AR - Rx antenna horizontal beamwidth  </a></li> <li><a>AT - Rx antenna vertical beamwidth </a></li> <li><a>AV - Rx antenna azimuth </a></li> <li><a>AX - Rx antenna elevation angle </a></li></ul>"
     },
     "TR43": {
       "column": "AQ",
-      "field-name": "Tx Antenna Horizontal Beam",
+      "field-name": "Tx antenna horizontal beam",
       "description": "The beam steering angle for AAS (Active Antenna Systems) or the beam width in the horizontal plane for non-AAS. ",
-      "required-when": "This field is required when S – Tx Channel Frequency is larger than 0 and AO – Tx Antenna Omnidirectional Pattern Indicator is D (Directional). ",
-      "format-rules": "<ul><li><b>For AAS</b> <br> Enter the horizontal beam steering angle range around the mean value specified by AU – Tx Antenna Azimuth. </li><li><b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the horizontal plane of the main lobe for the transmitter antenna.</li> </ul> <br><br> Must be a number from 1.0 to 359.9 (degrees).",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0 and AO - Tx antenna omnidirectional pattern indicator is D (Directional). ",
+      "format-rules": "<b>For AAS</b> <br> Enter the horizontal beam steering angle range around the mean value specified by AU - Tx Antenna Azimuth. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the horizontal plane of the main lobe for the transmitter antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "120 ",
       "error-description": "The Tx Antenna Horizontal Beamwidth is missing or not within the expected range. "
     },
     "TR44": {
       "column": "AR",
-      "field-name": "Rx Antenna Horizontal Beam",
+      "field-name": "Rx antenna horizontal beam",
       "description": "The beam steering angle for AAS (Active Antenna Systems) or the beam width in the horizontal plane for non-AAS.  ",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0 and AP – Rx Antenna Omnidirectional Pattern Indicator is D (Directional). ",
-      "format-rules": "<ul><li><b>For AAS</b> <br> Enter the horizontal beam steering angle range around the mean value specified by AV – Rx Antenna Azimuth. </li><li><b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the horizontal plane of the main lobe for the receiver antenna.</li> </ul> <br><br> Must be a number from 1.0 to 359.9 (degrees).",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0 and AP - Rx antenna omnidirectional pattern indicator is D (Directional). ",
+      "format-rules": "<b>For AAS</b> <br> Enter the horizontal beam steering angle range around the mean value specified by AV - Rx Antenna Azimuth. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the horizontal plane of the main lobe for the receiver antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "120 ",
       "error-description": "The Rx Antenna Horizontal Beamwidth is missing or not within the expected range. "
     },
     "TR45": {
       "column": "AS",
-      "field-name": "Tx Antenna Vertical Beam",
+      "field-name": "Tx antenna vertical beam",
       "description": "The beam elevation angle for AAS (Active Antenna Systems) or the beam width in the vertical plane for non-AAS. ",
-      "required-when": "This field is required when S – Tx Channel Frequency is larger than 0 and AO – Tx Antenna Omnidirectional Pattern Indicator is D (Directional). ",
-      "format-rules": "<ul><li><b>For AAS</b> <br> Enter the vertical beam steering angle range around the mean value specified by AW – Tx Antenna Elevation Angle. </li><li><b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the vertical plane of the main lobe for the transmitter antenna.</li> </ul> <br><br> Must be a number from 1.0 to 359.9 (degrees).",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0 and AO - Tx antenna omnidirectional pattern indicator is D (Directional). ",
+      "format-rules": "<b>For AAS</b> <br> Enter the vertical beam steering angle range around the mean value specified by AW - Tx Antenna Elevation Angle. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the vertical plane of the main lobe for the transmitter antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "135 ",
       "error-description": "The Tx Antenna Vertical Beamwidth is missing or not within the expected range. "
     },
     "TR46": {
       "column": "AT",
-      "field-name": "Rx Antenna Vertical Beam",
+      "field-name": "Rx antenna vertical beam",
       "description": "The beam elevation angle for AAS (Active Antenna Systems) or the beam width in the vertical plane for non-AAS. ",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0 and AP – Rx Antenna Omnidirectional Pattern Indicator is D (Directional). ",
-      "format-rules": "<ul><li><b>For AAS</b> <br> Enter the vertical beam steering angle range around the mean value specified by AX – Rx Antenna Elevation Angle. </li><li><b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the vertical plane of the main lobe for the receiver antenna.</li> </ul> <br><br> Must be a number from 1.0 to 359.9 (degrees).",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0 and AP - Rx antenna omnidirectional pattern indicator is D (Directional). ",
+      "format-rules": "<b>For AAS</b> <br> Enter the vertical beam steering angle range around the mean value specified by AX - Rx Antenna Elevation Angle. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the vertical plane of the main lobe for the receiver antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "135 ",
       "error-description": "The Rx Antenna Vertical Beamwidth is missing or not within the expected range. "
     },
     "TR47": {
       "column": "AU",
-      "field-name": "Tx Antenna Azimuth",
+      "field-name": "Tx antenna azimuth",
       "description": "The azimuth (in degrees) of the antenna from true north of the transmitter antenna's direction of maximum radiation.",
-      "required-when": "This field is required when S – Tx Channel Frequency is larger than 0 and AO – Tx Antenna Omnidirectional Pattern Indicator is D (Directional). ",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0 and AO - Tx antenna omnidirectional pattern indicator is D (Directional). ",
       "format-rules": "Must be a number from 0.0 to 359.9 (degrees).",
       "example-data": "270 ",
       "error-description": "The Tx Antenna Azimuth is missing or not within the expected range. "
     },
     "TR48": {
       "column": "AV",
-      "field-name": "Rx Antenna Azimuth",
+      "field-name": "Rx antenna azimuth",
       "description": "The azimuth (in degrees) of the antenna from true north of the receiver antenna's direction of maximum radiation.",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0 and AP – Rx Antenna Omnidirectional Pattern Indicator is D (Directional). ",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0 and AP - Rx antenna omnidirectional pattern indicator is D (Directional). ",
       "format-rules": "Must be a number from 0.0 to 359.9 (degrees).",
       "example-data": "270 ",
       "error-description": "The Rx Antenna Azimuth is missing or not within the expected range. "
     },
     "TR49": {
       "column": "AW",
-      "field-name": "Tx Antenna Elevation Angle",
+      "field-name": "Tx antenna elevation angle",
       "description": "The transmitter antenna’s vertical elevation angle of the main lobe with reference to the horizontal ground in degrees. Includes any mechanical and electrical beam tilt.",
-      "required-when": "This field is required when S – Tx Channel Frequency is larger than 0 and AO – Tx Antenna Omnidirectional Pattern Indicator is D (Directional). ",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0 and AO - Tx antenna omnidirectional pattern indicator is D (Directional). ",
       "format-rules": "Must be a number from -90.0 to 90.0 (degrees).",
       "example-data": "0.5",
       "error-description": "The Tx Antenna Elevation Angle is missing or not within the expected range. "
     },
     "TR50": {
       "column": "AX",
-      "field-name": "Rx Antenna Elevation Angle",
+      "field-name": "Rx antenna elevation angle",
       "description": "The receiver antenna’s vertical elevation angle of the main lobe with reference to the horizontal ground in degrees. Includes any mechanical and electrical beam tilt.",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0 and AP – Rx Antenna Omnidirectional Pattern Indicator is D (Directional). ",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0 and AP - Rx antenna omnidirectional pattern indicator is D (Directional). ",
       "format-rules": "Must be a number from -90.0 to 90.0 (degrees).",
       "example-data": "0.5",
       "error-description": "The Rx Antenna Elevation Angle is missing or not within the expected range. "
     },
     "TR51": {
       "column": "AY",
-      "field-name": "Tx Antenna Gain",
+      "field-name": "Tx antenna gain",
       "description": "The gain of the transmitter antenna expressed relative to an isotropic radiator (dBi). For AAS, the gain would represent the gain of the individual antenna element.",
-      "required-when": "This field is required when S – Tx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0. ",
       "format-rules": "Must be a number from 0.0 to 70.0 (dBi). <br><br> For a directional antenna, enter the gain in the direction of maximum radiation. ",
       "example-data": "41.3",
       "error-description": "The Tx Antenna Gain is missing or not within the expected range. "
     },
     "TR52": {
       "column": "AZ",
-      "field-name": "Rx Antenna Gain",
+      "field-name": "Rx antenna gain",
       "description": "The gain of the receiver antenna expressed relative to an isotropic radiator (dBi). For AAS, the gain would represent the gain of the individual antenna element.",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0. ",
       "format-rules": "Must be a number from 0.0 to 70.0 (dBi). <br><br> For a directional antenna, enter the gain in the direction of maximum radiation. ",
       "example-data": "41.3",
       "error-description": "The Rx Antenna Gain is missing or not within the expected range. "
     },
     "TR53": {
       "column": "BA",
-      "field-name": " Tx Line Loss",
+      "field-name": " Tx line loss",
       "description": "The total of all line, connector and other losses between the radio equipment and transmitter antenna used to calculate the effective isotropic radiated power (EIRP).",
-      "required-when": "This field is required when S – Tx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when S - Tx channel frequency is greater than 0. ",
       "format-rules": "Must be a number from 0.0 to 30.0 (dB).",
       "example-data": "2.5",
       "error-description": "The Tx Line Loss is missing or not within the expected range. "
     },
     "TR54": {
       "column": "BB",
-      "field-name": "Rx Line Loss",
+      "field-name": "Rx line loss",
       "description": "The total of all line, connector and other losses between the radio equipment and receiver antenna used to calculate the effective isotropic radiated power (EIRP).",
-      "required-when": "This field is required when T – Rx Channel Frequency is larger than 0. ",
+      "required-when": "This field is required when T - Rx channel frequency is greater than 0. ",
       "format-rules": "Must be a number from 0.0 to 30.0 (dB).",
       "example-data": "2.5",
       "error-description": "The Rx Line Loss is missing or not within the expected range. "
