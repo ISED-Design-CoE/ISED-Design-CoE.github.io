@@ -1,0 +1,400 @@
+<!doctype html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" dir="ltr">
+  <!--<![endif]-->
+
+  <head>
+    <script>
+      // BEFORE any other CSS or JS!
+      const supportedLangs = ["en", "fr"]; // example
+      const defaultLang = "en"; // or "en"
+      const urlParams = new URLSearchParams(window.location.search);
+      const lang = supportedLangs.includes(urlParams.get("lang"))
+        ? urlParams.get("lang")
+        : defaultLang;
+      document.documentElement.setAttribute("lang", lang);
+    </script>
+
+    <!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
+    <meta charset="utf-8" />
+
+    <!-- Start DECoE customization -->
+    <title>Service page template</title>
+    <!-- End DECoE customization -->
+
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
+    <noscript>
+      <!-- Write closure fall-back static file -->
+      <!-- refTop.html -->
+    </noscript>
+    <!-- Write closure template -->
+    <script>
+      document.write(
+        wet.builder.refTop({
+          cdnEnv: "esdcprod",
+        }),
+      );
+    </script>
+
+    <!-- Start DECoE customization -->
+
+    <style>
+      /* Styles for this mockup */
+      #dataset-filter1_wrapper table {
+        margin-top: 1em;
+        border-top: 1px solid #111;
+      }
+
+      .nowrap {
+        white-space: nowrap;
+      }
+
+      .bg-info {
+        background-color: #ffffff;
+      }
+
+      .description {
+        max-width: 65ch;
+      }
+    </style>
+    <!-- End DECoE customization -->
+
+    <!-- Start GC Design System-->
+
+    <!-- Icons Font Awesome (to access icons, import Font Awesome) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+
+    <!-- GC Design System -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.34.2/dist/gcds/gcds.js"
+    ></script>
+
+    <!-- End GC Design System-->
+  </head>
+
+  <header>
+    <div id="wb-bnr" class="container">
+      <div class="row">
+        <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+          <h2 class="wb-inv">Language selection</h2>
+          <ul class="list-inline mrgn-bttm-0">
+            <li>
+              <a lang="fr" hreflang="fr" href="?">
+                <span class="hidden-xs" translate="no" id="lang-toggle"
+                  >Français</span
+                >
+                <abbr
+                  title="Français"
+                  translate="no"
+                  class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase"
+                  >fr</abbr
+                >
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <div
+          class="brand col-xs-9 col-sm-5 col-md-4"
+          property="publisher"
+          typeof="GovernmentOrganization"
+        >
+          <a href="#" property="url">
+            <img
+              src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg"
+              alt="Government of Canada"
+              property="logo"
+            /><span class="wb-inv">
+              / <span lang="fr">Gouvernement du Canada</span></span
+            >
+          </a>
+          <meta property="name" content="Government of Canada" />
+          <meta property="areaServed" typeof="Country" content="Canada" />
+          <link
+            property="logo"
+            href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg"
+          />
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <nav id="wb-bc" property="breadcrumb">
+            <h2 class="wb-inv">You are here:</h2>
+            <div class="container">
+              <ol class="breadcrumb">
+                <li><a href="https://www.canada.ca/en.html">Canada.ca</a></li>
+                <li>
+                  <a href="https://www.canada.ca/en/services/business.html"
+                    >Business and industry</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.canada.ca/en/services/business/permits.html"
+                    >Permits, licences and regulations</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors.html"
+                    >Federally regulated industry sectors</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors/broadcastingtelecommunicationsregulation.html"
+                    >Broadcasting and telecommunications regulation</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-management-and-telecommunications"
+                    >Spectrum management and telecommunications</a
+                  >
+                </li>
+                <li>
+                  <a href="index.html">Spectrum allocations</a>
+                </li>
+              </ol>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <body vocab="http://schema.org/" typeof="WebPage">
+    <div id="def-top">
+      <!-- Write closure fall-back static file -->
+      <!-- transactTop-en.html -->
+    </div>
+    <!-- Write closure template -->
+
+    <main
+      property="mainContentOfPage"
+      typeof="WebPageElement"
+      class="container"
+    >
+      <!-- Start page content -->
+      <h1 property="name" id="wb-cont">Service heading</h1>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas eum
+        magni amet possimus nemo reprehenderit delectus alias accusantium,
+        placeat eos est, molestias, ad obcaecati a molestiae accusamus esse
+        aspernatur nobis!
+      </p>
+
+      <h4 data-i18n="table-of-contents">On this page</h4>
+      <ul>
+        <li>
+          <a href="">Overview </a>
+        </li>
+        <li>
+          <a href="#document-table">Related documents </a>
+        </li>
+        <li>
+          <a href="">Sub-services</a>
+        </li>
+      </ul>
+
+      <h2>Overview</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sunt
+        aut corrupti aspernatur odit ullam doloremque, totam molestias ut illo
+        perferendis expedita quos incidunt nisi? Officiis sunt magnam vero in!
+      </p>
+      <ul>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+        <li>Explicabo sunt aut corrupti aspernatur odit ullam doloremque.</li>
+        <li>
+          Totam molestias ut illo perferendis expedita quos incidunt nisi?
+        </li>
+        <li>Officiis sunt magnam vero in!</li>
+      </ul>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit nobis
+        illum officia beatae in culpa inventore unde voluptates eligendi ea
+        iste, a natus sint et porro itaque perspiciatis non labore.
+      </p>
+
+      <div class="row" style="width: 100%">
+        <div class="col-md-12"></div>
+        <div class="col-md-12">
+          <h2>Related documents</h2>
+          <table
+            class="wb-tables table filterEmphasis provisional"
+            id="document-table"
+          >
+            <thead>
+              <tr>
+                <th>Last updated</th>
+                <th data-orderable="false">Title</th>
+                <th>Document type</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <br />
+
+      <h2>Sub-services</h2>
+      <div class="mwstext section">
+        <section class="gc-srvinfo">
+          <h2 class="wb-inv">Services and information</h2>
+          <div class="row wb-eqht-grd">
+            <div class="col-md-4">
+              <h3>
+                <a
+                  href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/canadian-table-frequency-allocations"
+                  >Canadian Table of Frequency Allocations</a
+                >
+              </h3>
+              <p>
+                The Canadian Table of Frequency Allocations outlines the
+                principles behind spectrum allocation in Canada and lists out
+                the frequency bands.
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h3>
+                <a
+                  href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/sites/default/files/attachments/2022/2018_Canadian_Radio_Spectrum_Chart.PDF"
+                  >Radio spectrum allocations in Canada</a
+                >
+                (PDF)
+              </h3>
+              <p>
+                A graphic representation of the Canadian Table of Frequency
+                Allocations. PDF format, last updated 2018.
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h3>
+                <a href="https://ised-isde.canada.ca/sat-oas/en/cpc"
+                  >Spectrum Allocation Tool</a
+                >
+              </h3>
+              <p>
+                An interactive tool for exploring spectrum allocation and key
+                documents associated with each frequency band.
+              </p>
+            </div>
+            <div class="col-md-4">
+              <h3>
+                <a
+                  href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/spectrum-outlook-2023-2027"
+                  >Spectrum Outlook 2023 to 2027</a
+                >
+              </h3>
+              <p>
+                Explains the Government of Canada's plans for wireless spectrum
+                as of August 2023.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- End page content -->
+
+      <div id="def-preFooter">
+        <!-- Write closure fall-back static file -->
+        <!-- preFooter-en.html -->
+      </div>
+      <!-- Write closure template -->
+      <script>
+        var defPreFooter = document.getElementById("def-preFooter");
+        defPreFooter.outerHTML = wet.builder.preFooter({
+          cdnEnv: "esdcprod",
+          versionIdentifier: "CD56",
+          showPostContent: false,
+          showFeedback: false,
+          showShare: false,
+        });
+      </script>
+    </main>
+    <div id="def-footer">
+      <!-- Write closure fall-back static file -->
+      <!-- transactFooter-en.html -->
+    </div>
+    <!-- Write closure template -->
+    <script>
+      var defFooter = document.getElementById("def-footer");
+      defFooter.outerHTML = wet.builder.footer({
+        cdnEnv: "esdcprod",
+        showFooter: false,
+        showFeatures: false,
+        termsLink: [
+          {
+            newWindow: true,
+          },
+        ],
+        privacyLink: [
+          {
+            newWindow: true,
+          },
+        ],
+        contextualFooter: {
+          title: "Spectrum and Telecommunications Sector",
+          links: [
+            {
+              text: "Contact us",
+              href: "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
+              newWindow: true,
+            },
+          ],
+        },
+      });
+    </script>
+    <!-- Write closure template -->
+    <script>
+      document.write(
+        wet.builder.refFooter({
+          cdnEnv: "esdcprod",
+        }),
+      );
+    </script>
+
+    <script src="/SAWI/scripts/filter-rows.js"></script>
+    <script src="/SAWI/scripts/i18n.js"></script>
+  </body>
+</html>
+
+<script type="text/javascript" src="/SAWI/scripts/alert-wrong-way.js"></script>
+
+<script>
+  $(document).on("wb-ready.wb-tables", ".wb-tables", function (event) {
+    document
+      .getElementById("document-table_filter")
+      .setAttribute("hidden", true);
+    document.getElementById("document-table_info").setAttribute("hidden", true);
+
+    toggleFilter("Auction16", "auction");
+    filterTable();
+
+    $("#document-table").DataTable().order([0, "desc"]).draw();
+    add_alert();
+  });
+</script>
