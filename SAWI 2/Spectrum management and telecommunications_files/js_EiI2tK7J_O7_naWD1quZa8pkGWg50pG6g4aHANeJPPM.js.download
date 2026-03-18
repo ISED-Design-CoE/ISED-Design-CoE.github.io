@@ -1,0 +1,442 @@
+async function loadCSV(url) {
+  try {
+    const response = await fetch(url);
+    const data = await response.text();
+    return parseCSV(data);
+  } catch (error) {
+    console.error('Fetch Error:', error);
+  }
+}
+
+function parseCSV(data) {
+  const lines = data.split('\n');
+  return lines.map(line => line.split(','));
+}
+
+function generateTable(csvData) {
+  const table = document.getElementById('csvTable');
+  const thead = table.querySelector('thead');
+  const tbody = table.querySelector('tbody');
+
+  thead.innerHTML = '';
+  tbody.innerHTML = '';
+
+  const headerRow = csvData[0];
+  const headerTr = document.createElement('tr');
+  headerRow.forEach(cell => {
+    const th = document.createElement('th');
+    th.textContent = cell.trim();
+    headerTr.appendChild(th);
+  });
+  thead.appendChild(headerTr);
+
+  csvData.slice(1).forEach(row => {
+    const tr = document.createElement('tr');
+    row.forEach(cell => {
+      const td = document.createElement('td');
+      td.textContent = cell.trim();
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+
+  // Trigger custom event after table is populated
+  document.dispatchEvent(new Event('tableGenerated'));
+}
+
+function filterTable() {
+  const input = document.getElementById('searchInput');
+  const filter = input.value.toUpperCase();
+  const table = document.getElementById('csvTable');
+  const tr = table.getElementsByTagName('tr');
+
+  for (let i = 1; i < tr.length; i++) {
+    const cells = tr[i].getElementsByTagName('td');
+    let match = false;
+    for (let j = 0; j < cells.length; j++) {
+      if (cells[j]) {
+        if (cells[j].textContent.toUpperCase().indexOf(filter) > -1) {
+          match = true;
+          break;
+        }
+      }
+    }
+    tr[i].style.display = match ? "" : "none";
+  }
+}
+
+document.getElementById('searchInput').addEventListener('keyup', filterTable);
+
+// Get CSV URL from data attribute
+const csvUrl = document.getElementById('csvTable').getAttribute('data-csv-url');
+
+loadCSV(csvUrl)
+  .then(data => {
+    if (data && data.length > 0) {
+      generateTable(data);
+    } else {
+      console.error('Error: No data found or unable to parse.');
+    }
+  })
+  .catch(err => console.error('Error loading CSV:', err));;
+// loadExcel.js - Generic Excel to DataTable loader with accessibility support for complex tables
+
+function loadExcelFromURL(url, tableId = 'myTable', sheetName = null, headerRowIndex = 1, cacheBuster = true) {
+  
+  // Function to sanitize column names for safe use in DataTables
+  function sanitizeColumnName(name) {
+    if (!name) return '';
+    
+    return name
+      .replace(/[^\w\s-]/g, '_')
+      .replace(/\s+/g, '_')
+      .replace(/_+/g, '_')
+      .replace(/^_+|_+$/g, '')
+      .replace(/^(\d)/, '_$1')
+      .substring(0, 100);
+  }
+  
+  // Function to detect date columns by checking cell formats
+  function detectDateColumns(worksheet, headerRowIndex, dataRowsLength, headerLength) {
+    const dateColumns = new Set();
+    const dataStartIndex = headerRowIndex + 1;
+    
+    for (let colIdx = 0; colIdx < headerLength; colIdx++) {
+      const cellAddress = XLSX.utils.encode_cell({r: dataStartIndex, c: colIdx});
+      const cellObj = worksheet[cellAddress];
+      
+      if (cellObj && cellObj.z) {
+        const format = cellObj.z.toLowerCase();
+        
+        const isDateFormat = format !== 'general' && 
+                            (format.includes('yyyy') || 
+                             format.includes('yy') || 
+                             (format.includes('d') && format.includes('m')));
+        
+        if (isDateFormat) {
+          dateColumns.add(colIdx);
+        }
+      }
+    }
+    
+    return dateColumns;
+  }
+  
+  // Function to format cell values (handle dates)
+  function formatCellValue(value, colIdx, dateColumns) {
+    if (!value && value !== 0) return '';
+    
+    // Only convert to date if this column is identified as a date column
+    if (dateColumns.has(colIdx) && typeof value === 'number') {
+      try {
+        const excelDate = new Date(1900, 0, 1);
+        const millisecondsPerDay = 86400000;
+        const adjustedDate = new Date(excelDate.getTime() + (value - 2) * millisecondsPerDay);
+        const year = adjustedDate.getFullYear();
+        const month = String(adjustedDate.getMonth() + 1).padStart(2, '0');
+        const day = String(adjustedDate.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      } catch (e) {
+        return value;
+      }
+    }
+    
+    return value;
+  }
+  
+  // Function to detect merged cells by analyzing hierarchical structure
+  function detectMerges(dataRows) {
+    const merges = [];
+    
+    if (dataRows.length === 0) return merges;
+    
+    const colCount = dataRows[0].length;
+    
+    // Process columns from left to right, including the last column
+    for (let col = 0; col < colCount; col++) {
+      let mergeStart = null;
+      let mergeValue = null;
+      let mergeRowSpan = 0;
+      
+      for (let row = 0; row < dataRows.length; row++) {
+        const currentCell = (dataRows[row][col] || '').toString().trim();
+        
+        // Determine if this is a hierarchical row
+        let isHierarchicalRow = false;
+        
+        if (col === colCount - 1) {
+          // Last column: hierarchical if empty
+          isHierarchicalRow = currentCell === '';
+        } else {
+          // Other columns: hierarchical if current is empty and next has data
+          const nextCell = (dataRows[row][col + 1] || '').toString().trim();
+          isHierarchicalRow = currentCell === '' && nextCell !== '';
+        }
+        
+        if (isHierarchicalRow) {
+          // This row belongs to the previous merge group
+          if (mergeStart !== null) {
+            mergeRowSpan++;
+          }
+        } else if (currentCell !== '') {
+          // We have data in current column - finalize previous merge if any
+          if (mergeStart !== null && mergeRowSpan > 0) {
+            merges.push({
+              row: mergeStart,
+              col: col,
+              rowspan: mergeRowSpan + 1,
+              colspan: 1,
+              value: mergeValue
+            });
+          }
+          
+          // Start new potential merge
+          mergeStart = row;
+          mergeValue = currentCell;
+          mergeRowSpan = 0;
+        } else {
+          // Empty cell
+          if (mergeStart !== null) {
+            mergeRowSpan++;
+          }
+        }
+      }
+      
+      // Handle final merge group
+      if (mergeStart !== null && mergeRowSpan > 0) {
+        merges.push({
+          row: mergeStart,
+          col: col,
+          rowspan: mergeRowSpan + 1,
+          colspan: 1,
+          value: mergeValue
+        });
+      }
+    }
+    
+    return merges;
+  }
+  
+  // Function to check if cell is covered by a merge above
+  function isCellCovered(row, col, merges) {
+    return merges.some(m =>
+      m.row < row && m.row + m.rowspan > row &&
+      m.col === col
+    );
+  }
+  
+  // Function to get merge info for a cell
+  function getMergeInfo(row, col, merges) {
+    const merge = merges.find(m => m.row === row && m.col === col);
+    return merge || { rowspan: 1, colspan: 1 };
+  }
+  
+  // Function to generate unique ID
+  function generateId(prefix, index) {
+    return `${prefix}_${index}`;
+  }
+  
+  const statusDiv = document.getElementById('status');
+  const sheetNamesDiv = document.getElementById('sheetNames');
+  
+  if (statusDiv) statusDiv.textContent = 'Loading Excel file...';
+  if (statusDiv) statusDiv.style.color = '#0066cc';
+  
+  // Add cachebuster parameter if enabled
+  let finalUrl = url;
+  if (cacheBuster) {
+    const separator = url.includes('?') ? '&' : '?';
+    finalUrl = url + separator + 'v=' + new Date().getTime();
+  }
+  
+  fetch(finalUrl)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.arrayBuffer();
+    })
+    .then(data => {
+      try {
+        const workbook = XLSX.read(data, { 
+          type: 'array',
+          cellFormula: false,
+          cellStyles: true
+        });
+        
+        if (sheetNamesDiv && !sheetNamesDiv.innerHTML.includes('Available sheets')) {
+          sheetNamesDiv.innerHTML = `<strong>Available sheets:</strong> ${workbook.SheetNames.join(', ')}`;
+        }
+        
+        const worksheetName = sheetName || workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[worksheetName];
+        
+        // Read all rows to find the actual header row
+        const allRows = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+        
+        // Use the specified header row index
+        let headerRow = allRows[headerRowIndex];
+        
+        // Sanitize header names for safe use
+        const originalHeaderRow = [...headerRow];
+        headerRow = headerRow.map(h => sanitizeColumnName(h));
+        
+        // Get data rows (skip header row and any empty rows)
+        const dataRows = allRows.slice(headerRowIndex + 1).filter(row => row.some(cell => cell !== null && cell !== undefined && cell !== ''));
+        
+        if (dataRows.length === 0) {
+          if (statusDiv) {
+            statusDiv.textContent = 'No data found in Excel file';
+            statusDiv.style.color = '#ff0000';
+          }
+          return;
+        }
+        
+        // Get the target table
+        const table = document.getElementById(tableId);
+        if (!table) {
+          if (statusDiv) {
+            statusDiv.textContent = `✗ Error: Table with ID "${tableId}" not found`;
+            statusDiv.style.color = '#ff0000';
+          }
+          return;
+        }
+        
+        // Detect date columns - AFTER reading all rows
+        const dateColumns = detectDateColumns(worksheet, headerRowIndex, dataRows.length, originalHeaderRow.length);
+        
+        // Detect merges for complex tables
+        let merges = [];
+        let isActuallyComplex = false;
+        
+        try {
+          merges = detectMerges(dataRows);
+          isActuallyComplex = merges.length > 0;
+        } catch(e) {
+          isActuallyComplex = false;
+          merges = [];
+        }
+        
+        // Populate table header using ORIGINAL names for display
+        const thead = table.querySelector('thead');
+        thead.innerHTML = '';
+        const headerTr = document.createElement('tr');
+        headerTr.className = 'bg-info';
+        
+        const headerIds = {};
+        originalHeaderRow.forEach((header, index) => {
+          const th = document.createElement('th');
+          const headerId = generateId(`${tableId}_h`, index);
+          headerIds[index] = headerId;
+          
+          th.id = headerId;
+          th.scope = 'col';
+          th.textContent = header;
+          headerTr.appendChild(th);
+        });
+        thead.appendChild(headerTr);
+        
+        // Populate table body
+        const tbody = table.querySelector('tbody');
+        tbody.innerHTML = '';
+        
+        if (isActuallyComplex && merges.length > 0) {
+          // Complex table with accessibility markup and rowspan/colspan
+          let rowIdCounter = 0;
+          
+          for (let rowIdx = 0; rowIdx < dataRows.length; rowIdx++) {
+            const tr = document.createElement('tr');
+            const row = dataRows[rowIdx];
+            
+            for (let colIdx = 0; colIdx < row.length; colIdx++) {
+              // Skip if this cell is covered by a merge from above
+              if (isCellCovered(rowIdx, colIdx, merges)) {
+                continue;
+              }
+              
+              const td = document.createElement('td');
+              const cellValue = formatCellValue(row[colIdx], colIdx, dateColumns);
+              
+              // Get merge info for this cell
+              const mergeInfo = getMergeInfo(rowIdx, colIdx, merges);
+              
+              // Set rowspan and colspan
+              if (mergeInfo.rowspan > 1) {
+                td.rowSpan = mergeInfo.rowspan;
+                td.style.verticalAlign = 'middle';
+              }
+              if (mergeInfo.colspan > 1) {
+                td.colSpan = mergeInfo.colspan;
+              }
+              
+              // Determine if this is a row header (first column)
+              const isRowHeader = colIdx === 0;
+              
+              if (isRowHeader) {
+                td.scope = 'row';
+                const rowId = generateId(`${tableId}_r`, rowIdCounter++);
+                td.id = rowId;
+              }
+              
+              // Build headers attribute
+              const headersArray = [headerIds[colIdx]];
+              if (headersArray.length > 0) {
+                td.setAttribute('headers', headersArray.join(' '));
+              }
+              
+              td.textContent = cellValue;
+              tr.appendChild(td);
+            }
+            
+            tbody.appendChild(tr);
+          }
+        } else {
+          // Simple table without special accessibility markup
+          dataRows.forEach(row => {
+            const tr = document.createElement('tr');
+            headerRow.forEach((header, index) => {
+              const td = document.createElement('td');
+              td.textContent = formatCellValue(row[index], index, dateColumns);
+              tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+          });
+        }
+        
+        if (statusDiv) {
+          statusDiv.textContent = `✓ Successfully loaded ${dataRows.length} rows`;
+          statusDiv.style.color = '#00aa00';
+        }
+      } catch(e) {
+        if (statusDiv) {
+          statusDiv.textContent = `✗ Error processing data: ${e.message}`;
+          statusDiv.style.color = '#ff0000';
+        }
+      }
+    })
+    .catch(error => {
+      if (statusDiv) {
+        statusDiv.textContent = `✗ Error loading ${tableId}: ${error.message}`;
+        statusDiv.style.color = '#ff0000';
+      }
+    });
+}
+
+// Auto-load all tables with class "excel-load" on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const excelTables = document.querySelectorAll('table.excel-load');
+  
+  excelTables.forEach(table => {
+    const tableId = table.id;
+    const url = table.getAttribute('data-excel-url');
+    const sheetName = table.getAttribute('data-sheet-name') || null;
+    const headerRow = parseInt(table.getAttribute('data-header-row')) || 1;
+    const cacheBuster = table.getAttribute('data-cache-buster') !== 'false';
+    
+    if (!url) {
+      return;
+    }
+    
+    loadExcelFromURL(url, tableId, sheetName, headerRow, cacheBuster);
+  });
+});;
