@@ -1,335 +1,258 @@
 <!doctype html>
-<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="en" dir="ltr">
-  <!--<![endif]-->
-
+<html dir="ltr" lang="en">
   <head>
-    <!-- Based on CDTS 4.1.0 (https://cenw-wscoe.github.io/sgdc-cdts/docs/index-en.html) with DECoE customizations added (look for "DECoE customization" in comments) -->
     <meta charset="utf-8" />
-    <title>How to submit a monthly update of technical data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Start DECoE customization -->
-    <!-- End DECoE customization -->
+    <meta name="description" content="Mockup." />
 
-    <meta content="width=device-width,initial-scale=1" name="viewport" />
-    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
-    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
-    <noscript>
-      <!-- Write closure fall-back static file -->
-      <!-- refTop.html -->
-    </noscript>
-    <!-- Write closure template -->
-    <script>
-      document.write(
-        wet.builder.refTop({
-          cdnEnv: "esdcprod",
-        }),
-      );
-    </script>
+    <!-- TODO: Insert a concise, descriptive title that summarizes your page's content. -->
+    <title>How to upload site data</title>
 
-    <!-- Start DECoE customization -->
+    <!-- GC Design System -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.37.0/dist/gcds/gcds.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.37.0/dist/gcds/gcds.esm.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-utility@1.9.0/dist/gcds-utility.min.css"
+    />
 
     <style>
-      /* Styles for this mockup */
-      #dataset-filter1_wrapper table {
-        margin-top: 1em;
-        border-top: 1px solid #111;
-      }
-
-      .nowrap {
-        white-space: nowrap;
+      ul {
+        list-style-type: disc;
+        padding-inline-start: 40px;
       }
     </style>
-    <!-- End DECoE customization -->
   </head>
 
-  <body vocab="http://schema.org/" typeof="WebPage">
-    <header>
-      <div id="wb-bnr" class="container">
-        <div class="row">
-          <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
-            <h2 class="wb-inv">Language selection</h2>
-            <ul class="list-inline mrgn-bttm-0">
-              <li>
-                <a lang="fr" hreflang="fr" href="?">
-                  <span class="hidden-xs" translate="no" id="lang-toggle"
-                    >Français</span
-                  >
-                  <abbr
-                    title="Français"
-                    translate="no"
-                    class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase"
-                    >fr</abbr
-                  >
-                </a>
-              </li>
-            </ul>
-          </section>
+  <body>
+    <!---------- Header ---------->
+    <!-- TODO: Modify the lang-href to set the language toggle's URL. -->
+    <!-- TODO: Update the skip-to-href with the main content container's id. -->
+    <gcds-header lang-href="#" skip-to-href="#main-content">
+      <!-- The slot="search" attribute adds the search component to the header. -->
+      <gcds-search slot="search"></gcds-search>
 
-          <div
-            class="brand col-xs-9 col-sm-5 col-md-4"
-            property="publisher"
-            typeof="GovernmentOrganization"
-          >
-            <a href="#" property="url">
-              <img
-                src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg"
-                alt="Government of Canada"
-                property="logo"
-              /><span class="wb-inv">
-                / <span lang="fr">Gouvernement du Canada</span></span
-              >
-            </a>
-            <meta property="name" content="Government of Canada" />
-            <meta property="areaServed" typeof="Country" content="Canada" />
-            <link
-              property="logo"
-              href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg"
-            />
-          </div>
-        </div>
-      </div>
-      <hr />
-      <nav id="wb-bc" property="breadcrumb">
-        <h2>You are here:</h2>
-        <div class="container">
-          <ol class="breadcrumb">
-            <li>
-              <a href="https://www.canada.ca/en.html">Canada.ca</a>
-            </li>
-            <li>
-              <a href="https://www.canada.ca/en/services/business.html"
-                >Business and industry</a
-              >
-            </li>
-            <li>
-              <a href="https://www.canada.ca/en/services/business/permits.html"
-                >Permits, licences and regulations</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors.html"
-                >Federally regulated industry sectors</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors/broadcastingtelecommunicationsregulation.html"
-                >Broadcasting and telecommunications regulation</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system"
-                >Spectrum Management System</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data"
-                >Spectrum Management System Data</a
-              >
-            </li>
-          </ol>
-        </div>
-      </nav>
-    </header>
+      <!-- The slot="breadcrumb" attribute adds the breadcrumbs component to the header. -->
+      <gcds-breadcrumbs hide-canada-link="true" slot="breadcrumb">
+        <!-- TODO: Adjust the breadcrumb links with the correct ones for your site. -->
+        <gcds-breadcrumbs-item href="https://www.canada.ca/en.html"
+          >Canada.ca</gcds-breadcrumbs-item
+        >
+        <gcds-breadcrumbs-item
+          href="https://www.canada.ca/en/services/business.html"
+          >Business and industry</gcds-breadcrumbs-item
+        >
+        <gcds-breadcrumbs-item
+          href="https://www.canada.ca/en/services/business/permits.html"
+          >Permits, licences and regulations</gcds-breadcrumbs-item
+        >
+        <gcds-breadcrumbs-item
+          href="https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors.html"
+          >Federally regulated industry sectors</gcds-breadcrumbs-item
+        >
+        <gcds-breadcrumbs-item
+          href="https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors/broadcastingtelecommunicationsregulation.html"
+          >Broadcasting and telecommunications regulation</gcds-breadcrumbs-item
+        >
+        <gcds-breadcrumbs-item
+          href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en"
+          >Spectrum management and telecommunications</gcds-breadcrumbs-item
+        >
+        <gcds-breadcrumbs-item href="#"
+          >Terrestrial spectrum licensing services</gcds-breadcrumbs-item
+        >
+      </gcds-breadcrumbs>
+    </gcds-header>
 
-    <div id="def-top">
-      <!-- Write closure fall-back static file -->
-      <!-- transactTop-en.html -->
-    </div>
-    <!-- Write closure template -->
-    <main
-      property="mainContentOfPage"
-      typeof="WebPageElement"
-      class="container"
+    <!---------- Main content ---------->
+    <!-- TODO: Confirm the id matches the "skip-to-href" id in the header. -->
+    <gcds-container
+      id="main-content"
+      main-container
+      size="xl"
+      centered
+      tag="main"
     >
-      <!-- Start page content -->
-      <h1 property="name">How to submit a monthly update of technical data</h1>
-      <p>
-        Learn about the process, obligations, format, and feedback reports on
-        uploading your site data information.
-      </p>
-      <!-- End page content -->
+      <section>
+        <gcds-heading tag="h1">How to upload site data</gcds-heading>
+        <gcds-text>
+          Spectrum licensees are required to provide detailed information about
+          their sites to ensure that spectrum is used to benefit all Canadians.
+        </gcds-text>
+        <gcds-text>
+          For more information on the site data upload requirements, visit
+          <a
+            href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/decision-amendments-requirements-spectrum-licensees-submit-technical-information-about-sites"
+            >Decision on Amendments to Requirements for Spectrum Licensees to
+            Submit Technical Information about Sites</a
+          >.
+        </gcds-text>
 
-      <!-- Content start -->
-
-      <h3>On this page</h3>
-      <ul>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#how_to_upload_site_information">How to upload</a></li>
-        <li><a href="#what_to_expect">What to expect after uploading</a></li>
-      </ul>
-
-      <h2 id="introduction">Introduction</h2>
-      <p>
-        To ensure that spectrum is used for the benefit of all Canadians,
-        Innovation, Science and Economic Development (ISED) Canada requires
-        spectrum licensees to provide detailed information about stations they
-        deploy in Canada.
-      </p>
-
-      <p>
-        Read more about your obligations to submit station data -
-        <a
-          href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/decision-amendments-requirements-spectrum-licensees-submit-technical-information-about-sites"
-          >Decision on Amendments to Requirements for Spectrum Licensees to
-          Submit Technical Information about Sites</a
+        <gcds-heading tag="h3" style="margin-bottom: 11.5px"
+          >On this page</gcds-heading
         >
-      </p>
+        <ul>
+          <li><a href="#create-profile">Create your web profile</a></li>
+          <li><a href="#when">When to upload your site data</a></li>
+          <li><a href="#upload">Upload your site data </a></li>
+          <li><a href="#what-to-expect">What to expect after uploading</a></li>
+          <li><a href="#help">Need help?</a></li>
+        </ul>
 
-      <h2 id="how_to_upload_site_information">
-        How to upload site information
-      </h2>
+        <gcds-heading tag="h2" style="margin-bottom: 11.5px" id="create-profile"
+          >Create your web profile
+        </gcds-heading>
+        <gcds-text>
+          If you haven’t already, you will need to
+          <a
+            href="https://ised-isde.canada.ca/site/spectrum-management-system/en/online-registration/create-your-web-profile-registration-type"
+            >Create your Web Profile</a
+          >
+          to upload your site data on the
+          <a
+            href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data/text-format-spectrum-licence-site-data-upload"
+            >Spectrum Management System (SMS)</a
+          >.
+        </gcds-text>
 
-      <h3>Register your web profile</h3>
-      <p>
-        Before you can upload your station data, you will need to register and
-        create a web profile in the Spectrum Management System (SMS).
-      </p>
+        <gcds-heading tag="h2" style="margin-bottom: 11.5px" id="when"
+          >When to upload your site data
+        </gcds-heading>
 
-      <a
-        href="https://ised-isde.canada.ca/site/spectrum-management-system/en/online-registration"
-        >Online registration</a
-      >
+        <gcds-text
+          >Your site data must be uploaded on a monthly basis. You can find the
+          due date of your next required upload by either:
+        </gcds-text>
 
-      <h3>When should I upload my site data</h3>
-      <p>
-        You can determine the due date of your next required upload using either
-        of these methods:
-      </p>
-      <p>
-        <b>Method 1:</b> Use the
-        <a
-          href="https://sms-sgs.ic.gc.ca/licenseSearch/searchSpectrumLicenseStation?execution=e4s1"
-          >Spectrum Licenced Site Data Browser</a
+        <gcds-text>
+          <strong>1) Viewing your last upload date</strong> <br />Using the
+          <a
+            href="https://sms-sgs.ic.gc.ca/licenseSearch/searchSpectrumLicenseStation?execution=e4s1"
+            >Spectrum Licenced Site Data Browser</a
+          >
+          to view your last upload date.
+        </gcds-text>
+        <gcds-text>
+          <strong>2) Viewing your status of your licence </strong> <br />Using
+          the
+          <a
+            href="https://sms-sgs.ic.gc.ca/slSiteUploadLicences/licencesWizard?execution=e2s1&serviceId=85&subserviceId=8701&lang=en_CA"
+            >Spectrum Licence Site Data Status Report</a
+          >
+          to check when your next upload date is due.
+        </gcds-text>
+
+        <gcds-heading tag="h2" style="margin-bottom: 11.5px" id="upload"
+          >Upload your site data
+        </gcds-heading>
+        <gcds-text>
+          Upload your site data in a .csv file format. Each row in the file is
+          used to represent an individual antenna.
+        </gcds-text>
+        <gcds-text>
+          For example, if you deployed a site with multiple antennas
+          (transmitters and/or receivers), provide information about each
+          antenna on a separate row.
+        </gcds-text>
+        <gcds-text>
+          Each file cannot exceed more than 60 MB. If you have more sites than
+          can fit within a 60 MB file, then you can use the append feature to
+          add to previously uploaded files.
+        </gcds-text>
+        <gcds-button
+          onclick="
+            window.location.href =
+              'https://sms-sgs.ic.gc.ca/slSiteUpload2/spectrumLicenceUploadWizard'
+          "
+          >Upload site data</gcds-button
         >
-        <br />
-        Enter the search parameters and scroll to the far right of the screen to
-        view the last upload date. Licensees must submit data by the following
-        month.
-      </p>
 
-      <p>
-        <b>Method 2:</b> Use the
-        <a
-          href="https://sms-sgs.ic.gc.ca/slSiteUploadLicences/licencesWizard?execution=e2s1&serviceId=85&subserviceId=8701&lang=en_CA"
-          >Spectrum Licence Site Data Status Report</a
+        <gcds-heading tag="h3" style="margin-bottom: 11.5px"
+          >Download the .csv file template
+        </gcds-heading>
+        <gcds-text>
+          You can download the provided .csv file to use as a template for your
+          site data.
+        </gcds-text>
+        <gcds-button button-role="secondary">
+          Download terrestrial .csv template</gcds-button
         >
-        <br />
-        The furthest right column shows when the next upload is due.
-      </p>
-
-      <h3>Upload file format</h3>
-
-      <p>
-        Your site data file must be in CSV format, and follow the format
-        outlined at
-        <a
-          href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data/text-format-spectrum-licence-site-data-upload"
-          >Text Format for Spectrum Licence Site Data Upload</a
-        >. Each row represents one station.
-      </p>
-      <p>
-        Each file cannot exceed 60 MB. Use the “Append mode” feature to upload
-        multiple files.
-      </p>
-      <p>
-        An example CSV file is available:
-        <a href="https://www.ic.gc.ca/engineering/Sample_54_columns.csv"
-          >Sample_54_columns.csv</a
+        <gcds-button button-role="secondary" style="margin-left: 12px">
+          Download satellite .csv template</gcds-button
         >
-      </p>
 
-      <h2 id="what_to_expect">What to expect after uploading</h2>
-      <h3>Successful upload</h3>
-      <p><b>Summary report</b></p>
-      <p>
-        You will receive a summary report that acts as the receipt that your
-        data has met the conditions of your licence.
-      </p>
-
-      <p><b>View stations report</b></p>
-      <p>
-        You will also receive a stations report of information about your
-        stations.
-      </p>
-
-      <h3>Unsuccessful upload</h3>
-      <p><b>Error report</b></p>
-      <p>
-        The error report details the issues found with your site data upload.
-        You can use the Site data upload help page to assist with addressing any
-        issues.
-      </p>
-      <p>
-        If you have any questions with your site data upload, email us at
-        <a href="mailto:spectrumlicensing-licencesdespectre@ised-isde.gc.ca"
-          >spectrumlicensing-licencesdespectre@ised-isde.gc.ca</a
+        <gcds-heading tag="h3" style="margin-bottom: 11.5px" id="format"
+          >How to format your .csv file
+        </gcds-heading>
+        <gcds-text>
+          You can view the format page(s) below to learn how to properly add
+          your site data information into the .csv file.
+        </gcds-text>
+        <gcds-button button-role="secondary">
+          View terrestrial format</gcds-button
         >
-      </p>
+        <gcds-button button-role="secondary" style="margin-left: 12px">
+          View satellite format</gcds-button
+        >
 
-      <!-- Content end -->
+        <gcds-heading tag="h2" style="margin-bottom: 11.5px" id="what-to-expect"
+          >What to expect after uploading
+        </gcds-heading>
 
-      <div id="def-preFooter">
-        <!-- Write closure fall-back static file -->
-        <!-- preFooter-en.html -->
-      </div>
-      <!-- Write closure template -->
-      <script>
-        var defPreFooter = document.getElementById("def-preFooter");
-        defPreFooter.outerHTML = wet.builder.preFooter({
-          cdnEnv: "esdcprod",
-          versionIdentifier: "CD56",
-          showPostContent: false,
-          showFeedback: false,
-          showShare: false,
-        });
-      </script>
-    </main>
-    <div id="def-footer">
-      <!-- Write closure fall-back static file -->
-      <!-- transactFooter-en.html -->
-    </div>
-    <!-- Write closure template -->
-    <script>
-      var defFooter = document.getElementById("def-footer");
-      defFooter.outerHTML = wet.builder.footer({
-        cdnEnv: "esdcprod",
-        showFooter: false,
-        showFeatures: false,
-        termsLink: [
-          {
-            newWindow: true,
-          },
-        ],
-        privacyLink: [
-          {
-            newWindow: true,
-          },
-        ],
-        contextualFooter: {
-          title: "Spectrum and Telecommunications Sector",
-          links: [
-            {
-              text: "Contact us",
-              href: "https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices",
-              newWindow: true,
-            },
-          ],
-        },
-      });
-    </script>
-    <!-- Write closure template -->
-    <script>
-      document.write(
-        wet.builder.refFooter({
-          cdnEnv: "esdcprod",
-        }),
-      );
-    </script>
+        <gcds-heading tag="h3" style="margin-bottom: 11.5px"
+          >If your upload is successful
+        </gcds-heading>
+        <gcds-text>
+          You will receive a summary report that acts as the receipt that your
+          data has met the conditions of your licence.
+        </gcds-text>
+        <gcds-text>
+          You will also receive a sites report with information about your
+          sites.
+        </gcds-text>
+
+        <gcds-heading tag="h3" style="margin-bottom: 11.5px"
+          >If your upload fails
+        </gcds-heading>
+        <gcds-text>
+          If your upload fails, you’ll receive an error report detailing the
+          issues for you to fix.
+        </gcds-text>
+        <gcds-text>
+          The format page found in the
+          <a href="#format">How to format your .csv file</a> section, provides a
+          breakdown of the error messages and how you can fix them.
+        </gcds-text>
+
+        <gcds-heading tag="h2" style="margin-bottom: 11.5px" id="help"
+          >Need help?
+        </gcds-heading>
+        <gcds-text>
+          If you have any questions email us at <br />
+          <a href="mailto: spectrumlicensing-licencesdespectre@ised-isde.gc.ca">
+            spectrumlicensing-licencesdespectre@ised-isde.gc.ca
+          </a>
+        </gcds-text>
+      </section>
+
+      <!-- TODO: Update the date to reflect the page's most recent change. -->
+      <gcds-date-modified>2026-03-24</gcds-date-modified>
+    </gcds-container>
+
+    <!---------- Footer ---------->
+    <!-- TODO: Update or remove the contextual footer heading and links as needed. -->
+    <gcds-footer
+      display="full"
+      contextual-heading="Innovation, Science and Economic Development"
+      contextual-links='{ "Contact us": "#"}'
+    >
+    </gcds-footer>
   </body>
 </html>
