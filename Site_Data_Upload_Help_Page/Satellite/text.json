@@ -85,7 +85,8 @@
       "required-when": "Required when your earth station is operating in the 3700 to 4200 MHz band.",
       "format-rules": "<p>Must be one of the following filter codes:  <ul><li>0 – Non-Transitioned </li><li>1 – Transitioned </li> <li>2 – New </li></ul></p>",
       "example-data": "0",
-      "error-description": "This field is also known as J - Physical Cell ID. If you encounter the error message below, this means you have an error for this field, J – Filter Code. <nl>The Physical Cell ID is missing or not within the expected range of values."
+      "note": "This field is also known as J - Physical Cell ID. If you encounter the error message below, this means you have an error for this field, J – Filter Code.",
+      "error-description": "The Physical Cell ID is missing or not within the expected range of values."
     },
     "TR11": {
       "column": "K",
