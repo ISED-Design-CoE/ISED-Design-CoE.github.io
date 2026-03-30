@@ -56,7 +56,7 @@
     "TR7": {
       "column": "G",
       "field-name": "Station type",
-      "description": "Enter the station type.  ",
+      "description": "The type of station",
       "format-rules": "Must enter TC.",
       "example-data": "TC",
       "error-description": "The Station Type is not input as CAPS, is missing or is not an accepted Station Type value. "
@@ -64,7 +64,7 @@
     "TR8": {
       "column": "H",
       "field-name": "Radio technology",
-      "description": "The mode of operation (provisioning) for the radio apparatus at the site. ",
+      "description": "This field is used differently for other services, but for satellite it is always “OTHER”.",
       "format-rules": "Must enter OTHER.",
       "example-data": "OTHER ",
       "error-description": "The Radio Technology value is missing, not in ALL CAPS, or not one of the allowed values. "
