@@ -82,10 +82,10 @@
       "column": "J",
       "field-name": "Filter code",
       "description": "The filter codes for earth stations operating in the band 3700-4200 MHz. ",
-      "required-when": "This field is required only when H - Radio technology is  any of the following: <ul> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
+      "required-when": "This field is used differently for other services, but for satellite it is the filter code for any earth station operating in the 3700 to 4200 MHz band.",
       "format-rules": "<p>Must be one of the following filter codes:  <ul><li>0 – Non-Transitioned </li><li>1 – Transitioned </li> <li>2 – New </li></ul></p>",
       "example-data": "204",
-      "error-description": "Earth station filter code is missing or not within the expected range of values."
+      "error-description": "This field is also known as J - Physical Cell ID. If you encounter the error message below, this means you have an error for this field, J – Filter Code. <br> The Physical Cell ID is missing or not within the expected range of values."
     },
     "TR11": {
       "column": "K",
