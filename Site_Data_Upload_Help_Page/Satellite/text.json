@@ -1,7 +1,7 @@
 {
   "en": {
     "page-heading": "Text format for satellite spectrum licence site data upload",
-    "page-description": "Learn about the format, validation rules, and errors when uploading spectrum licence site data.",
+    "page-description": "Learn about the format, validation rules, and errors when uploading spectrum licence site data. Download the .csv file below to use as a template.",
     "toc-heading": "Table of contents",
     "back-to-top": "Back to top",
     "TR1": {
