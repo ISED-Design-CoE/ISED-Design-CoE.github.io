@@ -28,21 +28,12 @@
     if (!tocList) return;
 
     tocList.innerHTML = "";
-    const filteredData = dataTable.rows({ search: "applied" }).data();
+    const filteredIndexes = dataTable.rows({ search: "applied" }).indexes();
 
-    filteredData.each(function (row) {
-      // Extract column from the first cell's h3 id attribute
-      const h3 = row[0];
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(h3, "text/html");
-      const h3El = doc.querySelector("h3[id]");
-      const colLetter = h3El ? h3El.id : null;
-
-      if (colLetter) {
-        const originalRow = allRows.find((item) => item.column === colLetter);
-        if (originalRow && originalRow.column && originalRow.column.trim()) {
-          tocList.innerHTML += createTableOfContents(originalRow);
-        }
+    filteredIndexes.each(function (rowIndex) {
+      const entry = allRows[rowIndex];
+      if (entry && entry.column && entry.column.trim()) {
+        tocList.innerHTML += createTableOfContents(entry);
       }
     });
   }
