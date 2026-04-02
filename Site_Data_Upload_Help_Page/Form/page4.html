@@ -1,0 +1,214 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Mockup." />
+
+    <!-- TODO: Insert a concise, descriptive title that summarizes your page's content. -->
+    <title>Site data upload CSV generator</title>
+
+    <!-- GC Design System -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.37.0/dist/gcds/gcds.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.37.0/dist/gcds/gcds.esm.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-utility@1.9.0/dist/gcds-utility.min.css"
+    />
+
+    <style>
+      /* Custom styles for spacing and layout */
+
+      table > tbody > tr:nth-of-type(even) {
+        background-color: var(--gcds-bg-light);
+      }
+
+      table > tbody > tr {
+        border-top: solid var(--gcds-border-default) 1px;
+        border-bottom: solid var(--gcds-border-default) 1px;
+      }
+
+      table > thead > tr > th {
+        padding: var(--gcds-spacing-300);
+      }
+
+      table > tbody > tr > td {
+        padding: var(--gcds-spacing-300);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!---------- Header ---------->
+    <!-- TODO: Modify the lang-href to set the language toggle's URL. -->
+    <!-- TODO: Update the skip-to-href with the main content container's id. -->
+    <gcds-header lang-href="#" skip-to-href="#main-content">
+      <!-- The slot="search" attribute adds the search component to the header. -->
+      <gcds-search slot="search"></gcds-search>
+
+      <!-- The slot="breadcrumb" attribute adds the breadcrumbs component to the header. -->
+      <gcds-breadcrumbs hide-canada-link="true" slot="breadcrumb">
+        <!-- TODO: Adjust the breadcrumb links with the correct ones for your site. -->
+        <gcds-breadcrumbs-item href="index.html"
+          >Site data upload CSV generator</gcds-breadcrumbs-item
+        >
+      </gcds-breadcrumbs>
+    </gcds-header>
+
+    <!---------- Main content ---------->
+    <!-- TODO: Confirm the id matches the "skip-to-href" id in the header. -->
+    <gcds-container
+      id="main-content"
+      main-container
+      size="xl"
+      centered
+      tag="main"
+    >
+      <section>
+        <gcds-heading tag="h1">Site data upload CSV generator</gcds-heading>
+
+        <gcds-text>
+          Add antennas below to your site data upload. Once you are ready,
+          export the file and use it to upload your site data.
+        </gcds-text>
+
+        <gcds-heading tag="h3">My stations</gcds-heading>
+
+        <table>
+          A maximum of 5 entries can be added and exported at a time.
+          <thead>
+            <tr>
+              <th scope="col">Licence number</th>
+              <th scope="col">Reference number</th>
+              <th scope="col">Station location</th>
+              <th scope="col">Province/Territory</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody id="antennas-table-body"></tbody>
+        </table>
+
+        <br />
+        <gcds-button button-role="secondary" id="btn-add-entry"
+          >+ Add entry</gcds-button
+        >
+
+        <gcds-heading tag="h3">Done with my site data?</gcds-heading>
+        <gcds-text>
+          Exporting the file will take your antenna information above and
+          generate a CSV file that can be used to upload to the SMS system as
+          your monthly site data upload.
+        </gcds-text>
+
+        <gcds-input
+          input-id="file-name"
+          label="Name of .csv file"
+          required
+        ></gcds-input>
+        <gcds-button button-role="start" id="download-csv"
+          >Download CSV</gcds-button
+        >
+
+        <gcds-heading tag="h3">Upload to SMS</gcds-heading>
+        <gcds-button button-role="secondary" id="upload-csv"
+          >Upload site data to SMS</gcds-button
+        >
+      </section>
+
+      <!-- TODO: Update the date to reflect the page's most recent change. -->
+      <gcds-date-modified>2026-04-01</gcds-date-modified>
+    </gcds-container>
+
+    <!---------- Footer ---------->
+    <!-- TODO: Update or remove the contextual footer heading and links as needed. -->
+    <gcds-footer
+      display="full"
+      contextual-heading="Innovation, Science and Economic Development"
+      contextual-links='{ "Contact us": "#"}'
+    >
+    </gcds-footer>
+
+    <script type="module">
+      import {
+        setCurrentPage,
+        saveCurrentPageData,
+        exportAllDataAsCsv,
+        clearCurrentEntry,
+      } from "./scripts/site-data-upload-csv.js";
+      import { initTablePage } from "./scripts/site-data-upload-table.js";
+
+      setCurrentPage(4);
+
+      initTablePage();
+
+      // best effort: save step 4 state if anything is changed
+      const currentFields = document.querySelectorAll(
+        "gcds-input, gcds-select, gcds-date-input, gcds-radios, input, select, textarea",
+      );
+      currentFields.forEach((el) => {
+        el.addEventListener("change", saveCurrentPageData);
+      });
+
+      document.getElementById("download-csv").addEventListener("click", () => {
+        saveCurrentPageData();
+
+        let fileName = "";
+        const gcdsField = document.querySelector(
+          "gcds-input[input-id='file-name']",
+        );
+
+        if (gcdsField) {
+          fileName =
+            typeof gcdsField.value === "string" ? gcdsField.value.trim() : "";
+          if (!fileName) {
+            const innerInput = gcdsField.querySelector("input");
+            if (innerInput && innerInput.value) {
+              fileName = innerInput.value.trim();
+            }
+          }
+        }
+
+        if (!fileName) {
+          const legacyInput = document.getElementById("file-name");
+          if (legacyInput && legacyInput.value) {
+            fileName = legacyInput.value.trim();
+          }
+        }
+
+        let filename = "site-data-upload.csv";
+        if (fileName) {
+          const safeName = fileName.replace(/\.[^/.]+$/, "").trim();
+          if (safeName) filename = `${safeName}.csv`;
+        }
+
+        exportAllDataAsCsv(filename);
+      });
+
+      document
+        .getElementById("btn-add-entry")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          clearCurrentEntry();
+          setCurrentPage(1);
+          window.location.href = "page1.html";
+        });
+
+      const goBackBtn = document.getElementById("go-back");
+      if (goBackBtn) {
+        goBackBtn.addEventListener("click", (event) => {
+          event.preventDefault();
+          saveCurrentPageData();
+          window.location.href = "page3.html";
+        });
+      }
+    </script>
+  </body>
+</html>

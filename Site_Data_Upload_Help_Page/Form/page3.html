@@ -1,0 +1,310 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Mockup." />
+
+    <!-- TODO: Insert a concise, descriptive title that summarizes your page's content. -->
+    <title>Site data upload CSV generator</title>
+
+    <!-- GC Design System -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.37.0/dist/gcds/gcds.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-components@0.37.0/dist/gcds/gcds.esm.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.design-system.alpha.canada.ca/@cdssnc/gcds-utility@1.9.0/dist/gcds-utility.min.css"
+    />
+  </head>
+
+  <body>
+    <!---------- Header ---------->
+    <!-- TODO: Modify the lang-href to set the language toggle's URL. -->
+    <!-- TODO: Update the skip-to-href with the main content container's id. -->
+    <gcds-header lang-href="#" skip-to-href="#main-content">
+      <!-- The slot="search" attribute adds the search component to the header. -->
+      <gcds-search slot="search"></gcds-search>
+
+      <!-- The slot="breadcrumb" attribute adds the breadcrumbs component to the header. -->
+      <gcds-breadcrumbs hide-canada-link="true" slot="breadcrumb">
+        <!-- TODO: Adjust the breadcrumb links with the correct ones for your site. -->
+        <gcds-breadcrumbs-item href="index.html"
+          >Site data upload CSV generator</gcds-breadcrumbs-item
+        >
+      </gcds-breadcrumbs>
+    </gcds-header>
+
+    <!---------- Main content ---------->
+    <!-- TODO: Confirm the id matches the "skip-to-href" id in the header. -->
+    <gcds-container
+      id="main-content"
+      main-container
+      size="xl"
+      centered
+      tag="main"
+    >
+      <section>
+        <gcds-heading tag="h1">Site data upload CSV generator</gcds-heading>
+
+        <gcds-heading tag="h2">Step 3: Antenna information</gcds-heading>
+
+        <gcds-input
+          input-id="radio-model"
+          label="Radio model number"
+          hint="The radio’s Hardware Version Identification Number (HVIN) certified by ISED. "
+          required
+          maxlength="128"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="radio-code"
+          label="Radio manufacturer code"
+          hint="The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the radio."
+          required
+        ></gcds-input>
+
+        <gcds-input
+          input-id="radio-certificate"
+          label="Radio certification number"
+          hint="The certification number assigned by ISED."
+          required
+          maxlength="31"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="channel-frequency"
+          label="Channel frequency"
+          hint="Enter the centre frequency in MHz, of the occupied bandwidth for the given antenna installation."
+          required
+          maxlength="8"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="bandwidth"
+          label="Bandwidth"
+          hint="The occupied bandwidth in KHz of the emission signal."
+          required
+          min="0.10"
+          max="50000.00"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="tcp"
+          label="Transmitter TCP-TRP"
+          hint="The Total Radiated Power (TRP) or Total Conducted Power (TCP) in dBm. 
+                Ensure the value entered is expressed in dBm. "
+          required
+        ></gcds-input>
+
+        <gcds-input
+          input-id="downlink"
+          label="Downlink resource allocation"
+          hint="The percentage of time transmitting."
+          required
+          min="1"
+          max="100"
+          maxlength="3"
+        ></gcds-input>
+
+        <gcds-radios
+          name="antenna-type"
+          legend="Is your antenna transmitting or receiving?"
+          required
+          options='[
+         { "label": "Transmitting only", "id": "transmitting", "value": "transmitting"},
+         { "label": "Receiving only", "id": "receiving", "value": "receiving"},
+         { "label": "Both", "id": "both", "value": "both"},
+          ]'
+        >
+        </gcds-radios>
+
+        <gcds-select
+          select-id="type-code"
+          label="Antenna type code"
+          name="Antenna type code"
+          hint="The type of antenna associated with a transmitting radio installation."
+          required
+          default-value="Select option"
+        >
+          <option value="1">Active antenna systems</option>
+          <option value="2">Non-AAS correlated</option>
+          <option value="3">Non-ASS uncorrelated</option>
+        </gcds-select>
+
+        <gcds-input
+          input-id="number-antennas"
+          label="Total number of antennas"
+          hint="The total number of antennas physically installed at the site."
+          required
+          type="number"
+          min="1"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="antenna-model"
+          label="Antenna model number"
+          hint="The antenna model number"
+          required
+          minlength="0"
+          maxlength="80"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="antenna-manufacturer"
+          label="Antenna manufacturer"
+          hint="The manufacturer of the antenna"
+          required
+          minlength="0"
+          maxlength="255"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="antenna-height"
+          label="Antenna height"
+          hint="Antenna height in meters from ground level."
+          required
+          minlength="0"
+          maxlength="600"
+          type="number"
+        ></gcds-input>
+
+        <gcds-select
+          select-id="omnidirectional-pattern"
+          label="Antenna omnidirectional pattern indicator"
+          name="Antenna omnidirectional pattern indicator"
+          required
+          default-value="Select option"
+        >
+          <option value="1">Directional</option>
+          <option value="2">Non-directional</option>
+        </gcds-select>
+
+        <gcds-input
+          input-id="antenna-horizontal-beamwidth"
+          label="Antenna horizontal beamwidth"
+          required
+          min="1"
+          max="359.9"
+          type="number"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="antenna-vertical-beamwidth"
+          label="Antenna vertical beamwidth"
+          required
+          min="1"
+          max="359.9"
+          type="number"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="antenna-azimuth"
+          label="Antenna azimuth"
+          required
+          min="1"
+          max="359.9"
+          type="number"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="antenna-elevation-angle"
+          label="Antenna elevation angle"
+          required
+          min="-90"
+          max="90"
+          type="number"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="antenna-gain"
+          label="Antenna gain"
+          required
+          min="0"
+          max="70"
+          type="number"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="antenna-line-loss"
+          label="Antenna line loss"
+          required
+          min="0"
+          max="30"
+          type="number"
+        ></gcds-input>
+
+        <gcds-button button-role="secondary" id="btn-go-back">
+          Go back
+        </gcds-button>
+        <gcds-button id="btn-next"> Next </gcds-button>
+      </section>
+
+      <!-- TODO: Update the date to reflect the page's most recent change. -->
+      <gcds-date-modified>2026-04-01</gcds-date-modified>
+    </gcds-container>
+
+    <!---------- Footer ---------->
+    <!-- TODO: Update or remove the contextual footer heading and links as needed. -->
+    <gcds-footer
+      display="full"
+      contextual-heading="Innovation, Science and Economic Development"
+      contextual-links='{ "Contact us": "#"}'
+    >
+    </gcds-footer>
+
+    <script type="module">
+      import {
+        setCurrentPage,
+        saveCurrentPageData,
+        loadCurrentPageData,
+        finalizeCurrentEntry,
+      } from "./scripts/site-data-upload-csv.js";
+
+      setCurrentPage(3);
+      loadCurrentPageData(3);
+
+      const nextBtn = document.getElementById("btn-next");
+      const backBtn = document.getElementById("btn-go-back");
+
+      nextBtn?.addEventListener("click", (event) => {
+        event.preventDefault();
+        saveCurrentPageData();
+        finalizeCurrentEntry();
+
+        window.location.href = "page4.html";
+      });
+
+      backBtn?.addEventListener("click", (event) => {
+        event.preventDefault();
+        saveCurrentPageData();
+        window.location.href = "page2.html";
+      });
+      document.addEventListener("pointerup", (event) => {
+        const path = event.composedPath ? event.composedPath() : [event.target];
+        for (const node of path) {
+          if (!(node instanceof Element)) continue;
+          if (node === nextBtn || node === backBtn) continue;
+          if (node.id === "btn-next" || node.closest?.("#btn-next")) {
+            event.preventDefault();
+            saveCurrentPageData();
+            window.location.href = "page4.html";
+            return;
+          }
+          if (node.id === "btn-go-back" || node.closest?.("#btn-go-back")) {
+            event.preventDefault();
+            saveCurrentPageData();
+            window.location.href = "page2.html";
+            return;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

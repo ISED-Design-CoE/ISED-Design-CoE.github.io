@@ -115,19 +115,25 @@
           required
           default-value="Select option"
         >
-          <option value="1">AB - Alberta</option>
-          <option value="2">BC - British Columbia</option>
-          <option value="3">MB - Manitoba</option>
-          <option value="4">NB - New Brunswick</option>
-          <option value="5">NL - Newfoundland and Labrador</option>
-          <option value="6">NS - Nova Scotia</option>
-          <option value="7">ON - Ontario</option>
-          <option value="8">PE - Prince Edward Island</option>
-          <option value="9">QC - Quebec</option>
-          <option value="10">SK - Saskatchewan</option>
-          <option value="11">NT - Northwest Territories</option>
-          <option value="12">NU - Nunavut</option>
-          <option value="13">YT - Yukon</option>
+          <option value="Alberta">AB - Alberta</option>
+          <option value="British Columbia">BC - British Columbia</option>
+          <option value="Manitoba">MB - Manitoba</option>
+          <option value="New Brunswick">NB - New Brunswick</option>
+          <option value="Newfoundland and Labrador">
+            NL - Newfoundland and Labrador
+          </option>
+          <option value="Nova Scotia">NS - Nova Scotia</option>
+          <option value="Ontario">ON - Ontario</option>
+          <option value="Prince Edward Island">
+            PE - Prince Edward Island
+          </option>
+          <option value="Quebec">QC - Quebec</option>
+          <option value="Saskatchewan">SK - Saskatchewan</option>
+          <option value="Northwest Territories">
+            NT - Northwest Territories
+          </option>
+          <option value="Nunavut">NU - Nunavut</option>
+          <option value="Yukon">YT - Yukon</option>
         </gcds-select>
 
         <gcds-input
@@ -181,8 +187,10 @@
           type="number"
         ></gcds-input>
 
-        <gcds-button button-role="secondary"> Go back </gcds-button>
-        <gcds-button> Next </gcds-button>
+        <gcds-button button-role="secondary" id="btn-go-back">
+          Go back
+        </gcds-button>
+        <gcds-button id="btn-next"> Next </gcds-button>
       </section>
 
       <!-- TODO: Update the date to reflect the page's most recent change. -->
@@ -197,5 +205,51 @@
       contextual-links='{ "Contact us": "#"}'
     >
     </gcds-footer>
+
+    <script type="module">
+      import {
+        setCurrentPage,
+        saveCurrentPageData,
+        loadCurrentPageData,
+      } from "./scripts/site-data-upload-csv.js";
+
+      setCurrentPage(2);
+      loadCurrentPageData(2);
+
+      const nextBtn = document.getElementById("btn-next");
+      const backBtn = document.getElementById("btn-go-back");
+
+      nextBtn?.addEventListener("click", (event) => {
+        event.preventDefault();
+        saveCurrentPageData();
+        window.location.href = "page3.html";
+      });
+
+      backBtn?.addEventListener("click", (event) => {
+        event.preventDefault();
+        saveCurrentPageData();
+        window.location.href = "page1.html";
+      });
+
+      document.addEventListener("pointerup", (event) => {
+        const path = event.composedPath ? event.composedPath() : [event.target];
+        for (const node of path) {
+          if (!(node instanceof Element)) continue;
+          if (node === nextBtn || node === backBtn) continue;
+          if (node.id === "btn-next" || node.closest?.("#btn-next")) {
+            event.preventDefault();
+            saveCurrentPageData();
+            window.location.href = "page3.html";
+            return;
+          }
+          if (node.id === "btn-go-back" || node.closest?.("#btn-go-back")) {
+            event.preventDefault();
+            saveCurrentPageData();
+            window.location.href = "page1.html";
+            return;
+          }
+        }
+      });
+    </script>
   </body>
 </html>

@@ -108,8 +108,10 @@
         >
         </gcds-radios>
 
-        <gcds-button button-role="secondary"> Go back </gcds-button>
-        <gcds-button> Next </gcds-button>
+        <gcds-button button-role="secondary" id="btn-go-back">
+          Go back
+        </gcds-button>
+        <gcds-button id="btn-next"> Next </gcds-button>
       </section>
 
       <!-- TODO: Update the date to reflect the page's most recent change. -->
@@ -124,5 +126,65 @@
       contextual-links='{ "Contact us": "#"}'
     >
     </gcds-footer>
+
+    <script type="module">
+      import {
+        setCurrentPage,
+        saveCurrentPageData,
+        loadCurrentPageData,
+      } from "./scripts/site-data-upload-csv.js";
+
+      setCurrentPage(1);
+      loadCurrentPageData(1);
+
+      const nextBtn = document.getElementById("btn-next");
+      const backBtn = document.getElementById("btn-go-back");
+
+      if (!nextBtn) {
+        console.warn("Page1: Next button not found");
+      }
+      if (!backBtn) {
+        console.warn("Page1: Go back button not found");
+      }
+
+      function handleNext() {
+        saveCurrentPageData();
+        window.location.href = "page2.html";
+      }
+
+      function handleBack() {
+        window.location.href = "page1.html";
+      }
+
+      // hii: add direct host event listeners; relies on gcds-button dispatching click event from shadow type
+      nextBtn?.addEventListener("click", (event) => {
+        event.preventDefault();
+        handleNext();
+      });
+
+      backBtn?.addEventListener("click", (event) => {
+        event.preventDefault();
+        handleBack();
+      });
+
+      // robust fallback via pointer events for shadow DOM behavior nonstandardities
+      document.addEventListener("pointerup", (event) => {
+        const path = event.composedPath ? event.composedPath() : [event.target];
+        for (const node of path) {
+          if (!(node instanceof Element)) continue;
+          if (node === nextBtn || node === backBtn) continue;
+          if (node.id === "btn-next" || node.closest?.("#btn-next")) {
+            event.preventDefault();
+            handleNext();
+            return;
+          }
+          if (node.id === "btn-go-back" || node.closest?.("#btn-go-back")) {
+            event.preventDefault();
+            handleBack();
+            return;
+          }
+        }
+      });
+    </script>
   </body>
 </html>
