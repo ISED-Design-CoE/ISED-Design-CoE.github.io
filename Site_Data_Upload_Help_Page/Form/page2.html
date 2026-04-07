@@ -212,10 +212,12 @@
         saveCurrentPageData,
         loadCurrentPageData,
         validateCurrentPage,
+        applyValidationToAllFields,
       } from "./scripts/site-data-upload-csv.js";
 
       setCurrentPage(2);
       loadCurrentPageData(2);
+      applyValidationToAllFields();
 
       const nextBtn = document.getElementById("btn-next");
       const backBtn = document.getElementById("btn-go-back");

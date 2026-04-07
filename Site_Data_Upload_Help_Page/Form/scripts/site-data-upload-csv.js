@@ -209,6 +209,19 @@ function applyValidationAttributes(el) {
   }
 }
 
+function applyValidationToAllFields() {
+  const fieldSelectors = [
+    "gcds-input",
+    "gcds-select",
+    "gcds-date-input",
+    "gcds-radios",
+  ];
+
+  document.querySelectorAll(fieldSelectors.join(",")).forEach((el) => {
+    applyValidationAttributes(el);
+  });
+}
+
 function validateCurrentPage() {
   const fieldSelectors = [
     "gcds-input",
@@ -223,29 +236,18 @@ function validateCurrentPage() {
     if (!el.hasAttribute("required")) return;
 
     const value = getFieldValue(el);
-    console.log(
-      "Validating",
-      el.tagName.toLowerCase(),
-      ":",
-      el,
-      "value:",
-      value,
-    );
 
     if (!value.trim()) {
-      console.log("Field is empty, setting error state");
       isValid = false;
       // Set error state
       el.setAttribute("error-state", "error");
       el.setAttribute("error-message", "This field is required.");
     } else {
-      console.log("Field is valid, removing error state");
       el.removeAttribute("error-state");
       el.removeAttribute("error-message");
     }
   });
 
-  console.log("validateCurrentPage returning:", isValid);
   return isValid;
 }
 
@@ -599,4 +601,5 @@ export {
   clearCurrentEntry,
   finalizeCurrentEntry,
   validateCurrentPage,
+  applyValidationToAllFields,
 };

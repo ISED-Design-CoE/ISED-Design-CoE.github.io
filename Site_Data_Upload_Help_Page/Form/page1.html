@@ -134,10 +134,12 @@
         saveCurrentPageData,
         loadCurrentPageData,
         validateCurrentPage,
+        applyValidationToAllFields,
       } from "./scripts/site-data-upload-csv.js";
 
       setCurrentPage(1);
       loadCurrentPageData(1);
+      applyValidationToAllFields();
 
       const nextBtn = document.getElementById("btn-next");
       const backBtn = document.getElementById("btn-go-back");
@@ -150,13 +152,7 @@
       }
 
       function handleNext() {
-        console.log("handleNext called");
-        // Temporarily disable validation to test if buttons work
-        // if (!validateCurrentPage()) {
-        //   console.log("Validation failed, not navigating");
-        //   return;
-        // }
-        console.log("Validation passed, saving data and navigating");
+        if (!validateCurrentPage()) return;
         saveCurrentPageData();
         window.location.href = "page2.html";
       }
@@ -168,32 +164,27 @@
 
       // hii: add direct host event listeners; relies on gcds-button dispatching click event from shadow type
       nextBtn?.addEventListener("click", (event) => {
-        console.log("Next button click event triggered");
         event.preventDefault();
         handleNext();
       });
 
       backBtn?.addEventListener("click", (event) => {
-        console.log("Back button click event triggered");
         event.preventDefault();
         handleBack();
       });
 
       // robust fallback via pointer events for shadow DOM behavior nonstandardities
       document.addEventListener("pointerup", (event) => {
-        console.log("Pointerup event on document");
         const path = event.composedPath ? event.composedPath() : [event.target];
         for (const node of path) {
           if (!(node instanceof Element)) continue;
           if (node === nextBtn || node === backBtn) continue;
           if (node.id === "btn-next" || node.closest?.("#btn-next")) {
-            console.log("Pointerup on next button");
             event.preventDefault();
             handleNext();
             return;
           }
           if (node.id === "btn-go-back" || node.closest?.("#btn-go-back")) {
-            console.log("Pointerup on back button");
             event.preventDefault();
             handleBack();
             return;
