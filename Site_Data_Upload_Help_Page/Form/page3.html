@@ -93,6 +93,7 @@
           required
           min="0.10"
           max="50000.00"
+          type="number"
         ></gcds-input>
 
         <gcds-input
@@ -111,6 +112,7 @@
           min="1"
           max="100"
           maxlength="3"
+          type="number"
         ></gcds-input>
 
         <gcds-radios
@@ -118,9 +120,9 @@
           legend="Is your antenna transmitting or receiving?"
           required
           options='[
-         { "label": "Transmitting only", "id": "transmitting", "value": "transmitting"},
-         { "label": "Receiving only", "id": "receiving", "value": "receiving"},
-         { "label": "Both", "id": "both", "value": "both"},
+         { "label": "Transmitting only", "id": "radio1", "value": "radio1"},
+         { "label": "Receiving only", "id": "radio2", "value": "radio2"},
+         { "label": "Both", "id": "radio3", "value": "radio3"}
           ]'
         >
         </gcds-radios>
@@ -265,6 +267,7 @@
         saveCurrentPageData,
         loadCurrentPageData,
         finalizeCurrentEntry,
+        validateCurrentPage,
       } from "./scripts/site-data-upload-csv.js";
 
       setCurrentPage(3);
@@ -275,6 +278,7 @@
 
       nextBtn?.addEventListener("click", (event) => {
         event.preventDefault();
+        if (!validateCurrentPage()) return;
         saveCurrentPageData();
         finalizeCurrentEntry();
 
@@ -293,6 +297,7 @@
           if (node === nextBtn || node === backBtn) continue;
           if (node.id === "btn-next" || node.closest?.("#btn-next")) {
             event.preventDefault();
+            if (!validateCurrentPage()) return;
             saveCurrentPageData();
             window.location.href = "page4.html";
             return;

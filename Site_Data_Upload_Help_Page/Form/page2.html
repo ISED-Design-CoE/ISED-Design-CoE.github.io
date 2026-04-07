@@ -211,6 +211,7 @@
         setCurrentPage,
         saveCurrentPageData,
         loadCurrentPageData,
+        validateCurrentPage,
       } from "./scripts/site-data-upload-csv.js";
 
       setCurrentPage(2);
@@ -221,6 +222,7 @@
 
       nextBtn?.addEventListener("click", (event) => {
         event.preventDefault();
+        if (!validateCurrentPage()) return;
         saveCurrentPageData();
         window.location.href = "page3.html";
       });
@@ -238,6 +240,7 @@
           if (node === nextBtn || node === backBtn) continue;
           if (node.id === "btn-next" || node.closest?.("#btn-next")) {
             event.preventDefault();
+            if (!validateCurrentPage()) return;
             saveCurrentPageData();
             window.location.href = "page3.html";
             return;

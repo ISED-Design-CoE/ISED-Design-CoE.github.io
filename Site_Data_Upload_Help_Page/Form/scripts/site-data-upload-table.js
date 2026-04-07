@@ -1,13 +1,60 @@
 // site-data-upload-table.js
+import { setCurrentPage } from "./site-data-upload-csv.js";
+
 const ALL_DATA_KEY = "site-data-upload-all";
+
+const PAGE1_FIELDS = [
+  "licence-number",
+  "reference-number",
+  "contact-name",
+  "business-number",
+  "email-address",
+];
+
+const PAGE2_FIELDS = [
+  "station-location",
+  "radio-technology",
+  "cell-id",
+  "physical-cell-id",
+  "province-territory",
+  "latitude",
+  "longitude",
+  "structure-type",
+  "date-of-modification",
+  "site-record-id",
+];
+
+const PAGE3_FIELDS = [
+  "radio-model",
+  "radio-code",
+  "radio-certificate",
+  "channel-frequency",
+  "bandwidth",
+  "tcp",
+  "downlink",
+  "number-antennas",
+  "antenna-model",
+  "antenna-manufacturer",
+  "antenna-height",
+  "antenna-horizontal-beamwidth",
+  "antenna-vertical-beamwidth",
+  "antenna-azimuth",
+  "antenna-elevation-angle",
+  "antenna-gain",
+  "antenna-line-loss",
+];
 
 function readAllData() {
   try {
-    return JSON.parse(localStorage.getItem(ALL_DATA_KEY) || "{}");
+    return JSON.parse(sessionStorage.getItem(ALL_DATA_KEY) || "{}");
   } catch (err) {
     console.warn("Could not parse saved site data:", err);
     return {};
   }
+}
+
+function writeAllData(data) {
+  sessionStorage.setItem(ALL_DATA_KEY, JSON.stringify(data));
 }
 
 function getPageField(pageData, fieldKeys) {
@@ -136,9 +183,42 @@ function populateAntennaTable() {
     event.preventDefault();
 
     if (action === "edit") {
-      // You can populate the form fields using stored data.
-      // For now, this is a placeholder to show you can implement editing.
-      alert(`Edit row ${rowIndex + 1}`);
+      const allData = readAllData();
+      const entries = Array.isArray(allData.entries) ? allData.entries : [];
+      if (rowIndex >= entries.length) return;
+
+      const entry = entries[rowIndex];
+
+      // Populate current with the entry data split by pages
+      allData.current = {
+        page1: {},
+        page2: {},
+        page3: {},
+      };
+
+      PAGE1_FIELDS.forEach((field) => {
+        if (entry[field] != null) {
+          allData.current.page1[field] = entry[field];
+        }
+      });
+
+      PAGE2_FIELDS.forEach((field) => {
+        if (entry[field] != null) {
+          allData.current.page2[field] = entry[field];
+        }
+      });
+
+      PAGE3_FIELDS.forEach((field) => {
+        if (entry[field] != null) {
+          allData.current.page3[field] = entry[field];
+        }
+      });
+
+      allData.editing = rowIndex;
+
+      writeAllData(allData);
+      setCurrentPage(1);
+      window.location.href = "page1.html";
       return;
     }
 
@@ -147,7 +227,7 @@ function populateAntennaTable() {
       const entries = Array.isArray(allData.entries) ? allData.entries : [];
       entries.splice(rowIndex, 1);
       allData.entries = entries;
-      localStorage.setItem(ALL_DATA_KEY, JSON.stringify(allData));
+      writeAllData(allData);
       populateAntennaTable();
       return;
     }
