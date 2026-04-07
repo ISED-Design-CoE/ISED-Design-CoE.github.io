@@ -241,7 +241,7 @@ function validateCurrentPage() {
       isValid = false;
       // Set error state
       el.setAttribute("error-state", "error");
-      el.setAttribute("error-message", "This field is required.");
+      el.setAttribute("error-message", "Enter information to continue.");
     } else {
       el.removeAttribute("error-state");
       el.removeAttribute("error-message");
