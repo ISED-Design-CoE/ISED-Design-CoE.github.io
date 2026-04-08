@@ -182,7 +182,6 @@ function populateAntennaTable() {
     event.preventDefault();
 
     if (action === "edit") {
-      console.log("clicked edit");
       const allData = readAllData();
       const entries = Array.isArray(allData.entries) ? allData.entries : [];
       if (rowIndex >= entries.length) return;
