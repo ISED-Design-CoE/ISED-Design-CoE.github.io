@@ -79,6 +79,7 @@
           label="Contact name"
           hint="Name of the person who may be contacted. For example, John Smith."
           maxlength="254"
+          required
         ></gcds-input>
 
         <gcds-input
@@ -87,6 +88,7 @@
           hint="Telephone number of the person who may be contacted. For example, 613-174-5555 x 993"
           minlength="10"
           maxlength="254"
+          required
         ></gcds-input>
 
         <gcds-input
@@ -94,10 +96,12 @@
           label="Email address"
           hint="Email address or addresses (separate with commas) of the person who may be contacted. For example, john.smith@gmail.com"
           maxlength="254"
+          required
         ></gcds-input>
 
         <gcds-radios
           name="site-info-change"
+          id="site-change"
           legend="Has there been any changes to your site information?"
           required
           options='[
@@ -143,6 +147,7 @@
 
       const nextBtn = document.getElementById("btn-next");
       const backBtn = document.getElementById("btn-go-back");
+      const sitechange = document.getElementById("site-change");
 
       if (!nextBtn) {
         console.warn("Page1: Next button not found");
@@ -151,10 +156,28 @@
         console.warn("Page1: Go back button not found");
       }
 
+      function getSiteChangeValue() {
+        if (!sitechange) return "";
+        return (
+          sitechange.value ||
+          sitechange.querySelector('input[type="radio"]:checked')?.value ||
+          sitechange.shadowRoot?.querySelector('input[type="radio"]:checked')
+            ?.value ||
+          ""
+        );
+      }
+
       function handleNext() {
-        if (!validateCurrentPage()) return;
+        const selectedSiteChange = getSiteChangeValue();
+        const goToPage2 =
+          selectedSiteChange === "radio1" || selectedSiteChange === "radio2";
+
+        if (goToPage2 && !validateCurrentPage()) {
+          return;
+        }
+
         saveCurrentPageData();
-        window.location.href = "page2.html";
+        window.location.href = goToPage2 ? "page2.html" : "page4.html";
       }
 
       function handleBack() {

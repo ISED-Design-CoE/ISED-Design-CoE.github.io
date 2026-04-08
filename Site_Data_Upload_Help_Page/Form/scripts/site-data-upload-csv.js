@@ -163,7 +163,6 @@ function applyValidationAttributes(el) {
       "min",
       "max",
       "minlength",
-      "maxlength",
       "pattern",
       "type",
       "inputmode",
@@ -187,7 +186,6 @@ function applyValidationAttributes(el) {
 
     const min = el.getAttribute("min");
     const max = el.getAttribute("max");
-    const maxlength = el.getAttribute("maxlength");
     const type = el.getAttribute("type");
 
     if (type === "number" && (min || max)) {
@@ -197,10 +195,6 @@ function applyValidationAttributes(el) {
           max ? parseFloat(max) : null,
         ),
       );
-    }
-
-    if (maxlength && type !== "number") {
-      validators.push(getLengthValidator(null, parseInt(maxlength, 10)));
     }
 
     if (validators.length > 0) {
@@ -254,18 +248,6 @@ function validateCurrentPage() {
 function normalizeCollectedValue(el, value) {
   if (value == null || value === "") return value;
   const native = getInnerNativeField(el);
-
-  const maxLength = parseInt(
-    el.getAttribute("maxlength") || native?.getAttribute("maxlength"),
-    10,
-  );
-  if (
-    !Number.isNaN(maxLength) &&
-    maxLength > 0 &&
-    String(value).length > maxLength
-  ) {
-    value = String(value).slice(0, maxLength);
-  }
 
   const min = parseFloat(el.getAttribute("min") || native?.getAttribute("min"));
   const max = parseFloat(el.getAttribute("max") || native?.getAttribute("max"));
@@ -489,38 +471,60 @@ function buildCsv(rows) {
   ];
 
   const headings = [
-    "Licence number",
-    "Reference number",
-    "Contact name",
-    "Business telephone number",
-    "Email address",
+    "Spectrum Licence Number",
+    "Upload Reference Number",
+    "Contact Name",
+    "Business Telephone",
+    "E-mail address",
     "Station location",
+    "Station Type",
     "Radio technology",
-    "Cell Global Identity (CGI)",
+    "Cell ID",
     "Physical Cell ID",
     "Province/Territory",
     "Latitude",
     "Longitude",
+    "Site Type Code",
+    "Structure Height",
     "Structure type",
-    "Date of modification",
+    "Date Of Last Modification",
     "Site record ID",
-    "Radio model",
-    "Radio code",
-    "Radio certificate",
-    "Channel frequency",
+    "Tx Frequency",
+    "Rx Frequency",
+    "Tx Radio Model Number",
+    "Rx Radio Model Number",
+    "Tx Radio Manufacturer Code",
+    "Rx Radio Manufacturer Code",
+    "Tx Radio Certification Number",
+    "Rx Radio Certification Number",
     "Bandwidth",
-    "TCP",
-    "Downlink",
-    "Number antennas",
-    "Antenna model",
-    "Antenna manufacturer",
-    "Antenna height",
-    "Antenna horizontal beamwidth",
-    "Antenna vertical beamwidth",
-    "Antenna azimuth",
-    "Antenna elevation angle",
-    "Antenna gain",
-    "Antenna line loss",
+    "Class of Emisssion",
+    "Transmitter TCP-TRP",
+    "Downlink Resource Allocation",
+    "Tx Antenna Type Code",
+    "Rx Antenna Type Code",
+    "Number of Tx Antennas",
+    "Number of Rx Antennas",
+    "Tx Antenna Model Number",
+    "Rx Antenna Model Number",
+    "Tx Antenna Manufacturer",
+    "Rx Antenna Manufacturer",
+    "Tx Antenna Height",
+    "Rx Antenna Height",
+    "Tx Directional Pattern Code",
+    "Rx Directional Pattern Code",
+    "Tx Antenna Horizontal Beamwidth",
+    "Rx Antenna Horizontal Beamwidth",
+    "Tx Antenna Vertical Beamwidth",
+    "Rx Antenna Vertical Beamwidth",
+    "Tx Antenna Azimuth",
+    "Rx Antenna Azimuth",
+    "Tx Antenna Elevation Angle",
+    "Rx Antenna Elevation Angle",
+    "Tx Antenna Gain",
+    "Rx Antenna Gain",
+    "Tx Loss",
+    "Rx Loss",
   ];
 
   const header = headings.join(",");

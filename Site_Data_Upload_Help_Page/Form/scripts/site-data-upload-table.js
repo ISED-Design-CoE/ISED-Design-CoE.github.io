@@ -148,8 +148,7 @@ function populateAntennaTable() {
 
   if (!rows.length) {
     const emptyRow = document.createElement("tr");
-    emptyRow.innerHTML =
-      '<td colspan="5">No station data available yet. Please complete pages 1–3 first.</td>';
+    emptyRow.innerHTML = '<td colspan="5">No station data available yet.</td>';
     tbody.appendChild(emptyRow);
     return;
   }
@@ -183,6 +182,7 @@ function populateAntennaTable() {
     event.preventDefault();
 
     if (action === "edit") {
+      console.log("clicked edit");
       const allData = readAllData();
       const entries = Array.isArray(allData.entries) ? allData.entries : [];
       if (rowIndex >= entries.length) return;
