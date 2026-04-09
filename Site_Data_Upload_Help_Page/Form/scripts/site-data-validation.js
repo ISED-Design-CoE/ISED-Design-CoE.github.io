@@ -5,8 +5,15 @@ import { getInnerNativeField, getFieldValue } from "./site-data-fields.js";
 function getLengthValidator(min, max) {
   let errorMessage = {};
   if (min && max) {
-    errorMessage["en"] = `You must enter between ${min} and ${max} characters`;
-    errorMessage["fr"] = `Vous devez entrer entre ${min} et ${max} caractères`;
+    if (min !== max) {
+      errorMessage["en"] =
+        `You must enter between ${min} and ${max} characters`;
+      errorMessage["fr"] =
+        `Vous devez entrer entre ${min} et ${max} caractères`;
+    } else {
+      errorMessage["en"] = `You must enter exactly ${min} characters`;
+      errorMessage["fr"] = `Vous devez entrer exactement ${min} caractères`;
+    }
   } else if (min) {
     errorMessage["en"] = `You must enter at least ${min} characters`;
     errorMessage["fr"] = `Vous devez entrer au moins ${min} caractères`;
@@ -76,6 +83,8 @@ function applyValidationAttributes(el) {
   }
   if (el.tagName.toLowerCase() === "gcds-input") {
     const validators = [];
+    const minlength = el.getAttribute("minlength");
+    const maxlength = el.getAttribute("maxlength");
     const min = el.getAttribute("min");
     const max = el.getAttribute("max");
     const type = el.getAttribute("type");
@@ -84,6 +93,24 @@ function applyValidationAttributes(el) {
         getNumberValidator(
           min ? parseFloat(min) : null,
           max ? parseFloat(max) : null,
+        ),
+      );
+    }
+
+    if ((type === "text" || !type) && (minlength || maxlength)) {
+      validators.push(
+        getLengthValidator(
+          minlength ? parseInt(minlength, 10) : null,
+          maxlength ? parseInt(maxlength, 10) : null,
+        ),
+      );
+    }
+
+    if ((type === "number" || !type) && (minlength || maxlength)) {
+      validators.push(
+        getLengthValidator(
+          minlength ? parseInt(minlength, 10) : null,
+          maxlength ? parseInt(maxlength, 10) : null,
         ),
       );
     }
