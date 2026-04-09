@@ -138,6 +138,7 @@
         saveCurrentPageData,
         loadCurrentPageData,
         validateCurrentPage,
+        finalizeCurrentEntry,
         applyValidationToAllFields,
       } from "./scripts/site-data-upload-csv.js";
 
@@ -168,24 +169,34 @@
       }
 
       function handleNext() {
-        const selectedSiteChange = getSiteChangeValue();
-        const goToPage2 =
-          selectedSiteChange === "radio1" || selectedSiteChange === "radio2";
+        const selected = getSiteChangeValue();
 
-        if (goToPage2 && !validateCurrentPage()) {
+        const isRadio1 = selected === "radio1";
+        const isRadio2or3or4 =
+          selected === "radio2" ||
+          selected === "radio3" ||
+          selected === "radio4";
+
+        if (isRadio1 && !validateCurrentPage()) {
           return;
         }
 
         saveCurrentPageData();
-        window.location.href = goToPage2 ? "page2.html" : "page4.html";
+
+        if (isRadio2or3or4 && validateCurrentPage()) {
+          finalizeCurrentEntry();
+          window.location.href = "page4.html";
+        } else {
+          if (validateCurrentPage()) {
+            window.location.href = "page2.html";
+          }
+        }
       }
 
       function handleBack() {
-        console.log("handleBack called");
-        window.location.href = "page1.html";
+        window.location.href = "page4.html";
       }
 
-      // hii: add direct host event listeners; relies on gcds-button dispatching click event from shadow type
       nextBtn?.addEventListener("click", (event) => {
         event.preventDefault();
         handleNext();
@@ -196,7 +207,6 @@
         handleBack();
       });
 
-      // robust fallback via pointer events for shadow DOM behavior nonstandardities
       document.addEventListener("pointerup", (event) => {
         const path = event.composedPath ? event.composedPath() : [event.target];
         for (const node of path) {

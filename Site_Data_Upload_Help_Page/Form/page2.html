@@ -157,16 +157,48 @@
         ></gcds-input>
 
         <gcds-select
-          select-id="structure-type"
-          label="Structure Type"
-          name="Structure Type"
-          hint="What kind of structure is your site fixed on?"
+          select-id="site-type"
+          label="Site Type Code"
+          name="Site Type"
+          hint="Is your site outdoor, indoor, or underground?"
           required
           default-value="Select option"
         >
           <option value="1">U - Underground</option>
           <option value="2">O - Outdoor</option>
           <option value="3">I - Indoor</option>
+        </gcds-select>
+
+        <gcds-input
+          input-id="structure-height"
+          label="Structure Height"
+          hint="The height of the station, in decimal degrees."
+          required
+          min="1"
+          max="600"
+          type="number"
+        ></gcds-input>
+
+        <gcds-select
+          select-id="structure-type"
+          label="Structure Type Code"
+          name="Structure Type"
+          hint="What kind of structure is your site fixed on?"
+          required
+          default-value="Select option"
+        >
+          <option value="1">T - Purpose-built tower</option>
+          <option value="2">R - Outside of building or rooftop</option>
+          <option value="3">
+            P - Light pole, other street electrical, or utility pole
+          </option>
+          <option value="4">S - Water tower or farm silo</option>
+          <option value="5">F - Furniture</option>
+          <option value="6">
+            M - Transportable (Report the current operating location only and
+            not the radius of operation)
+          </option>
+          <option value="7">O - Other (E.g. indoor)</option>
         </gcds-select>
 
         <gcds-date-input
