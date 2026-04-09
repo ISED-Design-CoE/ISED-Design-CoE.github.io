@@ -97,6 +97,15 @@ function applyValidationAttributes(el) {
       );
     }
 
+    if (type === "text" && (min || max)) {
+      validators.push(
+        getNumberValidator(
+          min ? parseFloat(min) : null,
+          max ? parseFloat(max) : null,
+        ),
+      );
+    }
+
     if ((type === "text" || !type) && (minlength || maxlength)) {
       validators.push(
         getLengthValidator(
