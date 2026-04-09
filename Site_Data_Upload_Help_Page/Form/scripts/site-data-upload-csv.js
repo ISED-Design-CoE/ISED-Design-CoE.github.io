@@ -25,7 +25,6 @@ const columns = [
   "contact-name",
   "business-number",
   "email-address",
-  "site-info-change",
 
   "station-location",
   "radio-technology",
