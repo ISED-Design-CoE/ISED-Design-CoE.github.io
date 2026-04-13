@@ -35,7 +35,7 @@
       <!-- The slot="breadcrumb" attribute adds the breadcrumbs component to the header. -->
       <gcds-breadcrumbs hide-canada-link="true" slot="breadcrumb">
         <!-- TODO: Adjust the breadcrumb links with the correct ones for your site. -->
-        <gcds-breadcrumbs-item href="index.html"
+        <gcds-breadcrumbs-item href="page4.html"
           >Site data upload CSV generator</gcds-breadcrumbs-item
         >
       </gcds-breadcrumbs>
@@ -58,13 +58,12 @@
         <gcds-input
           input-id="licence-number"
           label="Spectrum licence number"
-          hint="Enter the 9 digit spectrum licence number for your site upload. For example, 010939043 (do not include the version number)."
+          hint="Enter the 9 digit spectrum licence number for your site upload. Do not include the version number."
           size="9"
           required
           minlength="9"
-          maxlength="9"
-          inputmode="numeric"
-          type="number"
+          maxlength="5"
+          type="text"
         ></gcds-input>
 
         <gcds-input
@@ -77,29 +76,32 @@
         <gcds-input
           input-id="contact-name"
           label="Contact name"
-          hint="Name of the person who may be contacted. For example, John Smith."
+          hint="Name of the person who may be contacted."
           maxlength="254"
           required
           type="text"
+          size="20"
         ></gcds-input>
 
         <gcds-input
           input-id="business-number"
           label="Business telephone number"
-          hint="Telephone number of the person who may be contacted. For example, 613-174-5555 x 993"
+          hint="Telephone number of the person who may be contacted."
           minlength="10"
           maxlength="254"
           required
           type="text"
+          size="10"
         ></gcds-input>
 
         <gcds-input
           input-id="email-address"
           label="Email address"
-          hint="Email address or addresses (separate with commas) of the person who may be contacted. For example, john.smith@gmail.com"
+          hint="Email address or addresses (separate with commas) of the person who may be contacted."
           maxlength="254"
           required
           type="text"
+   
         ></gcds-input>
 
         <gcds-radios
