@@ -68,7 +68,7 @@
           select-id="radio-technology"
           label="Radio technology"
           name="Radio technology"
-          hint="Enter the mode of operation (provisioning) for the radio apparatus at the site."
+          hint="Enter the mode of operation (provisioning) for the radio apparatus at your station."
           required
           default-value="Select option"
         >
@@ -90,7 +90,7 @@
         <gcds-input
           input-id="cell-id"
           label="Cell Global Identity (CGI)"
-          hint="Enter the mobile network Cell Global Identity (CGI) following the 3GPP notation for the given radio technology above."
+          hint="Enter the mobile network Cell Global Identity (CGI) following the 3GPP notation for the radio technology above."
           required
           minlength="11"
           maxlength="27"
@@ -112,7 +112,7 @@
           select-id="province-territory"
           label="Province/Territory"
           name="Province/Territory"
-          hint="What province or territory your station is located?"
+          hint="Select the province or territory your station is located in."
           required
           default-value="Select option"
         >
@@ -140,7 +140,7 @@
         <gcds-input
           input-id="latitude"
           label="Latitude"
-          hint="The latitude of the station, in decimal degrees."
+          hint="Enter the latitude of the station, in decimal degrees."
           required
           min="41"
           max="91"
@@ -151,7 +151,7 @@
         <gcds-input
           input-id="longitude"
           label="Longitude"
-          hint="The longitude of the station, in decimal degrees."
+          hint="Enter the longitude of the station, in decimal degrees."
           required
           min="-141"
           max="-40"
@@ -163,7 +163,7 @@
           select-id="site-type"
           label="Site Type Code"
           name="Site Type"
-          hint="Is your site outdoor, indoor, or underground?"
+          hint="Select your stations type based on the environment it is located in."
           required
           default-value="Select option"
         >
@@ -175,20 +175,19 @@
         <gcds-input
           input-id="structure-height"
           label="Structure Height"
-          hint="The height of your station in meters."
+          hint="Enter the height of your station in meters."
           required
           min="1"
           max="600"
           type="number"
           size="4"
-          oninput="this.value = this.value.slice(0, 3)"
         ></gcds-input>
 
         <gcds-select
           select-id="structure-type"
           label="Structure Type Code"
           name="Structure Type"
-          hint="What kind of structure is your site fixed on?"
+          hint="Select the structure your station is fixed on."
           required
           default-value="Select option"
         >
@@ -209,7 +208,7 @@
         <gcds-date-input
           input-id="date-of-modification"
           legend="Date of last modification"
-          hint="The date that the installation went into service. This date helps investigate possible sources of technical issues."
+          hint="Enter the date that the installation went into service. This helps investigate possible sources of technical issues."
           required
           name="props-default"
           format="full"
@@ -219,7 +218,7 @@
         <gcds-input
           input-id="site-record-id"
           label="Site record ID"
-          hint="The identifier as defined by the licensee for the site or antenna installation."
+          hint="Enter the Site record identifier for your site or antenna installation."
           required
           type="number"
         ></gcds-input>
