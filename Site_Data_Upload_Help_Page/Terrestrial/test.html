@@ -1,0 +1,3064 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+
+    <title>Text format for spectrum licence site data upload</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+    <!-- Custom code starts here (Metadata) / Code personalisé commence ici (Métadonnées) -->
+    <!-- Custom code ends here (Metadata) / Code personalisé termine ici (Métadonnées)-->
+
+    <link
+      rel="stylesheet"
+      href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/css/theme.min.css"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/css/noscript.min.css"
+      />
+    </noscript>
+
+    <!-- Custom code starts here (Analytics) / Code personalisé commence ici (Analytiques) -->
+
+    <!-- Provider configuration - each is evaluated independently -->
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/deps/json-patch.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/deps/jsonpointer.min.js"></script>
+    <!-- jQuery (required by many plugins) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <!-- Custom code ends here (Analytics) / Code personalisé termine ici (Analytiques) -->
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      #toc {
+        /* 1. Set the position to sticky */
+        position: sticky;
+
+        /* 2. Define where the element should stop when scrolling */
+        /* This tells the browser to stick the top edge of the ToC 
+       to the top edge of the viewport once it reaches 10px from the top.
+    */
+        top: -30px;
+        /* 4. Ensure the ToC doesn't overflow its container horizontally */
+        width: 100%;
+      }
+
+      ul.dashed-list {
+        list-style: none;
+        padding-left: 1.5em;
+      }
+
+      ul.dashed-list li {
+        margin-bottom: 0.5em;
+      }
+
+      ul.dashed-list li::before {
+        content: "– ";
+        margin-left: -1.5em;
+        margin-right: 1em;
+      }
+    </style>
+  </head>
+
+  <body vocab="http://schema.org/" resource="#wb-webpage" typeof="WebPage">
+    <nav>
+      <ul id="wb-tphp">
+        <li class="wb-slc">
+          <a class="wb-sl" href="#wb-cont">Skip to main content</a>
+        </li>
+        <li class="wb-slc visible-sm visible-md visible-lg">
+          <a class="wb-sl" href="#wb-info">Skip to About this site</a>
+        </li>
+      </ul>
+    </nav>
+
+    <header>
+      <div id="wb-bnr" class="container">
+        <div class="row">
+          <section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
+            <h2 class="wb-inv">Language selection</h2>
+            <ul class="list-inline mrgn-bttm-0">
+              <li>
+                <a lang="fr" hreflang="fr" href="header-docs-fr.html">
+                  <span class="hidden-xs" translate="no">Français</span>
+                  <abbr
+                    title="Français"
+                    translate="no"
+                    class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase"
+                    >fr</abbr
+                  >
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <div
+            class="brand col-xs-9 col-sm-5 col-md-4"
+            property="publisher"
+            typeof="GovernmentOrganization"
+          >
+            <a href="https://www.canada.ca/en.html" property="url">
+              <img
+                src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/sig-blk-en.svg"
+                alt="Government of Canada"
+                property="logo"
+              /><span class="wb-inv">
+                / <span lang="fr">Gouvernement du Canada</span></span
+              >
+            </a>
+            <meta property="name" content="Government of Canada" />
+            <meta property="areaServed" typeof="Country" content="Canada" />
+            <link
+              property="logo"
+              href="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg"
+            />
+          </div>
+
+          <section
+            id="wb-srch"
+            class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4"
+          >
+            <h2>Search</h2>
+            <form
+              action="https://www.canada.ca/en/sr/srb.html"
+              name="cse-search-box"
+              role="search"
+            >
+              <div class="form-group wb-srch-qry">
+                <label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+                <input
+                  id="wb-srch-q"
+                  list="wb-srch-q-ac"
+                  class="wb-srch-q form-control"
+                  name="q"
+                  type="search"
+                  value=""
+                  size="34"
+                  maxlength="170"
+                  placeholder="Search Canada.ca"
+                />
+                <datalist id="wb-srch-q-ac"></datalist>
+              </div>
+              <div class="form-group submit">
+                <button
+                  type="submit"
+                  id="wb-srch-sub"
+                  class="btn btn-primary btn-small"
+                  name="wb-srch-sub"
+                >
+                  <span class="glyphicon-search glyphicon"></span
+                  ><span class="wb-inv">Search</span>
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+      <hr />
+      <nav id="wb-bc" property="breadcrumb">
+        <h2>You are here:</h2>
+        <div class="container">
+          <ol class="breadcrumb">
+            <li>
+              <a href="https://www.canada.ca/en.html">Canada.ca</a>
+            </li>
+            <li>
+              <a href="https://www.canada.ca/en/services/business.html"
+                >Business and industry</a
+              >
+            </li>
+            <li>
+              <a href="https://www.canada.ca/en/services/business/permits.html"
+                >Permits, licences and regulations</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors.html"
+                >Federally regulated industry sectors</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.canada.ca/en/services/business/permits/federallyregulatedindustrysectors/broadcastingtelecommunicationsregulation.html"
+                >Broadcasting and telecommunications regulation</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system"
+                >Spectrum Management System</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data"
+                >Spectrum Management System Data</a
+              >
+            </li>
+          </ol>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div id="toc">
+          <aside class="col-md-4" style="padding-right: 40px; z-index: 10">
+            <nav class="wb-sec">
+              <details
+                class="wb-details-close"
+                style="border: none; margin-top: 40px"
+                open=""
+              >
+                <summary style="border: none">
+                  <h5 data-i18n="toc-heading">Table of contents</h5>
+                </summary>
+                <ul
+                  class="list-unstyled"
+                  id="table-of-contents"
+                  style="max-height: 75vh; overflow-y: auto"
+                >
+                  <li style="margin-bottom: 20px">
+                    <a href="#A">A - Spectrum licence number</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#B">B - Upload reference number</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#C">C - Contact name</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#D">D - Business telephone number</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#E">E - Email address</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#F">F - Station location</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#G">G - Station type</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#H">H - Radio technology</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#I">I - Cell ID</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#J">J - Physical cell ID</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#K">K - Province/Territory code</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#L">L - Latitude</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#M">M - Longitude</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#N">N - Site type code</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#O">O - Structure height</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#P">P - Site structure type code</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#Q">Q - Effective date of configuration</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#R">R - Site record ID</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#S">S - Tx channel frequency</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#T">T - Rx channel frequency</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#U">U - Tx radio HVIN</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#V">V - Rx radio HVIN</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#W">W - Tx radio manufacturer code</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#X">X - Rx radio manufacturer code</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#Y">Y - Tx radio certification number</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#Z">Z - Rx radio certification number</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AA">AA - Bandwidth</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AB">AB - Class of emission</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AC">AC - Transmitter TCP–TRP</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AD">AD - Downlink resource allocation</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AE">AE - Tx antenna type code</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AF">AF - Rx antenna type code</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AG">AG - Tx number of antennas</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AH">AH - Rx number of antennas</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AI">AI - Tx antenna model number</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AJ">AJ - Rx antenna model number</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AK">AK - Tx antenna manufacturer</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AL">AL - Rx antenna manufacturer</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AM">AM - Tx antenna height</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AN">AN - Rx antenna height</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AO"
+                      >AO - Tx antenna omnidirectional pattern indicator</a
+                    >
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AP"
+                      >AP - Rx antenna omnidirectional pattern indicator</a
+                    >
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AQ">AQ - Tx antenna horizontal beam</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AR">AR - Rx antenna horizontal beam</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AS">AS - Tx antenna vertical beam</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AT">AT - Rx antenna vertical beam</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AU">AU - Tx antenna azimuth</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AV">AV - Rx antenna azimuth</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AW">AW - Tx antenna elevation angle</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AX">AX - Rx antenna elevation angle</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AY">AY - Tx antenna gain</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#AZ">AZ - Rx antenna gain</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#BA">BA - Tx line loss</a>
+                  </li>
+                  <li style="margin-bottom: 20px">
+                    <a href="#BB">BB - Rx line loss</a>
+                  </li>
+                </ul>
+              </details>
+            </nav>
+            <button
+              class="btn btn-secondary btn-lg"
+              data-i18n="back-to-top"
+              onclick="window.scrollTo({ top: 220, behavior: 'smooth' })"
+            >
+              Back to top
+            </button>
+          </aside>
+        </div>
+
+        <main class="col-md-8">
+          <h1 data-i18n="page-heading" id="wb-cont" style="margin-bottom: 24px">
+            Text format for terrestrial spectrum licence site data upload
+          </h1>
+          <p data-i18n="page-description" style="margin-bottom: 24px">
+            Learn about the format, validation rules, and errors when uploading
+            spectrum licence site data. Download the .csv file below to use as a
+            template.
+          </p>
+
+          <button class="btn btn-secondary btn-lg" style="margin-bottom: 24px">
+            Download .csv template
+          </button>
+
+          <h2>Field names</h2>
+          <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
+            <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
+              <div id="wb-auto-1_filter" class="dataTables_filter"></div>
+              <table
+                class="wb-tables table wb-init wb-tables-inited dataTable no-footer"
+                id="wb-auto-1"
+                aria-describedby="wb-auto-1_info"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      class="h5 sorting_disabled"
+                      rowspan="1"
+                      colspan="1"
+                      style="width: 80px"
+                      aria-label=" 
+                    Letter
+                  "
+                    >
+                      <span class="th-vspacer"> </span>
+                      Letter
+                    </th>
+                    <th
+                      class="h5 sorting_disabled"
+                      rowspan="1"
+                      colspan="1"
+                      style="width: 600px"
+                      aria-label=" 
+                    Name
+                  "
+                    >
+                      <span class="th-vspacer"> </span>
+                      Name
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="A"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        A
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Spectrum licence number</h2>
+                      <p></p>
+                      <p>Enter the number of your spectrum licence.</p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>10898101</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>Must belong to an account in your web profile</li>
+                        <li>
+                          Must be a granted (paid) spectrum licence, and not
+                          expired
+                        </li>
+                        <li>
+                          Must be exactly 9 digits long including leading zeroes
+                          as necessary
+                        </li>
+                        <li>Do not include the licence version number</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The licence number does not contain a leading 0, the
+                          licence number does not belong to your account, the
+                          licence number is not in Granted status, or the
+                          licence is expired.</code
+                        >
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="B"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        B
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Upload reference number</h2>
+                      <p></p>
+                      <p>
+                        Optional field to enter a reference name for your site.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>Monthly upload, March 2023</p>
+                      <h4>Format</h4>
+                      <p>Maximum length of 63 characters.</p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="C"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        C
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Contact name</h2>
+                      <p></p>
+                      <p>Name of the person who may be contacted.</p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>John Smith</p>
+                      <h4>Format</h4>
+                      <p>Maximum length of 254 characters.</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Contact Name is missing or exceeds the character
+                          limit.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="D"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        D
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Business telephone number</h2>
+                      <p></p>
+                      <p>
+                        Enter the telephone number of the person who may be
+                        contacted.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>613 – 174 – 5555 x 993</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>Minimum length of 10 characters</li>
+                        <li>Maximum length of 254 characters</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Business Telephone Number is missing or exceeds
+                          the character limit.</code
+                        >
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="E"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        E
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Email address</h2>
+                      <p></p>
+                      <p>
+                        Enter the email address of the person who may be
+                        contacted.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>john.smith@mail.com</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>Maximum length 254 characters</li>
+                        <li>
+                          For multiplate email addresses, separate them with
+                          commas
+                        </li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The E-mail Address is missing or exceeds the
+                          character limit.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="F"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        F
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Station location</h2>
+                      <p></p>
+                      <p>
+                        Enter the station is located or specify if there are no
+                        changes or no stations.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>WR0123 - Strandherd Repeater Site</p>
+                      <h4>Format</h4>
+                      <p>
+                        <b>If you currently have a station</b> <br />
+                        If you currently have a station deployed, enter the
+                        location of your station (Maximum length of 63
+                        characters). <br /><br />
+                        <b>If you have no changes to stations</b> <br />
+                        If you have no changes to your station information,
+                        enter “NOCHANGES” and leave columns G to BB empty.
+                        <br />
+                        <br /><b>If you have no stations deployed</b> <br />
+                        If you have no station deployed or being decommissioned,
+                        enter “NOSTATIONS” and leave columns G to BB empty
+                      </p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Station Location is missing or exceeds the
+                          character limit.</code
+                        >
+                      </p>
+                      An error in this field may also introduce errors in the
+                      following fields:
+                      <ul>
+                        <li><a href="">L – Latitude </a></li>
+                        <li><a href="">M – Longitude </a></li>
+                        <li>
+                          <a href="">AD – Download resource allocation </a>
+                        </li>
+                      </ul>
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="G"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        G
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Station type</h2>
+                      <p></p>
+                      <p>
+                        Enter the station type of either fixed or earth station.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>FX</p>
+                      <h4>Format</h4>
+                      <p>Must be either:</p>
+                      <ul>
+                        <li>FX - Fixed station</li>
+                        <li>TC - Earth station</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Station Type is not input as CAPS, is missing or
+                          is not an accepted Station Type value.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="H"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        H
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Radio technology</h2>
+                      <p></p>
+                      <p>
+                        The mode of operation (provisioning) for the radio
+                        apparatus at the site.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>LTE</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>GSM – Global System for Mobile Communications</li>
+                        <li>CDMA – Code Division Multiple Access</li>
+                        <li>HSPA – High Speed Packet Access</li>
+                        <li>LTE – Long Term Evolution</li>
+                        <li>5GNR – 5G New Radio&nbsp;</li>
+                        <li>5GDSS – 5G Dynamic Spectrum Sharing</li>
+                        <li>
+                          WIMAX – Worldwide Interoperability for Microwave
+                          Access
+                        </li>
+                        <li>WI-FI</li>
+                        <li>OTHER</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Radio Technology value is missing, not in ALL
+                          CAPS, or not one of the allowed values.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="I"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        I
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Cell ID</h2>
+                      <p></p>
+                      <p></p>
+                      <p>
+                        The mobile network Cell Global Identity (CGI) following
+                        the 3GPP notation for the given radio technology.
+                      </p>
+                      <p></p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#H">H - Radio technology</a> is any of the
+                        following:
+                      </p>
+                      <ul>
+                        <li>GSM</li>
+                        <li>CDMA</li>
+                        <li>HSPA</li>
+                        <li>LTE</li>
+                        <li>5GNR</li>
+                        <li>5GDSS</li>
+                      </ul>
+                      <p></p>
+                      <h4>Example</h4>
+                      <p>302610-1051200-25381093417</p>
+                      <h4>Format</h4>
+                      <p>
+                        <b>For GSM, CDMA, HSPA</b> <br />(CGI): PLMN-LAC-CID
+                        <br /><br />
+                        <b>For 5GNR, 5GDSS</b> <br />(NCGI): PLMN-TAC-NCI<br /><br />
+                        <b>For LTE</b> <br />(ECGI): PLMN-TAC-ECI
+                      </p>
+                      <ul>
+                        <li>
+                          Must be in the format of 999999-99999999-99999999999
+                        </li>
+                        <li>Minimum of 11 characters</li>
+                        <li>Maximum of 27 characters</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Cell ID is missing or not in the expected format
+                          or length.</code
+                        >
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="J"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        J
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Physical cell ID</h2>
+                      <p></p>
+                      <p>
+                        Enter the Physical Cell Identity (PCI) for LTE or 5G
+                        systems.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required only when
+                        <a href="#H">H - Radio technology</a> is any of the
+                        following:
+                      </p>
+                      <ul>
+                        <li>LTE</li>
+                        <li>5GNR</li>
+                        <li>5GDSS</li>
+                      </ul>
+                      <p></p>
+                      <h4>Example</h4>
+                      <p>204</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <p>Must be a number from either:</p>
+                      <ul>
+                        <li>0 to 503 for <b>LTE</b> systems</li>
+                        <li>
+                          0 to 1007 for <b>5GNR</b> or <b>5GDSS</b> systems
+                        </li>
+                      </ul>
+                      <p></p>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Physical Cell ID is missing or not within the
+                          expected range of values.</code
+                        >
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="K"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        K
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Province/Territory code</h2>
+                      <p></p>
+                      <p>
+                        Enter the two-character abbreviation of the province or
+                        territory your station is located in.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>ON</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <p>
+                        Your licence coordinates must be within the province or
+                        territory <br /><br />
+                        Must be one of the following provincial or territorial
+                        codes:
+                      </p>
+                      <ul>
+                        <li>AB - Alberta</li>
+                        <li>BC - British Columbia</li>
+                        <li>MB - Manitoba</li>
+                        <li>NB - New Brunswick</li>
+                        <li>NL- Newfoundland and Labrador</li>
+                        <li>NS - Nova Scotia</li>
+                        <li>ON - Ontario</li>
+                        <li>PE - Prince Edward Island</li>
+                        <li>QC - Quebec</li>
+                        <li>SK - Saskatchewan</li>
+                        <li>NT - Northwest Territories</li>
+                        <li>NU - Nunavut</li>
+                        <li>YT - Yukon</li>
+                      </ul>
+                      For transportable stations, includes "IP" for
+                      interprovincial and "CA" for Canada-wide.)
+                      <p></p>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Province/Territory is not input as CAPS, is
+                          missing or is not an accepted Province/Territory
+                          abbreviation.</code
+                        >
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="L"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        L
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Latitude</h2>
+                      <p></p>
+                      <p>Enter the latitudinal coordinate of the station.</p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>45.3514035</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>
+                          Must be in decimal degrees using the WGS84 format
+                        </li>
+                        <li>Must be a location within the licence area</li>
+                        <li>Must be between 41 to 90</li>
+                        <li>
+                          A minimum of four decimal places may be entered if
+                          coordinates are not exact
+                        </li>
+                        <li>A maximum of seven decimal places</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Latitude is missing or not within the expected
+                          range. The site coordinates may not fall within the
+                          licensed service area.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="M"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        M
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Longitude</h2>
+                      <p></p>
+                      <p>Enter the longitudinal coordinates of the station.</p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>-75.6533946</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>
+                          Must be in decimal degrees using the WGS84 format
+                        </li>
+                        <li>Must be a location within the licence area</li>
+                        <li>Must be between -141 to -40</li>
+                        <li>
+                          A minimum of four decimal places may be entered if
+                          coordinates are not exact
+                        </li>
+                        <li>A maximum of seven decimal places</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Longitude is missing or not within the expected
+                          range (use negative to indicate degrees west). The
+                          site coordinates may not fall within the licensed
+                          service area.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="N"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        N
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Site type code</h2>
+                      <p></p>
+                      <p>
+                        The general type of site associated with the
+                        installation.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>O</p>
+                      <h4>Format</h4>
+                      <p>Must be one of the following site types:</p>
+                      <ul>
+                        <li>U - Underground (E.g. a mine or a subway)</li>
+                        <li>O - Outdoor (E.g. a tower or rooftop)</li>
+                        <li>I - Indoor (E.g. a stadium or office)</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Site Type Code is not input as CAPS, is missing
+                          or is not an accepted Site Type Code value.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="O"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        O
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Structure height</h2>
+                      <p></p>
+                      <p>
+                        The total height (m) above ground level of an outdoor
+                        structure where antennas are mounted. This structure
+                        might also be shared with other radio installations (ex:
+                        towers, rooftops, etc).
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required only when
+                        <a href="#N">N - Site type code</a> is O.
+                      </p>
+                      <h4>Example</h4>
+                      <p>15</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>Must be greater than the antenna height</li>
+                        <li>Must be between 1 to 600 m</li>
+                        <li>
+                          For equipment mounted on top of a building or its
+                          boundaries, add together the total height of the
+                          building and the antenna’s supporting structure.
+                        </li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Structure Height is missing or not within the
+                          expected range of values.
+                        </code>
+                      </p>
+                      An error in this field may also give errors in the
+                      following fields:
+                      <ul>
+                        <li><a href="">AM - Tx Antenna Height </a></li>
+                        <li><a href="">AN - Rx Antenna Height </a></li>
+                      </ul>
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="P"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        P
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Site structure type code</h2>
+                      <p></p>
+                      <p>The type of structure in use at the site.</p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>T</p>
+                      <h4>Format</h4>
+                      <p>Must be one of the following structure types:</p>
+                      <ul>
+                        <li>T - Purpose-built tower</li>
+                        <li>R - Outside of building or rooftop</li>
+                        <li>
+                          P - Light pole, other street electrical, or utility
+                          pole
+                        </li>
+                        <li>S - Water tower or farm silo</li>
+                        <li>F - Furniture</li>
+                        <li>
+                          M - Transportable (Report the current operating
+                          location only and not the radius of operation)
+                        </li>
+                        <li>O - Other (E.g. indoor)</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Structure Type Code is not input as CAPS, is
+                          missing or is not an accepted Structure Type Code
+                          value.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="Q"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        Q
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Effective date of configuration</h2>
+                      <p></p>
+                      <p>
+                        The date that the installation went into service. This
+                        date helps investigate possible sources of technical
+                        issues.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>2022-02-14</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>Must be a date in the past</li>
+                        <li>Must be in the format of YYYY-MM-DD</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The date is missing or not in the expected format or
+                          range.</code
+                        >
+                      </p>
+                      ORA-01841: (full) year must be between -4713 and +9999,
+                      and not be 0 <br /><br />
+                      If you have an improper date format, other errors may not
+                      be shown.
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="R"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        R
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Site record ID</h2>
+                      <p></p>
+                      <p>
+                        The identifier as defined by the licensee for the site
+                        or antenna installation.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>1234567890</p>
+                      <h4>Format</h4>
+                      <p>(Note that it is not validated to be unique)</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Site Record ID is missing.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="S"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        S
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx channel frequency</h2>
+                      <p></p>
+                      <p>
+                        The centre frequency (MHz) of the occupied bandwidth as
+                        well as any installations that are used unidirectionally
+                        for transmission or reception only.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>1925.3</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>
+                          If your antenna is receive only and not transmitting
+                          enter 0
+                        </li>
+                        <li>
+                          Must be within an authorized frequency band for this
+                          licence
+                        </li>
+                        <li>Must be the centre frequency</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Channel Frequency is missing or not within an
+                          authorized frequency band for this licence.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="T"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        T
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx channel frequency</h2>
+                      <p></p>
+                      <p>
+                        The centre frequency (MHz) of the occupied bandwidth for
+                        the given antenna installation, as well as any
+                        installations that are used unidirectionally for
+                        transmission or reception only.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>1875.3</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>
+                          Must be within an authorized frequency band for this
+                          licence
+                        </li>
+                        <li>Must be the centre frequency</li>
+                        <li>
+                          If your antenna is transmit only and not receiving
+                          enter 0
+                        </li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Channel Frequency is missing or not within an
+                          authorized frequency band for this licence.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="U"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        U
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx radio HVIN</h2>
+                      <p></p>
+                      <p>
+                        The transmitting radio’s Hardware Version Identification
+                        Number (HVIN) certified by ISED.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>T99W175MC</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>Maximum length 128 characters</li>
+                        <li>
+                          If the radio is certification-exempt, you must provide
+                          the manufacturer's radio model number or a system
+                          configuration name
+                        </li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Radio HVIN is missing or exceeds the character
+                          limit.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="V"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        V
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx radio HVIN</h2>
+                      <p></p>
+                      <p>
+                        The receiving radio’s Hardware Version Identification
+                        Number (HVIN) certified by ISED. If the radio is
+                        certification-exempt, please provide the manufacturer's
+                        radio model number or a system configuration name.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>T99W175MC</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>Maximum length 128 characters</li>
+                        <li>
+                          If the radio is certification-exempt, you must provide
+                          the manufacturer's radio model number or a system
+                          configuration name
+                        </li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Radio HVIN is missing or exceeds the character
+                          limit.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="W"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        W
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx radio manufacturer code</h2>
+                      <p></p>
+                      <p>
+                        The company code assigned by ISED’s Certification and
+                        Engineering Bureau (CEB) to the manufacturer of the
+                        radio transmitter.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#G">G - Station type</a> is FX and
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>109AB</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>Must be a valid manufacturer company number</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Radio Manufacturer Code is missing or is not
+                          an accepted Manufacturer Code value.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="X"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        X
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx radio manufacturer code</h2>
+                      <p></p>
+                      <p>
+                        The company code assigned by ISED’s Certification and
+                        Engineering Bureau (CEB) to the manufacturer of the
+                        radio receiver.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#G">G - Station type</a> is FX and
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>109AB</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>Must be a valid manufacturer company number</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Radio Manufacturer Code is missing or is not
+                          an accepted Manufacturer Code value.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="Y"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        Y
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx radio certification number</h2>
+                      <p></p>
+                      <p>
+                        The Certification Number assigned by ISED to the radio
+                        transmitter and listed in the
+                        <a
+                          href="https://ised-isde.canada.ca/site/certification-engineering-bureau/en/wireless-program/radio-equipment-list-rel"
+                          >Radio Equipment List (REL)</a
+                        >.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#G">G - Station type</a> is FX and
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>24374-T99W175M</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>
+                          Must be a valid certification number from the Radio
+                          Equipment List (subservice 12-142)
+                        </li>
+                        <li>
+                          If your equipment is exempt from certification, you
+                          must enter "Exempt"
+                        </li>
+                        <li>Maximum length 31 characters</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Radio Certification Number is missing or
+                          exceeds the character limit.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="Z"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        Z
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx radio certification number</h2>
+                      <p></p>
+                      <p>
+                        The Certification Number assigned by ISED to the radio
+                        receiver and listed in the
+                        <a
+                          href="https://ised-isde.canada.ca/site/certification-engineering-bureau/en/wireless-program/radio-equipment-list-rel"
+                          >Radio Equipment List (REL)</a
+                        >.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#G">G - Station type</a> is FX and
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>24374-T99W175M</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>
+                          Must be a valid certification number from the Radio
+                          Equipment List (subservice 12-142)
+                        </li>
+                        <li>
+                          If your equipment is exempt from certification, you
+                          must enter "Exempt"
+                        </li>
+                        <li>Maximum length 31 characters</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Radio Certification Number is missing or
+                          exceeds the character limit.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AA"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AA
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Bandwidth</h2>
+                      <p></p>
+                      <p>
+                        The occupied bandwidth (KHz) of the emission (Transmit)
+                        signal. It corresponds to the bandwidth containing 99%
+                        of the transmitted power.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>2300</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>A number between 0.10 to 50000.00</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Bandwidth is missing or not within the expected
+                          range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AB"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AB
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Class of emission</h2>
+                      <p></p>
+                      <p>
+                        The International Telecommunication Union (ITU)
+                        designation for the class of emission.
+                      </p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>F3WET</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>
+                          Must be a valid emission code as described in
+                          <a
+                            href="https://ised-isde.canada.ca/site/spectrum-management-system/en/radiocommunication-licensing-services/text-format-upload-technical-data-stations-authorized-under-spectrum-licences"
+                            >Valid Class of Emission Codes</a
+                          >.
+                        </li>
+                        <li>
+                          Enter the emission class that uses the largest
+                          bandwidth
+                        </li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Class of Emission is missing or not in the
+                          expected format or length.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AC"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AC
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Transmitter TCP–TRP</h2>
+                      <p></p>
+                      <p>
+                        The Total Radiated Power (TRP) or Total Conducted Power
+                        (TCP) in dBm. <br /><br />
+                        Ensure the value entered is expressed in dBm. Wrong
+                        units will cause incorrect representation of power
+                        levels, and may be flagged for suspected non-compliance.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>21.4</p>
+                      <h4>Format</h4>
+                      <p>Must be one of the following:</p>
+                      <ul>
+                        <li>
+                          Enter TRP for AAS equipment (as defined in the
+                          applicable SRSP)
+                        </li>
+                        <li>Enter TCP for non-AAS equipment</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Transmitter TCP or TRP is missing, or not within
+                          the expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AD"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AD
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Downlink resource allocation</h2>
+                      <p></p>
+                      <p>The percentage of time transmitting.</p>
+                      <p></p>
+
+                      <h4>Example</h4>
+                      <p>89</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>
+                          For bidirectional systems that transmit and receive on
+                          the same frequency (TDD), enter the percentage of time
+                          transmitting (see <a>GL-01</a>) from 1 to 99.
+                        </li>
+                        <li>For full duplex systems, enter 100.</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Downlink Resource Allocation is missing or not
+                          within the expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AE"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AE
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx antenna type code</h2>
+                      <p></p>
+                      <p>
+                        The type of antenna associated with a transmitting radio
+                        installation.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#G">G - Station type</a> is FX and
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>NAU</p>
+                      <h4>Format</h4>
+                      <p>Entry must be one of the following:</p>
+                      <ul>
+                        <li>AAS – Active antenna systems</li>
+                        <li>NAC – Non-AAS correlated</li>
+                        <li>NAU – Non-ASS uncorrelated</li>
+                      </ul>
+                      <br />
+                      If deploying a hybrid mode, enter NAC.
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Antenna Type Code is not input as CAPS, is
+                          missing or is not an accepted Antenna Type Code value.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AF"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AF
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx antenna type code</h2>
+                      <p></p>
+                      <p>
+                        The type of antenna associated with a receiving radio
+                        installation.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#G">G - Station type</a> is FX and
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>NAU</p>
+                      <h4>Format</h4>
+                      <p>Entry must be one of the following:</p>
+                      <ul>
+                        <li>AAS – Active antenna systems</li>
+                        <li>NAC – Non-AAS correlated</li>
+                        <li>NAU – Non-ASS uncorrelated</li>
+                      </ul>
+                      <br />
+                      If deploying a hybrid mode, enter NAC.
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Antenna Type Code is not input as CAPS, is
+                          missing or is not an accepted Antenna Type Code value.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AG"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AG
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx number of antennas</h2>
+                      <p></p>
+                      <p>The total number of Tx antennas.</p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>1</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>
+                          For a single-input and single-output (SISO) system
+                          enter 1
+                        </li>
+                        <li>
+                          For a traditional antenna diversity enter 2 or any
+                          numbes greater
+                        </li>
+                        <li>
+                          For MIMO systems, enter the number of antenna elements
+                          in the antenna panel
+                        </li>
+                        <p></p>
+                        <h4>Potential error(s)</h4>
+                        <p>
+                          <code
+                            style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                            >The Number of Tx Antennas is missing or not within
+                            the expected range.
+                          </code>
+                        </p>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AH"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AH
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx number of antennas</h2>
+                      <p></p>
+                      <p>The total number of Rx antennas.</p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>1</p>
+                      <h4>Format</h4>
+                      <p></p>
+                      <ul>
+                        <li>
+                          For a single-input and single-output (SISO) system
+                          enter 1
+                        </li>
+                        <li>
+                          For a traditional antenna diversity enter 2 or any
+                          numbes greater
+                        </li>
+                        <li>
+                          For MIMO systems, enter the number of antenna elements
+                          in the antenna panel
+                        </li>
+                        <p></p>
+                        <h4>Potential error(s)</h4>
+                        <p>
+                          <code
+                            style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                            >The Number of Rx Antennas is missing or not within
+                            the expected range.
+                          </code>
+                        </p>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AI"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AI
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx antenna model number</h2>
+                      <p></p>
+                      <p>The model number of the transmitter antenna.</p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>SV460-SF1 (V)</p>
+                      <h4>Format</h4>
+                      <p>Maximum length of 80 characters.</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Antenna Model Number is missing or exceeds the
+                          character limit.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AJ"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AJ
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx antenna model number</h2>
+                      <p></p>
+                      <p>The model number of the receiver antenna.</p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>SV460-SF1 (V)</p>
+                      <h4>Format</h4>
+                      <p>Maximum length of 80 characters.</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Antenna Model Number is missing or exceeds the
+                          character limit.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AK"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AK
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx antenna manufacturer</h2>
+                      <p></p>
+                      <p>
+                        The full name of the manufacturer of the transmitter
+                        antenna.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#G">G - Station type</a> is FX and
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>XYZ antenna manufacturer</p>
+                      <h4>Format</h4>
+                      <p>Maximum length of 255 characters.</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Antenna Manufacturer is missing or exceeds the
+                          character limit.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AL"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AL
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx antenna manufacturer</h2>
+                      <p></p>
+                      <p>
+                        The full name of the manufacturer of the receiver
+                        antenna.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#G">G - Station type</a> is FX and
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>XYZ antenna manufacturer</p>
+                      <h4>Format</h4>
+                      <p>Maximum length of 255 characters.</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Antenna Manufacturer is missing or exceeds the
+                          character limit.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AM"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AM
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx antenna height</h2>
+                      <p></p>
+                      <p>
+                        Height (m) of physical centre of the transmitter antenna
+                        above or below ground level in meters including the
+                        structure/building on which the antenna is mounted.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>15</p>
+                      <h4>Format</h4>
+                      <p>
+                        <b>If N - Site Type Code is O (Outdoor):</b> <br />
+                        The antenna height must be between 0 to 600 m and no
+                        more than 5 m taller than the
+                        <a href="#O">O - Structure height</a>.<br /><br />
+                        <b>If N - Site Type Code is I (Indoor):</b> <br />
+                        The antenna height must be between 0 to 600 m. <br />
+                        <br />
+                        <b>If N - Site Type Code is U (Underground):</b> <br />
+                        The antenna height must be between -100 to 0 m.
+                      </p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Antenna Height is missing or not within the
+                          expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AN"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AN
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx antenna height</h2>
+                      <p></p>
+                      <p>
+                        Height (m) of physical centre of the receiver antenna
+                        above or below ground level in meters including the
+                        structure/building on which the antenna is mounted.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>15</p>
+                      <h4>Format</h4>
+                      <p>
+                        <b>If N - Site Type Code is O (Outdoor):</b> <br />
+                        The antenna height must be between 0 to 600 m and no
+                        more than 5 m taller than the
+                        <a href="#O">O - Structure height</a>.<br /><br />
+                        <b>If N - Site Type Code is I (Indoor):</b> <br />
+                        The antenna height must be between 0 to 600 m. <br />
+                        <br />
+                        <b>If N - Site Type Code is U (Underground):</b> <br />
+                        The antenna height must be between -100 to 0 m.
+                      </p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Antenna Height is missing or not within the
+                          expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AO"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AO
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx antenna omnidirectional pattern indicator</h2>
+                      <p></p>
+                      <p>
+                        Whether the transmitter antenna is omnidirectional or
+                        directional.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>D</p>
+                      <h4>Format</h4>
+                      <p>Must be either:</p>
+                      <ul>
+                        <li>D - Directional</li>
+                        <li>N - Non-directional</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Omnidirectional Pattern Indicator is not input
+                          as CAPS, is missing or is not an accepted Directional
+                          Pattern Code value.
+                        </code>
+                      </p>
+                      An error in this field may also give errors for the
+                      following fields:
+                      <ul>
+                        <li><a>AQ - Tx antenna horizontal beamwidth </a></li>
+                        <li><a>AS - Tx antenna vertical beamwidth </a></li>
+                        <li>
+                          <a></a><a href="#AU">AU - Tx antenna azimuth</a>
+                        </li>
+                        <li>
+                          <a></a
+                          ><a href="#AW">AW - Tx antenna elevation angle</a>
+                        </li>
+                      </ul>
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AP"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AP
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx antenna omnidirectional pattern indicator</h2>
+                      <p></p>
+                      <p>
+                        Whether the receiver antenna is omnidirectional or
+                        directional.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when T – Rx channel frequency is
+                        greater than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>D</p>
+                      <h4>Format</h4>
+                      <p>Must be either:</p>
+                      <ul>
+                        <li>D - Directional</li>
+                        <li>N - Non-directional</li>
+                      </ul>
+                      <p></p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Omnidirectional Pattern Indicator is not input
+                          as CAPS, is missing or is not an accepted Directional
+                          Pattern Code value.
+                        </code>
+                      </p>
+                      An error in this field may also give errors for the
+                      following fields:
+                      <ul>
+                        <li><a>AR - Rx antenna horizontal beamwidth </a></li>
+                        <li><a>AT - Rx antenna vertical beamwidth </a></li>
+                        <li>
+                          <a></a><a href="#AV">AV - Rx antenna azimuth</a>
+                        </li>
+                        <li>
+                          <a></a
+                          ><a href="#AX">AX - Rx antenna elevation angle</a>
+                        </li>
+                      </ul>
+                      <p></p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AQ"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AQ
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx antenna horizontal beam</h2>
+                      <p></p>
+                      <p>
+                        The beam steering angle for AAS (Active Antenna Systems)
+                        or the beam width in the horizontal plane for non-AAS.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0 and
+                        <a href="#AO"
+                          >AO - Tx antenna omnidirectional pattern indicator</a
+                        >
+                        is D (Directional).
+                      </p>
+                      <h4>Example</h4>
+                      <p>120</p>
+                      <h4>Format</h4>
+                      <p>
+                        <b>For AAS</b> <br />
+                        Enter the horizontal beam steering angle range around
+                        the mean value specified by AU - Tx Antenna Azimuth.
+                        <br /><br />
+                        <b>For non-AAS</b> <br />
+                        Enter the half-power (3 dB) beam width in the horizontal
+                        plane of the main lobe for the transmitter antenna.
+                        <br /><br />
+                        Must be a number from 1.0 to 359.9 (degrees).
+                      </p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Antenna Horizontal Beamwidth is missing or not
+                          within the expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AR"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AR
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx antenna horizontal beam</h2>
+                      <p></p>
+                      <p>
+                        The beam steering angle for AAS (Active Antenna Systems)
+                        or the beam width in the horizontal plane for non-AAS.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0 and
+                        <a href="#AP"
+                          >AP - Rx antenna omnidirectional pattern indicator</a
+                        >
+                        is D (Directional).
+                      </p>
+                      <h4>Example</h4>
+                      <p>120</p>
+                      <h4>Format</h4>
+                      <p>
+                        <b>For AAS</b> <br />
+                        Enter the horizontal beam steering angle range around
+                        the mean value specified by AV - Rx Antenna Azimuth.
+                        <br /><br />
+                        <b>For non-AAS</b> <br />
+                        Enter the half-power (3 dB) beam width in the horizontal
+                        plane of the main lobe for the receiver antenna.
+                        <br /><br />
+                        Must be a number from 1.0 to 359.9 (degrees).
+                      </p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Antenna Horizontal Beamwidth is missing or not
+                          within the expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AS"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AS
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx antenna vertical beam</h2>
+                      <p></p>
+                      <p>
+                        The beam elevation angle for AAS (Active Antenna
+                        Systems) or the beam width in the vertical plane for
+                        non-AAS.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0 and
+                        <a href="#AO"
+                          >AO - Tx antenna omnidirectional pattern indicator</a
+                        >
+                        is D (Directional).
+                      </p>
+                      <h4>Example</h4>
+                      <p>135</p>
+                      <h4>Format</h4>
+                      <p>
+                        <b>For AAS</b> <br />
+                        Enter the vertical beam steering angle range around the
+                        mean value specified by AW - Tx Antenna Elevation Angle.
+                        <br /><br />
+                        <b>For non-AAS</b> <br />
+                        Enter the half-power (3 dB) beam width in the vertical
+                        plane of the main lobe for the transmitter antenna.
+                        <br /><br />
+                        Must be a number from 1.0 to 359.9 (degrees).
+                      </p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Antenna Vertical Beamwidth is missing or not
+                          within the expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AT"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AT
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx antenna vertical beam</h2>
+                      <p></p>
+                      <p>
+                        The beam elevation angle for AAS (Active Antenna
+                        Systems) or the beam width in the vertical plane for
+                        non-AAS.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0 and
+                        <a href="#AP"
+                          >AP - Rx antenna omnidirectional pattern indicator</a
+                        >
+                        is D (Directional).
+                      </p>
+                      <h4>Example</h4>
+                      <p>135</p>
+                      <h4>Format</h4>
+                      <p>
+                        <b>For AAS</b> <br />
+                        Enter the vertical beam steering angle range around the
+                        mean value specified by AX - Rx Antenna Elevation Angle.
+                        <br /><br />
+                        <b>For non-AAS</b> <br />
+                        Enter the half-power (3 dB) beam width in the vertical
+                        plane of the main lobe for the receiver antenna.
+                        <br /><br />
+                        Must be a number from 1.0 to 359.9 (degrees).
+                      </p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Antenna Vertical Beamwidth is missing or not
+                          within the expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AU"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AU
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx antenna azimuth</h2>
+                      <p></p>
+                      <p>
+                        The azimuth (in degrees) of the antenna from true north
+                        of the transmitter antenna's direction of maximum
+                        radiation.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0 and
+                        <a href="#AO"
+                          >AO - Tx antenna omnidirectional pattern indicator</a
+                        >
+                        is D (Directional).
+                      </p>
+                      <h4>Example</h4>
+                      <p>270</p>
+                      <h4>Format</h4>
+                      <p>Must be a number from 0.0 to 359.9 (degrees).</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Antenna Azimuth is missing or not within the
+                          expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AV"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AV
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx antenna azimuth</h2>
+                      <p></p>
+                      <p>
+                        The azimuth (in degrees) of the antenna from true north
+                        of the receiver antenna's direction of maximum
+                        radiation.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0 and
+                        <a href="#AP"
+                          >AP - Rx antenna omnidirectional pattern indicator</a
+                        >
+                        is D (Directional).
+                      </p>
+                      <h4>Example</h4>
+                      <p>270</p>
+                      <h4>Format</h4>
+                      <p>Must be a number from 0.0 to 359.9 (degrees).</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Antenna Azimuth is missing or not within the
+                          expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AW"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AW
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx antenna elevation angle</h2>
+                      <p></p>
+                      <p>
+                        The transmitter antenna’s vertical elevation angle of
+                        the main lobe with reference to the horizontal ground in
+                        degrees. Includes any mechanical and electrical beam
+                        tilt.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0 and
+                        <a href="#AO"
+                          >AO - Tx antenna omnidirectional pattern indicator</a
+                        >
+                        is D (Directional).
+                      </p>
+                      <h4>Example</h4>
+                      <p>0.5</p>
+                      <h4>Format</h4>
+                      <p>Must be a number from -90.0 to 90.0 (degrees).</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Antenna Elevation Angle is missing or not
+                          within the expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AX"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AX
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx antenna elevation angle</h2>
+                      <p></p>
+                      <p>
+                        The receiver antenna’s vertical elevation angle of the
+                        main lobe with reference to the horizontal ground in
+                        degrees. Includes any mechanical and electrical beam
+                        tilt.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0 and
+                        <a href="#AP"
+                          >AP - Rx antenna omnidirectional pattern indicator</a
+                        >
+                        is D (Directional).
+                      </p>
+                      <h4>Example</h4>
+                      <p>0.5</p>
+                      <h4>Format</h4>
+                      <p>Must be a number from -90.0 to 90.0 (degrees).</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Antenna Elevation Angle is missing or not
+                          within the expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="AY"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AY
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx antenna gain</h2>
+                      <p></p>
+                      <p>
+                        The gain of the transmitter antenna expressed relative
+                        to an isotropic radiator (dBi). For AAS, the gain would
+                        represent the gain of the individual antenna element.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>41.3</p>
+                      <h4>Format</h4>
+                      <p>
+                        Must be a number from 0.0 to 70.0 (dBi). <br /><br />
+                        For a directional antenna, enter the gain in the
+                        direction of maximum radiation.
+                      </p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Antenna Gain is missing or not within the
+                          expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="AZ"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        AZ
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx antenna gain</h2>
+                      <p></p>
+                      <p>
+                        The gain of the receiver antenna expressed relative to
+                        an isotropic radiator (dBi). For AAS, the gain would
+                        represent the gain of the individual antenna element.
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>41.3</p>
+                      <h4>Format</h4>
+                      <p>
+                        Must be a number from 0.0 to 70.0 (dBi). <br /><br />
+                        For a directional antenna, enter the gain in the
+                        direction of maximum radiation.
+                      </p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Antenna Gain is missing or not within the
+                          expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA odd">
+                    <td class="sorting_1">
+                      <h2
+                        id="BA"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        BA
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Tx line loss</h2>
+                      <p></p>
+                      <p>
+                        The total of all line, connector and other losses
+                        between the radio equipment and transmitter antenna used
+                        to calculate the effective isotropic radiated power
+                        (EIRP).
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#S">S - Tx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>2.5</p>
+                      <h4>Format</h4>
+                      <p>Must be a number from 0.0 to 30.0 (dB).</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Tx Line Loss is missing or not within the
+                          expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                  <tr class="gradeA even">
+                    <td class="sorting_1">
+                      <h2
+                        id="BB"
+                        style="text-align: left; scroll-margin-top: 35px"
+                      >
+                        BB
+                      </h2>
+                    </td>
+                    <td style="padding-bottom: 40px">
+                      <h2>Rx line loss</h2>
+                      <p></p>
+                      <p>
+                        The total of all line, connector and other losses
+                        between the radio equipment and receiver antenna used to
+                        calculate the effective isotropic radiated power (EIRP).
+                      </p>
+                      <p></p>
+                      <h4>Required when</h4>
+                      <p>
+                        This field is required when
+                        <a href="#T">T - Rx channel frequency</a> is greater
+                        than 0.
+                      </p>
+                      <h4>Example</h4>
+                      <p>2.5</p>
+                      <h4>Format</h4>
+                      <p>Must be a number from 0.0 to 30.0 (dB).</p>
+                      <h4>Potential error(s)</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Rx Line Loss is missing or not within the
+                          expected range.
+                        </code>
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div
+                class="dataTables_info"
+                id="wb-auto-1_info"
+                role="status"
+                aria-live="polite"
+              >
+                Showing 1 to 54 of 54 entries
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <br />
+
+    <!-- Start of footer-->
+    <footer id="wb-info" style="z-index: 1">
+      <h2 class="wb-inv">About this site</h2>
+
+      <div class="gc-main-footer">
+        <div class="container">
+          <nav>
+            <h3>Government of Canada</h3>
+            <ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
+              <li>
+                <a href="https://www.canada.ca/en/contact.html">All contacts</a>
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/government/dept.html"
+                  >Departments and agencies</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/government/system.html"
+                  >About government</a
+                >
+              </li>
+            </ul>
+            <h4><span class="wb-inv">Themes and topics</span></h4>
+            <ul class="list-unstyled colcount-sm-2 colcount-md-3">
+              <li>
+                <a href="https://www.canada.ca/en/services/jobs.html">Jobs</a>
+              </li>
+              <li>
+                <a
+                  href="https://www.canada.ca/en/services/immigration-citizenship.html"
+                  >Immigration and citizenship</a
+                >
+              </li>
+              <li><a href="https://travel.gc.ca/">Travel and tourism</a></li>
+              <li>
+                <a href="https://www.canada.ca/en/services/business.html"
+                  >Business</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/benefits.html"
+                  >Benefits</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/health.html"
+                  >Health</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/taxes.html">Taxes</a>
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/environment.html"
+                  >Environment and natural resources</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/defence.html"
+                  >National security and defence</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/culture.html"
+                  >Culture, history and sport</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/policing.html"
+                  >Policing, justice and emergencies</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/transport.html"
+                  >Transport and infrastructure</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.international.gc.ca/world-monde/index.aspx?lang=eng"
+                  >Canada and the world</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/finance.html"
+                  >Money and finances</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/science.html"
+                  >Science and innovation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.canada.ca/en/services/indigenous-peoples.html"
+                  >Indigenous Peoples</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.canada.ca/en/services/veterans-military.html"
+                  >Veterans and military</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/youth.html">Youth</a>
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/services/life-events.html"
+                  >Manage life events</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="gc-sub-footer">
+        <div class="container d-flex align-items-center">
+          <nav>
+            <h3 class="wb-inv">Government of Canada Corporate</h3>
+            <ul>
+              <li>
+                <a href="https://www.canada.ca/en/social.html">Social media</a>
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/mobile.html"
+                  >Mobile applications</a
+                >
+              </li>
+              <li>
+                <a href="https://design.canada.ca/about">About Canada.ca</a>
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/transparency/terms.html"
+                  >Terms and conditions</a
+                >
+              </li>
+              <li>
+                <a href="https://www.canada.ca/en/transparency/privacy.html"
+                  >Privacy</a
+                >
+              </li>
+            </ul>
+          </nav>
+          <div class="wtrmrk align-self-end">
+            <img
+              src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/assets/wmms-blk.svg"
+              alt="Symbol of the Government of Canada"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End of footer-->
+
+    <!-- Start of search and filtering scripts for DataTables -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script src="/Site_Data_Upload_Help_Page/Terrestrial/Scripts/i18n.js"></script>
+    <script src="/Site_Data_Upload_Help_Page/Terrestrial/Scripts/load_table.js"></script>
+    <script src="/Site_Data_Upload_Help_Page/Terrestrial/Scripts/load_toc.js"></script>
+    <script>
+      // Ensure ToC is populated from text.json — explicit call so output appears on the page
+      if (window.loadTocFromJson) {
+        window
+          .loadTocFromJson({
+            url: "text.json",
+            lang: "en",
+            tocSelector: "#table-of-contents",
+          })
+          .catch(function () {
+            /* noop */
+          });
+      }
+    </script>
+    <!-- End of search and filtering scripts for DataTables -->
+
+    <div id="tablenator-javascriptInserted"></div>
+  </body>
+</html>
