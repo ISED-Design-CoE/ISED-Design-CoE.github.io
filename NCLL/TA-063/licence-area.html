@@ -334,13 +334,13 @@ var urlQueries = baseQuery
 										<dt>Area type</dt>
 										<dd><span class="fee-zone">Rural</span></dd>
 										<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-										<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
-										<dd><span class="bandwidth">50</span> MHz</dd>
+										<dd><span class="bandwidth">10</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Total cost per year</dt>
-										<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 									</dl>
 								</div>
 
@@ -349,13 +349,13 @@ var urlQueries = baseQuery
 										<dt>Area type</dt>
 										<dd><span class="fee-zone">Rural</span></dd>
 										<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-										<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
-										<dd><span class="bandwidth">50</span> MHz</dd>
+										<dd><span class="bandwidth">10</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Calculated cost</dt>
-										<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 									</dl>
 									<br>
 									<dl class="dl-horizontal">
@@ -371,17 +371,17 @@ var urlQueries = baseQuery
 										<dt>Area type</dt>
 										<dd><span class="fee-zone">Rural</span></dd>
 										<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
-										<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
-										<dd><span class="bandwidth">50</span> MHz</dd>
+										<dd><span class="bandwidth">10</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Calculated cost per calendar month</dt>
-										<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
 										<dt>Licence duration</dt>
 										<dd><span class="licence-duration">8</span> calendar months</dd>
 										<dt>Total cost</dt>
-										<dd>$<span class="temp-cost">0.045</span> &times; <span class="licence-duration">50</span> = $<span class="total-cost">0.00</span> </dd>
+										<dd>$<span class="temp-cost">0.45</span> &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
 									</dl>
 
 								</div>
@@ -391,13 +391,13 @@ var urlQueries = baseQuery
 										<dt>Area type</dt>
 										<dd><span class="fee-zone">Rural</span></dd>
 										<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
-										<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
-										<dd><span class="bandwidth">50</span> MHz</dd>
+										<dd><span class="bandwidth">10</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Calculated cost per calendar month</dt>
-										<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
 									</dl>
 									<br>
 									<dl class="dl-horizontal">
@@ -442,7 +442,7 @@ var urlQueries = baseQuery
 
 		let baseRate = urlParams.get ( "base-rate" ) 
 
-		if (baseRate == null) {baseRate = 0.045} // this is the rural rate
+		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
 
 		createHiddenField ( "base-rate", baseRate )
 
