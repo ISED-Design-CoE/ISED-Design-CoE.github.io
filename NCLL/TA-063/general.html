@@ -164,6 +164,29 @@
 			<fieldset class="gc-chckbxrdio">
 				<legend class="required">
 					<span class="field-name">
+						Is this licence being used for an industrial use case?
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<details>
+					<summary>Why are we asking this question?</summary>
+					<p>Per <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/spectrum-advisory-bulletins-sab/sab-03-25-notice-amendment-spectrum-limit-condition-licence-3900-mhz-band-under-non-competitive" target="_blank">SAB-03-25</a>, an industrial user is a warehouse, mine, factory, Canadian offshore oil and gas production site, or a radio access network manufacturer conducting research for 5G or 6G services. If you are an industrial user, then you may be able to apply for up to 80 MHz of bandwidth, subject to the restrictions listed in that document.</p>
+				</details>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" id="industrial-yes" name="industrial" value="Yes" data-rule-required="true">
+						<label for="industrial-yes">Yes</label>
+					</li>
+					<li class="radio">
+						<input type="radio" id="industrial-no" name="industrial" value="No">
+						<label for="industrial-no">No</label>
+					</li>
+				</ul>
+			</fieldset>
+
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
 						Does The Best Company or any of its affiliates or subsidiaries currently have 100,000 or more retail mobile phone subscribers?
 					</span>
 					<strong class="required small" aria-hidden="true">(required)</strong>
@@ -192,7 +215,7 @@
 		<div class="notesaboutmockup">
 			<h2>Notes about this mockup:</h2>
 		<ul>
-			<li>No change</li>
+			<li>Added question about industrial use cases.</li>
 		</ul>
 		</div>
 		</form>
