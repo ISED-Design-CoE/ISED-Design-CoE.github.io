@@ -117,29 +117,19 @@
 						</span>
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
-					<!-- <details>
-						<summary>More information<span class="wb-inv"> about bandwidth</span></summary> -->
-						<!-- <span class="3900Bandwidth">
-							<p>You may request either 10MHz or 20MHz contiguous (i.e. adjacent frequency blocks).</p>
-							<p>If you require non-contiguous frequency blocks, please select 10MHz and then apply for a second licence.</p>
-						</span>
-						<span class="mmwaveBandwidth" hidden="true"> -->
-							<p>You may request contiguous (i.e. adjacent) frequency blocks between 50MHz and 400MHz in size.</p>
+							<p>You may request contiguous (i.e. adjacent) frequency blocks between 10MHz and 80MHz in size.</p>
 							<p>If you require non-contiguous frequency blocks, please apply for multiple licences.</p>
-						<!-- </span> -->
-
-					<!-- </details> -->
 					
-					<select class="form-control mmwaveBandwidth" id="mmwaveBandwidth" name="bandwidth">
+					<select class="form-control bandwidth" id="bandwidth" name="bandwidth">
 						<option value="none">Please select&hellip;</option>
-						<option value="50">50 MHz   </option>
-						<option value="100">100 MHz </option>
-						<option value="150">150 MHz </option>
-						<option value="200">200 MHz </option>
-						<option value="250">250 MHz </option>
-						<option value="300">300 MHz </option>
-						<option value="350">350 MHz </option>
-						<option value="400">400 MHz </option>
+						<option value="10">10 MHz </option>
+						<option value="20">20 MHz </option>
+						<option value="30">30 MHz </option>
+						<option value="40">40 MHz </option>
+						<option value="50">50 MHz </option>
+						<option value="60">60 MHz </option>
+						<option value="70">70 MHz </option>
+						<option value="80">80 MHz </option>
 					</select>
 				</fieldset>
 
@@ -153,9 +143,9 @@
 					<details>
 						<summary>
 							<span class="glyphicon glyphicon-warning-sign"></span>
-							Blocks AA1 and AA2 are available on a no-protection, no-interference basis to upper 26&nbsp;GHz flexible use operations.
+							Block A1 is available on a no-protection, no-interference basis to 3800 MHz flexible use operations.
 						</summary>
-						<p>The NCL licensees with operations on blocks AA1 and AA2 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the upper 26 GHz band.</p>
+						<p>The NCLL licensees with operations on block A1 shall not claim protection from nor cause interference to existing, modified or new flexible use systems in the 3800 MHz band.</p>
 					</details>
 					<ul class="list-unstyled lst-spcd-2">
 						<li class="radio">
@@ -164,7 +154,7 @@
 						</li>
 						<li class="radio">
 							<input type="radio" id="any-NINP" name="any" value="any-NINP">
-							<label for="any-NINP">Yes, but please do not assign me block AA1 or AA2</label>
+							<label for="any-NINP">Yes, but please do not assign me block A1</label>
 						</li>
 						<li class="radio">
 							<input type="radio" id="choose-frequency-block" name="any" value="choose-frequency-block">
@@ -202,8 +192,8 @@
 						<li class="radio">
 							<input type="radio" id="indoor-only" name="antenna" value="Indoor only" data-rule-required="true">
 							<label for="indoor-only">No, all antennas will be indoors</label>
-							<!-- <div id="high-power-message" class="alert alert-info" hidden>
-								<p>High power licences must have at least one outdoor antenna.</p>
+							<!-- <div id="medium-power-message" class="alert alert-info" hidden>
+								<p>Medium power licences must have at least one outdoor antenna.</p>
 							</div> -->
 						</li>
 					</ul>
@@ -230,10 +220,10 @@
 					<details>
 						<summary>More information<span class="wb-inv"> about licence type</span></summary>
 						<ul class="list-unstyled">
-							<li>A <strong>low-power</strong> licence can be up to 1 km² in area.</li>
-							<li>A <strong>high-power</strong> licence can be between 5 and 50 km² in area.</li>
+							<li>A <strong>low-power</strong> licence can be up to 15 km² in area.</li>
+							<li>A <strong>medium-power</strong> licence can be between 75 and 165 km² in area, but is not allowed in urban areas.</li>
 						</ul>
-						<p>For further information about the consequences of this choice, including maximum permissible e.i.r.p. and maximum antenna height above ground level, see <a href="javascript:alert('Link TBD')">SRSP-522</a>.</p>
+						<p>For further information about the consequences of this choice, including maximum permissible e.i.r.p. and maximum antenna height above ground level, see <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/devices-and-equipment/standard-radio-system-plans/srsp-521" target="_new">SRSP-521</a>.</p>
 					</details>
 					<ul class="list-unstyled lst-spcd-2">
 						<li class="radio">
@@ -241,8 +231,8 @@
 							<label for="low-power">Low power</label>
 						</li>
 						<li class="radio">
-							<input type="radio" id="high-power" name="power-level" value="High power">
-							<label for="high-power">High power</label>
+							<input type="radio" id="medium-power" name="power-level" value="Medium power">
+							<label for="medium-power">Medium power</label>
 							<div id="indoor-only-message" class="alert alert-info" hidden>
 								<p>Indoor-only licences must be low power.</p>
 							</div>
@@ -271,23 +261,23 @@
 			const outdoorIndoorField = document.getElementById ( "outdoor" )
 
 			const lowPowerField = document.getElementById ( "low-power" )
-			const highPowerField = document.getElementById ( "high-power" )
+			const mediumPowerField = document.getElementById ( "medium-power" )
 			// const antennaHeightField = document.getElementById ( "antenna-height" )
 
 			const indoorOnlyMessage = document.getElementById ( "indoor-only-message" )
-			// const mediumPowerMessage = document.getElementById ( "high-power-message" )
+			// const mediumPowerMessage = document.getElementById ( "medium-power-message" )
 			// const antennaHeightDiv = document.getElementById ( "antenna-height-div" )
 
 			indoorOnlyField .addEventListener ( "click", ( event ) => {
 				indoorOnlyMessage .removeAttribute ( "hidden" )
-				highPowerField .disabled = true
+				mediumPowerField .disabled = true
 				// antennaHeightDiv .removeAttribute ( "hidden" )
 				// antennaHeightField .setAttribute ( "required" , "required" )
 			})
 
 			outdoorIndoorField .addEventListener ( "click", ( event ) => {
 				indoorOnlyMessage .setAttribute ( "hidden", "hidden" )
-				highPowerField .disabled = false
+				mediumPowerField .disabled = false
 				// antennaHeightDiv .setAttribute ( "hidden", "hidden" )
 				// antennaHeightField .removeAttribute ( "required" )
 			})
@@ -297,7 +287,7 @@
 			// 	indoorOnlyField .disabled = false
 			// })
 
-			// highPowerField .addEventListener ( "click", ( event ) => {
+			// mediumPowerField .addEventListener ( "click", ( event ) => {
 			// 	mediumPowerMessage .removeAttribute ( "hidden" )
 			// 	indoorOnlyField .disabled = true
 			// })
@@ -306,11 +296,11 @@
 				if (key == 'antenna') {
 					if (value == 'Outdoor and indoor') {
 						indoorOnlyMessage .setAttribute ( "hidden", "hidden" )
-						highPowerField .disabled = false
+						mediumPowerField .disabled = false
 					}
 					if (value == 'Indoor only') {
 						indoorOnlyMessage .removeAttribute ( "hidden" )
-						highPowerField .disabled = true
+						mediumPowerField .disabled = true
 					}
 				}
 				// if (key == 'power-level') {
@@ -318,7 +308,7 @@
 				// 		mediumPowerMessage .setAttribute ( "hidden", "hidden" )
 				// 		indoorOnlyField .disabled = false
 				// 	}
-				// 	if (value == 'High power') {
+				// 	if (value == 'Medium power') {
 				// 		mediumPowerMessage .removeAttribute ( "hidden" )
 				// 		indoorOnlyField .disabled = true
 				// 	}
@@ -327,7 +317,7 @@
 
 		// Generate choce for starting frequency
 		const frequency_select = document.getElementById('starting-frequency-select');
-		const starting_frequency = document.getElementById('mmwaveBandwidth');
+		const starting_frequency = document.getElementById('bandwidth');
 
 		const any_button = document.getElementById('any');
 		const any_NINP_button = document.getElementById('any-NINP');
@@ -345,25 +335,23 @@
 			starting_frequency_input .removeAttribute ( "hidden" )
 		})
 
-		function generatemmWaveStartingFrequencies() {
+		function generateStartingFrequencies() {
 			jump = parseInt(starting_frequency.value);
 			frequency_select.innerHTML = '';
-			for (let i=0;i<(18-(jump/50));i++){
-				frequency_end = ((27500+(50*i+(jump)))/1000).toString()
-				frequency = ((27500+(50*i))/1000).toString()
-				frequency = (frequency =="28") ? frequency.concat('.00') : frequency.padEnd(5,'0')
-				frequency_end = (frequency_end =="28") ? frequency_end.concat('.00') : frequency_end.padEnd(5,'0')
-				if ( jump == 50 ) { // just one channel
+			for (let i=0;i<(9-(jump/10));i++){
+				frequency_end = (3900+(10*i+(jump))).toString()
+				frequency = (3900+(10*i)).toString()
+				if ( jump == 10 ) { // just one channel
 					frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${(jump*i).toString()}">AA${(i+1).toString()} (${frequency} to ${frequency_end} GHz)</option>`);
+					`<option value="${(jump*i).toString()}">A${(i+1).toString()} (${frequency} to ${frequency_end} MHz)</option>`);
 				} else {
 					frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${(jump*i).toString()}">AA${(i+1).toString()} to AA${(i+jump/50).toString()} (${frequency} to ${frequency_end} GHz)</option>`);
+					`<option value="${(jump*i).toString()}">A${(i+1).toString()} to A${(i+jump/10).toString()} (${frequency} to ${frequency_end} MHz)</option>`);
 				}
 			}
 		}
-		document.getElementById('mmwaveBandwidth').addEventListener('change',generatemmWaveStartingFrequencies);
-		generatemmWaveStartingFrequencies();
+		document.getElementById('bandwidth').addEventListener('change',generateStartingFrequencies);
+		generateStartingFrequencies();
 
 		</script>
 	</div>
