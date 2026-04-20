@@ -295,25 +295,25 @@ var urlQueries = baseQuery
 								<p>The licence area extends beyond national borders.</p>
 								<p>Please adjust the licence area to be fully within Canada.</p>
 							</div>
-							<!-- <div id="MP-in-urban-message" class="alert alert-danger" hidden>
+							<div id="MP-in-urban-message" class="alert alert-danger" hidden>
 								<p>You have requested a medium power licence, which is not allowed in urban areas.</p>
 								<p>Please adjust the licence area to be fully outside any urban areas.</p>
 								<p>Alternatively, you may go back to the previous screen and change to a low power licence.</p>
-							</div> -->
+							</div>
 							<div id="LP-too-large-message" class="alert alert-danger" hidden>
-								<p>You have requested a low power licence, which means the licence area can be at most 1 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
+								<p>You have requested a low power licence, which means the licence area can be at most 15 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
 								<p>To cover this area, you may apply for multiple licences. For instructions, see our <a href="how-to-split.html" target="_blank">FAQ page</a>.</p>
 							</div>
 							<div id="MP-too-small-but-LP-OK-message" class="alert alert-danger" hidden>
-								<p>You have requested a high power licence, which means the licence area must be between 5 km² and 50 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
 								<p>Please go back to the <a href="technical-details.html">Technical details</a> screen and change to a low power licence.</p>
 							</div>
 							<div id="MP-too-small-message" class="alert alert-danger" hidden>
-								<p>You have requested a high power licence, which means the licence area must be between 5 km² and 50 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
 								<p>To cover this area, you may apply for multiple low power licences. For instructions, see our <a href="how-to-split.html" target="_blank">FAQ page</a>.</p>
 							</div>
 							<div id="MP-too-large-message" class="alert alert-danger" hidden>
-								<p>You have requested a high power licence, which means the licence area must be between 5 km² and 50 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
+								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
 								<p>To cover this area, you may apply for multiple licences. For instructions, see our <a href="how-to-split.html" target="_blank">FAQ page</a>.</p>
 							</div>
 							<div id="No-duration-message" class="alert alert-danger" hidden>
@@ -574,12 +574,12 @@ var urlQueries = baseQuery
 						errorMessages [ "Too large for LP" ] .removeAttribute ( "hidden" )
 					}
 
-				} else { // powerLevel == "High power"
+				} else { // powerLevel == "Medium power"
 
-					// if ( feeZone == "Urban" ) {
-					// 	noErrors = false
-					// 	errorMessages [ "MP in urban area" ] .removeAttribute ( "hidden" )
-					// }
+					if ( feeZone == "Urban" ) {
+						noErrors = false
+						errorMessages [ "MP in urban area" ] .removeAttribute ( "hidden" )
+					}
 
 					if ( area_field .value <= 5 ) {
 						noErrors = false
@@ -678,7 +678,7 @@ var urlQueries = baseQuery
 				for ( let elem of document .getElementsByClassName ( "lp" ) ) {
 					elem .removeAttribute ( "hidden" )
 				}
-			} else if ( powerLevel == "High power" ) {
+			} else if ( powerLevel == "Medium power" ) {
 				for ( let elem of document .getElementsByClassName ( "mp" ) ) {
 					elem .removeAttribute ( "hidden" )
 				}
