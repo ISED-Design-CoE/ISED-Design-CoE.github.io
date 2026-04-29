@@ -103,7 +103,7 @@ var urlQueries = baseQuery
 			}
 			@media (min-width: 768px) {
 				.dl-horizontal dt {
-					width: 15em;
+					width: 23em; // This is what happens to look nice on my particular screen -- Kivi
 				}
 			}
 			.highlight {
@@ -297,8 +297,6 @@ var urlQueries = baseQuery
 							</div>
 							<div id="MP-in-urban-message" class="alert alert-danger" hidden>
 								<p>You have requested a medium power licence, which is not allowed in metropolitan or urban areas.</p>
-								<p>Please adjust the licence area to be fully outside any urban areas.</p>
-								<p>Alternatively, you may go back to the previous screen and change to a low power licence.</p>
 							</div>
 							<div id="LP-too-large-message" class="alert alert-danger" hidden>
 								<p>You have requested a low power licence, which means the licence area can be at most 15 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
@@ -306,7 +304,6 @@ var urlQueries = baseQuery
 							</div>
 							<div id="MP-too-small-but-LP-OK-message" class="alert alert-danger" hidden>
 								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
-								<p>Please go back to the <a href="technical-details.html">Technical details</a> screen and change to a low power licence.</p>
 							</div>
 							<div id="MP-too-small-message" class="alert alert-danger" hidden>
 								<p>You have requested a medium power licence, which means the licence area must be between 75 km² and 165 km² in area. Your current area size is <span class='area-size'>##</span> km².</p>
@@ -332,30 +329,30 @@ var urlQueries = baseQuery
 								<div id="renew-cost">
 									<dl class="dl-horizontal">
 										<dt>Area type</dt>
-										<dd><span class="fee-zone">Rural</span></dd>
-										<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dd><span class="area-type">Urban, Rural</span></dd>
+										<dt>Base rate (<span class="fee-zone">Urban and metropolitan</span>) per year</dt>
+										<dd>$<span class="base-rate">1.88</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
 										<dd><span class="bandwidth">10</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Total cost per year</dt>
-										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">1.88</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 									</dl>
 								</div>
 
 								<div id="renew-min-cost">
 									<dl class="dl-horizontal">
 										<dt>Area type</dt>
-										<dd><span class="fee-zone">Rural</span></dd>
-										<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dd><span class="area-type">Urban, Rural</span></dd>
+										<dt>Base rate (<span class="fee-zone">Urban and metropolitan</span>) per year</dt>
+										<dd>$<span class="base-rate">1.88</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
 										<dd><span class="bandwidth">10</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Calculated cost</dt>
-										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">1.88</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 									</dl>
 									<br>
 									<dl class="dl-horizontal">
@@ -369,19 +366,19 @@ var urlQueries = baseQuery
 								<div id="temp-cost">
 									<dl class="dl-horizontal">
 										<dt>Area type</dt>
-										<dd><span class="fee-zone">Rural</span></dd>
-										<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
-										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dd><span class="area-type">Urban, Rural</span></dd>
+										<dt>Base rate (<span class="fee-zone">Urban and metropolitan</span>) per month</dt>
+										<dd>$<span class="base-rate">1.88</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
 										<dd><span class="bandwidth">10</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Calculated cost per calendar month</dt>
-										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">1.88</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
 										<dt>Licence duration</dt>
 										<dd><span class="licence-duration">8</span> calendar months</dd>
 										<dt>Total cost</dt>
-										<dd>$<span class="temp-cost">0.45</span> &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+										<dd>$<span class="temp-cost">1.88</span> &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
 									</dl>
 
 								</div>
@@ -389,15 +386,15 @@ var urlQueries = baseQuery
 								<div id="temp-min-cost">
 									<dl class="dl-horizontal">
 										<dt>Area type</dt>
-										<dd><span class="fee-zone">Rural</span></dd>
-										<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
-										<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
+										<dd><span class="area-type">Urban, Rural</span></dd>
+										<dt>Base rate (<span class="fee-zone">Urban and metropolitan</span>) per month</dt>
+										<dd>$<span class="base-rate">1.88</span> per MHz per km²</dd>
 										<dt>Requested bandwidth</dt>
 										<dd><span class="bandwidth">10</span> MHz</dd>
 										<dt>Area size</dt>
 										<dd><span class="area-size">0</span> km²</dd>
 										<dt>Calculated cost per calendar month</dt>
-										<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+										<dd>$<span class="base-rate">1.88</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
 									</dl>
 									<br>
 									<dl class="dl-horizontal">
@@ -442,7 +439,7 @@ var urlQueries = baseQuery
 
 		let baseRate = urlParams.get ( "base-rate" ) 
 
-		if (baseRate == null) {baseRate = 0.45} // this is the rural rate
+		if (baseRate == null) {baseRate = 1.88} // this is the urban rate as of 2026-2027
 
 		createHiddenField ( "base-rate", baseRate )
 
@@ -455,12 +452,20 @@ var urlQueries = baseQuery
 		}
 		createHiddenField ( "base-rate", baseRate )
 
+		let areaType = urlParams.get ( "area-type" ) 
+		if (areaType == null) {areaType = "Rural, Urban"} // matches the default baseRate
+		for ( let elem of document .getElementsByClassName ( "area-type" ) ) {
+			elem .innerText = areaType
+		}
+		createHiddenField ( "area-type", areaType )
+
 		let feeZone = urlParams.get ( "fee-zone" ) 
-		if (feeZone == null) {feeZone = "Rural"} // matches the default baseRate
+		if (feeZone == null) {feeZone = "Urban and metropolitan"} // matches the default baseRate
 		for ( let elem of document .getElementsByClassName ( "fee-zone" ) ) {
 			elem .innerText = feeZone
 		}
 		createHiddenField ( "fee-zone", feeZone )
+
 		// Get bandwidth (from previous page)
 		const bandwidth = urlParams.get ( "bandwidth" )
 		for ( let elem of document .getElementsByClassName ( "bandwidth" ) ) {
@@ -496,7 +501,7 @@ var urlQueries = baseQuery
 		const errorMessages = {}
 		errorMessages [ "Zero area" ] = document.getElementById ( "zero-area-message" )
 		errorMessages [ "Out of Canada" ] = document.getElementById ( "Out-of-Canada-message" )
-		// errorMessages [ "MP in urban area" ] = document.getElementById ( "MP-in-urban-message" )
+		errorMessages [ "MP in urban area" ] = document.getElementById ( "MP-in-urban-message" )
 		errorMessages [ "Too large for LP" ] = document.getElementById ( "LP-too-large-message" )
 		errorMessages [ "Too small for MP but LP is OK" ] = document.getElementById ( "MP-too-small-but-LP-OK-message" )
 		errorMessages [ "Too small for MP" ] = document.getElementById ( "MP-too-small-message" )
@@ -569,25 +574,25 @@ var urlQueries = baseQuery
 				}
 
 				if ( powerLevel == "Low power" ) {
-					if ( area_field .value > 1 ) {
+					if ( area_field .value > 15 ) {
 						noErrors = false
 						errorMessages [ "Too large for LP" ] .removeAttribute ( "hidden" )
 					}
 
 				} else { // powerLevel == "Medium power"
 
-					if ( feeZone == "Urban" ) {
+					if ( feeZone == "Urban and metropolitan" ) {
 						noErrors = false
 						errorMessages [ "MP in urban area" ] .removeAttribute ( "hidden" )
 					}
 
-					if ( area_field .value <= 5 ) {
+					if ( area_field .value <= 75 ) {
 						noErrors = false
 						errorMessages [ "Too small for MP but LP is OK" ] .removeAttribute ( "hidden" )
-					} else if ( area_field .value < 5 ) {
+					} else if ( area_field .value < 15 ) {
 						noErrors = false
 						errorMessages [ "Too small for MP" ] .removeAttribute ( "hidden" )
-					} else if ( area_field .value > 50 ) {
+					} else if ( area_field .value > 165 ) {
 						noErrors = false
 						errorMessages [ "Too large for MP" ] .removeAttribute ( "hidden" )
 					}
