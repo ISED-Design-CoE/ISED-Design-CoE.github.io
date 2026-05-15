@@ -38,7 +38,7 @@
     },
     "TR5": {
       "column": "E",
-      "field-name": "Email address",
+      "field-name": "E-mail address",
       "description": "Enter the email address of the person who may be contacted. ",
       "format-rules": "<ul><li>Maximum length 254 characters </li><li>For multiplate email addresses, separate them with commas</li></ul>",
       "example-data": "john.smith@mail.com ",
@@ -140,7 +140,7 @@
     },
     "TR17": {
       "column": "Q",
-      "field-name": "Effective date of configuration",
+      "field-name": "Date of last modification",
       "description": "The date that the installation went into service. This date helps investigate possible sources of technical issues. ",
       "format-rules": "<ul><li>Must be a date in the past</li><li>Must be in the format of YYYY-MM-DD</li></ul>",
       "example-data": "2022-02-14 ",
@@ -173,7 +173,7 @@
     },
     "TR21": {
       "column": "U",
-      "field-name": "Tx radio HVIN",
+      "field-name": "Tx radio hardware version identification number (HVIN)",
       "description": "The transmitting radio’s Hardware Version Identification Number (HVIN) certified by ISED.",
       "required-when": "This field is required when S - Tx channel frequency is greater than 0.",
       "format-rules": "<ul><li>Maximum length 128 characters </li> <li>If the radio is certification-exempt, you must provide the manufacturer's radio model number or a system configuration name </li></ul>",
@@ -182,7 +182,7 @@
     },
     "TR22": {
       "column": "V",
-      "field-name": "Rx radio HVIN",
+      "field-name": "Rx radio hardware version identification number (HVIN)",
       "description": "The receiving radio’s Hardware Version Identification Number (HVIN) certified by ISED. If the radio is certification-exempt, please provide the manufacturer's radio model number or a system configuration name. ",
       "required-when": "This field is required when T - Rx channel frequency is greater than 0.",
       "format-rules": "<ul><li>Maximum length 128 characters </li> <li>If the radio is certification-exempt, you must provide the manufacturer's radio model number or a system configuration name </li></ul>",
@@ -310,7 +310,7 @@
     },
     "TR37": {
       "column": "AK",
-      "field-name": "Tx antenna manufacturer",
+      "field-name": "Tx antenna manufacturer code",
       "description": "The full name of the manufacturer of the transmitter antenna.",
       "required-when": "This field is required when G - Station type is FX and S - Tx channel frequency is greater than 0. ",
       "format-rules": "Maximum length of 255 characters.",
@@ -319,7 +319,7 @@
     },
     "TR38": {
       "column": "AL",
-      "field-name": "Rx antenna manufacturer",
+      "field-name": "Rx antenna manufacturer code",
       "description": "The full name of the manufacturer of the receiver antenna. ",
       "required-when": "This field is required when G - Station type is FX and T - Rx channel frequency is greater than 0. ",
       "format-rules": "Maximum length of 255 characters.",
