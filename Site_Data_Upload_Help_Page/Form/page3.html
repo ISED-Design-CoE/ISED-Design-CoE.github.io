@@ -58,7 +58,7 @@
         <gcds-input
           input-id="radio-model"
           label="Radio model number"
-          hint="The radio’s Hardware Version Identification Number (HVIN) certified by ISED. "
+          hint="Enter the radio’s Hardware Version Identification Number (HVIN) certified by ISED. "
           required
           maxlength="128"
         ></gcds-input>
@@ -66,14 +66,14 @@
         <gcds-input
           input-id="radio-code"
           label="Radio manufacturer code"
-          hint="The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the radio."
+          hint="Enter the company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the radio."
           required
         ></gcds-input>
 
         <gcds-input
           input-id="radio-certificate"
           label="Radio certification number"
-          hint="The certification number assigned by ISED."
+          hint="Enter your radio certification number assigned by ISED."
           required
           maxlength="31"
         ></gcds-input>
@@ -81,7 +81,7 @@
         <gcds-input
           input-id="bandwidth"
           label="Bandwidth"
-          hint="The occupied bandwidth in KHz of the emission signal."
+          hint="Enter the occupied bandwidth in KHz of the emission signal."
           required
           min="0.10"
           max="50000.00"
@@ -91,15 +91,14 @@
         <gcds-input
           input-id="tcp"
           label="Transmitter TCP-TRP"
-          hint="The Total Radiated Power (TRP) or Total Conducted Power (TCP) in dBm. 
-                Ensure the value entered is expressed in dBm. "
+          hint="Enter the Total Radiated Power (TRP) or Total Conducted Power (TCP) in dBm. "
           required
         ></gcds-input>
 
         <gcds-input
           input-id="downlink"
           label="Downlink resource allocation"
-          hint="The percentage of time transmitting."
+          hint="Enter the percentage of time transmitting."
           required
           min="1"
           max="100"
@@ -114,7 +113,8 @@
           required
           options='[
          { "label": "Transmitting only", "id": "radio1", "value": "radio1"},
-         { "label": "Receiving only", "id": "radio2", "value": "radio2"}
+         { "label": "Receiving only", "id": "radio2", "value": "radio2"}, 
+         { "label": "Both transmitting and receiving", "id": "radio3", "value": "radio3"}
           ]'
         >
         </gcds-radios>
@@ -133,7 +133,7 @@
             select-id="type-code"
             label="Antenna type code"
             name="Antenna type code"
-            hint="The type of antenna associated with a transmitting radio installation."
+            hint="Select the type of antenna associated with a transmitting radio installation."
             required
             default-value="Select option"
           >
@@ -145,7 +145,7 @@
           <gcds-input
             input-id="number-antennas"
             label="Total number of antennas"
-            hint="The total number of antennas physically installed at the site."
+            hint="Enter the total number of antennas physically installed at the site."
             required
             type="number"
             min="1"
@@ -154,7 +154,7 @@
           <gcds-input
             input-id="antenna-model"
             label="Antenna model number"
-            hint="The antenna model number"
+            hint="Enter the antenna model number."
             required
             minlength="0"
             maxlength="80"
@@ -163,7 +163,7 @@
           <gcds-input
             input-id="antenna-manufacturer"
             label="Antenna manufacturer"
-            hint="The manufacturer of the antenna"
+            hint="Enter the manufacturer name of the antenna."
             required
             minlength="0"
             maxlength="255"
@@ -172,7 +172,7 @@
           <gcds-input
             input-id="antenna-height"
             label="Antenna height"
-            hint="Antenna height in meters from ground level."
+            hint="Enter the antenna height in meters from ground level."
             required
             minlength="0"
             maxlength="600"
@@ -182,6 +182,7 @@
           <gcds-select
             select-id="omnidirectional-pattern"
             label="Antenna omnidirectional pattern indicator"
+            hint="Select the directional pattern for your antenna."
             name="Antenna omnidirectional pattern indicator"
             required
             default-value="Select option"
@@ -193,6 +194,7 @@
           <gcds-input
             input-id="antenna-horizontal-beamwidth"
             label="Antenna horizontal beamwidth"
+            hint="Enter your antenna horizontal beamwidth in degrees."
             required
             min="1"
             max="359.9"
