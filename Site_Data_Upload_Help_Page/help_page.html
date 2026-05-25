@@ -151,10 +151,10 @@
           >Uploading your site data
         </gcds-heading>
         <gcds-text>
-          Your site data must be uploaded in a .csv file format. Each row in the file must represent an individual antenna, which may comprise multiple transmitters and/or receivers.
+          Your site data must be uploaded in a .csv file format. Each row in the file must represent an individual antenna, which may comprise a transmitter and/or a receiver. The file may contain technical data for multiple licences across multiple billing accounts.
         </gcds-text>
         <gcds-text>
-          Each .csv file cannot exceed more than 60 MB. If you have more sites than
+          Each .csv file cannot exceed more than 60 MB. If you have more antennas than
           can fit within a 60 MB file, then you can use the append feature to
           add to previously uploaded files.
         </gcds-text>
@@ -195,6 +195,9 @@
         <gcds-heading tag="h2" style="margin-bottom: 11.5px" id="what-to-expect"
           >What to expect after uploading
         </gcds-heading>
+        <gcds-text>
+          Once you upload your .csv file it will be added to a queue to be processed overnight. Any error in the file will cause the entire file to be rejected.
+        </gcds-text>
 
         <gcds-heading tag="h3" style="margin-bottom: 11.5px"
           >If your upload is successful
@@ -213,6 +216,16 @@
           above.
         </gcds-text>
 
+        <gcds-heading tag="h3" style="margin-bottom: 11.5px"
+        >If you notice errors in your file after uploading
+        </gcds-heading>
+        <gcds-text>
+          The user who uploaded the file can delete it while it is in “Validation Pending” status. (See 
+            <gcds-link
+            href="https://sms-sgs.ic.gc.ca/slSiteUpload2/spectrumLicenceUploadWizard?execution=e2s1&lang=en_CA"
+            >List of Spectrum Licence Site Data Uploads</gcds-link>.) Once the file has been processed, either successfully or unsuccessfully, you can make changes by modifying your original file and re-uploading it.
+        </gcds-text>
+
         <gcds-heading tag="h2" style="margin-bottom: 11.5px" id="help"
           >Need help?
         </gcds-heading>
@@ -220,8 +233,7 @@
           If you have any questions email us at <br />
           <gcds-link
             href="mailto: spectrumlicensing-licencesdespectre@ised-isde.gc.ca"
-          >
-            spectrumlicensing-licencesdespectre@ised-isde.gc.ca
+          >spectrumlicensing-licencesdespectre@ised-isde.gc.ca
           </gcds-link>
         </gcds-text>
       </section>
