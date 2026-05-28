@@ -1,6 +1,6 @@
 {
   "en": {
-    "page-heading": "Text format for satellite spectrum licence site data upload",
+    "page-heading": "Text format for terrestrial spectrum licence site data upload",
     "page-description": "Learn about the format, validation rules, and errors when uploading spectrum licence site data. Download the .csv file below to use as a template.",
     "toc-heading": "Table of contents",
     "back-to-top": "Back to top",
@@ -8,14 +8,14 @@
       "column": "A",
       "field-name": "Spectrum licence number",
       "description": "The number of your spectrum licence.",
-      "format-rules": "<ul> <li>Must belong to an account in your web profile</li><li>Must be a granted (paid) spectrum licence,  and not expired</li> <li>Must be exactly 9 digits long including leading zeroes as necessary</li> <li>Do not include the licence version number</li></ul>",
+      "format-rules": "<ul><li>Must be exactly 9 digits long including any leading zeroes</li><li>Must not include the licence version number</li><li>Must belong to an account in your web profile</li><li>Must be a granted (paid) spectrum licence, and not expired</li></ul>",
       "example-data": "10898101",
       "error-description": "The licence number does not contain a leading 0, the licence number does not belong to your account, the licence number is not in Granted status, or the licence is expired."
     },
     "TR2": {
       "column": "B",
       "field-name": "Upload reference number",
-      "description": "Optional field to enter a reference name for your site.",
+      "description": "A number, or any other text, for your own use. Optional.",
       "format-rules": "Maximum length of 63 characters.",
       "example-data": "Monthly upload, March 2023 ",
       "error-description": " "
@@ -33,22 +33,22 @@
       "field-name": "Business Telephone Number",
       "description": "The telephone number of the person who may be contacted.  ",
       "format-rules": "<ul><li>Minimum length of 10 characters</li><li>Maximum length of 254 characters </li></ul>",
-      "example-data": "613 – 174 – 5555 x 993",
+      "example-data": "613–174–5555 x993",
       "error-description": "The Business Telephone Number is missing or exceeds the character limit."
     },
     "TR5": {
       "column": "E",
       "field-name": "E-mail address",
       "description": "The email address of the person who may be contacted. ",
-      "format-rules": "<ul><li>Maximum length 254 characters </li><li>For multiplate email addresses, separate them with commas</li></ul>",
+      "format-rules": "<ul><li>Maximum length 254 characters </li><li>For multiple email addresses, separate them with commas</li></ul>",
       "example-data": "john.smith@mail.com ",
       "error-description": "The E-mail Address is missing or exceeds the character limit. "
     },
     "TR6": {
       "column": "F",
       "field-name": "Station location",
-      "description": "The station is located or specify if there are no changes or no stations. ",
-      "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (Maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty",
+      "description": "Station location, as text. This field is also used for NOCHANGES and NOSTATIONS. ",
+      "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or all your stations are being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty",
       "example-data": "WR0123 - Strandherd Repeater Site ",
       "error-description": "The Station Location is missing or exceeds the character limit.",
       "note": "An error in this field may also introduce errors in the following fields: <ul><li><a href=\"\">L – Latitude </a></li><li><a href=\"\">M – Longitude </a></li><li><a href=\"\">AD – Download resource allocation </a></li></ul>"
@@ -56,17 +56,17 @@
     "TR7": {
       "column": "G",
       "field-name": "Station type",
-      "description": "The type of station",
-      "format-rules": "Must enter TC.",
-      "example-data": "TC",
+      "description": "The station type, either fixed or earth station.",
+      "format-rules": "Must be one of the following codes: <table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td>FX</td><td>Fixed station</td></tr><tr><td>TC</td><td>Earth station</td></tr></tbody></table>",
+      "example-data": "FX",
       "error-description": "The Station Type is not input as CAPS, is missing or is not an accepted Station Type value. "
     },
     "TR8": {
       "column": "H",
       "field-name": "Radio technology",
-      "description": "This field is used differently for other services, but for satellite it is always “OTHER”.",
-      "format-rules": "Must enter OTHER.",
-      "example-data": "OTHER ",
+      "description": "The mode of operation (provisioning) for the radio apparatus at the site. ",
+      "format-rules": "<ul> <li>GSM – Global System for Mobile Communications</li> <li>CDMA – Code Division Multiple Access</li> <li>HSPA – High Speed Packet Access</li> <li>LTE – Long Term Evolution</li> <li>5GNR – 5G New Radio </li> <li>5GDSS – 5G Dynamic Spectrum Sharing</li> <li>WIMAX – Worldwide Interoperability for Microwave Access</li> <li>WI-FI</li> <li>OTHER</li></ul>",
+      "example-data": "LTE ",
       "error-description": "The Radio Technology value is missing, not in ALL CAPS, or not one of the allowed values. "
     },
     "TR9": {
@@ -80,17 +80,16 @@
     },
     "TR10": {
       "column": "J",
-      "field-name": "Filter Code",
-      "description": "This field is used differently for other services, but for satellite it is the filter code for any earth station operating in the 3700 to 4200 MHz band.",
-      "required-when": "Required when your earth station is operating in the 3700 to 4200 MHz band.",
-      "format-rules": "<p>Must be one of the following filter codes:  <ul><li>0 – Non-Transitioned </li><li>1 – Transitioned </li> <li>2 – New </li></ul></p>",
-      "example-data": "0",
-      "note": "This field is also known as J - Physical Cell ID. If you encounter the error message below, this means you have an error for this field, J – Filter Code.",
+      "field-name": "Physical Cell ID",
+      "description": "The Physical Cell Identity (PCI) for LTE or 5G systems.",
+      "required-when": "This field is required only when H - Radio technology is  any of the following: <ul> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
+      "format-rules": "<p>Must be a number from either: <ul><li>0 to 503 for <b>LTE</b> systems</li><li>0 to 1007 for <b>5GNR</b> or <b>5GDSS</b> systems</li></ul></p>",
+      "example-data": "204",
       "error-description": "The Physical Cell ID is missing or not within the expected range of values."
     },
     "TR11": {
       "column": "K",
-      "field-name": "Province/Territory code",
+      "field-name": "Province/Territory Code",
       "description": "The two-character abbreviation of the province or territory your station is located in. ",
       "format-rules": "<p>Your licence coordinates must be within the province or territory <br><br> Must be one of the following provincial or territorial codes: <ul><li>AB - Alberta</li> <li>BC - British Columbia</li> <li>MB - Manitoba </li> <li>NB - New Brunswick </li> <li>NL-  Newfoundland and Labrador </li> <li>NS - Nova Scotia </li> <li>ON - Ontario </li> <li>PE - Prince Edward Island </li> <li>QC - Quebec </li> <li>SK - Saskatchewan </li> <li>NT - Northwest Territories  </li> <li>NU - Nunavut </li> <li>YT - Yukon</li></ul></li> For transportable stations, includes \"IP\" for interprovincial and \"CA\" for Canada-wide.) </p>",
       "example-data": "ON ",
@@ -116,13 +115,13 @@
       "column": "N",
       "field-name": "Site Type Code",
       "description": "The general type of site associated with the installation. ",
-      "format-rules": "Must be O - Outdoor",
+      "format-rules": "Must be one of the following site types: <ul><li>U - Underground (E.g. a mine or a subway) </li> <li>O - Outdoor (E.g. a tower or rooftop) </li> <li>I - Indoor (E.g. a stadium or office) </li></ul>",
       "example-data": "O",
       "error-description": "The Site Type Code is not input as CAPS, is missing or is not an accepted Site Type Code value. "
     },
     "TR15": {
       "column": "O",
-      "field-name": "Structure Height",
+      "field-name": "Structure height",
       "description": "The total height (m) above ground level of an outdoor structure where antennas are mounted. This structure might also be shared with other radio installations (ex: towers, rooftops, etc). ",
       "required-when": "This field is required only when N - Site type code is O.",
       "format-rules": "<ul><li>Must be greater than the antenna height</li><li>Must be between 1 to 600 m</li><li>For equipment mounted on top of a building or its boundaries, add together the total height of the building and the antenna’s supporting structure.</li></ul>",
@@ -193,32 +192,36 @@
       "column": "W",
       "field-name": "Tx Radio Manufacturer Code",
       "description": "The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the radio transmitter.",
-      "format-rules": "Must enter code 31913.",
-      "example-data": "31913 ",
+      "required-when": "This field is required when G - Station type is FX and S - Tx channel frequency is greater than 0.  ",
+      "format-rules": "<ul><li>Must be a valid manufacturer company number </li></ul>",
+      "example-data": "109AB ",
       "error-description": "The Tx Radio Manufacturer Code is missing or is not an accepted Manufacturer Code value. "
     },
     "TR24": {
       "column": "X",
       "field-name": "Rx Radio Manufacturer Code",
       "description": "The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the radio receiver.",
-      "format-rules": "Must enter code 31913.",
-      "example-data": "31913 ",
+      "required-when": "This field is required when G - Station type is FX and T - Rx channel frequency is greater than 0.  ",
+      "format-rules": "<ul><li>Must be a valid manufacturer company number </li></ul>",
+      "example-data": "109AB ",
       "error-description": "The Rx Radio Manufacturer Code is missing or is not an accepted Manufacturer Code value. "
     },
     "TR25": {
       "column": "Y",
       "field-name": "Tx Radio Certification Number",
       "description": "The Certification Number assigned by ISED to the radio transmitter and listed in the <a href=\"https://ised-isde.canada.ca/site/certification-engineering-bureau/en/wireless-program/radio-equipment-list-rel\">Radio Equipment List (REL)</a>.",
-      "format-rules": "Must enter Exempt.",
-      "example-data": "Exempt",
+      "required-when": "This field is required when G - Station type is FX and S - Tx channel frequency is greater than 0.  ",
+      "format-rules": "<ul><li>Must be a valid certification number from the Radio Equipment List (subservice 12-142)  </li> <li>If your equipment is exempt from certification, you must enter \"Exempt\" </li> <li>Maximum length 31 characters </li></ul>",
+      "example-data": "24374-T99W175M ",
       "error-description": "The Tx Radio Certification Number is missing or exceeds the character limit. "
     },
     "TR26": {
       "column": "Z",
       "field-name": "Rx Radio Certification Number",
       "description": "The Certification Number assigned by ISED to the radio receiver and listed in the <a href=\"https://ised-isde.canada.ca/site/certification-engineering-bureau/en/wireless-program/radio-equipment-list-rel\">Radio Equipment List (REL)</a>.",
-      "format-rules": "Must enter Exempt.",
-      "example-data": "Exempt",
+      "required-when": "This field is required when G - Station type is FX and T - Rx channel frequency is greater than 0.  ",
+      "format-rules": "<ul><li>Must be a valid certification number from the Radio Equipment List (subservice 12-142)  </li> <li>If your equipment is exempt from certification, you must enter \"Exempt\" </li> <li>Maximum length 31 characters </li></ul>",
+      "example-data": "24374-T99W175M ",
       "error-description": "The Rx Radio Certification Number is missing or exceeds the character limit. "
     },
     "TR27": {

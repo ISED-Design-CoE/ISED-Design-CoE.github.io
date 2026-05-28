@@ -8,14 +8,14 @@
       "column": "A",
       "field-name": "Spectrum licence number",
       "description": "The number of your spectrum licence.",
-      "format-rules": "<ul> <li>Must belong to an account in your web profile</li><li>Must be a granted (paid) spectrum licence,  and not expired</li> <li>Must be exactly 9 digits long including leading zeroes as necessary</li> <li>Do not include the licence version number</li></ul>",
+      "format-rules": "<ul><li>Must be exactly 9 digits long including any leading zeroes</li><li>Must not include the licence version number</li><li>Must belong to an account in your web profile</li><li>Must be a granted (paid) spectrum licence, and not expired</li></ul>",
       "example-data": "10898101",
       "error-description": "The licence number does not contain a leading 0, the licence number does not belong to your account, the licence number is not in Granted status, or the licence is expired."
     },
     "TR2": {
       "column": "B",
       "field-name": "Upload reference number",
-      "description": "Optional field to enter a reference name for your site.",
+      "description": "A number, or any other text, for your own use. Optional.",
       "format-rules": "Maximum length of 63 characters.",
       "example-data": "Monthly upload, March 2023 ",
       "error-description": " "
@@ -33,22 +33,22 @@
       "field-name": "Business Telephone Number",
       "description": "The telephone number of the person who may be contacted.  ",
       "format-rules": "<ul><li>Minimum length of 10 characters</li><li>Maximum length of 254 characters </li></ul>",
-      "example-data": "613 – 174 – 5555 x 993",
+      "example-data": "613–174–5555 x993",
       "error-description": "The Business Telephone Number is missing or exceeds the character limit."
     },
     "TR5": {
       "column": "E",
       "field-name": "E-mail address",
       "description": "The email address of the person who may be contacted. ",
-      "format-rules": "<ul><li>Maximum length 254 characters </li><li>For multiplate email addresses, separate them with commas</li></ul>",
+      "format-rules": "<ul><li>Maximum length 254 characters </li><li>For multiple email addresses, separate them with commas</li></ul>",
       "example-data": "john.smith@mail.com ",
       "error-description": "The E-mail Address is missing or exceeds the character limit. "
     },
     "TR6": {
       "column": "F",
       "field-name": "Station location",
-      "description": "The station is located or specify if there are no changes or no stations. ",
-      "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (Maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty",
+      "description": "Station location, as text. This field is also used for NOCHANGES and NOSTATIONS. ",
+      "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or all your stations are being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty",
       "example-data": "WR0123 - Strandherd Repeater Site ",
       "error-description": "The Station Location is missing or exceeds the character limit.",
       "note": "An error in this field may also introduce errors in the following fields: <ul><li><a href=\"\">L – Latitude </a></li><li><a href=\"\">M – Longitude </a></li><li><a href=\"\">AD – Download resource allocation </a></li></ul>"
@@ -56,8 +56,8 @@
     "TR7": {
       "column": "G",
       "field-name": "Station type",
-      "description": "The station type of either fixed or earth station.  ",
-      "format-rules": "Must be either: <ul><li>FX - Fixed station</li><li>TC - Earth station </li></ul>",
+      "description": "The station type, either fixed or earth station.",
+      "format-rules": "Must be one of the following codes: <table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td>FX</td><td>Fixed station</td></tr><tr><td>TC</td><td>Earth station</td></tr></tbody></table>",
       "example-data": "FX",
       "error-description": "The Station Type is not input as CAPS, is missing or is not an accepted Station Type value. "
     },
