@@ -7,7 +7,7 @@
     "TR1": {
       "column": "A",
       "field-name": "Spectrum licence number",
-      "description": "Enter the number of your spectrum licence.",
+      "description": "The number of your spectrum licence.",
       "format-rules": "<ul> <li>Must belong to an account in your web profile</li><li>Must be a granted (paid) spectrum licence,  and not expired</li> <li>Must be exactly 9 digits long including leading zeroes as necessary</li> <li>Do not include the licence version number</li></ul>",
       "example-data": "10898101",
       "error-description": "The licence number does not contain a leading 0, the licence number does not belong to your account, the licence number is not in Granted status, or the licence is expired."
@@ -31,7 +31,7 @@
     "TR4": {
       "column": "D",
       "field-name": "Business Telephone Number",
-      "description": "Enter the telephone number of the person who may be contacted.  ",
+      "description": "The telephone number of the person who may be contacted.  ",
       "format-rules": "<ul><li>Minimum length of 10 characters</li><li>Maximum length of 254 characters </li></ul>",
       "example-data": "613 – 174 – 5555 x 993",
       "error-description": "The Business Telephone Number is missing or exceeds the character limit."
@@ -39,7 +39,7 @@
     "TR5": {
       "column": "E",
       "field-name": "E-mail address",
-      "description": "Enter the email address of the person who may be contacted. ",
+      "description": "The email address of the person who may be contacted. ",
       "format-rules": "<ul><li>Maximum length 254 characters </li><li>For multiplate email addresses, separate them with commas</li></ul>",
       "example-data": "john.smith@mail.com ",
       "error-description": "The E-mail Address is missing or exceeds the character limit. "
@@ -47,7 +47,7 @@
     "TR6": {
       "column": "F",
       "field-name": "Station location",
-      "description": "Enter the station is located or specify if there are no changes or no stations. ",
+      "description": "The station is located or specify if there are no changes or no stations. ",
       "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (Maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty",
       "example-data": "WR0123 - Strandherd Repeater Site ",
       "error-description": "The Station Location is missing or exceeds the character limit.",
@@ -56,7 +56,7 @@
     "TR7": {
       "column": "G",
       "field-name": "Station type",
-      "description": "Enter the station type of either fixed or earth station.  ",
+      "description": "The station type of either fixed or earth station.  ",
       "format-rules": "Must be either: <ul><li>FX - Fixed station</li><li>TC - Earth station </li></ul>",
       "example-data": "FX",
       "error-description": "The Station Type is not input as CAPS, is missing or is not an accepted Station Type value. "
@@ -81,7 +81,7 @@
     "TR10": {
       "column": "J",
       "field-name": "Physical Cell ID",
-      "description": "Enter the Physical Cell Identity (PCI) for LTE or 5G systems.",
+      "description": "The Physical Cell Identity (PCI) for LTE or 5G systems.",
       "required-when": "This field is required only when H - Radio technology is  any of the following: <ul> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
       "format-rules": "<p>Must be a number from either: <ul><li>0 to 503 for <b>LTE</b> systems</li><li>0 to 1007 for <b>5GNR</b> or <b>5GDSS</b> systems</li></ul></p>",
       "example-data": "204",
@@ -90,7 +90,7 @@
     "TR11": {
       "column": "K",
       "field-name": "Province/Territory Code",
-      "description": "Enter the two-character abbreviation of the province or territory your station is located in. ",
+      "description": "The two-character abbreviation of the province or territory your station is located in. ",
       "format-rules": "<p>Your licence coordinates must be within the province or territory <br><br> Must be one of the following provincial or territorial codes: <ul><li>AB - Alberta</li> <li>BC - British Columbia</li> <li>MB - Manitoba </li> <li>NB - New Brunswick </li> <li>NL-  Newfoundland and Labrador </li> <li>NS - Nova Scotia </li> <li>ON - Ontario </li> <li>PE - Prince Edward Island </li> <li>QC - Quebec </li> <li>SK - Saskatchewan </li> <li>NT - Northwest Territories  </li> <li>NU - Nunavut </li> <li>YT - Yukon</li></ul></li> For transportable stations, includes \"IP\" for interprovincial and \"CA\" for Canada-wide.) </p>",
       "example-data": "ON ",
       "error-description": "The Province/Territory is not input as CAPS, is missing or is not an accepted Province/Territory abbreviation."
@@ -98,7 +98,7 @@
     "TR12": {
       "column": "L",
       "field-name": "Latitude",
-      "description": "Enter the latitudinal coordinate of the station. ",
+      "description": "The latitudinal coordinate of the station. ",
       "format-rules": "<ul><li>Must be in decimal degrees using the WGS84 format</li> <li>Must be a location within the licence area </li> <li>Must be between 41 to 90  </li> <li>A minimum of four decimal places may be entered if coordinates are not exact </li> <li>A maximum of seven decimal places </li></ul>",
       "example-data": "45.3514035 ",
       "error-description": "The Latitude is missing or not within the expected range. The site coordinates may not fall within the licensed service area. "
@@ -106,7 +106,7 @@
     "TR13": {
       "column": "M",
       "field-name": "Longitude",
-      "description": "Enter the longitudinal coordinates of the station. ",
+      "description": "The longitudinal coordinates of the station. ",
       "format-rules": "<ul><li>Must be in decimal degrees using the WGS84 format</li> <li>Must be a location within the licence area </li> <li>Must be between -141 to -40  </li> <li>A minimum of four decimal places may be entered if coordinates are not exact </li> <li>A maximum of seven decimal places </li></ul>",
       "example-data": "-75.6533946 ",
       "error-description": "The Longitude is missing or not within the expected range (use negative to indicate degrees west). The site coordinates may not fall within the licensed service area. "
