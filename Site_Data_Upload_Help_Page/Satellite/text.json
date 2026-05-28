@@ -1,6 +1,6 @@
 {
   "en": {
-    "page-heading": "Text format for terrestrial spectrum licence site data upload",
+    "page-heading": "Text format for satellite spectrum licence site data upload",
     "page-description": "Learn about the format, validation rules, and errors when uploading spectrum licence site data. Download the .csv file below to use as a template.",
     "toc-heading": "Table of contents",
     "back-to-top": "Back to top",
@@ -56,17 +56,17 @@
     "TR7": {
       "column": "G",
       "field-name": "Station type",
-      "description": "The station type, either fixed or earth station.",
-      "format-rules": "Must be one of the following codes: <table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td>FX</td><td>Fixed station</td></tr><tr><td>TC</td><td>Earth station</td></tr></tbody></table>",
-      "example-data": "FX",
+      "description": "The type of station",
+      "format-rules": "Must enter TC.",
+      "example-data": "TC",
       "error-description": "The Station Type is not input as CAPS, is missing or is not an accepted Station Type value. "
     },
     "TR8": {
       "column": "H",
       "field-name": "Radio technology",
-      "description": "The mode of operation (provisioning) for the radio apparatus at the site. ",
-      "format-rules": "<ul> <li>GSM – Global System for Mobile Communications</li> <li>CDMA – Code Division Multiple Access</li> <li>HSPA – High Speed Packet Access</li> <li>LTE – Long Term Evolution</li> <li>5GNR – 5G New Radio </li> <li>5GDSS – 5G Dynamic Spectrum Sharing</li> <li>WIMAX – Worldwide Interoperability for Microwave Access</li> <li>WI-FI</li> <li>OTHER</li></ul>",
-      "example-data": "LTE ",
+      "description": "This field is used differently for other services, but for satellite it is always “OTHER”.",
+      "format-rules": "Must enter OTHER.",
+      "example-data": "OTHER ",
       "error-description": "The Radio Technology value is missing, not in ALL CAPS, or not one of the allowed values. "
     },
     "TR9": {
@@ -80,11 +80,12 @@
     },
     "TR10": {
       "column": "J",
-      "field-name": "Physical Cell ID",
-      "description": "The Physical Cell Identity (PCI) for LTE or 5G systems.",
-      "required-when": "This field is required only when H - Radio technology is  any of the following: <ul> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
-      "format-rules": "<p>Must be a number from either: <ul><li>0 to 503 for <b>LTE</b> systems</li><li>0 to 1007 for <b>5GNR</b> or <b>5GDSS</b> systems</li></ul></p>",
-      "example-data": "204",
+      "field-name": "Filter Code",
+      "description": "This field is used differently for other services, but for satellite it is the filter code for any earth station operating in the 3700 to 4200 MHz band.",
+      "required-when": "Required when your earth station is operating in the 3700 to 4200 MHz band.",
+      "format-rules": "<p>Must be one of the following filter codes:  <ul><li>0 – Non-Transitioned </li><li>1 – Transitioned </li> <li>2 – New </li></ul></p>",
+      "example-data": "0",
+      "note": "This field is also known as J - Physical Cell ID. If you encounter the error message below, this means you have an error for this field, J – Filter Code.",
       "error-description": "The Physical Cell ID is missing or not within the expected range of values."
     },
     "TR11": {
@@ -115,13 +116,13 @@
       "column": "N",
       "field-name": "Site Type Code",
       "description": "The general type of site associated with the installation. ",
-      "format-rules": "Must be one of the following site types: <ul><li>U - Underground (E.g. a mine or a subway) </li> <li>O - Outdoor (E.g. a tower or rooftop) </li> <li>I - Indoor (E.g. a stadium or office) </li></ul>",
+      "format-rules": "Must be O - Outdoor",
       "example-data": "O",
       "error-description": "The Site Type Code is not input as CAPS, is missing or is not an accepted Site Type Code value. "
     },
     "TR15": {
       "column": "O",
-      "field-name": "Structure height",
+      "field-name": "Structure Height",
       "description": "The total height (m) above ground level of an outdoor structure where antennas are mounted. This structure might also be shared with other radio installations (ex: towers, rooftops, etc). ",
       "required-when": "This field is required only when N - Site type code is O.",
       "format-rules": "<ul><li>Must be greater than the antenna height</li><li>Must be between 1 to 600 m</li><li>For equipment mounted on top of a building or its boundaries, add together the total height of the building and the antenna’s supporting structure.</li></ul>",
@@ -192,36 +193,32 @@
       "column": "W",
       "field-name": "Tx Radio Manufacturer Code",
       "description": "The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the radio transmitter.",
-      "required-when": "This field is required when G - Station type is FX and S - Tx channel frequency is greater than 0.  ",
-      "format-rules": "<ul><li>Must be a valid manufacturer company number </li></ul>",
-      "example-data": "109AB ",
+      "format-rules": "Must enter code 31913.",
+      "example-data": "31913 ",
       "error-description": "The Tx Radio Manufacturer Code is missing or is not an accepted Manufacturer Code value. "
     },
     "TR24": {
       "column": "X",
       "field-name": "Rx Radio Manufacturer Code",
       "description": "The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the radio receiver.",
-      "required-when": "This field is required when G - Station type is FX and T - Rx channel frequency is greater than 0.  ",
-      "format-rules": "<ul><li>Must be a valid manufacturer company number </li></ul>",
-      "example-data": "109AB ",
+      "format-rules": "Must enter code 31913.",
+      "example-data": "31913 ",
       "error-description": "The Rx Radio Manufacturer Code is missing or is not an accepted Manufacturer Code value. "
     },
     "TR25": {
       "column": "Y",
       "field-name": "Tx Radio Certification Number",
       "description": "The Certification Number assigned by ISED to the radio transmitter and listed in the <a href=\"https://ised-isde.canada.ca/site/certification-engineering-bureau/en/wireless-program/radio-equipment-list-rel\">Radio Equipment List (REL)</a>.",
-      "required-when": "This field is required when G - Station type is FX and S - Tx channel frequency is greater than 0.  ",
-      "format-rules": "<ul><li>Must be a valid certification number from the Radio Equipment List (subservice 12-142)  </li> <li>If your equipment is exempt from certification, you must enter \"Exempt\" </li> <li>Maximum length 31 characters </li></ul>",
-      "example-data": "24374-T99W175M ",
+      "format-rules": "Must enter Exempt.",
+      "example-data": "Exempt",
       "error-description": "The Tx Radio Certification Number is missing or exceeds the character limit. "
     },
     "TR26": {
       "column": "Z",
       "field-name": "Rx Radio Certification Number",
       "description": "The Certification Number assigned by ISED to the radio receiver and listed in the <a href=\"https://ised-isde.canada.ca/site/certification-engineering-bureau/en/wireless-program/radio-equipment-list-rel\">Radio Equipment List (REL)</a>.",
-      "required-when": "This field is required when G - Station type is FX and T - Rx channel frequency is greater than 0.  ",
-      "format-rules": "<ul><li>Must be a valid certification number from the Radio Equipment List (subservice 12-142)  </li> <li>If your equipment is exempt from certification, you must enter \"Exempt\" </li> <li>Maximum length 31 characters </li></ul>",
-      "example-data": "24374-T99W175M ",
+      "format-rules": "Must enter Exempt.",
+      "example-data": "Exempt",
       "error-description": "The Rx Radio Certification Number is missing or exceeds the character limit. "
     },
     "TR27": {
