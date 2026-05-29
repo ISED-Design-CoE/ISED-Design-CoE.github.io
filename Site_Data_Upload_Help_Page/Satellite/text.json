@@ -81,11 +81,11 @@
     "TR10": {
       "column": "J",
       "field-name": "Filter Code",
-      "description": "This field is used differently for other services, but for satellite it is the filter code for any earth station operating in the 3700 to 4200 MHz band.",
+      "description": "This field is used differently for other services, where it is known as Physical Cell ID. For satellite it is the filter code for any earth station operating in the 3700 to 4200 MHz band.",
       "required-when": "Required when your earth station is operating in the 3700 to 4200 MHz band.",
       "format-rules": "<p>Must be one of the following filter codes:  <ul><li>0 – Non-Transitioned </li><li>1 – Transitioned </li> <li>2 – New </li></ul></p>",
       "example-data": "0",
-      "note": "This field is also known as J - Physical Cell ID. If you encounter the error message below, this means you have an error for this field, J – Filter Code.",
+      "note": "",
       "error-description": "The Physical Cell ID is missing or not within the expected range of values."
     },
     "TR11": {
@@ -107,7 +107,7 @@
     "TR13": {
       "column": "M",
       "field-name": "Longitude",
-      "description": "The longitudinal coordinates of the station. ",
+      "description": "The longitudinal coordinate of the station. ",
       "format-rules": "<ul><li>Must be in decimal degrees using the WGS84 format</li> <li>Must be a location within the licence area </li> <li>Must be between -141 to -40  </li> <li>A minimum of four decimal places may be entered if coordinates are not exact </li> <li>A maximum of seven decimal places </li></ul>",
       "example-data": "-75.6533946 ",
       "error-description": "The Longitude is missing or not within the expected range (use negative to indicate degrees west). The site coordinates may not fall within the licensed service area. "
@@ -123,7 +123,7 @@
     "TR15": {
       "column": "O",
       "field-name": "Structure Height",
-      "description": "The total height (m) above ground level of an outdoor structure where antennas are mounted. This structure might also be shared with other radio installations (ex: towers, rooftops, etc). ",
+      "description": "The total height (m) above ground level of an outdoor structure, such as a tower or rooftop, where antennas are mounted. This structure might also be shared with other radio installations. ",
       "required-when": "This field is required only when N - Site type code is O.",
       "format-rules": "<ul><li>Must be greater than the antenna height</li><li>Must be between 1 to 600 m</li><li>For equipment mounted on top of a building or its boundaries, add together the total height of the building and the antenna’s supporting structure.</li></ul>",
       "example-data": "15",
@@ -150,8 +150,8 @@
     "TR18": {
       "column": "R",
       "field-name": "Site Record ID",
-      "description": "The identifier as defined by the licensee for the site or antenna installation. ",
-      "format-rules": "(Note that it is not validated to be unique) ",
+      "description": "An identifier defined by the licensee for the site or antenna installation. We do not validate whether this is unique. ",
+      "format-rules": "No restriction ",
       "example-data": "1234567890 ",
       "error-description": "The Site Record ID is missing. "
     },
@@ -159,7 +159,7 @@
       "column": "S",
       "field-name": "Tx Channel Frequency",
       "description": "The centre frequency (MHz) of the occupied bandwidth as well as any installations that are used unidirectionally for transmission or reception only.",
-      "format-rules": "<ul><li>If your antenna is receive only and not transmitting enter 0 </li> <li>Must be within an authorized frequency band for this licence </li> <li>Must be the centre frequency </li></ul>",
+      "format-rules": "<ul><li>If your antenna is receive only and not transmitting, enter 0 </li> <li>Must be within an authorized frequency band for this licence </li> <li>Must be the centre frequency </li></ul>",
       "example-data": "1925.3 ",
       "error-description": "The Tx Channel Frequency is missing or not within an authorized frequency band for this licence. "
     },
@@ -174,9 +174,9 @@
     "TR21": {
       "column": "U",
       "field-name": "Tx Radio Hardware Version Identification Number (HVIN)",
-      "description": "The transmitting radio’s Hardware Version Identification Number (HVIN) certified by ISED.",
+      "description": "The transmitting radio’s Hardware Version Identification Number (HVIN) certified by ISED. If the radio is certification-exempt, please provide the manufacturer's radio model number or a system configuration name.",
       "required-when": "This field is required when S - Tx channel frequency is greater than 0.",
-      "format-rules": "<ul><li>Maximum length 128 characters </li> <li>If the radio is certification-exempt, you must provide the manufacturer's radio model number or a system configuration name </li></ul>",
+      "format-rules": "<ul><li>Maximum length 128 characters </li></ul>",
       "example-data": "T99W175MC ",
       "error-description": "The Tx Radio HVIN is missing or exceeds the character limit. "
     },
@@ -185,7 +185,7 @@
       "field-name": "Rx Radio Hardware Version Identification Number (HVIN)",
       "description": "The receiving radio’s Hardware Version Identification Number (HVIN) certified by ISED. If the radio is certification-exempt, please provide the manufacturer's radio model number or a system configuration name. ",
       "required-when": "This field is required when T - Rx channel frequency is greater than 0.",
-      "format-rules": "<ul><li>Maximum length 128 characters </li> <li>If the radio is certification-exempt, you must provide the manufacturer's radio model number or a system configuration name </li></ul>",
+      "format-rules": "<ul><li>Maximum length 128 characters </li></ul>",
       "example-data": "T99W175MC",
       "error-description": "The Rx Radio HVIN is missing or exceeds the character limit. "
     },
