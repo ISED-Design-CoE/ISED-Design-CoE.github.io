@@ -56,8 +56,8 @@
     "TR7": {
       "column": "G",
       "field-name": "Station type",
-      "description": "The station type, either fixed or earth station.",
-      "format-rules": "Must be one of the following codes: <table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td>FX</td><td>Fixed station</td></tr><tr><td>TC</td><td>Earth station</td></tr></tbody></table>",
+      "description": "The type of station",
+      "format-rules": "Must enter FX.",
       "example-data": "FX",
       "error-description": "The Station Type is not input as CAPS, is missing or is not an accepted Station Type value. "
     },
