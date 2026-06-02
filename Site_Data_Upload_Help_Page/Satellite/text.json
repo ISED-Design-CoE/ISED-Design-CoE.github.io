@@ -100,7 +100,7 @@
       "column": "L",
       "field-name": "Latitude",
       "description": "The latitudinal coordinate of the station. ",
-      "format-rules": "<ul><li>Must be in decimal degrees using the WGS84 format</li> <li>Must be a location within the licence area </li> <li>Must be between 41 to 90  </li> <li>A minimum of four decimal places may be entered if coordinates are not exact </li> <li>A maximum of seven decimal places </li></ul>",
+      "format-rules": "<ul><li>Must be in decimal degrees using the WGS84 format</li> <li>Must be a location within the licence area </li> <li>Must be between 41 to 90  </li> <li>A minimum of four decimal places may be entered if coordinates are not exact </li> <li>A maximum of seven decimal places </li> <li>If P - Site Structure Type Code is \"M\" (transportable), then report the current operating latitude, not the radius of operation</li></ul>",
       "example-data": "45.3514035 ",
       "error-description": "The Latitude is missing or not within the expected range. The site coordinates may not fall within the licensed service area. "
     },
@@ -108,7 +108,7 @@
       "column": "M",
       "field-name": "Longitude",
       "description": "The longitudinal coordinate of the station. ",
-      "format-rules": "<ul><li>Must be in decimal degrees using the WGS84 format</li> <li>Must be a location within the licence area </li> <li>Must be between -141 to -40  </li> <li>A minimum of four decimal places may be entered if coordinates are not exact </li> <li>A maximum of seven decimal places </li></ul>",
+      "format-rules": "<ul><li>Must be in decimal degrees using the WGS84 format</li> <li>Must be a location within the licence area </li> <li>Must be between -141 to -40  </li> <li>A minimum of four decimal places may be entered if coordinates are not exact </li> <li>A maximum of seven decimal places </li> <li>If P - Site Structure Type Code is \"M\" (transportable), then report the current operating longitude, not the radius of operation</li></ul>",
       "example-data": "-75.6533946 ",
       "error-description": "The Longitude is missing or not within the expected range (use negative to indicate degrees west). The site coordinates may not fall within the licensed service area. "
     },
@@ -130,11 +130,11 @@
       "error-description": "The Structure Height is missing or not within the expected range of values. ",
       "note": "An error in this field may also give errors in the following fields: <ul><li><a href=\"\">AM - Tx Antenna Height </a></li><li><a href=\"\">AN - Rx Antenna Height </a></li></ul>"
     },
-    "TR16": {
+   "TR16": {
       "column": "P",
       "field-name": "Site Structure Type Code",
       "description": "The type of structure in use at the site. ",
-      "format-rules": "Must be one of the following structure types: <ul><li>T - Purpose-built tower </li> <li>R - Outside of building or rooftop </li> <li>P - Light pole, other street electrical, or utility pole </li> <li>S - Water tower or farm silo </li> <li>F - Furniture </li> <li>M - Transportable (Report the current operating location only and not the radius of operation) </li> <li>O - Other (E.g. indoor) </li></ul>",
+      "format-rules": "Must be one of the following codes <table class=\"wb-tables table\"><thead><tr><th style=\"width: 100px;\">Code</th><th>Site structure type</th></tr></thead><tbody><tr><td>T</td><td>Purpose-built tower</td></tr><tr><td>R</td><td>Exterior of building (e.g. rooftop)</td></tr><tr><td>P</td><td>Light pole, other street electrical, or utility pole</td></tr><tr><td>S</td><td>Water tower or farm silo</td></tr><tr><td>F</td><td>Furniture</td></tr><tr><td>M</td><td>Transportable</td></tr><tr><td>O</td><td>Other (e.g. indoor)</td></tr></tbody></table>",
       "example-data": "T",
       "error-description": "The Structure Type Code is not input as CAPS, is missing or is not an accepted Structure Type Code value. "
     },
@@ -258,7 +258,7 @@
       "column": "AE",
       "field-name": "Tx Antenna Type Code",
       "description": "The type of antenna associated with a transmitting radio installation.",
-      "required-when": "This field is required when G - Station type is FX and S - Tx channel frequency is greater than 0. ",
+      "required-when": "This field is required when G - Station type is FX and S - Tx Channel Frequency is greater than 0. ",
       "format-rules": "Entry must be one of the following: <ul><li>AAS – Active antenna systems</li> <li>NAC – Non-AAS correlated </li> <li>NAU – Non-ASS uncorrelated </li></ul> <br> If deploying a hybrid mode, enter NAC.  ",
       "example-data": "NAU",
       "error-description": "The Tx Antenna Type Code is not input as CAPS, is missing or is not an accepted Antenna Type Code value. "
