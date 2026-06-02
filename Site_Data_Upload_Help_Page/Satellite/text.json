@@ -15,7 +15,7 @@
     "TR2": {
       "column": "B",
       "field-name": "Upload reference number",
-      "description": "A number, or any other text, for your own use. Optional.",
+      "description": "A number, or any other text, for your own use. (Optional)",
       "format-rules": "Maximum length of 63 characters.",
       "example-data": "Monthly upload, March 2023 ",
       "error-description": " "
@@ -47,7 +47,7 @@
     "TR6": {
       "column": "F",
       "field-name": "Station location",
-      "description": "Station location, as text. This field is also used for NOCHANGES and NOSTATIONS. ",
+      "description": "The location of the station. This field is also used for NOCHANGES and NOSTATIONS. ",
       "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or all your stations are being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty",
       "example-data": "WR0123 - Strandherd Repeater Site ",
       "error-description": "The Station Location is missing or exceeds the character limit.",
