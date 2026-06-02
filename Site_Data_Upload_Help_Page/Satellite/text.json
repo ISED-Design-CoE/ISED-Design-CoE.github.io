@@ -233,7 +233,7 @@
       "column": "AB",
       "field-name": "Class of Emission",
       "description": "The International Telecommunication Union (ITU) designation for the class of emission.  ",
-      "format-rules": "<ul><li>Must be a valid emission code as described in <a href=\"https://ised-isde.canada.ca/site/spectrum-management-system/en/radiocommunication-licensing-services/text-format-upload-technical-data-stations-authorized-under-spectrum-licences\">Valid Class of Emission Codes</a>.</li> <li>Enter the emission class that uses the largest bandwidth </li> </ul>",
+      "format-rules": "<ul><li>Must be a valid emission code as described in <a href=\"https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/devices-and-equipment/telecom-regulation-circulars-trc/trc-43-designation-emissions-class-station-and-nature-service#p7\">Valid Class of Emission Codes</a>.</li> <li>Enter the emission class that uses the largest bandwidth </li> </ul>",
       "example-data": "F3WET  ",
       "error-description": "The Class of Emission is missing or not in the expected format or length. "
     },
