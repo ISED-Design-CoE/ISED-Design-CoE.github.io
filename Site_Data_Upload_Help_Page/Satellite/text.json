@@ -7,15 +7,15 @@
     "TR1": {
       "column": "A",
       "field-name": "Spectrum licence number",
-      "description": "Enter the number of your spectrum licence.",
-      "format-rules": "<ul> <li>Must belong to an account in your web profile</li><li>Must be a granted (paid) spectrum licence,  and not expired</li> <li>Must be exactly 9 digits long including leading zeroes as necessary</li> <li>Do not include the licence version number</li></ul>",
+      "description": "The number of your spectrum licence.",
+      "format-rules": "<ul><li>Must be exactly 9 digits long including any leading zeroes</li><li>Must not include the licence version number</li><li>Must belong to an account in your web profile</li><li>Must be a granted (paid) spectrum licence, and not expired</li></ul>",
       "example-data": "10898101",
       "error-description": "The licence number does not contain a leading 0, the licence number does not belong to your account, the licence number is not in Granted status, or the licence is expired."
     },
     "TR2": {
       "column": "B",
       "field-name": "Upload reference number",
-      "description": "Optional field to enter a reference name for your site.",
+      "description": "A number, or any other text, for your own use. (Optional)",
       "format-rules": "Maximum length of 63 characters.",
       "example-data": "Monthly upload, March 2023 ",
       "error-description": " "
@@ -31,24 +31,24 @@
     "TR4": {
       "column": "D",
       "field-name": "Business Telephone Number",
-      "description": "Enter the telephone number of the person who may be contacted.  ",
+      "description": "The telephone number of the person who may be contacted.  ",
       "format-rules": "<ul><li>Minimum length of 10 characters</li><li>Maximum length of 254 characters </li></ul>",
-      "example-data": "613 – 174 – 5555 x 993",
+      "example-data": "613–174–5555 x993",
       "error-description": "The Business Telephone Number is missing or exceeds the character limit."
     },
     "TR5": {
       "column": "E",
       "field-name": "E-mail address",
-      "description": "Enter the email address of the person who may be contacted. ",
-      "format-rules": "<ul><li>Maximum length 254 characters </li><li>For multiplate email addresses, separate them with commas</li></ul>",
+      "description": "The email address of the person who may be contacted. ",
+      "format-rules": "<ul><li>Maximum length 254 characters </li><li>For multiple email addresses, separate them with commas</li></ul>",
       "example-data": "john.smith@mail.com ",
       "error-description": "The E-mail Address is missing or exceeds the character limit. "
     },
     "TR6": {
       "column": "F",
       "field-name": "Station location",
-      "description": "Enter the station is located or specify if there are no changes or no stations. ",
-      "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (Maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty",
+      "description": "The location of the station. This field is also used for NOCHANGES and NOSTATIONS. ",
+      "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or all your stations are being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty",
       "example-data": "WR0123 - Strandherd Repeater Site ",
       "error-description": "The Station Location is missing or exceeds the character limit.",
       "note": "An error in this field may also introduce errors in the following fields: <ul><li><a href=\"\">L – Latitude </a></li><li><a href=\"\">M – Longitude </a></li><li><a href=\"\">AD – Download resource allocation </a></li></ul>"
@@ -81,17 +81,17 @@
     "TR10": {
       "column": "J",
       "field-name": "Filter Code",
-      "description": "This field is used differently for other services, but for satellite it is the filter code for any earth station operating in the 3700 to 4200 MHz band.",
+      "description": "This field is used differently for other services, where it is known as Physical Cell ID. For satellite it is the filter code for any earth station operating in the 3700 to 4200 MHz band.",
       "required-when": "Required when your earth station is operating in the 3700 to 4200 MHz band.",
       "format-rules": "<p>Must be one of the following filter codes:  <ul><li>0 – Non-Transitioned </li><li>1 – Transitioned </li> <li>2 – New </li></ul></p>",
       "example-data": "0",
-      "note": "This field is also known as J - Physical Cell ID. If you encounter the error message below, this means you have an error for this field, J – Filter Code.",
+      "note": "",
       "error-description": "The Physical Cell ID is missing or not within the expected range of values."
     },
     "TR11": {
       "column": "K",
-      "field-name": "Province/Territory code",
-      "description": "Enter the two-character abbreviation of the province or territory your station is located in. ",
+      "field-name": "Province/Territory Code",
+      "description": "The two-character abbreviation of the province or territory your station is located in. ",
       "format-rules": "<p>Your licence coordinates must be within the province or territory <br><br> Must be one of the following provincial or territorial codes: <ul><li>AB - Alberta</li> <li>BC - British Columbia</li> <li>MB - Manitoba </li> <li>NB - New Brunswick </li> <li>NL-  Newfoundland and Labrador </li> <li>NS - Nova Scotia </li> <li>ON - Ontario </li> <li>PE - Prince Edward Island </li> <li>QC - Quebec </li> <li>SK - Saskatchewan </li> <li>NT - Northwest Territories  </li> <li>NU - Nunavut </li> <li>YT - Yukon</li></ul></li> For transportable stations, includes \"IP\" for interprovincial and \"CA\" for Canada-wide.) </p>",
       "example-data": "ON ",
       "error-description": "The Province/Territory is not input as CAPS, is missing or is not an accepted Province/Territory abbreviation."
@@ -99,7 +99,7 @@
     "TR12": {
       "column": "L",
       "field-name": "Latitude",
-      "description": "Enter the latitudinal coordinate of the station. ",
+      "description": "The latitudinal coordinate of the station. ",
       "format-rules": "<ul><li>Must be in decimal degrees using the WGS84 format</li> <li>Must be a location within the licence area </li> <li>Must be between 41 to 90  </li> <li>A minimum of four decimal places may be entered if coordinates are not exact </li> <li>A maximum of seven decimal places </li></ul>",
       "example-data": "45.3514035 ",
       "error-description": "The Latitude is missing or not within the expected range. The site coordinates may not fall within the licensed service area. "
@@ -107,7 +107,7 @@
     "TR13": {
       "column": "M",
       "field-name": "Longitude",
-      "description": "Enter the longitudinal coordinates of the station. ",
+      "description": "The longitudinal coordinate of the station. ",
       "format-rules": "<ul><li>Must be in decimal degrees using the WGS84 format</li> <li>Must be a location within the licence area </li> <li>Must be between -141 to -40  </li> <li>A minimum of four decimal places may be entered if coordinates are not exact </li> <li>A maximum of seven decimal places </li></ul>",
       "example-data": "-75.6533946 ",
       "error-description": "The Longitude is missing or not within the expected range (use negative to indicate degrees west). The site coordinates may not fall within the licensed service area. "
@@ -123,7 +123,7 @@
     "TR15": {
       "column": "O",
       "field-name": "Structure Height",
-      "description": "The total height (m) above ground level of an outdoor structure where antennas are mounted. This structure might also be shared with other radio installations (ex: towers, rooftops, etc). ",
+      "description": "The total height (m) above ground level of an outdoor structure, such as a tower or rooftop, where antennas are mounted. This structure might also be shared with other radio installations. ",
       "required-when": "This field is required only when N - Site type code is O.",
       "format-rules": "<ul><li>Must be greater than the antenna height</li><li>Must be between 1 to 600 m</li><li>For equipment mounted on top of a building or its boundaries, add together the total height of the building and the antenna’s supporting structure.</li></ul>",
       "example-data": "15",
@@ -150,8 +150,8 @@
     "TR18": {
       "column": "R",
       "field-name": "Site Record ID",
-      "description": "The identifier as defined by the licensee for the site or antenna installation. ",
-      "format-rules": "(Note that it is not validated to be unique) ",
+      "description": "An identifier defined by the licensee for the site or antenna installation. We do not validate whether this is unique. ",
+      "format-rules": "No restriction ",
       "example-data": "1234567890 ",
       "error-description": "The Site Record ID is missing. "
     },
@@ -159,7 +159,7 @@
       "column": "S",
       "field-name": "Tx Channel Frequency",
       "description": "The centre frequency (MHz) of the occupied bandwidth as well as any installations that are used unidirectionally for transmission or reception only.",
-      "format-rules": "<ul><li>If your antenna is receive only and not transmitting enter 0 </li> <li>Must be within an authorized frequency band for this licence </li> <li>Must be the centre frequency </li></ul>",
+      "format-rules": "<ul><li>If your antenna is receive only and not transmitting, enter 0 </li> <li>Must be within an authorized frequency band for this licence </li> <li>Must be the centre frequency </li></ul>",
       "example-data": "1925.3 ",
       "error-description": "The Tx Channel Frequency is missing or not within an authorized frequency band for this licence. "
     },
@@ -174,9 +174,9 @@
     "TR21": {
       "column": "U",
       "field-name": "Tx Radio Hardware Version Identification Number (HVIN)",
-      "description": "The transmitting radio’s Hardware Version Identification Number (HVIN) certified by ISED.",
+      "description": "The transmitting radio’s Hardware Version Identification Number (HVIN) certified by ISED. If the radio is certification-exempt, please provide the manufacturer's radio model number or a system configuration name.",
       "required-when": "This field is required when S - Tx channel frequency is greater than 0.",
-      "format-rules": "<ul><li>Maximum length 128 characters </li> <li>If the radio is certification-exempt, you must provide the manufacturer's radio model number or a system configuration name </li></ul>",
+      "format-rules": "<ul><li>Maximum length 128 characters </li></ul>",
       "example-data": "T99W175MC ",
       "error-description": "The Tx Radio HVIN is missing or exceeds the character limit. "
     },
@@ -185,7 +185,7 @@
       "field-name": "Rx Radio Hardware Version Identification Number (HVIN)",
       "description": "The receiving radio’s Hardware Version Identification Number (HVIN) certified by ISED. If the radio is certification-exempt, please provide the manufacturer's radio model number or a system configuration name. ",
       "required-when": "This field is required when T - Rx channel frequency is greater than 0.",
-      "format-rules": "<ul><li>Maximum length 128 characters </li> <li>If the radio is certification-exempt, you must provide the manufacturer's radio model number or a system configuration name </li></ul>",
+      "format-rules": "<ul><li>Maximum length 128 characters </li></ul>",
       "example-data": "T99W175MC",
       "error-description": "The Rx Radio HVIN is missing or exceeds the character limit. "
     },
