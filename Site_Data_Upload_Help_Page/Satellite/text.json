@@ -1,7 +1,7 @@
 {
   "en": {
     "page-heading": "Text format for satellite spectrum licence site data upload",
-    "page-description": "Learn about the format, validation rules, and errors when uploading spectrum licence site data. Download the .csv file below to use as a template.",
+    "page-description": "Learn about the format, validation rules, and errors when uploading spectrum licence site data.",
     "toc-heading": "Table of contents",
     "back-to-top": "Back to top",
     "TR1": {
@@ -83,7 +83,7 @@
       "field-name": "Filter Code",
       "description": "This field is used differently for other services, where it is known as Physical Cell ID. For satellite it is the filter code for any earth station operating in the 3700 to 4200 MHz band.",
       "required-when": "Required when your earth station is operating in the 3700 to 4200 MHz band.",
-      "format-rules": "<p>Must be one of the following filter codes:  <ul><li>0 – Non-Transitioned </li><li>1 – Transitioned </li> <li>2 – New </li></ul></p>",
+      "format-rules": "Must be one of the following filter codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>0</td><td>Non-Transitioned</td></tr><tr><td>1</td><td>Transitioned</td></tr><tr><td>2</td><td>New</td></tr></tbody></table>",
       "example-data": "0",
       "note": "",
       "error-description": "The Physical Cell ID is missing or not within the expected range of values."
@@ -92,7 +92,7 @@
       "column": "K",
       "field-name": "Province/Territory Code",
       "description": "The two-character abbreviation of the province or territory your station is located in. ",
-      "format-rules": "<p>Your licence coordinates must be within the province or territory <br><br> Must be one of the following provincial or territorial codes: <ul><li>AB - Alberta</li> <li>BC - British Columbia</li> <li>MB - Manitoba </li> <li>NB - New Brunswick </li> <li>NL-  Newfoundland and Labrador </li> <li>NS - Nova Scotia </li> <li>ON - Ontario </li> <li>PE - Prince Edward Island </li> <li>QC - Quebec </li> <li>SK - Saskatchewan </li> <li>NT - Northwest Territories  </li> <li>NU - Nunavut </li> <li>YT - Yukon</li></ul></li> For transportable stations, includes \"IP\" for interprovincial and \"CA\" for Canada-wide.) </p>",
+      "format-rules": "<p>Your licence coordinates must be within the province or territory <br><br> Must be one of the following provincial or territorial codes: <ul><li>AB</li> <li>BC</li> <li>MB</li> <li>NB</li> <li>NL</li> <li>NS</li> <li>ON</li> <li>PE</li> <li>QC</li> <li>SK</li> <li>NT</li> <li>NU</li> <li>YT</li></ul></li> For transportable stations, includes \"IP\" for interprovincial and \"CA\" for Canada-wide.) </p>",
       "example-data": "ON ",
       "error-description": "The Province/Territory is not input as CAPS, is missing or is not an accepted Province/Territory abbreviation."
     },
@@ -259,7 +259,7 @@
       "field-name": "Tx Antenna Type Code",
       "description": "The type of antenna associated with a transmitting radio installation.",
       "required-when": "This field is required when G - Station type is FX and S - Tx Channel Frequency is greater than 0. ",
-      "format-rules": "Entry must be one of the following: <ul><li>AAS – Active antenna systems</li> <li>NAC – Non-AAS correlated </li> <li>NAU – Non-ASS uncorrelated </li></ul> <br> If deploying a hybrid mode, enter NAC.  ",
+      "format-rules": "Entry must be one of the following: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Type</th></tr></thead><tbody><tr><td>AAS</td><td>Active antenna systems</td></tr><tr><td>NAC</td><td>Non-AAS correlated</td></tr><tr><td>NAU</td><td>Non-AAS uncorrelated</td></tr></tbody></table><br> If deploying a hybrid mode, enter NAC.  ",
       "example-data": "NAU",
       "error-description": "The Tx Antenna Type Code is not input as CAPS, is missing or is not an accepted Antenna Type Code value. "
     },
@@ -268,7 +268,7 @@
       "field-name": "Rx Antenna Type Code",
       "description": "The type of antenna associated with a receiving radio installation.",
       "required-when": "This field is required when G - Station type is FX and T - Rx channel frequency is greater than 0. ",
-      "format-rules": "Entry must be one of the following: <ul><li>AAS – Active antenna systems</li> <li>NAC – Non-AAS correlated </li> <li>NAU – Non-ASS uncorrelated </li></ul> <br> If deploying a hybrid mode, enter NAC.  ",
+      "format-rules": "Entry must be one of the following: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Type</th></tr></thead><tbody><tr><td>AAS</td><td>Active antenna systems</td></tr><tr><td>NAC</td><td>Non-AAS correlated</td></tr><tr><td>NAU</td><td>Non-AAS uncorrelated</td></tr></tbody></table><br> If deploying a hybrid mode, enter NAC.  ",
       "example-data": "NAU",
       "error-description": "The Rx Antenna Type Code is not input as CAPS, is missing or is not an accepted Antenna Type Code value. "
     },
@@ -349,7 +349,7 @@
       "field-name": "Tx Omnidirectional Antenna Pattern Indicator",
       "description": "Whether the transmitter antenna is omnidirectional or directional. ",
       "required-when": "This field is required when S - Tx channel frequency is greater than 0. ",
-      "format-rules": "Must be either: <ul><li>D - Directional</li><li>N - Non-directional</li></ul>",
+      "format-rules": "Must be either: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table>",
       "example-data": "D",
       "error-description": "The Tx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
       "note": "An error in this field may also give errors for the following fields: <ul><li><a>AQ - Tx antenna horizontal beamwidth </a></li> <li><a>AS - Tx antenna vertical beamwidth </a></li> <li><a>AU - Tx antenna azimuth </a></li> <li><a>AW - Tx antenna elevation angle </a></li></ul>"
@@ -359,7 +359,7 @@
       "field-name": "Rx Omnidirectional Antenna Pattern Indicator",
       "description": "Whether the receiver antenna is omnidirectional or directional. ",
       "required-when": "This field is required when T – Rx channel frequency is greater than 0. ",
-      "format-rules": "Must be either: <ul><li>D - Directional</li><li>N - Non-directional</li></ul>",
+      "format-rules": "Must be either: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table>",
       "example-data": "D",
       "error-description": "The Rx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
       "note": "An error in this field may also give errors for the following fields: <ul><li><a>AR - Rx antenna horizontal beamwidth  </a></li> <li><a>AT - Rx antenna vertical beamwidth </a></li> <li><a>AV - Rx antenna azimuth </a></li> <li><a>AX - Rx antenna elevation angle </a></li></ul>"
