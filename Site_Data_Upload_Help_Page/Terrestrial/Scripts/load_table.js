@@ -93,8 +93,8 @@
           <h2>${fieldName}</h2>
           <p>${descHTML}</p>
           ${requiredWhen ? "<h4>Required when</h4><p>" + requiredWhen + "</p>" : ""}
-          ${example && example.trim() ? "<h4>Example</h4><p>" + example + "</p>" : ""}
           ${formatRaw && formatRaw.trim() ? "<h4>Format</h4><p>" + formatRaw + "</p>" : ""}
+          ${example && example.trim() ? "<h4>Example</h4><p>" + example + "</p>" : ""}
           ${errorMsg && errorMsg.trim() ? "<h4>Potential errors</h4><p><code style='display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap'>" + errorMsg + "</code></p>" : ""}
           ${note && note.trim() ? note + "</p>" : ""}
         </td>
