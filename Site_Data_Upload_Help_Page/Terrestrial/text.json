@@ -65,7 +65,7 @@
       "column": "H",
       "field-name": "Radio technology",
       "description": "The mode of operation (provisioning) for the radio apparatus at the site. ",
-      "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>GSM</td><td>Global System for Mobile Communications</td></tr><tr><td>CDMA</td><td>Code Division Multiple Access</td></tr><tr><td>HSPA</td><td>High Speed Packet Access</td></tr><tr><td>LTE</td><td>Long Term Evolution</td></tr><tr><td>5GNR</td><td>5G New Radio</td></tr><tr><td>5GDSS</td><td>5G Dynamic Spectrum Sharing</td></tr><tr><td>WIMAX</td><td>Worldwide Interoperability for Microwave Access</td></tr><tr><td>WI-FI</td><td>WI-FI</td></tr><tr><td>OTHER</td><td>OTHER</td></tr></tbody></table>",
+      "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Technology</th></tr></thead><tbody><tr><td>GSM</td><td>Global System for Mobile Communications</td></tr><tr><td>CDMA</td><td>Code Division Multiple Access</td></tr><tr><td>HSPA</td><td>High Speed Packet Access</td></tr><tr><td>LTE</td><td>Long Term Evolution</td></tr><tr><td>5GNR</td><td>5G New Radio</td></tr><tr><td>5GDSS</td><td>5G Dynamic Spectrum Sharing</td></tr><tr><td>WIMAX</td><td>Worldwide Interoperability for Microwave Access</td></tr><tr><td>WI-FI</td><td>WI-FI</td></tr><tr><td>OTHER</td><td>OTHER</td></tr></tbody></table>",
       "example-data": "LTE ",
       "error-description": "The Radio Technology value is missing, not in ALL CAPS, or not one of the allowed values. "
     },
@@ -115,7 +115,7 @@
       "column": "N",
       "field-name": "Site Type Code",
       "description": "The general type of site associated with the installation. ",
-      "format-rules": "Must be one of the following codes <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>U</td><td>Underground (e.g. a mine or a subway)</td></tr><tr><td>O</td><td>Outdoor (e.g. a tower or rooftop)</td></tr><tr><td>I</td><td>Indoor (e.g. a stadium or office)</td></tr></tbody></table>",
+      "format-rules": "Must be one of the following codes <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Site type</th></tr></thead><tbody><tr><td>U</td><td>Underground (e.g. a mine or a subway)</td></tr><tr><td>O</td><td>Outdoor (e.g. a tower or rooftop)</td></tr><tr><td>I</td><td>Indoor (e.g. a stadium or office)</td></tr></tbody></table>",
       "example-data": "O",
       "error-description": "The Site Type Code is not input as CAPS, is missing or is not an accepted Site Type Code value. "
     },
@@ -262,7 +262,7 @@
       "field-name": "Tx Antenna Type Code",
       "description": "The type of antenna associated with a transmitting radio installation.",
       "required-when": "This field is required when G - Station type is FX and S - Tx Channel Frequency is greater than 0. ",
-      "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Type</th></tr></thead><tbody><tr><td>AAS</td><td>Active antenna systems</td></tr><tr><td>NAC</td><td>Non-AAS correlated</td></tr><tr><td>NAU</td><td>Non-AAS uncorrelated</td></tr></tbody></table><br> If deploying a hybrid mode, enter NAC.  ",
+      "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Antenna type</th></tr></thead><tbody><tr><td>AAS</td><td>Active antenna systems</td></tr><tr><td>NAC</td><td>Non-AAS correlated</td></tr><tr><td>NAU</td><td>Non-AAS uncorrelated</td></tr></tbody></table><br> If deploying a hybrid mode, enter NAC.  ",
       "example-data": "NAU",
       "error-description": "The Tx Antenna Type Code is not input as CAPS, is missing or is not an accepted Antenna Type Code value. "
     },
@@ -271,7 +271,7 @@
       "field-name": "Rx Antenna Type Code",
       "description": "The type of antenna associated with a receiving radio installation.",
       "required-when": "This field is required when G - Station type is FX and T - Rx Channel Frequency is greater than 0. ",
-      "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Type</th></tr></thead><tbody><tr><td>AAS</td><td>Active antenna systems</td></tr><tr><td>NAC</td><td>Non-AAS correlated</td></tr><tr><td>NAU</td><td>Non-AAS uncorrelated</td></tr></tbody></table><br> If deploying a hybrid mode, enter NAC.  ",
+      "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Antenna type</th></tr></thead><tbody><tr><td>AAS</td><td>Active antenna systems</td></tr><tr><td>NAC</td><td>Non-AAS correlated</td></tr><tr><td>NAU</td><td>Non-AAS uncorrelated</td></tr></tbody></table><br> If deploying a hybrid mode, enter NAC.  ",
       "example-data": "NAU",
       "error-description": "The Rx Antenna Type Code is not input as CAPS, is missing or is not an accepted Antenna Type Code value. "
     },
@@ -352,7 +352,7 @@
       "field-name": "Tx Omnidirectional Antenna Pattern Indicator",
       "description": "Whether the transmitter antenna is omnidirectional or directional. ",
       "required-when": "This field is required when S - Tx Channel Frequency is greater than 0. ",
-      "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table>",
+      "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Antenna pattern</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table>",
       "example-data": "D",
       "error-description": "The Tx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
       "note": "An error in this field may also give errors for the following fields: <ul><li><a>AQ - Tx antenna horizontal beamwidth </a></li> <li><a>AS - Tx antenna vertical beamwidth </a></li> <li><a>AU - Tx antenna azimuth </a></li> <li><a>AW - Tx antenna elevation angle </a></li></ul>"
@@ -362,7 +362,7 @@
       "field-name": "Rx Omnidirectional Antenna Pattern Indicator",
       "description": "Whether the receiver antenna is omnidirectional or directional. ",
       "required-when": "This field is required when T – Rx Channel Frequency is greater than 0. ",
-      "format-rules": "Must be one of the following codes <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table>",
+      "format-rules": "Must be one of the following codes <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Antenna pattern</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table>",
       "example-data": "D",
       "error-description": "The Rx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
       "note": "An error in this field may also give errors for the following fields: <ul><li><a>AR - Rx antenna horizontal beamwidth  </a></li> <li><a>AT - Rx antenna vertical beamwidth </a></li> <li><a>AV - Rx antenna azimuth </a></li> <li><a>AX - Rx antenna elevation angle </a></li></ul>"
