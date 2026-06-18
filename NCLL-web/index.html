@@ -211,6 +211,14 @@ text-overflow: ellipsis;
 overflow: hidden;
 }
 }
+/* Headings in wells */
+.no-top {
+	margin-top: 0;
+}
+
+.image-3900 {
+    width: 590px;
+}
 </style>
 <style>.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
 .MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
@@ -942,10 +950,10 @@ Skip to "About this site"
 <div class="sticky-nav-container">
 <div class="custom-tabs small">
 <ul class="tab-nav list-inline small" role="tablist">
-<li role="presentation"><button aria-controls="tab1-content" aria-selected="true" class="active" id="tab1-btn" role="tab">Overview</button></li>
-<li role="presentation"><button aria-controls="tab2-content" aria-selected="false" id="tab2-btn" role="tab">About NCLL</button></li>
+<li role="presentation"><button aria-controls="tab1-content" aria-selected="true" class="active" id="tab1-btn" role="tab">About NCLL</button></li>
 <li role="presentation"><button aria-controls="tab6-content" aria-selected="false" id="tab6-btn" role="tab">Bands</button></li>
-<li role="presentation"><button aria-controls="tab5-content" aria-selected="false" id="tab5-btn" role="tab">Licensing process</button></li>
+<li role="presentation"><button aria-controls="tab5-content" aria-selected="false" id="tab5-btn" role="tab">How to apply</button></li>
+<li role="presentation"><button aria-controls="tab2-content" aria-selected="false" id="tab2-btn" role="tab">Licensee obligations</button></li>
 <li role="presentation"><button aria-controls="tab3-content" aria-selected="false" id="tab3-btn" role="tab">FAQ</button></li>
 <li role="presentation"><button aria-controls="tab4-content" aria-selected="false" id="tab4-btn" role="tab">Resources</button></li>
 <!-- Note that the tabs are not in numerical order. This is because of URLs in the NCLL portal that reference #tab3-content -->
@@ -956,11 +964,24 @@ Skip to "About this site"
 <div class="tab-content">
 <div aria-labelledby="tab1-btn" class="tab-pane active" id="tab1-content" role="tabpanel">
 <div class="div_tab_bg">
+
+<h2>About NCLL</h2>
 <p>Learn about non-competitive local licensing policies, technical rules and the application process. If you would like to apply, please go directly to the <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/NCL">
 	Non-competitive local licensing services</a> page.</p>
-<h2>Overview</h2>
+
+<hr>
+<h3>On this page</h3>
+<ul>
+<li><a href="#Overview">Overview</a></li>
+<li><a href="#Benefits">Benefits</a></li>
+<li><a href="#Use_cases">Use cases</a></li>
+<li><a href="#Key-features">Key features of the NCLL framework</a></li>
+<li><a href="#NCLL_spectrum_browser">NCLL spectrum browser</a></li>
+<li><a href="#Licence_fees">Licence fees</a></li>
+</ul>
 <hr>
 
+<h3 id="Overview">Overview</h3>
 <p>Innovation, Science and Economic Development Canada (ISED)
 regulates and oversees the regulation and licensing of radio frequency spectrum
 throughout the country. More information about spectrum, and ISED's role in
@@ -978,9 +999,10 @@ in Canada</a>.</p>
 	 is automated, with an intuitive online portal that streamlines applications, verifies
 	  eligibility, and checks spectrum availability, while ensuring policy compliance and equitable distribution. </p>
 
+<!-- <p>Information on <a href="#Benefits">benefits</a> and <a href="#Use_cases">use cases</a> can be found below. Also available on this site are further information <a href="#tab2-content">about NCLL</a>, the <a href="#tab6-content">bands</a> where it is offered, and the <a href="#tab5-content">licensing process</a>.</p> -->
+
 <div class="well">
-<h2 id="Benefits">Benefits</h2>
-&nbsp;
+<h3  class="no-top" id="Benefits">Benefits</h3>
 
 <div class="row">
 <div class="col-xs-12 col-sm-6 col-md-3"><img alt="" class="img-responsive" src="./files/Simple licence application process.png">
@@ -1014,19 +1036,19 @@ in Canada</a>.</p>
 
 <div class="row">
 <div class="col-md-4"><img alt="People standing near a house, connected to digital infrastructure by surrounding cell towers" class="img-responsive" src="./files/Wireless internet.jpg">
-<h5>Wireless Internet</h5>
+<h4>Wireless Internet</h4>
 
 <p>Deliver wireless Internet services in areas where traditional wired connections are not available or feasible, such as rural or remote locations.</p>
 </div>
 
 <div class="col-md-4"><img alt="People standing near large industrial tanks connected to digital monitoring equipment." class="img-responsive" src="./files/Smart factories.jpg">
-<h5>Smart factories</h5>
+<h4>Smart factories</h4>
 
 <p>Improve efficiency and productivity by connecting industrial Internet of Things (IoT) devices, enabling real-time monitoring and control of machinery and equipment.</p>
 </div>
 
 <div class="col-md-4"><img alt="People in lab coats near a microscope, with a health building and digital technology elements in the background." class="img-responsive" src="./files/Healthcare facilities.jpg">
-<h5>Healthcare facilities</h5>
+<h4>Healthcare facilities</h4>
 
 <p>Improve medical device connectivity for real-time monitoring of healthcare devices and support telemedicine services in remote consultations with healthcare professionals.</p>
 </div>
@@ -1036,19 +1058,19 @@ in Canada</a>.</p>
 
 <div class="row">
 <div class="col-md-4"><img alt="Person using a touchscreen with a graph, near a train and construction crane." class="img-responsive" src="./files/Port and train operations.jpg">
-<h5>Port and train operations</h5>
+<h4>Port and train operations</h4>
 
 <p>Optimize cargo handling processes and increase throughput by tracking container, crane automation, and vehicle management.</p>
 </div>
 
 <div class="col-md-4"><img alt="People attending a presentation, with large screens showing charts and text, a graduation cap, and a VR headset nearby." class="img-responsive" src="./files/Educational campuses.jpg">
-<h5>Educational campuses</h5>
+<h4>Educational campuses</h4>
 
 <p>Implement campus-wide connectivity, remote learning support, and immersive educational experiences using augmented reality (AR) and virtual reality (VR) technologies.</p>
 </div>
 
 <div class="col-md-4"><img alt="Person operating a digital control panel near automated farming equipment, with rows of plants and a robotic arm" class="img-responsive" src="./files/Smart agriculture.jpg">
-<h5>Smart agriculture</h5>
+<h4>Smart agriculture</h4>
 
 <p>Optimize resources and increase yields by deploying wireless networks for precision farming applications, including crop monitoring, irrigation control, and livestock management.</p>
 </div>
@@ -1058,68 +1080,48 @@ in Canada</a>.</p>
 
 <div class="row">
 <div class="col-md-4"><img alt="Person monitoring control panels in a facility with large industrial structures and including silos." class="img-responsive" src="./files/Mining and extraction.jpg">
-<h5>Mining and extraction</h5>
+<h4>Mining and extraction</h4>
 
 <p>Improve productivity and worker safety in challenging environments by establishing wireless networks to enable remote monitoring of equipment, autonomous vehicles, and safety systems.</p>
 </div>
 
 <div class="col-md-4"><img alt="Person working on a laptop near a connected digital network system, displaying data on a control panel." class="img-responsive" src="./files/Fixed wireless access (FWA).jpg">
-<h5>Fixed wireless access (FWA)</h5>
+<h4>Fixed wireless access (FWA)</h4>
 
 <p>Deliver wireless connectivity to homes and small businesses.</p>
 </div>
 
 <div class="col-md-4"><img alt="Person holding a mobile device, standing near a sports stadium surrounded by cell towers." class="img-responsive" src="./files/Enhanced Mobile Broadband.jpg"> <!-- Image needs to be updated -->
-<h5>Enhanced Mobile Broadband </h5>
+<h4>Enhanced Mobile Broadband </h4>
 
 <p>Deliver high-speed data and video streaming in both indoor and outdoor settings, offering effective solutions for enhancing wireless services in crowded areas like stadiums, airports, and venues.</p>
 </div>
 </div>
 
-</div>
-</div>
 
-<div aria-labelledby="tab2-btn" class="tab-pane" id="tab2-content" role="tabpanel">
-<div class="div_tab_bg">
-<h2>About NCLL</h2>
-<p>The NCL licensing framework has several key features.</p>
-<hr>
-
-<h3>On this page</h3>
-<ul>
-<li><a href="#Managed_spectrum">Managed spectrum</a></li>
-<li><a href="#First_come_first_served">First come, first served</a></li>
-<li><a href="#Customized_licence_areas">Customized licence areas</a></li>
-<li><a href="#Flexible_licence_terms">Flexible licence terms</a></li>
-<li><a href="#Deployment_requirements">Deployment requirements</a></li>
-<li><a href="#No_leasing_or_trading">No leasing or trading</a></li>
-<li><a href="#NCLL_spectrum_browser">NCLL spectrum browser</a></li>
-<li><a href="#Licence_fees">Licence fees</a></li>
-</ul>
-<hr>
-
-<h3 id="Managed_spectrum">Managed spectrum </h3>
+<h3 id="Key-features">Key features of the NCLL framework</h3>
+<h4 id="Managed_spectrum">Managed spectrum </h4>
 
 <p>ISED performs technical analyses to facilitate coexistence between NCLL operations and other services.</p>
 
 
-<h3 id="First_come_first_served">First come, first served </h3>
+<h4 id="First_come_first_served">First come, first served </h4>
 
 <p>Completed NCLL applications are reviewed on a first come, first served basis.</p>
 
-<h3 id="Customized_licence_areas">Customized licence areas</h3>
+<h4 id="Customized_licence_areas">Customized licence areas</h4>
 
 <p>A licensee defines a licence area (up to 12 coordinate points anywhere in Canada) during the
      application process. Whether it's a single building, a large mine or farm, or an entire remote
       community, you tell us what area you want to cover.</p>
 
-<h3 id="Flexible_licence_terms">Flexible licence terms </h3>
+<h4 id="Flexible_licence_terms">Flexible licence terms </h4>
 
 <p>Licences can be renewable or temporary.</p>
 <p>Renewable licences can be renewed annually as long as the&nbsp; licence conditions (<a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/r3-spectrum-licences-issued-non-competitive-local-licensing-band-3900-3980-mhz">3900&nbsp;MHz band&nbsp;</a>/&nbsp;<a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/r5-conditions-licence-non-competitive-local-licences-275-2835-ghz-band">28&nbsp;GHz band</a>) are met.</p>
 <p>Temporary licences are available for periods between 1 day and 11 months.</p>
 
-<h3 id="Deployment_requirements">Deployment requirements</h3>
+<h4 id="Deployment_requirements">Deployment requirements</h4>
 
 <p>ISED aims to ensure that spectrum is actually used, and is not warehoused or resold. Any spectrum that is not used will be made available to others.</p>
 <p>As a licensee, you have two years to deploy at least one station and begin operating your network.</p>
@@ -1127,7 +1129,7 @@ in Canada</a>.</p>
     You must start uploading site data within one month of receiving your licence, and continue doing so on a monthly basis.</p>
 
 
-<h3 id="No_leasing_or_trading">No leasing or trading </h3>
+<h4 id="No_leasing_or_trading">No leasing or trading </h4>
 
 <p>A non-competitive local (NCL) licence is only to be used by the licensee. 
     It is not transferable in whole or in part and cannot be leased, traded, 
@@ -1249,11 +1251,11 @@ Example 4: Fee for a two month outdoor event in Ottawa in the 28&nbsp;GHz band
 </section>
 
 
-<h2 id="tab2-content-Licencefeecalculator">Licence fee calculator</h2>
+<h3 id="tab2-content-Licencefeecalculator">Licence fee calculator</h3>
 <div class="well">
 <div class="calculator row">
 <div class="col-xs-12 col-md-6">
-<h2>3900&nbsp;MHz</h2>
+<h4 class="no-top">3900&nbsp;MHz</h4>
 
 <form id="feeFormBelow10">
 <dl>
@@ -1270,11 +1272,11 @@ Example 4: Fee for a two month outdoor event in Ottawa in the 28&nbsp;GHz band
 </dl>
 <button onclick="calculateFee('Below10')" type="button">Calculate fee</button></form>
 
-<div class="result" id="resultBelow10">&nbsp;</div>
+<div class="result" id="resultBelow10" hidden>&nbsp;</div>
 </div>
 
 <div class="col-xs-12 col-md-6">
-<h2>28&nbsp;GHz</h2>
+<h4 class="no-top">28&nbsp;GHz</h4>
 
 <form id="feeFormAbove10">
 <dl>
@@ -1291,22 +1293,115 @@ Example 4: Fee for a two month outdoor event in Ottawa in the 28&nbsp;GHz band
 </dl>
 <button onclick="calculateFee('Above10')" type="button">Calculate fee</button></form>
 
-<div class="result" id="resultAbove10">&nbsp;</div>
-</div>
+<div class="result" id="resultAbove10" hidden>&nbsp;</div>
+
 </div>
 </div>
 
 
+</div>
+
+</div>
+</div>
+
+<div aria-labelledby="tab2-btn" class="tab-pane" id="tab2-content" role="tabpanel">
+<div class="div_tab_bg">
+<h2>Licensee obligations</h2>
+
+<hr>
+<h3>On this page</h3>
+<ul>
+<li><a href="#upload">Upload your site data information</a></li>
+<li><a href="#deploy">Deploy stations</a></li>
+<li><a href="#antenna">Follow the antenna tower siting procedure</a></li>
+<li><a href="#comply_with_safety">Comply with Safety Code 6</a></li>
+<li><a href="#cross-border">Comply with cross-border requirements</a></li>
+<li><a href="#register">Register as a telecommunications provider</a></li>
+<li><a href="#mnc">Obtain a Mobile Network Code (MNC)</a></li>
+</ul>
+<hr>
+<p>Once your licence is granted, you will be responsible for meeting the conditions of licence. These are band-specific and are printed on the licence. They can also be found here:</p>
+<ul>
+    <li>3900&nbsp;MHz: <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/r3-spectrum-licences-issued-non-competitive-local-licensing-band-3900-3980-mhz">R3 — Spectrum Licences issued via Non-Competitive Local Licensing in the Band 3900-3980&nbsp;MHz</a> </li>
+    <li>28&nbsp;GHz: <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/r5-conditions-licence-non-competitive-local-licences-275-2835-ghz-band">R5 – Conditions of licence for non-competitive local licences in the 27.5-28.35&nbsp;GHz band</a> </li>
+</ul>
+<p>The list below is shared for your convenience. It contains some of the key requirements common to all NCL licences, including some from other federal government departments and organizations. This isn't a complete list and it doesn't replace your due diligence, but it includes some important and often-overlooked items.</p>
+
+<h3 id="upload">
+	Upload your site data information
+</h3>
+<p>Within one month of receiving your licence, and continuing on a monthly basis, you will need to provide information about your stations to ISED. Instructions can be found at <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/terrestrial-spectrum-licensing-services/how-submit-monthly-update-technical-data">How to submit a monthly update of technical data</a>.</p>
+<p>If you haven't deployed any stations yet, see instructions at <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data/faq-spectrum-licence-site-data-upload#q15">What if I haven't deployed any stations or am decommissioning stations at the time that my monthly report is due?</a></p>
+<p>If you have previously submitted site data and you haven't made any changes to your stations since then, see instructions at <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data/faq-spectrum-licence-site-data-upload#q16">What if I don't have any changes to the data that was previously submitted?</a></p>
+
+
+<h3 id="deploy">
+	Deploy stations
+	</h3>
+	<p>You must deploy at least one station within two years of the effective date of your licence, and start using your network to continuously provide service. This can be for your own internal purposes, or to provide cellular service or wireless Internet service to paying subscribers, or both.</p>
+
+<h3 id="antenna">
+	Follow the antenna tower siting procedure
+	</h3>
+	<p>If you are placing or changing any outdoor antennas, you will need to follow the rules provided in <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/procedures/client-procedures-circulars-cpc/cpc-2-0-03-radiocommunication-and-broadcasting-antenna-systems">CPC-2-0-03 — Radiocommunication and Broadcasting Antenna Systems</a>. This includes the following:</p>
+	<ul>
+		<li>Following the rules provided by the appropriate land-use authority </li>
+		<li>Placing antennas on existing structures where possible instead of building new ones (unless the land-use authority requires otherwise) </li>
+		<li>Monitoring and reporting on the amount of radio frequency energy they emit (see <a href="#comply_with_safety">Comply with Safety Code&nbsp;6</a>) </li>
+	</ul>
+	<p>Owners of existing towers are required to allow other organizations to lease space on their towers. For more information see <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/procedures/client-procedures-circulars-cpc/cpc-2-0-17-conditions-licence-mandatory-roaming-and-antenna-tower-and-site-sharing-and-prohibit">CPC-2-0-17 – Conditions of Licence for Mandatory Roaming and Antenna Tower and Site Sharing and to Prohibit Exclusive Site Arrangements</a>.</p>
+
+
+<h3 id="comply_with_safety">
+	Comply with Safety Code&nbsp;6
+	</h3>
+	<p>Health Canada's Safety Code&nbsp;6 guidelines provide limits for safe human exposure to radio frequency energy. Your equipment must comply with Safety Code&nbsp;6 at all times. Note that it's not just your own emissions that you have to be aware of: Safety Code&nbsp;6 requires you to take into account the combined effects of nearby installations within the local radio environment.</p>
+	<p>For more information see <a href="https://www.canada.ca/en/health-canada/services/publications/health-risks-safety/limits-human-exposure-radiofrequency-electromagnetic-energy-range-3-300.html">Limits of Human Exposure to Radiofrequency Electromagnetic Energy in the Frequency Range from 3 kHz to 300&nbsp;GHz - Canada.ca</a></p>
+
+
+<h3 id="cross-border">
+	Comply with cross-border requirements
+	</h3>
+	<p>If your licence area is close to the Canada-U.S. border, you may need to coordinate with operators on the other side of the border in order to reduce the risk of radio interference. Arrangements between ISED and the U.S.'s Federal Communications Commission (FCC) are made on a band-by-band basis, and you will be required to abide by any arrangements that we make.</p>
+	<p>For the 3900&nbsp;MHz band, see <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/3900-mhz-ncll-cross-border-best-practices">3900&nbsp;MHz NCLL cross-border best practices</a>.</p>
+	<p>For the 28&nbsp;GHz band, see the <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/node/2359#s10">International coordination</a> section in SRSP-522.</p>
+
+
+<h3 id="register">
+	Register as a telecommunications provider
+	</h3>
+	<p>If you are offering or providing telecommunications services to the public, you may need to register with the Canadian Radio-television and Telecommunications Commission (CRTC).</p>
+	<p>See <a href="https://crtc.gc.ca/eng/comm/telecom/registr.htm">Register as a Telecommunications provider</a> to register.</p>
+
+<h3 id="mnc">
+	Obtain a Mobile Network Code (MNC)
+	</h3>
+	<p>If you operate equipment that requires an International Mobile Subscription Identity (IMSI) such as LTE or 5G systems, you may qualify for a Canadian-administered Mobile Network Code (MNC) assigned by the <a href="https://cnac.ca/index.htm">Canadian Numbering Administration Consortium (CNAC)</a>. A Canadian-administered MNC can be used with Canada's Mobile Country Code (302).</p>
+	<p>To see if you qualify for a Canadian MNC, see section 7 of the <a href="https://crtc.gc.ca/public/cisc/cn/CNODGL0004E.docx">Canadian International Mobile Subscription Identity (IMSI) Assignment Guideline</a>. Note: this is a DOCX document and is in English only.</p>
+	<p>If you plan to operate a private network and don't qualify for a Canadian-administered MNC, you can consider using Mobile Country Code (MCC) 999, which is a globally shared country code for private networks. With this country code, you can use an MNC of your choice. For more information, see Appendix III of <a href="https://www.itu.int/itu-t/recommendations/rec.aspx?rec=E.212">Recommendation ITU-T E.212 (06/2024)</a>.</p>
 
 
 
 </div>
+
 </div>
+
 
 <div aria-labelledby="tab6-btn" class="tab-pane" id="tab6-content" role="tabpanel">
 <div class="div_tab_bg">
 
 <h2 id="Bands">Bands</h2>
+
+<hr>
+<h3>On this page</h3>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#3900_MHz_band">3900 MHz band</a></li>
+<li><a href="#28_GHz_band">28 GHz band</a></li>
+</ul>
+<hr>
+
+<h3 id="overview">Overview</h3>
 <p>NCLL is currently available in the following bands:</p>
 
 <table class="table table-bordered">
@@ -1343,7 +1438,7 @@ Example 4: Fee for a two month outdoor event in Ottawa in the 28&nbsp;GHz band
 </table>
 
 <section>
-<details><summary id="3900_MHz_band">3900&nbsp;MHz band</summary>
+<h3 id="3900_MHz_band">3900&nbsp;MHz band</h3>
 <p>The 3900&nbsp;MHz band, 3900–3980&nbsp;MHz, lies within the mid-band frequencies.
      It comes with decent propagation characteristics and is well suited for
       high-speed applications. This makes it ideal for rural broadband as well
@@ -1351,7 +1446,7 @@ Example 4: Fee for a two month outdoor event in Ottawa in the 28&nbsp;GHz band
         resource extraction and agriculture.</p>
         
 <h4>Band plan</h4>
-<img class="img-responsive" alt="The 3900&nbsp;MHz band plan is composed of 8 frequency blocks of 10 MHz from 3900 to 3980 MHz (A1 to A8)." src="./files/3900 MHz band plan.jpeg">
+<img class="img-responsive image-3900" alt="The 3900&nbsp;MHz band plan is composed of 8 frequency blocks of 10 MHz from 3900 to 3980 MHz (A1 to A8)." src="./files/3900 MHz band plan.jpeg" >
 <hr>
 <p>Note that commercial mobile wireless services may be operating in the neighbouring 3800&nbsp;MHz band.
 	Any NCLL operations on block A1 (3900-3910&nbsp;MHz) must not cause interference to those services but will not be protected from them.</p>
@@ -1438,11 +1533,11 @@ Example 4: Fee for a two month outdoor event in Ottawa in the 28&nbsp;GHz band
     <li>EIRP of 50 watts per 10&nbsp;MHz frequency block, or 100 watts for 20&nbsp;MHz, with antenna height limit of 50 m </li>
 </ol>
 <p>You can apply for multiple licences to cover larger areas.</p>
-</details>
+
 </section>
 
 <section>
-<details><summary id="28_GHz_band">28&nbsp;GHz band</summary>
+<h3 id="28_GHz_band">28&nbsp;GHz band</h3>
 <p>The 28&nbsp;GHz band, 27.5–28.35&nbsp;GHz, lies within the high-band millimetre-wave (“mmWave”) frequencies. 
     It has very large bandwidth capacity over very short distances, allowing for improved delivery of
      high resolution data. This allows operators to provide high-density connectivity for real-time communication 
@@ -1520,7 +1615,7 @@ Example 4: Fee for a two month outdoor event in Ottawa in the 28&nbsp;GHz band
     <li>High power: EIRP of 75 dBm/100MHz, with antenna height limit of 50 m </li>
 </ol>
 <p>You can apply for multiple licences to cover larger areas.</p>
-</details>
+
 </section>
 
 </div>
@@ -1529,6 +1624,19 @@ Example 4: Fee for a two month outdoor event in Ottawa in the 28&nbsp;GHz band
 <div aria-labelledby="tab3-btn" class="tab-pane" id="tab3-content" role="tabpanel">
 <div class="div_tab_bg">
 <h2 id="FAQ">FAQ</h2>
+
+<hr>
+<h3>On this page</h3>
+<ul>
+<li><a href="#General">General</a></li>
+<li><a href="#Fees_and_invoices">Fees and invoices</a></li>
+<li><a href="#Application_Process">Application process</a></li>
+<li><a href="#Equipment">Equipment</a></li>
+<li><a href="#Technical_requirements">Technical requirements</a></li>
+<li><a href="#Licence_areas">Licence areas</a></li>
+<li><a href="#NCLL_portal">NCLL portal</a></li>
+</ul>
+<hr>
 
 <h3 id="General">General</h3>
 
@@ -1937,7 +2045,7 @@ Are there concerns if my area crosses into another tier area?
 </section>
 <!--SECTION 7-->
 
-<h3>NCLL portal</h3>
+<h3 id="NCLL_portal">NCLL portal</h3>
 
 <section>
 <details><summary>
@@ -2147,7 +2255,17 @@ What is the summary report?
 <div aria-labelledby="tab4-btn" class="tab-pane" id="tab4-content" role="tabpanel">
 <div class="div_tab_bg">
 <h2>Resources</h2>
-<h3>Training materials </h3>
+
+<hr>
+<h3>On this page</h3>
+<ul>
+<li><a href="#Training_materials">Training materials</a></li>
+<li><a href="#Forms">Forms</a></li>
+<li><a href="#Equipment_certification">Equipment certification</a></li>
+<li><a href="#Licensing_frameworks">Licensing frameworks, standards and procedures</a></li>
+</ul>
+<hr>
+<h3 id="Training_materials">Training materials </h3>
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<h4 style="margin-top:0">Training videos</h4>
@@ -2173,7 +2291,7 @@ What is the summary report?
 	</div>
 </div>
 
-<h3>Forms</h3>
+<h3 id="Forms">Forms</h3>
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/NCL">NCLL services</a>
@@ -2187,7 +2305,7 @@ What is the summary report?
 	</div>
 </div>
 
-<h3>Equipment certification </h3>
+<h3 id="Equipment_certification">Equipment certification </h3>
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<a href="https://ised-isde.canada.ca/site/certification-engineering-bureau/en/wireless-program">Wireless certification</a>
@@ -2207,7 +2325,7 @@ What is the summary report?
 	</div>
 </div>
 
-<h3>Licensing frameworks, standards and procedures related to NCLL </h3>
+<h3 id="Licensing_frameworks">Licensing frameworks, standards and procedures related to NCLL </h3>
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/decision-non-competitive-local-licensing-framework-including-spectrum-3900-3980-mhz-band-and">SPB-001-23</a>
@@ -2263,7 +2381,18 @@ What is the summary report?
 
 <div aria-labelledby="tab5-btn" class="tab-pane" id="tab5-content" role="tabpanel">
 <div class="div_tab_bg">
-<h2 id="Licensing_process">Licensing process</h2>
+<h2 id="Licensing_process">How to apply</h2>
+
+<hr>
+<h3>On this page</h3>
+<ul>
+<li><a href="#step1">Step 1: Plan your application</a></li>
+<li><a href="#step2">Step 2: Ensure you have a web profile</a></li>
+<li><a href="#step3">Step 3: Fill in the application form</a></li>
+<li><a href="#step4">Step 4: Pay your invoice</a></li>
+<li><a href="#further_reading">Further reading</a></li>
+</ul>
+<hr>
 
 <p>NCLL is currently available in the following bands:</p>
 <ul>
@@ -2272,150 +2401,51 @@ What is the summary report?
 </ul>
 <p>Before you apply, please be sure you understand the obligations of holding an NCL licence.</p>
 
-<h3>On this page</h3>
-<ul>
-<li><a href="#how_to_apply">How to apply</a></li>
-<li><a href="#obligations">Obligations of licensees</a></li>
-<li><a href="#further_reading">Further reading</a></li>
-</ul>
-<hr>
-
-<h3 id="how_to_apply">How to apply</h3>
 <p>To apply for an NCL licence, these are the steps to follow.</p>
 
-<section>
-<details><summary>
-	Step 1: Plan your application
-	</summary>
+<h3 id="step1">Step 1: Plan your application</h3>
 	<p>Prepare the information you need for the application form. Determine these key features of an NCL licence:</p>
 
-<h5>Frequency band</h5>
+<h4>Frequency band</h4>
 <p>If you'd like to see which bands and frequency blocks may be available in your desired licence area, please use the <a href="https://smp-pgs.ic.gc.ca/NCLLBrowser/index">Non-Competitive Local Licensing Spectrum Browser</a>.</p>
-<h5>Amount of bandwidth required and frequency block if applicable </h5>
+<h4>Amount of bandwidth required and frequency block if applicable </h4>
 <p>If you want two frequency blocks that aren't contiguous (e.g. A2 and A4), then you must submit two separate applications.</p>
 <p>You can request to have a specific frequency block or have us automatically select one for you. Note that large mobile service providers are not eligible to apply for blocks A5-A8 (i.e. 3940-3980&nbsp;MHz) or blocks AA9-AA17 (i.e. 27.90 to 28.35&nbsp;GHz).</p>
 
-<h5>Licence duration</h5>
+<h4>Licence duration</h4>
 <p>You have a choice of requesting a renewable or temporary licence.</p>
 <p><b>Renewable: </b>Expires each year on March 31 with the option to renew.</p>
 <p><b>Temporary: </b>Can be from 1 day to 11 months.</p>
 <p>You can apply for a licence 90 days in advance of the start date.</p>
 
-<h5>Licence area</h5>
+<h4>Licence area</h4>
 <p>Identify the location you wish to licence. You can use the NCLL spectrum browser tool on the NCLL services page to draw your area and acquire a list of coordinates in WKT format. Alternatively, the application form also allows you to enter a list of coordinates or to draw your licence area directly on an interactive map.</p>
-</details>
-</section>
 
-<section>
-<details><summary>
+<h3 id="step2">
 	Step 2: Ensure you have a web profile
-	</summary>
+</h3>
 	<p>If you do not already have one, you can create it by selecting <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/online-registration/create-your-web-profile-registration-type">Create your Web Profile – Registration Type</a>. You should receive a response within 5 business days.</p>
-</details>
-</section>
 
-<section>
-<details><summary>
+
+<h3 id="step3">
 	Step 3: Fill in the application form
-	</summary>
+	</h3>
 	<p>From the <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/NCL">NCLL services page</a>, navigate to the NCLL portal then log in with your web profile, and select "Start new application". Fill in the information you compiled at step 1 above. Your progress is saved automatically as you proceed, and you can find draft applications in the "Draft applications" section of the portal.</p>
-</details>
-</section>
 
-<section>
-<details><summary>
+<h3 id="step4">
 	Step 4: Pay your invoice
-	</summary>
+	</h3>
 <p>If your application is approved, then we will send you an invoice, and you will receive your licence once full payment is received.</p>
 <p>If your application is not approved, we will keep you informed.</p>
-</details>
-</section>
-
-<h3 id="obligations">Obligations of licensees</h3>
-<p>Once your licence is granted, you will be responsible for meeting the conditions of licence. These are band-specific and are printed on the licence. They can also be found here:</p>
-<ul>
-    <li>3900&nbsp;MHz: <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/r3-spectrum-licences-issued-non-competitive-local-licensing-band-3900-3980-mhz">R3 — Spectrum Licences issued via Non-Competitive Local Licensing in the Band 3900-3980&nbsp;MHz</a> </li>
-    <li>28&nbsp;GHz: <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/conditions-licence-appendices/r5-conditions-licence-non-competitive-local-licences-275-2835-ghz-band">R5 – Conditions of licence for non-competitive local licences in the 27.5-28.35&nbsp;GHz band</a> </li>
-</ul>
-<p>The list below is shared for your convenience. It contains some of the key requirements common to all NCL licences, including some from other federal government departments and organizations. This isn't a complete list and it doesn't replace your due diligence, but it includes some important and often-overlooked items.</p>
-
-<section>
-<details><summary>
-	Upload your site data information
-	</summary>
-<p>Within one month of receiving your licence, and continuing on a monthly basis, you will need to provide information about your stations to ISED. Instructions can be found at <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/terrestrial-spectrum-licensing-services/how-submit-monthly-update-technical-data">How to submit a monthly update of technical data</a>.</p>
-<p>If you haven't deployed any stations yet, see instructions at <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data/faq-spectrum-licence-site-data-upload#q15">What if I haven't deployed any stations or am decommissioning stations at the time that my monthly report is due?</a></p>
-<p>If you have previously submitted site data and you haven't made any changes to your stations since then, see instructions at <a href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system-data/faq-spectrum-licence-site-data-upload#q16">What if I don't have any changes to the data that was previously submitted?</a></p>
-</details>
-</section>
-
-<section>
-<details><summary>
-	Deploy stations
-	</summary>
-	<p>You must deploy at least one station within two years of the effective date of your licence, and start using your network to continuously provide service. This can be for your own internal purposes, or to provide cellular service or wireless Internet service to paying subscribers, or both.</p>
-</details>
-</section>
-
-<section>
-<details><summary>
-	Follow the antenna tower siting procedure
-	</summary>
-	<p>If you are placing or changing any outdoor antennas, you will need to follow the rules provided in <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/procedures/client-procedures-circulars-cpc/cpc-2-0-03-radiocommunication-and-broadcasting-antenna-systems">CPC-2-0-03 — Radiocommunication and Broadcasting Antenna Systems</a>. This includes the following:</p>
-	<ul>
-		<li>Following the rules provided by the appropriate land-use authority </li>
-		<li>Placing antennas on existing structures where possible instead of building new ones (unless the land-use authority requires otherwise) </li>
-		<li>Monitoring and reporting on the amount of radio frequency energy they emit (see <a href="#comply_with_safety">Comply with Safety Code&nbsp;6</a>) </li>
-	</ul>
-	<p>Owners of existing towers are required to allow other organizations to lease space on their towers. For more information see <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/procedures/client-procedures-circulars-cpc/cpc-2-0-17-conditions-licence-mandatory-roaming-and-antenna-tower-and-site-sharing-and-prohibit">CPC-2-0-17 – Conditions of Licence for Mandatory Roaming and Antenna Tower and Site Sharing and to Prohibit Exclusive Site Arrangements</a>.</p>
-</details>
-</section>
-
-<section>
-<details><summary id="comply_with_safety">
-	Comply with Safety Code&nbsp;6
-	</summary>
-	<p>Health Canada's Safety Code&nbsp;6 guidelines provide limits for safe human exposure to radio frequency energy. Your equipment must comply with Safety Code&nbsp;6 at all times. Note that it's not just your own emissions that you have to be aware of: Safety Code&nbsp;6 requires you to take into account the combined effects of nearby installations within the local radio environment.</p>
-	<p>For more information see <a href="https://www.canada.ca/en/health-canada/services/publications/health-risks-safety/limits-human-exposure-radiofrequency-electromagnetic-energy-range-3-300.html">Limits of Human Exposure to Radiofrequency Electromagnetic Energy in the Frequency Range from 3 kHz to 300&nbsp;GHz - Canada.ca</a></p>
-</details>
-</section>
-
-<section>
-<details><summary>
-	Comply with cross-border requirements
-	</summary>
-	<p>If your licence area is close to the Canada-U.S. border, you may need to coordinate with operators on the other side of the border in order to reduce the risk of radio interference. Arrangements between ISED and the U.S.'s Federal Communications Commission (FCC) are made on a band-by-band basis, and you will be required to abide by any arrangements that we make.</p>
-	<p>For the 3900&nbsp;MHz band, see <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/3900-mhz-ncll-cross-border-best-practices">3900&nbsp;MHz NCLL cross-border best practices</a>.</p>
-	<p>For the 28&nbsp;GHz band, see the <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/node/2359#s10">International coordination</a> section in SRSP-522.</p>
-</details>
-</section>
-
-<section>
-<details><summary>
-	Register as a telecommunications provider
-	</summary>
-	<p>If you are offering or providing telecommunications services to the public, you may need to register with the Canadian Radio-television and Telecommunications Commission (CRTC).</p>
-	<p>See <a href="https://crtc.gc.ca/eng/comm/telecom/registr.htm">Register as a Telecommunications provider</a> to register.</p>
-</details>
-</section>
-
-<section>
-<details><summary>
-	Obtain a Mobile Network Code (MNC)
-	</summary>
-	<p>If you operate equipment that requires an International Mobile Subscription Identity (IMSI) such as LTE or 5G systems, you may qualify for a Canadian-administered Mobile Network Code (MNC) assigned by the <a href="https://cnac.ca/index.htm">Canadian Numbering Administration Consortium (CNAC)</a>. A Canadian-administered MNC can be used with Canada's Mobile Country Code (302).</p>
-	<p>To see if you qualify for a Canadian MNC, see section 7 of the <a href="https://crtc.gc.ca/public/cisc/cn/CNODGL0004E.docx">Canadian International Mobile Subscription Identity (IMSI) Assignment Guideline</a>. Note: this is a DOCX document and is in English only.</p>
-	<p>If you plan to operate a private network and don't qualify for a Canadian-administered MNC, you can consider using Mobile Country Code (MCC) 999, which is a globally shared country code for private networks. With this country code, you can use an MNC of your choice. For more information, see Appendix III of <a href="https://www.itu.int/itu-t/recommendations/rec.aspx?rec=E.212">Recommendation ITU-T E.212 (06/2024)</a>.</p>
-</details>
-</section>
 
 <h3 id="further_reading">Further reading</h3>
 <p>You may also be interested in <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/procedures/client-procedures-circulars-cpc/cpc-2-1-31-licence-application-procedures-under-non-competitive-local-ncl-licensing-framework">CPC-2-1-31</a> — Licence Application Procedures under the Non-Competitive Local (NCL) Licensing Framework.</p>
 
-</div>
+
 </div>
 
 </div>
+
 </article>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -2524,6 +2554,7 @@ const startDateInput = document.getElementById('startDate' + type).value;
 const endDateInput = document.getElementById('endDate' + type).value;
 const resultElement = document.getElementById('result' + type);
 if (isNaN(region) || isNaN(spectrum) || isNaN(area)) {
+resultElement.hidden = false;
 resultElement.innerHTML = '<p>Please fill in all required fields with valid values.';
 return;
 }
@@ -2564,24 +2595,25 @@ if (months < 12) {
 proratedFee = Math.max(proratedFee, 4 * months);
 }
 proratedFee = Math.round(proratedFee * 100) / 100; // Round to nearest cent
-let resultHTML = `<p>Annual Fee: $${annualFee.toFixed(2)}`;
+let resultHTML = `<p>Annual fee: $${annualFee.toFixed(2)}`;
 if (months !== 12) {
-resultHTML += `<p>Prorated Fee: $${proratedFee.toFixed(2)}
+resultHTML += `<p>Prorated fee: $${proratedFee.toFixed(2)}
 <p>Prorated for ${months} month(s)`;
 }
-resultHTML += `<p>Calculation: $${region.toFixed(3)} per&nbsp;MHz per km² × ${spectrum.toFixed(1)}&nbsp;MHz × ${area.toFixed(1)} km²`;
+resultHTML += `<p>Calculation: $${region.toFixed(3)} per&nbsp;MHz per&nbsp;km² × ${spectrum.toFixed(1)}&nbsp;MHz × ${area.toFixed(1)}&nbsp;km²`;
 if (annualFee === 48) {
 resultHTML += `<p>Note: Minimum annual fee of $48 applied.`;
 }
 if (months < 12 && proratedFee === 4 * months) {
 resultHTML += `<p>Note: Minimum monthly fee of $4 applied for partial year.`;
 }
+resultElement.hidden = false;
 resultElement.innerHTML = resultHTML;
 }
 </script></div></div>
 
 </section>
-
+</div>
 </div>
 
 
