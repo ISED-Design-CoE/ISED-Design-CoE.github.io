@@ -1272,7 +1272,7 @@ Example 4: Fee for a two month outdoor event in Ottawa in the 28&nbsp;GHz band
 </dl>
 <button onclick="calculateFee('Below10')" type="button">Calculate fee</button></form>
 
-<div class="result" id="resultBelow10">&nbsp;</div>
+<div class="result" id="resultBelow10" hidden>&nbsp;</div>
 </div>
 
 <div class="col-xs-12 col-md-6">
@@ -1293,7 +1293,7 @@ Example 4: Fee for a two month outdoor event in Ottawa in the 28&nbsp;GHz band
 </dl>
 <button onclick="calculateFee('Above10')" type="button">Calculate fee</button></form>
 
-<div class="result" id="resultAbove10">&nbsp;</div>
+<div class="result" id="resultAbove10" hidden>&nbsp;</div>
 
 </div>
 </div>
@@ -2554,6 +2554,7 @@ const startDateInput = document.getElementById('startDate' + type).value;
 const endDateInput = document.getElementById('endDate' + type).value;
 const resultElement = document.getElementById('result' + type);
 if (isNaN(region) || isNaN(spectrum) || isNaN(area)) {
+resultElement.hidden = false;
 resultElement.innerHTML = '<p>Please fill in all required fields with valid values.';
 return;
 }
