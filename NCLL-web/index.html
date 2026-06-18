@@ -2607,6 +2607,7 @@ resultHTML += `<p>Note: Minimum annual fee of $48 applied.`;
 if (months < 12 && proratedFee === 4 * months) {
 resultHTML += `<p>Note: Minimum monthly fee of $4 applied for partial year.`;
 }
+resultElement.hidden = false;
 resultElement.innerHTML = resultHTML;
 }
 </script></div></div>
