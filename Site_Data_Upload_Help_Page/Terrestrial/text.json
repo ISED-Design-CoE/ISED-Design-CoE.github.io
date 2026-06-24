@@ -48,7 +48,7 @@
       "column": "F",
       "field-name": "Station location",
       "description": "The location of the station. This field is also used for NOCHANGES and NOSTATIONS. ",
-      "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or all your stations are being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty",
+      "format-rules": "<b>If you currently have a station</b> <br> If you currently have a station deployed, enter the location of your station (maximum length of 63 characters). <br><br> <b>If you have no changes to stations</b> <br> If you have no changes to your station information, enter “NOCHANGES” and leave columns G to BB empty. <br> <br><b>If you have no stations deployed</b> <br> If you have no station deployed or all your stations are being decommissioned, enter “NOSTATIONS” and leave columns G to BB empty.",
       "example-data": "WR0123 - Strandherd Repeater Site ",
       "error-description": "The Station Location is missing or exceeds the character limit.",
       "note": "An error in this field may also introduce errors in the following fields: <ul><li><a href=\"\">L – Latitude </a></li><li><a href=\"\">M – Longitude </a></li><li><a href=\"\">AD – Download resource allocation </a></li></ul>"
