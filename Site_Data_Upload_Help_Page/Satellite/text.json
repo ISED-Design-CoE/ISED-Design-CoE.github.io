@@ -41,7 +41,7 @@
       "field-name": "E-mail address",
       "description": "The email address of the person who may be contacted. ",
       "format-rules": "<ul><li>Maximum length 254 characters </li><li>For multiple email addresses, separate them with commas</li></ul>",
-      "example-data": "john.smith@mail.com ",
+      "example-data": "john.smith@mail.com,jane.brown@mail.com",
       "error-description": "The E-mail Address is missing or exceeds the character limit. "
     },
     "TR6": {
@@ -80,7 +80,7 @@
     },
     "TR10": {
       "column": "J",
-      "field-name": "Filter Code",
+      "field-name": "Filter code",
       "description": "This field is used differently for other services, where it is known as Physical Cell ID. For satellite it is the filter code for any earth station operating in the 3700 to 4200 MHz band.",
       "required-when": "Required when your earth station is operating in the 3700 to 4200 MHz band.",
       "format-rules": "Must be one of the following filter codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>0</td><td>Non-Transitioned</td></tr><tr><td>1</td><td>Transitioned</td></tr><tr><td>2</td><td>New</td></tr></tbody></table>",
@@ -422,7 +422,7 @@
       "column": "AW",
       "field-name": "Tx Antenna Elevation Angle",
       "description": "The transmitter antenna’s vertical elevation angle of the main lobe with reference to the horizontal ground in degrees. Includes any mechanical and electrical beam tilt.",
-      "required-when": "This field is required when S - Tx Channel Frequency is greater than 0 and AO - Tx antenna omnidirectional pattern indicator is D (Directional). ",
+      "required-when": "This field is required when S - Tx Channel Frequency is greater than 0 and AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "Must be a number from -90.0 to 90.0 (degrees).",
       "example-data": "0.5",
       "error-description": "The Tx Antenna Elevation Angle is missing or not within the expected range. "
