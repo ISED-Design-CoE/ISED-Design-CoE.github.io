@@ -123,7 +123,7 @@
       "column": "O",
       "field-name": "Structure height",
       "description": "The total height (m) above ground level of an outdoor structure, such as a tower or rooftop, where antennas are mounted. This structure might also be shared with other radio installations. ",
-      "required-when": "This field is required only when N - Site type code is O.",
+      "required-when": "This field is required only when N - Site Type Code is O.",
       "format-rules": "<ul><li>Must be a number</li><li>Must be greater than the antenna height</li><li>Must be between 1 to 600 (m)</li><li>For equipment mounted on top of a building or its boundaries, add together the total height of the building and the antenna’s supporting structure.</li></ul>",
       "example-data": "15",
       "error-description": "The Structure Height is missing or not within the expected range of values. ",
@@ -355,23 +355,23 @@
       "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Antenna pattern</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table>",
       "example-data": "D",
       "error-description": "The Tx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
-      "note": "An error in this field may also give errors for the following fields: <ul><li><a>AQ - Tx antenna horizontal beamwidth </a></li> <li><a>AS - Tx antenna vertical beamwidth </a></li> <li><a>AU - Tx antenna azimuth </a></li> <li><a>AW - Tx antenna elevation angle </a></li></ul>"
+      "note": "An error in this field may also give errors for the following fields: <ul><li><a>AQ - Tx Antenna Horizontal Beam </a></li> <li><a>AS - Tx Antenna Vertical Beam </a></li> <li><a>AU - Tx Antenna Azimuth </a></li> <li><a>AW - Tx Antenna Elevation Angle </a></li></ul>"
     },
     "TR42": {
       "column": "AP",
       "field-name": "Rx Omnidirectional Antenna Pattern Indicator",
       "description": "Whether the receiver antenna is omnidirectional or directional. ",
-      "required-when": "This field is required when T – Rx Channel Frequency is greater than 0. ",
+      "required-when": "This field is required when T - Rx Channel Frequency is greater than 0. ",
       "format-rules": "Must be one of the following codes <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Antenna pattern</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table>",
       "example-data": "D",
       "error-description": "The Rx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
-      "note": "An error in this field may also give errors for the following fields: <ul><li><a>AR - Rx antenna horizontal beamwidth  </a></li> <li><a>AT - Rx antenna vertical beamwidth </a></li> <li><a>AV - Rx antenna azimuth </a></li> <li><a>AX - Rx antenna elevation angle </a></li></ul>"
+      "note": "An error in this field may also give errors for the following fields: <ul><li><a>AR - Rx Antenna Horizontal Beam </a></li> <li><a>AT - Rx Antenna Vertical Beam </a></li> <li><a>AV - Rx Antenna Azimuth </a></li> <li><a>AX - Rx Antenna Elevation Angle </a></li></ul>"
     },
     "TR43": {
       "column": "AQ",
       "field-name": "Tx Antenna Horizontal Beam",
       "description": "The beam steering angle for AAS (Active Antenna Systems) or the beam width in the horizontal plane for non-AAS. ",
-      "required-when": "This field is required when S - Tx Channel Frequency is greater than 0 and AO - Tx antenna omnidirectional pattern indicator is D (Directional). ",
+      "required-when": "This field is required when S - Tx Channel Frequency is greater than 0 and AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "<b>For AAS</b> <br> Enter the horizontal beam steering angle range around the mean value specified by AU - Tx Antenna Azimuth. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the horizontal plane of the main lobe for the transmitter antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "120 ",
       "error-description": "The Tx Antenna Horizontal Beamwidth is missing or not within the expected range. "
@@ -380,7 +380,7 @@
       "column": "AR",
       "field-name": "Rx Antenna Horizontal Beam",
       "description": "The beam steering angle for AAS (Active Antenna Systems) or the beam width in the horizontal plane for non-AAS.  ",
-      "required-when": "This field is required when T - Rx Channel Frequency is greater than 0 and AP - Rx antenna omnidirectional pattern indicator is D (Directional). ",
+      "required-when": "This field is required when T - Rx Channel Frequency is greater than 0 and AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "<b>For AAS</b> <br> Enter the horizontal beam steering angle range around the mean value specified by AV - Rx Antenna Azimuth. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the horizontal plane of the main lobe for the receiver antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "120 ",
       "error-description": "The Rx Antenna Horizontal Beamwidth is missing or not within the expected range. "
@@ -389,7 +389,7 @@
       "column": "AS",
       "field-name": "Tx Antenna Vertical Beam",
       "description": "The beam elevation angle for AAS (Active Antenna Systems) or the beam width in the vertical plane for non-AAS. ",
-      "required-when": "This field is required when S - Tx Channel Frequency is greater than 0 and AO - Tx antenna omnidirectional pattern indicator is D (Directional). ",
+      "required-when": "This field is required when S - Tx Channel Frequency is greater than 0 and AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "<b>For AAS</b> <br> Enter the vertical beam steering angle range around the mean value specified by AW - Tx Antenna Elevation Angle. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the vertical plane of the main lobe for the transmitter antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "135 ",
       "error-description": "The Tx Antenna Vertical Beamwidth is missing or not within the expected range. "
@@ -398,7 +398,7 @@
       "column": "AT",
       "field-name": "Rx Antenna Vertical Beam",
       "description": "The beam elevation angle for AAS (Active Antenna Systems) or the beam width in the vertical plane for non-AAS. ",
-      "required-when": "This field is required when T - Rx Channel Frequency is greater than 0 and AP - Rx antenna omnidirectional pattern indicator is D (Directional). ",
+      "required-when": "This field is required when T - Rx Channel Frequency is greater than 0 and AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "<b>For AAS</b> <br> Enter the vertical beam steering angle range around the mean value specified by AX - Rx Antenna Elevation Angle. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the vertical plane of the main lobe for the receiver antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "135 ",
       "error-description": "The Rx Antenna Vertical Beamwidth is missing or not within the expected range. "
@@ -407,7 +407,7 @@
       "column": "AU",
       "field-name": "Tx Antenna Azimuth",
       "description": "The azimuth (in degrees) of the antenna from true north of the transmitter antenna's direction of maximum radiation.",
-      "required-when": "This field is required when S - Tx Channel Frequency is greater than 0 and AO - Tx antenna omnidirectional pattern indicator is D (Directional). ",
+      "required-when": "This field is required when S - Tx Channel Frequency is greater than 0 and AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "Must be a number from 0.0 to 359.9 (degrees).",
       "example-data": "270 ",
       "error-description": "The Tx Antenna Azimuth is missing or not within the expected range. "
@@ -416,7 +416,7 @@
       "column": "AV",
       "field-name": "Rx Antenna Azimuth",
       "description": "The azimuth (in degrees) of the antenna from true north of the receiver antenna's direction of maximum radiation.",
-      "required-when": "This field is required when T - Rx Channel Frequency is greater than 0 and AP - Rx antenna omnidirectional pattern indicator is D (Directional). ",
+      "required-when": "This field is required when T - Rx Channel Frequency is greater than 0 and AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "Must be a number from 0.0 to 359.9 (degrees).",
       "example-data": "270 ",
       "error-description": "The Rx Antenna Azimuth is missing or not within the expected range. "
@@ -434,7 +434,7 @@
       "column": "AX",
       "field-name": "Rx Antenna Elevation Angle",
       "description": "The receiver antenna’s vertical elevation angle of the main lobe with reference to the horizontal ground in degrees. Includes any mechanical and electrical beam tilt.",
-      "required-when": "This field is required when T - Rx Channel Frequency is greater than 0 and AP - Rx antenna omnidirectional pattern indicator is D (Directional). ",
+      "required-when": "This field is required when T - Rx Channel Frequency is greater than 0 and AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "Must be a number from -90.0 to 90.0 (degrees).",
       "example-data": "0.5",
       "error-description": "The Rx Antenna Elevation Angle is missing or not within the expected range. "
