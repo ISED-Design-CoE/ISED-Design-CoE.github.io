@@ -174,7 +174,7 @@
       "column": "U",
       "field-name": "Tx Radio Hardware Version Identification Number (HVIN)",
       "description": "The transmitting radio’s Hardware Version Identification Number (HVIN) certified by ISED. If the radio is certification-exempt, please provide the manufacturer's radio model number or a system configuration name.",
-      "required-when": "This field is not required for receive-only antennas.",
+      "required-when": "This field is required for any antennas that transmit.",
       "format-rules": "<ul><li>Maximum length 128 characters </li></ul>",
       "example-data": "T99W175MC ",
       "error-description": "The Tx Radio HVIN is missing or exceeds the character limit. "
@@ -183,7 +183,7 @@
       "column": "V",
       "field-name": "Rx Radio Hardware Version Identification Number (HVIN)",
       "description": "The receiving radio’s Hardware Version Identification Number (HVIN) certified by ISED. If the radio is certification-exempt, please provide the manufacturer's radio model number or a system configuration name. ",
-      "required-when": "This field is not required for transmit-only antennas.",
+      "required-when": "This field is required for any antennas that receive.",
       "format-rules": "<ul><li>Maximum length 128 characters </li></ul>",
       "example-data": "T99W175MC",
       "error-description": "The Rx Radio HVIN is missing or exceeds the character limit. "
@@ -240,7 +240,7 @@
       "column": "AC",
       "field-name": "Transmitter TCP–TRP",
       "description": "The Total Radiated Power (TRP) or Total Conducted Power (TCP) in dBm. <br><br> Ensure the value entered is expressed in dBm. Wrong units will cause incorrect representation of power levels, and may be flagged for suspected non-compliance. ",
-      "required-when": "This field is not required for receive-only antennas.",
+      "required-when": "This field is required for any antennas that transmit.",
       "format-rules": "Must be one of the following: <ul><li>Must be a number</li><li>Enter TRP for AAS equipment (as defined in the applicable SRSP)</li><li>Enter TCP for non-AAS equipment</li></ul>",
       "example-data": "21.4",
       "error-description": "The Transmitter TCP or TRP is missing, or not within the expected range. "
@@ -275,7 +275,7 @@
       "column": "AG",
       "field-name": "Tx Number of Antennas",
       "description": "The total number of Tx antennas.",
-      "required-when": "This field is not required for transmit-only antennas. ",
+      "required-when": "This field is required for any antennas that transmit. ",
       "format-rules": "<ul><li>For a single-input and single-output (SISO) system enter 1</li><li>For a traditional antenna diversity, enter the number of installed antennas (2 or higher)</li><li>For MIMO systems, enter the number of antenna elements in the antenna panel</li></ul>",
       "example-data": "1",
       "error-description": "The Number of Tx Antennas is missing or not within the expected range. "
@@ -284,7 +284,7 @@
       "column": "AH",
       "field-name": "Rx Number of Antennas",
       "description": "The total number of Rx antennas.",
-      "required-when": "This field is not required for transmit-only antennas. ",
+      "required-when": "This field is required for any antennas that receive. ",
       "format-rules": "<ul><li>For a single-input and single-output (SISO) system enter 1</li><li>For a traditional antenna diversity, enter the number of installed antennas (2 or higher)</li><li>For MIMO systems, enter the number of antenna elements in the antenna panel</li></ul>",
       "example-data": "1",
       "error-description": "The Number of Rx Antennas is missing or not within the expected range. "
@@ -293,7 +293,7 @@
       "column": "AI",
       "field-name": "Tx Antenna Model Number",
       "description": "The model number of the transmitter antenna.",
-      "required-when": "This field is not required for receive-only antennas. ",
+      "required-when": "This field is required for any antennas that transmit. ",
       "format-rules": "Maximum length of 80 characters.",
       "example-data": "SV460-SF1 (V) ",
       "error-description": "The Tx Antenna Model Number is missing or exceeds the character limit. "
@@ -302,7 +302,7 @@
       "column": "AJ",
       "field-name": "Rx Antenna Model Number",
       "description": "The model number of the receiver antenna.",
-      "required-when": "This field is not required for transmit-only antennas. ",
+      "required-when": "This field is required for any antennas that receive. ",
       "format-rules": "Maximum length of 80 characters.",
       "example-data": "SV460-SF1 (V) ",
       "error-description": "The Rx Antenna Model Number is missing or exceeds the character limit. "
@@ -329,7 +329,7 @@
       "column": "AM",
       "field-name": "Tx Antenna Height",
       "description": "Height (m) of physical centre of the transmitter antenna above or below ground level in meters including the structure/building on which the antenna is mounted. ",
-      "required-when": "This field is not required for receive-only antennas. ",
+      "required-when": "This field is required for any antennas that transmit. ",
       "format-rules": "Must be a number. <br><br> The antenna height must be between 0 to 600 m and no more than 5 m taller than the O - Structure height.",
       "example-data": "15",
       "error-description": "The Tx Antenna Height is missing or not within the expected range. "
@@ -338,7 +338,7 @@
       "column": "AN",
       "field-name": "Rx Antenna Height",
       "description": "Height (m) of physical centre of the receiver antenna above or below ground level in meters including the structure/building on which the antenna is mounted. ",
-      "required-when": "This field is not required for transmit-only antennas. ",
+      "required-when": "This field is required for any antennas that receive. ",
       "format-rules": "Must be a number. <br><br> The antenna height must be between 0 to 600 m and no more than 5 m taller than the O - Structure height.",
       "example-data": "15",
       "error-description": "The Rx Antenna Height is missing or not within the expected range. "
@@ -347,7 +347,7 @@
       "column": "AO",
       "field-name": "Tx Omnidirectional Antenna Pattern Indicator",
       "description": "Whether the transmitter antenna is omnidirectional or directional. ",
-      "required-when": "This field is not required for receive-only antennas. ",
+      "required-when": "This field is required for any antennas that transmit. ",
       "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Antenna pattern</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table>",
       "example-data": "D",
       "error-description": "The Tx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
@@ -357,7 +357,7 @@
       "column": "AP",
       "field-name": "Rx Omnidirectional Antenna Pattern Indicator",
       "description": "Whether the receiver antenna is omnidirectional or directional. ",
-      "required-when": "This field is not required for transmit-only antennas. ",
+      "required-when": "This field is required for any antennas that receive. ",
       "format-rules": "Must be one of the following codes: <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Antenna pattern</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table>",
       "example-data": "D",
       "error-description": "The Rx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
@@ -439,7 +439,7 @@
       "column": "AY",
       "field-name": "Tx Antenna Gain",
       "description": "The gain of the transmitter antenna expressed relative to an isotropic radiator (dBi). For AAS, the gain would represent the gain of the individual antenna element.",
-      "required-when": "This field is not required for receive-only antennas. ",
+      "required-when": "This field is required for any antennas that transmit. ",
       "format-rules": "Must be a number from 0.0 to 70.0 (dBi). <br><br> For a directional antenna, enter the gain in the direction of maximum radiation. ",
       "example-data": "41.3",
       "error-description": "The Tx Antenna Gain is missing or not within the expected range. "
@@ -448,7 +448,7 @@
       "column": "AZ",
       "field-name": "Rx Antenna Gain",
       "description": "The gain of the receiver antenna expressed relative to an isotropic radiator (dBi). For AAS, the gain would represent the gain of the individual antenna element.",
-      "required-when": "This field is not required for transmit-only antennas. ",
+      "required-when": "This field is required for any antennas that receive. ",
       "format-rules": "Must be a number from 0.0 to 70.0 (dBi). <br><br> For a directional antenna, enter the gain in the direction of maximum radiation. ",
       "example-data": "41.3",
       "error-description": "The Rx Antenna Gain is missing or not within the expected range. "
@@ -457,7 +457,7 @@
       "column": "BA",
       "field-name": "Tx Line Loss",
       "description": "The total of all line, connector and other losses between the radio equipment and transmitter antenna used to calculate the effective isotropic radiated power (EIRP).",
-      "required-when": "This field is not required for receive-only antennas. ",
+      "required-when": "This field is required for any antennas that transmit. ",
       "format-rules": "Must be a number from 0.0 to 30.0 (dB).",
       "example-data": "2.5",
       "error-description": "The Tx Line Loss is missing or not within the expected range. "
@@ -466,7 +466,7 @@
       "column": "BB",
       "field-name": "Rx Line Loss",
       "description": "The total of all line, connector and other losses between the radio equipment and receiver antenna used to calculate the effective isotropic radiated power (EIRP).",
-      "required-when": "This field is not required for transmit-only antennas. ",
+      "required-when": "This field is required for any antennas that receive. ",
       "format-rules": "Must be a number from 0.0 to 30.0 (dB).",
       "example-data": "2.5",
       "error-description": "The Rx Line Loss is missing or not within the expected range. "
