@@ -277,7 +277,7 @@
       "field-name": "Tx Number of Antennas",
       "description": "The total number of Tx antennas.",
       "required-when": "This field is required when T - Rx Channel Frequency is greater than 0. ",
-      "format-rules": "<ul><li>For a single-input and single-output (SISO) system enter 1</li><li>For a traditional antenna diversity, enter the number of installed antennas (2 or higher)</li><li>For MIMO systems, enter the number of antenna elements in the antenna panel</li>",
+      "format-rules": "<ul><li>For a single-input and single-output (SISO) system enter 1</li><li>For a traditional antenna diversity, enter the number of installed antennas (2 or higher)</li><li>For MIMO systems, enter the number of antenna elements in the antenna panel</li></ul>",
       "example-data": "1",
       "error-description": "The Number of Tx Antennas is missing or not within the expected range. "
     },
@@ -286,7 +286,7 @@
       "field-name": "Rx Number of Antennas",
       "description": "The total number of Rx antennas.",
       "required-when": "This field is required when T - Rx Channel Frequency is greater than 0. ",
-      "format-rules": "<ul><li>For a single-input and single-output (SISO) system enter 1</li><li>For a traditional antenna diversity, enter the number of installed antennas (2 or higher)</li><li>For MIMO systems, enter the number of antenna elements in the antenna panel</li>",
+      "format-rules": "<ul><li>For a single-input and single-output (SISO) system enter 1</li><li>For a traditional antenna diversity, enter the number of installed antennas (2 or higher)</li><li>For MIMO systems, enter the number of antenna elements in the antenna panel</li></ul>",
       "example-data": "1",
       "error-description": "The Number of Rx Antennas is missing or not within the expected range. "
     },
