@@ -73,9 +73,9 @@
       "column": "I",
       "field-name": "Cell ID",
       "description": "<p>The mobile network Cell Global Identity (CGI) following the 3GPP notation for the given radio technology.</p> ",
-      "required-when": "This field is required when H - Radio technology is  any of the following: <ul><li>GSM</li> <li>CDMA </li> <li>HSPA </li> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
-      "format-rules": "<b>For GSM, CDMA, HSPA</b> <br>(CGI): PLMN-LAC-CID <br><br> <b>For 5GNR, 5GDSS</b> <br>(NCGI): PLMN-TAC-NCI<br><br> <b>For LTE</b> <br>(ECGI): PLMN-TAC-ECI <ul> <li>Must be in the format of 999999-99999999-99999999999 </li> <li>Minimum of 11 characters </li> <li>Maximum of 27 characters </li></ul>",
-      "example-data": "302610-1051200-25381093417 ",
+      "required-when": "This field is used differently for other services, but for satellite it is always blank.",
+      "format-rules": "Leave blank",
+      "example-data": "",
       "error-description": "The Cell ID is missing or not in the expected format or length."
     },
     "TR10": {
@@ -124,7 +124,6 @@
       "column": "O",
       "field-name": "Structure Height",
       "description": "The total height (m) above ground level of an outdoor structure, such as a tower or rooftop, where antennas are mounted. This structure might also be shared with other radio installations. ",
-      "required-when": "This field is required only when N - Site type code is O.",
       "format-rules": "<ul><li>Must be a number</li><li>Must be greater than the antenna height</li><li>Must be between 1 to 600 m</li><li>For equipment mounted on top of a building or its boundaries, add together the total height of the building and the antenna’s supporting structure.</li></ul>",
       "example-data": "15",
       "error-description": "The Structure Height is missing or not within the expected range of values. ",
@@ -331,7 +330,7 @@
       "field-name": "Tx Antenna Height",
       "description": "Height (m) of physical centre of the transmitter antenna above or below ground level in meters including the structure/building on which the antenna is mounted. ",
       "required-when": "This field is not required for receive-only antennas. ",
-      "format-rules": "Must be a number. <br><br> <b>If N - Site Type Code is O (Outdoor):</b> <br> The antenna height must be between 0 to 600 m and no more than 5 m taller than the O - Structure height.<br><br> <b>If N - Site Type Code is I (Indoor):</b> <br> The antenna height must be between 0 to 600 m. <br> <br> <b>If N - Site Type Code is U (Underground):</b> <br> The antenna height must be between -100 to 0 m.",
+      "format-rules": "Must be a number. <br><br> The antenna height must be between 0 to 600 m and no more than 5 m taller than the O - Structure height.",
       "example-data": "15",
       "error-description": "The Tx Antenna Height is missing or not within the expected range. "
     },
@@ -340,7 +339,7 @@
       "field-name": "Rx Antenna Height",
       "description": "Height (m) of physical centre of the receiver antenna above or below ground level in meters including the structure/building on which the antenna is mounted. ",
       "required-when": "This field is not required for transmit-only antennas. ",
-      "format-rules": "Must be a number. <br><br> <b>If N - Site Type Code is O (Outdoor):</b> <br> The antenna height must be between 0 to 600 m and no more than 5 m taller than the O - Structure height.<br><br> <b>If N - Site Type Code is I (Indoor):</b> <br> The antenna height must be between 0 to 600 m. <br> <br> <b>If N - Site Type Code is U (Underground):</b> <br> The antenna height must be between -100 to 0 m.",
+      "format-rules": "Must be a number. <br><br> The antenna height must be between 0 to 600 m and no more than 5 m taller than the O - Structure height.",
       "example-data": "15",
       "error-description": "The Rx Antenna Height is missing or not within the expected range. "
     },
