@@ -74,7 +74,7 @@
       "field-name": "Cell ID",
       "description": "<p>The mobile network Cell Global Identity (CGI) following the 3GPP notation for the given radio technology.</p> ",
       "required-when": "This field is required when H - Radio technology is  any of the following: <ul><li>GSM</li> <li>CDMA </li> <li>HSPA </li> <li>LTE </li> <li>5GNR </li> <li>5GDSS </li></ul>",
-      "format-rules": "<b>For GSM, CDMA, HSPA</b> <br>(CGI): PLMN-LAC-CID <br><br> <b>For 5GNR, 5GDSS</b> <br>(NCGI): PLMN-TAC-NCI<br><br> <b>For LTE</b> <br>(ECGI): PLMN-TAC-ECI <ul> <li>Must be in the format of 999999-99999999-99999999999 </li> <li>Minimum of 11 characters </li> <li>Maximum of 27 characters </li></ul>",
+      "format-rules": "<b>For GSM, CDMA, HSPA</b> <br>(CGI): PLMN-LAC-CID <br><br> <b>For LTE</b> <br>(ECGI): PLMN-TAC-ECI <br><br> <b>For 5GNR, 5GDSS</b> <br>(NCGI): PLMN-TAC-NCI",
       "example-data": "302610-1051200-25381093417 ",
       "error-description": "The Cell ID is missing or not in the expected format or length."
     },
