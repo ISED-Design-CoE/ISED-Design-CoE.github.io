@@ -59,11 +59,9 @@
           input-id="licence-number"
           label="Spectrum licence number"
           hint="The 9 digit spectrum licence number for your site upload. Do not include the version number."
-          size="9"
           required
           minlength="9"
-          maxlength="5"
-          type="text"
+          type="number"
         ></gcds-input>
 
         <gcds-input
@@ -80,7 +78,6 @@
           maxlength="254"
           required
           type="text"
-          size="20"
         ></gcds-input>
 
         <gcds-input
@@ -90,8 +87,7 @@
           minlength="10"
           maxlength="254"
           required
-          type="text"
-          size="10"
+          type="number"
         ></gcds-input>
 
         <gcds-input
@@ -100,8 +96,7 @@
           hint="Email address or addresses (separate with commas) of the person who may be contacted."
           maxlength="254"
           required
-          type="text"
-   
+          type="email"
         ></gcds-input>
 
         <gcds-radios
