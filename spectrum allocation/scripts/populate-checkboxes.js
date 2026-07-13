@@ -1,6 +1,7 @@
 (function () {
-  function createCheckboxMarkup(type, filterType) {
-    const id = String(type).replace(/\s+/g, "_").toLowerCase() + "_checkbox";
+  function createCheckboxMarkup(type, filterType, filterType2) {
+    const sanitized = String(type).replace(/\s+/g, "_").toLowerCase();
+    const id = `${filterType}_${sanitized}_checkbox`;
 
     return `
       <li class="checkbox">
@@ -8,7 +9,7 @@
           <input
             type="checkbox"
             id="${id}"
-            onchange="toggleFilter('${type}', '${filterType}')"
+            onchange="toggleFilter('${type.replace(/'/g, "\\'")}', '${filterType}')"
           />
           ${type}
         </label>
@@ -17,18 +18,28 @@
 
   function renderCheckboxes(container, values, filterType) {
     const normalizedValues = Array.isArray(values) ? values : [];
+    const uniqueValues = Array.from(
+      new Set(normalizedValues.map((v) => String(v).trim()).filter(Boolean)),
+    ).sort();
+
     container.innerHTML = `
       <ul class="list-unstyled">
-        ${normalizedValues
-          .map((item) => createCheckboxMarkup(item, filterType))
-          .join("")}
+        ${uniqueValues.map((item) => createCheckboxMarkup(item, filterType)).join("")}
       </ul>`;
   }
 
   function getDocumentTypes(table) {
+    return getTypesForFilter(table, "doc_type");
+  }
+
+  function getTypesForFilter(table, filterType) {
     if (!table) return [];
 
     try {
+      if (filterType === "subject_type") {
+        return JSON.parse(table.dataset.subjectTypes || "[]");
+      }
+
       return JSON.parse(table.dataset.documentTypes || "[]");
     } catch (err) {
       console.error(err);
@@ -58,7 +69,8 @@
       : null;
 
     const renderFromTable = () => {
-      renderCheckboxes(container, getDocumentTypes(table), config.filterType);
+      const values = getTypesForFilter(table, config.filterType);
+      renderCheckboxes(container, values, config.filterType);
     };
 
     if (table) {
@@ -70,7 +82,7 @@
 
       table.addEventListener(
         "table-populated",
-        () => {
+        (e) => {
           renderFromTable();
         },
         { once: true },
@@ -87,11 +99,8 @@
     containers.forEach((container) => {
       const filterType = container.dataset.filterType || "doc_type";
       const tableSelector = container.dataset.tableSelector || null;
-      populateCheckboxes({
-        container,
-        filterType,
-        tableSelector,
-      });
+
+      populateCheckboxes({ container, filterType, tableSelector });
     });
   });
 

@@ -44,9 +44,27 @@ function populateTableFromSubject(subject, options = {}) {
       const filteredRows = rows.filter((row) => {
         if (!subjects.length) return true;
         const currentSubject = String(row[subjectField] || "").toLowerCase();
-        // Return true if the row matches ANY of the subjects (OR logic)
         return subjects.some((subject) => currentSubject.includes(subject));
       });
+
+      const normalizeSubjectType = (value) => {
+        const normalized = String(value || "").toLowerCase();
+        const hasPublicSafety = normalized.includes("public safety");
+        const hasLandMobile =
+          normalized.includes("land mobile") ||
+          normalized.includes("land mobile service");
+
+        if (hasPublicSafety && hasLandMobile) {
+          return "Both";
+        }
+        if (hasPublicSafety) {
+          return "Public safety";
+        }
+        if (hasLandMobile) {
+          return "Land mobile service";
+        }
+        return "";
+      };
 
       const documentTypes = Array.from(
         new Set(
@@ -56,9 +74,21 @@ function populateTableFromSubject(subject, options = {}) {
         ),
       );
 
+      const subjectTypes = Array.from(
+        new Set(
+          filteredRows
+            .map((row) => normalizeSubjectType(row[subjectField]))
+            .filter(Boolean),
+        ),
+      );
+
       table.dataset.documentTypes = JSON.stringify(documentTypes);
+      table.dataset.subjectTypes = JSON.stringify(subjectTypes);
+
       table.dispatchEvent(
-        new CustomEvent("table-populated", { detail: { documentTypes } }),
+        new CustomEvent("table-populated", {
+          detail: { documentTypes, subjectTypes },
+        }),
       );
 
       if (!filteredRows.length) {
@@ -74,6 +104,10 @@ function populateTableFromSubject(subject, options = {}) {
         const docTypeValue = row[typeField] || "";
         tr.setAttribute("doc_type", docTypeValue);
         tr.setAttribute("data-doc-type", docTypeValue);
+
+        const subjectValue = normalizeSubjectType(row[subjectField]);
+        tr.setAttribute("subject_type", subjectValue);
+        tr.setAttribute("data-subject-type", subjectValue);
 
         const tdDate = document.createElement("td");
         tdDate.textContent = row[config.dateField] || "";

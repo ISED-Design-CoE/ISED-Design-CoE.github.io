@@ -1,0 +1,9 @@
+{
+  "en": {
+    "alert": "You've clicked a link that brings you out of the mockup."
+  },
+
+  "fr": {
+    "alert": "Vous avez cliqué sur un lien qui vous fait quitter la maquette."
+  }
+}
