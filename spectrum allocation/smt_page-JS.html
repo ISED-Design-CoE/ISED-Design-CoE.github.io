@@ -68,12 +68,13 @@
     </style>
     <style>
       h1 {
-        position: absolute;
-        clip: rect(1px, 1px, 1px, 1px);
-        height: 1px !important;
-        width: 1px !important;
-        overflow: hidden !important;
-        margin: 0 !important;
+        position: static;
+        clip: auto;
+        height: auto;
+        width: auto;
+        overflow: visible;
+        margin: 0 0 1rem;
+    
       }
 
       .bgBox {
@@ -3097,30 +3098,26 @@
       </div>
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <nav id="wb-bc" property="breadcrumb">
-            <h2 class="wb-inv">You are here:</h2>
-            <div class="container">
-              <ol class="breadcrumb">
-                <li><a href="#">Canada.ca</a></li>
-                <li>
-                  <a href="#">Business and industry</a>
-                </li>
-                <li>
-                  <a href="#">Permits, licences and regulations</a>
-                </li>
-                <li>
-                  <a href="#">Federally regulated industry sectors</a>
-                </li>
-                <li>
-                  <a href="#">Broadcasting and telecommunications regulation</a>
-                </li>
-              </ol>
-            </div>
-          </nav>
+      <nav id="wb-bc" property="breadcrumb">
+        <h2 class="wb-inv">You are here:</h2>
+        <div class="container">
+          <ol class="breadcrumb">
+            <li><a href="#">Canada.ca</a></li>
+            <li>
+              <a href="#">Business and industry</a>
+            </li>
+            <li>
+              <a href="#">Permits, licences and regulations</a>
+            </li>
+            <li>
+              <a href="#">Federally regulated industry sectors</a>
+            </li>
+            <li>
+              <a href="#">Broadcasting and telecommunications regulation</a>
+            </li>
+          </ol>
         </div>
-      </div>
+      </nav>
     </div>
   </header>
 
@@ -3138,21 +3135,24 @@
     >
       <!-- Start page content -->
       <div class="row">
-        <div class="col-md-4 small">
-          <h2>Spectrum management and telecommunications</h2>
-          <p class="pagetag small">
+        <div class="col-md-12">
+          <h1 property="name" id="wb-cont">
+            Spectrum management and telecommunications
+          </h1>
+        </div>
+          <div class="mrgn-bttm-sm col-md-12">
+            <img  
+              alt="title banner"
+              class="full-width mrgn-tp-sm"
+              src="./smt_assets/BannerMain-1.png"
+            />
+          </div>
+          <div class="col-md-12 mrgn-tp-md mrgn-bttm-md">
             Provides access to the radiofrequency spectrum by issuing
             authorities for its use, minimizing interference, securing Canada's
             access to it through international negotiations and by ensuring its
             safe and efficient use
-          </p>
-        </div>
-        <div class="mrgn-bttm-sm col-md-8">
-          <img
-            alt="title banner"
-            class="full-width mrgn-tp-lg"
-            src="./smt_assets/BannerMain.png"
-          />
+          </div>
         </div>
       </div>
 
