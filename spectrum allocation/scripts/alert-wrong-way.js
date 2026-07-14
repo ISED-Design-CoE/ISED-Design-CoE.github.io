@@ -5,10 +5,10 @@ if (!lang_alert || !["en", "fr"].includes(lang_alert)) {
 }
 
 function add_alert() {
-  const breadcrumbItems = document.querySelectorAll(".breadcrumb li");
+  const wrongWayLinks = document.querySelectorAll('a[href="#"]');
 
-  for (let i = 0; i < Math.min(3, breadcrumbItems.length); i++) {
-    breadcrumbItems[i].classList.add("wrong-way");
+  if (!wrongWayLinks.length) {
+    return;
   }
 
   fetch(new URL("/spectrum allocation/Assets/text.json", window.location.href))
@@ -25,7 +25,7 @@ function add_alert() {
         return;
       }
 
-      document.querySelectorAll(".wrong-way").forEach((link) => {
+      wrongWayLinks.forEach((link) => {
         link.addEventListener("click", function (e) {
           e.preventDefault();
           alert(strings.alert);
