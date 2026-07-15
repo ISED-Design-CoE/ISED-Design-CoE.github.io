@@ -119,19 +119,30 @@
         >
         </gcds-radios>
 
-        <div id="antenna-information" hidden>
+        <div id="channel-frequency-tx" hidden>
           <gcds-input
-            input-id="channel-frequency"
-            label="Channel frequency"
+            input-id="tx-channel-frequency"
+            label="Tx channel frequency"
             hint="The centre frequency in MHz, of the occupied bandwidth for the given antenna installation."
             required
             maxlength="8"
-            hidden
           ></gcds-input>
+        </div>
 
+        <div id="channel-frequency-rx" hidden>
+          <gcds-input
+            input-id="rx-channel-frequency"
+            label="Rx channel frequency"
+            hint="The centre frequency in MHz, of the occupied bandwidth for the given antenna installation."
+            required
+            maxlength="8"
+          ></gcds-input>
+        </div>
+
+        <div id="type-code-tx" hidden>
           <gcds-select
-            select-id="type-code"
-            label="Antenna type code"
+            select-id="tx-type-code"
+            label="Tx antenna type code"
             name="Antenna type code"
             hint="Select the type of antenna associated with a transmitting radio installation."
             required
@@ -139,49 +150,115 @@
           >
             <option value="1">Active antenna systems</option>
             <option value="2">Non-AAS correlated</option>
-            <option value="3">Non-ASS uncorrelated</option>
+            <option value="3">Non-AAS uncorrelated</option>
           </gcds-select>
+        </div>
 
+        <div id="type-code-rx" hidden>
+          <gcds-select
+            select-id="rx-type-code"
+            label="Rx antenna type code"
+            name="Antenna type code"
+            hint="Select the type of antenna associated with a receiving radio installation."
+            required
+            default-value="Select option"
+          >
+            <option value="1">Active antenna systems</option>
+            <option value="2">Non-AAS correlated</option>
+            <option value="3">Non-AAS uncorrelated</option>
+          </gcds-select>
+        </div>
+
+        <div id="number-antennas-tx" hidden>
           <gcds-input
-            input-id="number-antennas"
-            label="Total number of antennas"
+            input-id="tx-number-antennas"
+            label="Total number of Tx antennas"
             hint="The total number of antennas physically installed at the site."
             required
             type="number"
             min="1"
           ></gcds-input>
+        </div>
 
+        <div id="number-antennas-rx" hidden>
           <gcds-input
-            input-id="antenna-model"
-            label="Antenna model number"
+            input-id="rx-number-antennas"
+            label="Total number of Rx antennas"
+            hint="The total number of antennas physically installed at the site."
+            required
+            type="number"
+            min="1"
+          ></gcds-input>
+        </div>
+
+        <div id="antenna-model-tx" hidden>
+          <gcds-input
+            input-id="tx-antenna-model"
+            label="Tx antenna model number"
             hint="The antenna model number."
             required
             minlength="0"
             maxlength="80"
           ></gcds-input>
+        </div>
 
+        <div id="antenna-model-rx" hidden>
           <gcds-input
-            input-id="antenna-manufacturer"
-            label="Antenna manufacturer"
+            input-id="rx-antenna-model"
+            label="Rx antenna model number"
+            hint="The antenna model number."
+            required
+            minlength="0"
+            maxlength="80"
+          ></gcds-input>
+        </div>
+
+        <div id="antenna-manufacturer-tx" hidden>
+          <gcds-input
+            input-id="tx-antenna-manufacturer"
+            label="Tx antenna manufacturer"
             hint="The manufacturer name of the antenna."
             required
             minlength="0"
             maxlength="255"
           ></gcds-input>
+        </div>
 
+        <div id="antenna-manufacturer-rx" hidden>
           <gcds-input
-            input-id="antenna-height"
-            label="Antenna height"
-            hint="The antenna height in meters from ground level."
+            input-id="rx-antenna-manufacturer"
+            label="Rx antenna manufacturer"
+            hint="The manufacturer name of the antenna."
             required
             minlength="0"
-            maxlength="600"
+            maxlength="255"
+          ></gcds-input>
+        </div>
+
+        <div id="antenna-height-tx" hidden>
+          <gcds-input
+            input-id="tx-antenna-height"
+            label="Tx antenna height"
+            hint="The antenna height in meters from ground level."
+            required
             type="number"
           ></gcds-input>
+        </div>
 
+        <div id="antenna-height-rx" hidden>
+          <gcds-input
+            input-id="rx-antenna-height"
+            label="Rx antenna height"
+            hint="The antenna height in meters from ground level."
+            required
+            type="number"
+          ></gcds-input>
+        </div>
+
+        <div id="omnidirectional-pattern-tx" hidden>
           <gcds-select
-            select-id="omnidirectional-pattern"
-            label="Antenna omnidirectional pattern indicator"
+            select-id="tx-omnidirectional-pattern"
+            label="Tx antenna omnidirectional pattern indicator"
             hint="Select the directional pattern for your antenna."
             name="Antenna omnidirectional pattern indicator"
             required
@@ -190,56 +267,149 @@
             <option value="1">Directional</option>
             <option value="2">Non-directional</option>
           </gcds-select>
+        </div>
 
+        <div id="omnidirectional-pattern-rx" hidden>
+          <gcds-select
+            select-id="rx-omnidirectional-pattern"
+            label="Rx antenna omnidirectional pattern indicator"
+            hint="Select the directional pattern for your antenna."
+            name="Antenna omnidirectional pattern indicator"
+            required
+            default-value="Select option"
+          >
+            <option value="1">Directional</option>
+            <option value="2">Non-directional</option>
+          </gcds-select>
+        </div>
+
+        <div id="antenna-horizontal-beamwidth-tx" hidden>
           <gcds-input
-            input-id="antenna-horizontal-beamwidth"
-            label="Antenna horizontal beamwidth"
+            input-id="tx-antenna-horizontal-beamwidth"
+            label="Tx antenna horizontal beamwidth"
             hint="Enter your antenna horizontal beamwidth in degrees."
             required
             min="1"
             max="359.9"
             type="number"
           ></gcds-input>
+        </div>
 
+        <div id="antenna-horizontal-beamwidth-rx" hidden>
           <gcds-input
-            input-id="antenna-vertical-beamwidth"
-            label="Antenna vertical beamwidth"
+            input-id="rx-antenna-horizontal-beamwidth"
+            label="Rx antenna horizontal beamwidth"
+            hint="Enter your antenna horizontal beamwidth in degrees."
             required
             min="1"
             max="359.9"
             type="number"
           ></gcds-input>
+        </div>
 
+        <div id="antenna-vertical-beamwidth-tx" hidden>
           <gcds-input
-            input-id="antenna-azimuth"
-            label="Antenna azimuth"
+            input-id="tx-antenna-vertical-beamwidth"
+            label="Tx antenna vertical beamwidth"
             required
             min="1"
             max="359.9"
             type="number"
           ></gcds-input>
+        </div>
 
+        <div id="antenna-vertical-beamwidth-rx" hidden>
           <gcds-input
-            input-id="antenna-elevation-angle"
-            label="Antenna elevation angle"
+            input-id="rx-antenna-vertical-beamwidth"
+            label="Rx antenna vertical beamwidth"
+            required
+            min="1"
+            max="359.9"
+            type="number"
+          ></gcds-input>
+        </div>
+
+        <div id="antenna-azimuth-tx" hidden>
+          <gcds-input
+            input-id="tx-antenna-azimuth"
+            label="Tx antenna azimuth"
+            required
+            min="1"
+            max="359.9"
+            type="number"
+          ></gcds-input>
+        </div>
+
+        <div id="antenna-azimuth-rx" hidden>
+          <gcds-input
+            input-id="rx-antenna-azimuth"
+            label="Rx antenna azimuth"
+            required
+            min="1"
+            max="359.9"
+            type="number"
+          ></gcds-input>
+        </div>
+
+        <div id="antenna-elevation-angle-tx" hidden>
+          <gcds-input
+            input-id="tx-antenna-elevation-angle"
+            label="Tx antenna elevation angle"
             required
             min="-90"
             max="90"
             type="number"
           ></gcds-input>
+        </div>
 
+        <div id="antenna-elevation-angle-rx" hidden>
           <gcds-input
-            input-id="antenna-gain"
-            label="Antenna gain"
+            input-id="rx-antenna-elevation-angle"
+            label="Rx antenna elevation angle"
+            required
+            min="-90"
+            max="90"
+            type="number"
+          ></gcds-input>
+        </div>
+
+        <div id="antenna-gain-tx" hidden>
+          <gcds-input
+            input-id="tx-antenna-gain"
+            label="Tx antenna gain"
             required
             min="0"
             max="70"
             type="number"
           ></gcds-input>
+        </div>
 
+        <div id="antenna-gain-rx" hidden>
           <gcds-input
-            input-id="antenna-line-loss"
-            label="Antenna line loss"
+            input-id="rx-antenna-gain"
+            label="Rx antenna gain"
+            required
+            min="0"
+            max="70"
+            type="number"
+          ></gcds-input>
+        </div>
+
+        <div id="antenna-line-loss-tx" hidden>
+          <gcds-input
+            input-id="tx-antenna-line-loss"
+            label="Tx antenna line loss"
+            required
+            min="0"
+            max="30"
+            type="number"
+          ></gcds-input>
+        </div>
+
+        <div id="antenna-line-loss-rx" hidden>
+          <gcds-input
+            input-id="rx-antenna-line-loss"
+            label="Rx antenna line loss"
             required
             min="0"
             max="30"
@@ -319,14 +489,57 @@
       });
 
       document.addEventListener("DOMContentLoaded", () => {
-        const radios = document.getElementById("antenna-type"); // or getElementById if you use id
-        const channelInput = document.getElementById("antenna-information");
+        const radios = document.getElementById("antenna-type");
 
-        // Listen for change events on gcds-radios
-        radios.addEventListener("change", () => {
-          channelInput.removeAttribute("hidden");
-        });
+        function updateInputs() {
+          const value = radios.value;
+
+          // Hide everything first
+          document
+            .querySelectorAll('div[id$="Tx"], div[id$="Rx"]')
+            .forEach((div) => {
+              div.hidden = true;
+            });
+
+          if (value === "radio1") {
+            document.querySelectorAll('div[id$="tx"]').forEach((div) => {
+              div.hidden = false;
+            });
+            document.querySelectorAll('div[id$="rx"]').forEach((div) => {
+              div.hidden = true;
+              div
+                .querySelectorAll("gcds-input, gcds-select")
+                .forEach((field) => {
+                  field.removeAttribute("required");
+                });
+            });
+          } else if (value === "radio2") {
+            document.querySelectorAll('div[id$="rx"]').forEach((div) => {
+              div.hidden = false;
+            });
+            document.querySelectorAll('div[id$="tx"]').forEach((div) => {
+              div.hidden = true;
+              div
+                .querySelectorAll("gcds-input, gcds-select")
+                .forEach((field) => {
+                  field.removeAttribute("required");
+                });
+            });
+          } else if (value === "radio3") {
+            document
+              .querySelectorAll('div[id$="tx"], div[id$="rx"]')
+              .forEach((div) => {
+                div.hidden = false;
+              });
+          }
+        }
+
+        updateInputs();
+
+        radios.addEventListener("change", updateInputs);
       });
     </script>
   </body>
 </html>
+
+field.removeAttribute("required");
