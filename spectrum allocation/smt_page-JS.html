@@ -24,7 +24,8 @@
     <!-- End DECoE customization -->
 
     <meta content="width=device-width,initial-scale=1" name="viewport" />
-    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
+
+     <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/soyutils.js"></script>
     <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_1_0/cdts/compiled/wet-en.js"></script>
     <noscript>
       <!-- Write closure fall-back static file -->
@@ -67,16 +68,6 @@
       }
     </style>
     <style>
-      h1 {
-        position: static;
-        clip: auto;
-        height: auto;
-        width: auto;
-        overflow: visible;
-        margin: 0 0 1rem;
-    
-      }
-
       .bgBox {
         width: 350px;
         height: 75px;
@@ -128,12 +119,14 @@
 
     <!-- Start GC Design System-->
 
-    <!-- Icons Font Awesome (to access icons, import Font Awesome) -->
+    <!-- Icons Font Awesome (to access icons, import Font Awesome) 
+  
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       crossorigin="anonymous"
-    />
+    />-->
+    <link rel="stylesheet" href="./index_files/theme.min.css" />
 
     <!-- GC Design System -->
     <link
@@ -3209,7 +3202,7 @@
       <div class="col-md-8">
         <div class="row">
           <div class="col-md-6">
-            <h2 class="h3 text-primary bgImg1 bgBox">
+            <h2 class="h5 text-primary bgImg1 bgBox">
               Licences and certificates
             </h2>
             <dl>
@@ -3285,7 +3278,7 @@
             </ul>
           </div>
           <div class="col-md-6">
-            <h2 class="h3 text-primary bgImg2 bgBox">Devices and equipment</h2>
+            <h2 class="h5 text-primary bgImg2 bgBox">Devices and equipment</h2>
             <dl>
               <dt>
                 <a href="https://www.ic.gc.ca/eic/site/ceb-bhst.nsf/eng/home"
@@ -3350,7 +3343,7 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            <h2 class="h3 text-primary bgImg3 bgBox">Safety and compliance</h2>
+            <h2 class="h5 text-primary bgImg3 bgBox">Safety and compliance</h2>
             <dl>
               <dt>
                 <a
@@ -3425,7 +3418,7 @@
             </ul>
           </div>
           <div class="col-md-6">
-            <h2 class="h3 text-primary bgImg4 bgBox">Spectrum allocation</h2>
+            <h2 class="h5 text-primary bgImg4 bgBox">Spectrum allocation</h2>
             <dl>
               <dt>
                 <a
@@ -3478,7 +3471,7 @@
         </div>
         <div class="row">
           <div class="col-md-6">
-            <h2 class="h3 text-primary bgImg5 bgBox">Learn more</h2>
+            <h2 class="h5 text-primary bgImg5 bgBox">Learn more</h2>
             <dl>
               <dt>
                 <a
@@ -3512,7 +3505,7 @@
             </dl>
           </div>
           <div class="col-md-6">
-            <h2 class="h3 text-primary bgImg6 bgBox">
+            <h2 class="h5 text-primary bgImg6 bgBox">
               Communications research
             </h2>
             <dl>
@@ -3540,7 +3533,7 @@
       </div>
       <div class="col-md-4 pull-right small">
         <div class="mrgn-tp-lg">
-          <h4 class="text-primary">
+          <h4 class="text-primary h5">
             <a
               alt="All publications"
               data-entity-substitution="canonical"
@@ -3575,16 +3568,15 @@
 
         <div class="mrgn-tp-lg">
           <hr />
-          <h5 class="text-primary">
+          <div class="text-primary">
             <a
               data-entity-substitution="canonical"
               data-entity-type="node"
               data-entity-uuid="b1e0a465-525c-454c-a8ca-dfb3478c7292"
               href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radiocom-information-circulars-ric/ric-66-addresses-and-telephone-numbers-district-offices"
               title="RIC-66 — Addresses and Telephone Numbers of District Offices"
-              >Contact your local office</a
-            >
-          </h5>
+              ><strong>Contact your local office</strong></a
+            ></div>
           <div id="map" style="height: 250px"> </div>
         </div>
       </div>
@@ -3592,11 +3584,11 @@
       <!-- BOTTOM BAR -->
       <div id="features">
         <hr />
-        <h2 class="mrgn-tp-sm text-primary mrgn-lft-md">Features</h2>
+        <h2 class="mrgn-tp-sm text-primary mrgn-lft-md h3">Features</h2>
         <div class="row">
           <section class="col-md-4">
             <figure>
-              <figcaption class="h4 mrgn-lft-sm">
+              <figcaption class="h6 mrgn-lft-sm">
                 <a
                   href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/spectrum-allocation/service-areas-competitive-licensing"
                   >Competitive service areas</a
@@ -3616,7 +3608,7 @@
           </section>
           <section class="col-md-4">
             <figure>
-              <figcaption class="h4">
+              <figcaption class="h6">
                 <a
                   href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/non-competitive-local-licensing-ncll"
                   >Non-competitive local licensing (NCLL)</a
@@ -3634,7 +3626,7 @@
           </section>
           <section class="col-md-4">
             <figure>
-              <figcaption class="h4">
+              <figcaption class="h6">
                 <a
                   data-entity-substitution="canonical"
                   data-entity-type="node"
