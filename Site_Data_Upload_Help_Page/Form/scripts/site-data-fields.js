@@ -51,7 +51,12 @@ function setFieldValue(el, value) {
   if (!el) return;
   const tag = el.tagName.toLowerCase();
   if (tag === "gcds-radios") {
-    const radio = el.querySelector(`input[type="radio"][value="${value}"]`);
+    if (typeof el.value !== "undefined") {
+      el.value = value;
+    }
+    const radio =
+      el.querySelector(`input[type="radio"][value="${value}"]`) ||
+      el.shadowRoot?.querySelector(`input[type="radio"][value="${value}"]`);
     if (radio) radio.checked = true;
     return;
   }

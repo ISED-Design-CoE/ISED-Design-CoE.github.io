@@ -452,21 +452,34 @@
 
       const nextBtn = document.getElementById("btn-next");
       const backBtn = document.getElementById("btn-go-back");
+      let isNavigating = false;
+
+      function handleNext() {
+        if (isNavigating) return;
+        if (!validateCurrentPage()) return;
+        isNavigating = true;
+        saveCurrentPageData();
+        finalizeCurrentEntry();
+        window.location.href = "page4.html";
+      }
+
+      function handleBack() {
+        if (isNavigating) return;
+        isNavigating = true;
+        saveCurrentPageData();
+        window.location.href = "page2.html";
+      }
 
       nextBtn?.addEventListener("click", (event) => {
         event.preventDefault();
-        if (!validateCurrentPage()) return;
-        saveCurrentPageData();
-        finalizeCurrentEntry();
-
-        window.location.href = "page4.html";
+        handleNext();
       });
 
       backBtn?.addEventListener("click", (event) => {
         event.preventDefault();
-        saveCurrentPageData();
-        window.location.href = "page2.html";
+        handleBack();
       });
+
       document.addEventListener("pointerup", (event) => {
         const path = event.composedPath ? event.composedPath() : [event.target];
         for (const node of path) {
@@ -474,15 +487,12 @@
           if (node === nextBtn || node === backBtn) continue;
           if (node.id === "btn-next" || node.closest?.("#btn-next")) {
             event.preventDefault();
-            if (!validateCurrentPage()) return;
-            saveCurrentPageData();
-            window.location.href = "page4.html";
+            handleNext();
             return;
           }
           if (node.id === "btn-go-back" || node.closest?.("#btn-go-back")) {
             event.preventDefault();
-            saveCurrentPageData();
-            window.location.href = "page2.html";
+            handleBack();
             return;
           }
         }
@@ -491,47 +501,64 @@
       document.addEventListener("DOMContentLoaded", () => {
         const radios = document.getElementById("antenna-type");
 
-        function updateInputs() {
-          const value = radios.value;
+        if (!radios) return;
 
-          // Hide everything first
-          document
-            .querySelectorAll('div[id$="Tx"], div[id$="Rx"]')
-            .forEach((div) => {
-              div.hidden = true;
-            });
+        document
+          .querySelectorAll('div[id$="-tx"], div[id$="-rx"]')
+          .forEach((section) => {
+            section
+              .querySelectorAll("gcds-input, gcds-select")
+              .forEach((field) => {
+                field.dataset.originalRequired = String(
+                  field.hasAttribute("required"),
+                );
+              });
+          });
+
+        function getSelectedAntennaType() {
+          return (
+            radios.value ||
+            radios.querySelector('input[type="radio"]:checked')?.value ||
+            radios.shadowRoot?.querySelector('input[type="radio"]:checked')
+              ?.value ||
+            ""
+          );
+        }
+
+        function setSectionVisible(selector, visible) {
+          document.querySelectorAll(selector).forEach((section) => {
+            section.hidden = !visible;
+            section
+              .querySelectorAll("gcds-input, gcds-select")
+              .forEach((field) => {
+                const wasRequired = field.dataset.originalRequired === "true";
+                if (visible && wasRequired) {
+                  field.setAttribute("required", "");
+                } else if (!visible) {
+                  field.removeAttribute("required");
+                  field.removeAttribute("error-state");
+                  field.removeAttribute("error-message");
+                }
+              });
+          });
+        }
+
+        function updateInputs() {
+          const value = getSelectedAntennaType();
+
+          setSectionVisible('div[id$="-tx"]', false);
+          setSectionVisible('div[id$="-rx"]', false);
 
           if (value === "radio1") {
-            document.querySelectorAll('div[id$="tx"]').forEach((div) => {
-              div.hidden = false;
-            });
-            document.querySelectorAll('div[id$="rx"]').forEach((div) => {
-              div.hidden = true;
-              div
-                .querySelectorAll("gcds-input, gcds-select")
-                .forEach((field) => {
-                  field.removeAttribute("required");
-                });
-            });
+            setSectionVisible('div[id$="-tx"]', true);
           } else if (value === "radio2") {
-            document.querySelectorAll('div[id$="rx"]').forEach((div) => {
-              div.hidden = false;
-            });
-            document.querySelectorAll('div[id$="tx"]').forEach((div) => {
-              div.hidden = true;
-              div
-                .querySelectorAll("gcds-input, gcds-select")
-                .forEach((field) => {
-                  field.removeAttribute("required");
-                });
-            });
+            setSectionVisible('div[id$="-rx"]', true);
           } else if (value === "radio3") {
-            document
-              .querySelectorAll('div[id$="tx"], div[id$="rx"]')
-              .forEach((div) => {
-                div.hidden = false;
-              });
+            setSectionVisible('div[id$="-tx"]', true);
+            setSectionVisible('div[id$="-rx"]', true);
           }
+
+          applyValidationToAllFields();
         }
 
         updateInputs();
@@ -541,5 +568,3 @@
     </script>
   </body>
 </html>
-
-field.removeAttribute("required");

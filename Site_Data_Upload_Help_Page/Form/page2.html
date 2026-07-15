@@ -97,16 +97,33 @@
           pattern="\d{6}-\d{8}-\d{11}"
         ></gcds-input>
 
-        <gcds-input
-          input-id="physical-cell-id"
-          label="Physical Cell ID"
-          hint="The Physical Cell Identity (PCI) for your LTE or 5G system."
-          required
-          type="number"
-          size="4"
-          maxlength="4"
-          character-count
-        ></gcds-input>
+        <div id="physical-cell-id-wrap" hidden>
+          <gcds-input
+            input-id="physical-cell-id"
+            label="Physical Cell ID"
+            hint="The Physical Cell Identity (PCI) for your LTE or 5G system."
+            required
+            type="number"
+            size="4"
+            maxlength="4"
+            character-count
+          ></gcds-input>
+        </div>
+
+        <div id="filter-code-wrap" hidden>
+          <gcds-select
+            select-id="filter-code"
+            label="Filter code"
+            name="Filter code"
+            hint="Select the filter code for your station based on the environment it is located in."
+            required
+            default-value="Select option"
+          >
+            <option value="1">0 - Non-Transitioned</option>
+            <option value="2">1 - Transitioned</option>
+            <option value="3">2 - New</option>
+          </gcds-select>
+        </div>
 
         <gcds-select
           select-id="province-territory"
@@ -254,6 +271,102 @@
       setCurrentPage(2);
       loadCurrentPageData(2);
       applyValidationToAllFields();
+
+      function getLicenceTypeFromState() {
+        try {
+          const raw = sessionStorage.getItem("site-data-upload-all") || "{}";
+          const state = JSON.parse(raw) || {};
+          return state.current?.page1?.["licence-type"] || "";
+        } catch (error) {
+          console.warn("Page2: Unable to read stored licence type", error);
+          return "";
+        }
+      }
+
+      function setRequired(el, isRequired) {
+        if (!el) return;
+        if (isRequired) {
+          el.setAttribute("required", "");
+        } else {
+          el.removeAttribute("required");
+          el.removeAttribute("error-state");
+          el.removeAttribute("error-message");
+        }
+      }
+
+      function applyLicenceTypeVisibility() {
+        const physicalWrap = document.getElementById("physical-cell-id-wrap");
+        const filterWrap = document.getElementById("filter-code-wrap");
+        const physicalField = document.querySelector(
+          'gcds-input[input-id="physical-cell-id"]',
+        );
+        const filterField = document.querySelector(
+          'gcds-select[select-id="filter-code"]',
+        );
+
+        const licenceType = getLicenceTypeFromState();
+        const showPhysical = licenceType === "radio1";
+        const showFilter = licenceType === "radio2";
+
+        if (physicalWrap) physicalWrap.hidden = !showPhysical;
+        if (filterWrap) filterWrap.hidden = !showFilter;
+
+        setRequired(physicalField, showPhysical);
+        setRequired(filterField, showFilter);
+        applyValidationToAllFields();
+      }
+
+      function getFilterCodeRawValue() {
+        const field = document.querySelector(
+          'gcds-select[select-id="filter-code"]',
+        );
+        if (!field) return "";
+        if (typeof field.value === "string" && field.value !== "") {
+          return field.value;
+        }
+        const inner =
+          field.querySelector("select") ||
+          field.shadowRoot?.querySelector("select");
+        return inner?.value || "";
+      }
+
+      function setPhysicalCellIdValue(value) {
+        const field = document.querySelector(
+          'gcds-input[input-id="physical-cell-id"]',
+        );
+        if (!field) return;
+        field.value = value;
+        const inner =
+          field.querySelector("input") ||
+          field.shadowRoot?.querySelector("input");
+        if (inner) inner.value = value;
+      }
+
+      function getPhysicalCellIdFromFilterCode(rawValue) {
+        if (rawValue === "1") return "0";
+        if (rawValue === "2") return "1";
+        if (rawValue === "3") return "2";
+        return "";
+      }
+
+      function syncSatelliteFilterToPhysicalCellId() {
+        const licenceType = getLicenceTypeFromState();
+        if (licenceType !== "radio2") return;
+        const mappedValue = getPhysicalCellIdFromFilterCode(
+          getFilterCodeRawValue(),
+        );
+        setPhysicalCellIdValue(mappedValue);
+      }
+
+      applyLicenceTypeVisibility();
+      syncSatelliteFilterToPhysicalCellId();
+
+      const filterCodeField = document.querySelector(
+        'gcds-select[select-id="filter-code"]',
+      );
+      filterCodeField?.addEventListener("change", () => {
+        syncSatelliteFilterToPhysicalCellId();
+      });
 
       const nextBtn = document.getElementById("btn-next");
       const backBtn = document.getElementById("btn-go-back");

@@ -19,110 +19,263 @@ import {
 } from "./site-data-validation.js";
 
 // ---- CSV headings and columns ----
-const columns = [
-  "licence-number",
-  "reference-number",
-  "contact-name",
-  "business-number",
-  "email-address",
+const RADIO_TECHNOLOGY_CODES = {
+  1: "GSM",
+  2: "CDMA",
+  3: "HSPA",
+  4: "LTE",
+  5: "5GNR",
+  6: "5GDSS",
+  7: "WIMAX",
+  8: "WI-FI",
+  9: "OTHER",
+};
 
-  "station-location",
-  "radio-technology",
-  "cell-id",
-  "physical-cell-id",
-  "province-territory",
-  "latitude",
-  "longitude",
-  "structure-type",
-  "date-of-modification",
-  "site-record-id",
+const PROVINCE_TERRITORY_CODES = {
+  Alberta: "AB",
+  "British Columbia": "BC",
+  Manitoba: "MB",
+  "New Brunswick": "NB",
+  "Newfoundland and Labrador": "NL",
+  "Nova Scotia": "NS",
+  Ontario: "ON",
+  "Prince Edward Island": "PE",
+  Quebec: "QC",
+  Saskatchewan: "SK",
+  "Northwest Territories": "NT",
+  Nunavut: "NU",
+  Yukon: "YT",
+};
 
-  "radio-model",
-  "radio-code",
-  "radio-certificate",
-  "bandwidth",
-  "tcp",
-  "downlink",
-  "channel-frequency-tx",
-  "channel-frequency-rx",
-  "number-antennas-tx",
-  "number-antennas-rx",
-  "antenna-model-tx",
-  "antenna-model-rx",
-  "antenna-manufacturer-tx",
-  "antenna-manufacturer-rx",
-  "antenna-height-tx",
-  "antenna-height-rx",
-  "antenna-horizontal-beamwidth-tx",
-  "antenna-horizontal-beamwidth-rx",
-  "antenna-vertical-beamwidth-tx",
-  "antenna-vertical-beamwidth-rx",
-  "antenna-azimuth-tx",
-  "antenna-azimuth-rx",
-  "antenna-elevation-angle-tx",
-  "antenna-elevation-angle-rx",
-  "antenna-gain-tx",
-  "antenna-gain-rx",
-  "antenna-line-loss-tx",
-  "antenna-line-loss-rx",
+const SITE_TYPE_CODES = {
+  1: "U",
+  2: "O",
+  3: "I",
+};
+
+const STRUCTURE_TYPE_CODES = {
+  1: "T",
+  2: "R",
+  3: "P",
+  4: "S",
+  5: "F",
+  6: "M",
+  7: "O",
+};
+
+const DIRECTIONAL_PATTERN_CODES = {
+  1: "D",
+  2: "N",
+};
+
+const CSV_FIELDS = [
+  {
+    heading: "Spectrum Licence Number",
+    get: (row) => row["licence-number"] ?? "",
+  },
+  {
+    heading: "Upload Reference Number",
+    get: (row) => row["reference-number"] ?? "",
+  },
+  { heading: "Contact Name", get: (row) => row["contact-name"] ?? "" },
+  { heading: "Business Telephone", get: (row) => row["business-number"] ?? "" },
+  { heading: "E-mail address", get: (row) => row["email-address"] ?? "" },
+  { heading: "Station location", get: (row) => row["station-location"] ?? "" },
+  {
+    heading: "Station Type",
+    get: (row) => (row["licence-type"] === "radio2" ? "TC" : "FX"),
+  },
+  {
+    heading: "Radio technology",
+    get: (row) => mapValue(RADIO_TECHNOLOGY_CODES, row["radio-technology"]),
+  },
+  { heading: "Cell ID", get: (row) => row["cell-id"] ?? "" },
+  { heading: "Physical Cell ID", get: (row) => row["physical-cell-id"] ?? "" },
+  {
+    heading: "Province/Territory",
+    get: (row) => mapValue(PROVINCE_TERRITORY_CODES, row["province-territory"]),
+  },
+  { heading: "Latitude", get: (row) => row.latitude ?? "" },
+  { heading: "Longitude", get: (row) => row.longitude ?? "" },
+  {
+    heading: "Site Type Code",
+    get: (row) => mapValue(SITE_TYPE_CODES, row["site-type"]),
+  },
+  { heading: "Structure Height", get: (row) => row["structure-height"] ?? "" },
+  {
+    heading: "Structure type",
+    get: (row) => mapValue(STRUCTURE_TYPE_CODES, row["structure-type"]),
+  },
+  {
+    heading: "Date Of Last Modification",
+    get: (row) => row["date-of-modification"] ?? "",
+  },
+  { heading: "Site record ID", get: (row) => row["site-record-id"] ?? "" },
+  { heading: "Tx Frequency", get: (row) => getSideFrequency(row, "tx") },
+  { heading: "Rx Frequency", get: (row) => getSideFrequency(row, "rx") },
+  {
+    heading: "Tx Radio Model Number",
+    get: (row) => getSharedPage3Value(row, "radio-model"),
+  },
+  {
+    heading: "Rx Radio Model Number",
+    get: (row) => getSharedPage3Value(row, "radio-model"),
+  },
+  {
+    heading: "Tx Radio Manufacturer Code",
+    get: (row) => getSharedPage3Value(row, "radio-code"),
+  },
+  {
+    heading: "Rx Radio Manufacturer Code",
+    get: (row) => getSharedPage3Value(row, "radio-code"),
+  },
+  {
+    heading: "Tx Radio Certification Number",
+    get: (row) => getSharedPage3Value(row, "radio-certificate"),
+  },
+  {
+    heading: "Rx Radio Certification Number",
+    get: (row) => getSharedPage3Value(row, "radio-certificate"),
+  },
+  { heading: "Bandwidth", get: (row) => row.bandwidth ?? "" },
+  { heading: "Class of Emisssion", get: () => "" },
+  { heading: "Transmitter TCP-TRP", get: (row) => row.tcp ?? "" },
+  { heading: "Downlink Resource Allocation", get: (row) => row.downlink ?? "" },
+  { heading: "Tx Antenna Type Code", get: (row) => mapAntennaCode(row, "tx") },
+  { heading: "Rx Antenna Type Code", get: (row) => mapAntennaCode(row, "rx") },
+  {
+    heading: "Number of Tx Antennas",
+    get: (row) => getDirectionalValue(row, "tx", "number-antennas"),
+  },
+  {
+    heading: "Number of Rx Antennas",
+    get: (row) => getDirectionalValue(row, "rx", "number-antennas"),
+  },
+  {
+    heading: "Tx Antenna Model Number",
+    get: (row) => getDirectionalValue(row, "tx", "antenna-model"),
+  },
+  {
+    heading: "Rx Antenna Model Number",
+    get: (row) => getDirectionalValue(row, "rx", "antenna-model"),
+  },
+  {
+    heading: "Tx Antenna Manufacturer",
+    get: (row) => getDirectionalValue(row, "tx", "antenna-manufacturer"),
+  },
+  {
+    heading: "Rx Antenna Manufacturer",
+    get: (row) => getDirectionalValue(row, "rx", "antenna-manufacturer"),
+  },
+  {
+    heading: "Tx Antenna Height",
+    get: (row) => getDirectionalValue(row, "tx", "antenna-height"),
+  },
+  {
+    heading: "Rx Antenna Height",
+    get: (row) => getDirectionalValue(row, "rx", "antenna-height"),
+  },
+  {
+    heading: "Tx Directional Pattern Code",
+    get: (row) =>
+      mapValue(
+        DIRECTIONAL_PATTERN_CODES,
+        getDirectionalValue(row, "tx", "omnidirectional-pattern"),
+      ),
+  },
+  {
+    heading: "Rx Directional Pattern Code",
+    get: (row) =>
+      mapValue(
+        DIRECTIONAL_PATTERN_CODES,
+        getDirectionalValue(row, "rx", "omnidirectional-pattern"),
+      ),
+  },
+  {
+    heading: "Tx Antenna Horizontal Beamwidth",
+    get: (row) =>
+      getDirectionalValue(row, "tx", "antenna-horizontal-beamwidth"),
+  },
+  {
+    heading: "Rx Antenna Horizontal Beamwidth",
+    get: (row) =>
+      getDirectionalValue(row, "rx", "antenna-horizontal-beamwidth"),
+  },
+  {
+    heading: "Tx Antenna Vertical Beamwidth",
+    get: (row) => getDirectionalValue(row, "tx", "antenna-vertical-beamwidth"),
+  },
+  {
+    heading: "Rx Antenna Vertical Beamwidth",
+    get: (row) => getDirectionalValue(row, "rx", "antenna-vertical-beamwidth"),
+  },
+  {
+    heading: "Tx Antenna Azimuth",
+    get: (row) => getDirectionalValue(row, "tx", "antenna-azimuth"),
+  },
+  {
+    heading: "Rx Antenna Azimuth",
+    get: (row) => getDirectionalValue(row, "rx", "antenna-azimuth"),
+  },
+  {
+    heading: "Tx Antenna Elevation Angle",
+    get: (row) => getDirectionalValue(row, "tx", "antenna-elevation-angle"),
+  },
+  {
+    heading: "Rx Antenna Elevation Angle",
+    get: (row) => getDirectionalValue(row, "rx", "antenna-elevation-angle"),
+  },
+  {
+    heading: "Tx Antenna Gain",
+    get: (row) => getDirectionalValue(row, "tx", "antenna-gain"),
+  },
+  {
+    heading: "Rx Antenna Gain",
+    get: (row) => getDirectionalValue(row, "rx", "antenna-gain"),
+  },
+  {
+    heading: "Tx Loss",
+    get: (row) => getDirectionalValue(row, "tx", "antenna-line-loss"),
+  },
+  {
+    heading: "Rx Loss",
+    get: (row) => getDirectionalValue(row, "rx", "antenna-line-loss"),
+  },
 ];
 
-const headings = [
-  "Spectrum Licence Number",
-  "Upload Reference Number",
-  "Contact Name",
-  "Business Telephone",
-  "E-mail address",
-  "Station location",
-  "Station Type",
-  "Radio technology",
-  "Cell ID",
-  "Physical Cell ID",
-  "Province/Territory",
-  "Latitude",
-  "Longitude",
-  "Site Type Code",
-  "Structure Height",
-  "Structure type",
-  "Date Of Last Modification",
-  "Site record ID",
-  "Tx Frequency",
-  "Rx Frequency",
-  "Tx Radio Model Number",
-  "Rx Radio Model Number",
-  "Tx Radio Manufacturer Code",
-  "Rx Radio Manufacturer Code",
-  "Tx Radio Certification Number",
-  "Rx Radio Certification Number",
-  "Bandwidth",
-  "Class of Emisssion",
-  "Transmitter TCP-TRP",
-  "Downlink Resource Allocation",
-  "Tx Antenna Type Code",
-  "Rx Antenna Type Code",
-  "Number of Tx Antennas",
-  "Number of Rx Antennas",
-  "Tx Antenna Model Number",
-  "Rx Antenna Model Number",
-  "Tx Antenna Manufacturer",
-  "Rx Antenna Manufacturer",
-  "Tx Antenna Height",
-  "Rx Antenna Height",
-  "Tx Directional Pattern Code",
-  "Rx Directional Pattern Code",
-  "Tx Antenna Horizontal Beamwidth",
-  "Rx Antenna Horizontal Beamwidth",
-  "Tx Antenna Vertical Beamwidth",
-  "Rx Antenna Vertical Beamwidth",
-  "Tx Antenna Azimuth",
-  "Rx Antenna Azimuth",
-  "Tx Antenna Elevation Angle",
-  "Rx Antenna Elevation Angle",
-  "Tx Antenna Gain",
-  "Rx Antenna Gain",
-  "Tx Loss",
-  "Rx Loss",
-];
+function mapValue(map, value) {
+  if (value == null || value === "") return "";
+  return map[value] ?? value;
+}
+
+function getPage3Side(row, side) {
+  const antennaType = row["antenna-type"];
+  if (side === "tx")
+    return antennaType === "radio1" || antennaType === "radio3";
+  if (side === "rx")
+    return antennaType === "radio2" || antennaType === "radio3";
+  return false;
+}
+
+function getSideFrequency(row, side) {
+  if (!getPage3Side(row, side)) return side === "tx" ? "0" : "0";
+  return row[`${side}-channel-frequency`] ?? "";
+}
+
+function getSharedPage3Value(row, key) {
+  return row[key] ?? "";
+}
+
+function getDirectionalValue(row, side, key) {
+  if (!getPage3Side(row, side)) return "";
+  return row[`${side}-${key}`] ?? "";
+}
+
+function mapAntennaCode(row, side) {
+  if (!getPage3Side(row, side)) return "";
+  return "NAU";
+}
+
 // ------------------------------------
 
 function saveCurrentPageData() {
@@ -188,10 +341,10 @@ function escapeCsvValue(value) {
 }
 
 function buildCsv(rows) {
-  const header = headings.join(",");
+  const header = CSV_FIELDS.map((field) => field.heading).join(",");
   const body = rows
     .map((row) =>
-      columns.map((col) => escapeCsvValue(row[col] ?? "")).join(","),
+      CSV_FIELDS.map((field) => escapeCsvValue(field.get(row))).join(","),
     )
     .join("\n");
   return `${header}\n${body}`;
@@ -228,7 +381,8 @@ function exportAllDataAsCsv(filename = "site-data-upload.csv") {
   rows = rows.map((row) => {
     if (row["site-info-change"] === "radio2") {
       return { ...row, "station-location": "NOCHANGE" };
-    } else if (
+    }
+    if (
       row["site-info-change"] === "radio3" ||
       row["site-info-change"] === "radio4"
     ) {

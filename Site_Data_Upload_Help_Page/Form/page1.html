@@ -55,6 +55,18 @@
 
         <gcds-heading tag="h2">Step 1: Licence information</gcds-heading>
 
+        <gcds-radios
+          name="licence-type"
+          id="licence-type"
+          legend="Licence type"
+          hint="The type of licence."
+          required
+          options='[
+         { "label": "Terrestrial", "id": "radio1", "value": "radio1"},
+         { "label": "Satellite", "id": "radio2", "value": "radio2"}
+          ]'
+        >
+        </gcds-radios>
         <gcds-input
           input-id="licence-number"
           label="Spectrum licence number"
