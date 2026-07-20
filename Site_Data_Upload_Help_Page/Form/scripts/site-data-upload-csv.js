@@ -68,19 +68,19 @@ const DIRECTIONAL_PATTERN_CODES = {
 
 const CSV_FIELDS = [
   {
-    heading: "Spectrum Licence Number",
+    heading: "Spectrum licence number",
     get: (row) => row["licence-number"] ?? "",
   },
   {
-    heading: "Upload Reference Number",
+    heading: "Upload reference number",
     get: (row) => row["reference-number"] ?? "",
   },
-  { heading: "Contact Name", get: (row) => row["contact-name"] ?? "" },
-  { heading: "Business Telephone", get: (row) => row["business-number"] ?? "" },
+  { heading: "Contact name", get: (row) => row["contact-name"] ?? "" },
+  { heading: "Business telephone", get: (row) => row["business-number"] ?? "" },
   { heading: "E-mail address", get: (row) => row["email-address"] ?? "" },
   { heading: "Station location", get: (row) => row["station-location"] ?? "" },
   {
-    heading: "Station Type",
+    heading: "Station type",
     get: (row) => (row["licence-type"] === "radio2" ? "TC" : "FX"),
   },
   {
@@ -90,7 +90,7 @@ const CSV_FIELDS = [
   { heading: "Cell ID", get: (row) => row["cell-id"] ?? "" },
   { heading: "Physical Cell ID", get: (row) => row["physical-cell-id"] ?? "" },
   {
-    heading: "Province/Territory",
+    heading: "Province/Territory code",
     get: (row) => mapValue(PROVINCE_TERRITORY_CODES, row["province-territory"]),
   },
   { heading: "Latitude", get: (row) => row.latitude ?? "" },
@@ -99,24 +99,33 @@ const CSV_FIELDS = [
     heading: "Site Type Code",
     get: (row) => mapValue(SITE_TYPE_CODES, row["site-type"]),
   },
-  { heading: "Structure Height", get: (row) => row["structure-height"] ?? "" },
+  { heading: "Structure height", get: (row) => row["structure-height"] ?? "" },
   {
-    heading: "Structure type",
+    heading: "Site Structure Type Code",
     get: (row) => mapValue(STRUCTURE_TYPE_CODES, row["structure-type"]),
   },
   {
-    heading: "Date Of Last Modification",
+    heading:
+      "Station/Associated channels in-service date or last modified date",
     get: (row) => row["date-of-modification"] ?? "",
   },
-  { heading: "Site record ID", get: (row) => row["site-record-id"] ?? "" },
-  { heading: "Tx Frequency", get: (row) => getSideFrequency(row, "tx") },
-  { heading: "Rx Frequency", get: (row) => getSideFrequency(row, "rx") },
+  { heading: "Site Record ID", get: (row) => row["site-record-id"] ?? "" },
   {
-    heading: "Tx Radio Hardware Version Identification Number (HVIN)",
+    heading:
+      "Tx channel frequency or Tx lower frequency limit of the band in use",
+    get: (row) => getSideFrequency(row, "tx"),
+  },
+  {
+    heading:
+      "Rx channel frequency or Rx lower frequency limit of the band in use",
+    get: (row) => getSideFrequency(row, "rx"),
+  },
+  {
+    heading: "Tx Radio model number",
     get: (row) => getTxRxRadioValue(row, "tx", "radio-model"),
   },
   {
-    heading: "Rx Radio Hardware Version Identification Number (HVIN)",
+    heading: "Rx Radio model number",
     get: (row) => getTxRxRadioValue(row, "rx", "radio-model"),
   },
   {
@@ -174,7 +183,7 @@ const CSV_FIELDS = [
     get: (row) => getDirectionalValue(row, "rx", "antenna-height"),
   },
   {
-    heading: "Tx Directional Pattern Code",
+    heading: "Tx Antenna Directional Pattern Indicator",
     get: (row) =>
       mapValue(
         DIRECTIONAL_PATTERN_CODES,
@@ -182,7 +191,7 @@ const CSV_FIELDS = [
       ),
   },
   {
-    heading: "Rx Directional Pattern Code",
+    heading: "Rx Antenna Directional Pattern Indicator",
     get: (row) =>
       mapValue(
         DIRECTIONAL_PATTERN_CODES,
@@ -190,21 +199,21 @@ const CSV_FIELDS = [
       ),
   },
   {
-    heading: "Tx Antenna Horizontal Beamwidth",
+    heading: "Tx Antenna Horizontal Beam",
     get: (row) =>
       getDirectionalValue(row, "tx", "antenna-horizontal-beamwidth"),
   },
   {
-    heading: "Rx Antenna Horizontal Beamwidth",
+    heading: "Rx Antenna Horizontal Beam",
     get: (row) =>
       getDirectionalValue(row, "rx", "antenna-horizontal-beamwidth"),
   },
   {
-    heading: "Tx Antenna Vertical Beamwidth",
+    heading: "Tx Antenna Vertical Beam",
     get: (row) => getDirectionalValue(row, "tx", "antenna-vertical-beamwidth"),
   },
   {
-    heading: "Rx Antenna Vertical Beamwidth",
+    heading: "Rx Antenna Vertical Beam",
     get: (row) => getDirectionalValue(row, "rx", "antenna-vertical-beamwidth"),
   },
   {
@@ -232,11 +241,11 @@ const CSV_FIELDS = [
     get: (row) => getDirectionalValue(row, "rx", "antenna-gain"),
   },
   {
-    heading: "Tx Loss",
+    heading: "Tx Line Loss",
     get: (row) => getDirectionalValue(row, "tx", "antenna-line-loss"),
   },
   {
-    heading: "Rx Loss",
+    heading: "Rx Line Loss",
     get: (row) => getDirectionalValue(row, "rx", "antenna-line-loss"),
   },
 ];

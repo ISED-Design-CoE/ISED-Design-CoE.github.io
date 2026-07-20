@@ -530,7 +530,26 @@
           try {
             const raw = sessionStorage.getItem("site-data-upload-all") || "{}";
             const state = JSON.parse(raw) || {};
-            return state.current?.page1?.["licence-type"] || "";
+            const currentPage1 = state.current?.page1 || {};
+            if (currentPage1["licence-type"])
+              return currentPage1["licence-type"];
+            if (currentPage1.licenceType) return currentPage1.licenceType;
+
+            const editingIndex = state.editing;
+            const entries = Array.isArray(state.entries) ? state.entries : [];
+            if (
+              Number.isInteger(editingIndex) &&
+              editingIndex >= 0 &&
+              entries[editingIndex]
+            ) {
+              return (
+                entries[editingIndex]["licence-type"] ||
+                entries[editingIndex].licenceType ||
+                ""
+              );
+            }
+
+            return "";
           } catch (error) {
             console.warn("Page3: Unable to read stored licence type", error);
             return "";
@@ -566,12 +585,14 @@
         function setFieldHidden(field, hidden) {
           if (!field) return;
           field.hidden = hidden;
+          field.style.display = hidden ? "none" : "";
           setFieldRequired(field, !hidden);
         }
 
         function setWrapperHidden(wrapper, hidden) {
           if (!wrapper) return;
           wrapper.hidden = hidden;
+          wrapper.style.display = hidden ? "none" : "";
           wrapper
             .querySelectorAll("gcds-input, gcds-select")
             .forEach((field) => {
@@ -607,6 +628,21 @@
                 setFieldRequired(field, visible);
               });
           });
+        }
+
+        function syncChannelFrequencyDefaults(antennaType) {
+          const txChannelFrequency = document.querySelector(
+            'gcds-input[input-id="tx-channel-frequency"]',
+          );
+          const rxChannelFrequency = document.querySelector(
+            'gcds-input[input-id="rx-channel-frequency"]',
+          );
+
+          if (antennaType === "radio1") {
+            setFieldValue(rxChannelFrequency, "0");
+          } else if (antennaType === "radio2") {
+            setFieldValue(txChannelFrequency, "0");
+          }
         }
 
         function applySatelliteOverrides() {
@@ -670,11 +706,13 @@
           );
           setWrapperHidden(
             txManufacturerWrap,
-            isSatellite || txManufacturerWrap?.dataset.sectionVisible !== "true",
+            isSatellite ||
+              txManufacturerWrap?.dataset.sectionVisible !== "true",
           );
           setWrapperHidden(
             rxManufacturerWrap,
-            isSatellite || rxManufacturerWrap?.dataset.sectionVisible !== "true",
+            isSatellite ||
+              rxManufacturerWrap?.dataset.sectionVisible !== "true",
           );
         }
 
@@ -693,6 +731,7 @@
             setSectionVisible('div[id$="-rx"]', true);
           }
 
+          syncChannelFrequencyDefaults(value);
           applySatelliteOverrides();
           applyValidationToAllFields();
         }

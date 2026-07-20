@@ -300,11 +300,35 @@
         try {
           const raw = sessionStorage.getItem("site-data-upload-all") || "{}";
           const state = JSON.parse(raw) || {};
-          return state.current?.page1?.["licence-type"] || "";
+          const currentPage1 = state.current?.page1 || {};
+          if (currentPage1["licence-type"]) return currentPage1["licence-type"];
+          if (currentPage1.licenceType) return currentPage1.licenceType;
+
+          const editingIndex = state.editing;
+          const entries = Array.isArray(state.entries) ? state.entries : [];
+          if (
+            Number.isInteger(editingIndex) &&
+            editingIndex >= 0 &&
+            entries[editingIndex]
+          ) {
+            return (
+              entries[editingIndex]["licence-type"] ||
+              entries[editingIndex].licenceType ||
+              ""
+            );
+          }
+
+          return "";
         } catch (error) {
           console.warn("Page2: Unable to read stored licence type", error);
           return "";
         }
+      }
+
+      function setElementVisible(el, isVisible) {
+        if (!el) return;
+        el.hidden = !isVisible;
+        el.style.display = isVisible ? "" : "none";
       }
 
       function setRequired(el, isRequired) {
@@ -418,17 +442,15 @@
         const showPhysical = licenceType === "radio1";
         const showFilter = isSatellite;
 
-        if (physicalWrap) physicalWrap.hidden = !showPhysical;
-        if (filterWrap) filterWrap.hidden = !showFilter;
+        setElementVisible(physicalWrap, showPhysical);
+        setElementVisible(filterWrap, showFilter);
 
-        if (radioTechnologyEditWrap)
-          radioTechnologyEditWrap.hidden = isSatellite;
-        if (radioTechnologyTextWrap)
-          radioTechnologyTextWrap.hidden = !isSatellite;
-        if (cellIdEditWrap) cellIdEditWrap.hidden = isSatellite;
-        if (cellIdTextWrap) cellIdTextWrap.hidden = !isSatellite;
-        if (siteTypeEditWrap) siteTypeEditWrap.hidden = isSatellite;
-        if (siteTypeTextWrap) siteTypeTextWrap.hidden = !isSatellite;
+        setElementVisible(radioTechnologyEditWrap, !isSatellite);
+        setElementVisible(radioTechnologyTextWrap, false);
+        setElementVisible(cellIdEditWrap, !isSatellite);
+        setElementVisible(cellIdTextWrap, false);
+        setElementVisible(siteTypeEditWrap, !isSatellite);
+        setElementVisible(siteTypeTextWrap, false);
 
         if (isSatellite) {
           setSelectValue(radioTechnologyField, "9");

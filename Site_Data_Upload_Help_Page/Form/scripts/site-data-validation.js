@@ -60,8 +60,9 @@ function getNumberValidator(min, max) {
 }
 
 function applyValidationAttributes(el) {
+  const tag = el.tagName.toLowerCase();
   const native = getInnerNativeField(el);
-  if (native) {
+  if (native && tag !== "gcds-radios") {
     const copyAttrs = [
       "min",
       "max",
@@ -81,7 +82,7 @@ function applyValidationAttributes(el) {
       }
     });
   }
-  if (el.tagName.toLowerCase() === "gcds-input") {
+  if (tag === "gcds-input") {
     const validators = [];
     const minlength = el.getAttribute("minlength");
     const maxlength = el.getAttribute("maxlength");
