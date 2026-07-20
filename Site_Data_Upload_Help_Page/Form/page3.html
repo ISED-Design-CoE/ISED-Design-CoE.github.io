@@ -645,6 +645,67 @@
           }
         }
 
+        function getSelectRawValue(field) {
+          if (!field) return "";
+          if (typeof field.value === "string" && field.value !== "") {
+            return field.value;
+          }
+          const inner = getInnerField(field, "select");
+          return inner?.value || "";
+        }
+
+        function applyTxDirectionalFieldRules(antennaType) {
+          const txPatternField = document.querySelector(
+            'gcds-select[select-id="tx-omnidirectional-pattern"]',
+          );
+          const txHorizontalWrap = document.getElementById(
+            "antenna-horizontal-beamwidth-tx",
+          );
+          const txVerticalWrap = document.getElementById(
+            "antenna-vertical-beamwidth-tx",
+          );
+          const txAzimuthWrap = document.getElementById("antenna-azimuth-tx");
+          const txElevationWrap = document.getElementById(
+            "antenna-elevation-angle-tx",
+          );
+
+          const txVisible =
+            antennaType === "radio1" || antennaType === "radio3";
+          const isDirectional = getSelectRawValue(txPatternField) === "1";
+          const showDirectionalFields = txVisible && isDirectional;
+
+          setWrapperHidden(txHorizontalWrap, !showDirectionalFields);
+          setWrapperHidden(txVerticalWrap, !showDirectionalFields);
+          setWrapperHidden(txAzimuthWrap, !showDirectionalFields);
+          setWrapperHidden(txElevationWrap, !showDirectionalFields);
+        }
+
+        function applyRxDirectionalFieldRules(antennaType) {
+          const rxPatternField = document.querySelector(
+            'gcds-select[select-id="rx-omnidirectional-pattern"]',
+          );
+          const rxHorizontalWrap = document.getElementById(
+            "antenna-horizontal-beamwidth-rx",
+          );
+          const rxVerticalWrap = document.getElementById(
+            "antenna-vertical-beamwidth-rx",
+          );
+          const rxAzimuthWrap = document.getElementById("antenna-azimuth-rx");
+          const rxElevationWrap = document.getElementById(
+            "antenna-elevation-angle-rx",
+          );
+
+          const rxVisible =
+            antennaType === "radio2" || antennaType === "radio3";
+          const isDirectional = getSelectRawValue(rxPatternField) === "1";
+          const showDirectionalFields = rxVisible && isDirectional;
+
+          setWrapperHidden(rxHorizontalWrap, !showDirectionalFields);
+          setWrapperHidden(rxVerticalWrap, !showDirectionalFields);
+          setWrapperHidden(rxAzimuthWrap, !showDirectionalFields);
+          setWrapperHidden(rxElevationWrap, !showDirectionalFields);
+        }
+
         function applySatelliteOverrides() {
           const isSatellite = getLicenceTypeFromState() === "radio2";
 
@@ -732,6 +793,8 @@
           }
 
           syncChannelFrequencyDefaults(value);
+          applyTxDirectionalFieldRules(value);
+          applyRxDirectionalFieldRules(value);
           applySatelliteOverrides();
           applyValidationToAllFields();
         }
@@ -739,6 +802,15 @@
         updateInputs();
 
         radios.addEventListener("change", updateInputs);
+
+        const txPatternField = document.querySelector(
+          'gcds-select[select-id="tx-omnidirectional-pattern"]',
+        );
+        const rxPatternField = document.querySelector(
+          'gcds-select[select-id="rx-omnidirectional-pattern"]',
+        );
+        txPatternField?.addEventListener("change", updateInputs);
+        rxPatternField?.addEventListener("change", updateInputs);
       });
     </script>
   </body>
