@@ -62,8 +62,8 @@
           hint="The type of licence."
           required
           options='[
-         { "label": "Terrestrial", "id": "radio1", "value": "radio1"},
-         { "label": "Satellite", "id": "radio2", "value": "radio2"}
+         { "label": "Terrestrial", "id": "licence-type-radio1", "value": "radio1"},
+         { "label": "Satellite", "id": "licence-type-radio2", "value": "radio2"}
           ]'
         >
         </gcds-radios>
@@ -117,10 +117,10 @@
           legend="Has there been any changes to your site information?"
           required
           options='[
-         { "label": "My site information has changed since my last upload", "id": "radio1", "value": "radio1"},
-         { "label": "My site information stayed the same since my last upload", "id": "radio2", "value": "radio2"},
-         { "label": "I have not deployed any sites yet", "id": "radio3", "value": "radio3"},
-         { "label": "I have decommissioned all my sites", "id": "radio4", "value": "radio4"}
+         { "label": "My site information has changed since my last upload", "id": "site-change-radio1", "value": "radio1"},
+         { "label": "My site information stayed the same since my last upload", "id": "site-change-radio2", "value": "radio2"},
+         { "label": "I have not deployed any sites yet", "id": "site-change-radio3", "value": "radio3"},
+         { "label": "I have decommissioned all my sites", "id": "site-change-radio4", "value": "radio4"}
           ]'
         >
         </gcds-radios>
@@ -183,26 +183,22 @@
       function handleNext() {
         const selected = getSiteChangeValue();
 
-        const isRadio1 = selected === "radio1";
-        const isRadio2or3or4 =
+        const shouldFinalize =
           selected === "radio2" ||
           selected === "radio3" ||
           selected === "radio4";
-
-        if (isRadio1 && !validateCurrentPage()) {
-          return;
-        }
+        const isValid = validateCurrentPage();
+        if (!isValid) return;
 
         saveCurrentPageData();
 
-        if (isRadio2or3or4 && validateCurrentPage()) {
+        if (shouldFinalize) {
           finalizeCurrentEntry();
           window.location.href = "page4.html";
-        } else {
-          if (validateCurrentPage()) {
-            window.location.href = "page2.html";
-          }
+          return;
         }
+
+        window.location.href = "page2.html";
       }
 
       function handleBack() {

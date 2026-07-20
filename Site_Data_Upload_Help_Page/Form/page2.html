@@ -64,38 +64,56 @@
           maxlength="63"
         ></gcds-input>
 
-        <gcds-select
-          select-id="radio-technology"
-          label="Radio technology"
-          name="Radio technology"
-          hint="The mode of operation (provisioning) for the radio apparatus at your station."
-          required
-          default-value="Select option"
-        >
-          <option value="1">
-            GSM – Global System for Mobile Communications
-          </option>
-          <option value="2">CDMA – Code Division Multiple Access</option>
-          <option value="3">HSPA – High Speed Packet Access</option>
-          <option value="4">LTE – Long Term Evolution</option>
-          <option value="5">5GNR – 5G New Radio</option>
-          <option value="6">5GDSS – 5G Dynamic Spectrum Sharing</option>
-          <option value="7">
-            WIMAX – Worldwide Interoperability for Microwave Access
-          </option>
-          <option value="8">WI-FI</option>
-          <option value="9">OTHER</option>
-        </gcds-select>
+        <div id="radio-technology-edit-wrap">
+          <gcds-select
+            select-id="radio-technology"
+            label="Radio technology"
+            name="Radio technology"
+            hint="The mode of operation (provisioning) for the radio apparatus at your station."
+            required
+            default-value="Select option"
+          >
+            <option value="1">
+              GSM – Global System for Mobile Communications
+            </option>
+            <option value="2">CDMA – Code Division Multiple Access</option>
+            <option value="3">HSPA – High Speed Packet Access</option>
+            <option value="4">LTE – Long Term Evolution</option>
+            <option value="5">5GNR – 5G New Radio</option>
+            <option value="6">5GDSS – 5G Dynamic Spectrum Sharing</option>
+            <option value="7">
+              WIMAX – Worldwide Interoperability for Microwave Access
+            </option>
+            <option value="8">WI-FI</option>
+            <option value="9">OTHER</option>
+          </gcds-select>
+        </div>
 
-        <gcds-input
-          input-id="cell-id"
-          label="Cell Global Identity (CGI)"
-          hint="The mobile network Cell Global Identity (CGI) following the 3GPP notation for the radio technology above."
-          required
-          minlength="11"
-          maxlength="27"
-          pattern="\d{6}-\d{8}-\d{11}"
-        ></gcds-input>
+        <div id="radio-technology-text-wrap" hidden>
+          <gcds-text
+            ><strong>Radio technology</strong>: <br />
+            OTHER</gcds-text
+          >
+        </div>
+
+        <div id="cell-id-edit-wrap">
+          <gcds-input
+            input-id="cell-id"
+            label="Cell Global Identity (CGI)"
+            hint="The mobile network Cell Global Identity (CGI) following the 3GPP notation for the radio technology above."
+            required
+            minlength="11"
+            maxlength="27"
+            pattern="\d{6}-\d{8}-\d{11}"
+          ></gcds-input>
+        </div>
+
+        <div id="cell-id-text-wrap" hidden>
+          <gcds-text
+            ><strong>Cell Global Identity (CGI)</strong>:<br />
+            Blank</gcds-text
+          >
+        </div>
 
         <div id="physical-cell-id-wrap" hidden>
           <gcds-input
@@ -176,18 +194,24 @@
           size="11"
         ></gcds-input>
 
-        <gcds-select
-          select-id="site-type"
-          label="Site Type Code"
-          name="Site Type"
-          hint="Select your stations type based on the environment it is located in."
-          required
-          default-value="Select option"
-        >
-          <option value="1">U - Underground</option>
-          <option value="2">O - Outdoor</option>
-          <option value="3">I - Indoor</option>
-        </gcds-select>
+        <div id="site-type-edit-wrap">
+          <gcds-select
+            select-id="site-type"
+            label="Site Type Code"
+            name="Site Type"
+            hint="Select your stations type based on the environment it is located in."
+            required
+            default-value="Select option"
+          >
+            <option value="1">U - Underground</option>
+            <option value="2">O - Outdoor</option>
+            <option value="3">I - Indoor</option>
+          </gcds-select>
+        </div>
+
+        <div id="site-type-text-wrap" hidden>
+          <gcds-text><strong>Site Type Code</strong>: O</gcds-text>
+        </div>
 
         <gcds-input
           input-id="structure-height"
@@ -294,25 +318,129 @@
         }
       }
 
+      function setSelectValue(el, value) {
+        if (!el) return;
+        el.value = value;
+        const inner =
+          el.querySelector("select") || el.shadowRoot?.querySelector("select");
+        if (inner) inner.value = value;
+      }
+
+      function setInputValue(el, value) {
+        if (!el) return;
+        el.value = value;
+        const inner =
+          el.querySelector("input") || el.shadowRoot?.querySelector("input");
+        if (inner) inner.value = value;
+      }
+
+      function parseIsoLikeDate(value) {
+        if (!value || typeof value !== "string") return null;
+        const trimmed = value.trim();
+        if (!trimmed) return null;
+        const parsed = new Date(trimmed);
+        if (Number.isNaN(parsed.getTime())) return null;
+        parsed.setHours(0, 0, 0, 0);
+        return parsed;
+      }
+
+      function validateDateOfModificationInPast() {
+        const licenceType = getLicenceTypeFromState();
+        if (licenceType !== "radio2") return true;
+
+        const field = document.querySelector(
+          'gcds-date-input[input-id="date-of-modification"]',
+        );
+        if (!field) return true;
+
+        const rawValue =
+          typeof field.value === "string"
+            ? field.value
+            : field.getAttribute("value") || "";
+
+        if (!rawValue.trim()) {
+          field.removeAttribute("error-state");
+          field.removeAttribute("error-message");
+          return true;
+        }
+
+        const selectedDate = parseIsoLikeDate(rawValue);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const isValid = !!selectedDate && selectedDate < today;
+
+        if (!isValid) {
+          field.setAttribute("error-state", "error");
+          field.setAttribute(
+            "error-message",
+            "Enter a date in the past for Date of last modification.",
+          );
+          return false;
+        }
+
+        field.removeAttribute("error-state");
+        field.removeAttribute("error-message");
+        return true;
+      }
+
       function applyLicenceTypeVisibility() {
         const physicalWrap = document.getElementById("physical-cell-id-wrap");
         const filterWrap = document.getElementById("filter-code-wrap");
+        const radioTechnologyEditWrap = document.getElementById(
+          "radio-technology-edit-wrap",
+        );
+        const radioTechnologyTextWrap = document.getElementById(
+          "radio-technology-text-wrap",
+        );
+        const cellIdEditWrap = document.getElementById("cell-id-edit-wrap");
+        const cellIdTextWrap = document.getElementById("cell-id-text-wrap");
+        const siteTypeEditWrap = document.getElementById("site-type-edit-wrap");
+        const siteTypeTextWrap = document.getElementById("site-type-text-wrap");
+
         const physicalField = document.querySelector(
           'gcds-input[input-id="physical-cell-id"]',
         );
         const filterField = document.querySelector(
           'gcds-select[select-id="filter-code"]',
         );
+        const radioTechnologyField = document.querySelector(
+          'gcds-select[select-id="radio-technology"]',
+        );
+        const cellIdField = document.querySelector(
+          'gcds-input[input-id="cell-id"]',
+        );
+        const siteTypeField = document.querySelector(
+          'gcds-select[select-id="site-type"]',
+        );
 
         const licenceType = getLicenceTypeFromState();
+        const isSatellite = licenceType === "radio2";
         const showPhysical = licenceType === "radio1";
-        const showFilter = licenceType === "radio2";
+        const showFilter = isSatellite;
 
         if (physicalWrap) physicalWrap.hidden = !showPhysical;
         if (filterWrap) filterWrap.hidden = !showFilter;
 
+        if (radioTechnologyEditWrap)
+          radioTechnologyEditWrap.hidden = isSatellite;
+        if (radioTechnologyTextWrap)
+          radioTechnologyTextWrap.hidden = !isSatellite;
+        if (cellIdEditWrap) cellIdEditWrap.hidden = isSatellite;
+        if (cellIdTextWrap) cellIdTextWrap.hidden = !isSatellite;
+        if (siteTypeEditWrap) siteTypeEditWrap.hidden = isSatellite;
+        if (siteTypeTextWrap) siteTypeTextWrap.hidden = !isSatellite;
+
+        if (isSatellite) {
+          setSelectValue(radioTechnologyField, "9");
+          setInputValue(cellIdField, "");
+          setSelectValue(siteTypeField, "2");
+        }
+
         setRequired(physicalField, showPhysical);
         setRequired(filterField, showFilter);
+        setRequired(radioTechnologyField, !isSatellite);
+        setRequired(cellIdField, !isSatellite);
+        setRequired(siteTypeField, !isSatellite);
         applyValidationToAllFields();
       }
 
@@ -334,12 +462,7 @@
         const field = document.querySelector(
           'gcds-input[input-id="physical-cell-id"]',
         );
-        if (!field) return;
-        field.value = value;
-        const inner =
-          field.querySelector("input") ||
-          field.shadowRoot?.querySelector("input");
-        if (inner) inner.value = value;
+        setInputValue(field, value);
       }
 
       function getPhysicalCellIdFromFilterCode(rawValue) {
@@ -374,6 +497,7 @@
       nextBtn?.addEventListener("click", (event) => {
         event.preventDefault();
         if (!validateCurrentPage()) return;
+        if (!validateDateOfModificationInPast()) return;
         saveCurrentPageData();
         window.location.href = "page3.html";
       });
@@ -392,6 +516,7 @@
           if (node.id === "btn-next" || node.closest?.("#btn-next")) {
             event.preventDefault();
             if (!validateCurrentPage()) return;
+            if (!validateDateOfModificationInPast()) return;
             saveCurrentPageData();
             window.location.href = "page3.html";
             return;

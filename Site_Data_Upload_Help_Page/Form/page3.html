@@ -56,24 +56,47 @@
         <gcds-heading tag="h2">Step 3: Antenna information</gcds-heading>
 
         <gcds-input
-          input-id="radio-model"
-          label="Radio model number"
-          hint="The radio’s Hardware Version Identification Number (HVIN) certified by ISED. "
+          input-id="tx-radio-model"
+          label="Tx radio model number"
+          hint="The transmitter radio Hardware Version Identification Number (HVIN) certified by ISED."
           required
           maxlength="128"
         ></gcds-input>
 
         <gcds-input
-          input-id="radio-code"
-          label="Radio manufacturer code"
-          hint="The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the radio."
+          input-id="rx-radio-model"
+          label="Rx radio model number"
+          hint="The receiver radio Hardware Version Identification Number (HVIN) certified by ISED."
+          required
+          maxlength="128"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="tx-radio-code"
+          label="Tx radio manufacturer code"
+          hint="The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the transmitter radio."
           required
         ></gcds-input>
 
         <gcds-input
-          input-id="radio-certificate"
-          label="Radio certification number"
-          hint="Enter your radio certification number assigned by ISED."
+          input-id="rx-radio-code"
+          label="Rx radio manufacturer code"
+          hint="The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the receiver radio."
+          required
+        ></gcds-input>
+
+        <gcds-input
+          input-id="tx-radio-certificate"
+          label="Tx radio certification number"
+          hint="Enter the radio certification number assigned by ISED for the transmitter radio."
+          required
+          maxlength="31"
+        ></gcds-input>
+
+        <gcds-input
+          input-id="rx-radio-certificate"
+          label="Rx radio certification number"
+          hint="Enter the radio certification number assigned by ISED for the receiver radio."
           required
           maxlength="31"
         ></gcds-input>
@@ -112,9 +135,9 @@
           legend="Is your antenna transmitting or receiving?"
           required
           options='[
-         { "label": "Transmitting only", "id": "radio1", "value": "radio1"},
-         { "label": "Receiving only", "id": "radio2", "value": "radio2"}, 
-         { "label": "Both transmitting and receiving", "id": "radio3", "value": "radio3"}
+         { "label": "Transmitting only", "id": "antenna-type-radio1", "value": "radio1"},
+         { "label": "Receiving only", "id": "antenna-type-radio2", "value": "radio2"}, 
+         { "label": "Both transmitting and receiving", "id": "antenna-type-radio3", "value": "radio3"}
           ]'
         >
         </gcds-radios>
@@ -503,16 +526,65 @@
 
         if (!radios) return;
 
+        function getLicenceTypeFromState() {
+          try {
+            const raw = sessionStorage.getItem("site-data-upload-all") || "{}";
+            const state = JSON.parse(raw) || {};
+            return state.current?.page1?.["licence-type"] || "";
+          } catch (error) {
+            console.warn("Page3: Unable to read stored licence type", error);
+            return "";
+          }
+        }
+
+        function getInnerField(el, selector) {
+          if (!el) return null;
+          return (
+            el.querySelector(selector) || el.shadowRoot?.querySelector(selector)
+          );
+        }
+
+        function setFieldValue(field, value) {
+          if (!field) return;
+          field.value = value;
+          const inner = getInnerField(field, "input, select, textarea");
+          if (inner) inner.value = value;
+        }
+
+        function setFieldRequired(field, required) {
+          if (!field) return;
+          const wasRequired = field.dataset.originalRequired === "true";
+          if (required && wasRequired) {
+            field.setAttribute("required", "");
+          } else {
+            field.removeAttribute("required");
+            field.removeAttribute("error-state");
+            field.removeAttribute("error-message");
+          }
+        }
+
+        function setFieldHidden(field, hidden) {
+          if (!field) return;
+          field.hidden = hidden;
+          setFieldRequired(field, !hidden);
+        }
+
+        function setWrapperHidden(wrapper, hidden) {
+          if (!wrapper) return;
+          wrapper.hidden = hidden;
+          wrapper
+            .querySelectorAll("gcds-input, gcds-select")
+            .forEach((field) => {
+              setFieldRequired(field, !hidden);
+            });
+        }
+
         document
-          .querySelectorAll('div[id$="-tx"], div[id$="-rx"]')
-          .forEach((section) => {
-            section
-              .querySelectorAll("gcds-input, gcds-select")
-              .forEach((field) => {
-                field.dataset.originalRequired = String(
-                  field.hasAttribute("required"),
-                );
-              });
+          .querySelectorAll("gcds-input, gcds-select")
+          .forEach((field) => {
+            field.dataset.originalRequired = String(
+              field.hasAttribute("required"),
+            );
           });
 
         function getSelectedAntennaType() {
@@ -527,20 +599,83 @@
 
         function setSectionVisible(selector, visible) {
           document.querySelectorAll(selector).forEach((section) => {
+            section.dataset.sectionVisible = String(visible);
             section.hidden = !visible;
             section
               .querySelectorAll("gcds-input, gcds-select")
               .forEach((field) => {
-                const wasRequired = field.dataset.originalRequired === "true";
-                if (visible && wasRequired) {
-                  field.setAttribute("required", "");
-                } else if (!visible) {
-                  field.removeAttribute("required");
-                  field.removeAttribute("error-state");
-                  field.removeAttribute("error-message");
-                }
+                setFieldRequired(field, visible);
               });
           });
+        }
+
+        function applySatelliteOverrides() {
+          const isSatellite = getLicenceTypeFromState() === "radio2";
+
+          const txRadioCode = document.querySelector(
+            'gcds-input[input-id="tx-radio-code"]',
+          );
+          const rxRadioCode = document.querySelector(
+            'gcds-input[input-id="rx-radio-code"]',
+          );
+          const txRadioCertificate = document.querySelector(
+            'gcds-input[input-id="tx-radio-certificate"]',
+          );
+          const rxRadioCertificate = document.querySelector(
+            'gcds-input[input-id="rx-radio-certificate"]',
+          );
+          const txTypeCodeWrap = document.getElementById("type-code-tx");
+          const rxTypeCodeWrap = document.getElementById("type-code-rx");
+          const txTypeCode = document.querySelector(
+            'gcds-select[select-id="tx-type-code"]',
+          );
+          const rxTypeCode = document.querySelector(
+            'gcds-select[select-id="rx-type-code"]',
+          );
+          const txManufacturerWrap = document.getElementById(
+            "antenna-manufacturer-tx",
+          );
+          const rxManufacturerWrap = document.getElementById(
+            "antenna-manufacturer-rx",
+          );
+          const txManufacturer = document.querySelector(
+            'gcds-input[input-id="tx-antenna-manufacturer"]',
+          );
+          const rxManufacturer = document.querySelector(
+            'gcds-input[input-id="rx-antenna-manufacturer"]',
+          );
+
+          if (isSatellite) {
+            setFieldValue(txRadioCode, "31913");
+            setFieldValue(rxRadioCode, "31913");
+            setFieldValue(txRadioCertificate, "Exempt");
+            setFieldValue(rxRadioCertificate, "Exempt");
+            setFieldValue(txTypeCode, "");
+            setFieldValue(rxTypeCode, "");
+            setFieldValue(txManufacturer, "");
+            setFieldValue(rxManufacturer, "");
+          }
+
+          setFieldHidden(txRadioCode, isSatellite);
+          setFieldHidden(rxRadioCode, isSatellite);
+          setFieldHidden(txRadioCertificate, isSatellite);
+          setFieldHidden(rxRadioCertificate, isSatellite);
+          setWrapperHidden(
+            txTypeCodeWrap,
+            isSatellite || txTypeCodeWrap?.dataset.sectionVisible !== "true",
+          );
+          setWrapperHidden(
+            rxTypeCodeWrap,
+            isSatellite || rxTypeCodeWrap?.dataset.sectionVisible !== "true",
+          );
+          setWrapperHidden(
+            txManufacturerWrap,
+            isSatellite || txManufacturerWrap?.dataset.sectionVisible !== "true",
+          );
+          setWrapperHidden(
+            rxManufacturerWrap,
+            isSatellite || rxManufacturerWrap?.dataset.sectionVisible !== "true",
+          );
         }
 
         function updateInputs() {
@@ -558,6 +693,7 @@
             setSectionVisible('div[id$="-rx"]', true);
           }
 
+          applySatelliteOverrides();
           applyValidationToAllFields();
         }
 

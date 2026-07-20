@@ -1,14 +1,12 @@
 import {
   PAGE_KEY,
   ALL_DATA_KEY,
-  readAllData,
   writeAllData,
   ensureState,
   setCurrentPage,
   clearCurrentEntry,
 } from "./site-data-storage.js";
 import {
-  getFieldValue,
   setFieldValue,
   getElementKeys,
   collectPageData,
@@ -114,28 +112,28 @@ const CSV_FIELDS = [
   { heading: "Tx Frequency", get: (row) => getSideFrequency(row, "tx") },
   { heading: "Rx Frequency", get: (row) => getSideFrequency(row, "rx") },
   {
-    heading: "Tx Radio Model Number",
-    get: (row) => getSharedPage3Value(row, "radio-model"),
+    heading: "Tx Radio Hardware Version Identification Number (HVIN)",
+    get: (row) => getTxRxRadioValue(row, "tx", "radio-model"),
   },
   {
-    heading: "Rx Radio Model Number",
-    get: (row) => getSharedPage3Value(row, "radio-model"),
+    heading: "Rx Radio Hardware Version Identification Number (HVIN)",
+    get: (row) => getTxRxRadioValue(row, "rx", "radio-model"),
   },
   {
     heading: "Tx Radio Manufacturer Code",
-    get: (row) => getSharedPage3Value(row, "radio-code"),
+    get: (row) => getTxRxRadioValue(row, "tx", "radio-code"),
   },
   {
     heading: "Rx Radio Manufacturer Code",
-    get: (row) => getSharedPage3Value(row, "radio-code"),
+    get: (row) => getTxRxRadioValue(row, "rx", "radio-code"),
   },
   {
     heading: "Tx Radio Certification Number",
-    get: (row) => getSharedPage3Value(row, "radio-certificate"),
+    get: (row) => getTxRxRadioValue(row, "tx", "radio-certificate"),
   },
   {
     heading: "Rx Radio Certification Number",
-    get: (row) => getSharedPage3Value(row, "radio-certificate"),
+    get: (row) => getTxRxRadioValue(row, "rx", "radio-certificate"),
   },
   { heading: "Bandwidth", get: (row) => row.bandwidth ?? "" },
   { heading: "Class of Emisssion", get: () => "" },
@@ -262,7 +260,11 @@ function getSideFrequency(row, side) {
   return row[`${side}-channel-frequency`] ?? "";
 }
 
-function getSharedPage3Value(row, key) {
+function getTxRxRadioValue(row, side, key) {
+  const sideKey = `${side}-${key}`;
+  if (row[sideKey] != null && row[sideKey] !== "") {
+    return row[sideKey];
+  }
   return row[key] ?? "";
 }
 
@@ -273,6 +275,7 @@ function getDirectionalValue(row, side, key) {
 
 function mapAntennaCode(row, side) {
   if (!getPage3Side(row, side)) return "";
+  if (row["licence-type"] === "radio2") return "";
   return "NAU";
 }
 
@@ -323,14 +326,6 @@ function finalizeCurrentEntry() {
   state.current = { page1: {}, page2: {}, page3: {} };
   writeAllData(state);
   return true;
-}
-
-function flattenData(allData) {
-  return Object.keys(allData)
-    .sort()
-    .reduce((acc, pageKey) => {
-      return { ...acc, ...allData[pageKey] };
-    }, {});
 }
 
 function escapeCsvValue(value) {

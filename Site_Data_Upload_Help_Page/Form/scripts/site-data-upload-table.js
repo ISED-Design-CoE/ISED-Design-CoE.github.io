@@ -4,11 +4,13 @@ import { setCurrentPage } from "./site-data-upload-csv.js";
 const ALL_DATA_KEY = "site-data-upload-all";
 
 const PAGE1_FIELDS = [
+  "licence-type",
   "licence-number",
   "reference-number",
   "contact-name",
   "business-number",
   "email-address",
+  "site-info-change",
 ];
 
 const PAGE2_FIELDS = [
@@ -16,6 +18,7 @@ const PAGE2_FIELDS = [
   "radio-technology",
   "cell-id",
   "physical-cell-id",
+  "filter-code",
   "province-territory",
   "latitude",
   "longitude",
@@ -27,6 +30,12 @@ const PAGE2_FIELDS = [
 ];
 
 const PAGE3_FIELDS = [
+  "tx-radio-model",
+  "rx-radio-model",
+  "tx-radio-code",
+  "rx-radio-code",
+  "tx-radio-certificate",
+  "rx-radio-certificate",
   "radio-model",
   "radio-code",
   "radio-certificate",
@@ -188,7 +197,7 @@ function populateAntennaTable() {
     tbody.appendChild(tr);
   });
 
-  tbody.addEventListener("click", (event) => {
+  tbody.onclick = (event) => {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
 
@@ -231,6 +240,49 @@ function populateAntennaTable() {
         }
       });
 
+      if (
+        allData.current.page3["radio-model"] != null &&
+        allData.current.page3["tx-radio-model"] == null
+      ) {
+        allData.current.page3["tx-radio-model"] =
+          allData.current.page3["radio-model"];
+      }
+      if (
+        allData.current.page3["radio-model"] != null &&
+        allData.current.page3["rx-radio-model"] == null
+      ) {
+        allData.current.page3["rx-radio-model"] =
+          allData.current.page3["radio-model"];
+      }
+      if (
+        allData.current.page3["radio-code"] != null &&
+        allData.current.page3["tx-radio-code"] == null
+      ) {
+        allData.current.page3["tx-radio-code"] =
+          allData.current.page3["radio-code"];
+      }
+      if (
+        allData.current.page3["radio-code"] != null &&
+        allData.current.page3["rx-radio-code"] == null
+      ) {
+        allData.current.page3["rx-radio-code"] =
+          allData.current.page3["radio-code"];
+      }
+      if (
+        allData.current.page3["radio-certificate"] != null &&
+        allData.current.page3["tx-radio-certificate"] == null
+      ) {
+        allData.current.page3["tx-radio-certificate"] =
+          allData.current.page3["radio-certificate"];
+      }
+      if (
+        allData.current.page3["radio-certificate"] != null &&
+        allData.current.page3["rx-radio-certificate"] == null
+      ) {
+        allData.current.page3["rx-radio-certificate"] =
+          allData.current.page3["radio-certificate"];
+      }
+
       allData.editing = rowIndex;
 
       writeAllData(allData);
@@ -248,7 +300,7 @@ function populateAntennaTable() {
       populateAntennaTable();
       return;
     }
-  });
+  };
 }
 
 function initTablePage() {

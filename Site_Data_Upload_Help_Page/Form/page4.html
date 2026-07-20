@@ -81,8 +81,11 @@
 
         <gcds-heading tag="h3">My stations</gcds-heading>
 
-        <table>
+        <gcds-text>
           A maximum of 5 entries can be added and exported at a time.
+        </gcds-text>
+
+        <table>
           <thead>
             <tr>
               <th scope="col">Licence number</th>
@@ -200,15 +203,6 @@
           setCurrentPage(1);
           window.location.href = "page1.html";
         });
-
-      const goBackBtn = document.getElementById("go-back");
-      if (goBackBtn) {
-        goBackBtn.addEventListener("click", (event) => {
-          event.preventDefault();
-          saveCurrentPageData();
-          window.location.href = "page3.html";
-        });
-      }
     </script>
   </body>
 </html>

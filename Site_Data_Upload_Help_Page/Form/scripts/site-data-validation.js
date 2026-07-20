@@ -150,7 +150,8 @@ function validateCurrentPage() {
   document.querySelectorAll(fieldSelectors.join(",")).forEach((el) => {
     if (!el.hasAttribute("required")) return;
     const value = getFieldValue(el);
-    if (!value.trim()) {
+    const normalizedValue = String(value ?? "").trim();
+    if (!normalizedValue) {
       isValid = false;
       el.setAttribute("error-state", "error");
       el.setAttribute("error-message", "Enter information to continue.");
