@@ -140,6 +140,15 @@ function applyValidationToAllFields() {
   });
 }
 
+function isHiddenField(el) {
+  if (!el) return false;
+  if (el.hidden) return true;
+  if (el.closest("[hidden]")) return true;
+  const style = window.getComputedStyle(el);
+  if (style.display === "none" || style.visibility === "hidden") return true;
+  return false;
+}
+
 function validateCurrentPage() {
   const fieldSelectors = [
     "gcds-input",
@@ -149,6 +158,11 @@ function validateCurrentPage() {
   ];
   let isValid = true;
   document.querySelectorAll(fieldSelectors.join(",")).forEach((el) => {
+    if (isHiddenField(el)) {
+      el.removeAttribute("error-state");
+      el.removeAttribute("error-message");
+      return;
+    }
     if (!el.hasAttribute("required")) return;
     const value = getFieldValue(el);
     const normalizedValue = String(value ?? "").trim();
