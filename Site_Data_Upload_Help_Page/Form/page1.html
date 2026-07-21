@@ -79,7 +79,7 @@
         <gcds-input
           input-id="reference-number"
           label="Upload reference number"
-          hint="A number, or any other text, for your own use. Optional. For example, Monthly upload, March 2023."
+          hint="A number, or any other text, for your own use. For example, Monthly upload, March 2023."
           maxlength="63"
         ></gcds-input>
 
@@ -180,6 +180,38 @@
         );
       }
 
+      function applyOptionalLabelToReferenceNumber() {
+        const referenceField = document.querySelector(
+          'gcds-input[input-id="reference-number"]',
+        );
+        if (!referenceField) return;
+
+        const applyOptional = () => {
+          const label = referenceField.shadowRoot?.querySelector(
+            "label.gcds-label",
+          );
+          if (!label) return false;
+          if (label.querySelector(".label--optional")) return true;
+
+          const optionalSpan = document.createElement("span");
+          optionalSpan.className = "label--required label--optional";
+          optionalSpan.setAttribute("aria-hidden", "true");
+          optionalSpan.textContent = "(optional)";
+          label.appendChild(optionalSpan);
+          return true;
+        };
+
+        if (applyOptional()) return;
+
+        let attempts = 0;
+        const timer = setInterval(() => {
+          attempts += 1;
+          if (applyOptional() || attempts >= 20) {
+            clearInterval(timer);
+          }
+        }, 100);
+      }
+
       function handleNext() {
         const selected = getSiteChangeValue();
 
@@ -232,6 +264,8 @@
           }
         }
       });
+
+      applyOptionalLabelToReferenceNumber();
     </script>
   </body>
 </html>
