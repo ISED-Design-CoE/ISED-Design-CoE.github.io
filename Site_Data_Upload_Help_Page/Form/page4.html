@@ -42,6 +42,27 @@
       table > tbody > tr > td {
         padding: var(--gcds-spacing-300);
       }
+
+      dialog {
+        border: 1px solid #d0d0d0;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        max-width: min(32rem, 90vw);
+        width: 100%;
+        padding: 1.5rem;
+        margin: auto;
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      dialog > div {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: flex-end;
+        margin-top: 1rem;
+      }
     </style>
   </head>
 
@@ -103,6 +124,20 @@
         <gcds-button button-role="secondary" id="btn-add-entry"
           >+ Add entry</gcds-button
         >
+
+        <dialog id="delete-station-dialog">
+          <gcds-heading tag="h3" class="hydrated">Delete station?</gcds-heading>
+          <p>Are you sure you want to delete this station?</p>
+
+          <div>
+            <gcds-button button-role="secondary" id="cancel-delete-dialog">
+              Cancel
+            </gcds-button>
+            <gcds-button button-role="primary" id="confirm-delete-dialog">
+              Delete
+            </gcds-button>
+          </div>
+        </dialog>
 
         <gcds-heading tag="h3">Done with my site data?</gcds-heading>
         <gcds-text>
@@ -194,6 +229,29 @@
 
         exportAllDataAsCsv(filename);
       });
+
+      const dialog = document.getElementById("delete-station-dialog");
+      const openButton = document.getElementById("open-delete-dialog");
+      const cancelButton = document.getElementById("cancel-delete-dialog");
+      const confirmButton = document.getElementById("confirm-delete-dialog");
+
+      if (openButton && dialog && typeof dialog.showModal === "function") {
+        openButton.addEventListener("click", () => {
+          dialog.showModal();
+        });
+      }
+
+      if (cancelButton && dialog) {
+        cancelButton.addEventListener("click", () => {
+          dialog.close();
+        });
+      }
+
+      if (confirmButton && dialog) {
+        confirmButton.addEventListener("click", () => {
+          dialog.close();
+        });
+      }
 
       document
         .getElementById("btn-add-entry")

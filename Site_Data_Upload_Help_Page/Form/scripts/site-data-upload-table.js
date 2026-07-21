@@ -190,7 +190,7 @@ function populateAntennaTable() {
       <td>
         <a href="#" class="gcds-link" data-action="edit" data-row="${index}">Edit</a>
         &nbsp;|&nbsp;
-        <a href="#" class="gcds-link" data-action="delete" data-row="${index}">Delete</a>
+        <a href="#" class="gcds-link" id="open-delete-dialog" data-action="delete" data-row="${index}">Delete</a>
       </td>
     `;
 
@@ -294,6 +294,21 @@ function populateAntennaTable() {
     if (action === "delete") {
       const allData = readAllData();
       const entries = Array.isArray(allData.entries) ? allData.entries : [];
+      const dialog = document.getElementById("delete-station-dialog");
+      const openButton = document.getElementById("open-delete-dialog");
+      const cancelButton = document.getElementById("cancel-delete-dialog");
+      const confirmButton = document.getElementById("confirm-delete-dialog");
+      openButton.addEventListener("click", () => {
+        dialog.showModal();
+      });
+
+      cancelButton.addEventListener("click", () => {
+        dialog.close();
+      });
+
+      confirmButton.addEventListener("click", () => {
+        dialog.close();
+      });
       entries.splice(rowIndex, 1);
       allData.entries = entries;
       writeAllData(allData);
