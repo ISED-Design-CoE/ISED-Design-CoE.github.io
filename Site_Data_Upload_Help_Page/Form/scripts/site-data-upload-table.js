@@ -166,6 +166,53 @@ function escapeHtml(text) {
     .replace(/'/g, "&#39;");
 }
 
+function wireDeleteDialog() {
+  const dialog = document.getElementById("delete-station-dialog");
+  if (!dialog || dialog.dataset.wired === "true") return;
+
+  const cancelButton = document.getElementById("cancel-delete-dialog");
+  const confirmButton = document.getElementById("confirm-delete-dialog");
+
+  cancelButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    dialog.close();
+    delete dialog.dataset.deleteRowIndex;
+  });
+
+  confirmButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const rowIndex = Number(dialog.dataset.deleteRowIndex);
+    if (!Number.isNaN(rowIndex)) {
+      deleteEntryAtIndex(rowIndex);
+    }
+
+    dialog.close();
+    delete dialog.dataset.deleteRowIndex;
+  });
+
+  dialog.dataset.wired = "true";
+}
+
+function deleteEntryAtIndex(rowIndex) {
+  const allData = readAllData();
+  const entries = Array.isArray(allData.entries) ? allData.entries : [];
+
+  if (entries.length) {
+    if (rowIndex < 0 || rowIndex >= entries.length) return;
+    entries.splice(rowIndex, 1);
+    allData.entries = entries;
+  } else if (rowIndex === 0) {
+    allData.current = { page1: {}, page2: {}, page3: {} };
+    allData.editing = undefined;
+  } else {
+    return;
+  }
+
+  writeAllData(allData);
+  populateAntennaTable();
+}
+
 function populateAntennaTable() {
   const rows = getStationRows();
   const tbody = document.getElementById("antennas-table-body");
@@ -190,7 +237,7 @@ function populateAntennaTable() {
       <td>
         <a href="#" class="gcds-link" data-action="edit" data-row="${index}">Edit</a>
         &nbsp;|&nbsp;
-        <a href="#" class="gcds-link" id="open-delete-dialog" data-action="delete" data-row="${index}">Delete</a>
+        <a href="#" class="gcds-link" data-action="delete" data-row="${index}">Delete</a>
       </td>
     `;
 
@@ -201,8 +248,12 @@ function populateAntennaTable() {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
 
-    const action = target.getAttribute("data-action");
-    const rowIndex = Number(target.getAttribute("data-row"));
+    const deleteLink = target.closest('a[data-action="delete"]');
+    const editLink = target.closest('a[data-action="edit"]');
+    const action =
+      deleteLink?.getAttribute("data-action") ||
+      editLink?.getAttribute("data-action");
+    const rowIndex = Number((deleteLink || editLink)?.getAttribute("data-row"));
 
     if (!action || Number.isNaN(rowIndex)) return;
 
@@ -292,33 +343,19 @@ function populateAntennaTable() {
     }
 
     if (action === "delete") {
-      const allData = readAllData();
-      const entries = Array.isArray(allData.entries) ? allData.entries : [];
       const dialog = document.getElementById("delete-station-dialog");
-      const openButton = document.getElementById("open-delete-dialog");
-      const cancelButton = document.getElementById("cancel-delete-dialog");
-      const confirmButton = document.getElementById("confirm-delete-dialog");
-      openButton.addEventListener("click", () => {
-        dialog.showModal();
-      });
+      if (!dialog) return;
 
-      cancelButton.addEventListener("click", () => {
-        dialog.close();
-      });
-
-      confirmButton.addEventListener("click", () => {
-        dialog.close();
-      });
-      entries.splice(rowIndex, 1);
-      allData.entries = entries;
-      writeAllData(allData);
-      populateAntennaTable();
+      wireDeleteDialog();
+      dialog.dataset.deleteRowIndex = String(rowIndex);
+      dialog.showModal();
       return;
     }
   };
 }
 
 function initTablePage() {
+  wireDeleteDialog();
   populateAntennaTable();
 }
 
