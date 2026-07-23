@@ -96,7 +96,7 @@
         >
         </gcds-radios>
 
-        <div id="tx-radio-details" hidden>
+        <div id="tx-radio-model-tx" hidden>
           <gcds-input
             input-id="tx-radio-model"
             label="Tx radio model number"
@@ -104,39 +104,47 @@
             required
             maxlength="128"
           ></gcds-input>
+        </div>
 
-          <div id="rx-radio-details" hidden>
-            <gcds-input
-              input-id="rx-radio-model"
-              label="Rx radio model number"
-              hint="The receiver radio Hardware Version Identification Number (HVIN) certified by ISED."
-              required
-              maxlength="128"
-            ></gcds-input>
+        <div id="rx-radio-model-rx" hidden>
+          <gcds-input
+            input-id="rx-radio-model"
+            label="Rx radio model number"
+            hint="The receiver radio Hardware Version Identification Number (HVIN) certified by ISED."
+            required
+            maxlength="128"
+          ></gcds-input>
+        </div>
 
-            <gcds-input
-              input-id="tx-radio-code"
-              label="Tx radio manufacturer code"
-              hint="The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the transmitter radio."
-              required
-            ></gcds-input>
+        <div id="tx-radio-code-tx" hidden>
+          <gcds-input
+            input-id="tx-radio-code"
+            label="Tx radio manufacturer code"
+            hint="The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the transmitter radio."
+            required
+          ></gcds-input>
+        </div>
 
-            <gcds-input
-              input-id="rx-radio-code"
-              label="Rx radio manufacturer code"
-              hint="The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the receiver radio."
-              required
-            ></gcds-input>
+        <div id="rx-radio-code-rx" hidden>
+          <gcds-input
+            input-id="rx-radio-code"
+            label="Rx radio manufacturer code"
+            hint="The company code assigned by ISED’s Certification and Engineering Bureau (CEB) to the manufacturer of the receiver radio."
+            required
+          ></gcds-input>
+        </div>
 
-            <gcds-input
-              input-id="tx-radio-certificate"
-              label="Tx radio certification number"
-              hint="Enter the radio certification number assigned by ISED for the transmitter radio."
-              required
-              maxlength="31"
-            ></gcds-input>
-          </div>
+        <div id="tx-radio-certificate-tx" hidden>
+          <gcds-input
+            input-id="tx-radio-certificate"
+            label="Tx radio certification number"
+            hint="Enter the radio certification number assigned by ISED for the transmitter radio."
+            required
+            maxlength="31"
+          ></gcds-input>
+        </div>
 
+        <div id="rx-radio-certificate-rx" hidden>
           <gcds-input
             input-id="rx-radio-certificate"
             label="Rx radio certification number"
@@ -634,17 +642,6 @@
           });
         }
 
-        function applyRadioIdentityFieldVisibility(antennaType) {
-          const txRadioDetails = document.getElementById("tx-radio-details");
-          const rxRadioDetails = document.getElementById("rx-radio-details");
-
-          const showTx = antennaType === "radio1" || antennaType === "radio3";
-          const showRx = antennaType === "radio2" || antennaType === "radio3";
-
-          setWrapperHidden(txRadioDetails, !showTx);
-          setWrapperHidden(rxRadioDetails, !showRx);
-        }
-
         function syncChannelFrequencyDefaults(antennaType) {
           const txChannelFrequency = document.querySelector(
             'gcds-input[input-id="tx-channel-frequency"]',
@@ -794,8 +791,6 @@
 
         function updateInputs() {
           const value = getSelectedAntennaType();
-
-          applyRadioIdentityFieldVisibility(value);
 
           setSectionVisible('div[id$="-tx"]', false);
           setSectionVisible('div[id$="-rx"]', false);
