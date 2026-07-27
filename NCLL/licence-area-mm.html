@@ -27,43 +27,16 @@
 
 <!-- Start DECoE customization -->
 
-<link rel="stylesheet" href="libs/leaflet.css"/>
-<link rel="stylesheet" href="src/leaflet.draw.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css"/>
 
 <script>
 const baseQuery = window.location.search
 var urlQueries = baseQuery
 </script>
 
-<!-- src does not work with folder, this is long but the best I can do because of 
-	how leaflet draw is designed. -->
-<script src="libs/leaflet-src.js"></script>
-<script src="src/Leaflet.draw.js"></script>
-<script src="src/Leaflet.Draw.Event.js"></script>
-<script src="src/edit/handler/Edit.Poly.js"></script>
-<script src="src/edit/handler/Edit.SimpleShape.js"></script>
-<script src="src/edit/handler/Edit.Rectangle.js"></script>
-<script src="src/draw/handler/Draw.Feature.js"></script>
-<script src="src/draw/handler/Draw.Polyline.js"></script>
-<script src="src/draw/handler/Draw.Polygon.js"></script>
-<script src="src/draw/handler/Draw.SimpleShape.js"></script>
-<script src="src/draw/handler/Draw.Rectangle.js"></script>
-<script src="src/draw/handler/Draw.Circle.js"></script>
-<script src="src/draw/handler/Draw.Marker.js"></script>
-<script src="src/draw/handler/Draw.CircleMarker.js"></script>
-<script src="src/ext/TouchEvents.js"></script>
-<script src="src/ext/LatLngUtil.js"></script>
-<script src="src/ext/GeometryUtil.js"></script>
-<script src="src/ext/LineUtil.Intersect.js"></script>
-<script src="src/ext/Polyline.Intersect.js"></script>
-<script src="src/ext/Polygon.Intersect.js"></script>
-<script src="src/Control.Draw.js"></script>
-<script src="src/Tooltip.js"></script>
-<script src="src/Toolbar.js"></script>
-<script src="src/draw/DrawToolbar.js"></script>
-<script src="src/edit/EditToolbar.js"></script>
-<script src="src/edit/handler/EditToolbar.Edit.js"></script>
-<script src="src/edit/handler/EditToolbar.Delete.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
 <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
 
@@ -95,8 +68,25 @@ var urlQueries = baseQuery
 		/* Styles for this mockup */
 			#map {
 				border: 1px solid black;
-				height: 65em;
+				min-height: 80em;
 				margin-bottom: 2em;
+			}
+			@media (min-width: 992px) {
+				.licence-area-map-row {
+					display: flex;
+				}
+				.licence-area-map-row > .col-md-4,
+				.licence-area-map-row > .col-md-8 {
+					float: none;
+				}
+				.licence-area-map-row > .col-md-8 {
+					display: flex;
+					flex-direction: column;
+				}
+				#map {
+					flex: 1 1 auto;
+					margin-bottom: 0;
+				}
 			}
 			#WKT {
 				width: 100%;
@@ -118,6 +108,7 @@ var urlQueries = baseQuery
 				border-radius:4px;
 				outline:2px solid rgba(0,0,0,0.2);
 				padding:8px;
+				font-size: 12px;
 			}
 			html {
 				scroll-behavior: smooth;
@@ -208,7 +199,7 @@ var urlQueries = baseQuery
 						<textarea id="WKT" name="WKT" class="form-control" rows="3" placeholder="Enter WKT text here"></textarea>
 					</div>
 
-					<div class="row">
+					<div class="row licence-area-map-row">
 						<div class="col-md-4">
 							<h2 id="coords-input">Boundary points</h2>
 							<p>Latitude and longitude are in degree decimal format.</p>
@@ -949,13 +940,11 @@ var urlQueries = baseQuery
                 },
         
                 onAdd: function (map) {
-                    var controlDiv = L.DomUtil.create('div', 'leaflet-control leaflet-bar');
+					var controlDiv = L.DomUtil.create('div', 'leaflet-draw-toolbar leaflet-bar');
                     var controlUI = L.DomUtil.create('a', 'leaflet-draw-edit-remove', controlDiv);
                     controlUI.title = 'Remove all drawn items';
                     controlUI.setAttribute('href', '#');
 
-                    controlUI.style.backgroundImage = 'url(src/images/trash.svg)'
-        
                     L.DomEvent
                         .addListener(controlUI, 'click', L.DomEvent.stopPropagation)
                         .addListener(controlUI, 'click', L.DomEvent.preventDefault)
