@@ -93,7 +93,8 @@ function getPageField(pageData, fieldKeys) {
   return "";
 }
 
-function getStationRows() {
+function getStationRows(options = {}) {
+  const { includeCurrentDraft = true } = options;
   const allData = readAllData();
   const entries = Array.isArray(allData.entries) ? allData.entries : [];
   const current = allData.current || { page1: {}, page2: {}, page3: {} };
@@ -115,7 +116,7 @@ function getStationRows() {
     ]),
   }));
 
-  if (rows.length) {
+  if (rows.length || !includeCurrentDraft) {
     return rows;
   }
 
@@ -213,6 +214,110 @@ function deleteEntryAtIndex(rowIndex) {
   populateAntennaTable();
 }
 
+function setCurrentFromEntry(allData, entry) {
+  allData.current = {
+    page1: {},
+    page2: {},
+    page3: {},
+  };
+
+  PAGE1_FIELDS.forEach((field) => {
+    if (entry[field] != null) {
+      allData.current.page1[field] = entry[field];
+    }
+  });
+
+  PAGE2_FIELDS.forEach((field) => {
+    if (entry[field] != null) {
+      allData.current.page2[field] = entry[field];
+    }
+  });
+
+  PAGE3_FIELDS.forEach((field) => {
+    if (entry[field] != null) {
+      allData.current.page3[field] = entry[field];
+    }
+  });
+
+  if (
+    allData.current.page3["radio-model"] != null &&
+    allData.current.page3["tx-radio-model"] == null
+  ) {
+    allData.current.page3["tx-radio-model"] =
+      allData.current.page3["radio-model"];
+  }
+  if (
+    allData.current.page3["radio-model"] != null &&
+    allData.current.page3["rx-radio-model"] == null
+  ) {
+    allData.current.page3["rx-radio-model"] =
+      allData.current.page3["radio-model"];
+  }
+  if (
+    allData.current.page3["radio-code"] != null &&
+    allData.current.page3["tx-radio-code"] == null
+  ) {
+    allData.current.page3["tx-radio-code"] =
+      allData.current.page3["radio-code"];
+  }
+  if (
+    allData.current.page3["radio-code"] != null &&
+    allData.current.page3["rx-radio-code"] == null
+  ) {
+    allData.current.page3["rx-radio-code"] =
+      allData.current.page3["radio-code"];
+  }
+  if (
+    allData.current.page3["radio-certificate"] != null &&
+    allData.current.page3["tx-radio-certificate"] == null
+  ) {
+    allData.current.page3["tx-radio-certificate"] =
+      allData.current.page3["radio-certificate"];
+  }
+  if (
+    allData.current.page3["radio-certificate"] != null &&
+    allData.current.page3["rx-radio-certificate"] == null
+  ) {
+    allData.current.page3["rx-radio-certificate"] =
+      allData.current.page3["radio-certificate"];
+  }
+}
+
+function editEntryByIndex(rowIndex) {
+  const allData = readAllData();
+  const entries = Array.isArray(allData.entries) ? allData.entries : [];
+  if (
+    !Number.isInteger(rowIndex) ||
+    rowIndex < 0 ||
+    rowIndex >= entries.length
+  ) {
+    return false;
+  }
+
+  const entry = entries[rowIndex];
+  setCurrentFromEntry(allData, entry);
+  allData.editing = rowIndex;
+  writeAllData(allData);
+  return true;
+}
+
+function deleteEntryByIndex(rowIndex) {
+  const allData = readAllData();
+  const entries = Array.isArray(allData.entries) ? allData.entries : [];
+  if (
+    !Number.isInteger(rowIndex) ||
+    rowIndex < 0 ||
+    rowIndex >= entries.length
+  ) {
+    return false;
+  }
+
+  entries.splice(rowIndex, 1);
+  allData.entries = entries;
+  writeAllData(allData);
+  return true;
+}
+
 function populateAntennaTable() {
   const rows = getStationRows();
   const tbody = document.getElementById("antennas-table-body");
@@ -260,95 +365,19 @@ function populateAntennaTable() {
     event.preventDefault();
 
     if (action === "edit") {
-      const allData = readAllData();
-      const entries = Array.isArray(allData.entries) ? allData.entries : [];
-      if (rowIndex >= entries.length) return;
-
-      const entry = entries[rowIndex];
-
-      // Populate current with the entry data split by pages
-      allData.current = {
-        page1: {},
-        page2: {},
-        page3: {},
-      };
-
-      PAGE1_FIELDS.forEach((field) => {
-        if (entry[field] != null) {
-          allData.current.page1[field] = entry[field];
-        }
-      });
-
-      PAGE2_FIELDS.forEach((field) => {
-        if (entry[field] != null) {
-          allData.current.page2[field] = entry[field];
-        }
-      });
-
-      PAGE3_FIELDS.forEach((field) => {
-        if (entry[field] != null) {
-          allData.current.page3[field] = entry[field];
-        }
-      });
-
-      if (
-        allData.current.page3["radio-model"] != null &&
-        allData.current.page3["tx-radio-model"] == null
-      ) {
-        allData.current.page3["tx-radio-model"] =
-          allData.current.page3["radio-model"];
-      }
-      if (
-        allData.current.page3["radio-model"] != null &&
-        allData.current.page3["rx-radio-model"] == null
-      ) {
-        allData.current.page3["rx-radio-model"] =
-          allData.current.page3["radio-model"];
-      }
-      if (
-        allData.current.page3["radio-code"] != null &&
-        allData.current.page3["tx-radio-code"] == null
-      ) {
-        allData.current.page3["tx-radio-code"] =
-          allData.current.page3["radio-code"];
-      }
-      if (
-        allData.current.page3["radio-code"] != null &&
-        allData.current.page3["rx-radio-code"] == null
-      ) {
-        allData.current.page3["rx-radio-code"] =
-          allData.current.page3["radio-code"];
-      }
-      if (
-        allData.current.page3["radio-certificate"] != null &&
-        allData.current.page3["tx-radio-certificate"] == null
-      ) {
-        allData.current.page3["tx-radio-certificate"] =
-          allData.current.page3["radio-certificate"];
-      }
-      if (
-        allData.current.page3["radio-certificate"] != null &&
-        allData.current.page3["rx-radio-certificate"] == null
-      ) {
-        allData.current.page3["rx-radio-certificate"] =
-          allData.current.page3["radio-certificate"];
-      }
-
-      allData.editing = rowIndex;
-
-      writeAllData(allData);
+      if (!editEntryByIndex(rowIndex)) return;
       setCurrentPage(1);
       window.location.href = "page1.html";
       return;
     }
 
     if (action === "delete") {
-      const dialog = document.getElementById("delete-station-dialog");
-      if (!dialog) return;
-
-      wireDeleteDialog();
-      dialog.dataset.deleteRowIndex = String(rowIndex);
-      dialog.showModal();
+      const allData = readAllData();
+      const entries = Array.isArray(allData.entries) ? allData.entries : [];
+      entries.splice(rowIndex, 1);
+      allData.entries = entries;
+      writeAllData(allData);
+      populateAntennaTable();
       return;
     }
   };
@@ -359,4 +388,10 @@ function initTablePage() {
   populateAntennaTable();
 }
 
-export { initTablePage, readAllData, getStationRows };
+export {
+  initTablePage,
+  readAllData,
+  getStationRows,
+  editEntryByIndex,
+  deleteEntryByIndex,
+};

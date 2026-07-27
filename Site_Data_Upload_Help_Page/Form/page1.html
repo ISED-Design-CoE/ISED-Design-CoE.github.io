@@ -35,6 +35,13 @@
       <!-- The slot="breadcrumb" attribute adds the breadcrumbs component to the header. -->
       <gcds-breadcrumbs hide-canada-link="true" slot="breadcrumb">
         <!-- TODO: Adjust the breadcrumb links with the correct ones for your site. -->
+        <gcds-breadcrumbs-item href="https://www.canada.ca/en.html"
+          >Canada.ca</gcds-breadcrumbs-item
+        >
+        <gcds-breadcrumbs-item
+          href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system"
+          >Spectrum Management System</gcds-breadcrumbs-item
+        >
         <gcds-breadcrumbs-item href="page4.html"
           >Site data upload CSV generator</gcds-breadcrumbs-item
         >
@@ -51,7 +58,7 @@
       tag="main"
     >
       <section>
-        <gcds-heading tag="h1">Site data upload CSV generator</gcds-heading>
+        <gcds-heading tag="h1">Site data</gcds-heading>
 
         <gcds-heading tag="h2">Step 1: Licence information</gcds-heading>
 
@@ -178,6 +185,37 @@
             ?.value ||
           ""
         );
+      }
+
+      function applyOptionalLabelToReferenceNumber() {
+        const referenceField = document.querySelector(
+          'gcds-input[input-id="reference-number"]',
+        );
+        if (!referenceField) return;
+
+        const applyOptional = () => {
+          const label =
+            referenceField.shadowRoot?.querySelector("label.gcds-label");
+          if (!label) return false;
+          if (label.querySelector(".label--optional")) return true;
+
+          const optionalSpan = document.createElement("span");
+          optionalSpan.className = "label--required label--optional";
+          optionalSpan.setAttribute("aria-hidden", "true");
+          optionalSpan.textContent = "(optional)";
+          label.appendChild(optionalSpan);
+          return true;
+        };
+
+        if (applyOptional()) return;
+
+        let attempts = 0;
+        const timer = setInterval(() => {
+          attempts += 1;
+          if (applyOptional() || attempts >= 20) {
+            clearInterval(timer);
+          }
+        }, 100);
       }
 
       function handleNext() {
