@@ -111,15 +111,17 @@
 	<div class="form-group">
 		<ul class="nav nav-wizard">
 			<li><a class="navbar-item" href="general.html">General information</a></li>
-			<li><a class="navbar-item" href="contact-mm.html">Contact information</a></li>
-			<li><a class="navbar-item" href="technical-details-mm.html">Technical details</a></li>
-			<li><a class="navbar-item" href="licence-area-mm.html">Licence area</a></li>
+			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
+			<li><a class="navbar-item" href="technical-details.html">Technical details</a></li>
+			<li><a class="navbar-item" href="frequency.html">Frequency</a></li>
+			<li><a class="navbar-item" href="licence-area.html">Licence area</a></li>
+			<li><a class="navbar-item" href="#">Supporting documents (ISED use only)</a></li>
 			<li class="active" aria-current="step">Review application</li>
 		</ul>
 	</div>
 
 	<div class="wb-frmvld">
-		<form action="success-mm.html" method="get">
+		<form action="success.html" method="get">
 			<div class="wb-frm">
 				<section id="save-div" class="alert alert-success" hidden>
 					<p>Application saved as draft</p>
@@ -144,7 +146,7 @@
 				</section>
 				<section class="step">
 					<h2>Contact information</h2>
-					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'contact-mm.html'+ window.location.search">Edit</button></span>
+					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'contact.html'+ window.location.search">Edit</button></span>
 					<dl>
 						<dt>Email address to receive invoices and the licence</dt>
 						<dd><span class="lai">beth.dutton@yellowstone.com</span></dd>
@@ -154,23 +156,29 @@
 				</section>
 				<section class="step">
 					<h2>Technical details</h2>
-					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details-mm.html'+ window.location.search">Edit</button></span>
+					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details.html'+ window.location.search">Edit</button></span>
 					<dl>
 						<dt>Bandwidth</dt>
-						<dd><span class="bandwidth">50</span> MHz</dd>
-						<dt>Requested frequency blocks</dt>
-						<dd><span class="frequency">AA3 - 27.60 to 27.65&nbsp;GHz</span></dd>
+						<dd><span class="bandwidth">10</span> MHz</dd>
 						<dt>Location of antennas</dt>
 						<dd><span class="antenna">Outdoor and indoor</span></dd>
 						<dt class="antenna-height-present">Maximum antenna height</dt>
 						<dd class="antenna-height-present"><span class="antenna-height">10</span> m</dd>
 						<dt>Licence type</dt>
-						<dd><span class="power-level">High power</span></dd>
+						<dd><span class="power-level">Medium power</span></dd>
+					</dl>
+				</section>
+				<section class="step">
+					<h2>Frequency</h2>
+					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'frequency.html'+ window.location.search">Edit</button></span>
+					<dl>
+						<dt>Requested frequency blocks</dt>
+						<dd><span class="frequency">A3: 3920–3930&nbsp;MHz</span></dd>
 					</dl>
 				</section>
 				<section class="step">
 					<h2>Licence area</h2>
-					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'licence-area-mm.html'+ window.location.search">Edit</button></span>
+					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'licence-area.html'+ window.location.search">Edit</button></span>
 					<div id="map">
 						Map
 					</div>
@@ -201,13 +209,13 @@
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
 							<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
 							<dt>Requested bandwidth</dt>
-							<dd><span class="bandwidth">50</span> MHz</dd>
+							<dd><span class="bandwidth">10</span> MHz</dd>
 							<dt>Area size</dt>
 							<dd><span class="area-size">0</span> km²</dd>
 							<dt>Total cost per year</dt>
-							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 						</dl>
 					</div>
 
@@ -216,13 +224,13 @@
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
 							<dt>Base rate (<span class="fee-zone">Rural</span>) per year</dt>
-							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
 							<dt>Requested bandwidth</dt>
-							<dd><span class="bandwidth">50</span> MHz</dd>
+							<dd><span class="bandwidth">10</span> MHz</dd>
 							<dt>Area size</dt>
 							<dd><span class="area-size">0</span> km²</dd>
 							<dt>Calculated cost</dt>
-							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
+							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="total-cost">0.00</span></dd>
 						</dl>
 						<br>
 						<dl class="dl-horizontal">
@@ -238,17 +246,17 @@
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
 							<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
-							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
 							<dt>Requested bandwidth</dt>
-							<dd><span class="bandwidth">50</span> MHz</dd>
+							<dd><span class="bandwidth">10</span> MHz</dd>
 							<dt>Area size</dt>
 							<dd><span class="area-size">0</span> km²</dd>
 							<dt>Calculated cost per calendar month</dt>
-							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
 							<dt>Licence duration</dt>
 							<dd><span class="licence-duration">8</span> calendar months</dd>
 							<dt>Total cost</dt>
-							<dd>$<span class="temp-cost">0.045</span> &times; <span class="licence-duration">50</span> = $<span class="total-cost">0.00</span> </dd>
+							<dd>$<span class="temp-cost">0.45</span> &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
 						</dl>
 
 					</div>
@@ -258,13 +266,13 @@
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
 							<dt>Base rate (<span class="fee-zone">Rural</span>) per month</dt>
-							<dd>$<span class="base-rate">0.045</span> per MHz per km²</dd>
+							<dd>$<span class="base-rate">0.45</span> per MHz per km²</dd>
 							<dt>Requested bandwidth</dt>
-							<dd><span class="bandwidth">50</span> MHz</dd>
+							<dd><span class="bandwidth">10</span> MHz</dd>
 							<dt>Area size</dt>
 							<dd><span class="area-size">0</span> km²</dd>
 							<dt>Calculated cost per calendar month</dt>
-							<dd>$<span class="base-rate">0.045</span> &times; <span class="bandwidth">50</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
+							<dd>$<span class="base-rate">0.45</span> &times; <span class="bandwidth">10</span> &times; <span class="area-size">0</span> = $<span class="temp-cost">0.00</span></dd>
 						</dl>
 						<br>
 						<dl class="dl-horizontal">
@@ -273,27 +281,17 @@
 							<dt>Licence duration</dt>
 							<dd><span class="licence-duration">8</span> calendar months</dd>
 							<dt>Total cost</dt>
-							<dd>$4.00 &times; <span class="licence-duration">50</span> = $<span class="total-cost">0.00</span> </dd>
+							<dd>$4.00 &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
 						</dl>
 					</div>
 
-				</section>
-				<section>
-					<h2>Privacy notice statement<br>
-					Non-competitive local licensing</h2>
-
-					<p>Your personal information is being collected pursuant to the <cite>Department of Industry Act</cite> and the <cite>Radiocommunications Act</cite>. It will be used to communicate with you in respect of your application for spectrum licensing, or an application for which you have self-identified as the authorized business or organizational contact person. The provision of your personal information is voluntary; however, should you choose not to provide it, Innovation, Science and Economic Development Canada (ISED) will be unable to process your application for spectrum licensing.  Your personal information is held in Personal Information Bank No. ICU PPU 021 <u>Spectrum/Telecommunications Client Operation File (Radio Station/Spectrum Licensing)</u>.</p>
-
-					<p>You have the right to request that corrections be made to your personal information, if required, by sending an email to ISED ATIP Services at <a href="mailto:ic.atip-aiprp.ic@ised-isde.gc.ca">ic.atip-aiprp.ic@ised-isde.gc.ca</a>.  You further have the right to file a complaint with the Privacy Commissioner of Canada with regard to our handling of your personal information.  Further information can be found online at <a href="http://www.priv.gc.ca">www.priv.gc.ca</a>.</p>
-
-					<p>By submitting this application, you acknowledge that you have read and understood the above-noted Privacy Notice Statement, and consent to the collection and use of your personal information for the reasons stated.</p>
 				</section>
 
 				<button class="btn btn-primary" type="submit" id="next-button">Submit</button>
 				<button class="btn btn-default" type="button" id="save-button">Save</button>
 				<button class="btn btn-default" type="button" onclick="alert('Same effect as selecting \'Download application\' in the Submitted applications page')">Download application</button>
 				<br>
-				<button class="btn btn-default" type="button" onclick="window.location.href = 'licence-area-mm.html'+ window.location.search">⯇ Back</button>
+				<button class="btn btn-default" type="button" onclick="window.location.href = 'licence-area.html'+ window.location.search">⯇ Back</button>
 				<div class="notesaboutmockup">
 					<h2>Notes about this mockup:</h2>
 					<ul>

@@ -86,7 +86,7 @@
         <gcds-input
           input-id="reference-number"
           label="Upload reference number"
-          hint="A number, or any other text, for your own use. Optional. For example, Monthly upload, March 2023."
+          hint="A number, or any other text, for your own use. For example, Monthly upload, March 2023."
           maxlength="63"
         ></gcds-input>
 
@@ -270,6 +270,8 @@
           }
         }
       });
+
+      applyOptionalLabelToReferenceNumber();
     </script>
   </body>
 </html>

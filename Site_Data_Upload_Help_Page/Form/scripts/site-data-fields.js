@@ -4,8 +4,10 @@ function getFieldValue(el) {
   const tag = el.tagName.toLowerCase();
   const type = el.getAttribute("type");
   if (tag === "gcds-radios") {
-    if (typeof el.value !== "undefined" && el.value !== null) {
-      return el.value;
+    const directValue =
+      typeof el.value !== "undefined" && el.value !== null ? el.value : "";
+    if (String(directValue).trim() !== "") {
+      return directValue;
     }
     const checked =
       el.querySelector('input[type="radio"]:checked') ||
@@ -54,6 +56,7 @@ function setFieldValue(el, value) {
     if (typeof el.value !== "undefined") {
       el.value = value;
     }
+    el.setAttribute("value", value);
     const radio =
       el.querySelector(`input[type="radio"][value="${value}"]`) ||
       el.shadowRoot?.querySelector(`input[type="radio"][value="${value}"]`);
