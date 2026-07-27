@@ -89,7 +89,6 @@
 			<li class="active" aria-current="step">General information</li>
 			<li><a class="navbar-item" href="contact.html">Contact information</a></li>
 			<li><a class="navbar-item" href="technical-details.html">Technical details</a></li>
-			<li><a class="navbar-item" href="frequency.html">Frequency</a></li>
 			<li><a class="navbar-item" href="licence-area.html">Licence area</a></li>
 			<li><a class="navbar-item" href="review.html">Review application</a></li>
 		</ul>
@@ -135,7 +134,7 @@
 				<details>
 					<summary>More information<span class="wb-inv"> about renewable and temporary licences</span></summary>
 					<ul class="list-unstyled">
-						<li><strong>Renewable</strong> licences expire on March 31 each year and have a high expectation to be renewed for another year.</li>
+						<li><strong>Renewable</strong> licences expire on March 31<sup>st</sup> each year and have a high expectation to be renewed for another year.</li>
 						<li><strong>Temporary</strong> licences last up to 11 months.</li>
 					</ul>
 				</details>
@@ -165,6 +164,29 @@
 			<fieldset class="gc-chckbxrdio">
 				<legend class="required">
 					<span class="field-name">
+						Is this licence being used for an industrial use case?
+					</span>
+					<strong class="required small" aria-hidden="true">(required)</strong>
+				</legend>
+				<details>
+					<summary>Why are we asking this question?</summary>
+					<p>Per <a href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/learn-more/key-documents/spectrum-advisory-bulletins-sab/sab-03-25-notice-amendment-spectrum-limit-condition-licence-3900-mhz-band-under-non-competitive" target="_blank">SAB-03-25</a>, an industrial user is a warehouse, mine, factory, Canadian offshore oil and gas production site, or a radio access network manufacturer conducting research for 5G or 6G services. If you are an industrial user, then you may be able to apply for up to 80 MHz of bandwidth, subject to the restrictions listed in that document.</p>
+				</details>
+				<ul class="list-unstyled lst-spcd-2">
+					<li class="radio">
+						<input type="radio" id="industrial-yes" name="industrial" value="Yes" data-rule-required="true">
+						<label for="industrial-yes">Yes</label>
+					</li>
+					<li class="radio">
+						<input type="radio" id="industrial-no" name="industrial" value="No">
+						<label for="industrial-no">No</label>
+					</li>
+				</ul>
+			</fieldset>
+
+			<fieldset class="gc-chckbxrdio">
+				<legend class="required">
+					<span class="field-name">
 						Does The Best Company or any of its affiliates or subsidiaries currently have 100,000 or more retail mobile phone subscribers?
 					</span>
 					<strong class="required small" aria-hidden="true">(required)</strong>
@@ -188,20 +210,13 @@
 		<button class="btn btn-primary" type="submit">Next ⯈</button>
 		<button class="btn btn-default" type="button" id="save-button">Save</button>
 		<br>
-		<a class="btn btn-default" href="portal.html">Cancel application</a>
+		<a class="btn btn-default" href="index.html">⯇ Back</a>
 
 		<div class="notesaboutmockup">
 			<h2>Notes about this mockup:</h2>
-			<ul>
-				<li>When user selects "Temporary", show the "Expiry date" field</li>
-				<li>Step navigation in heading based on <a href="https://sms-sgs.ic.gc.ca/registration/applicationWizard?execution=e1s2">new user registration form</a></li>
-			</ul>
-			<h2>Changes from phase 2A BRD:</h2>
-			<ul>
-				<li>Ref. 5.8.2 General information page</li>
-				<li>Removed application number field</li>
-				<li>Made expiry date field conditional</li>
-			</ul>
+		<ul>
+			<li>Added question about industrial use cases.</li>
+		</ul>
 		</div>
 		</form>
 		<script src="catch-and-throw.js"></script>
@@ -310,7 +325,7 @@
 				var defPreFooter = document.getElementById("def-preFooter");
 				defPreFooter.outerHTML = wet.builder.preFooter({
 					"cdnEnv": "esdcprod",
-					"versionIdentifier": "CD56",
+					"versionIdentifier": "CD63",
 					"showPostContent": false,
 					"showFeedback": false,
 					"showShare": false
