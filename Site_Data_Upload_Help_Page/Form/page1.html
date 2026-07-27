@@ -218,6 +218,24 @@
         }, 100);
       }
 
+      function clearDownstreamDraftPages() {
+        try {
+          const raw = sessionStorage.getItem("site-data-upload-all") || "{}";
+          const state = JSON.parse(raw) || {};
+
+          if (!state.current || typeof state.current !== "object") {
+            state.current = {};
+          }
+
+          state.current.page2 = {};
+          state.current.page3 = {};
+
+          sessionStorage.setItem("site-data-upload-all", JSON.stringify(state));
+        } catch (error) {
+          console.warn("Page1: Unable to clear downstream draft pages", error);
+        }
+      }
+
       function handleNext() {
         const selected = getSiteChangeValue();
 
@@ -231,6 +249,7 @@
         saveCurrentPageData();
 
         if (shouldFinalize) {
+          clearDownstreamDraftPages();
           finalizeCurrentEntry();
           window.location.href = "page4.html";
           return;

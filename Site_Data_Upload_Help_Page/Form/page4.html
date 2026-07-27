@@ -114,6 +114,8 @@
               <a href="#" class="gcds-link" data-action="edit">Edit</a>
               &nbsp;|&nbsp;
               <a href="#" class="gcds-link" data-action="delete">Delete</a>
+              &nbsp;|&nbsp;
+              <a href="#" class="gcds-link" data-action="clone">Clone</a>
             </span>
           </template>
         </gcds-table>
@@ -190,6 +192,7 @@
       import {
         getStationRows,
         editEntryByIndex,
+        cloneEntryByIndex,
         deleteEntryByIndex,
       } from "./scripts/site-data-upload-table.js";
 
@@ -323,6 +326,23 @@
 
             if (!deleteEntryByIndex(rowIndex)) return;
             renderStationsTable();
+            return;
+          }
+
+          if (action === "clone") {
+            const stationCount = getStationRows({
+              includeCurrentDraft: false,
+            }).length;
+            if (stationCount >= 5) {
+              window.alert(
+                "You can only have up to 5 stations. Delete one before cloning.",
+              );
+              return;
+            }
+
+            if (!cloneEntryByIndex(rowIndex)) return;
+            setCurrentPage(1);
+            window.location.href = "page1.html";
           }
         });
       }

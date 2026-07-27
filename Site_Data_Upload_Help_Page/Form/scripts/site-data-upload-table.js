@@ -2,6 +2,7 @@
 import { setCurrentPage } from "./site-data-upload-csv.js";
 
 const ALL_DATA_KEY = "site-data-upload-all";
+const MAX_STATIONS = 5;
 
 const PAGE1_FIELDS = [
   "licence-type",
@@ -301,6 +302,27 @@ function editEntryByIndex(rowIndex) {
   return true;
 }
 
+function cloneEntryByIndex(rowIndex) {
+  const allData = readAllData();
+  const entries = Array.isArray(allData.entries) ? allData.entries : [];
+  if (
+    !Number.isInteger(rowIndex) ||
+    rowIndex < 0 ||
+    rowIndex >= entries.length ||
+    entries.length >= MAX_STATIONS
+  ) {
+    return false;
+  }
+
+  const entry = entries[rowIndex];
+  setCurrentFromEntry(allData, { ...entry });
+
+  // Keep clone as a new draft so saving creates a new entry.
+  allData.editing = null;
+  writeAllData(allData);
+  return true;
+}
+
 function deleteEntryByIndex(rowIndex) {
   const allData = readAllData();
   const entries = Array.isArray(allData.entries) ? allData.entries : [];
@@ -343,6 +365,8 @@ function populateAntennaTable() {
         <a href="#" class="gcds-link" data-action="edit" data-row="${index}">Edit</a>
         &nbsp;|&nbsp;
         <a href="#" class="gcds-link" data-action="delete" data-row="${index}">Delete</a>
+        &nbsp;|&nbsp;
+        <a href="#" class="gcds-link" data-action="clone" data-row="${index}">Clone</a>
       </td>
     `;
 
@@ -355,10 +379,14 @@ function populateAntennaTable() {
 
     const deleteLink = target.closest('a[data-action="delete"]');
     const editLink = target.closest('a[data-action="edit"]');
+    const cloneLink = target.closest('a[data-action="clone"]');
     const action =
       deleteLink?.getAttribute("data-action") ||
-      editLink?.getAttribute("data-action");
-    const rowIndex = Number((deleteLink || editLink)?.getAttribute("data-row"));
+      editLink?.getAttribute("data-action") ||
+      cloneLink?.getAttribute("data-action");
+    const rowIndex = Number(
+      (deleteLink || editLink || cloneLink)?.getAttribute("data-row"),
+    );
 
     if (!action || Number.isNaN(rowIndex)) return;
 
@@ -380,6 +408,13 @@ function populateAntennaTable() {
       populateAntennaTable();
       return;
     }
+
+    if (action === "clone") {
+      if (!cloneEntryByIndex(rowIndex)) return;
+      setCurrentPage(1);
+      window.location.href = "page1.html";
+      return;
+    }
   };
 }
 
@@ -393,5 +428,6 @@ export {
   readAllData,
   getStationRows,
   editEntryByIndex,
+  cloneEntryByIndex,
   deleteEntryByIndex,
 };

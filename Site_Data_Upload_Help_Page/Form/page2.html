@@ -376,9 +376,6 @@
       }
 
       function validateDateOfModificationInPast() {
-        const licenceType = getLicenceTypeFromState();
-        if (licenceType !== "radio2") return true;
-
         const field = document.querySelector(
           'gcds-date-input[input-id="date-of-modification"]',
         );

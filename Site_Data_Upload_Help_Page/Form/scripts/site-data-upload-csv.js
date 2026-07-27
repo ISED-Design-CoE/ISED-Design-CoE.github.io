@@ -81,7 +81,12 @@ const CSV_FIELDS = [
   { heading: "Station location", get: (row) => row["station-location"] ?? "" },
   {
     heading: "Station type",
-    get: (row) => (row["licence-type"] === "radio2" ? "TC" : "FX"),
+    get: (row) =>
+      row["site-info-change"] === "radio1"
+        ? row["licence-type"] === "radio2"
+          ? "TC"
+          : "FX"
+        : "",
   },
   {
     heading: "Radio technology",
@@ -265,7 +270,7 @@ function getPage3Side(row, side) {
 }
 
 function getSideFrequency(row, side) {
-  if (!getPage3Side(row, side)) return side === "tx" ? "0" : "0";
+  if (!getPage3Side(row, side)) return "";
   return row[`${side}-channel-frequency`] ?? "";
 }
 
