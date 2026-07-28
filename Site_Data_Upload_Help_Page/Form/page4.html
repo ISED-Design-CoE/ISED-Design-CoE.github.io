@@ -30,6 +30,10 @@
       type="module"
       src="https://cdn.design-system.canada.ca/@gcds-core/components@1.3.1/dist/gcds/gcds.esm.js"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
 
     <style>
       /* Custom styles for spacing and layout */
@@ -71,6 +75,13 @@
         justify-content: flex-end;
         margin-top: 1rem;
       }
+
+      .icon-action-btn::part(button) {
+        padding: 0.25rem 0.25rem;
+
+        border: none;
+        box-shadow: none;
+      }
     </style>
   </head>
 
@@ -110,12 +121,39 @@
 
         <gcds-table id="stations-table" columns="[]" data="[]">
           <template slot="cell:actions">
-            <span data-bind-template-data-row-index="{rowIndex}">
-              <a href="#" class="gcds-link" data-action="edit">Edit</a>
-              &nbsp;|&nbsp;
-              <a href="#" class="gcds-link" data-action="delete">Delete</a>
-              &nbsp;|&nbsp;
-              <a href="#" class="gcds-link" data-action="clone">Clone</a>
+            <span
+              data-bind-template-data-row-index="{rowIndex}"
+              style="display: inline-flex; gap: 16px; align-items: center"
+            >
+              <gcds-button
+                button-role="secondary"
+                class="icon-action-btn"
+                data-action="edit"
+                title="Edit"
+                aria-label="Edit"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </gcds-button>
+
+              <gcds-button
+                button-role="secondary"
+                class="icon-action-btn"
+                data-action="clone"
+                title="Clone and modify"
+                aria-label="Clone and modify"
+              >
+                <i class="fa-solid fa-clone"></i>
+              </gcds-button>
+
+              <gcds-button
+                button-role="secondary"
+                class="icon-action-btn"
+                data-action="delete"
+                title="Delete"
+                aria-label="Delete"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </gcds-button>
             </span>
           </template>
         </gcds-table>
@@ -275,11 +313,10 @@
             : [event.target];
           const link = path.find(
             (node) =>
-              node instanceof HTMLAnchorElement &&
-              node.hasAttribute("data-action"),
+              node instanceof HTMLElement && node.hasAttribute("data-action"),
           );
 
-          if (!(link instanceof HTMLAnchorElement)) return;
+          if (!(link instanceof HTMLElement)) return;
 
           event.preventDefault();
 
