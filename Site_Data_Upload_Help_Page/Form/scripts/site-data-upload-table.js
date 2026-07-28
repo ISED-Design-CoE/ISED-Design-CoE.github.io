@@ -2,6 +2,7 @@
 import { setCurrentPage } from "./site-data-upload-csv.js";
 
 const ALL_DATA_KEY = "site-data-upload-all";
+const MAX_STATIONS = 5;
 
 const PAGE1_FIELDS = [
   "licence-type",
@@ -93,7 +94,8 @@ function getPageField(pageData, fieldKeys) {
   return "";
 }
 
-function getStationRows() {
+function getStationRows(options = {}) {
+  const { includeCurrentDraft = true } = options;
   const allData = readAllData();
   const entries = Array.isArray(allData.entries) ? allData.entries : [];
   const current = allData.current || { page1: {}, page2: {}, page3: {} };
@@ -115,7 +117,7 @@ function getStationRows() {
     ]),
   }));
 
-  if (rows.length) {
+  if (rows.length || !includeCurrentDraft) {
     return rows;
   }
 
@@ -166,6 +168,178 @@ function escapeHtml(text) {
     .replace(/'/g, "&#39;");
 }
 
+function wireDeleteDialog() {
+  const dialog = document.getElementById("delete-station-dialog");
+  if (!dialog || dialog.dataset.wired === "true") return;
+
+  const cancelButton = document.getElementById("cancel-delete-dialog");
+  const confirmButton = document.getElementById("confirm-delete-dialog");
+
+  cancelButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    dialog.close();
+    delete dialog.dataset.deleteRowIndex;
+  });
+
+  confirmButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const rowIndex = Number(dialog.dataset.deleteRowIndex);
+    if (!Number.isNaN(rowIndex)) {
+      deleteEntryAtIndex(rowIndex);
+    }
+
+    dialog.close();
+    delete dialog.dataset.deleteRowIndex;
+  });
+
+  dialog.dataset.wired = "true";
+}
+
+function deleteEntryAtIndex(rowIndex) {
+  const allData = readAllData();
+  const entries = Array.isArray(allData.entries) ? allData.entries : [];
+
+  if (entries.length) {
+    if (rowIndex < 0 || rowIndex >= entries.length) return;
+    entries.splice(rowIndex, 1);
+    allData.entries = entries;
+  } else if (rowIndex === 0) {
+    allData.current = { page1: {}, page2: {}, page3: {} };
+    allData.editing = undefined;
+  } else {
+    return;
+  }
+
+  writeAllData(allData);
+  populateAntennaTable();
+}
+
+function setCurrentFromEntry(allData, entry) {
+  allData.current = {
+    page1: {},
+    page2: {},
+    page3: {},
+  };
+
+  PAGE1_FIELDS.forEach((field) => {
+    if (entry[field] != null) {
+      allData.current.page1[field] = entry[field];
+    }
+  });
+
+  PAGE2_FIELDS.forEach((field) => {
+    if (entry[field] != null) {
+      allData.current.page2[field] = entry[field];
+    }
+  });
+
+  PAGE3_FIELDS.forEach((field) => {
+    if (entry[field] != null) {
+      allData.current.page3[field] = entry[field];
+    }
+  });
+
+  if (
+    allData.current.page3["radio-model"] != null &&
+    allData.current.page3["tx-radio-model"] == null
+  ) {
+    allData.current.page3["tx-radio-model"] =
+      allData.current.page3["radio-model"];
+  }
+  if (
+    allData.current.page3["radio-model"] != null &&
+    allData.current.page3["rx-radio-model"] == null
+  ) {
+    allData.current.page3["rx-radio-model"] =
+      allData.current.page3["radio-model"];
+  }
+  if (
+    allData.current.page3["radio-code"] != null &&
+    allData.current.page3["tx-radio-code"] == null
+  ) {
+    allData.current.page3["tx-radio-code"] =
+      allData.current.page3["radio-code"];
+  }
+  if (
+    allData.current.page3["radio-code"] != null &&
+    allData.current.page3["rx-radio-code"] == null
+  ) {
+    allData.current.page3["rx-radio-code"] =
+      allData.current.page3["radio-code"];
+  }
+  if (
+    allData.current.page3["radio-certificate"] != null &&
+    allData.current.page3["tx-radio-certificate"] == null
+  ) {
+    allData.current.page3["tx-radio-certificate"] =
+      allData.current.page3["radio-certificate"];
+  }
+  if (
+    allData.current.page3["radio-certificate"] != null &&
+    allData.current.page3["rx-radio-certificate"] == null
+  ) {
+    allData.current.page3["rx-radio-certificate"] =
+      allData.current.page3["radio-certificate"];
+  }
+}
+
+function editEntryByIndex(rowIndex) {
+  const allData = readAllData();
+  const entries = Array.isArray(allData.entries) ? allData.entries : [];
+  if (
+    !Number.isInteger(rowIndex) ||
+    rowIndex < 0 ||
+    rowIndex >= entries.length
+  ) {
+    return false;
+  }
+
+  const entry = entries[rowIndex];
+  setCurrentFromEntry(allData, entry);
+  allData.editing = rowIndex;
+  writeAllData(allData);
+  return true;
+}
+
+function cloneEntryByIndex(rowIndex) {
+  const allData = readAllData();
+  const entries = Array.isArray(allData.entries) ? allData.entries : [];
+  if (
+    !Number.isInteger(rowIndex) ||
+    rowIndex < 0 ||
+    rowIndex >= entries.length ||
+    entries.length >= MAX_STATIONS
+  ) {
+    return false;
+  }
+
+  const entry = entries[rowIndex];
+  setCurrentFromEntry(allData, { ...entry });
+
+  // Keep clone as a new draft so saving creates a new entry.
+  allData.editing = null;
+  writeAllData(allData);
+  return true;
+}
+
+function deleteEntryByIndex(rowIndex) {
+  const allData = readAllData();
+  const entries = Array.isArray(allData.entries) ? allData.entries : [];
+  if (
+    !Number.isInteger(rowIndex) ||
+    rowIndex < 0 ||
+    rowIndex >= entries.length
+  ) {
+    return false;
+  }
+
+  entries.splice(rowIndex, 1);
+  allData.entries = entries;
+  writeAllData(allData);
+  return true;
+}
+
 function populateAntennaTable() {
   const rows = getStationRows();
   const tbody = document.getElementById("antennas-table-body");
@@ -191,6 +365,8 @@ function populateAntennaTable() {
         <a href="#" class="gcds-link" data-action="edit" data-row="${index}">Edit</a>
         &nbsp;|&nbsp;
         <a href="#" class="gcds-link" data-action="delete" data-row="${index}">Delete</a>
+        &nbsp;|&nbsp;
+        <a href="#" class="gcds-link" data-action="clone" data-row="${index}">Clone</a>
       </td>
     `;
 
@@ -201,91 +377,23 @@ function populateAntennaTable() {
     const target = event.target;
     if (!(target instanceof HTMLElement)) return;
 
-    const action = target.getAttribute("data-action");
-    const rowIndex = Number(target.getAttribute("data-row"));
+    const deleteLink = target.closest('a[data-action="delete"]');
+    const editLink = target.closest('a[data-action="edit"]');
+    const cloneLink = target.closest('a[data-action="clone"]');
+    const action =
+      deleteLink?.getAttribute("data-action") ||
+      editLink?.getAttribute("data-action") ||
+      cloneLink?.getAttribute("data-action");
+    const rowIndex = Number(
+      (deleteLink || editLink || cloneLink)?.getAttribute("data-row"),
+    );
 
     if (!action || Number.isNaN(rowIndex)) return;
 
     event.preventDefault();
 
     if (action === "edit") {
-      const allData = readAllData();
-      const entries = Array.isArray(allData.entries) ? allData.entries : [];
-      if (rowIndex >= entries.length) return;
-
-      const entry = entries[rowIndex];
-
-      // Populate current with the entry data split by pages
-      allData.current = {
-        page1: {},
-        page2: {},
-        page3: {},
-      };
-
-      PAGE1_FIELDS.forEach((field) => {
-        if (entry[field] != null) {
-          allData.current.page1[field] = entry[field];
-        }
-      });
-
-      PAGE2_FIELDS.forEach((field) => {
-        if (entry[field] != null) {
-          allData.current.page2[field] = entry[field];
-        }
-      });
-
-      PAGE3_FIELDS.forEach((field) => {
-        if (entry[field] != null) {
-          allData.current.page3[field] = entry[field];
-        }
-      });
-
-      if (
-        allData.current.page3["radio-model"] != null &&
-        allData.current.page3["tx-radio-model"] == null
-      ) {
-        allData.current.page3["tx-radio-model"] =
-          allData.current.page3["radio-model"];
-      }
-      if (
-        allData.current.page3["radio-model"] != null &&
-        allData.current.page3["rx-radio-model"] == null
-      ) {
-        allData.current.page3["rx-radio-model"] =
-          allData.current.page3["radio-model"];
-      }
-      if (
-        allData.current.page3["radio-code"] != null &&
-        allData.current.page3["tx-radio-code"] == null
-      ) {
-        allData.current.page3["tx-radio-code"] =
-          allData.current.page3["radio-code"];
-      }
-      if (
-        allData.current.page3["radio-code"] != null &&
-        allData.current.page3["rx-radio-code"] == null
-      ) {
-        allData.current.page3["rx-radio-code"] =
-          allData.current.page3["radio-code"];
-      }
-      if (
-        allData.current.page3["radio-certificate"] != null &&
-        allData.current.page3["tx-radio-certificate"] == null
-      ) {
-        allData.current.page3["tx-radio-certificate"] =
-          allData.current.page3["radio-certificate"];
-      }
-      if (
-        allData.current.page3["radio-certificate"] != null &&
-        allData.current.page3["rx-radio-certificate"] == null
-      ) {
-        allData.current.page3["rx-radio-certificate"] =
-          allData.current.page3["radio-certificate"];
-      }
-
-      allData.editing = rowIndex;
-
-      writeAllData(allData);
+      if (!editEntryByIndex(rowIndex)) return;
       setCurrentPage(1);
       window.location.href = "page1.html";
       return;
@@ -300,11 +408,26 @@ function populateAntennaTable() {
       populateAntennaTable();
       return;
     }
+
+    if (action === "clone") {
+      if (!cloneEntryByIndex(rowIndex)) return;
+      setCurrentPage(1);
+      window.location.href = "page1.html";
+      return;
+    }
   };
 }
 
 function initTablePage() {
+  wireDeleteDialog();
   populateAntennaTable();
 }
 
-export { initTablePage, readAllData, getStationRows };
+export {
+  initTablePage,
+  readAllData,
+  getStationRows,
+  editEntryByIndex,
+  cloneEntryByIndex,
+  deleteEntryByIndex,
+};

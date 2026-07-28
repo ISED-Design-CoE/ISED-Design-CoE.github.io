@@ -35,7 +35,14 @@
       <!-- The slot="breadcrumb" attribute adds the breadcrumbs component to the header. -->
       <gcds-breadcrumbs hide-canada-link="true" slot="breadcrumb">
         <!-- TODO: Adjust the breadcrumb links with the correct ones for your site. -->
-        <gcds-breadcrumbs-item href="index.html"
+        <gcds-breadcrumbs-item href="https://www.canada.ca/en.html"
+          >Canada.ca</gcds-breadcrumbs-item
+        >
+        <gcds-breadcrumbs-item
+          href="https://ised-isde.canada.ca/site/spectrum-management-system/en/spectrum-management-system"
+          >Spectrum Management System</gcds-breadcrumbs-item
+        >
+        <gcds-breadcrumbs-item href="page4.html"
           >Site data upload CSV generator</gcds-breadcrumbs-item
         >
       </gcds-breadcrumbs>
@@ -183,9 +190,9 @@
             required
             default-value="Select option"
           >
-            <option value="1">Active antenna systems</option>
-            <option value="2">Non-AAS correlated</option>
-            <option value="3">Non-AAS uncorrelated</option>
+            <option value="1">AAS - Active antenna systems</option>
+            <option value="2">NAC - Non-AAS correlated</option>
+            <option value="3">NAU - Non-AAS uncorrelated</option>
           </gcds-select>
         </div>
 
@@ -198,9 +205,9 @@
             required
             default-value="Select option"
           >
-            <option value="1">Active antenna systems</option>
-            <option value="2">Non-AAS correlated</option>
-            <option value="3">Non-AAS uncorrelated</option>
+            <option value="1">AAS - Active antenna systems</option>
+            <option value="2">NAC - Non-AAS correlated</option>
+            <option value="3">NAU - Non-AAS uncorrelated</option>
           </gcds-select>
         </div>
 
@@ -299,8 +306,8 @@
             required
             default-value="Select option"
           >
-            <option value="1">Directional</option>
-            <option value="2">Non-directional</option>
+            <option value="1">D - Directional</option>
+            <option value="2">N - Non-directional</option>
           </gcds-select>
         </div>
 
@@ -313,8 +320,8 @@
             required
             default-value="Select option"
           >
-            <option value="1">Directional</option>
-            <option value="2">Non-directional</option>
+            <option value="1">D - Directional</option>
+            <option value="2">N - Non-directional</option>
           </gcds-select>
         </div>
 
