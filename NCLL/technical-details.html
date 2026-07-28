@@ -171,7 +171,7 @@
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
 				
-					<select id='starting-frequency-select' class="form-control " name="bandwidth">
+					<select id='starting-frequency-select' class="form-control" name="frequency">
 					</select>
 				</fieldset>
 
@@ -337,16 +337,18 @@
 
 		function generateStartingFrequencies() {
 			jump = parseInt(starting_frequency.value);
-			frequency_select.innerHTML = '';
+			frequency_select.innerHTML = '<option value="none">Select frequency block</option>'
 			for (let i=0;i<(9-(jump/10));i++){
 				frequency_end = (3900+(10*i+(jump))).toString()
 				frequency = (3900+(10*i)).toString()
 				if ( jump == 10 ) { // just one channel
+					let val = `A${(i+1).toString()} (${frequency} to ${frequency_end} MHz)`
 					frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${(jump*i).toString()}">A${(i+1).toString()} (${frequency} to ${frequency_end} MHz)</option>`);
+					`<option value="${val}">${val}</option>`);
 				} else {
+					let val = `A${(i+1).toString()} to A${(i+jump/10).toString()} (${frequency} to ${frequency_end} MHz)`
 					frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${(jump*i).toString()}">A${(i+1).toString()} to A${(i+jump/10).toString()} (${frequency} to ${frequency_end} MHz)</option>`);
+					`<option value="${val}">${val}</option>`);
 				}
 			}
 		}

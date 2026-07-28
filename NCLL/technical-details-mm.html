@@ -184,7 +184,7 @@
 						<strong class="required small" aria-hidden="true">(required)</strong>
 					</legend>
 				
-					<select id='starting-frequency-select' class="form-control " name="bandwidth">
+					<select id='starting-frequency-select' class="form-control" name="frequency">
 					</select>
 				</fieldset>
 
@@ -349,7 +349,7 @@
 		})
 
 		function generatemmWaveStartingFrequencies() {
-			jump = parseInt(starting_frequency.value);
+			jump = parseInt(starting_frequency.value)
 			frequency_select.innerHTML = '<option value="none">Select frequency block</option>'
 			for (let i=0;i<(18-(jump/50));i++){
 				frequency_end = ((27500+(50*i+(jump)))/1000).toString()
@@ -357,11 +357,13 @@
 				frequency = (frequency =="28") ? frequency.concat('.00') : frequency.padEnd(5,'0')
 				frequency_end = (frequency_end =="28") ? frequency_end.concat('.00') : frequency_end.padEnd(5,'0')
 				if ( jump == 50 ) { // just one channel
+					let val = `AA${(i+1).toString()} (${frequency} to ${frequency_end} GHz)`
 					frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${(jump*i).toString()}">AA${(i+1).toString()} (${frequency} to ${frequency_end} GHz)</option>`);
+					`<option value="${val}">${val}</option>`);
 				} else {
+					let val = `AA${(i+1).toString()} to AA${(i+jump/50).toString()} (${frequency} to ${frequency_end} GHz)`
 					frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${(jump*i).toString()}">AA${(i+1).toString()} to AA${(i+jump/50).toString()} (${frequency} to ${frequency_end} GHz)</option>`);
+					`<option value="${val}">${val}</option>`);
 				}
 			}
 		}
