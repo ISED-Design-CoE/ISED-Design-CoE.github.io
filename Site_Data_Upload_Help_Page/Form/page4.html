@@ -38,23 +38,6 @@
     <style>
       /* Custom styles for spacing and layout */
 
-      table > tbody > tr:nth-of-type(even) {
-        background-color: var(--gcds-bg-light);
-      }
-
-      table > tbody > tr {
-        border-top: solid var(--gcds-border-default) 1px;
-        border-bottom: solid var(--gcds-border-default) 1px;
-      }
-
-      table > thead > tr > th {
-        padding: var(--gcds-spacing-300);
-      }
-
-      table > tbody > tr > td {
-        padding: var(--gcds-spacing-300);
-      }
-
       dialog {
         border: 1px solid #d0d0d0;
         border-radius: 4px;
@@ -186,11 +169,7 @@
           your monthly site data upload.
         </gcds-text>
 
-        <gcds-input
-          input-id="file-name"
-          label="Name of .csv file"
-          required
-        ></gcds-input>
+        <gcds-input input-id="file-name" label="Name of .csv file"></gcds-input>
         <gcds-button button-role="start" id="download-csv"
           >Generate CSV</gcds-button
         >

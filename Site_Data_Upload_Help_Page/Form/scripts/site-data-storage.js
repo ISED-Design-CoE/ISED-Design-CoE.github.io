@@ -43,7 +43,6 @@ function clearCurrentEntry() {
 export {
   PAGE_KEY,
   ALL_DATA_KEY,
-  readAllData,
   writeAllData,
   ensureState,
   setCurrentPage,

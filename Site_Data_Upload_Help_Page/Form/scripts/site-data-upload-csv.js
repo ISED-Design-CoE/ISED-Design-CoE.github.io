@@ -403,35 +403,11 @@ function exportAllDataAsCsv(filename = "site-data-upload.csv") {
   downloadCsv(filename, csv);
 }
 
-function exportDataAsJson(filename = "site-data-upload.json") {
-  const allData = JSON.parse(sessionStorage.getItem(ALL_DATA_KEY) || "{}");
-  const blob = new Blob([JSON.stringify(allData, null, 2)], {
-    type: "application/json;charset=utf-8;",
-  });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.setAttribute("download", filename);
-  link.style.display = "none";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-}
-
-function initAutoSave(nextButtonSelector) {
-  const button = document.querySelector(nextButtonSelector);
-  if (!button) return;
-  button.addEventListener("click", saveCurrentPageData);
-}
-
 export {
   setCurrentPage,
   saveCurrentPageData,
   loadCurrentPageData,
   exportAllDataAsCsv,
-  exportDataAsJson,
-  initAutoSave,
   clearCurrentEntry,
   finalizeCurrentEntry,
   validateCurrentPage,

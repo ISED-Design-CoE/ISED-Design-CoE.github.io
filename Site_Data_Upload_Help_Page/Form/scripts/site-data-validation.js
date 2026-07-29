@@ -178,10 +178,4 @@ function validateCurrentPage() {
   return isValid;
 }
 
-export {
-  getLengthValidator,
-  getNumberValidator,
-  applyValidationAttributes,
-  applyValidationToAllFields,
-  validateCurrentPage,
-};
+export { applyValidationToAllFields, validateCurrentPage };
