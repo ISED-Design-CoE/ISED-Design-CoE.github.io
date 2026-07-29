@@ -99,52 +99,53 @@
           Add up to 5 stations below to your site data csv. When you are ready,
           generate the csv file and upload your site data.
         </gcds-text>
+        <div style="margin-top: -25px">
+          <gcds-heading tag="h2">Stations</gcds-heading>
 
-        <gcds-heading tag="h2">Stations</gcds-heading>
-
-        <gcds-table id="stations-table" columns="[]" data="[]">
-          <template slot="cell:actions">
-            <span
-              data-bind-template-data-row-index="{rowIndex}"
-              style="display: inline-flex; gap: 16px; align-items: center"
-            >
-              <gcds-button
-                button-role="secondary"
-                class="icon-action-btn"
-                data-action="edit"
-                title="Edit"
-                aria-label="Edit"
+          <gcds-table id="stations-table" columns="[]" data="[]">
+            <template slot="cell:actions">
+              <span
+                data-bind-template-data-row-index="{rowIndex}"
+                style="display: inline-flex; gap: 16px; align-items: center"
               >
-                <i class="fa-solid fa-pen-to-square"></i>
-              </gcds-button>
+                <gcds-button
+                  button-role="secondary"
+                  class="icon-action-btn"
+                  data-action="edit"
+                  title="Edit"
+                  aria-label="Edit"
+                >
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </gcds-button>
 
-              <gcds-button
-                button-role="secondary"
-                class="icon-action-btn"
-                data-action="clone"
-                title="Clone and modify"
-                aria-label="Clone and modify"
-              >
-                <i class="fa-regular fa-clone"></i>
-              </gcds-button>
+                <gcds-button
+                  button-role="secondary"
+                  class="icon-action-btn"
+                  data-action="clone"
+                  title="Clone and modify"
+                  aria-label="Clone and modify"
+                >
+                  <i class="fa-regular fa-clone"></i>
+                </gcds-button>
 
-              <gcds-button
-                button-role="secondary"
-                class="icon-action-btn"
-                data-action="delete"
-                title="Delete"
-                aria-label="Delete"
-              >
-                <i class="fa-regular fa-trash-can"></i>
-              </gcds-button>
-            </span>
-          </template>
-        </gcds-table>
+                <gcds-button
+                  button-role="secondary"
+                  class="icon-action-btn"
+                  data-action="delete"
+                  title="Delete"
+                  aria-label="Delete"
+                >
+                  <i class="fa-regular fa-trash-can"></i>
+                </gcds-button>
+              </span>
+            </template>
+          </gcds-table>
 
-        <br />
-        <gcds-button button-role="primary" id="btn-add-entry"
-          >+ Add station</gcds-button
-        >
+          <br />
+          <gcds-button button-role="primary" id="btn-add-entry"
+            >+ Add station</gcds-button
+          >
+        </div>
 
         <dialog id="delete-station-dialog">
           <gcds-heading tag="h3">Delete station?</gcds-heading>
@@ -162,28 +163,41 @@
           </div>
         </dialog>
 
-        <gcds-heading tag="h3">Generate CSV file</gcds-heading>
-        <gcds-text>
-          Exporting the file will take your antenna information above and
-          generate a CSV file that can be used to upload to the SMS system as
-          your monthly site data upload.
-        </gcds-text>
+        <div>
+          <hr style="margin-top: 40px; opacity: 0.4" />
+        </div>
+        <div style="margin-top: -25px">
+          <gcds-heading tag="h2">Generate CSV file</gcds-heading>
+          <gcds-text>
+            Exporting the file will take your antenna information above and
+            generate a CSV file that can be used to upload to the SMS system as
+            your monthly site data upload.
+          </gcds-text>
 
-        <gcds-input input-id="file-name" label="Name of .csv file"></gcds-input>
-        <gcds-button button-role="start" id="download-csv"
-          >Generate CSV</gcds-button
-        >
+          <gcds-input
+            input-id="file-name"
+            label="Name of .csv file"
+          ></gcds-input>
+          <gcds-button button-role="start" id="download-csv"
+            >Generate CSV</gcds-button
+          >
+        </div>
 
-        <gcds-heading tag="h2">Upload to SMS</gcds-heading>
-        <gcds-text>
-          Your site data must be uploaded in a .csv file format. Each row in the
-          file must represent an individual antenna, which may comprise a
-          transmitter and/or a receiver. The file may contain technical data for
-          multiple licences across multiple billing accounts.
-        </gcds-text>
-        <gcds-button button-role="secondary" id="upload-csv"
-          >Upload site data to SMS</gcds-button
-        >
+        <div>
+          <hr style="margin-top: 40px; opacity: 0.4" />
+        </div>
+        <div style="margin-top: -25px">
+          <gcds-heading tag="h2">Upload to SMS</gcds-heading>
+          <gcds-text>
+            Your site data must be uploaded in a .csv file format. Each row in
+            the file must represent an individual antenna, which may comprise a
+            transmitter and/or a receiver. The file may contain technical data
+            for multiple licences across multiple billing accounts.
+          </gcds-text>
+          <gcds-button button-role="secondary" id="upload-csv"
+            >Upload site data to SMS</gcds-button
+          >
+        </div>
       </section>
 
       <!-- TODO: Update the date to reflect the page's most recent change. -->

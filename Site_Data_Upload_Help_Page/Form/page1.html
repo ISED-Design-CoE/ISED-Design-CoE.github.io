@@ -131,11 +131,19 @@
           ]'
         >
         </gcds-radios>
-
-        <gcds-button button-role="secondary" id="btn-go-back">
-          Cancel
-        </gcds-button>
-        <gcds-button id="btn-next"> Next </gcds-button>
+        <div style="display: flex; gap: 0.35rem">
+          <div>
+            <gcds-button button-role="secondary" id="btn-go-back">
+              Cancel
+            </gcds-button>
+          </div>
+          <div id="button-next">
+            <gcds-button id="btn-next"> Next </gcds-button>
+          </div>
+          <div id="btn-save" hidden>
+            <gcds-button id="btn-next"> Save station </gcds-button>
+          </div>
+        </div>
       </section>
 
       <!-- TODO: Update the date to reflect the page's most recent change. -->
@@ -185,6 +193,25 @@
             ?.value ||
           ""
         );
+      }
+
+      function showSaveButton() {
+        const selected = getSiteChangeValue();
+        const saveBtn = document.getElementById("btn-save");
+        const nextBtn = document.getElementById("button-next");
+        if (!saveBtn || !nextBtn) return;
+
+        if (
+          selected === "radio2" ||
+          selected === "radio3" ||
+          selected === "radio4"
+        ) {
+          saveBtn.hidden = false;
+          nextBtn.hidden = true;
+        } else {
+          saveBtn.hidden = true;
+          nextBtn.hidden = false;
+        }
       }
 
       function applyOptionalLabelToReferenceNumber() {
@@ -271,6 +298,8 @@
         event.preventDefault();
         handleBack();
       });
+
+      sitechange?.addEventListener("change", showSaveButton);
 
       document.addEventListener("pointerup", (event) => {
         const path = event.composedPath ? event.composedPath() : [event.target];
