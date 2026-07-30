@@ -362,7 +362,7 @@
       "field-name": "Rx Omnidirectional Antenna Pattern Indicator",
       "description": "Whether the receiver antenna is omnidirectional or directional. ",
       "required-when": "This field is required for any antennas that receive.",
-      "format-rules": "Must be one of the following codes <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Antenna pattern</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table> Leave blank if the antenna does not transmit.",
+      "format-rules": "Must be one of the following codes <table class=\"wb-tables table\"><thead><tr><th>Code</th><th>Antenna pattern</th></tr></thead><tbody><tr><td>D</td><td>Directional</td></tr><tr><td>N</td><td>Non-directional</td></tr></tbody></table> Leave blank if the antenna does not receive.",
       "example-data": "D",
       "error-description": "The Rx Omnidirectional Pattern Indicator is not input as CAPS, is missing or is not an accepted Directional Pattern Code value. ",
       "note": "An error in this field may also give errors for the following fields: <ul><li><a>AR - Rx Antenna Horizontal Beam </a></li> <li><a>AT - Rx Antenna Vertical Beam </a></li> <li><a>AV - Rx Antenna Azimuth </a></li> <li><a>AX - Rx Antenna Elevation Angle </a></li></ul>"
