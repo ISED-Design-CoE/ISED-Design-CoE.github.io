@@ -109,7 +109,7 @@
 <!-- Start page content -->
 
 	<div id="superhead">
-		<p>NCLL licence application <span class="app-number">01000139-001</span> (<span class="mmwaveBandwidth" hidden="true">28 GHz band</span><span class="3900Bandwidth">3900 MHz band</span>) <span class="pull-right" id="status">Draft</span></p>
+		<p>NCLL licence application <span class="app-number">01000139-001</span> (3900 MHz band) <span class="pull-right" id="status">Draft</span></p>
 	</div>
 	<div class="form-group">
 		<ul class="nav nav-wizard">
@@ -319,16 +319,6 @@
 		var lat_longs = [];
 
 		if ( urlParams.size > 0 ) {
-
-			const band = urlParams.get ( "band" )
-				if (band == "28 GHz") {
-					for ( let elem of document .getElementsByClassName ( "3900Bandwidth" ) ) {
-					elem .setAttribute ( "hidden", null )
-					}
-					for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
-					elem .removeAttribute ( "hidden" )
-					}
-				}
 
 			for ( const elem of document .querySelectorAll ( '[class$="-present"]' ) ) {
 				elem .setAttribute ( "hidden", "hidden" )
