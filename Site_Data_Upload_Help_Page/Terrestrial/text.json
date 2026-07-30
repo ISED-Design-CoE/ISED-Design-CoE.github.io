@@ -15,7 +15,7 @@
     "TR2": {
       "column": "B",
       "field-name": "Upload reference number",
-      "description": "A number, or any other text, for your own use. (Optional)",
+      "description": "A number, or any other text, for your own use (this field is optional).",
       "format-rules": "Maximum length of 63 characters.",
       "example-data": "Monthly upload, March 2023 ",
       "error-description": " "
@@ -23,7 +23,7 @@
     "TR3": {
       "column": "C",
       "field-name": "Contact name",
-      "description": "Name of the person who may be contacted. ",
+      "description": "Name of the person who may be contacted about this site. ",
       "format-rules": "Maximum length of 254 characters.",
       "example-data": "John Smith",
       "error-description": "The Contact Name is missing or exceeds the character limit. "
@@ -31,7 +31,7 @@
     "TR4": {
       "column": "D",
       "field-name": "Business Telephone Number",
-      "description": "The telephone number of the person who may be contacted.  ",
+      "description": "The telephone number of the person who may be contacted about this site.  ",
       "format-rules": "<ul><li>Minimum length of 10 characters</li><li>Maximum length of 254 characters </li></ul>",
       "example-data": "613–174–5555 x993",
       "error-description": "The Business Telephone Number is missing or exceeds the character limit."
@@ -39,7 +39,7 @@
     "TR5": {
       "column": "E",
       "field-name": "E-mail address",
-      "description": "The email address of the person who may be contacted. ",
+      "description": "The email address of the person who may be contacted about this site. ",
       "format-rules": "<ul><li>Maximum length 254 characters </li><li>For multiple email addresses, separate them with commas</li></ul>",
       "example-data": "john.smith@mail.com,jane.brown@mail.com",
       "error-description": "The E-mail Address is missing or exceeds the character limit. "
@@ -158,7 +158,7 @@
       "column": "S",
       "field-name": "Tx Channel Frequency",
       "description": "The centre frequency (MHz) of the occupied bandwidth as well as any installations that are used unidirectionally for transmission or reception only.",
-      "format-rules": "<ul><li>If your antenna is receive only and not transmitting, enter 0 </li> <li>Must be within an authorized frequency band for this licence </li> <li>Must be the centre frequency </li></ul>",
+      "format-rules": "<ul> <li>Must be within an authorized frequency band for this licence </li> <li>Must be the centre frequency </li> <li>If your antenna is receive only and not transmitting, enter 0 </li></ul>",
       "example-data": "1925.3 ",
       "error-description": "The Tx Channel Frequency is missing or not within an authorized frequency band for this licence. "
     },
@@ -227,7 +227,7 @@
     "TR27": {
       "column": "AA",
       "field-name": "Bandwidth",
-      "description": "The occupied bandwidth (KHz) of the emission (Transmit) signal. It corresponds to the bandwidth containing 99% of the transmitted power.",
+      "description": "The channel bandwidth (kHz) of the emission (Transmit) signal. It corresponds to the bandwidth containing 99% of the transmitted power.",
       "format-rules": "<ul><li>A number between 0.10 to 50000.00</li></ul>",
       "example-data": "2300 ",
       "error-description": "The Bandwidth is missing or not within the expected range. "
@@ -243,9 +243,9 @@
     "TR29": {
       "column": "AC",
       "field-name": "Transmitter TCP–TRP",
-      "description": "The Total Radiated Power (TRP) or Total Conducted Power (TCP) in dBm. <br><br> Ensure the value entered is expressed in dBm. Wrong units will cause incorrect representation of power levels, and may be flagged for suspected non-compliance. ",
+      "description": "The Total Radiated Power (TRP) or Total Conducted Power (TCP) in dBm. <br><br> Ensure the value entered is expressed in dBm. ",
       "required-when": "This field is required for any antennas that transmit.",
-      "format-rules": "Must be one of the following: <ul><li>Must be a number</li><li>Enter TRP for AAS equipment (as defined in the applicable SRSP)</li><li>Enter TCP for non-AAS equipment</li></ul>",
+      "format-rules": "<ul><li>Must be a number</li><li>Enter TRP for AAS equipment (as defined in the applicable SRSP)</li><li>Enter TCP for non-AAS equipment</li></ul>",
       "example-data": "21.4",
       "error-description": "The Transmitter TCP or TRP is missing, or not within the expected range. "
     },
@@ -253,7 +253,7 @@
       "column": "AD",
       "field-name": "Downlink Resource Allocation",
       "description": "The percentage of time transmitting.",
-      "format-rules": "<ul><li>For bidirectional systems that transmit and receive on the same frequency (TDD), enter the percentage of time transmitting (see <a>GL-01</a>) from 1 to 99.</li> <li>For full duplex systems, enter 100.</li></ul>",
+      "format-rules": "<ul><li>For bidirectional systems that transmit and receive on the same frequency (TDD), enter the percentage of time transmitting from 1 to 99 (see <a>GL-01</a>).</li> <li>For full duplex systems, enter 100.</li></ul>",
       "example-data": "89",
       "error-description": "The Downlink Resource Allocation is missing or not within the expected range. "
     },
@@ -298,7 +298,7 @@
       "field-name": "Tx Antenna Model Number",
       "description": "The model number of the transmitter antenna.",
       "required-when": "This field is required for any antennas that transmit. ",
-      "format-rules": "Maximum length of 80 characters.",
+      "format-rules": "<ul> <li>If the antenna is integrated into the radio, enter \"Integrated\"</li> <li>Maximum length of 80 characters.</li></ul>",
       "example-data": "SV460-SF1 (V) ",
       "error-description": "The Tx Antenna Model Number is missing or exceeds the character limit. "
     },
@@ -307,14 +307,14 @@
       "field-name": "Rx Antenna Model Number",
       "description": "The model number of the receiver antenna.",
       "required-when": "This field is required for any antennas that receive. ",
-      "format-rules": "Maximum length of 80 characters.",
+      "format-rules": "<ul> <li>If the antenna is integrated into the radio, enter \"Integrated\"</li> <li>Maximum length of 80 characters.</li></ul>",
       "example-data": "SV460-SF1 (V) ",
       "error-description": "The Rx Antenna Model Number is missing or exceeds the character limit. "
     },
     "TR37": {
       "column": "AK",
       "field-name": "Tx Antenna Manufacturer Code",
-      "description": "The full name of the manufacturer of the transmitter antenna.",
+      "description": "The full name of the manufacturer of the transmitter antenna. <br><br> If the antenna is integrated, the value here must match W - Tx Radio Manufacturer Code.",
       "required-when": "This field is required for any antennas that transmit ",
       "format-rules": "Maximum length of 255 characters.",
       "example-data": "XYZ antenna manufacturer ",
@@ -323,7 +323,7 @@
     "TR38": {
       "column": "AL",
       "field-name": "Rx Antenna Manufacturer Code",
-      "description": "The full name of the manufacturer of the receiver antenna. ",
+      "description": "The full name of the manufacturer of the receiver antenna.  <br><br> If the antenna is integrated, the value here must match X - Rx Radio Manufacturer Code.",
       "required-when": "This field is required for any antennas that receive ",
       "format-rules": "Maximum length of 255 characters.",
       "example-data": "XYZ antenna manufacturer ",
@@ -371,7 +371,7 @@
       "column": "AQ",
       "field-name": "Tx Antenna Horizontal Beam",
       "description": "The beam steering angle for AAS (Active Antenna Systems) or the beam width in the horizontal plane for non-AAS. ",
-      "required-when": "This field is required when AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
+      "required-when": "This field is required for any antennas that transmit, and when AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "<b>For AAS</b> <br> Enter the horizontal beam steering angle range around the mean value specified by AU - Tx Antenna Azimuth. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the horizontal plane of the main lobe for the transmitter antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "120 ",
       "error-description": "The Tx Antenna Horizontal Beamwidth is missing or not within the expected range. "
@@ -380,7 +380,7 @@
       "column": "AR",
       "field-name": "Rx Antenna Horizontal Beam",
       "description": "The beam steering angle for AAS (Active Antenna Systems) or the beam width in the horizontal plane for non-AAS.  ",
-      "required-when": "This field is required when AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
+      "required-when": "This field is required for any antennas that receive, and when AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "<b>For AAS</b> <br> Enter the horizontal beam steering angle range around the mean value specified by AV - Rx Antenna Azimuth. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the horizontal plane of the main lobe for the receiver antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "120 ",
       "error-description": "The Rx Antenna Horizontal Beamwidth is missing or not within the expected range. "
@@ -389,7 +389,7 @@
       "column": "AS",
       "field-name": "Tx Antenna Vertical Beam",
       "description": "The beam elevation angle for AAS (Active Antenna Systems) or the beam width in the vertical plane for non-AAS. ",
-      "required-when": "This field is required when AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
+      "required-when": "This field is required for any antennas that transmit, and when AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "<b>For AAS</b> <br> Enter the vertical beam steering angle range around the mean value specified by AW - Tx Antenna Elevation Angle. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the vertical plane of the main lobe for the transmitter antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "135 ",
       "error-description": "The Tx Antenna Vertical Beamwidth is missing or not within the expected range. "
@@ -398,7 +398,7 @@
       "column": "AT",
       "field-name": "Rx Antenna Vertical Beam",
       "description": "The beam elevation angle for AAS (Active Antenna Systems) or the beam width in the vertical plane for non-AAS. ",
-      "required-when": "This field is required when AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
+      "required-when": "This field is required for any antennas that receive, and when AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "<b>For AAS</b> <br> Enter the vertical beam steering angle range around the mean value specified by AX - Rx Antenna Elevation Angle. <br><br> <b>For non-AAS</b> <br> Enter the half-power (3 dB) beam width in the vertical plane of the main lobe for the receiver antenna. <br><br> Must be a number from 1.0 to 359.9 (degrees).",
       "example-data": "135 ",
       "error-description": "The Rx Antenna Vertical Beamwidth is missing or not within the expected range. "
@@ -407,7 +407,7 @@
       "column": "AU",
       "field-name": "Tx Antenna Azimuth",
       "description": "The azimuth (in degrees) of the antenna from true north of the transmitter antenna's direction of maximum radiation.",
-      "required-when": "This field is required when AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
+      "required-when": "This field is required for any antennas that transmit, and when AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "Must be a number from 0.0 to 359.9 (degrees).",
       "example-data": "270 ",
       "error-description": "The Tx Antenna Azimuth is missing or not within the expected range. "
@@ -416,7 +416,7 @@
       "column": "AV",
       "field-name": "Rx Antenna Azimuth",
       "description": "The azimuth (in degrees) of the antenna from true north of the receiver antenna's direction of maximum radiation.",
-      "required-when": "This field is required when AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
+      "required-when": "This field is required for any antennas that receive, and when AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
       "format-rules": "Must be a number from 0.0 to 359.9 (degrees).",
       "example-data": "270 ",
       "error-description": "The Rx Antenna Azimuth is missing or not within the expected range. "
@@ -425,8 +425,8 @@
       "column": "AW",
       "field-name": "Tx Antenna Elevation Angle",
       "description": "The transmitter antenna’s vertical elevation angle of the main lobe with reference to the horizontal ground in degrees. Includes any mechanical and electrical beam tilt.",
-      "required-when": "This field is required when AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
-      "format-rules": "Must be a number from -90.0 to 90.0 (degrees).",
+      "required-when": "This field is required for any antennas that transmit, and when AO - Tx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
+      "format-rules": "<ul><li>Must be a number from -90.0 to 90.0 (degrees).</li><li>Use positive values for antennas tilted upward.</li><li>Use negative values for antennas tilted downward.</li></ul>",
       "example-data": "0.5",
       "error-description": "The Tx Antenna Elevation Angle is missing or not within the expected range. "
     },
@@ -434,8 +434,8 @@
       "column": "AX",
       "field-name": "Rx Antenna Elevation Angle",
       "description": "The receiver antenna’s vertical elevation angle of the main lobe with reference to the horizontal ground in degrees. Includes any mechanical and electrical beam tilt.",
-      "required-when": "This field is required when AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
-      "format-rules": "Must be a number from -90.0 to 90.0 (degrees).",
+      "required-when": "This field is required for any antennas that receive, and when AP - Rx Omnidirectional Antenna Pattern Indicator is D (Directional). ",
+      "format-rules": "<ul><li>Must be a number from -90.0 to 90.0 (degrees).</li><li>Use positive values for antennas tilted upward.</li><li>Use negative values for antennas tilted downward.</li></ul>",
       "example-data": "0.5",
       "error-description": "The Rx Antenna Elevation Angle is missing or not within the expected range. "
     },
