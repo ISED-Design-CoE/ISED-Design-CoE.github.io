@@ -43,6 +43,8 @@ const PROVINCE_TERRITORY_CODES = {
   "Northwest Territories": "NT",
   Nunavut: "NU",
   Yukon: "YT",
+  Interprovincial: "IP",
+  "Canada-wide": "CA",
 };
 
 const SITE_TYPE_CODES = {
