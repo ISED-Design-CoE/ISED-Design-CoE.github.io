@@ -121,7 +121,7 @@
 							<p>If you require non-contiguous frequency blocks, please apply for multiple licences.</p>
 					
 					<select class="form-control bandwidth" id="bandwidth" name="bandwidth">
-						<option value="none">Please select&hellip;</option>
+						<option value="">Please select&hellip;</option>
 						<option value="10">10 MHz </option>
 						<option value="20">20 MHz </option>
 						<option value="30">30 MHz </option>
@@ -337,7 +337,7 @@
 
 		function generateStartingFrequencies() {
 			jump = parseInt(starting_frequency.value);
-			frequency_select.innerHTML = '<option value="none">Select frequency block</option>'
+			frequency_select.innerHTML = '<option value="">Select frequency block</option>'
 			for (let i=0;i<(9-(jump/10));i++){
 				frequency_end = (3900+(10*i+(jump))).toString()
 				frequency = (3900+(10*i)).toString()

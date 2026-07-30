@@ -58,6 +58,9 @@
 					width: 15em;
 				}
 			}
+			section {
+				min-height: 87px; /* Just enough so the "Edit" button doesn't overflow the section if there is no content in the section */
+			}
 			section.step {
 				border: 1px solid #d4d4d4;
 				padding: 1em 1em 0 1em;
@@ -127,73 +130,73 @@
 					<h2>General information</h2>
 					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'general.html'+ window.location.search">Edit</button></span>
 					<dl>
-						<dt>Application identifier</dt>
-						<dd><span class="ari">-</span></dd>
-						<dt>Effective date</dt>
-						<dd><span class="effective-date">2024-04-28</span></dd>
-						<dt>Renewable or temporary licence</dt>
-						<dd><span class="renewable-temporary">Temporary</span></dd>
+						<dt class="ari-present">Application identifier</dt>
+						<dd class="ari-present"><span class="ari">Project 314</span></dd>
+						<dt class="effective-date-present">Effective date</dt>
+						<dd class="effective-date-present"><span class="effective-date">2024-04-28</span></dd>
+						<dt class="renewable-temporary-present">Renewable or temporary licence</dt>
+						<dd class="renewable-temporary-present"><span class="renewable-temporary">Temporary</span></dd>
 						<dt class="expiry-date-present">Expiry date</dt>
 						<dd class="expiry-date-present"><span class="expiry-date">2024-10-24</span></dd>
-						<dt>Does The best company or any of its affiliates or subsidiaries currently have 100,000 or more retail mobile phone subscribers?</dt>
-						<dd><span class="NMSP">Yes</span></dd>
+						<dt class="NMSP-present">Does The best company or any of its affiliates or subsidiaries currently have 100,000 or more retail mobile phone subscribers?</dt>
+						<dd class="NMSP-present"><span class="NMSP">Yes</span></dd>
 					</dl>
 				</section>
 				<section class="step">
 					<h2>Contact information</h2>
 					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'contact.html'+ window.location.search">Edit</button></span>
 					<dl>
-						<dt>Payment contact</dt>
-						<dd><span class="lai">beth.dutton@yellowstone.com</span></dd>
-						<dt>Administrative contact<span class="asu-present">s</span></dt>
-						<dd><span class="asu-present"><span class="asu">rip.wheeler@yellowstone.com</span>;</span>john.dutton@yellowstone.com</dd>
+						<dt class="lai-present">Payment contact</dt>
+						<dd class="lai-present"><span class="lai">beth.dutton@yellowstone.com</span></dd>
+						<dt class="asu-present">Administrative contact<span class="asu-plural">s</span></dt>
+						<dd class="asu-present"><span class="asu">rip.wheeler@yellowstone.com;john.dutton@yellowstone.com</span></dd>
 					</dl>
 				</section>
 				<section class="step">
 					<h2>Technical details</h2>
 					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'technical-details.html'+ window.location.search">Edit</button></span>
 					<dl>
-						<dt>Bandwidth</dt>
-						<dd><span class="bandwidth">10</span> MHz</dd>
-						<dt>Requested frequency blocks</dt>
-						<dd><span class="frequency">A3: 3920–3930&nbsp;MHz</span></dd>
-						<dt>Location of antennas</dt>
-						<dd><span class="antenna">Outdoor and indoor</span></dd>
+						<dt class="bandwidth-present">Bandwidth</dt>
+						<dd class="bandwidth-present"><span class="bandwidth">10</span> MHz</dd>
+						<dt class="frequency-present">Requested frequency blocks</dt>
+						<dd class="frequency-present"><span class="frequency">A3: 3920–3930&nbsp;MHz</span></dd>
+						<dt class="antenna-present">Location of antennas</dt>
+						<dd class="antenna-present"><span class="antenna">Outdoor and indoor</span></dd>
 						<dt class="antenna-height-present">Maximum antenna height</dt>
 						<dd class="antenna-height-present"><span class="antenna-height">10</span> m</dd>
-						<dt>Licence type</dt>
-						<dd><span class="power-level">Medium power</span></dd>
+						<dt class="power-level-present">Licence type</dt>
+						<dd class="power-level-present"><span class="power-level">Medium power</span></dd>
 					</dl>
 				</section>
 				<section class="step">
 					<h2>Licence area</h2>
 					<span class="pull-right"><button class="btn btn-default" type="button" onclick="window.location.href = 'licence-area.html'+ window.location.search">Edit</button></span>
-					<div id="map">
+					<div id="map" class="total-cost-present">
 						Map
 					</div>
-					<h3>Boundary points</h3>
-					<table class="table">
+					<h3 class="total-cost-present">Boundary points</h3>
+					<table class="table total-cost-present">
 						<tr>
 							<th><span class="wb-inv">Number</span></th>
 							<th>Latitude</th>
 							<th>Longitude</th>
 						</tr>
-						<tr><td>1</td><td><span class="lat1">48.233463</span></td><td><span class="long1">-89.750008</td></tr>
-						<tr><td>2</td><td><span class="lat2">48.291512</span></td><td><span class="long2">-89.721282</td></tr>
-						<tr><td>3</td><td><span class="lat3">48.281911</span></td><td><span class="long3">-89.658390</td></tr>
-						<tr><td>4</td><td><span class="lat4">48.254440</span></td><td><span class="long4">-89.614391</td></tr>
-						<tr><td>5</td><td><span class="lat5">48.216475</span></td><td><span class="long5">-89.593922</td></tr>
-						<tr><td>6</td><td><span class="lat6">48.234064</span></td><td><span class="long6">-89.683164</td></tr>
-						<tr><td>7</td><td><span class="lat7">48.234065</span></td><td><span class="long7">-89.683164</td></tr>
-						<tr><td>8</td><td><span class="lat8">48.234066</span></td><td><span class="long8">-89.683164</td></tr>
-						<tr><td>9</td><td><span class="lat9">48.234067</span></td><td><span class="long9">-89.683164</td></tr>
-						<tr><td>10</td><td><span class="lat10">48.233463</span></td><td><span class="long10">-89.750008</td></tr>
-						<tr><td>11</td><td><span class="lat11">48.233464</span></td><td><span class="long11">-89.750008</td></tr>
-						<tr><td>12</td><td><span class="lat12">48.233465</span></td><td><span class="long12">-89.750008</td></tr>
+						<tr><td>1</td><td><span class="lat1">48.233463</span></td><td><span class="long1">-89.750008</span></td></tr>
+						<tr><td>2</td><td><span class="lat2">48.291512</span></td><td><span class="long2">-89.721282</span><td></tr>
+						<tr><td>3</td><td><span class="lat3">48.281911</span></td><td><span class="long3">-89.658390</span></td></tr>
+						<tr><td>4</td><td><span class="lat4">48.254440</span></td><td><span class="long4">-89.614391</span></td></tr>
+						<tr><td>5</td><td><span class="lat5">48.216475</span></td><td><span class="long5">-89.593922</span></td></tr>
+						<tr><td>6</td><td><span class="lat6">48.234064</span></td><td><span class="long6">-89.683164</span></td></tr>
+						<tr><td>7</td><td><span class="lat7">48.234065</span></td><td><span class="long7">-89.683164</span></td></tr>
+						<tr><td>8</td><td><span class="lat8">48.234066</span></td><td><span class="long8">-89.683164</span></td></tr>
+						<tr><td>9</td><td><span class="lat9">48.234067</span></td><td><span class="long9">-89.683164</span></td></tr>
+						<tr><td>10</td><td><span class="lat10">48.233463</span></td><td><span class="long10">-89.750008</span></td></tr>
+						<tr><td>11</td><td><span class="lat11">48.233464</span></td><td><span class="long11">-89.750008</span></td></tr>
+						<tr><td>12</td><td><span class="lat12">48.233465</span></td><td><span class="long12">-89.750008</span></td></tr>
 					</table>
 			
-					<h3>Licence fee</h3>
-					<div id="renew-cost">
+					<h3 class="total-cost-present">Licence fee</h3>
+					<div id="renew-cost" class="total-cost-present">
 						<dl class="dl-horizontal">
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
@@ -208,7 +211,7 @@
 						</dl>
 					</div>
 
-					<div id="renew-min-cost">
+					<div id="renew-min-cost" class="total-cost-present">
 						<dl class="dl-horizontal">
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
@@ -224,13 +227,13 @@
 						<br>
 						<dl class="dl-horizontal">
 							<dt>Minimum fee per year</dt>
-							<dd>$48.00</span></dd>
+							<dd>$48.00</dd>
 							<dt>Total cost per year</dt>
 							<dd><b>$48.00</b></dd>
 						</dl>
 					</div>
 
-					<div id="temp-cost">
+					<div id="temp-cost" class="total-cost-present">
 						<dl class="dl-horizontal">
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
@@ -245,12 +248,12 @@
 							<dt>Licence duration</dt>
 							<dd><span class="licence-duration">8</span> calendar months</dd>
 							<dt>Total cost</dt>
-							<dd>$<span class="temp-cost">0.45</span> &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+							<dd>$<span class="temp-cost">0.45</span> &times; <span class="licence-duration">8</span> = $<span class="total-cost">0.00</span> </dd>
 						</dl>
 
 					</div>
 
-					<div id="temp-min-cost">
+					<div id="temp-min-cost" class="total-cost-present">
 						<dl class="dl-horizontal">
 							<dt>Area type</dt>
 							<dd><span class="fee-zone">Rural</span></dd>
@@ -270,7 +273,7 @@
 							<dt>Licence duration</dt>
 							<dd><span class="licence-duration">8</span> calendar months</dd>
 							<dt>Total cost</dt>
-							<dd>$4.00 &times; <span class="licence-duration">10</span> = $<span class="total-cost">0.00</span> </dd>
+							<dd>$4.00 &times; <span class="licence-duration">8</span> = $<span class="total-cost">0.00</span> </dd>
 						</dl>
 					</div>
 
@@ -311,102 +314,76 @@
 	</form>
 	<script src="catch-and-throw.js"></script>
 	<script>
-		const band = urlParams.get ( "band" )
-			if (band == "28 GHz") {
-				for ( let elem of document .getElementsByClassName ( "3900Bandwidth" ) ) {
-				elem .setAttribute ( "hidden", null )
-				}
-				for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
-				elem .removeAttribute ( "hidden" )
-				}
-			}
-
 		var lats = [];
 		var longs = [];
 		var lat_longs = [];
 
-		for ( const [ key, value ] of urlParams ) {
-			// add lat longs to the variable
-			if (value != "") {
-				if (key.startsWith('lat')) {
-					lats.push(value);
-				} else if (key.startsWith('long')) {
-					longs.push(value);
-				}
-			}
-
-			for ( const elem of document .getElementsByClassName ( key ) ) {
-				if ( value == "" ) {
-					elem .innerText = "-"
-				} else {
-					elem .innerText = value
-				}
-			}
-		}
-
-		var expiryDatePresent = true
-		if ( urlParams .has ( "expiry-date" ) ) {
-			const expDate = urlParams .get ( "expiry-date" )
-			if ( expDate == "" ) {
-				expiryDatePresent = false
-			}
-		} else {
-			expiryDatePresent = false
-		}
-		if ( ! expiryDatePresent ) {
-			for ( let elem of document .getElementsByClassName ( "expiry-date-present" ) ) {
-					elem .setAttribute ( "hidden", "hidden" )
-				}
-		}
-
-		var asuPresent = true
 		if ( urlParams.size > 0 ) {
-			if ( urlParams .has ( "asu" ) ) {
-				const asu = urlParams .get ( "asu" )
-				if ( asu == "" ) {
-					asuPresent = false
-				}
-			} else {
-				asuPresent = false
-			}
-			if ( ! asuPresent ) {
-				for ( let elem of document .getElementsByClassName ( "asu-present" ) ) {
-						elem .setAttribute ( "hidden", "hidden" )
+
+			const band = urlParams.get ( "band" )
+				if (band == "28 GHz") {
+					for ( let elem of document .getElementsByClassName ( "3900Bandwidth" ) ) {
+					elem .setAttribute ( "hidden", null )
 					}
-			}
-		}
-
-		var antennaHeightPresent = true
-		if ( urlParams .has ( "antenna-height" ) ) {
-			const expDate = urlParams .get ( "antenna-height" )
-			if ( expDate == "" ) {
-				antennaHeightPresent = false
-			}
-		} else {
-			antennaHeightPresent = false
-		}
-		if ( ! antennaHeightPresent ) {
-			for ( let elem of document .getElementsByClassName ( "antenna-height-present" ) ) {
-					elem .setAttribute ( "hidden", "hidden" )
+					for ( let elem of document .getElementsByClassName ( "mmwaveBandwidth" ) ) {
+					elem .removeAttribute ( "hidden" )
+					}
 				}
-		}
 
-		// Hide unneeded boundary point pairs
-		// Yes there are probably slicker ways to do this. This is prototype code, not production code
-		if ( lats .length > 0 ) {
-			for ( let i = lats .length +1; i < 13; i++ ) {			
-				let children = document .getElementsByClassName ( "lat" + i )
-				for ( let j = 0; j < children .length; j++ ) {
-					children [j] .parentNode .parentNode .remove()
-				}			
+			for ( const elem of document .querySelectorAll ( '[class$="-present"]' ) ) {
+				elem .setAttribute ( "hidden", "hidden" )
 			}
 
-			// combine lat longs into an array for leaflet.
-			for (let i = 0; i < lats.length; i++) {
-				lat_longs.push([lats[i],longs[i]])
+			for ( const [ key, value ] of urlParams ) {
+				if ( value != "" ) {
+					// show the field if it is present
+					for ( const elem of document .getElementsByClassName ( key + "-present" ) ) {
+						elem .removeAttribute ( "hidden" )
+					}
+					for ( const elem of document .getElementsByClassName ( key ) ) {
+						elem .innerText = value
+					}
+
+					// determine whether to pluralize the contact label
+					if ( key == "asu" ) {
+						if ( value .includes ( ";" ) ) {
+							for ( const elem of document .getElementsByClassName ( "asu-plural" ) ) {
+								elem .removeAttribute ( "hidden" )
+							}
+						} else {
+							for ( const elem of document .getElementsByClassName ( "asu-plural" ) ) {
+								elem .setAttribute ( "hidden", "hidden" )
+							}
+						}
+					}
+
+					// add lat longs to the variable
+					if (value != "") {
+						if (key.startsWith('lat')) {
+							lats.push(value);
+						} else if (key.startsWith('long')) {
+							longs.push(value);
+						}
+					}
+				}
+			}
+
+			// Hide unneeded boundary point pairs
+			// Yes there are probably slicker ways to do this. This is prototype code, not production code
+			if ( lats .length > 0 ) {
+				for ( let i = lats .length +1; i < 13; i++ ) {			
+					let children = document .getElementsByClassName ( "lat" + i )
+					for ( let j = 0; j < children .length; j++ ) {
+						children [j] .parentNode .parentNode .remove()
+					}			
+				}
+
+				// combine lat longs into an array for leaflet.
+				for (let i = 0; i < lats.length; i++) {
+					lat_longs.push([lats[i],longs[i]])
+				}
 			}
 		}
-
 	</script>
 	<script>
 		const saveButton = document.getElementById ( "save-button" )
@@ -535,20 +512,21 @@
 			document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
 			document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
 
-			if (urlParams.get('renewable-temporary') == 'Renewable') {
-				if (urlParams.get('less-than-min') == "true") {
-					document.getElementById ( "renew-min-cost" ).removeAttribute("hidden")
+			if (urlParams.get('total-cost') != null) {
+				if (urlParams.get('renewable-temporary') == 'Renewable') {
+					if (urlParams.get('less-than-min') == "true") {
+						document.getElementById ( "renew-min-cost" ).removeAttribute("hidden")
+					} else {
+						document.getElementById ( "renew-cost" ).removeAttribute("hidden")
+					}
 				} else {
-					document.getElementById ( "renew-cost" ).removeAttribute("hidden")
-				}
-			} else {
-				if (urlParams.get('less-than-min') == "true") {
-					document.getElementById ( "temp-min-cost" ).removeAttribute("hidden")
-				} else {
-					document.getElementById ( "temp-cost" ).removeAttribute("hidden")
+					if (urlParams.get('less-than-min') == "true") {
+						document.getElementById ( "temp-min-cost" ).removeAttribute("hidden")
+					} else {
+						document.getElementById ( "temp-cost" ).removeAttribute("hidden")
+					}
 				}
 			}
-
 		</script>
 	</body>
 </html>

@@ -134,7 +134,7 @@
 					<!-- </details> -->
 					
 					<select class="form-control mmwaveBandwidth" id="mmwaveBandwidth" name="bandwidth">
-						<option value="none">Bandwidth</option>
+						<option value="">Bandwidth</option>
 						<option value="50">50 MHz   </option>
 						<option value="100">100 MHz </option>
 						<option value="150">150 MHz </option>
@@ -350,7 +350,7 @@
 
 		function generatemmWaveStartingFrequencies() {
 			jump = parseInt(starting_frequency.value)
-			frequency_select.innerHTML = '<option value="none">Select frequency block</option>'
+			frequency_select.innerHTML = '<option value="">Select frequency block</option>'
 			for (let i=0;i<(18-(jump/50));i++){
 				frequency_end = ((27500+(50*i+(jump)))/1000).toString()
 				frequency = ((27500+(50*i))/1000).toString()
