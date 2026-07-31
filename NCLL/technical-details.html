@@ -342,7 +342,7 @@
 			if (jump > 0) {
 				document.getElementById('frequency-not-selected').setAttribute('hidden', 'hidden')
 				document.getElementById('frequency-selected').removeAttribute('hidden')
-				frequency_select.innerHTML = '<option value="">Select frequency block</option>'
+				frequency_select.innerHTML = '<option value="">Select frequency blocks</option>'
 				for (let i=0;i<(9-(jump/10));i++){
 					frequency_end = (3900+(10*i+(jump))).toString()
 					frequency = (3900+(10*i)).toString()
