@@ -169,18 +169,20 @@
 				</fieldset>
 
 				<fieldset class="gc-chckbxrdio" id="starting-frequency-input" hidden>
-					<legend class="required">
-						<span class="field-name">
-							Choose your frequency blocks
-						</span>
-						<strong class="required small" aria-hidden="true">(required)</strong>
-					</legend>
-				
-					<select id='starting-frequency-select' class="form-control" name="frequency">
-					</select>
+					<section class="alert alert-warning" id="frequency-not-selected">
+						<p>In order to choose your frequency blocks you must first select your bandwidth (see above)</p>
+					</section>
+					<section id="frequency-selected" hidden>
+						<legend class="required">
+							<span class="field-name">
+								Choose your frequency blocks
+							</span>
+							<strong class="required small" aria-hidden="true">(required)</strong>
+						</legend>
+						<select id='starting-frequency-select' class="form-control" name="frequency">
+						</select>
+					</section>
 				</fieldset>
-
-				
 
 				<fieldset class="gc-chckbxrdio">
 					<legend class="required">
@@ -342,21 +344,28 @@
 
 		function generatemmWaveStartingFrequencies() {
 			jump = parseInt(starting_frequency.value)
-			frequency_select.innerHTML = '<option value="">Select frequency block</option>'
-			for (let i=0;i<(18-(jump/50));i++){
-				frequency_end = ((27500+(50*i+(jump)))/1000).toString()
-				frequency = ((27500+(50*i))/1000).toString()
-				frequency = (frequency =="28") ? frequency.concat('.00') : frequency.padEnd(5,'0')
-				frequency_end = (frequency_end =="28") ? frequency_end.concat('.00') : frequency_end.padEnd(5,'0')
-				if ( jump == 50 ) { // just one channel
-					let val = `AA${(i+1).toString()} (${frequency} to ${frequency_end} GHz)`
-					frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${val}">${val}</option>`);
-				} else {
-					let val = `AA${(i+1).toString()} to AA${(i+jump/50).toString()} (${frequency} to ${frequency_end} GHz)`
-					frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${val}">${val}</option>`);
+			if (jump > 0) {
+				document.getElementById('frequency-not-selected').setAttribute('hidden', 'hidden')
+				document.getElementById('frequency-selected').removeAttribute('hidden')
+				frequency_select.innerHTML = '<option value="">Select frequency block</option>'
+				for (let i=0;i<(18-(jump/50));i++){
+					frequency_end = ((27500+(50*i+(jump)))/1000).toString()
+					frequency = ((27500+(50*i))/1000).toString()
+					frequency = (frequency =="28") ? frequency.concat('.00') : frequency.padEnd(5,'0')
+					frequency_end = (frequency_end =="28") ? frequency_end.concat('.00') : frequency_end.padEnd(5,'0')
+					if ( jump == 50 ) { // just one channel
+						let val = `AA${(i+1).toString()} (${frequency} to ${frequency_end} GHz)`
+						frequency_select.insertAdjacentHTML('beforeend',
+						`<option value="${val}">${val}</option>`);
+					} else {
+						let val = `AA${(i+1).toString()} to AA${(i+jump/50).toString()} (${frequency} to ${frequency_end} GHz)`
+						frequency_select.insertAdjacentHTML('beforeend',
+						`<option value="${val}">${val}</option>`);
+					}
 				}
+			} else {
+				document.getElementById('frequency-not-selected').removeAttribute('hidden')
+				document.getElementById('frequency-selected').setAttribute('hidden', 'hidden')
 			}
 		}
 		document.getElementById('mmwaveBandwidth').addEventListener('change',generatemmWaveStartingFrequencies);

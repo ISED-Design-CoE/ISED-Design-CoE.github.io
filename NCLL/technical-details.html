@@ -164,18 +164,20 @@
 				</fieldset>
 
 				<fieldset class="gc-chckbxrdio" id="starting-frequency-input" hidden>
-					<legend class="required">
-						<span class="field-name">
-							Choose your frequency blocks
-						</span>
-						<strong class="required small" aria-hidden="true">(required)</strong>
-					</legend>
-				
-					<select id='starting-frequency-select' class="form-control" name="frequency">
-					</select>
+					<section class="alert alert-warning" id="frequency-not-selected">
+						<p>In order to choose your frequency blocks you must first select your bandwidth (see above)</p>
+					</section>
+					<section id="frequency-selected" hidden>
+						<legend class="required">
+							<span class="field-name">
+								Choose your frequency blocks
+							</span>
+							<strong class="required small" aria-hidden="true">(required)</strong>
+						</legend>
+						<select id='starting-frequency-select' class="form-control" name="frequency">
+						</select>
+					</section>
 				</fieldset>
-
-				
 
 				<fieldset class="gc-chckbxrdio">
 					<legend class="required">
@@ -336,20 +338,27 @@
 		})
 
 		function generateStartingFrequencies() {
-			jump = parseInt(starting_frequency.value);
-			frequency_select.innerHTML = '<option value="">Select frequency block</option>'
-			for (let i=0;i<(9-(jump/10));i++){
-				frequency_end = (3900+(10*i+(jump))).toString()
-				frequency = (3900+(10*i)).toString()
-				if ( jump == 10 ) { // just one channel
-					let val = `A${(i+1).toString()} (${frequency} to ${frequency_end} MHz)`
-					frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${val}">${val}</option>`);
-				} else {
-					let val = `A${(i+1).toString()} to A${(i+jump/10).toString()} (${frequency} to ${frequency_end} MHz)`
-					frequency_select.insertAdjacentHTML('beforeend',
-					`<option value="${val}">${val}</option>`);
+			jump = parseInt(starting_frequency.value)
+			if (jump > 0) {
+				document.getElementById('frequency-not-selected').setAttribute('hidden', 'hidden')
+				document.getElementById('frequency-selected').removeAttribute('hidden')
+				frequency_select.innerHTML = '<option value="">Select frequency block</option>'
+				for (let i=0;i<(9-(jump/10));i++){
+					frequency_end = (3900+(10*i+(jump))).toString()
+					frequency = (3900+(10*i)).toString()
+					if ( jump == 10 ) { // just one channel
+						let val = `A${(i+1).toString()} (${frequency} to ${frequency_end} MHz)`
+						frequency_select.insertAdjacentHTML('beforeend',
+						`<option value="${val}">${val}</option>`);
+					} else {
+						let val = `A${(i+1).toString()} to A${(i+jump/10).toString()} (${frequency} to ${frequency_end} MHz)`
+						frequency_select.insertAdjacentHTML('beforeend',
+						`<option value="${val}">${val}</option>`);
+					}
 				}
+			} else {
+				document.getElementById('frequency-not-selected').removeAttribute('hidden')
+				document.getElementById('frequency-selected').setAttribute('hidden', 'hidden')
 			}
 		}
 		document.getElementById('bandwidth').addEventListener('change',generateStartingFrequencies);
