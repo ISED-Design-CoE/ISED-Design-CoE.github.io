@@ -111,7 +111,7 @@
             required
             minlength="11"
             maxlength="27"
-            pattern="\d{6}-\d{8}-\d{11}"
+            pattern="[A-Za-z0-9]{1,6}-[A-Za-z0-9]{1,8}-[A-Za-z0-9]{1,11}"
           ></gcds-input>
         </div>
 
@@ -187,7 +187,7 @@
           hint="The latitude of the station, in decimal degrees."
           required
           min="41"
-          max="91"
+          max="90"
           type="number"
           size="11"
         ></gcds-input>
@@ -270,7 +270,7 @@
           label="Site record ID"
           hint="The Site record identifier for your site or antenna installation."
           required
-          type="number"
+          type="text"
         ></gcds-input>
 
         <gcds-button button-role="secondary" id="btn-go-back">

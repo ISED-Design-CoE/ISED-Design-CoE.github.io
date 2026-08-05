@@ -77,6 +77,16 @@
           label="Transmitter TCP-TRP"
           hint="The Total Radiated Power (TRP) or Total Conducted Power (TCP) in dBm. "
           required
+          type="number"
+        ></gcds-input>
+        <gcds-input
+          input-id="class-of-emissions"
+          label="Class of emissions"
+          hint="The International Telecommunication Union (ITU) designation for the class of emission."
+          required
+          minlength="3"
+          maxlength="5"
+          pattern="[0-9A-Za-z]{3,5}"
         ></gcds-input>
 
         <gcds-input
@@ -84,7 +94,7 @@
           label="Downlink resource allocation"
           hint="The percentage of time transmitting."
           required
-          min="1"
+          min="0"
           max="100"
           maxlength="3"
           type="number"
@@ -167,6 +177,7 @@
             label="Tx channel frequency"
             hint="The centre frequency in MHz, of the occupied bandwidth for the given antenna installation."
             required
+            type="number"
             maxlength="8"
           ></gcds-input>
         </div>
@@ -177,6 +188,7 @@
             label="Rx channel frequency"
             hint="The centre frequency in MHz, of the occupied bandwidth for the given antenna installation."
             required
+            type="number"
             maxlength="8"
           ></gcds-input>
         </div>
@@ -219,6 +231,7 @@
             required
             type="number"
             min="1"
+            max="256"
           ></gcds-input>
         </div>
 
@@ -230,6 +243,7 @@
             required
             type="number"
             min="1"
+            max="256"
           ></gcds-input>
         </div>
 
@@ -376,7 +390,7 @@
             input-id="tx-antenna-azimuth"
             label="Tx antenna azimuth"
             required
-            min="1"
+            min="0"
             max="359.9"
             type="number"
           ></gcds-input>
@@ -387,7 +401,7 @@
             input-id="rx-antenna-azimuth"
             label="Rx antenna azimuth"
             required
-            min="1"
+            min="0"
             max="359.9"
             type="number"
           ></gcds-input>

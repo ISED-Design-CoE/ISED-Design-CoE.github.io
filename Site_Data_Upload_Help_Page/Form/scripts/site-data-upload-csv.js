@@ -152,7 +152,10 @@ const CSV_FIELDS = [
     get: (row) => getTxRxRadioValue(row, "rx", "radio-certificate"),
   },
   { heading: "Bandwidth", get: (row) => row.bandwidth ?? "" },
-  { heading: "Class of Emisssion", get: () => "" },
+  {
+    heading: "Class of Emisssion",
+    get: (row) => row["class-of-emissions"] ?? "",
+  },
   { heading: "Transmitter TCP-TRP", get: (row) => row.tcp ?? "" },
   { heading: "Downlink Resource Allocation", get: (row) => row.downlink ?? "" },
   { heading: "Tx Antenna Type Code", get: (row) => mapAntennaCode(row, "tx") },
