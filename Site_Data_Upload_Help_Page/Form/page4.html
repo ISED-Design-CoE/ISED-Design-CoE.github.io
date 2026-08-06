@@ -96,7 +96,7 @@
         <gcds-heading tag="h1">Site data upload CSV generator</gcds-heading>
 
         <gcds-text>
-          Add up to 5 stations below to your site data csv. When you are ready,
+          Add stations below to your site data csv. When you are ready,
           generate the csv file and upload your site data.
         </gcds-text>
         <div style="margin-top: -25px">
@@ -453,16 +453,6 @@
           }
 
           if (action === "clone") {
-            const stationCount = getStationRows({
-              includeCurrentDraft: false,
-            }).length;
-            if (stationCount >= 5) {
-              window.alert(
-                "You can only have up to 5 stations. Delete one before cloning.",
-              );
-              return;
-            }
-
             if (!cloneEntryByIndex(rowIndex)) return;
             setCurrentPage(1);
             window.location.href = "page1.html";

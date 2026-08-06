@@ -2,7 +2,6 @@
 import { setCurrentPage } from "./site-data-upload-csv.js";
 
 const ALL_DATA_KEY = "site-data-upload-all";
-const MAX_STATIONS = 5;
 
 const PAGE1_FIELDS = [
   "licence-type",
@@ -252,8 +251,7 @@ function cloneEntryByIndex(rowIndex) {
   if (
     !Number.isInteger(rowIndex) ||
     rowIndex < 0 ||
-    rowIndex >= entries.length ||
-    entries.length >= MAX_STATIONS
+    rowIndex >= entries.length
   ) {
     return false;
   }

@@ -75,7 +75,6 @@ const ANTENNA_TYPE_CODES = {
   3: "NAU",
 };
 
-const MAX_STATIONS = 5;
 
 const CSV_FIELDS = [
   {
@@ -564,13 +563,6 @@ function importAllDataFromCsv(csvText) {
 
   const state = ensureState();
   const existingEntries = Array.isArray(state.entries) ? state.entries : [];
-
-  if (existingEntries.length + importedEntries.length > MAX_STATIONS) {
-    return {
-      success: false,
-      message: `Import would exceed the ${MAX_STATIONS}-station limit.`,
-    };
-  }
 
   state.entries = [...existingEntries, ...importedEntries];
   state.current = { page1: {}, page2: {}, page3: {} };
