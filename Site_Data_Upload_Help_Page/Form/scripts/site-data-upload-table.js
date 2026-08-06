@@ -75,7 +75,7 @@ const PAGE3_FIELDS = [
 
 function readAllData() {
   try {
-    return JSON.parse(sessionStorage.getItem(ALL_DATA_KEY) || "{}");
+    return JSON.parse(localStorage.getItem(ALL_DATA_KEY) || "{}");
   } catch (err) {
     console.warn("Could not parse saved site data:", err);
     return {};
@@ -83,7 +83,7 @@ function readAllData() {
 }
 
 function writeAllData(data) {
-  sessionStorage.setItem(ALL_DATA_KEY, JSON.stringify(data));
+  localStorage.setItem(ALL_DATA_KEY, JSON.stringify(data));
 }
 
 function getPageField(pageData, fieldKeys) {

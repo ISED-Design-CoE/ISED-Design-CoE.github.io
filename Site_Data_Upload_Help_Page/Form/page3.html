@@ -561,7 +561,7 @@
 
         function getLicenceTypeFromState() {
           try {
-            const raw = sessionStorage.getItem("site-data-upload-all") || "{}";
+            const raw = localStorage.getItem("site-data-upload-all") || "{}";
             const state = JSON.parse(raw) || {};
             const currentPage1 = state.current?.page1 || {};
             if (currentPage1["licence-type"])

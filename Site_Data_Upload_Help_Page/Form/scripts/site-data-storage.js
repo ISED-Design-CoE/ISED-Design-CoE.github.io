@@ -4,7 +4,7 @@ const ALL_DATA_KEY = "site-data-upload-all";
 
 function readAllData() {
   try {
-    return JSON.parse(sessionStorage.getItem(ALL_DATA_KEY) || "{}") || {};
+    return JSON.parse(localStorage.getItem(ALL_DATA_KEY) || "{}") || {};
   } catch (err) {
     console.warn("Could not parse saved site data:", err);
     return {};
@@ -12,7 +12,7 @@ function readAllData() {
 }
 
 function writeAllData(data) {
-  sessionStorage.setItem(ALL_DATA_KEY, JSON.stringify(data));
+  localStorage.setItem(ALL_DATA_KEY, JSON.stringify(data));
 }
 
 function ensureState() {
@@ -30,7 +30,7 @@ function ensureState() {
 }
 
 function setCurrentPage(pageNumber) {
-  sessionStorage.setItem(PAGE_KEY, String(pageNumber));
+  localStorage.setItem(PAGE_KEY, String(pageNumber));
 }
 
 function clearCurrentEntry() {

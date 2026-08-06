@@ -510,7 +510,13 @@
           if (safeName) filename = `${safeName}.csv`;
         }
 
-        exportAllDataAsCsv(filename);
+        const exportResult = exportAllDataAsCsv(filename);
+        if (!exportResult?.success) {
+          window.alert(
+            exportResult?.message ||
+              "Fix the station information before generating the CSV.",
+          );
+        }
       });
 
       document

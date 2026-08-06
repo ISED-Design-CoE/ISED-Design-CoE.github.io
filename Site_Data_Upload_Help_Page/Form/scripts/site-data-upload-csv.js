@@ -14,6 +14,7 @@ import {
 import {
   validateCurrentPage,
   applyValidationToAllFields,
+  validateEntriesForCsv,
 } from "./site-data-validation.js";
 
 // ---- CSV headings and columns ----
@@ -275,14 +276,15 @@ function mapValue(map, value) {
 
 function createReverseLookup(map) {
   return Object.fromEntries(
-    Object.entries(map).map(([key, value]) => [String(value).toUpperCase(), key]),
+    Object.entries(map).map(([key, value]) => [
+      String(value).toUpperCase(),
+      key,
+    ]),
   );
 }
 
 const RADIO_TECHNOLOGY_VALUES = createReverseLookup(RADIO_TECHNOLOGY_CODES);
-const PROVINCE_TERRITORY_VALUES = createReverseLookup(
-  PROVINCE_TERRITORY_CODES,
-);
+const PROVINCE_TERRITORY_VALUES = createReverseLookup(PROVINCE_TERRITORY_CODES);
 const SITE_TYPE_VALUES = createReverseLookup(SITE_TYPE_CODES);
 const STRUCTURE_TYPE_VALUES = createReverseLookup(STRUCTURE_TYPE_CODES);
 const DIRECTIONAL_PATTERN_VALUES = createReverseLookup(
@@ -321,6 +323,26 @@ function mapAntennaCode(row, side) {
   if (!getPage3Side(row, side)) return "";
   if (row["licence-type"] === "radio2") return "";
   return mapValue(ANTENNA_TYPE_CODES, row[`${side}-type-code`]);
+}
+
+function getRowsForExport() {
+  const state = ensureState();
+  const entries = Array.isArray(state.entries) ? state.entries : [];
+  let rows = entries;
+  if (!rows.length) {
+    const current = state.current || {};
+    const draft = { ...current.page1, ...current.page2, ...current.page3 };
+    if (!Object.values(draft).every((value) => value === "" || value == null)) {
+      rows = [draft];
+    }
+  }
+  return rows;
+}
+function validateAllDataForCsv() {
+  const rows = getRowsForExport();
+  const validationResult = validateEntriesForCsv(rows);
+  if (!validationResult.success) return validationResult;
+  return { success: true, rows };
 }
 
 function parseCsvLine(line) {
@@ -368,14 +390,18 @@ function normalizeImportedRow(row) {
 }
 
 function getImportedSiteInfoChange(stationLocation) {
-  const normalized = String(stationLocation ?? "").trim().toUpperCase();
+  const normalized = String(stationLocation ?? "")
+    .trim()
+    .toUpperCase();
   if (normalized === "NOCHANGE" || normalized === "NOCHANGES") return "radio2";
   if (normalized === "NOSTATIONS") return "radio3";
   return "radio1";
 }
 
 function getImportedLicenceType(stationType) {
-  return String(stationType ?? "").trim().toUpperCase() === "TC"
+  return String(stationType ?? "")
+    .trim()
+    .toUpperCase() === "TC"
     ? "radio2"
     : "radio1";
 }
@@ -393,7 +419,9 @@ function getImportedAntennaType(txFrequency, rxFrequency) {
 }
 
 function mapImportedValue(value, reverseLookup) {
-  const normalized = String(value ?? "").trim().toUpperCase();
+  const normalized = String(value ?? "")
+    .trim()
+    .toUpperCase();
   if (!normalized) return "";
   return reverseLookup[normalized] ?? "";
 }
@@ -465,10 +493,8 @@ function mapImportedEntry(row) {
     "rx-number-antennas": normalizedRow["Number of Rx Antennas"] ?? "",
     "tx-antenna-model": normalizedRow["Tx Antenna Model Number"] ?? "",
     "rx-antenna-model": normalizedRow["Rx Antenna Model Number"] ?? "",
-    "tx-antenna-manufacturer":
-      normalizedRow["Tx Antenna Manufacturer"] ?? "",
-    "rx-antenna-manufacturer":
-      normalizedRow["Rx Antenna Manufacturer"] ?? "",
+    "tx-antenna-manufacturer": normalizedRow["Tx Antenna Manufacturer"] ?? "",
+    "rx-antenna-manufacturer": normalizedRow["Rx Antenna Manufacturer"] ?? "",
     "tx-antenna-height": normalizedRow["Tx Antenna Height"] ?? "",
     "rx-antenna-height": normalizedRow["Rx Antenna Height"] ?? "",
     "tx-omnidirectional-pattern": mapImportedValue(
@@ -560,7 +586,7 @@ function importAllDataFromCsv(csvText) {
 // ------------------------------------
 
 function saveCurrentPageData() {
-  const page = parseInt(sessionStorage.getItem(PAGE_KEY) || "1", 10);
+  const page = parseInt(localStorage.getItem(PAGE_KEY) || "1", 10);
   const state = ensureState();
   state.current[`page${page}`] = collectPageData();
   writeAllData(state);
@@ -637,20 +663,13 @@ function downloadCsv(filename, csvContent) {
 }
 
 function exportAllDataAsCsv(filename = "site-data-upload.csv") {
-  const state = ensureState();
-  const entries = state.entries || [];
-  let rows = entries;
-  if (!rows.length) {
-    const current = state.current || {};
-    const draft = { ...current.page1, ...current.page2, ...current.page3 };
-    if (!Object.values(draft).every((v) => v === "" || v == null)) {
-      rows = [draft];
-    }
+  const validationResult = validateAllDataForCsv();
+  if (!validationResult.success) {
+    console.warn(validationResult.message);
+    return validationResult;
   }
-  if (!rows.length) {
-    console.warn("No data found to export.");
-    return;
-  }
+
+  let rows = validationResult.rows;
   rows = rows.map((row) => {
     if (row["site-info-change"] === "radio2") {
       return { ...row, "station-location": "NOCHANGE" };
@@ -665,6 +684,11 @@ function exportAllDataAsCsv(filename = "site-data-upload.csv") {
   });
   const csv = buildCsv(rows);
   downloadCsv(filename, csv);
+
+  return {
+    success: true,
+    exportedCount: rows.length,
+  };
 }
 
 function getCsvHeadings() {
@@ -676,6 +700,7 @@ export {
   saveCurrentPageData,
   loadCurrentPageData,
   exportAllDataAsCsv,
+  validateAllDataForCsv,
   getCsvHeadings,
   importAllDataFromCsv,
   clearCurrentEntry,
