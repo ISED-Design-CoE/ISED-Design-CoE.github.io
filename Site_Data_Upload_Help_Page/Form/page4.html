@@ -145,6 +145,15 @@
           <gcds-button button-role="primary" id="btn-add-entry"
             >+ Add station</gcds-button
           >
+          <gcds-button button-role="secondary" id="btn-upload-csv"
+            >Upload CSV</gcds-button
+          >
+          <input
+            id="csv-upload-input"
+            type="file"
+            accept=".csv,text/csv"
+            hidden
+          />
         </div>
 
         <dialog id="delete-station-dialog">
@@ -218,6 +227,8 @@
         setCurrentPage,
         saveCurrentPageData,
         exportAllDataAsCsv,
+        getCsvHeadings,
+        importAllDataFromCsv,
         clearCurrentEntry,
       } from "./scripts/site-data-upload-csv.js";
       import {
@@ -261,6 +272,8 @@
       renderStationsTable();
 
       const stationsTable = document.getElementById("stations-table");
+      const uploadCsvButton = document.getElementById("btn-upload-csv");
+      const uploadCsvInput = document.getElementById("csv-upload-input");
       const deleteDialog = document.getElementById("delete-station-dialog");
       const cancelDeleteButton = document.getElementById(
         "cancel-delete-dialog",
@@ -268,6 +281,86 @@
       const confirmDeleteButton = document.getElementById(
         "confirm-delete-dialog",
       );
+      const expectedCsvHeadings = getCsvHeadings();
+
+      function parseCsvLine(line) {
+        const values = [];
+        let currentValue = "";
+        let inQuotes = false;
+
+        for (let index = 0; index < line.length; index += 1) {
+          const character = line[index];
+
+          if (character === '"') {
+            const nextCharacter = line[index + 1];
+            if (inQuotes && nextCharacter === '"') {
+              currentValue += '"';
+              index += 1;
+            } else {
+              inQuotes = !inQuotes;
+            }
+            continue;
+          }
+
+          if (character === "," && !inQuotes) {
+            values.push(currentValue.trim());
+            currentValue = "";
+            continue;
+          }
+
+          currentValue += character;
+        }
+
+        values.push(currentValue.trim());
+        return values;
+      }
+
+      function stripUtf8Bom(value) {
+        return value.replace(/^\uFEFF/, "");
+      }
+
+      function validateUploadedCsvHeaders(csvText) {
+        const lines = csvText
+          .split(/\r?\n/)
+          .map((line) => line.trim())
+          .filter((line) => line !== "");
+
+        if (!lines.length) {
+          return {
+            isValid: false,
+            message: "The selected CSV file is empty.",
+          };
+        }
+
+        const headerRow = parseCsvLine(stripUtf8Bom(lines[0]));
+
+        if (headerRow.length !== 54) {
+          return {
+            isValid: false,
+            message: `Please upload a valid CSV file.`,
+          };
+        }
+
+        const mismatches = expectedCsvHeadings
+          .map((heading, index) => {
+            const actualHeading = headerRow[index] ?? "";
+            if (actualHeading === heading) return null;
+            return `Column ${index + 1} must be \"${heading}\".`;
+          })
+          .filter(Boolean);
+
+        if (mismatches.length) {
+          return {
+            isValid: false,
+            message: mismatches.slice(0, 3).join(" "),
+          };
+        }
+
+        return {
+          isValid: true,
+          rowCount: Math.max(lines.length - 1, 0),
+        };
+      }
 
       function closeDeleteDialog() {
         if (!(deleteDialog instanceof HTMLDialogElement)) return;
@@ -428,6 +521,59 @@
           setCurrentPage(1);
           window.location.href = "page1.html";
         });
+
+      uploadCsvButton?.addEventListener("click", (event) => {
+        event.preventDefault();
+        uploadCsvInput?.click();
+      });
+
+      uploadCsvInput?.addEventListener("change", async (event) => {
+        const file = event.target?.files?.[0];
+        if (!file) return;
+
+        const isCsvFile =
+          file.name.toLowerCase().endsWith(".csv") || file.type === "text/csv";
+
+        if (!isCsvFile) {
+          window.alert("Select a CSV file to upload.");
+          event.target.value = "";
+          return;
+        }
+
+        try {
+          const csvText = await file.text();
+          const validation = validateUploadedCsvHeaders(csvText);
+
+          if (!validation.isValid) {
+            window.alert(validation.message);
+            return;
+          }
+
+          const importResult = importAllDataFromCsv(csvText);
+          if (!importResult.success) {
+            window.alert(importResult.message);
+            return;
+          }
+
+          renderStationsTable();
+
+          console.log("Uploaded CSV file:", {
+            name: file.name,
+            size: file.size,
+            rowCount: importResult.importedCount,
+            columnCount: expectedCsvHeadings.length,
+          });
+
+          window.alert(
+            `Uploaded ${file.name} and added ${importResult.importedCount} station(s).`,
+          );
+        } catch (error) {
+          console.error("Unable to read uploaded CSV file", error);
+          window.alert("Unable to read the selected CSV file.");
+        } finally {
+          event.target.value = "";
+        }
+      });
     </script>
   </body>
 </html>

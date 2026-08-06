@@ -68,6 +68,14 @@ const DIRECTIONAL_PATTERN_CODES = {
   2: "N",
 };
 
+const ANTENNA_TYPE_CODES = {
+  1: "AAS",
+  2: "NAC",
+  3: "NAU",
+};
+
+const MAX_STATIONS = 5;
+
 const CSV_FIELDS = [
   {
     heading: "Spectrum licence number",
@@ -265,6 +273,23 @@ function mapValue(map, value) {
   return map[value] ?? value;
 }
 
+function createReverseLookup(map) {
+  return Object.fromEntries(
+    Object.entries(map).map(([key, value]) => [String(value).toUpperCase(), key]),
+  );
+}
+
+const RADIO_TECHNOLOGY_VALUES = createReverseLookup(RADIO_TECHNOLOGY_CODES);
+const PROVINCE_TERRITORY_VALUES = createReverseLookup(
+  PROVINCE_TERRITORY_CODES,
+);
+const SITE_TYPE_VALUES = createReverseLookup(SITE_TYPE_CODES);
+const STRUCTURE_TYPE_VALUES = createReverseLookup(STRUCTURE_TYPE_CODES);
+const DIRECTIONAL_PATTERN_VALUES = createReverseLookup(
+  DIRECTIONAL_PATTERN_CODES,
+);
+const ANTENNA_TYPE_VALUES = createReverseLookup(ANTENNA_TYPE_CODES);
+
 function getPage3Side(row, side) {
   const antennaType = row["antenna-type"];
   if (side === "tx")
@@ -295,7 +320,241 @@ function getDirectionalValue(row, side, key) {
 function mapAntennaCode(row, side) {
   if (!getPage3Side(row, side)) return "";
   if (row["licence-type"] === "radio2") return "";
-  return "NAU";
+  return mapValue(ANTENNA_TYPE_CODES, row[`${side}-type-code`]);
+}
+
+function parseCsvLine(line) {
+  const values = [];
+  let currentValue = "";
+  let inQuotes = false;
+
+  for (let index = 0; index < line.length; index += 1) {
+    const character = line[index];
+
+    if (character === '"') {
+      const nextCharacter = line[index + 1];
+      if (inQuotes && nextCharacter === '"') {
+        currentValue += '"';
+        index += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+
+    if (character === "," && !inQuotes) {
+      values.push(currentValue.trim());
+      currentValue = "";
+      continue;
+    }
+
+    currentValue += character;
+  }
+
+  values.push(currentValue.trim());
+  return values;
+}
+
+function stripUtf8Bom(value) {
+  return value.replace(/^\uFEFF/, "");
+}
+
+function normalizeImportedRow(row) {
+  const normalizedRow = {};
+  Object.entries(row).forEach(([heading, value]) => {
+    normalizedRow[heading] = typeof value === "string" ? value.trim() : value;
+  });
+  return normalizedRow;
+}
+
+function getImportedSiteInfoChange(stationLocation) {
+  const normalized = String(stationLocation ?? "").trim().toUpperCase();
+  if (normalized === "NOCHANGE" || normalized === "NOCHANGES") return "radio2";
+  if (normalized === "NOSTATIONS") return "radio3";
+  return "radio1";
+}
+
+function getImportedLicenceType(stationType) {
+  return String(stationType ?? "").trim().toUpperCase() === "TC"
+    ? "radio2"
+    : "radio1";
+}
+
+function getImportedAntennaType(txFrequency, rxFrequency) {
+  const txValue = Number.parseFloat(String(txFrequency ?? ""));
+  const rxValue = Number.parseFloat(String(rxFrequency ?? ""));
+  const hasTx = Number.isFinite(txValue) && txValue > 0;
+  const hasRx = Number.isFinite(rxValue) && rxValue > 0;
+
+  if (hasTx && hasRx) return "radio3";
+  if (hasTx) return "radio1";
+  if (hasRx) return "radio2";
+  return "radio3";
+}
+
+function mapImportedValue(value, reverseLookup) {
+  const normalized = String(value ?? "").trim().toUpperCase();
+  if (!normalized) return "";
+  return reverseLookup[normalized] ?? "";
+}
+
+function mapImportedEntry(row) {
+  const normalizedRow = normalizeImportedRow(row);
+  const importedEntry = {
+    "licence-number": normalizedRow["Spectrum licence number"] ?? "",
+    "reference-number": normalizedRow["Upload reference number"] ?? "",
+    "contact-name": normalizedRow["Contact name"] ?? "",
+    "business-number": normalizedRow["Business telephone"] ?? "",
+    "email-address": normalizedRow["E-mail address"] ?? "",
+    "station-location": normalizedRow["Station location"] ?? "",
+    "radio-technology": mapImportedValue(
+      normalizedRow["Radio technology"],
+      RADIO_TECHNOLOGY_VALUES,
+    ),
+    "cell-id": normalizedRow["Cell ID"] ?? "",
+    "physical-cell-id": normalizedRow["Physical Cell ID"] ?? "",
+    "province-territory": mapImportedValue(
+      normalizedRow["Province/Territory code"],
+      PROVINCE_TERRITORY_VALUES,
+    ),
+    latitude: normalizedRow["Latitude"] ?? "",
+    longitude: normalizedRow["Longitude"] ?? "",
+    "site-type": mapImportedValue(
+      normalizedRow["Site Type Code"],
+      SITE_TYPE_VALUES,
+    ),
+    "structure-height": normalizedRow["Structure height"] ?? "",
+    "structure-type": mapImportedValue(
+      normalizedRow["Site Structure Type Code"],
+      STRUCTURE_TYPE_VALUES,
+    ),
+    "date-of-modification":
+      normalizedRow[
+        "Station/Associated channels in-service date or last modified date"
+      ] ?? "",
+    "site-record-id": normalizedRow["Site Record ID"] ?? "",
+    "tx-channel-frequency":
+      normalizedRow[
+        "Tx channel frequency or Tx lower frequency limit of the band in use"
+      ] ?? "",
+    "rx-channel-frequency":
+      normalizedRow[
+        "Rx channel frequency or Rx lower frequency limit of the band in use"
+      ] ?? "",
+    "tx-radio-model": normalizedRow["Tx Radio model number"] ?? "",
+    "rx-radio-model": normalizedRow["Rx Radio model number"] ?? "",
+    "tx-radio-code": normalizedRow["Tx Radio Manufacturer Code"] ?? "",
+    "rx-radio-code": normalizedRow["Rx Radio Manufacturer Code"] ?? "",
+    "tx-radio-certificate":
+      normalizedRow["Tx Radio Certification Number"] ?? "",
+    "rx-radio-certificate":
+      normalizedRow["Rx Radio Certification Number"] ?? "",
+    bandwidth: normalizedRow["Bandwidth"] ?? "",
+    "class-of-emissions": normalizedRow["Class of Emisssion"] ?? "",
+    tcp: normalizedRow["Transmitter TCP-TRP"] ?? "",
+    downlink: normalizedRow["Downlink Resource Allocation"] ?? "",
+    "tx-type-code": mapImportedValue(
+      normalizedRow["Tx Antenna Type Code"],
+      ANTENNA_TYPE_VALUES,
+    ),
+    "rx-type-code": mapImportedValue(
+      normalizedRow["Rx Antenna Type Code"],
+      ANTENNA_TYPE_VALUES,
+    ),
+    "tx-number-antennas": normalizedRow["Number of Tx Antennas"] ?? "",
+    "rx-number-antennas": normalizedRow["Number of Rx Antennas"] ?? "",
+    "tx-antenna-model": normalizedRow["Tx Antenna Model Number"] ?? "",
+    "rx-antenna-model": normalizedRow["Rx Antenna Model Number"] ?? "",
+    "tx-antenna-manufacturer":
+      normalizedRow["Tx Antenna Manufacturer"] ?? "",
+    "rx-antenna-manufacturer":
+      normalizedRow["Rx Antenna Manufacturer"] ?? "",
+    "tx-antenna-height": normalizedRow["Tx Antenna Height"] ?? "",
+    "rx-antenna-height": normalizedRow["Rx Antenna Height"] ?? "",
+    "tx-omnidirectional-pattern": mapImportedValue(
+      normalizedRow["Tx Antenna Directional Pattern Indicator"],
+      DIRECTIONAL_PATTERN_VALUES,
+    ),
+    "rx-omnidirectional-pattern": mapImportedValue(
+      normalizedRow["Rx Antenna Directional Pattern Indicator"],
+      DIRECTIONAL_PATTERN_VALUES,
+    ),
+    "tx-antenna-horizontal-beamwidth":
+      normalizedRow["Tx Antenna Horizontal Beam"] ?? "",
+    "rx-antenna-horizontal-beamwidth":
+      normalizedRow["Rx Antenna Horizontal Beam"] ?? "",
+    "tx-antenna-vertical-beamwidth":
+      normalizedRow["Tx Antenna Vertical Beam"] ?? "",
+    "rx-antenna-vertical-beamwidth":
+      normalizedRow["Rx Antenna Vertical Beam"] ?? "",
+    "tx-antenna-azimuth": normalizedRow["Tx Antenna Azimuth"] ?? "",
+    "rx-antenna-azimuth": normalizedRow["Rx Antenna Azimuth"] ?? "",
+    "tx-antenna-elevation-angle":
+      normalizedRow["Tx Antenna Elevation Angle"] ?? "",
+    "rx-antenna-elevation-angle":
+      normalizedRow["Rx Antenna Elevation Angle"] ?? "",
+    "tx-antenna-gain": normalizedRow["Tx Antenna Gain"] ?? "",
+    "rx-antenna-gain": normalizedRow["Rx Antenna Gain"] ?? "",
+    "tx-antenna-line-loss": normalizedRow["Tx Line Loss"] ?? "",
+    "rx-antenna-line-loss": normalizedRow["Rx Line Loss"] ?? "",
+  };
+
+  importedEntry["site-info-change"] = getImportedSiteInfoChange(
+    importedEntry["station-location"],
+  );
+  importedEntry["licence-type"] = getImportedLicenceType(
+    normalizedRow["Station type"],
+  );
+  importedEntry["antenna-type"] = getImportedAntennaType(
+    importedEntry["tx-channel-frequency"],
+    importedEntry["rx-channel-frequency"],
+  );
+
+  return importedEntry;
+}
+
+function importAllDataFromCsv(csvText) {
+  const lines = String(csvText ?? "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line !== "");
+
+  if (lines.length <= 1) {
+    return {
+      success: false,
+      message: "The CSV must include at least one data row.",
+    };
+  }
+
+  const headings = parseCsvLine(stripUtf8Bom(lines[0]));
+  const importedEntries = lines.slice(1).map((line) => {
+    const values = parseCsvLine(line);
+    const row = {};
+    headings.forEach((heading, index) => {
+      row[heading] = values[index] ?? "";
+    });
+    return mapImportedEntry(row);
+  });
+
+  const state = ensureState();
+  const existingEntries = Array.isArray(state.entries) ? state.entries : [];
+
+  if (existingEntries.length + importedEntries.length > MAX_STATIONS) {
+    return {
+      success: false,
+      message: `Import would exceed the ${MAX_STATIONS}-station limit.`,
+    };
+  }
+
+  state.entries = [...existingEntries, ...importedEntries];
+  state.current = { page1: {}, page2: {}, page3: {} };
+  state.editing = null;
+  writeAllData(state);
+
+  return {
+    success: true,
+    importedCount: importedEntries.length,
+  };
 }
 
 // ------------------------------------
@@ -355,7 +614,7 @@ function escapeCsvValue(value) {
 }
 
 function buildCsv(rows) {
-  const header = CSV_FIELDS.map((field) => field.heading).join(",");
+  const header = getCsvHeadings().join(",");
   const body = rows
     .map((row) =>
       CSV_FIELDS.map((field) => escapeCsvValue(field.get(row))).join(","),
@@ -408,11 +667,17 @@ function exportAllDataAsCsv(filename = "site-data-upload.csv") {
   downloadCsv(filename, csv);
 }
 
+function getCsvHeadings() {
+  return CSV_FIELDS.map((field) => field.heading);
+}
+
 export {
   setCurrentPage,
   saveCurrentPageData,
   loadCurrentPageData,
   exportAllDataAsCsv,
+  getCsvHeadings,
+  importAllDataFromCsv,
   clearCurrentEntry,
   finalizeCurrentEntry,
   validateCurrentPage,
