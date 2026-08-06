@@ -42,6 +42,7 @@ const PAGE3_FIELDS = [
   "radio-certificate",
   "bandwidth",
   "tcp",
+  "class-of-emissions",
   "downlink",
   "antenna-type",
   "tx-channel-frequency",
