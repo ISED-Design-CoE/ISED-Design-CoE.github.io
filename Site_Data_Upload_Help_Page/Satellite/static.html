@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
     <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 
-    <title>Text format for spectrum licence site data upload</title>
+    <title>Text format for satellite spectrum licence site data upload</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <!-- Custom code starts here (Metadata) / Code personalisé commence ici (Métadonnées) -->
@@ -403,17 +403,31 @@
 
         <main class="col-md-8">
           <h1 data-i18n="page-heading" id="wb-cont" style="margin-bottom: 24px">
-            Text format for terrestrial spectrum licence site data upload
+            Text format for satellite spectrum licence site data upload
           </h1>
-          <p data-i18n="page-description" style="margin-bottom: 24px">
+          <p style="margin-bottom: 20px">
             Learn about the format, validation rules, and errors when uploading
-            spectrum licence site data. Download the .csv file below to use as a
-            template.
+            spectrum licence site data.
           </p>
 
-          <button class="btn btn-secondary btn-lg" style="margin-bottom: 24px">
-            Download .csv template
-          </button>
+          <gcds-text>
+            <strong>Viewing the status of your licence </strong> <br />Use the
+            <a
+              href="https://sms-sgs.ic.gc.ca/slSiteUploadLicences/licencesWizard?execution=e2s1&amp;serviceId=85&amp;subserviceId=8701&amp;lang=en_CA"
+              >Spectrum Licence Site Data Status Report</a
+            >
+            to check when your next upload date is due.
+          </gcds-text>
+          <br /><br />
+          <gcds-text>
+            <strong>Download the provided .csv file template </strong>
+            <br />Use the following
+            <a
+              href="https://sms-sgs.ic.gc.ca/slSiteUploadLicences/licencesWizard?execution=e2s1&amp;serviceId=85&amp;subserviceId=8701&amp;lang=en_CA"
+              >CSV template</a
+            >
+            for your site data.
+          </gcds-text>
 
           <h2>Field names</h2>
           <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
@@ -431,11 +445,10 @@
                       rowspan="1"
                       colspan="1"
                       style="width: 80px"
-                      aria-label=" 
+                      aria-label="
                     Letter
                   "
                     >
-                      <span class="th-vspacer"> </span>
                       Letter
                     </th>
                     <th
@@ -443,11 +456,10 @@
                       rowspan="1"
                       colspan="1"
                       style="width: 600px"
-                      aria-label=" 
+                      aria-label="
                     Name
                   "
                     >
-                      <span class="th-vspacer"> </span>
                       Name
                     </th>
                   </tr>
@@ -468,23 +480,23 @@
                       <p>The number of your spectrum licence.</p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>10898101</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
+                        <li>
+                          Must be exactly 9 digits long including any leading
+                          zeroes
+                        </li>
+                        <li>Must not include the licence version number</li>
                         <li>Must belong to an account in your web profile</li>
                         <li>
                           Must be a granted (paid) spectrum licence, and not
                           expired
                         </li>
-                        <li>
-                          Must be exactly 9 digits long including leading zeroes
-                          as necessary
-                        </li>
-                        <li>Must not include the licence version number</li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>10898101</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -510,14 +522,15 @@
                       <h2>Upload reference number</h2>
                       <p></p>
                       <p>
-                        A number, or any other text, for your own use. Optional.
+                        A number, or any other text, for your own use.
+                        (Optional)
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>Monthly upload, March 2023</p>
                       <h4>Format</h4>
                       <p>Maximum length of 63 characters.</p>
+                      <h4>Example</h4>
+                      <p>Monthly upload, March 2023</p>
                     </td>
                   </tr>
                   <tr class="gradeA odd">
@@ -535,10 +548,10 @@
                       <p>Name of the person who may be contacted.</p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>John Smith</p>
                       <h4>Format</h4>
                       <p>Maximum length of 254 characters.</p>
+                      <h4>Example</h4>
+                      <p>John Smith</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -559,16 +572,13 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Business telephone number</h2>
+                      <h2>Business Telephone Number</h2>
                       <p></p>
                       <p>
-                        The telephone number of the person who may be
-                        contacted.
+                        The telephone number of the person who may be contacted.
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>613 – 174 – 5555 x 993</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -576,6 +586,8 @@
                         <li>Maximum length of 254 characters</li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>613–174–5555 x993</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -596,16 +608,13 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Email address</h2>
+                      <h2>E-mail address</h2>
                       <p></p>
                       <p>
-                        The email address of the person who may be
-                        contacted.
+                        The email address of the person who may be contacted.
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>john.smith@mail.com</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -616,6 +625,8 @@
                         </li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>john.smith@mail.com,jane.brown@mail.com</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -639,13 +650,11 @@
                       <h2>Station location</h2>
                       <p></p>
                       <p>
-                        The station is located or specify if there are no
-                        changes or no stations.
+                        The location of the station. This field is also used for
+                        NOCHANGES and NOSTATIONS.
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>WR0123 - Strandherd Repeater Site</p>
                       <h4>Format</h4>
                       <p>
                         <b>If you currently have a station</b> <br />
@@ -657,9 +666,12 @@
                         enter “NOCHANGES” and leave columns G to BB empty.
                         <br />
                         <br /><b>If you have no stations deployed</b> <br />
-                        If you have no station deployed or all your stations are being decommissioned,
-                        enter “NOSTATIONS” and leave columns G to BB empty.
+                        If you have no station deployed or all your stations are
+                        being decommissioned, enter “NOSTATIONS” and leave
+                        columns G to BB empty.
                       </p>
+                      <h4>Example</h4>
+                      <p>WR0123 - Strandherd Repeater Site</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -692,17 +704,13 @@
                     <td style="padding-bottom: 40px">
                       <h2>Station type</h2>
                       <p></p>
-                      <p>
-                        The station type, either fixed or earth station.
-                      </p>
+                      <p>The type of station</p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>FX</p>
                       <h4>Format</h4>
-                      <p>Must be one of the following codes:</p>
-                      <table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td>FX</td><td>Fixed station</td></tr><tr><td>TC</td><td>Earth station</td></tr></tbody></table>
-                      <p></p>
+                      <p>Must enter TC.</p>
+                      <h4>Example</h4>
+                      <p>TC</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -726,30 +734,15 @@
                       <h2>Radio technology</h2>
                       <p></p>
                       <p>
-                        The mode of operation (provisioning) for the radio
-                        apparatus at the site.
+                        This field is used differently for other services, but
+                        for satellite it is always “OTHER”.
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>LTE</p>
                       <h4>Format</h4>
-                      <p></p>
-                      <ul>
-                        <li>GSM – Global System for Mobile Communications</li>
-                        <li>CDMA – Code Division Multiple Access</li>
-                        <li>HSPA – High Speed Packet Access</li>
-                        <li>LTE – Long Term Evolution</li>
-                        <li>5GNR – 5G New Radio&nbsp;</li>
-                        <li>5GDSS – 5G Dynamic Spectrum Sharing</li>
-                        <li>
-                          WIMAX – Worldwide Interoperability for Microwave
-                          Access
-                        </li>
-                        <li>WI-FI</li>
-                        <li>OTHER</li>
-                      </ul>
-                      <p></p>
+                      <p>Must enter OTHER.</p>
+                      <h4>Example</h4>
+                      <p>OTHER</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -781,36 +774,12 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#H">H - Radio technology</a> is any of the
-                        following:
+                        This field is used differently for other services, but
+                        for satellite it is always blank.
                       </p>
-                      <ul>
-                        <li>GSM</li>
-                        <li>CDMA</li>
-                        <li>HSPA</li>
-                        <li>LTE</li>
-                        <li>5GNR</li>
-                        <li>5GDSS</li>
-                      </ul>
-                      <p></p>
-                      <h4>Example</h4>
-                      <p>302610-1051200-25381093417</p>
                       <h4>Format</h4>
-                      <p>
-                        <b>For GSM, CDMA, HSPA</b> <br />(CGI): PLMN-LAC-CID
-                        <br /><br />
-                        <b>For 5GNR, 5GDSS</b> <br />(NCGI): PLMN-TAC-NCI<br /><br />
-                        <b>For LTE</b> <br />(ECGI): PLMN-TAC-ECI
-                      </p>
-                      <ul>
-                        <li>
-                          Must be in the format of 999999-99999999-99999999999
-                        </li>
-                        <li>Minimum of 11 characters</li>
-                        <li>Maximum of 27 characters</li>
-                      </ul>
-                      <p></p>
+                      <p>Leave blank</p>
+
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -831,38 +800,47 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Physical cell ID</h2>
+                      <h2>Filter code</h2>
                       <p></p>
                       <p>
-                        The Physical Cell Identity (PCI) for LTE or 5G
-                        systems.
+                        This field is used differently for other services, where
+                        it is known as Physical Cell ID. For satellite it is the
+                        filter code for any earth station operating in the 3700
+                        to 4200 MHz band.
                       </p>
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#H">H - Radio technology</a> is any of the
-                        following:
+                        Required when your earth station is operating in the
+                        3700 to 4200 MHz band.
                       </p>
-                      <ul>
-                        <li>LTE</li>
-                        <li>5GNR</li>
-                        <li>5GDSS</li>
-                      </ul>
+                      <h4>Format</h4>
+                      <p>Must be one of the following filter codes:</p>
+                      <table class="wb-tables table">
+                        <thead>
+                          <tr>
+                            <th>Code</th>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>0</td>
+                            <td>Non-Transitioned</td>
+                          </tr>
+                          <tr>
+                            <td>1</td>
+                            <td>Transitioned</td>
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>New</td>
+                          </tr>
+                        </tbody>
+                      </table>
                       <p></p>
                       <h4>Example</h4>
-                      <p>204</p>
-                      <h4>Format</h4>
-                      <p></p>
-                      <p>Must be a number from either:</p>
-                      <ul>
-                        <li>0 to 503 for <b>LTE</b> systems</li>
-                        <li>
-                          0 to 1007 for <b>5GNR</b> or <b>5GDSS</b> systems
-                        </li>
-                      </ul>
-                      <p></p>
-                      <p></p>
+                      <p>0</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -883,7 +861,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Province/Territory code</h2>
+                      <h2>Province/Territory Code</h2>
                       <p></p>
                       <p>
                         The two-character abbreviation of the province or
@@ -891,35 +869,91 @@
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>ON</p>
                       <h4>Format</h4>
                       <p></p>
                       <p>
                         Your licence coordinates must be within the province or
-                        territory <br /><br />
+                        territory.
+                      </p>
+                      <br />
+                      <p>
                         Must be one of the following provincial or territorial
                         codes:
                       </p>
-                      <ul>
-                        <li>AB - Alberta</li>
-                        <li>BC - British Columbia</li>
-                        <li>MB - Manitoba</li>
-                        <li>NB - New Brunswick</li>
-                        <li>NL- Newfoundland and Labrador</li>
-                        <li>NS - Nova Scotia</li>
-                        <li>ON - Ontario</li>
-                        <li>PE - Prince Edward Island</li>
-                        <li>QC - Quebec</li>
-                        <li>SK - Saskatchewan</li>
-                        <li>NT - Northwest Territories</li>
-                        <li>NU - Nunavut</li>
-                        <li>YT - Yukon</li>
-                      </ul>
-                      For transportable stations, includes "IP" for
-                      interprovincial and "CA" for Canada-wide.)
+                      <table class="wb-tables table">
+                        <thead>
+                          <tr>
+                            <th>Code</th>
+                            <th>Province / Territory</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>AB</td>
+                            <td>Alberta</td>
+                          </tr>
+                          <tr>
+                            <td>BC</td>
+                            <td>British Columbia</td>
+                          </tr>
+                          <tr>
+                            <td>MB</td>
+                            <td>Manitoba</td>
+                          </tr>
+                          <tr>
+                            <td>NB</td>
+                            <td>New Brunswick</td>
+                          </tr>
+                          <tr>
+                            <td>NL</td>
+                            <td>Newfoundland and Labrador</td>
+                          </tr>
+                          <tr>
+                            <td>NS</td>
+                            <td>Nova Scotia</td>
+                          </tr>
+                          <tr>
+                            <td>ON</td>
+                            <td>Ontario</td>
+                          </tr>
+                          <tr>
+                            <td>PE</td>
+                            <td>Prince Edward Island</td>
+                          </tr>
+                          <tr>
+                            <td>QC</td>
+                            <td>Quebec</td>
+                          </tr>
+                          <tr>
+                            <td>SK</td>
+                            <td>Saskatchewan</td>
+                          </tr>
+                          <tr>
+                            <td>NT</td>
+                            <td>Northwest Territories</td>
+                          </tr>
+                          <tr>
+                            <td>NU</td>
+                            <td>Nunavut</td>
+                          </tr>
+                          <tr>
+                            <td>YT</td>
+                            <td>Yukon</td>
+                          </tr>
+                          <tr>
+                            <td>IP</td>
+                            <td>Interprovincial</td>
+                          </tr>
+                          <tr>
+                            <td>CA</td>
+                            <td>Canada-wide</td>
+                          </tr>
+                        </tbody>
+                      </table>
                       <p></p>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>ON</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -943,11 +977,9 @@
                     <td style="padding-bottom: 40px">
                       <h2>Latitude</h2>
                       <p></p>
-                      <p>Enter the latitudinal coordinate of the station.</p>
+                      <p>The latitudinal coordinate of the station.</p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>45.3514035</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -961,8 +993,15 @@
                           coordinates are not exact
                         </li>
                         <li>A maximum of seven decimal places</li>
+                        <li>
+                          If <a href="#P">P - Site Structure Type Code</a> is
+                          "M" (transportable), then report the current operating
+                          latitude, not the radius of operation
+                        </li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>45.3514035</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -986,11 +1025,9 @@
                     <td style="padding-bottom: 40px">
                       <h2>Longitude</h2>
                       <p></p>
-                      <p>Enter the longitudinal coordinate of the station.</p>
+                      <p>The longitudinal coordinate of the station.</p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>-75.6533946</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1004,8 +1041,15 @@
                           coordinates are not exact
                         </li>
                         <li>A maximum of seven decimal places</li>
+                        <li>
+                          If <a href="#P">P - Site Structure Type Code</a> is
+                          "M" (transportable), then report the current operating
+                          longitude, not the radius of operation
+                        </li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>-75.6533946</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1028,7 +1072,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Site type code</h2>
+                      <h2>Site Type Code</h2>
                       <p></p>
                       <p>
                         The general type of site associated with the
@@ -1036,16 +1080,10 @@
                       </p>
                       <p></p>
 
+                      <h4>Format</h4>
+                      <p>Must be O - Outdoor</p>
                       <h4>Example</h4>
                       <p>O</p>
-                      <h4>Format</h4>
-                      <p>Must be one of the following site types:</p>
-                      <ul>
-                        <li>U - Underground (E.g. a mine or a subway)</li>
-                        <li>O - Outdoor (E.g. a tower or rooftop)</li>
-                        <li>I - Indoor (E.g. a stadium or office)</li>
-                      </ul>
-                      <p></p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1066,25 +1104,20 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Structure height</h2>
+                      <h2>Structure Height</h2>
                       <p></p>
                       <p>
                         The total height (m) above ground level of an outdoor
-                        structure where antennas are mounted. This structure
-                        might also be shared with other radio installations (ex:
-                        towers, rooftops, etc).
+                        structure, such as a tower or rooftop, where antennas
+                        are mounted. This structure might also be shared with
+                        other radio installations.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#N">N - Site type code</a> is O.
-                      </p>
-                      <h4>Example</h4>
-                      <p>15</p>
+
                       <h4>Format</h4>
                       <p></p>
                       <ul>
+                        <li>Must be a number</li>
                         <li>Must be greater than the antenna height</li>
                         <li>Must be between 1 to 600 m</li>
                         <li>
@@ -1094,6 +1127,8 @@
                         </li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>15</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1105,8 +1140,14 @@
                       An error in this field may also give errors in the
                       following fields:
                       <ul>
-                        <li><a href="">AM - Tx Antenna Height </a></li>
-                        <li><a href="">AN - Rx Antenna Height </a></li>
+                        <li>
+                          <a href=""></a
+                          ><a href="#AM">AM - Tx Antenna Height</a>
+                        </li>
+                        <li>
+                          <a href=""></a
+                          ><a href="#AN">AN - Rx Antenna Height</a>
+                        </li>
                       </ul>
                       <p></p>
                     </td>
@@ -1121,31 +1162,57 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Site structure type code</h2>
+                      <h2>Site Structure Type Code</h2>
                       <p></p>
                       <p>The type of structure in use at the site.</p>
                       <p></p>
 
+                      <h4>Format</h4>
+                      <p>Must be one of the following codes</p>
+                      <table class="wb-tables table">
+                        <thead>
+                          <tr>
+                            <th style="width: 100px">Code</th>
+                            <th>Site structure type</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>T</td>
+                            <td>Purpose-built tower</td>
+                          </tr>
+                          <tr>
+                            <td>R</td>
+                            <td>Exterior of building (e.g. rooftop)</td>
+                          </tr>
+                          <tr>
+                            <td>P</td>
+                            <td>
+                              Light pole, other street electrical, or utility
+                              pole
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>S</td>
+                            <td>Water tower or farm silo</td>
+                          </tr>
+                          <tr>
+                            <td>F</td>
+                            <td>Furniture</td>
+                          </tr>
+                          <tr>
+                            <td>M</td>
+                            <td>Transportable</td>
+                          </tr>
+                          <tr>
+                            <td>O</td>
+                            <td>Other (e.g. indoor)</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p></p>
                       <h4>Example</h4>
                       <p>T</p>
-                      <h4>Format</h4>
-                      <p>Must be one of the following structure types:</p>
-                      <ul>
-                        <li>T - Purpose-built tower</li>
-                        <li>R - Outside of building or rooftop</li>
-                        <li>
-                          P - Light pole, other street electrical, or utility
-                          pole
-                        </li>
-                        <li>S - Water tower or farm silo</li>
-                        <li>F - Furniture</li>
-                        <li>
-                          M - Transportable (Report the current operating
-                          location only and not the radius of operation)
-                        </li>
-                        <li>O - Other (E.g. indoor)</li>
-                      </ul>
-                      <p></p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1167,7 +1234,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Effective date of configuration</h2>
+                      <h2>Date of Last Modification</h2>
                       <p></p>
                       <p>
                         The date that the installation went into service. This
@@ -1176,8 +1243,6 @@
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>2022-02-14</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1185,16 +1250,17 @@
                         <li>Must be in the format of YYYY-MM-DD</li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>2022-02-14</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
                           style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
                           >The date is missing or not in the expected format or
-                          range.</code
+                          range. ORA-01841: (full) year must be between -4713
+                          and +9999, and not be 0.</code
                         >
                       </p>
-                      ORA-01841: (full) year must be between -4713 and +9999,
-                      and not be 0 <br /><br />
                       If you have an improper date format, other errors may not
                       be shown.
                       <p></p>
@@ -1210,18 +1276,19 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Site record ID</h2>
+                      <h2>Site Record ID</h2>
                       <p></p>
                       <p>
-                        The identifier as defined by the licensee for the site
-                        or antenna installation.
+                        An identifier defined by the licensee for the site or
+                        antenna installation. We do not validate whether this is
+                        unique.
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>1234567890</p>
                       <h4>Format</h4>
                       <p>No restriction</p>
+                      <h4>Example</h4>
+                      <p>1234567890</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1241,7 +1308,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx channel frequency</h2>
+                      <h2>Tx Channel Frequency</h2>
                       <p></p>
                       <p>
                         The centre frequency (MHz) of the occupied bandwidth as
@@ -1250,13 +1317,11 @@
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>1925.3</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
                         <li>
-                          If your antenna is receive only and not transmitting
+                          If your antenna is receive only and not transmitting,
                           enter 0
                         </li>
                         <li>
@@ -1266,6 +1331,8 @@
                         <li>Must be the centre frequency</li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>1925.3</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1286,7 +1353,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx channel frequency</h2>
+                      <h2>Rx Channel Frequency</h2>
                       <p></p>
                       <p>
                         The centre frequency (MHz) of the occupied bandwidth for
@@ -1296,8 +1363,6 @@
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>1875.3</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1312,6 +1377,8 @@
                         </li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>1875.3</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1332,32 +1399,29 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx radio HVIN</h2>
+                      <h2>
+                        Tx Radio Hardware Version Identification Number (HVIN)
+                      </h2>
                       <p></p>
                       <p>
                         The transmitting radio’s Hardware Version Identification
-                        Number (HVIN) certified by ISED.
+                        Number (HVIN) certified by ISED. If the radio is
+                        certification-exempt, please provide the manufacturer's
+                        radio model number or a system configuration name.
                       </p>
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that transmit.
                       </p>
-                      <h4>Example</h4>
-                      <p>T99W175MC</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
                         <li>Maximum length 128 characters</li>
-                        <li>
-                          If the radio is certification-exempt, you must provide
-                          the manufacturer's radio model number or a system
-                          configuration name
-                        </li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>T99W175MC</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1378,7 +1442,9 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx radio HVIN</h2>
+                      <h2>
+                        Rx Radio Hardware Version Identification Number (HVIN)
+                      </h2>
                       <p></p>
                       <p>
                         The receiving radio’s Hardware Version Identification
@@ -1389,23 +1455,16 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that receive.
                       </p>
-                      <h4>Example</h4>
-                      <p>T99W175MC</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
                         <li>Maximum length 128 characters</li>
-                        <li>
-                          If the radio is certification-exempt, you must provide
-                          the manufacturer's radio model number or a system
-                          configuration name
-                        </li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>T99W175MC</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1426,7 +1485,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx radio manufacturer code</h2>
+                      <h2>Tx Radio Manufacturer Code</h2>
                       <p></p>
                       <p>
                         The company code assigned by ISED’s Certification and
@@ -1434,21 +1493,11 @@
                         radio transmitter.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#G">G - Station type</a> is FX and
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
-                      </p>
-                      <h4>Example</h4>
-                      <p>109AB</p>
+
                       <h4>Format</h4>
-                      <p></p>
-                      <ul>
-                        <li>Must be a valid manufacturer company number</li>
-                      </ul>
-                      <p></p>
+                      <p>Must enter code 31913.</p>
+                      <h4>Example</h4>
+                      <p>31913</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1469,7 +1518,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx radio manufacturer code</h2>
+                      <h2>Rx Radio Manufacturer Code</h2>
                       <p></p>
                       <p>
                         The company code assigned by ISED’s Certification and
@@ -1477,21 +1526,11 @@
                         radio receiver.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#G">G - Station type</a> is FX and
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
-                      </p>
-                      <h4>Example</h4>
-                      <p>109AB</p>
+
                       <h4>Format</h4>
-                      <p></p>
-                      <ul>
-                        <li>Must be a valid manufacturer company number</li>
-                      </ul>
-                      <p></p>
+                      <p>Must enter code 31913.</p>
+                      <h4>Example</h4>
+                      <p>31913</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1512,7 +1551,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx radio certification number</h2>
+                      <h2>Tx Radio Certification Number</h2>
                       <p></p>
                       <p>
                         The Certification Number assigned by ISED to the radio
@@ -1523,29 +1562,11 @@
                         >.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#G">G - Station type</a> is FX and
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
-                      </p>
-                      <h4>Example</h4>
-                      <p>24374-T99W175M</p>
+
                       <h4>Format</h4>
-                      <p></p>
-                      <ul>
-                        <li>
-                          Must be a valid certification number from the Radio
-                          Equipment List (subservice 12-142)
-                        </li>
-                        <li>
-                          If your equipment is exempt from certification, you
-                          must enter "Exempt"
-                        </li>
-                        <li>Maximum length 31 characters</li>
-                      </ul>
-                      <p></p>
+                      <p>Must enter Exempt.</p>
+                      <h4>Example</h4>
+                      <p>Exempt</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1566,7 +1587,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx radio certification number</h2>
+                      <h2>Rx Radio Certification Number</h2>
                       <p></p>
                       <p>
                         The Certification Number assigned by ISED to the radio
@@ -1577,29 +1598,11 @@
                         >.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#G">G - Station type</a> is FX and
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
-                      </p>
-                      <h4>Example</h4>
-                      <p>24374-T99W175M</p>
+
                       <h4>Format</h4>
-                      <p></p>
-                      <ul>
-                        <li>
-                          Must be a valid certification number from the Radio
-                          Equipment List (subservice 12-142)
-                        </li>
-                        <li>
-                          If your equipment is exempt from certification, you
-                          must enter "Exempt"
-                        </li>
-                        <li>Maximum length 31 characters</li>
-                      </ul>
-                      <p></p>
+                      <p>Must enter Exempt.</p>
+                      <h4>Example</h4>
+                      <p>Exempt</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1629,14 +1632,14 @@
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>2300</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
                         <li>A number between 0.10 to 50000.00</li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>2300</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1657,7 +1660,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Class of emission</h2>
+                      <h2>Class of Emission</h2>
                       <p></p>
                       <p>
                         The International Telecommunication Union (ITU)
@@ -1665,24 +1668,24 @@
                       </p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>F3WET</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
                         <li>
                           Must be a valid emission code as described in
                           <a
-                            href="https://ised-isde.canada.ca/site/spectrum-management-system/en/radiocommunication-licensing-services/text-format-upload-technical-data-stations-authorized-under-spectrum-licences"
+                            href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/devices-and-equipment/telecom-regulation-circulars-trc/trc-43-designation-emissions-class-station-and-nature-service#p7"
                             >Valid Class of Emission Codes</a
                           >.
                         </li>
                         <li>
-                          The emission class that uses the largest
+                          Enter the emission class that uses the largest
                           bandwidth
                         </li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>F3WET</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1715,15 +1718,12 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that transmit.
                       </p>
-                      <h4>Example</h4>
-                      <p>21.4</p>
                       <h4>Format</h4>
                       <p>Must be one of the following:</p>
                       <ul>
+                        <li>Must be a number</li>
                         <li>
                           Enter TRP for AAS equipment (as defined in the
                           applicable SRSP)
@@ -1731,6 +1731,8 @@
                         <li>Enter TCP for non-AAS equipment</li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>21.4</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1751,13 +1753,11 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Downlink resource allocation</h2>
+                      <h2>Downlink Resource Allocation</h2>
                       <p></p>
                       <p>The percentage of time transmitting.</p>
                       <p></p>
 
-                      <h4>Example</h4>
-                      <p>89</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1769,6 +1769,8 @@
                         <li>For full duplex systems, enter 100.</li>
                       </ul>
                       <p></p>
+                      <h4>Example</h4>
+                      <p>89</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1789,7 +1791,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx antenna type code</h2>
+                      <h2>Tx Antenna Type Code</h2>
                       <p></p>
                       <p>
                         The type of antenna associated with a transmitting radio
@@ -1798,23 +1800,12 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#G">G - Station type</a> is FX and
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
+                        This field is used differently for other services, but
+                        for satellite it is always blank.
                       </p>
-                      <h4>Example</h4>
-                      <p>NAU</p>
                       <h4>Format</h4>
-                      <p>Entry must be one of the following:</p>
-                      <ul>
-                        <li>AAS – Active antenna systems</li>
-                        <li>NAC – Non-AAS correlated</li>
-                        <li>NAU – Non-ASS uncorrelated</li>
-                      </ul>
-                      <br />
-                      If deploying a hybrid mode, enter NAC.
-                      <p></p>
+                      <p>Leave blank</p>
+
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1835,7 +1826,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx antenna type code</h2>
+                      <h2>Rx Antenna Type Code</h2>
                       <p></p>
                       <p>
                         The type of antenna associated with a receiving radio
@@ -1844,23 +1835,12 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#G">G - Station type</a> is FX and
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
+                        This field is used differently for other services, but
+                        for satellite it is always blank.
                       </p>
-                      <h4>Example</h4>
-                      <p>NAU</p>
                       <h4>Format</h4>
-                      <p>Entry must be one of the following:</p>
-                      <ul>
-                        <li>AAS – Active antenna systems</li>
-                        <li>NAC – Non-AAS correlated</li>
-                        <li>NAU – Non-ASS uncorrelated</li>
-                      </ul>
-                      <br />
-                      If deploying a hybrid mode, enter NAC.
-                      <p></p>
+                      <p>Leave blank</p>
+
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -1881,18 +1861,14 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx number of antennas</h2>
+                      <h2>Tx Number of Antennas</h2>
                       <p></p>
                       <p>The total number of Tx antennas.</p>
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that transmit.
                       </p>
-                      <h4>Example</h4>
-                      <p>1</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1901,23 +1877,25 @@
                           enter 1
                         </li>
                         <li>
-                          For a traditional antenna diversity enter 2 or any
-                          numbes greater
+                          For a traditional antenna diversity, enter the number
+                          of installed antennas (2 or higher)
                         </li>
                         <li>
                           For MIMO systems, enter the number of antenna elements
                           in the antenna panel
                         </li>
-                        <p></p>
-                        <h4>Potential errors</h4>
-                        <p>
-                          <code
-                            style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
-                            >The Number of Tx Antennas is missing or not within
-                            the expected range.
-                          </code>
-                        </p>
                       </ul>
+                      <p></p>
+                      <h4>Example</h4>
+                      <p>1</p>
+                      <h4>Potential errors</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Number of Tx Antennas is missing or not within
+                          the expected range.
+                        </code>
+                      </p>
                     </td>
                   </tr>
                   <tr class="gradeA even">
@@ -1930,18 +1908,14 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx number of antennas</h2>
+                      <h2>Rx Number of Antennas</h2>
                       <p></p>
                       <p>The total number of Rx antennas.</p>
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that receive.
                       </p>
-                      <h4>Example</h4>
-                      <p>1</p>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1950,23 +1924,25 @@
                           enter 1
                         </li>
                         <li>
-                          For a traditional antenna diversity enter 2 or any
-                          numbes greater
+                          For a traditional antenna diversity, enter the number
+                          of installed antennas (2 or higher)
                         </li>
                         <li>
                           For MIMO systems, enter the number of antenna elements
                           in the antenna panel
                         </li>
-                        <p></p>
-                        <h4>Potential errors</h4>
-                        <p>
-                          <code
-                            style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
-                            >The Number of Rx Antennas is missing or not within
-                            the expected range.
-                          </code>
-                        </p>
                       </ul>
+                      <p></p>
+                      <h4>Example</h4>
+                      <p>1</p>
+                      <h4>Potential errors</h4>
+                      <p>
+                        <code
+                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                          >The Number of Rx Antennas is missing or not within
+                          the expected range.
+                        </code>
+                      </p>
                     </td>
                   </tr>
                   <tr class="gradeA odd">
@@ -1979,20 +1955,18 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx antenna model number</h2>
+                      <h2>Tx Antenna Model Number</h2>
                       <p></p>
                       <p>The model number of the transmitter antenna.</p>
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that transmit.
                       </p>
-                      <h4>Example</h4>
-                      <p>SV460-SF1 (V)</p>
                       <h4>Format</h4>
                       <p>Maximum length of 80 characters.</p>
+                      <h4>Example</h4>
+                      <p>SV460-SF1 (V)</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2013,20 +1987,18 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx antenna model number</h2>
+                      <h2>Rx Antenna Model Number</h2>
                       <p></p>
                       <p>The model number of the receiver antenna.</p>
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that receive.
                       </p>
-                      <h4>Example</h4>
-                      <p>SV460-SF1 (V)</p>
                       <h4>Format</h4>
                       <p>Maximum length of 80 characters.</p>
+                      <h4>Example</h4>
+                      <p>SV460-SF1 (V)</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2047,7 +2019,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx antenna manufacturer</h2>
+                      <h2>Tx Antenna Manufacturer Code</h2>
                       <p></p>
                       <p>
                         The full name of the manufacturer of the transmitter
@@ -2056,15 +2028,12 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#G">G - Station type</a> is FX and
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
+                        This field is used differently for other services, but
+                        for satellite it is always blank.
                       </p>
-                      <h4>Example</h4>
-                      <p>XYZ antenna manufacturer</p>
                       <h4>Format</h4>
-                      <p>Maximum length of 255 characters.</p>
+                      <p>Leave blank</p>
+
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2085,7 +2054,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx antenna manufacturer</h2>
+                      <h2>Rx Antenna Manufacturer Code</h2>
                       <p></p>
                       <p>
                         The full name of the manufacturer of the receiver
@@ -2094,15 +2063,12 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#G">G - Station type</a> is FX and
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
+                        This field is used differently for other services, but
+                        for satellite it is always blank.
                       </p>
-                      <h4>Example</h4>
-                      <p>XYZ antenna manufacturer</p>
                       <h4>Format</h4>
-                      <p>Maximum length of 255 characters.</p>
+                      <p>Leave blank</p>
+
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2123,7 +2089,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx antenna height</h2>
+                      <h2>Tx Antenna Height</h2>
                       <p></p>
                       <p>
                         Height (m) of physical centre of the transmitter antenna
@@ -2133,24 +2099,16 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that transmit.
+                      </p>
+                      <h4>Format</h4>
+                      <p>
+                        Must be a number. <br /><br />
+                        The antenna height must be between 0 to 600 m and no
+                        more than 5 m taller than the O - Structure height.
                       </p>
                       <h4>Example</h4>
                       <p>15</p>
-                      <h4>Format</h4>
-                      <p>
-                        <b>If N - Site Type Code is O (Outdoor):</b> <br />
-                        The antenna height must be between 0 to 600 m and no
-                        more than 5 m taller than the
-                        <a href="#O">O - Structure height</a>.<br /><br />
-                        <b>If N - Site Type Code is I (Indoor):</b> <br />
-                        The antenna height must be between 0 to 600 m. <br />
-                        <br />
-                        <b>If N - Site Type Code is U (Underground):</b> <br />
-                        The antenna height must be between -100 to 0 m.
-                      </p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2171,7 +2129,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx antenna height</h2>
+                      <h2>Rx Antenna Height</h2>
                       <p></p>
                       <p>
                         Height (m) of physical centre of the receiver antenna
@@ -2181,24 +2139,16 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that receive.
+                      </p>
+                      <h4>Format</h4>
+                      <p>
+                        Must be a number. <br /><br />
+                        The antenna height must be between 0 to 600 m and no
+                        more than 5 m taller than the O - Structure height.
                       </p>
                       <h4>Example</h4>
                       <p>15</p>
-                      <h4>Format</h4>
-                      <p>
-                        <b>If N - Site Type Code is O (Outdoor):</b> <br />
-                        The antenna height must be between 0 to 600 m and no
-                        more than 5 m taller than the
-                        <a href="#O">O - Structure height</a>.<br /><br />
-                        <b>If N - Site Type Code is I (Indoor):</b> <br />
-                        The antenna height must be between 0 to 600 m. <br />
-                        <br />
-                        <b>If N - Site Type Code is U (Underground):</b> <br />
-                        The antenna height must be between -100 to 0 m.
-                      </p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2219,7 +2169,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx antenna omnidirectional pattern indicator</h2>
+                      <h2>Tx Omnidirectional Antenna Pattern Indicator</h2>
                       <p></p>
                       <p>
                         Whether the transmitter antenna is omnidirectional or
@@ -2228,19 +2178,31 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that transmit.
                       </p>
+                      <h4>Format</h4>
+                      <p>Must be one of the following codes:</p>
+                      <table class="wb-tables table">
+                        <thead>
+                          <tr>
+                            <th>Code</th>
+                            <th>Antenna pattern</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>D</td>
+                            <td>Directional</td>
+                          </tr>
+                          <tr>
+                            <td>N</td>
+                            <td>Non-directional</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p></p>
                       <h4>Example</h4>
                       <p>D</p>
-                      <h4>Format</h4>
-                      <p>Must be either:</p>
-                      <ul>
-                        <li>D - Directional</li>
-                        <li>N - Non-directional</li>
-                      </ul>
-                      <p></p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2253,14 +2215,19 @@
                       An error in this field may also give errors for the
                       following fields:
                       <ul>
-                        <li><a>AQ - Tx antenna horizontal beamwidth </a></li>
-                        <li><a>AS - Tx antenna vertical beamwidth </a></li>
                         <li>
-                          <a></a><a href="#AU">AU - Tx antenna azimuth</a>
+                          <a></a
+                          ><a href="#AQ">AQ - Tx Antenna Horizontal Beam</a>
+                        </li>
+                        <li>
+                          <a></a><a href="#AS">AS - Tx Antenna Vertical Beam</a>
+                        </li>
+                        <li>
+                          <a></a><a href="#AU">AU - Tx Antenna Azimuth</a>
                         </li>
                         <li>
                           <a></a
-                          ><a href="#AW">AW - Tx antenna elevation angle</a>
+                          ><a href="#AW">AW - Tx Antenna Elevation Angle</a>
                         </li>
                       </ul>
                       <p></p>
@@ -2276,7 +2243,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx antenna omnidirectional pattern indicator</h2>
+                      <h2>Rx Omnidirectional Antenna Pattern Indicator</h2>
                       <p></p>
                       <p>
                         Whether the receiver antenna is omnidirectional or
@@ -2287,15 +2254,29 @@
                       <p>
                         This field is required for any antennas that receive.
                       </p>
+                      <h4>Format</h4>
+                      <p>Must be one of the following codes:</p>
+                      <table class="wb-tables table">
+                        <thead>
+                          <tr>
+                            <th>Code</th>
+                            <th>Antenna pattern</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>D</td>
+                            <td>Directional</td>
+                          </tr>
+                          <tr>
+                            <td>N</td>
+                            <td>Non-directional</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <p></p>
                       <h4>Example</h4>
                       <p>D</p>
-                      <h4>Format</h4>
-                      <p>Must be either:</p>
-                      <ul>
-                        <li>D - Directional</li>
-                        <li>N - Non-directional</li>
-                      </ul>
-                      <p></p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2308,14 +2289,19 @@
                       An error in this field may also give errors for the
                       following fields:
                       <ul>
-                        <li><a>AR - Rx antenna horizontal beamwidth </a></li>
-                        <li><a>AT - Rx antenna vertical beamwidth </a></li>
                         <li>
-                          <a></a><a href="#AV">AV - Rx antenna azimuth</a>
+                          <a></a
+                          ><a href="#AR">AR - Rx Antenna Horizontal Beam</a>
+                        </li>
+                        <li>
+                          <a></a><a href="#AT">AT - Rx Antenna Vertical Beam</a>
+                        </li>
+                        <li>
+                          <a></a><a href="#AV">AV - Rx Antenna Azimuth</a>
                         </li>
                         <li>
                           <a></a
-                          ><a href="#AX">AX - Rx antenna elevation angle</a>
+                          ><a href="#AX">AX - Rx Antenna Elevation Angle</a>
                         </li>
                       </ul>
                       <p></p>
@@ -2331,7 +2317,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx antenna horizontal beam</h2>
+                      <h2>Tx Antenna Horizontal Beam</h2>
                       <p></p>
                       <p>
                         The beam steering angle for AAS (Active Antenna Systems)
@@ -2341,27 +2327,25 @@
                       <h4>Required when</h4>
                       <p>
                         This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0 and
                         <a href="#AO"
-                          >AO - Tx antenna omnidirectional pattern indicator</a
+                          >AO - Tx Omnidirectional Antenna Pattern Indicator</a
                         >
                         is D (Directional).
                       </p>
-                      <h4>Example</h4>
-                      <p>120</p>
                       <h4>Format</h4>
                       <p>
                         <b>For AAS</b> <br />
-                        The horizontal beam steering angle range around
-                        the mean value specified by AU - Tx Antenna Azimuth.
-                        <br /><br />
+                        Enter the horizontal beam steering angle range around
+                        the mean value specified by
+                        <a href="#AU">AU - Tx Antenna Azimuth</a>. <br /><br />
                         <b>For non-AAS</b> <br />
-                        The half-power (3 dB) beam width in the horizontal
+                        Enter the half-power (3 dB) beam width in the horizontal
                         plane of the main lobe for the transmitter antenna.
                         <br /><br />
                         Must be a number from 1.0 to 359.9 (degrees).
                       </p>
+                      <h4>Example</h4>
+                      <p>120</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2382,7 +2366,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx antenna horizontal beam</h2>
+                      <h2>Rx Antenna Horizontal Beam</h2>
                       <p></p>
                       <p>
                         The beam steering angle for AAS (Active Antenna Systems)
@@ -2392,27 +2376,25 @@
                       <h4>Required when</h4>
                       <p>
                         This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0 and
                         <a href="#AP"
-                          >AP - Rx antenna omnidirectional pattern indicator</a
+                          >AP - Rx Omnidirectional Antenna Pattern Indicator</a
                         >
                         is D (Directional).
                       </p>
-                      <h4>Example</h4>
-                      <p>120</p>
                       <h4>Format</h4>
                       <p>
                         <b>For AAS</b> <br />
-                        The horizontal beam steering angle range around
-                        the mean value specified by AV - Rx Antenna Azimuth.
-                        <br /><br />
+                        Enter the horizontal beam steering angle range around
+                        the mean value specified by
+                        <a href="#AV">AV - Rx Antenna Azimuth</a>. <br /><br />
                         <b>For non-AAS</b> <br />
-                        The half-power (3 dB) beam width in the horizontal
+                        Enter the half-power (3 dB) beam width in the horizontal
                         plane of the main lobe for the receiver antenna.
                         <br /><br />
                         Must be a number from 1.0 to 359.9 (degrees).
                       </p>
+                      <h4>Example</h4>
+                      <p>120</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2433,7 +2415,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx antenna vertical beam</h2>
+                      <h2>Tx Antenna Vertical Beam</h2>
                       <p></p>
                       <p>
                         The beam elevation angle for AAS (Active Antenna
@@ -2444,27 +2426,26 @@
                       <h4>Required when</h4>
                       <p>
                         This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0 and
                         <a href="#AO"
-                          >AO - Tx antenna omnidirectional pattern indicator</a
+                          >AO - Tx Omnidirectional Antenna Pattern Indicator</a
                         >
                         is D (Directional).
                       </p>
-                      <h4>Example</h4>
-                      <p>135</p>
                       <h4>Format</h4>
                       <p>
                         <b>For AAS</b> <br />
-                        The vertical beam steering angle range around the
-                        mean value specified by AW - Tx Antenna Elevation Angle.
+                        Enter the vertical beam steering angle range around the
+                        mean value specified by
+                        <a href="#AW">AW - Tx Antenna Elevation Angle</a>.
                         <br /><br />
                         <b>For non-AAS</b> <br />
-                        The half-power (3 dB) beam width in the vertical
+                        Enter the half-power (3 dB) beam width in the vertical
                         plane of the main lobe for the transmitter antenna.
                         <br /><br />
                         Must be a number from 1.0 to 359.9 (degrees).
                       </p>
+                      <h4>Example</h4>
+                      <p>135</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2485,7 +2466,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx antenna vertical beam</h2>
+                      <h2>Rx Antenna Vertical Beam</h2>
                       <p></p>
                       <p>
                         The beam elevation angle for AAS (Active Antenna
@@ -2496,27 +2477,26 @@
                       <h4>Required when</h4>
                       <p>
                         This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0 and
                         <a href="#AP"
-                          >AP - Rx antenna omnidirectional pattern indicator</a
+                          >AP - Rx Omnidirectional Antenna Pattern Indicator</a
                         >
                         is D (Directional).
                       </p>
-                      <h4>Example</h4>
-                      <p>135</p>
                       <h4>Format</h4>
                       <p>
                         <b>For AAS</b> <br />
-                        The vertical beam steering angle range around the
-                        mean value specified by AX - Rx Antenna Elevation Angle.
+                        Enter the vertical beam steering angle range around the
+                        mean value specified by
+                        <a href="#AX">AX - Rx Antenna Elevation Angle</a>.
                         <br /><br />
                         <b>For non-AAS</b> <br />
-                        The half-power (3 dB) beam width in the vertical
+                        Enter the half-power (3 dB) beam width in the vertical
                         plane of the main lobe for the receiver antenna.
                         <br /><br />
                         Must be a number from 1.0 to 359.9 (degrees).
                       </p>
+                      <h4>Example</h4>
+                      <p>135</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2537,7 +2517,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx antenna azimuth</h2>
+                      <h2>Tx Antenna Azimuth</h2>
                       <p></p>
                       <p>
                         The azimuth (in degrees) of the antenna from true north
@@ -2548,17 +2528,15 @@
                       <h4>Required when</h4>
                       <p>
                         This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0 and
                         <a href="#AO"
-                          >AO - Tx antenna omnidirectional pattern indicator</a
+                          >AO - Tx Omnidirectional Antenna Pattern Indicator</a
                         >
                         is D (Directional).
                       </p>
-                      <h4>Example</h4>
-                      <p>270</p>
                       <h4>Format</h4>
                       <p>Must be a number from 0.0 to 359.9 (degrees).</p>
+                      <h4>Example</h4>
+                      <p>270</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2579,7 +2557,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx antenna azimuth</h2>
+                      <h2>Rx Antenna Azimuth</h2>
                       <p></p>
                       <p>
                         The azimuth (in degrees) of the antenna from true north
@@ -2590,17 +2568,15 @@
                       <h4>Required when</h4>
                       <p>
                         This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0 and
                         <a href="#AP"
-                          >AP - Rx antenna omnidirectional pattern indicator</a
+                          >AP - Rx Omnidirectional Antenna Pattern Indicator</a
                         >
                         is D (Directional).
                       </p>
-                      <h4>Example</h4>
-                      <p>270</p>
                       <h4>Format</h4>
                       <p>Must be a number from 0.0 to 359.9 (degrees).</p>
+                      <h4>Example</h4>
+                      <p>270</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2621,7 +2597,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx antenna elevation angle</h2>
+                      <h2>Tx Antenna Elevation Angle</h2>
                       <p></p>
                       <p>
                         The transmitter antenna’s vertical elevation angle of
@@ -2633,17 +2609,15 @@
                       <h4>Required when</h4>
                       <p>
                         This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0 and
                         <a href="#AO"
-                          >AO - Tx antenna omnidirectional pattern indicator</a
+                          >AO - Tx Omnidirectional Antenna Pattern Indicator</a
                         >
                         is D (Directional).
                       </p>
-                      <h4>Example</h4>
-                      <p>0.5</p>
                       <h4>Format</h4>
                       <p>Must be a number from -90.0 to 90.0 (degrees).</p>
+                      <h4>Example</h4>
+                      <p>0.5</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2664,7 +2638,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx antenna elevation angle</h2>
+                      <h2>Rx Antenna Elevation Angle</h2>
                       <p></p>
                       <p>
                         The receiver antenna’s vertical elevation angle of the
@@ -2676,17 +2650,15 @@
                       <h4>Required when</h4>
                       <p>
                         This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0 and
                         <a href="#AP"
-                          >AP - Rx antenna omnidirectional pattern indicator</a
+                          >AP - Rx Omnidirectional Antenna Pattern Indicator</a
                         >
                         is D (Directional).
                       </p>
-                      <h4>Example</h4>
-                      <p>0.5</p>
                       <h4>Format</h4>
                       <p>Must be a number from -90.0 to 90.0 (degrees).</p>
+                      <h4>Example</h4>
+                      <p>0.5</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2707,7 +2679,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx antenna gain</h2>
+                      <h2>Tx Antenna Gain</h2>
                       <p></p>
                       <p>
                         The gain of the transmitter antenna expressed relative
@@ -2717,18 +2689,16 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that transmit.
                       </p>
-                      <h4>Example</h4>
-                      <p>41.3</p>
                       <h4>Format</h4>
                       <p>
                         Must be a number from 0.0 to 70.0 (dBi). <br /><br />
                         For a directional antenna, enter the gain in the
                         direction of maximum radiation.
                       </p>
+                      <h4>Example</h4>
+                      <p>41.3</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2749,7 +2719,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx antenna gain</h2>
+                      <h2>Rx Antenna Gain</h2>
                       <p></p>
                       <p>
                         The gain of the receiver antenna expressed relative to
@@ -2759,18 +2729,16 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that receive.
                       </p>
-                      <h4>Example</h4>
-                      <p>41.3</p>
                       <h4>Format</h4>
                       <p>
                         Must be a number from 0.0 to 70.0 (dBi). <br /><br />
                         For a directional antenna, enter the gain in the
                         direction of maximum radiation.
                       </p>
+                      <h4>Example</h4>
+                      <p>41.3</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2791,7 +2759,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Tx line loss</h2>
+                      <h2>Tx Line Loss</h2>
                       <p></p>
                       <p>
                         The total of all line, connector and other losses
@@ -2802,14 +2770,12 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#S">S - Tx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that transmit.
                       </p>
-                      <h4>Example</h4>
-                      <p>2.5</p>
                       <h4>Format</h4>
                       <p>Must be a number from 0.0 to 30.0 (dB).</p>
+                      <h4>Example</h4>
+                      <p>2.5</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
@@ -2830,7 +2796,7 @@
                       </h2>
                     </td>
                     <td style="padding-bottom: 40px">
-                      <h2>Rx line loss</h2>
+                      <h2>Rx Line Loss</h2>
                       <p></p>
                       <p>
                         The total of all line, connector and other losses
@@ -2840,14 +2806,12 @@
                       <p></p>
                       <h4>Required when</h4>
                       <p>
-                        This field is required when
-                        <a href="#T">T - Rx channel frequency</a> is greater
-                        than 0.
+                        This field is required for any antennas that receive.
                       </p>
-                      <h4>Example</h4>
-                      <p>2.5</p>
                       <h4>Format</h4>
                       <p>Must be a number from 0.0 to 30.0 (dB).</p>
+                      <h4>Example</h4>
+                      <p>2.5</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code
