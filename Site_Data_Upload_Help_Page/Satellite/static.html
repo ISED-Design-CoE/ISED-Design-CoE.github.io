@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
     <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 
-    <title>Text format for satellite spectrum licence site data upload</title>
+    <title>Text format for terrestrial spectrum licence site data upload</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <!-- Custom code starts here (Metadata) / Code personalisé commence ici (Métadonnées) -->
@@ -59,6 +59,14 @@
         content: "– ";
         margin-left: -1.5em;
         margin-right: 1em;
+      }
+
+      #wb-auto-1 li,
+      #wb-auto-1 p {
+        font-size: 20px;
+      }
+      #wb-auto-1 code {
+        font-size: 18px;
       }
     </style>
   </head>
@@ -232,10 +240,10 @@
                     <a href="#C">C - Contact name</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#D">D - Business telephone number</a>
+                    <a href="#D">D - Business Telephone Number</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#E">E - Email address</a>
+                    <a href="#E">E - E-mail address</a>
                   </li>
                   <li style="margin-bottom: 20px">
                     <a href="#F">F - Station location</a>
@@ -250,10 +258,10 @@
                     <a href="#I">I - Cell ID</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#J">J - Physical cell ID</a>
+                    <a href="#J">J - Filter code</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#K">K - Province/Territory code</a>
+                    <a href="#K">K - Province/Territory Code</a>
                   </li>
                   <li style="margin-bottom: 20px">
                     <a href="#L">L - Latitude</a>
@@ -262,131 +270,137 @@
                     <a href="#M">M - Longitude</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#N">N - Site type code</a>
+                    <a href="#N">N - Site Type Code</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#O">O - Structure height</a>
+                    <a href="#O">O - Structure Height</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#P">P - Site structure type code</a>
+                    <a href="#P">P - Site Structure Type Code</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#Q">Q - Effective date of configuration</a>
+                    <a href="#Q">Q - Date of Last Modification</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#R">R - Site record ID</a>
+                    <a href="#R">R - Site Record ID</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#S">S - Tx channel frequency</a>
+                    <a href="#S">S - Tx Channel Frequency</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#T">T - Rx channel frequency</a>
+                    <a href="#T">T - Rx Channel Frequency</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#U">U - Tx radio HVIN</a>
+                    <a href="#U"
+                      >U - Tx Radio Hardware Version Identification Number
+                      (HVIN)</a
+                    >
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#V">V - Rx radio HVIN</a>
+                    <a href="#V"
+                      >V - Rx Radio Hardware Version Identification Number
+                      (HVIN)</a
+                    >
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#W">W - Tx radio manufacturer code</a>
+                    <a href="#W">W - Tx Radio Manufacturer Code</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#X">X - Rx radio manufacturer code</a>
+                    <a href="#X">X - Rx Radio Manufacturer Code</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#Y">Y - Tx radio certification number</a>
+                    <a href="#Y">Y - Tx Radio Certification Number</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#Z">Z - Rx radio certification number</a>
+                    <a href="#Z">Z - Rx Radio Certification Number</a>
                   </li>
                   <li style="margin-bottom: 20px">
                     <a href="#AA">AA - Bandwidth</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AB">AB - Class of emission</a>
+                    <a href="#AB">AB - Class of Emission</a>
                   </li>
                   <li style="margin-bottom: 20px">
                     <a href="#AC">AC - Transmitter TCP–TRP</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AD">AD - Downlink resource allocation</a>
+                    <a href="#AD">AD - Downlink Resource Allocation</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AE">AE - Tx antenna type code</a>
+                    <a href="#AE">AE - Tx Antenna Type Code</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AF">AF - Rx antenna type code</a>
+                    <a href="#AF">AF - Rx Antenna Type Code</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AG">AG - Tx number of antennas</a>
+                    <a href="#AG">AG - Tx Number of Antennas</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AH">AH - Rx number of antennas</a>
+                    <a href="#AH">AH - Rx Number of Antennas</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AI">AI - Tx antenna model number</a>
+                    <a href="#AI">AI - Tx Antenna Model Number</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AJ">AJ - Rx antenna model number</a>
+                    <a href="#AJ">AJ - Rx Antenna Model Number</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AK">AK - Tx antenna manufacturer</a>
+                    <a href="#AK">AK - Tx Antenna Manufacturer Code</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AL">AL - Rx antenna manufacturer</a>
+                    <a href="#AL">AL - Rx Antenna Manufacturer Code</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AM">AM - Tx antenna height</a>
+                    <a href="#AM">AM - Tx Antenna Height</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AN">AN - Rx antenna height</a>
+                    <a href="#AN">AN - Rx Antenna Height</a>
                   </li>
                   <li style="margin-bottom: 20px">
                     <a href="#AO"
-                      >AO - Tx antenna omnidirectional pattern indicator</a
+                      >AO - Tx Omnidirectional Antenna Pattern Indicator</a
                     >
                   </li>
                   <li style="margin-bottom: 20px">
                     <a href="#AP"
-                      >AP - Rx antenna omnidirectional pattern indicator</a
+                      >AP - Rx Omnidirectional Antenna Pattern Indicator</a
                     >
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AQ">AQ - Tx antenna horizontal beam</a>
+                    <a href="#AQ">AQ - Tx Antenna Horizontal Beam</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AR">AR - Rx antenna horizontal beam</a>
+                    <a href="#AR">AR - Rx Antenna Horizontal Beam</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AS">AS - Tx antenna vertical beam</a>
+                    <a href="#AS">AS - Tx Antenna Vertical Beam</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AT">AT - Rx antenna vertical beam</a>
+                    <a href="#AT">AT - Rx Antenna Vertical Beam</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AU">AU - Tx antenna azimuth</a>
+                    <a href="#AU">AU - Tx Antenna Azimuth</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AV">AV - Rx antenna azimuth</a>
+                    <a href="#AV">AV - Rx Antenna Azimuth</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AW">AW - Tx antenna elevation angle</a>
+                    <a href="#AW">AW - Tx Antenna Elevation Angle</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AX">AX - Rx antenna elevation angle</a>
+                    <a href="#AX">AX - Rx Antenna Elevation Angle</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AY">AY - Tx antenna gain</a>
+                    <a href="#AY">AY - Tx Antenna Gain</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#AZ">AZ - Rx antenna gain</a>
+                    <a href="#AZ">AZ - Rx Antenna Gain</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#BA">BA - Tx line loss</a>
+                    <a href="#BA">BA - Tx Line Loss</a>
                   </li>
                   <li style="margin-bottom: 20px">
-                    <a href="#BB">BB - Rx line loss</a>
+                    <a href="#BB">BB - Rx Line Loss</a>
                   </li>
                 </ul>
               </details>
@@ -403,7 +417,7 @@
 
         <main class="col-md-8">
           <h1 data-i18n="page-heading" id="wb-cont" style="margin-bottom: 24px">
-            Text format for satellite spectrum licence site data upload
+            Text format for terrestrial spectrum licence site data upload
           </h1>
           <p style="margin-bottom: 20px">
             Learn about the format, validation rules, and errors when uploading
@@ -432,11 +446,10 @@
           <h2>Field names</h2>
           <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
             <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
-              <div id="wb-auto-1_filter" class="dataTables_filter"></div>
               <table
-                class="wb-tables table wb-init wb-tables-inited dataTable no-footer"
+                class="wb-tables table filterEmphasis provisional"
                 id="wb-auto-1"
-                aria-describedby="wb-auto-1_info"
+                data-wb-tables='{ "ordering" : false }'
               >
                 <thead>
                   <tr>
@@ -499,8 +512,7 @@
                       <p>10898101</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The licence number does not contain a leading 0, the
                           licence number does not belong to your account, the
                           licence number is not in Granted status, or the
@@ -554,8 +566,7 @@
                       <p>John Smith</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Contact Name is missing or exceeds the character
                           limit.
                         </code>
@@ -590,8 +601,7 @@
                       <p>613–174–5555 x993</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Business Telephone Number is missing or exceeds
                           the character limit.</code
                         >
@@ -629,8 +639,7 @@
                       <p>john.smith@mail.com,jane.brown@mail.com</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The E-mail Address is missing or exceeds the
                           character limit.
                         </code>
@@ -674,14 +683,15 @@
                       <p>WR0123 - Strandherd Repeater Site</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Station Location is missing or exceeds the
                           character limit.</code
                         >
                       </p>
-                      An error in this field may also introduce errors in the
-                      following fields:
+                      <p>
+                        An error in this field may also introduce errors in the
+                        following fields:
+                      </p>
                       <ul>
                         <li><a href="">L – Latitude </a></li>
                         <li><a href="">M – Longitude </a></li>
@@ -713,8 +723,7 @@
                       <p>TC</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Station Type is not input as CAPS, is missing or
                           is not an accepted Station Type value.
                         </code>
@@ -745,8 +754,7 @@
                       <p>OTHER</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Radio Technology value is missing, not in ALL
                           CAPS, or not one of the allowed values.
                         </code>
@@ -782,8 +790,7 @@
 
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Cell ID is missing or not in the expected format
                           or length.</code
                         >
@@ -816,7 +823,7 @@
                       </p>
                       <h4>Format</h4>
                       <p>Must be one of the following filter codes:</p>
-                      <table class="wb-tables table">
+                      <table class="table">
                         <thead>
                           <tr>
                             <th>Code</th>
@@ -843,8 +850,7 @@
                       <p>0</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Physical Cell ID is missing or not within the
                           expected range of values.</code
                         >
@@ -880,7 +886,7 @@
                         Must be one of the following provincial or territorial
                         codes:
                       </p>
-                      <table class="wb-tables table">
+                      <table class="table">
                         <thead>
                           <tr>
                             <th>Code</th>
@@ -956,8 +962,7 @@
                       <p>ON</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Province/Territory is not input as CAPS, is
                           missing or is not an accepted Province/Territory
                           abbreviation.</code
@@ -1004,8 +1009,7 @@
                       <p>45.3514035</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Latitude is missing or not within the expected
                           range. The site coordinates may not fall within the
                           licensed service area.
@@ -1052,8 +1056,7 @@
                       <p>-75.6533946</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Longitude is missing or not within the expected
                           range (use negative to indicate degrees west). The
                           site coordinates may not fall within the licensed
@@ -1086,8 +1089,7 @@
                       <p>O</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Site Type Code is not input as CAPS, is missing
                           or is not an accepted Site Type Code value.
                         </code>
@@ -1131,14 +1133,15 @@
                       <p>15</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Structure Height is missing or not within the
                           expected range of values.
                         </code>
                       </p>
-                      An error in this field may also give errors in the
-                      following fields:
+                      <p>
+                        An error in this field may also give errors in the
+                        following fields:
+                      </p>
                       <ul>
                         <li>
                           <a href=""></a
@@ -1169,7 +1172,7 @@
 
                       <h4>Format</h4>
                       <p>Must be one of the following codes</p>
-                      <table class="wb-tables table">
+                      <table class="table">
                         <thead>
                           <tr>
                             <th style="width: 100px">Code</th>
@@ -1215,8 +1218,7 @@
                       <p>T</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Structure Type Code is not input as CAPS, is
                           missing or is not an accepted Structure Type Code
                           value.
@@ -1254,16 +1256,16 @@
                       <p>2022-02-14</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The date is missing or not in the expected format or
                           range. ORA-01841: (full) year must be between -4713
                           and +9999, and not be 0.</code
                         >
                       </p>
-                      If you have an improper date format, other errors may not
-                      be shown.
-                      <p></p>
+                      <p>
+                        If you have an improper date format, other errors may
+                        not be shown.
+                      </p>
                     </td>
                   </tr>
                   <tr class="gradeA even">
@@ -1291,8 +1293,7 @@
                       <p>1234567890</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Site Record ID is missing.
                         </code>
                       </p>
@@ -1335,8 +1336,7 @@
                       <p>1925.3</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Channel Frequency is missing or not within an
                           authorized frequency band for this licence.
                         </code>
@@ -1381,8 +1381,7 @@
                       <p>1875.3</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Channel Frequency is missing or not within an
                           authorized frequency band for this licence.
                         </code>
@@ -1424,8 +1423,7 @@
                       <p>T99W175MC</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Radio HVIN is missing or exceeds the character
                           limit.
                         </code>
@@ -1467,8 +1465,7 @@
                       <p>T99W175MC</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Radio HVIN is missing or exceeds the character
                           limit.
                         </code>
@@ -1500,8 +1497,7 @@
                       <p>31913</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Radio Manufacturer Code is missing or is not
                           an accepted Manufacturer Code value.
                         </code>
@@ -1533,8 +1529,7 @@
                       <p>31913</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Radio Manufacturer Code is missing or is not
                           an accepted Manufacturer Code value.
                         </code>
@@ -1569,8 +1564,7 @@
                       <p>Exempt</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Radio Certification Number is missing or
                           exceeds the character limit.
                         </code>
@@ -1605,8 +1599,7 @@
                       <p>Exempt</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Radio Certification Number is missing or
                           exceeds the character limit.
                         </code>
@@ -1642,8 +1635,7 @@
                       <p>2300</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Bandwidth is missing or not within the expected
                           range.
                         </code>
@@ -1688,8 +1680,7 @@
                       <p>F3WET</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Class of Emission is missing or not in the
                           expected format or length.
                         </code>
@@ -1735,8 +1726,7 @@
                       <p>21.4</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Transmitter TCP or TRP is missing, or not within
                           the expected range.
                         </code>
@@ -1773,8 +1763,7 @@
                       <p>89</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Downlink Resource Allocation is missing or not
                           within the expected range.
                         </code>
@@ -1808,8 +1797,7 @@
 
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Antenna Type Code is not input as CAPS, is
                           missing or is not an accepted Antenna Type Code value.
                         </code>
@@ -1843,8 +1831,7 @@
 
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Antenna Type Code is not input as CAPS, is
                           missing or is not an accepted Antenna Type Code value.
                         </code>
@@ -1890,8 +1877,7 @@
                       <p>1</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Number of Tx Antennas is missing or not within
                           the expected range.
                         </code>
@@ -1937,8 +1923,7 @@
                       <p>1</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Number of Rx Antennas is missing or not within
                           the expected range.
                         </code>
@@ -1969,8 +1954,7 @@
                       <p>SV460-SF1 (V)</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Antenna Model Number is missing or exceeds the
                           character limit.
                         </code>
@@ -2001,8 +1985,7 @@
                       <p>SV460-SF1 (V)</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Antenna Model Number is missing or exceeds the
                           character limit.
                         </code>
@@ -2036,8 +2019,7 @@
 
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Antenna Manufacturer is missing or exceeds the
                           character limit.
                         </code>
@@ -2071,8 +2053,7 @@
 
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Antenna Manufacturer is missing or exceeds the
                           character limit.
                         </code>
@@ -2111,8 +2092,7 @@
                       <p>15</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Antenna Height is missing or not within the
                           expected range.
                         </code>
@@ -2151,8 +2131,7 @@
                       <p>15</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Antenna Height is missing or not within the
                           expected range.
                         </code>
@@ -2182,7 +2161,7 @@
                       </p>
                       <h4>Format</h4>
                       <p>Must be one of the following codes:</p>
-                      <table class="wb-tables table">
+                      <table class="table">
                         <thead>
                           <tr>
                             <th>Code</th>
@@ -2205,15 +2184,16 @@
                       <p>D</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Omnidirectional Pattern Indicator is not input
                           as CAPS, is missing or is not an accepted Directional
                           Pattern Code value.
                         </code>
                       </p>
-                      An error in this field may also give errors for the
-                      following fields:
+                      <p>
+                        An error in this field may also give errors for the
+                        following fields:
+                      </p>
                       <ul>
                         <li>
                           <a></a
@@ -2256,7 +2236,7 @@
                       </p>
                       <h4>Format</h4>
                       <p>Must be one of the following codes:</p>
-                      <table class="wb-tables table">
+                      <table class="table">
                         <thead>
                           <tr>
                             <th>Code</th>
@@ -2279,15 +2259,16 @@
                       <p>D</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Omnidirectional Pattern Indicator is not input
                           as CAPS, is missing or is not an accepted Directional
                           Pattern Code value.
                         </code>
                       </p>
-                      An error in this field may also give errors for the
-                      following fields:
+                      <p>
+                        An error in this field may also give errors for the
+                        following fields:
+                      </p>
                       <ul>
                         <li>
                           <a></a
@@ -2348,8 +2329,7 @@
                       <p>120</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Antenna Horizontal Beamwidth is missing or not
                           within the expected range.
                         </code>
@@ -2397,8 +2377,7 @@
                       <p>120</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Antenna Horizontal Beamwidth is missing or not
                           within the expected range.
                         </code>
@@ -2448,8 +2427,7 @@
                       <p>135</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Antenna Vertical Beamwidth is missing or not
                           within the expected range.
                         </code>
@@ -2499,8 +2477,7 @@
                       <p>135</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Antenna Vertical Beamwidth is missing or not
                           within the expected range.
                         </code>
@@ -2539,8 +2516,7 @@
                       <p>270</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Antenna Azimuth is missing or not within the
                           expected range.
                         </code>
@@ -2579,8 +2555,7 @@
                       <p>270</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Antenna Azimuth is missing or not within the
                           expected range.
                         </code>
@@ -2620,8 +2595,7 @@
                       <p>0.5</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Antenna Elevation Angle is missing or not
                           within the expected range.
                         </code>
@@ -2661,8 +2635,7 @@
                       <p>0.5</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Antenna Elevation Angle is missing or not
                           within the expected range.
                         </code>
@@ -2701,8 +2674,7 @@
                       <p>41.3</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Antenna Gain is missing or not within the
                           expected range.
                         </code>
@@ -2741,8 +2713,7 @@
                       <p>41.3</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Antenna Gain is missing or not within the
                           expected range.
                         </code>
@@ -2778,8 +2749,7 @@
                       <p>2.5</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Tx Line Loss is missing or not within the
                           expected range.
                         </code>
@@ -2814,8 +2784,7 @@
                       <p>2.5</p>
                       <h4>Potential errors</h4>
                       <p>
-                        <code
-                          style="display: inline-block; padding: 3px; white-space: pre-wrap; word-wrap"
+                        <code style="display: inline-block; padding: 3px"
                           >The Rx Line Loss is missing or not within the
                           expected range.
                         </code>
@@ -2824,14 +2793,6 @@
                   </tr>
                 </tbody>
               </table>
-              <div
-                class="dataTables_info"
-                id="wb-auto-1_info"
-                role="status"
-                aria-live="polite"
-              >
-                Showing 1 to 54 of 54 entries
-              </div>
             </div>
           </div>
         </main>
@@ -2995,30 +2956,8 @@
       </div>
     </footer>
     <!-- End of footer-->
-
-    <!-- Start of search and filtering scripts for DataTables -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
-    <script src="/Site_Data_Upload_Help_Page/Terrestrial/Scripts/i18n.js"></script>
-    <script src="/Site_Data_Upload_Help_Page/Terrestrial/Scripts/load_table.js"></script>
-    <script src="/Site_Data_Upload_Help_Page/Terrestrial/Scripts/load_toc.js"></script>
-    <script>
-      // Ensure ToC is populated from text.json — explicit call so output appears on the page
-      if (window.loadTocFromJson) {
-        window
-          .loadTocFromJson({
-            url: "text.json",
-            lang: "en",
-            tocSelector: "#table-of-contents",
-          })
-          .catch(function () {
-            /* noop */
-          });
-      }
-    </script>
-    <!-- End of search and filtering scripts for DataTables -->
-
-    <div id="tablenator-javascriptInserted"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/wet-boew/js/wet-boew.min.js"></script>
+    <script src="https://wet-boew.github.io/themes-dist/GCWeb/GCWeb/js/theme.min.js"></script>
   </body>
 </html>
