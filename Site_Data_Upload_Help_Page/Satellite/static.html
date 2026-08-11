@@ -34,16 +34,27 @@
       }
 
       #toc {
-        /* 1. Set the position to sticky */
         position: sticky;
-
-        /* 2. Define where the element should stop when scrolling */
-        /* This tells the browser to stick the top edge of the ToC 
-       to the top edge of the viewport once it reaches 10px from the top.
-    */
         top: -30px;
-        /* 4. Ensure the ToC doesn't overflow its container horizontally */
         width: 100%;
+      }
+
+      #toc aside {
+        padding-right: 40px;
+        z-index: 10;
+      }
+
+      #toc details {
+        border: none;
+        margin-top: 40px;
+      }
+
+      #toc summary {
+        border: none;
+      }
+
+      #table-of-contents li {
+        margin-bottom: 20px;
       }
 
       ul.dashed-list {
@@ -65,8 +76,24 @@
       #wb-auto-1 p {
         font-size: 20px;
       }
+
+      #wb-auto-1 h2[id] {
+        text-align: left;
+        scroll-margin-top: 35px;
+      }
+
       #wb-auto-1 code {
+        display: inline-block;
+        padding: 3px;
         font-size: 18px;
+      }
+
+      #table-body td:last-child {
+        padding-bottom: 40px;
+      }
+
+      main > h1 {
+        margin-bottom: 24px;
       }
     </style>
   </head>
@@ -215,14 +242,10 @@
     <div class="container">
       <div class="row">
         <div id="toc">
-          <aside class="col-md-4" style="padding-right: 40px; z-index: 10">
+          <aside class="col-md-4">
             <nav class="wb-sec">
-              <details
-                class="wb-details-close"
-                style="border: none; margin-top: 40px"
-                open=""
-              >
-                <summary style="border: none">
+              <details class="wb-details-close" open="">
+                <summary>
                   <h5 data-i18n="toc-heading">Table of contents</h5>
                 </summary>
                 <ul
@@ -230,176 +253,176 @@
                   id="table-of-contents"
                   style="max-height: 75vh; overflow-y: auto"
                 >
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#A">A - Spectrum licence number</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#B">B - Upload reference number</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#C">C - Contact name</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#D">D - Business Telephone Number</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#E">E - E-mail address</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#F">F - Station location</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#G">G - Station type</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#H">H - Radio technology</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#I">I - Cell ID</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#J">J - Filter code</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#K">K - Province/Territory Code</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#L">L - Latitude</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#M">M - Longitude</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#N">N - Site Type Code</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#O">O - Structure Height</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#P">P - Site Structure Type Code</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#Q">Q - Date of Last Modification</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#R">R - Site Record ID</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#S">S - Tx Channel Frequency</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#T">T - Rx Channel Frequency</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#U"
                       >U - Tx Radio Hardware Version Identification Number
                       (HVIN)</a
                     >
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#V"
                       >V - Rx Radio Hardware Version Identification Number
                       (HVIN)</a
                     >
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#W">W - Tx Radio Manufacturer Code</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#X">X - Rx Radio Manufacturer Code</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#Y">Y - Tx Radio Certification Number</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#Z">Z - Rx Radio Certification Number</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AA">AA - Bandwidth</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AB">AB - Class of Emission</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AC">AC - Transmitter TCP–TRP</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AD">AD - Downlink Resource Allocation</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AE">AE - Tx Antenna Type Code</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AF">AF - Rx Antenna Type Code</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AG">AG - Tx Number of Antennas</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AH">AH - Rx Number of Antennas</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AI">AI - Tx Antenna Model Number</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AJ">AJ - Rx Antenna Model Number</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AK">AK - Tx Antenna Manufacturer Code</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AL">AL - Rx Antenna Manufacturer Code</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AM">AM - Tx Antenna Height</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AN">AN - Rx Antenna Height</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AO"
                       >AO - Tx Omnidirectional Antenna Pattern Indicator</a
                     >
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AP"
                       >AP - Rx Omnidirectional Antenna Pattern Indicator</a
                     >
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AQ">AQ - Tx Antenna Horizontal Beam</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AR">AR - Rx Antenna Horizontal Beam</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AS">AS - Tx Antenna Vertical Beam</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AT">AT - Rx Antenna Vertical Beam</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AU">AU - Tx Antenna Azimuth</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AV">AV - Rx Antenna Azimuth</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AW">AW - Tx Antenna Elevation Angle</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AX">AX - Rx Antenna Elevation Angle</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AY">AY - Tx Antenna Gain</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#AZ">AZ - Rx Antenna Gain</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#BA">BA - Tx Line Loss</a>
                   </li>
-                  <li style="margin-bottom: 20px">
+                  <li>
                     <a href="#BB">BB - Rx Line Loss</a>
                   </li>
                 </ul>
@@ -416,7 +439,7 @@
         </div>
 
         <main class="col-md-8">
-          <h1 data-i18n="page-heading" id="wb-cont" style="margin-bottom: 24px">
+          <h1 data-i18n="page-heading" id="wb-cont">
             Text format for satellite spectrum licence site data upload
           </h1>
           <p style="margin-bottom: 20px">
@@ -424,16 +447,16 @@
             spectrum licence site data.
           </p>
 
-          <gcds-text>
+          <p style="margin-bottom: -20px">
             <strong>Viewing the status of your licence </strong> <br />Use the
             <a
               href="https://sms-sgs.ic.gc.ca/slSiteUploadLicences/licencesWizard?execution=e2s1&amp;serviceId=85&amp;subserviceId=8701&amp;lang=en_CA"
               >Spectrum Licence Site Data Status Report</a
             >
             to check when your next upload date is due.
-          </gcds-text>
+          </p>
           <br /><br />
-          <gcds-text>
+          <p>
             <strong>Download the provided .csv file template </strong>
             <br />Use the following
             <a
@@ -441,7 +464,7 @@
               >CSV template</a
             >
             for your site data.
-          </gcds-text>
+          </p>
 
           <h2>Field names</h2>
           <div id="wb-auto-1_wrapper" class="dataTables_wrapper no-footer">
@@ -509,7 +532,7 @@
                       </ul>
                       <p></p>
                       <h4>Example</h4>
-                      <p>10898101</p>
+                      <p>010898101</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code style="display: inline-block; padding: 3px"
@@ -2793,7 +2816,6 @@
                   </tr>
                 </tbody>
               </table>
-            </div>
           </div>
         </main>
       </div>
