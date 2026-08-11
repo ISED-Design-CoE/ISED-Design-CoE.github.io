@@ -1,6 +1,7 @@
 // site-data-storage.js
 const PAGE_KEY = "site-data-upload-page";
 const ALL_DATA_KEY = "site-data-upload-all";
+const CSV_IMPORT_ERRORS_KEY = "site-data-upload-csv-import-errors";
 
 function readAllData() {
   try {
@@ -40,11 +41,34 @@ function clearCurrentEntry() {
   writeAllData(state);
 }
 
+function readCsvImportErrors() {
+  try {
+    return (
+      JSON.parse(localStorage.getItem(CSV_IMPORT_ERRORS_KEY) || "[]") || []
+    );
+  } catch (err) {
+    console.warn("Could not parse saved CSV import errors:", err);
+    return [];
+  }
+}
+
+function writeCsvImportErrors(errors) {
+  localStorage.setItem(CSV_IMPORT_ERRORS_KEY, JSON.stringify(errors || []));
+}
+
+function clearCsvImportErrors() {
+  localStorage.removeItem(CSV_IMPORT_ERRORS_KEY);
+}
+
 export {
   PAGE_KEY,
   ALL_DATA_KEY,
+  CSV_IMPORT_ERRORS_KEY,
   writeAllData,
   ensureState,
   setCurrentPage,
   clearCurrentEntry,
+  readCsvImportErrors,
+  writeCsvImportErrors,
+  clearCsvImportErrors,
 };

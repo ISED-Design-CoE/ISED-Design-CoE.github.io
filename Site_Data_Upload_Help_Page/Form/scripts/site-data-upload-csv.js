@@ -75,7 +75,6 @@ const ANTENNA_TYPE_CODES = {
   3: "NAU",
 };
 
-
 const CSV_FIELDS = [
   {
     heading: "Spectrum licence number",
@@ -344,6 +343,12 @@ function validateAllDataForCsv() {
   return { success: true, rows };
 }
 
+function getCurrentCsvValidationErrors() {
+  const rows = getRowsForExport();
+  const validationResult = validateEntriesForCsv(rows);
+  return validationResult.success ? [] : validationResult.errors || [];
+}
+
 function parseCsvLine(line) {
   const values = [];
   let currentValue = "";
@@ -538,7 +543,7 @@ function mapImportedEntry(row) {
   return importedEntry;
 }
 
-function importAllDataFromCsv(csvText) {
+function getImportedEntriesFromCsv(csvText) {
   const lines = String(csvText ?? "")
     .split(/\r?\n/)
     .map((line) => line.trim())
@@ -548,6 +553,7 @@ function importAllDataFromCsv(csvText) {
     return {
       success: false,
       message: "The CSV must include at least one data row.",
+      errors: ["The CSV must include at least one data row."],
     };
   }
 
@@ -561,6 +567,33 @@ function importAllDataFromCsv(csvText) {
     return mapImportedEntry(row);
   });
 
+  return {
+    success: true,
+    importedEntries,
+  };
+}
+
+function validateCsvImportData(csvText) {
+  const importedResult = getImportedEntriesFromCsv(csvText);
+  if (!importedResult.success) return importedResult;
+
+  return {
+    importedEntries: importedResult.importedEntries,
+  };
+}
+
+function importAllDataFromCsv(csvText) {
+  const validationResult = validateCsvImportData(csvText);
+  if (!validationResult.importedEntries) {
+    return {
+      success: false,
+      message: validationResult.message,
+      errors: validationResult.errors || [],
+    };
+  }
+
+  const importedEntries = validationResult.importedEntries;
+
   const state = ensureState();
   const existingEntries = Array.isArray(state.entries) ? state.entries : [];
 
@@ -569,9 +602,16 @@ function importAllDataFromCsv(csvText) {
   state.editing = null;
   writeAllData(state);
 
+  const importValidation = validateEntriesForCsv(state.entries);
+  const errors = importValidation.success ? [] : importValidation.errors || [];
+
   return {
     success: true,
     importedCount: importedEntries.length,
+    errors,
+    message: importValidation.success
+      ? ""
+      : "Some saved stations contain invalid or missing field values.",
   };
 }
 
@@ -693,7 +733,9 @@ export {
   loadCurrentPageData,
   exportAllDataAsCsv,
   validateAllDataForCsv,
+  getCurrentCsvValidationErrors,
   getCsvHeadings,
+  validateCsvImportData,
   importAllDataFromCsv,
   clearCurrentEntry,
   finalizeCurrentEntry,

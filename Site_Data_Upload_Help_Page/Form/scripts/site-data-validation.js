@@ -621,6 +621,14 @@ function validateEntryData(entry, pages = [1, 2, 3]) {
   return fieldErrors;
 }
 
+function getCsvImportRowLabel(entry, index) {
+  const licenceNumber = getEntryValue(entry, "licence-number") || "blank";
+  const referenceNumber = getEntryValue(entry, "reference-number") || "blank";
+  const stationlocation = getEntryValue(entry, "station-location") || "blank";
+
+  return `licence number = ${licenceNumber}, reference number = ${referenceNumber}, station location = ${stationlocation}`;
+}
+
 function validateEntriesForCsv(entries) {
   if (!entries.length) {
     return {
@@ -634,7 +642,7 @@ function validateEntriesForCsv(entries) {
   entries.forEach((entry, index) => {
     const fieldErrors = validateEntryData(entry, [1, 2, 3]);
     Object.values(fieldErrors).forEach((message) => {
-      errors.push(`Station ${index + 1}: ${message}`);
+      errors.push(`${getCsvImportRowLabel(entry, index)}: ${message}`);
     });
   });
 
