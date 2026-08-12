@@ -85,7 +85,10 @@ const CSV_FIELDS = [
     get: (row) => row["reference-number"] ?? "",
   },
   { heading: "Contact name", get: (row) => row["contact-name"] ?? "" },
-  { heading: "Business telephone", get: (row) => row["business-number"] ?? "" },
+  {
+    heading: "Business telephone number",
+    get: (row) => row["business-number"] ?? "",
+  },
   { heading: "E-mail address", get: (row) => row["email-address"] ?? "" },
   { heading: "Station location", get: (row) => row["station-location"] ?? "" },
   {
@@ -143,11 +146,11 @@ const CSV_FIELDS = [
     get: (row) => getTxRxRadioValue(row, "rx", "radio-model"),
   },
   {
-    heading: "Tx Radio Manufacturer Code",
+    heading: "Tx Radio Manufacturer code",
     get: (row) => getTxRxRadioValue(row, "tx", "radio-code"),
   },
   {
-    heading: "Rx Radio Manufacturer Code",
+    heading: "Rx Radio Manufacturer code",
     get: (row) => getTxRxRadioValue(row, "rx", "radio-code"),
   },
   {
@@ -160,7 +163,7 @@ const CSV_FIELDS = [
   },
   { heading: "Bandwidth", get: (row) => row.bandwidth ?? "" },
   {
-    heading: "Class of Emisssion",
+    heading: "Class of Emission",
     get: (row) => row["class-of-emissions"] ?? "",
   },
   { heading: "Transmitter TCP-TRP", get: (row) => row.tcp ?? "" },
@@ -388,9 +391,18 @@ function stripUtf8Bom(value) {
 function normalizeImportedRow(row) {
   const normalizedRow = {};
   Object.entries(row).forEach(([heading, value]) => {
-    normalizedRow[heading] = typeof value === "string" ? value.trim() : value;
+    const normalizedHeading = stripUtf8Bom(String(heading ?? "")).trim();
+    const normalizedValue = typeof value === "string" ? value.trim() : value;
+    normalizedRow[normalizedHeading] = normalizedValue;
+    normalizedRow[normalizedHeading.toLowerCase()] = normalizedValue;
   });
   return normalizedRow;
+}
+
+function getImportedColumnValue(normalizedRow, heading) {
+  return (
+    normalizedRow[heading] ?? normalizedRow[String(heading).toLowerCase()] ?? ""
+  );
 }
 
 function getImportedSiteInfoChange(stationLocation) {
@@ -433,107 +445,201 @@ function mapImportedValue(value, reverseLookup) {
 function mapImportedEntry(row) {
   const normalizedRow = normalizeImportedRow(row);
   const importedEntry = {
-    "licence-number": normalizedRow["Spectrum licence number"] ?? "",
-    "reference-number": normalizedRow["Upload reference number"] ?? "",
-    "contact-name": normalizedRow["Contact name"] ?? "",
-    "business-number": normalizedRow["Business telephone"] ?? "",
-    "email-address": normalizedRow["E-mail address"] ?? "",
-    "station-location": normalizedRow["Station location"] ?? "",
+    "licence-number": getImportedColumnValue(
+      normalizedRow,
+      "Spectrum licence number",
+    ),
+    "reference-number": getImportedColumnValue(
+      normalizedRow,
+      "Upload reference number",
+    ),
+    "contact-name": getImportedColumnValue(normalizedRow, "Contact name"),
+    "business-number": getImportedColumnValue(
+      normalizedRow,
+      "Business telephone number",
+    ),
+    "email-address": getImportedColumnValue(normalizedRow, "E-mail address"),
+    "station-location": getImportedColumnValue(
+      normalizedRow,
+      "Station location",
+    ),
     "radio-technology": mapImportedValue(
-      normalizedRow["Radio technology"],
+      getImportedColumnValue(normalizedRow, "Radio technology"),
       RADIO_TECHNOLOGY_VALUES,
     ),
-    "cell-id": normalizedRow["Cell ID"] ?? "",
-    "physical-cell-id": normalizedRow["Physical Cell ID"] ?? "",
+    "cell-id": getImportedColumnValue(normalizedRow, "Cell ID"),
+    "physical-cell-id": getImportedColumnValue(
+      normalizedRow,
+      "Physical Cell ID",
+    ),
     "province-territory": mapImportedValue(
-      normalizedRow["Province/Territory code"],
+      getImportedColumnValue(normalizedRow, "Province/Territory code"),
       PROVINCE_TERRITORY_VALUES,
     ),
-    latitude: normalizedRow["Latitude"] ?? "",
-    longitude: normalizedRow["Longitude"] ?? "",
+    latitude: getImportedColumnValue(normalizedRow, "Latitude"),
+    longitude: getImportedColumnValue(normalizedRow, "Longitude"),
     "site-type": mapImportedValue(
-      normalizedRow["Site Type Code"],
+      getImportedColumnValue(normalizedRow, "Site Type Code"),
       SITE_TYPE_VALUES,
     ),
-    "structure-height": normalizedRow["Structure height"] ?? "",
+    "structure-height": getImportedColumnValue(
+      normalizedRow,
+      "Structure height",
+    ),
     "structure-type": mapImportedValue(
-      normalizedRow["Site Structure Type Code"],
+      getImportedColumnValue(normalizedRow, "Site Structure Type Code"),
       STRUCTURE_TYPE_VALUES,
     ),
-    "date-of-modification":
-      normalizedRow[
-        "Station/Associated channels in-service date or last modified date"
-      ] ?? "",
-    "site-record-id": normalizedRow["Site Record ID"] ?? "",
-    "tx-channel-frequency":
-      normalizedRow[
-        "Tx channel frequency or Tx lower frequency limit of the band in use"
-      ] ?? "",
-    "rx-channel-frequency":
-      normalizedRow[
-        "Rx channel frequency or Rx lower frequency limit of the band in use"
-      ] ?? "",
-    "tx-radio-model": normalizedRow["Tx Radio model number"] ?? "",
-    "rx-radio-model": normalizedRow["Rx Radio model number"] ?? "",
-    "tx-radio-code": normalizedRow["Tx Radio Manufacturer Code"] ?? "",
-    "rx-radio-code": normalizedRow["Rx Radio Manufacturer Code"] ?? "",
-    "tx-radio-certificate":
-      normalizedRow["Tx Radio Certification Number"] ?? "",
-    "rx-radio-certificate":
-      normalizedRow["Rx Radio Certification Number"] ?? "",
-    bandwidth: normalizedRow["Bandwidth"] ?? "",
-    "class-of-emissions": normalizedRow["Class of Emisssion"] ?? "",
-    tcp: normalizedRow["Transmitter TCP-TRP"] ?? "",
-    downlink: normalizedRow["Downlink Resource Allocation"] ?? "",
+    "date-of-modification": getImportedColumnValue(
+      normalizedRow,
+      "Station/Associated channels in-service date or last modified date",
+    ),
+    "site-record-id": getImportedColumnValue(normalizedRow, "Site Record ID"),
+    "tx-channel-frequency": getImportedColumnValue(
+      normalizedRow,
+      "Tx channel frequency or Tx lower frequency limit of the band in use",
+    ),
+    "rx-channel-frequency": getImportedColumnValue(
+      normalizedRow,
+      "Rx channel frequency or Rx lower frequency limit of the band in use",
+    ),
+    "tx-radio-model": getImportedColumnValue(
+      normalizedRow,
+      "Tx Radio model number",
+    ),
+    "rx-radio-model": getImportedColumnValue(
+      normalizedRow,
+      "Rx Radio model number",
+    ),
+    "tx-radio-code": getImportedColumnValue(
+      normalizedRow,
+      "Tx Radio Manufacturer Code",
+    ),
+    "rx-radio-code": getImportedColumnValue(
+      normalizedRow,
+      "Rx Radio Manufacturer Code",
+    ),
+    "tx-radio-certificate": getImportedColumnValue(
+      normalizedRow,
+      "Tx Radio Certification Number",
+    ),
+    "rx-radio-certificate": getImportedColumnValue(
+      normalizedRow,
+      "Rx Radio Certification Number",
+    ),
+    bandwidth: getImportedColumnValue(normalizedRow, "Bandwidth"),
+    "class-of-emissions": getImportedColumnValue(
+      normalizedRow,
+      "Class of Emission",
+    ),
+    tcp: getImportedColumnValue(normalizedRow, "Transmitter TCP-TRP"),
+    downlink: getImportedColumnValue(
+      normalizedRow,
+      "Downlink Resource Allocation",
+    ),
     "tx-type-code": mapImportedValue(
-      normalizedRow["Tx Antenna Type Code"],
+      getImportedColumnValue(normalizedRow, "Tx Antenna Type Code"),
       ANTENNA_TYPE_VALUES,
     ),
     "rx-type-code": mapImportedValue(
-      normalizedRow["Rx Antenna Type Code"],
+      getImportedColumnValue(normalizedRow, "Rx Antenna Type Code"),
       ANTENNA_TYPE_VALUES,
     ),
-    "tx-number-antennas": normalizedRow["Number of Tx Antennas"] ?? "",
-    "rx-number-antennas": normalizedRow["Number of Rx Antennas"] ?? "",
-    "tx-antenna-model": normalizedRow["Tx Antenna Model Number"] ?? "",
-    "rx-antenna-model": normalizedRow["Rx Antenna Model Number"] ?? "",
-    "tx-antenna-manufacturer": normalizedRow["Tx Antenna Manufacturer"] ?? "",
-    "rx-antenna-manufacturer": normalizedRow["Rx Antenna Manufacturer"] ?? "",
-    "tx-antenna-height": normalizedRow["Tx Antenna Height"] ?? "",
-    "rx-antenna-height": normalizedRow["Rx Antenna Height"] ?? "",
+    "tx-number-antennas": getImportedColumnValue(
+      normalizedRow,
+      "Number of Tx Antennas",
+    ),
+    "rx-number-antennas": getImportedColumnValue(
+      normalizedRow,
+      "Number of Rx Antennas",
+    ),
+    "tx-antenna-model": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Model Number",
+    ),
+    "rx-antenna-model": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Model Number",
+    ),
+    "tx-antenna-manufacturer": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Manufacturer",
+    ),
+    "rx-antenna-manufacturer": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Manufacturer",
+    ),
+    "tx-antenna-height": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Height",
+    ),
+    "rx-antenna-height": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Height",
+    ),
     "tx-omnidirectional-pattern": mapImportedValue(
-      normalizedRow["Tx Antenna Directional Pattern Indicator"],
+      getImportedColumnValue(
+        normalizedRow,
+        "Tx Antenna Directional Pattern Indicator",
+      ),
       DIRECTIONAL_PATTERN_VALUES,
     ),
     "rx-omnidirectional-pattern": mapImportedValue(
-      normalizedRow["Rx Antenna Directional Pattern Indicator"],
+      getImportedColumnValue(
+        normalizedRow,
+        "Rx Antenna Directional Pattern Indicator",
+      ),
       DIRECTIONAL_PATTERN_VALUES,
     ),
-    "tx-antenna-horizontal-beamwidth":
-      normalizedRow["Tx Antenna Horizontal Beam"] ?? "",
-    "rx-antenna-horizontal-beamwidth":
-      normalizedRow["Rx Antenna Horizontal Beam"] ?? "",
-    "tx-antenna-vertical-beamwidth":
-      normalizedRow["Tx Antenna Vertical Beam"] ?? "",
-    "rx-antenna-vertical-beamwidth":
-      normalizedRow["Rx Antenna Vertical Beam"] ?? "",
-    "tx-antenna-azimuth": normalizedRow["Tx Antenna Azimuth"] ?? "",
-    "rx-antenna-azimuth": normalizedRow["Rx Antenna Azimuth"] ?? "",
-    "tx-antenna-elevation-angle":
-      normalizedRow["Tx Antenna Elevation Angle"] ?? "",
-    "rx-antenna-elevation-angle":
-      normalizedRow["Rx Antenna Elevation Angle"] ?? "",
-    "tx-antenna-gain": normalizedRow["Tx Antenna Gain"] ?? "",
-    "rx-antenna-gain": normalizedRow["Rx Antenna Gain"] ?? "",
-    "tx-antenna-line-loss": normalizedRow["Tx Line Loss"] ?? "",
-    "rx-antenna-line-loss": normalizedRow["Rx Line Loss"] ?? "",
+    "tx-antenna-horizontal-beamwidth": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Horizontal Beam",
+    ),
+    "rx-antenna-horizontal-beamwidth": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Horizontal Beam",
+    ),
+    "tx-antenna-vertical-beamwidth": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Vertical Beam",
+    ),
+    "rx-antenna-vertical-beamwidth": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Vertical Beam",
+    ),
+    "tx-antenna-azimuth": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Azimuth",
+    ),
+    "rx-antenna-azimuth": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Azimuth",
+    ),
+    "tx-antenna-elevation-angle": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Elevation Angle",
+    ),
+    "rx-antenna-elevation-angle": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Elevation Angle",
+    ),
+    "tx-antenna-gain": getImportedColumnValue(normalizedRow, "Tx Antenna Gain"),
+    "rx-antenna-gain": getImportedColumnValue(normalizedRow, "Rx Antenna Gain"),
+    "tx-antenna-line-loss": getImportedColumnValue(
+      normalizedRow,
+      "Tx Line Loss",
+    ),
+    "rx-antenna-line-loss": getImportedColumnValue(
+      normalizedRow,
+      "Rx Line Loss",
+    ),
   };
 
   importedEntry["site-info-change"] = getImportedSiteInfoChange(
     importedEntry["station-location"],
   );
   importedEntry["licence-type"] = getImportedLicenceType(
-    normalizedRow["Station type"],
+    getImportedColumnValue(normalizedRow, "Station type"),
   );
   importedEntry["antenna-type"] = getImportedAntennaType(
     importedEntry["tx-channel-frequency"],
