@@ -658,8 +658,8 @@ function getImportedEntriesFromCsv(csvText) {
   if (lines.length <= 1) {
     return {
       success: false,
-      message: "The CSV must include at least one data row.",
-      errors: ["The CSV must include at least one data row."],
+      message: "No station data found",
+      errors: ["No station data found"],
     };
   }
 
@@ -800,7 +800,17 @@ function downloadCsv(filename, csvContent) {
   URL.revokeObjectURL(url);
 }
 
-function exportAllDataAsCsv(filename = "site-data-upload.csv") {
+function getDefaultCsvFilename() {
+  const currentDate = new Date();
+  const date = [
+    currentDate.getFullYear(),
+    String(currentDate.getMonth() + 1).padStart(2, "0"),
+    String(currentDate.getDate()).padStart(2, "0"),
+  ].join("-");
+  return `Site data ${date}.csv`;
+}
+
+function exportAllDataAsCsv(filename = getDefaultCsvFilename()) {
   const validationResult = validateAllDataForCsv();
   if (!validationResult.success) {
     console.warn(validationResult.message);
