@@ -658,12 +658,12 @@
                         <li>Maximum length 254 characters</li>
                         <li>
                           For multiple email addresses, separate them with
-                          commas
+                          spaces
                         </li>
                       </ul>
                       <p></p>
                       <h4>Example</h4>
-                      <p>john.smith@mail.com,jane.brown@mail.com</p>
+                      <p>john.smith@mail.com jane.brown@mail.com</p>
                       <h4>Potential errors</h4>
                       <p>
                         <code style="display: inline-block; padding: 3px"
@@ -853,7 +853,7 @@
                       </p>
                       <p></p>
                       <p></p>
-                      <h4>Required when</h4>
+                      <h4>Dependencies</h4>
                       <p>
                         This field is required when
                         <a href="#H">H - Radio technology</a> is any of the
@@ -869,11 +869,17 @@
                       </ul>
                       <p></p>
                       <h4>Format</h4>
+                      <ul>
+                        <li>Must be in the format of 999999-99999999-99999999999</li>
+                        <li>Minimum of 11 characters </li>
+                        <li>Maximum of 27 characters</li>
+                      </ul>
                       <p>
                         <b>For GSM, CDMA, HSPA</b> <br />(CGI): PLMN-LAC-CID
                         <br /><br />
-                        <b>For LTE</b> <br />(ECGI): PLMN-TAC-ECI <br /><br />
-                        <b>For 5GNR, 5GDSS</b> <br />(NCGI): PLMN-TAC-NCI
+                         <b>For 5GNR, 5GDSS</b> <br />(NCGI): PLMN-TAC-NCI <br /><br />
+                        <b>For LTE</b> <br />(ECGI): PLMN-TAC-ECI 
+                       
                       </p>
                       <h4>Example</h4>
                       <p>302610-1051200-25381093417</p>
@@ -902,7 +908,7 @@
                         The Physical Cell Identity (PCI) for LTE or 5G systems.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
+                      <h4>Dependencies</h4>
                       <p>
                         This field is required when
                         <a href="#H">H - Radio technology</a> is any of the
@@ -1025,14 +1031,14 @@
                             <td>YT</td>
                             <td>Yukon</td>
                           </tr>
-                          <tr>
+                          <!-- <tr>
                             <td>IP</td>
                             <td>Interprovincial</td>
                           </tr>
                           <tr>
                             <td>CA</td>
                             <td>Canada-wide</td>
-                          </tr>
+                          </tr> -->
                         </tbody>
                       </table>
                       <p></p>
@@ -1073,8 +1079,7 @@
                         <li>Must be a location within the licence area</li>
                         <li>Must be between 41 to 90</li>
                         <li>
-                          A minimum of four decimal places may be entered if
-                          coordinates are not exact
+                          A minimum of four decimal places must be entered
                         </li>
                         <li>A maximum of seven decimal places</li>
                         <li>
@@ -1120,8 +1125,7 @@
                         <li>Must be a location within the licence area</li>
                         <li>Must be between -141 to -40</li>
                         <li>
-                          A minimum of four decimal places may be entered if
-                          coordinates are not exact
+                          A minimum of four decimal places must be entered
                         </li>
                         <li>A maximum of seven decimal places</li>
                         <li>
@@ -1217,9 +1221,9 @@
                         other radio installations.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
+                      <h4>Dependencies</h4>
                       <p>
-                        This field is required when
+                        This field is required only when
                         <a href="#N">N - Site Type Code</a> is O.
                       </p>
                       <h4>Format</h4>
@@ -1412,9 +1416,7 @@
                       <h2>Tx Channel Frequency</h2>
                       <p></p>
                       <p>
-                        The centre frequency (MHz) of the occupied bandwidth as
-                        well as any installations that are used unidirectionally
-                        for transmission or reception only.
+                        The centre frequency (MHz) of the occupied bandwidth.
                       </p>
                       <p></p>
 
@@ -1456,10 +1458,7 @@
                       <h2>Rx Channel Frequency</h2>
                       <p></p>
                       <p>
-                        The centre frequency (MHz) of the occupied bandwidth for
-                        the given antenna installation, as well as any
-                        installations that are used unidirectionally for
-                        transmission or reception only.
+                        The centre frequency (MHz) of the occupied bandwidth.
                       </p>
                       <p></p>
 
@@ -1509,10 +1508,13 @@
                         radio model number or a system configuration name.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0.
+                        </li>
+                        <li>This field is not required if the station is Rx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1551,10 +1553,13 @@
                         radio model number or a system configuration name.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0.
+                        </li>
+                        <li>This field is not required if the station is Tx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1590,10 +1595,13 @@
                         radio transmitter.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                      <li>
+                        This field is required when <a href="#G">G - Station type</a> is FX and <a href="#S">S - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                      </li>
+                      <li>This field is not required if the station is Rx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1629,10 +1637,13 @@
                         radio receiver.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                      <li>
+                        This field is required when <a href="#G">G - Station type</a> is FX and <a href="#T">T - Rx Channel Frequency</a> is greater than 0, indicating that the station is receiving.
+                      </li>
+                      <li>This field is not required if the station is Tx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1671,10 +1682,13 @@
                         >.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                      <li>
+                        This field is required when <a href="#G">G - Station type</a> is FX and <a href="#S">S - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                      </li>
+                      <li>This field is not required if the station is Rx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1721,10 +1735,13 @@
                         >.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#G">G - Station type</a> is FX and <a href="#T">T - Rx Channel Frequency</a> is greater than 0, indicating that the station is receiving.
+                        </li>
+                        <li>This field is not required if the station is Tx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -1849,9 +1866,14 @@
                         Ensure the value entered is expressed in dBm.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
+                      <h4>Dependencies</h4>
                       <p>
-                        This field is required for any antennas that transmit.
+                        <ul>
+                          <li>
+                            This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                          </li>
+                          <li>This field is not required if the station is Rx only. </li>
+                        </ul>
                       </p>
                       <h4>Format</h4>
                       <p></p>
@@ -1896,7 +1918,7 @@
                         <li>
                           For bidirectional systems that transmit and receive on
                           the same frequency (TDD), enter the percentage of time
-                          transmitting from 1 to 99 (see <a></a>GL-01</a>).
+                          transmitting from 1 to 99 (see <a>GL-01</a>).
                         </li>
                         <li>For full duplex systems, enter 100.</li>
                       </ul>
@@ -1929,10 +1951,13 @@
                         installation.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                          <li>
+                            This field is required when <a href="#G">G - Station type</a> is FX and <a href="#S">S - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                          </li>
+                          <li>This field is not required if the station is Rx only. </li>
+                        </ul>
                       <h4>Format</h4>
                       <p>Must be one of the following codes:</p>
                       <table class="table">
@@ -1988,10 +2013,13 @@
                         installation.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                      <li>
+                        This field is required when <a href="#G">G - Station type</a> is FX and <a href="#R">R - Rx Channel Frequency</a> is greater than 0, indicating that the station is receiving.
+                      </li>
+                      <li>This field is not required if the station is Tx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>Must be one of the following codes:</p>
                       <table class="table">
@@ -2043,10 +2071,13 @@
                       <p></p>
                       <p>The total number of Tx antennas.</p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                        </li>
+                        <li>This field is not required if the station is Rx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -2089,10 +2120,13 @@
                       <p></p>
                       <p>The total number of Rx antennas.</p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0, indicating that the station is receiving.
+                        </li>
+                        <li>This field is not required if the station is Tx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -2135,10 +2169,13 @@
                       <p></p>
                       <p>The model number of the transmitter antenna.</p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#T">T - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                        </li>
+                        <li>This field is not required if the station is Rx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -2174,10 +2211,13 @@
                       <p></p>
                       <p>The model number of the receiver antenna.</p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0, indicating that the station is receiving.
+                        </li>
+                        <li>This field is not required if the station is Tx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -2218,10 +2258,13 @@
                         <a href="#W">W - Tx Radio Manufacturer Code</a>.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#G">G - Station type</a> is FX and <a href="#S">S - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                        </li>
+                        <li>This field is not required if the station is Rx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>Maximum length of 255 characters.</p>
                       <h4>Example</h4>
@@ -2254,10 +2297,13 @@
                         <a href="#X">X - Rx Radio Manufacturer Code</a>.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#G">G - Station type</a> is FX and <a href="#T">T - Rx Channel Frequency</a> is greater than 0, indicating that the station is receiving.
+                        </li>
+                        <li>This field is not required if the station is Tx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>Maximum length of 255 characters.</p>
                       <h4>Example</h4>
@@ -2289,10 +2335,13 @@
                         structure/building on which the antenna is mounted.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                        </li>
+                        <li>This field is not required if the station is Rx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>
                         Must be a number. <br /><br />
@@ -2347,10 +2396,13 @@
                         structure/building on which the antenna is mounted.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0, indicating that the station is receiving.
+                        </li>
+                        <li>This field is not required if the station is Tx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>
                         Must be a number. <br /><br /><b
@@ -2403,10 +2455,13 @@
                         directional.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                        </li>
+                        <li>This field is not required if the station is Rx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>Must be one of the following codes:</p>
                       <table class="table">
@@ -2467,10 +2522,13 @@
                         directional.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0, indicating that the station is receiving.
+                        </li>
+                        <li>This field is not required if the station is Tx only. </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>Must be one of the following codes</p>
                       <table class="table">
@@ -2530,14 +2588,14 @@
                         or the beam width in the horizontal plane for non-AAS.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#AO"
-                          >AO - Tx Omnidirectional Antenna Pattern Indicator</a
-                        >
-                        is D (Directional).
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0 and <a href="#AO">AO - Tx antenna omnidirectional pattern indicator</a> is D (Directional).
+                        </li>
+                        <li>This field is not required
+                          <ul><li>If the station is Rx only</li><li>When <a href="#AO">AO - Tx antenna omnidirectional pattern indicator</a> is N (Non-directional)</li></ul> </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>
                         <b>For AAS</b> <br />
@@ -2578,14 +2636,14 @@
                         or the beam width in the horizontal plane for non-AAS.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#AP"
-                          >AP - Rx Omnidirectional Antenna Pattern Indicator</a
-                        >
-                        is D (Directional).
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0 and <a href="#AP">AP - Rx antenna omnidirectional pattern indicator</a> is D (Directional).
+                        </li>
+                        <li>This field is not required
+                          <ul><li>If the station is Tx only</li><li>When <a href="#AP">AP - Rx antenna omnidirectional pattern indicator</a> is N (Non-directional)</li></ul> </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>
                         <b>For AAS</b> <br />
@@ -2627,14 +2685,15 @@
                         non-AAS.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#AO"
-                          >AO - Tx Omnidirectional Antenna Pattern Indicator</a
-                        >
-                        is D (Directional).
-                      </p>
+                      <h4>Dependencies</h4>
+                     <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0 and <a href="#AO">AO - Tx antenna omnidirectional pattern indicator</a> is D (Directional).
+                        </li>
+                        <li>This field is not required
+                          <ul><li>If the station is Rx only</li><li>When <a href="#AO">AO - Tx antenna omnidirectional pattern indicator</a> is N (Non-directional)</li></ul> </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>
                         <b>For AAS</b> <br />
@@ -2677,14 +2736,14 @@
                         non-AAS.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#AP"
-                          >AP - Rx Omnidirectional Antenna Pattern Indicator</a
-                        >
-                        is D (Directional).
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0 and <a href="#AP">AP - Rx antenna omnidirectional pattern indicator</a> is D (Directional).
+                        </li>
+                        <li>This field is not required
+                          <ul><li>If the station is Tx only</li><li>When <a href="#AP">AP - Rx antenna omnidirectional pattern indicator</a> is N (Non-directional)</li></ul> </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>
                         <b>For AAS</b> <br />
@@ -2727,14 +2786,14 @@
                         radiation.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#AO"
-                          >AO - Tx Omnidirectional Antenna Pattern Indicator</a
-                        >
-                        is D (Directional).
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0 and <a href="#AO">AO - Tx antenna omnidirectional pattern indicator</a> is D (Directional).
+                        </li>
+                        <li>This field is not required
+                          <ul><li>If the station is Rx only</li><li>When <a href="#AO">AO - Tx antenna omnidirectional pattern indicator</a> is N (Non-directional)</li></ul> </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>Must be a number from 0.0 to 359.9 (degrees).</p>
                       <h4>Example</h4>
@@ -2766,14 +2825,14 @@
                         radiation.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#AP"
-                          >AP - Rx Omnidirectional Antenna Pattern Indicator</a
-                        >
-                        is D (Directional).
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0 and <a href="#AP">AP - Rx antenna omnidirectional pattern indicator</a> is D (Directional).
+                        </li>
+                        <li>This field is not required
+                          <ul><li>If the station is Tx only</li><li>When <a href="#AP">AP - Rx antenna omnidirectional pattern indicator</a> is N (Non-directional)</li></ul> </li>
+                      </ul>
                       <h4>Format</h4>
                       <p>Must be a number from 0.0 to 359.9 (degrees).</p>
                       <h4>Example</h4>
@@ -2806,14 +2865,14 @@
                         tilt.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#AO"
-                          >AO - Tx Omnidirectional Antenna Pattern Indicator</a
-                        >
-                        is D (Directional).
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0 and <a href="#AO">AO - Tx antenna omnidirectional pattern indicator</a> is D (Directional).
+                        </li>
+                        <li>This field is not required
+                          <ul><li>If the station is Rx only</li><li>When <a href="#AO">AO - Tx antenna omnidirectional pattern indicator</a> is N (Non-directional)</li></ul> </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -2854,14 +2913,14 @@
                         tilt.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required when
-                        <a href="#AP"
-                          >AP - Rx Omnidirectional Antenna Pattern Indicator</a
-                        >
-                        is D (Directional).
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                          This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0 and <a href="#AP">AP - Rx antenna omnidirectional pattern indicator</a> is D (Directional).
+                        </li>
+                        <li>This field is not required
+                          <ul><li>If the station is Tx only</li><li>When <a href="#AP">AP - Rx antenna omnidirectional pattern indicator</a> is N (Non-directional)</li></ul> </li>
+                      </ul>
                       <h4>Format</h4>
                       <p></p>
                       <ul>
@@ -2901,10 +2960,12 @@
                         represent the gain of the individual antenna element.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit.
-                      </p>
+                      <ul>
+                        <li>
+                           This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                        </li>
+                        <li>This field is not required if station is Rx only. </li>
+                        </ul>
                       <h4>Format</h4>
                       <p>
                         Must be a number from 0.0 to 70.0 (dBi). <br /><br />
@@ -2940,10 +3001,13 @@
                         represent the gain of the individual antenna element.
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive.
-                      </p>
+                      <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                           This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0, indicating that the station is receiving.
+                        </li>
+                        <li>This field is not required if station is Tx only. </li>
+                        </ul>
                       <h4>Format</h4>
                       <p>
                         Must be a number from 0.0 to 70.0 (dBi). <br /><br />
@@ -2980,10 +3044,12 @@
                         (EIRP).
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that transmit.
-                      </p>
+                      <ul>
+                        <li>
+                           This field is required when <a href="#S">S - Tx Channel Frequency</a> is greater than 0, indicating that the station is transmitting.
+                        </li>
+                        <li>This field is not required if station is Rx only. </li>
+                        </ul>
                       <h4>Format</h4>
                       <p>Must be a number from 0.0 to 30.0 (dB).</p>
                       <h4>Example</h4>
@@ -3015,10 +3081,13 @@
                         calculate the effective isotropic radiated power (EIRP).
                       </p>
                       <p></p>
-                      <h4>Required when</h4>
-                      <p>
-                        This field is required for any antennas that receive.
-                      </p>
+                     <h4>Dependencies</h4>
+                      <ul>
+                        <li>
+                           This field is required when <a href="#T">T - Rx Channel Frequency</a> is greater than 0, indicating that the station is receiving.
+                        </li>
+                        <li>This field is not required if station is Tx only. </li>
+                        </ul>
                       <h4>Format</h4>
                       <p>Must be a number from 0.0 to 30.0 (dB).</p>
                       <h4>Example</h4>
