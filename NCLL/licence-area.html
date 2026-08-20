@@ -441,10 +441,47 @@ var urlQueries = baseQuery
 		// Set up needed fields for cost calculation
 		const renewable_temporary = urlParams.get('renewable-temporary')
 		const temporary_licence = ( renewable_temporary == 'Temporary' )
-		document.getElementById ( "renew-cost" ).setAttribute("hidden","hidden")
-		document.getElementById ( "renew-min-cost" ).setAttribute("hidden","hidden")
-		document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
-		document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
+
+		function setHiddenById ( id, hidden ) {
+			const element = document .getElementById ( id )
+			if ( element ) {
+				if ( hidden ) {
+					element .setAttribute ( "hidden", "hidden" )
+				} else {
+					element .removeAttribute ( "hidden" )
+				}
+			}
+		}
+
+		function hideFeeSections () {
+			setHiddenById ( "renew-cost", true )
+			setHiddenById ( "renew-min-cost", true )
+			setHiddenById ( "temp-cost", true )
+			setHiddenById ( "temp-min-cost", true )
+		}
+
+		function setTextForClass ( className, value ) {
+			for ( const elem of document .getElementsByClassName ( className ) ) {
+				elem .innerText = value
+			}
+		}
+
+		function createHiddenField ( fieldName, fieldValue ) {
+			const existing = document .getElementById ( fieldName )
+			if ( existing && existing .tagName === "INPUT" && existing .type === "hidden" ) {
+				existing .setAttribute ( "value", fieldValue )
+				return existing
+			}
+			const inputField = document .createElement ( "input" )
+			inputField .setAttribute ( "type", "hidden" )
+			inputField .setAttribute ( "name", fieldName )
+			inputField .setAttribute ( "id", fieldName )
+			inputField .setAttribute ( "value", fieldValue )
+			document .forms [ 0 ] .appendChild ( inputField )
+			return inputField
+		}
+
+		hideFeeSections ()
 
 
 		let baseRate = urlParams.get ( "base-rate" ) 
@@ -457,41 +494,34 @@ var urlQueries = baseQuery
 			baseRate = baseRate / 12
 			createHiddenField ( "already-divided", true)
 		}
-		for ( let elem of document .getElementsByClassName ( "base-rate" ) ) {
-			elem .innerText = baseRate
-		}
+		setTextForClass ( "base-rate", baseRate )
 		createHiddenField ( "base-rate", baseRate )
 
 		let feeZone = urlParams.get ( "fee-zone" ) 
 		if (feeZone == null) {feeZone = "Rural"} // matches the default baseRate
-		for ( let elem of document .getElementsByClassName ( "fee-zone" ) ) {
-			elem .innerText = feeZone
-		}
+		setTextForClass ( "fee-zone", feeZone )
 		createHiddenField ( "fee-zone", feeZone )
 		// Get bandwidth (from previous page)
 		const bandwidth = urlParams.get ( "bandwidth" )
-		for ( let elem of document .getElementsByClassName ( "bandwidth" ) ) {
-			elem .innerText = bandwidth
-		}		
-		var area_field = createHiddenField ( "area-size", 0 )
-		var cost_field = createHiddenField ( "total-cost", 0 )
-		var temp_cost_field = createHiddenField ( "temp-cost", 0 )
-		var less_than_min_field = createHiddenField ( "less-than-min", false )
+		setTextForClass ( "bandwidth", bandwidth )
+		let area_field = createHiddenField ( "area-size", 0 )
+		let cost_field = createHiddenField ( "total-cost", 0 )
+		let temp_cost_field = createHiddenField ( "temp-cost", 0 )
+		let less_than_min_field = createHiddenField ( "less-than-min", false )
 		
 		const expiry_date = urlParams.get( "expiry-date" )
 		const effective_date = urlParams.get( "effective-date" )
+		let duration
 		if ( expiry_date ) {
-			var duration = ((expiry_date.split("-")[0] - effective_date.split("-")[0]) * 12) + (expiry_date.split("-")[1] - effective_date.split("-")[1] + 1)
+			duration = ((expiry_date.split("-")[0] - effective_date.split("-")[0]) * 12) + (expiry_date.split("-")[1] - effective_date.split("-")[1] + 1)
 
-			for ( let elem of document .getElementsByClassName ( "licence-duration" ) ) {
-				elem .innerText = duration
-			}	
-			var duration_field = createHiddenField ( "licence-duration", duration )
+			setTextForClass ( "licence-duration", duration )
+			createHiddenField ( "licence-duration", duration )
 		}
 
-		var area_number = 0;
-		var cost_number = 0;
-		var temp_cost_number = 0;
+		let area_number = 0
+		let cost_number = 0
+		let temp_cost_number = 0
 		const calculateButton = document.getElementById ( "calculate-button" )
 		const calcResultsBefore = document.getElementById ( "calc-results-before" )
 		const calcResultsAfter = document.getElementById ( "calc-results-after" )
@@ -516,16 +546,13 @@ var urlQueries = baseQuery
 
 			less_than_min_field.setAttribute("value", false)
 
-			document.getElementById ( "renew-cost" ).setAttribute("hidden","hidden")
-			document.getElementById ( "renew-min-cost" ).setAttribute("hidden","hidden")
-			document.getElementById ( "temp-cost" ).setAttribute("hidden","hidden")
-			document.getElementById ( "temp-min-cost" ).setAttribute("hidden","hidden")
+			hideFeeSections ()
 
 			urlQueries = baseQuery 
 
 			for (let i = 0; i < 12; i++) {
-					lat_id = "lat" + (i+1)
-					long_id = "long" + (i+1)
+					const lat_id = "lat" + (i+1)
+					const long_id = "long" + (i+1)
 					if (document.getElementById(lat_id).value != "") {
 						urlQueries += "&" + lat_id + "=" + document.getElementById(lat_id).value
 						urlQueries += "&" + long_id + "=" + document.getElementById(long_id).value
@@ -557,8 +584,8 @@ var urlQueries = baseQuery
 			calcResultsBefore .setAttribute ( "hidden", "hidden" )
 			calcResultsAfter .removeAttribute ( "hidden" )
 
-			for ( let errorMessage in errorMessages ) {
-				errorMessages [ errorMessage ] .setAttribute ( "hidden" , "hidden" )
+			for ( const errorMessage of Object .values ( errorMessages ) ) {
+				errorMessage .setAttribute ( "hidden" , "hidden" )
 			}
 			licenceFeeText .setAttribute ( "hidden" , "hidden" )
 			nextButton .setAttribute ( "hidden" , "hidden" )
@@ -615,7 +642,7 @@ var urlQueries = baseQuery
 					} else {
 						cost_number = 4 * duration
 
-						total_cost_spans = document.querySelectorAll(".total-cost");
+						const total_cost_spans = document.querySelectorAll(".total-cost");
 						total_cost_spans.forEach(element => {
 							element.innerText = element.textContent = cost_number
 						});
@@ -750,6 +777,13 @@ var urlQueries = baseQuery
 
 		// Leaflet code
 
+			function setAllTextBySelector ( selector, value ) {
+				const nodes = document .querySelectorAll ( selector )
+				nodes .forEach ( ( element ) => {
+					element .innerText = element .textContent = value
+				})
+			}
+
 			function reset_lat_lngs() {
 				for (let i = 0; i < 12; i++) {
 					document.getElementById("lat" + (i+1)).value = "";
@@ -758,21 +792,9 @@ var urlQueries = baseQuery
 
 				document.getElementById("WKT").value = "";
 
-				area_size_spans = document.querySelectorAll(".area-size");
-
-				area_size_spans.forEach(element => {
-					element.innerText = element.textContent = "0";
-				});
-
-				total_cost_spans = document.querySelectorAll(".total-cost");
-				total_cost_spans.forEach(element => {
-					element.innerText = element.textContent = "0";
-				});
-
-				temp_cost_spans = document.querySelectorAll(".temp-cost");
-				temp_cost_spans.forEach(element => {
-					element.innerText = element.textContent = "0";
-				});
+				setAllTextBySelector ( ".area-size", "0" )
+				setAllTextBySelector ( ".total-cost", "0" )
+				setAllTextBySelector ( ".temp-cost", "0" )
 
 				area_field.setAttribute( "value", "0" );
 				cost_field.setAttribute( "value", "0" );
@@ -786,12 +808,12 @@ var urlQueries = baseQuery
 	
 
 			function change_lat_lngs(latlngs) {
-				area = L.GeometryUtil.geodesicArea(latlngs);
-				lat_long_sliced = latlngs.slice(0,12)
+				const area = L.GeometryUtil.geodesicArea(latlngs)
+				const lat_long_sliced = latlngs.slice(0,12)
 				let wkt = "POLYGON(("
 				for (let i = 0; i < 12; i++) {
-					lat_id = "lat" + (i+1)
-					long_id = "long" + (i+1)
+					const lat_id = "lat" + (i+1)
+					const long_id = "long" + (i+1)
 					if (i < lat_long_sliced.length) {
 						document.getElementById(lat_id).value = latlngs[i].lat.toFixed(6);
 						document.getElementById(long_id).value = latlngs[i].lng.toFixed(6);
@@ -808,30 +830,21 @@ var urlQueries = baseQuery
 
 				document.getElementById("WKT").value = wkt;
 
-				area_size_spans = document.querySelectorAll(".area-size");
 				area_number = (parseFloat(L.GeometryUtil.readableArea(area, true, 5).slice(0, -3))/100).toFixed(3);
 
-				area_size_spans.forEach(element => {
-					element.innerText = element.textContent = area_number
-				});
+				setAllTextBySelector ( ".area-size", area_number )
 
 				area_field.setAttribute( "value", area_number );
 
 				cost_number = (bandwidth * baseRate * (area_number)).toFixed(2);
 				if (temporary_licence) {
 					temp_cost_number = cost_number
-					temp_cost_spans = document.querySelectorAll(".temp-cost");
-					temp_cost_spans.forEach(element => {
-						element.innerText = element.textContent = cost_number
-					});
+					setAllTextBySelector ( ".temp-cost", cost_number )
 					temp_cost_field.setAttribute("value", cost_number)
 					cost_number = (cost_number * duration).toFixed(2)
 				}
 
-				total_cost_spans = document.querySelectorAll(".total-cost");
-				total_cost_spans.forEach(element => {
-					element.innerText = element.textContent = cost_number
-				});
+				setAllTextBySelector ( ".total-cost", cost_number )
 
 				cost_field.setAttribute("value", cost_number);
 			}
@@ -993,7 +1006,7 @@ var urlQueries = baseQuery
 				let temp_longs=[]
 				let temp_latlongs=[]
 
-				layers = e.layers._layers
+				const layers = e.layers._layers
 				if (Object.keys(layers).length >=3 ) {
 					for (var vertex_id in layers) {
 					temp_lats.push(layers[vertex_id]._latlng.lat)
@@ -1004,7 +1017,7 @@ var urlQueries = baseQuery
 						temp_latlongs.push({lat:temp_lats[i],lng:temp_longs[i]})
 					}
 					console.log(L.GeometryUtil.geodesicArea(temp_latlongs))
-					temp_areas = document.querySelectorAll(".area-size-drawing");
+					const temp_areas = document.querySelectorAll(".area-size-drawing");
 					temp_areas.forEach(element => {
 						element.innerText = element.textContent = (L.GeometryUtil.geodesicArea(temp_latlongs)/1000000).toFixed(3)
 					});
@@ -1054,7 +1067,7 @@ var urlQueries = baseQuery
 
 				drawnItems.eachLayer(function (layer) {
 
-					lat_lngs = layer.getLatLngs()[0]
+					const lat_lngs = layer.getLatLngs()[0]
 
 					// if (lat_lngs.length >= 12) {
 					// 	layer.editing.disable()
@@ -1087,16 +1100,16 @@ var urlQueries = baseQuery
 
 if (document.getElementById("lat1").value != "") {
 
-	lats = []
-	longs = []
-	lat_longs = [];
+	const lats = []
+	const longs = []
+	const lat_longs = []
 
-	wkt = "POLYGON(("
+	let wkt = "POLYGON(("
 	
 	for ( let i = 1; i < 13; i++ ) {
 			if (document.getElementById("lat"+i).value != "") {
-				temp_lat = document.getElementById("lat"+i).value
-				temp_long = document.getElementById("long"+i).value
+				const temp_lat = document.getElementById("lat"+i).value
+				const temp_long = document.getElementById("long"+i).value
 
 				lats.push(temp_lat);
 				longs.push(temp_long);
@@ -1115,19 +1128,19 @@ if (document.getElementById("lat1").value != "") {
 	map.removeControl(drawControl);
 	map.removeControl(layerControl);
 	map.addControl(removeAllControl);		
-	area_size_spans = document.querySelectorAll(".area-size");
-	area_size_spans.forEach(element => {
+	const area_size_spans = document.querySelectorAll(".area-size");
+	area_size_spans.forEach((element) => {
 		console.log(document.getElementById("area-size").value)
 		element.innerText = element.textContent = document.getElementById("area-size").value;
 	});
 
-	total_cost_spans = document.querySelectorAll(".total-cost");
-	total_cost_spans.forEach(element => {
+	const total_cost_spans = document.querySelectorAll(".total-cost");
+	total_cost_spans.forEach((element) => {
 		element.innerText = element.textContent = document.getElementById("total-cost").value;
 	});
 
-	temp_cost_spans = document.querySelectorAll(".temp-cost");
-	temp_cost_spans.forEach(element => {
+	const temp_cost_spans = document.querySelectorAll(".temp-cost");
+	temp_cost_spans.forEach((element) => {
 		element.innerText = element.textContent = document.getElementById("temp-cost").value;
 	});
 
