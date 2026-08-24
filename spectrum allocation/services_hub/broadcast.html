@@ -20,7 +20,7 @@
     <meta charset="utf-8" />
 
     <!-- Start DECoE customization -->
-    <title>Flexible use spectrum: rules and policies </title>
+    <title>Broadcast service hub</title>
     <!-- End DECoE customization -->
 
     <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -58,6 +58,9 @@
 
       .description {
         max-width: 65ch;
+      }
+      gcds-card::part(title) {
+        font-size: 27px;
       }
       .breadcrumb li {
         font-size: 16px;
@@ -207,11 +210,6 @@
                 <li>
                   <a href="../index.html">Radio spectrum services</a>
                 </li>
-                <li>
-                  <a href="../services_hub/flexible_use.html"
-                    >Flexible use spectrum service hub</a
-                  >
-                </li>
               </ol>
             </div>
           </nav>
@@ -233,166 +231,58 @@
       class="container"
     >
       <!-- Start page content -->
-      <h1 property="name" id="wb-cont">
-        Flexible use spectrum: rules and policies  
-      </h1>
+      <h1 property="name" id="wb-cont">Broadcast service hub</h1>
 
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Turp is egestas
-        maecenas pharetra convallis posuere morbi leo urna.
-      </p>
+      <gcds-grid
+        columns="1fr"
+        columns-tablet="1fr 1fr"
+        columns-desktop="1fr 1fr 1fr"
+        style="margin-top: 4rem"
+      >
+        <gcds-card
+          class="service-card"
+          card-title="Service overview"
+          href="#"
+          img-src="..\Assets\sawi2_icon-01 1.png"
+          style="text-align: center"
+        >
+          <ul style="text-align: left">
+            <li>How it works</li>
+            <li>Who uses it</li>
+            <li>How to obtain a licence</li>
+          </ul>
+        </gcds-card>
 
-      <h3 data-i18n="table-of-contents">On this page</h3>
-      <ul>
-        <li>
-          <a href="#frequency_bands">Frequency bands </a>
-        </li>
-        <li>
-          <a href="#definitions">Definitions </a>
-        </li>
-        <li>
-          <a href="#licensing">Licensing</a>
-        </li>
-        <li>
-          <a href="#documents">Documents</a>
-        </li>
-      </ul>
+        <gcds-card
+          class="service-card"
+          card-title="Rules and policies"
+          href="../services_rp/broadcast_rp.html"
+          img-src="..\Assets\sawi2_icon-02 1.png"
+          style="text-align: center"
+        >
+          <ul style="text-align: left">
+            <li>Technical requirements and standards</li>
+            <li>Policies and procedures </li>
+            <li>Arrangements and agreements </li>
+            <li>Frequency band information </li>
+            <li>Definitions</li>
+          </ul>
+        </gcds-card>
 
-      <h2 id="frequency_bands">Frequency bands</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Turp is egestas
-        maecenas pharetra convallis posuere morbi leo urna. Lorem ipsum dolor
-        sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua. Turp is egestas maecenas pharetra
-        convallis posuere morbi leo urna.
-      </p>
-
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Turp is egestas
-        maecenas pharetra convallis posuere morbi leo urna.
-      </p>
-
-      <h2 id="definitions">Definitions</h2>
-      <p>The following definition applies to the land mobile radio service. </p>
-
-      <table class="table table-striped">
-        <tbody>
-          <tr>
-            <td>Lorem ipsum dolor </td>
-            <td>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2 id="licensing">Licensing</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-
-      <h2 id="documents">Documents</h2>
-
-      <p>
-        The following table lists the rules, policies and other key documents
-        that apply to the flexible use spectrum service, including public safety
-        services.  
-      </p>
-
-      <div class="row">
-        <div class="col-md-3">
-          <div class="row">
-            <div class="col-md-10">
-              <h3 data-i18n="doc-filter-by">Filter by</h3>
-            </div>
-          </div>
-
-          <form class="wb-tables-filter" data-bind-to="dataset-filter1">
-            <div class="filter-divider">&nbsp;</div>
-
-            <div class="row">
-              <div class="form-group">
-                <details style="border: none; padding-bottom: 0px">
-                  <summary>
-                    <h3>Document type</h3>
-                  </summary>
-
-                  <div class="filter-divider">&nbsp;</div>
-
-                  <fieldset
-                    id="type-checkboxes"
-                    data-populate-checkboxes
-                    data-filter-type="doc_type"
-                    data-table-selector="#dataset-filter1"
-                  ></fieldset>
-                </details>
-                <details style="border: none; padding-bottom: 0px">
-                  <summary>
-                    <h3>Subject type</h3>
-                  </summary>
-
-                  <div class="filter-divider">&nbsp;</div>
-
-                  <fieldset
-                    id="subject-checkboxes"
-                    data-populate-checkboxes
-                    data-filter-type="subject_type"
-                    data-table-selector="#dataset-filter1"
-                  ></fieldset>
-                </details>
-              </div>
-            </div>
-
-            <div class="filter-divider" style="margin-bottom: 12px">&nbsp;</div>
-
-            <div class="form-group">
-              <button class="btn btn-primary" id="apply-filters" type="button">
-                Filter
-              </button>
-              <button class="btn btn-default" id="reset-filters" type="reset">
-                Clear all filters
-              </button>
-            </div>
-          </form>
-        </div>
-
-        <div class="col-md-8">
-          <div
-            id="dataset-filter1_wrapper"
-            class="dataTables_wrapper no-footer"
-          >
-            <table
-              id="dataset-filter1"
-              class="wb-tables table wb-init dataTable"
-              data-populate-table
-              data-subject="flexible-use spectrum/Public safety/Flexible-use spectrum"
-              data-subject-filters='[{"label":"Auctions","match":"Auctions"},{"label":"NCLL","match":"NCLL"},{"label":"Access licensing","match":"Access spectrum licensing"},{"label":"Public safety","match":"Public safety"}]'
-              data-page-length="100"
-              data-wb-tables='{"order": [[0, "desc"]]}'
-            >
-              <thead>
-                <tr>
-                  <th>Updated</th>
-                  <th>Title</th>
-                  <th>Type</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
+        <gcds-card
+          class="service-card"
+          card-title="Licence management and applications"
+          href="#"
+          img-src="..\Assets\sawi2_icon-03 1.png"
+          style="text-align: center"
+        >
+          <ul style="text-align: left">
+            <li>
+              Spectrum Management System’s (SMS) Radio Licensing Services 
+            </li>
+          </ul>
+        </gcds-card>
+      </gcds-grid>
 
       <!-- End page content -->
 
@@ -442,36 +332,31 @@
       );
     </script>
 
-    <script src="../scripts/filter-rows.js"></script>
+    <script src="/SAWI/scripts/filter-rows.js"></script>
     <script src="/SAWI/scripts/i18n.js"></script>
-    <script src="../scripts/populate-table.js"></script>
-    <script src="../scripts/populate-checkboxes.js"></script>
     <script>
-      // Handle the Filter and Reset buttons
-      document.addEventListener("DOMContentLoaded", function () {
-        const applyFilterBtn = document.getElementById("apply-filters");
-        const resetFilterBtn = document.getElementById("reset-filters");
+      window.addEventListener("load", () => {
+        const cards = document.querySelectorAll("gcds-card.service-card");
 
-        if (applyFilterBtn) {
-          applyFilterBtn.addEventListener("click", function () {
-            // Apply the filter
-            filterTable();
+        cards.forEach((card) => {
+          setTimeout(() => {
+            const root = card.shadowRoot;
+            if (!root) return;
 
-            // Close the details element
-            const detailsElements = document.querySelectorAll("details");
-            detailsElements.forEach((details) => {
-              if (details.querySelector("[data-populate-checkboxes]")) {
-              }
-            });
-          });
-        }
+            const image = root.querySelector("img");
+            if (image) {
+              image.style.display = "block";
+              image.style.height = "80px";
+              image.style.objectFit = "contain";
+              image.style.margin = "0 auto 1rem";
+            }
 
-        if (resetFilterBtn) {
-          resetFilterBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            clearTable();
-          });
-        }
+            const title = root.querySelector("h2, h3, h4, gcds-link");
+            if (title) {
+              title.style.fontSize = "24px";
+            }
+          }, 100);
+        });
       });
     </script>
   </body>
