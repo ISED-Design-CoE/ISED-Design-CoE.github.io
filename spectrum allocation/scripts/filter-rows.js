@@ -11,7 +11,12 @@ function filterTable() {
   const rows = document.querySelectorAll(".data_row");
   rows.forEach((row) => {
     const docType = row.getAttribute("doc_type");
-    const subjectType = row.getAttribute("subject_type");
+    let subjectTypes = [];
+    try {
+      subjectTypes = JSON.parse(row.getAttribute("data-subject-types") || "[]");
+    } catch (err) {
+      subjectTypes = [row.getAttribute("subject_type")];
+    }
     const auctionValue = row.getAttribute("auction");
 
     const matchDocType =
@@ -19,7 +24,7 @@ function filterTable() {
       filters["doc_type"].includes(docType);
     const matchSubjectType =
       filters["subject_type"].length === 0 ||
-      filters["subject_type"].includes(subjectType);
+      filters["subject_type"].some((filter) => subjectTypes.includes(filter));
     const matchAuction =
       filters["auction"].length === 0 ||
       filters["auction"].includes(auctionValue) ||
