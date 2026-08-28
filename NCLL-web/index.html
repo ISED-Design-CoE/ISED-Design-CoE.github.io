@@ -2497,12 +2497,12 @@ element.setAttribute('data-parent-tab', pane.id);
 });
 
 function calculateFee(type) {
-const region = parseFloat(document.getElementById('region' + type).value);
-const spectrum = parseFloat(document.getElementById('spectrum' + type).value);
-const area = parseFloat(document.getElementById('area' + type).value);
-const startDateInput = document.getElementById('startDate' + type).value;
-const endDateInput = document.getElementById('endDate' + type).value;
-const resultElement = document.getElementById('result' + type);
+let region = parseFloat(document.getElementById('region' + type).value);
+let spectrum = parseFloat(document.getElementById('spectrum' + type).value);
+let area = parseFloat(document.getElementById('area' + type).value);
+let startDateInput = document.getElementById('startDate' + type).value;
+let endDateInput = document.getElementById('endDate' + type).value;
+let resultElement = document.getElementById('result' + type);
 if (isNaN(region) || isNaN(spectrum) || isNaN(area)) {
 resultElement.hidden = false;
 resultElement.innerHTML = '<p>Please fill in all required fields with valid values.';
@@ -2513,31 +2513,18 @@ let annualFee = region * spectrum * area;
 annualFee = Math.max(annualFee, 50.14);
 // Calculate prorated fee
 const currentDate = new Date();
-const currentYear = currentDate.getFullYear();
+const currentYear = currentDate.getUTCFullYear();
 const defaultStartDate = new Date(currentYear, 3, 1); // April 1st of current year
 const defaultEndDate = new Date(currentYear + 1, 2, 31); // March 31st of next year
 let startDate = startDateInput ? new Date(startDateInput) : defaultStartDate;
 let endDate = endDateInput ? new Date(endDateInput) : defaultEndDate;
 // Ensure end date is not before start date
 if (endDate < startDate) {
-endDate = new Date(startDate.getFullYear() + 1, 2, 31); // March 31st of the year after start date
+endDate = new Date(startDate.getUTCFullYear() + 1, 2, 31); // March 31st of the year after start date
 }
-// Calculate months, counting any partial month as a full month
-let months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + 
-(endDate.getMonth() - startDate.getMonth());
-// If the end date is later in the month than the start date, add one month
-if (endDate.getDate() > startDate.getDate()) {
-months++;
-}
-// Ensure minimum of 1 month
-months = Math.max(1, months);
-// Handle the case where it's exactly one year
-if (endDate.getTime() - startDate.getTime() === 365 * 24 * 60 * 60 * 1000 ||
-endDate.getTime() - startDate.getTime() === 366 * 24 * 60 * 60 * 1000) {
-months = 12;
-}
-// Ensure minimum of 1 month
-months = Math.max(1, months);
+// Calculate number of calendar months
+let months = (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + 
+(endDate.getUTCMonth() - startDate.getUTCMonth()) + 1;
 // Calculate prorated fee based on full months
 let proratedFee = (annualFee / 12) * months;
 // Apply minimum fee of $4.18 per month for partial years
