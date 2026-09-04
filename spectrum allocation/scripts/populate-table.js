@@ -88,6 +88,14 @@ function populateTableFromSubject(subject, options = {}) {
         ),
       );
 
+      const documentTypeCounts = filteredRows.reduce((counts, row) => {
+        const documentType = String(row[typeField] || "").trim();
+        if (documentType) {
+          counts[documentType] = (counts[documentType] || 0) + 1;
+        }
+        return counts;
+      }, {});
+
       const subjectTypes = Array.from(
         new Set(
           filteredRows
@@ -98,11 +106,12 @@ function populateTableFromSubject(subject, options = {}) {
       );
 
       table.dataset.documentTypes = JSON.stringify(documentTypes);
+      table.dataset.documentTypeCounts = JSON.stringify(documentTypeCounts);
       table.dataset.subjectTypes = JSON.stringify(subjectTypes);
 
       table.dispatchEvent(
         new CustomEvent("table-populated", {
-          detail: { documentTypes, subjectTypes },
+          detail: { documentTypes, documentTypeCounts, subjectTypes },
         }),
       );
 

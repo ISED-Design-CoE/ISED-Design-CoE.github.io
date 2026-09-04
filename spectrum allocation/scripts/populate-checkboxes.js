@@ -1,5 +1,5 @@
 (function () {
-  function createCheckboxMarkup(type, filterType, filterType2) {
+  function createCheckboxMarkup(type, filterType, count) {
     const sanitized = String(type).replace(/\s+/g, "_").toLowerCase();
     const id = `${filterType}_${sanitized}_checkbox`;
 
@@ -11,12 +11,12 @@
             id="${id}"
             onchange="toggleFilter('${type.replace(/'/g, "\\'")}', '${filterType}')"
           />
-          ${type}
+          ${type}${typeof count === "number" ? ` (${count})` : ""}
         </label>
       </li>`;
   }
 
-  function renderCheckboxes(container, values, filterType) {
+  function renderCheckboxes(container, values, filterType, counts = {}) {
     const normalizedValues = Array.isArray(values) ? values : [];
     const uniqueValues = Array.from(
       new Set(normalizedValues.map((v) => String(v).trim()).filter(Boolean)),
@@ -24,7 +24,9 @@
 
     container.innerHTML = `
       <ul class="list-unstyled">
-        ${uniqueValues.map((item) => createCheckboxMarkup(item, filterType)).join("")}
+        ${uniqueValues
+          .map((item) => createCheckboxMarkup(item, filterType, counts[item]))
+          .join("")}
       </ul>`;
   }
 
@@ -44,6 +46,17 @@
     } catch (err) {
       console.error(err);
       return [];
+    }
+  }
+
+  function getDocumentTypeCounts(table) {
+    if (!table) return {};
+
+    try {
+      return JSON.parse(table.dataset.documentTypeCounts || "{}");
+    } catch (err) {
+      console.error(err);
+      return {};
     }
   }
 
@@ -70,7 +83,9 @@
 
     const renderFromTable = () => {
       const values = getTypesForFilter(table, config.filterType);
-      renderCheckboxes(container, values, config.filterType);
+      const counts =
+        config.filterType === "doc_type" ? getDocumentTypeCounts(table) : {};
+      renderCheckboxes(container, values, config.filterType, counts);
     };
 
     if (table) {
