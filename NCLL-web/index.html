@@ -2497,55 +2497,58 @@ element.setAttribute('data-parent-tab', pane.id);
 });
 
 function calculateFee(type) {
-let region = parseFloat(document.getElementById('region' + type).value);
-let spectrum = parseFloat(document.getElementById('spectrum' + type).value);
-let area = parseFloat(document.getElementById('area' + type).value);
-let startDateInput = document.getElementById('startDate' + type).value;
-let endDateInput = document.getElementById('endDate' + type).value;
-let resultElement = document.getElementById('result' + type);
-if (isNaN(region) || isNaN(spectrum) || isNaN(area)) {
-resultElement.hidden = false;
-resultElement.innerHTML = '<p>Please fill in all required fields with valid values.';
-return;
-}
-let annualFee = region * spectrum * area;
-// Apply minimum annual fee of $50.14
-annualFee = Math.max(annualFee, 50.14);
-// Calculate prorated fee
-const currentDate = new Date();
-const currentYear = currentDate.getUTCFullYear();
-const defaultStartDate = new Date(currentYear, 3, 1); // April 1st of current year
-const defaultEndDate = new Date(currentYear + 1, 2, 31); // March 31st of next year
-let startDate = startDateInput ? new Date(startDateInput) : defaultStartDate;
-let endDate = endDateInput ? new Date(endDateInput) : defaultEndDate;
-// Ensure end date is not before start date
-if (endDate < startDate) {
-endDate = new Date(startDate.getUTCFullYear() + 1, 2, 31); // March 31st of the year after start date
-}
-// Calculate number of calendar months
-let months = (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + 
-(endDate.getUTCMonth() - startDate.getUTCMonth()) + 1;
-// Calculate prorated fee based on full months
-let proratedFee = (annualFee / 12) * months;
-// Apply minimum fee of $4.18 per month for partial years
-if (months < 12) {
-proratedFee = Math.max(proratedFee, 4.18 * months);
-}
-proratedFee = Math.round(proratedFee * 100) / 100; // Round to nearest cent
-let resultHTML = `<p>Annual fee: $${annualFee.toFixed(2)}`;
-if (months !== 12) {
-resultHTML += `<p>Prorated fee: $${proratedFee.toFixed(2)}
-<p>Prorated for ${months} month(s)`;
-}
-resultHTML += `<p>Calculation: $${region.toFixed(3)} per&nbsp;MHz per&nbsp;km² × ${spectrum.toFixed(1)}&nbsp;MHz × ${area.toFixed(1)}&nbsp;km²`;
-if (annualFee === 50.14) {
-resultHTML += `<p>Note: Minimum annual fee of $50.14 applied.`;
-}
-if (months < 12 && proratedFee === 4.18 * months) {
-resultHTML += `<p>Note: Minimum monthly fee of $4.18 applied for partial year.`;
-}
-resultElement.hidden = false;
-resultElement.innerHTML = resultHTML;
+	// Fee calculations are based on https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/notice-no-spb-003-23-fee-order-non-competitive-local-licences
+	let region = parseFloat(document.getElementById('region' + type).value);
+	let spectrum = parseFloat(document.getElementById('spectrum' + type).value);
+	let area = parseFloat(document.getElementById('area' + type).value);
+	let startDateInput = document.getElementById('startDate' + type).value;
+	let endDateInput = document.getElementById('endDate' + type).value;
+	let resultElement = document.getElementById('result' + type);
+	if (isNaN(region) || isNaN(spectrum) || isNaN(area)) {
+		resultElement.hidden = false;
+		resultElement.innerHTML = '<p>Please fill in all required fields with valid values.';
+		return;
+	}
+	let annualFee = region * spectrum * area;
+	// Apply minimum annual fee of $50.14
+	annualFee = Math.max(annualFee, 50.14);
+	// Calculate prorated fee
+	const currentDate = new Date();
+	const currentYear = currentDate.getUTCFullYear();
+	const defaultStartDate = new Date(currentYear, 3, 1); // April 1st of current year
+	const defaultEndDate = new Date(currentYear + 1, 2, 31); // March 31st of next year
+	let startDate = startDateInput ? new Date(startDateInput) : defaultStartDate;
+	let endDate = endDateInput ? new Date(endDateInput) : defaultEndDate;
+	// Ensure end date is not before start date
+	if (endDate < startDate) {
+		endDate = new Date(startDate.getUTCFullYear() + 1, 2, 31); // March 31st of the year after start date
+	}
+
+	// Calculate number of calendar months
+	let months = (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + 
+	(endDate.getUTCMonth() - startDate.getUTCMonth()) + 1;
+	// Calculate prorated fee based on full months
+	let proratedFee = (annualFee / 12) * months;
+	// Apply minimum fee of $4.18 per month for partial years
+	if (months < 12) {
+		proratedFee = Math.max(proratedFee, 4.18 * months);
+	}
+	proratedFee = Math.round(proratedFee * 100) / 100; // Round to nearest cent
+
+	let resultHTML = `<p>Annual fee: $${annualFee.toFixed(2)}`;
+	if (months !== 12) {
+		resultHTML += `<p>Prorated fee: $${proratedFee.toFixed(2)}
+		<p>Prorated for ${months} month(s)`;
+	}
+	resultHTML += `<p>Calculation: $${region.toFixed(3)} per&nbsp;MHz per&nbsp;km² × ${spectrum.toFixed(1)}&nbsp;MHz × ${area.toFixed(1)}&nbsp;km²`;
+	if (annualFee === 50.14) {
+		resultHTML += `<p>Note: Minimum annual fee of $50.14 applied.`;
+	}
+	if (months < 12 && proratedFee === 4.18 * months) {
+		resultHTML += `<p>Note: Minimum monthly fee of $4.18 applied for partial year.`;
+	}
+	resultElement.hidden = false;
+	resultElement.innerHTML = resultHTML;
 }
 </script></div></div>
 
