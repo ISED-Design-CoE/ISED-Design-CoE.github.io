@@ -14,6 +14,7 @@ function populateTableFromSubject(subject, options = {}) {
 
   const tbody = table.querySelector("tbody");
   if (!tbody) return;
+  const columnCount = table.hasAttribute("data-hide-type-column") ? 2 : 3;
 
   let configuredSubjectFilters = [];
   try {
@@ -116,8 +117,7 @@ function populateTableFromSubject(subject, options = {}) {
       );
 
       if (!filteredRows.length) {
-        tbody.innerHTML =
-          '<tr><td colspan="3">No matching documents found.</td></tr>';
+        tbody.innerHTML = `<tr><td colspan="${columnCount}">No matching documents found.</td></tr>`;
         return;
       }
 
@@ -141,15 +141,17 @@ function populateTableFromSubject(subject, options = {}) {
         tdTitle.innerHTML = row[titleField] || "";
         tr.appendChild(tdTitle);
 
-        const tdType = document.createElement("td");
-        tdType.textContent = docTypeValue;
-        tr.appendChild(tdType);
+        if (!table.hasAttribute("data-hide-type-column")) {
+          const tdType = document.createElement("td");
+          tdType.textContent = docTypeValue;
+          tr.appendChild(tdType);
+        }
 
         tbody.appendChild(tr);
       });
     })
     .catch((err) => {
-      tbody.innerHTML = '<tr><td colspan="3">Error loading data</td></tr>';
+      tbody.innerHTML = `<tr><td colspan="${columnCount}">Error loading data</td></tr>`;
       console.error(err);
     });
 }

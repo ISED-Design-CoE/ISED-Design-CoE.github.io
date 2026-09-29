@@ -278,7 +278,7 @@
       <h2 id="frequency_bands">Frequency bands</h2>
       <p>
         The frequency ranges designated for licence-exempt applications are
-        specified in the technical documents listed in the previous section. 
+        specified in the technical documents listed in the documents section. 
       </p>
 
       <p>
@@ -338,7 +338,7 @@
 
             <div class="row">
               <div class="form-group">
-                <details style="border: none; padding-bottom: 0px">
+                <details open style="border: none; padding-bottom: 0px">
                   <summary>
                     <h3>Document type</h3>
                   </summary>
@@ -377,6 +377,7 @@
               id="dataset-filter1"
               class="wb-tables table wb-init dataTable"
               data-populate-table
+              data-hide-type-column
               data-subject="Licence-exempt spectrum"
               data-page-length="100"
               data-wb-tables='{"order": [[0, "desc"]]}'
@@ -385,7 +386,6 @@
                 <tr>
                   <th>Updated</th>
                   <th>Title</th>
-                  <th>Type</th>
                 </tr>
               </thead>
               <tbody></tbody>

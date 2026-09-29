@@ -20,7 +20,7 @@
     <meta charset="utf-8" />
 
     <!-- Start DECoE customization -->
-    <title>Flexible -use spectrum: rules and policies </title>
+    <title>Flexible-use spectrum: rules and policies </title>
     <!-- End DECoE customization -->
 
     <meta content="width=device-width,initial-scale=1" name="viewport" />
@@ -342,7 +342,7 @@
         For information on spectrum licences for flexible use, refer to the
         <a
           href="https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/radio-authorizations/spectrum-licensing"
-          >terrestrial spectrum licensing</a
+          >spectrum licensing (terrestrial)</a
         >
         page.
       </p>
@@ -375,21 +375,7 @@
 
             <div class="row">
               <div class="form-group">
-                <details style="border: none; padding-bottom: 0px">
-                  <summary>
-                    <h3>Document type</h3>
-                  </summary>
-
-                  <div class="filter-divider">&nbsp;</div>
-
-                  <fieldset
-                    id="type-checkboxes"
-                    data-populate-checkboxes
-                    data-filter-type="doc_type"
-                    data-table-selector="#dataset-filter1"
-                  ></fieldset>
-                </details>
-                <details style="border: none; padding-bottom: 0px">
+                <details open style="border: none; padding-bottom: 0px">
                   <summary>
                     <h3>Subject</h3>
                   </summary>
@@ -403,6 +389,21 @@
                     data-table-selector="#dataset-filter1"
                   ></fieldset>
                 </details>
+                <details open style="border: none; padding-bottom: 0px">
+                  <summary>
+                    <h3>Document type</h3>
+                  </summary>
+
+                  <div class="filter-divider">&nbsp;</div>
+
+                  <fieldset
+                    id="type-checkboxes"
+                    data-populate-checkboxes
+                    data-filter-type="doc_type"
+                    data-table-selector="#dataset-filter1"
+                  ></fieldset>
+                </details>
+                
               </div>
             </div>
 
@@ -428,6 +429,7 @@
               id="dataset-filter1"
               class="wb-tables table wb-init dataTable"
               data-populate-table
+              data-hide-type-column
               data-subject="flexible-use spectrum/Public safety/Flexible-use spectrum"
               data-subject-filters='[{"label":"Auctions","match":"Auctions"},{"label":"NCLL","match":"NCLL"},{"label":"Access licensing","match":"Access spectrum licensing"},{"label":"Public safety","match":"Public safety"}]'
               data-page-length="250"
@@ -437,7 +439,6 @@
                 <tr>
                   <th>Updated</th>
                   <th>Title</th>
-                  <th>Type</th>
                 </tr>
               </thead>
               <tbody></tbody>
