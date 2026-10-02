@@ -2497,6 +2497,7 @@ element.setAttribute('data-parent-tab', pane.id);
 });
 
 function calculateFee(type) {
+// Fee calculations are based on https://ised-isde.canada.ca/site/spectrum-management-telecommunications/en/licences-and-certificates/notice-no-spb-003-23-fee-order-non-competitive-local-licences
 let region = parseFloat(document.getElementById('region' + type).value);
 let spectrum = parseFloat(document.getElementById('spectrum' + type).value);
 let area = parseFloat(document.getElementById('area' + type).value);
@@ -2523,8 +2524,11 @@ if (endDate < startDate) {
 endDate = new Date(startDate.getUTCFullYear() + 1, 2, 31); // March 31st of the year after start date
 }
 // Calculate number of calendar months
-let months = (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + 
+let months = 1;
+if ( endDate - startDate > 31 * 24 * 60 * 60 * 1000 ) { // 30 days or less always counts as one month, so ignore that case
+months = (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + 
 (endDate.getUTCMonth() - startDate.getUTCMonth()) + 1;
+}
 // Calculate prorated fee based on full months
 let proratedFee = (annualFee / 12) * months;
 // Apply minimum fee of $4.18 per month for partial years
