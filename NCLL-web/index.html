@@ -2525,8 +2525,11 @@ function calculateFee(type) {
 	}
 
 	// Calculate number of calendar months
-	let months = (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + 
-	(endDate.getUTCMonth() - startDate.getUTCMonth()) + 1;
+	let months = 1;
+	if ( endDate - startDate > 31 * 24 * 60 * 60 * 1000 ) { // 30 days or less always counts as one month, so ignore that case
+		months = (endDate.getUTCFullYear() - startDate.getUTCFullYear()) * 12 + 
+		(endDate.getUTCMonth() - startDate.getUTCMonth()) + 1;
+	}
 	// Calculate prorated fee based on full months
 	let proratedFee = (annualFee / 12) * months;
 	// Apply minimum fee of $4.18 per month for partial years
