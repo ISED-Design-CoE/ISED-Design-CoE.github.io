@@ -2537,9 +2537,10 @@ proratedFee = Math.max(proratedFee, 4.18 * months);
 }
 proratedFee = Math.round(proratedFee * 100) / 100; // Round to nearest cent
 let resultHTML = `<p>Annual fee: $${annualFee.toFixed(2)}`;
+let pluralMonths = months !== 1 ? 's' : ''; 
 if (months !== 12) {
 resultHTML += `<p>Prorated fee: $${proratedFee.toFixed(2)}
-<p>Prorated for ${months} month(s)`;
+<p>Prorated for ${months} month${pluralMonths}`;
 }
 resultHTML += `<p>Calculation: $${region.toFixed(3)} per&nbsp;MHz per&nbsp;km² × ${spectrum.toFixed(1)}&nbsp;MHz × ${area.toFixed(1)}&nbsp;km²`;
 if (annualFee === 50.14) {
