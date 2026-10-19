@@ -1,8 +1,664 @@
 // site-data-validation.js
-import { getInnerNativeField, getFieldValue } from "./site-data-fields.js";
+import {
+  getInnerNativeField,
+  getFieldValue,
+  getElementKeys,
+  collectPageData,
+} from "./site-data-fields.js";
+import { ensureState, PAGE_KEY } from "./site-data-storage.js";
 
 const MOBILE_TECH_VALUES = new Set(["1", "2", "3", "4", "5", "6"]);
 const LTE_5G_TECH_VALUES = new Set(["4", "5", "6"]);
+const RADIO_TECH_VALUES = new Set([
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+]);
+const PROVINCE_TERRITORY_VALUES = new Set([
+  "Alberta",
+  "British Columbia",
+  "Manitoba",
+  "New Brunswick",
+  "Newfoundland and Labrador",
+  "Nova Scotia",
+  "Ontario",
+  "Prince Edward Island",
+  "Quebec",
+  "Saskatchewan",
+  "Northwest Territories",
+  "Nunavut",
+  "Yukon",
+  "Interprovincial",
+  "Canada-wide",
+]);
+const SITE_TYPE_VALUES = new Set(["1", "2", "3"]);
+const STRUCTURE_TYPE_VALUES = new Set(["1", "2", "3", "4", "5", "6", "7"]);
+const DIRECTIONAL_PATTERN_VALUES = new Set(["1", "2"]);
+const ANTENNA_TYPE_VALUES = new Set(["1", "2", "3"]);
+
+function addFieldError(fieldErrors, fieldKey, message) {
+  if (!fieldKey) return;
+  if (!(fieldKey in fieldErrors)) {
+    fieldErrors[fieldKey] = message;
+  }
+}
+
+function getEntryValue(entry, fieldKey) {
+  return String(entry?.[fieldKey] ?? "").trim();
+}
+
+function requireEntryField(fieldErrors, entry, fieldKey, message) {
+  const value = getEntryValue(entry, fieldKey);
+  if (!value) addFieldError(fieldErrors, fieldKey, message);
+  return value;
+}
+
+function validateEntryNumber(fieldErrors, entry, fieldKey, options) {
+  const value = getEntryValue(entry, fieldKey);
+  if (!value) {
+    if (options.requiredMessage)
+      addFieldError(fieldErrors, fieldKey, options.requiredMessage);
+    return null;
+  }
+
+  const num = parseNumber(value);
+  if (num == null) {
+    addFieldError(
+      fieldErrors,
+      fieldKey,
+      options.invalidMessage || "Enter a valid number.",
+    );
+    return null;
+  }
+
+  if (options.integer && !Number.isInteger(num)) {
+    addFieldError(
+      fieldErrors,
+      fieldKey,
+      options.invalidMessage || "Enter a whole number.",
+    );
+    return null;
+  }
+
+  if (options.min != null && num < options.min) {
+    addFieldError(fieldErrors, fieldKey, options.invalidMessage);
+    return num;
+  }
+
+  if (options.max != null && num > options.max) {
+    addFieldError(fieldErrors, fieldKey, options.invalidMessage);
+  }
+
+  return num;
+}
+
+function isPastDate(value) {
+  const selectedDate = parseIsoLikeDate(value);
+  if (!selectedDate) return false;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return selectedDate < today;
+}
+
+function validateEntryPage1(entry, fieldErrors) {
+  const licenceNumber = requireEntryField(
+    fieldErrors,
+    entry,
+    "licence-number",
+    "Enter a spectrum licence number.",
+  );
+  if (licenceNumber) {
+    if (!/^\d{1,9}$/.test(licenceNumber)) {
+      addFieldError(
+        fieldErrors,
+        "licence-number",
+        "Enter a spectrum licence number from 1 to 999999999.",
+      );
+    } else {
+      const licenceNum = Number.parseInt(licenceNumber, 10);
+      if (!(licenceNum >= 1 && licenceNum <= 999999999)) {
+        addFieldError(
+          fieldErrors,
+          "licence-number",
+          "Enter a spectrum licence number from 1 to 999999999.",
+        );
+      }
+    }
+  }
+
+  const referenceNumber = getEntryValue(entry, "reference-number");
+  if (referenceNumber.length > 63) {
+    addFieldError(
+      fieldErrors,
+      "reference-number",
+      "Enter no more than 63 characters.",
+    );
+  }
+
+  const contactName = requireEntryField(
+    fieldErrors,
+    entry,
+    "contact-name",
+    "Enter a contact name.",
+  );
+  if (contactName.length > 254) {
+    addFieldError(
+      fieldErrors,
+      "contact-name",
+      "Enter no more than 254 characters.",
+    );
+  }
+
+  const businessNumber = requireEntryField(
+    fieldErrors,
+    entry,
+    "business-number",
+    "Enter a business telephone number.",
+  );
+  if (
+    businessNumber &&
+    (businessNumber.length < 10 || businessNumber.length > 254)
+  ) {
+    addFieldError(
+      fieldErrors,
+      "business-number",
+      "Enter a business telephone number between 10 and 254 characters.",
+    );
+  }
+
+  const emailAddress = requireEntryField(
+    fieldErrors,
+    entry,
+    "email-address",
+    "Enter an email address.",
+  );
+  if (emailAddress) {
+    if (emailAddress.length > 254) {
+      addFieldError(
+        fieldErrors,
+        "email-address",
+        "Enter no more than 254 characters.",
+      );
+    } else if (!isValidEmailList(emailAddress)) {
+      addFieldError(
+        fieldErrors,
+        "email-address",
+        "Enter a valid email address, or multiple valid email addresses separated by commas.",
+      );
+    }
+  }
+
+  requireEntryField(
+    fieldErrors,
+    entry,
+    "site-info-change",
+    "Select a site information change option.",
+  );
+  requireEntryField(
+    fieldErrors,
+    entry,
+    "licence-type",
+    "Select a licence type.",
+  );
+}
+
+function validateEntryPage2(entry, fieldErrors) {
+  const siteInfoChange = getEntryValue(entry, "site-info-change");
+  if (siteInfoChange && siteInfoChange !== "radio1") return;
+
+  const licenceType = getEntryValue(entry, "licence-type");
+  const isSatellite = licenceType === "radio2";
+
+  const stationLocation = requireEntryField(
+    fieldErrors,
+    entry,
+    "station-location",
+    "Enter a station location.",
+  );
+  if (stationLocation.length > 63) {
+    addFieldError(
+      fieldErrors,
+      "station-location",
+      "Enter no more than 63 characters.",
+    );
+  }
+
+  const radioTechnology = getEntryValue(entry, "radio-technology");
+  if (!isSatellite) {
+    if (!radioTechnology) {
+      addFieldError(
+        fieldErrors,
+        "radio-technology",
+        "Select a radio technology.",
+      );
+    } else if (!RADIO_TECH_VALUES.has(radioTechnology)) {
+      addFieldError(
+        fieldErrors,
+        "radio-technology",
+        "Select a valid Radio technology.",
+      );
+    }
+  }
+
+  if (!isSatellite && MOBILE_TECH_VALUES.has(radioTechnology)) {
+    const cellId = requireEntryField(
+      fieldErrors,
+      entry,
+      "cell-id",
+      "Enter a Cell ID.",
+    );
+    if (cellId) {
+      const compactCellId = cellId.replace(/-/g, "");
+      const hasValidLength =
+        compactCellId.length >= 11 && compactCellId.length <= 27;
+      const hasValidPattern =
+        /^[A-Za-z0-9]{1,6}-[A-Za-z0-9]{1,8}-[A-Za-z0-9]{1,11}$/.test(cellId);
+      if (!hasValidLength || !hasValidPattern) {
+        addFieldError(
+          fieldErrors,
+          "cell-id",
+          "Enter a Cell ID in alphanumeric format AAA111-BBBBB222-CCCCCC33333 with 11 to 27 characters (excluding hyphens).",
+        );
+      }
+    }
+  }
+
+  if (LTE_5G_TECH_VALUES.has(radioTechnology)) {
+    const physicalCellId = requireEntryField(
+      fieldErrors,
+      entry,
+      "physical-cell-id",
+      "Enter a Physical Cell ID.",
+    );
+    if (physicalCellId) {
+      const physicalValue = parseNumber(physicalCellId);
+      const maxValue = radioTechnology === "4" ? 503 : 1007;
+      if (
+        physicalValue == null ||
+        !Number.isInteger(physicalValue) ||
+        physicalValue < 0 ||
+        physicalValue > maxValue
+      ) {
+        addFieldError(
+          fieldErrors,
+          "physical-cell-id",
+          `Enter a Physical Cell ID between 0 and ${maxValue}.`,
+        );
+      }
+    }
+  }
+
+  const provinceTerritory = requireEntryField(
+    fieldErrors,
+    entry,
+    "province-territory",
+    "Select a province or territory.",
+  );
+  if (provinceTerritory && !PROVINCE_TERRITORY_VALUES.has(provinceTerritory)) {
+    addFieldError(
+      fieldErrors,
+      "province-territory",
+      "Select a valid province or territory.",
+    );
+  }
+
+  validateEntryNumber(fieldErrors, entry, "latitude", {
+    requiredMessage: "Enter a latitude.",
+    invalidMessage: "Latitude must be between 41 and 90.",
+    min: 41,
+    max: 90,
+  });
+  validateEntryNumber(fieldErrors, entry, "longitude", {
+    requiredMessage: "Enter a longitude.",
+    invalidMessage: "Longitude must be between -141 and -40.",
+    min: -141,
+    max: -40,
+  });
+
+  const siteType = getEntryValue(entry, "site-type");
+  if (!isSatellite) {
+    if (!siteType) {
+      addFieldError(fieldErrors, "site-type", "Select a Site Type Code.");
+    } else if (!SITE_TYPE_VALUES.has(siteType)) {
+      addFieldError(fieldErrors, "site-type", "Select a valid Site Type Code.");
+    }
+  }
+
+  if (siteType === "2") {
+    validateEntryNumber(fieldErrors, entry, "structure-height", {
+      requiredMessage: "Enter a Structure Height.",
+      invalidMessage: "Enter a Structure Height between 1 and 600 metres.",
+      min: 1,
+      max: 600,
+    });
+  }
+
+  const structureType = requireEntryField(
+    fieldErrors,
+    entry,
+    "structure-type",
+    "Select a Structure Type Code.",
+  );
+  if (structureType && !STRUCTURE_TYPE_VALUES.has(structureType)) {
+    addFieldError(
+      fieldErrors,
+      "structure-type",
+      "Select a valid Structure Type Code.",
+    );
+  }
+
+  const dateOfModification = requireEntryField(
+    fieldErrors,
+    entry,
+    "date-of-modification",
+    "Enter a Date of last modification.",
+  );
+  if (dateOfModification && !isPastDate(dateOfModification)) {
+    addFieldError(
+      fieldErrors,
+      "date-of-modification",
+      "Enter a date in the past for Date of last modification.",
+    );
+  }
+
+  requireEntryField(
+    fieldErrors,
+    entry,
+    "site-record-id",
+    "Enter a Site record ID.",
+  );
+}
+
+function validateEntryAntennaSide(
+  fieldErrors,
+  entry,
+  side,
+  siteType,
+  structureHeight,
+) {
+  const antennaType = getEntryValue(entry, "antenna-type");
+  const sideSelected =
+    side === "tx"
+      ? isTxSideSelected(antennaType)
+      : isRxSideSelected(antennaType);
+  if (!sideSelected) return;
+
+  const sideLabel = side === "tx" ? "Tx" : "Rx";
+  const frequencyKey = `${side}-channel-frequency`;
+  const frequency = validateEntryNumber(fieldErrors, entry, frequencyKey, {
+    requiredMessage: `Enter a ${sideLabel} channel frequency.`,
+    invalidMessage: `Enter a valid ${sideLabel} channel frequency.`,
+  });
+  if (frequency == null || frequency <= 0) return;
+
+  requireEntryField(
+    fieldErrors,
+    entry,
+    `${side}-radio-model`,
+    `Enter a ${sideLabel} radio model number.`,
+  );
+
+  if (getEntryValue(entry, "licence-type") !== "radio2") {
+    requireEntryField(
+      fieldErrors,
+      entry,
+      `${side}-radio-code`,
+      `Enter a ${sideLabel} radio manufacturer code.`,
+    );
+    requireEntryField(
+      fieldErrors,
+      entry,
+      `${side}-radio-certificate`,
+      `Enter a ${sideLabel} radio certification number.`,
+    );
+
+    const typeCode = requireEntryField(
+      fieldErrors,
+      entry,
+      `${side}-type-code`,
+      `Select a ${sideLabel} antenna type code.`,
+    );
+    if (typeCode && !ANTENNA_TYPE_VALUES.has(typeCode)) {
+      addFieldError(
+        fieldErrors,
+        `${side}-type-code`,
+        `Select a valid ${sideLabel} antenna type code.`,
+      );
+    }
+
+    requireEntryField(
+      fieldErrors,
+      entry,
+      `${side}-antenna-manufacturer`,
+      `Enter a ${sideLabel} antenna manufacturer.`,
+    );
+  }
+
+  validateEntryNumber(fieldErrors, entry, `${side}-number-antennas`, {
+    requiredMessage: `Enter the total number of ${sideLabel} antennas.`,
+    invalidMessage: `Enter a whole number from 1 to 256 for ${sideLabel} antennas.`,
+    min: 1,
+    max: 256,
+    integer: true,
+  });
+  requireEntryField(
+    fieldErrors,
+    entry,
+    `${side}-antenna-model`,
+    `Enter a ${sideLabel} antenna model number.`,
+  );
+
+  const antennaHeight = validateEntryNumber(
+    fieldErrors,
+    entry,
+    `${side}-antenna-height`,
+    {
+      requiredMessage: `Enter a ${sideLabel} antenna height.`,
+      invalidMessage: `Enter a valid ${sideLabel} antenna height for the selected Site Type Code.`,
+    },
+  );
+  if (antennaHeight != null) {
+    if (siteType === "1") {
+      if (antennaHeight < -100 || antennaHeight > 0) {
+        addFieldError(
+          fieldErrors,
+          `${side}-antenna-height`,
+          `${sideLabel} antenna height must be between -100 and 0 metres for underground sites.`,
+        );
+      }
+    } else if (siteType === "2" || siteType === "3") {
+      if (antennaHeight < 0 || antennaHeight > 600) {
+        addFieldError(
+          fieldErrors,
+          `${side}-antenna-height`,
+          `${sideLabel} antenna height must be between 0 and 600 metres.`,
+        );
+      }
+      if (structureHeight != null && antennaHeight > structureHeight + 5) {
+        addFieldError(
+          fieldErrors,
+          `${side}-antenna-height`,
+          `${sideLabel} antenna height must be no more than 5 metres above Structure Height.`,
+        );
+      }
+    }
+  }
+
+  const pattern = requireEntryField(
+    fieldErrors,
+    entry,
+    `${side}-omnidirectional-pattern`,
+    `Select a ${sideLabel} antenna omnidirectional pattern indicator.`,
+  );
+  if (pattern && !DIRECTIONAL_PATTERN_VALUES.has(pattern)) {
+    addFieldError(
+      fieldErrors,
+      `${side}-omnidirectional-pattern`,
+      `Select a valid ${sideLabel} antenna omnidirectional pattern indicator.`,
+    );
+  }
+
+  if (isDirectionalPattern(pattern)) {
+    validateEntryNumber(
+      fieldErrors,
+      entry,
+      `${side}-antenna-horizontal-beamwidth`,
+      {
+        requiredMessage: `Enter a ${sideLabel} antenna horizontal beamwidth.`,
+        invalidMessage: `${sideLabel} antenna horizontal beamwidth must be between 1 and 359.9 degrees.`,
+        min: 1,
+        max: 359.9,
+      },
+    );
+    validateEntryNumber(
+      fieldErrors,
+      entry,
+      `${side}-antenna-vertical-beamwidth`,
+      {
+        requiredMessage: `Enter a ${sideLabel} antenna vertical beamwidth.`,
+        invalidMessage: `${sideLabel} antenna vertical beamwidth must be between 1 and 359.9 degrees.`,
+        min: 1,
+        max: 359.9,
+      },
+    );
+    validateEntryNumber(fieldErrors, entry, `${side}-antenna-azimuth`, {
+      requiredMessage: `Enter a ${sideLabel} antenna azimuth.`,
+      invalidMessage: `${sideLabel} antenna azimuth must be between 0 and 359.9 degrees.`,
+      min: 0,
+      max: 359.9,
+    });
+    validateEntryNumber(fieldErrors, entry, `${side}-antenna-elevation-angle`, {
+      requiredMessage: `Enter a ${sideLabel} antenna elevation angle.`,
+      invalidMessage: `${sideLabel} antenna elevation angle must be between -90 and 90 degrees.`,
+      min: -90,
+      max: 90,
+    });
+  }
+
+  validateEntryNumber(fieldErrors, entry, `${side}-antenna-gain`, {
+    requiredMessage: `Enter a ${sideLabel} antenna gain.`,
+    invalidMessage: `${sideLabel} antenna gain must be between 0 and 70 dBi.`,
+    min: 0,
+    max: 70,
+  });
+  validateEntryNumber(fieldErrors, entry, `${side}-antenna-line-loss`, {
+    requiredMessage: `Enter a ${sideLabel} line loss.`,
+    invalidMessage: `${sideLabel} line loss must be between 0 and 30 dB.`,
+    min: 0,
+    max: 30,
+  });
+}
+
+function validateEntryPage3(entry, fieldErrors) {
+  const siteInfoChange = getEntryValue(entry, "site-info-change");
+  if (siteInfoChange && siteInfoChange !== "radio1") return;
+
+  validateEntryNumber(fieldErrors, entry, "bandwidth", {
+    requiredMessage: "Enter a Bandwidth.",
+    invalidMessage: "Bandwidth must be between 0.10 and 50000.00.",
+    min: 0.1,
+    max: 50000,
+  });
+
+  const classOfEmissions = requireEntryField(
+    fieldErrors,
+    entry,
+    "class-of-emissions",
+    "Enter a Class of emissions.",
+  );
+  if (classOfEmissions && !/^[0-9A-Za-z]{3,5}$/.test(classOfEmissions)) {
+    addFieldError(
+      fieldErrors,
+      "class-of-emissions",
+      "Enter a Class of emissions code using 3 to 5 letters or numbers.",
+    );
+  }
+
+  validateEntryNumber(fieldErrors, entry, "downlink", {
+    requiredMessage: "Enter a Downlink resource allocation.",
+    invalidMessage: "Downlink resource allocation must be between 0 and 100.",
+    min: 0,
+    max: 100,
+  });
+
+  const antennaType = requireEntryField(
+    fieldErrors,
+    entry,
+    "antenna-type",
+    "Select an antenna type.",
+  );
+  if (antennaType && !["radio1", "radio2", "radio3"].includes(antennaType)) {
+    addFieldError(fieldErrors, "antenna-type", "Select a valid antenna type.");
+  }
+
+  const txFrequency = parseNumber(getEntryValue(entry, "tx-channel-frequency"));
+  if (txFrequency != null && txFrequency > 0) {
+    requireEntryField(
+      fieldErrors,
+      entry,
+      "tcp",
+      "Enter a Transmitter TCP-TRP value.",
+    );
+  }
+
+  const siteType = getEntryValue(entry, "site-type");
+  const structureHeight = parseNumber(getEntryValue(entry, "structure-height"));
+  validateEntryAntennaSide(fieldErrors, entry, "tx", siteType, structureHeight);
+  validateEntryAntennaSide(fieldErrors, entry, "rx", siteType, structureHeight);
+}
+
+function validateEntryData(entry, pages = [1, 2, 3]) {
+  const fieldErrors = {};
+  if (pages.includes(1)) validateEntryPage1(entry, fieldErrors);
+  if (pages.includes(2)) validateEntryPage2(entry, fieldErrors);
+  if (pages.includes(3)) validateEntryPage3(entry, fieldErrors);
+  return fieldErrors;
+}
+
+function getCsvImportRowLabel(entry, index) {
+  const licenceNumber = getEntryValue(entry, "licence-number") || "blank";
+  const referenceNumber = getEntryValue(entry, "reference-number") || "blank";
+  const stationlocation = getEntryValue(entry, "station-location") || "blank";
+
+  return `licence number = ${licenceNumber}, reference number = ${referenceNumber}, station location = ${stationlocation}`;
+}
+
+function validateEntriesForCsv(entries) {
+  if (!entries.length) {
+    return {
+      success: false,
+      message: "No data found to export.",
+      errors: [],
+    };
+  }
+
+  const errors = [];
+  entries.forEach((entry, index) => {
+    const fieldErrors = validateEntryData(entry, [1, 2, 3]);
+    Object.values(fieldErrors).forEach((message) => {
+      errors.push(`${getCsvImportRowLabel(entry, index)}: ${message}`);
+    });
+  });
+
+  if (errors.length) {
+    return {
+      success: false,
+      message: errors.slice(0, 8).join("\n"),
+      errors,
+    };
+  }
+
+  return {
+    success: true,
+    errors: [],
+  };
+}
 
 function clearFieldError(el) {
   if (!el) return;
@@ -75,7 +731,7 @@ function getLicenceTypeFromState() {
   if (pageValue) return pageValue;
 
   try {
-    const raw = sessionStorage.getItem("site-data-upload-all") || "{}";
+    const raw = localStorage.getItem("site-data-upload-all") || "{}";
     const state = JSON.parse(raw) || {};
     const currentPage1 = state.current?.page1 || {};
 
@@ -807,17 +1463,41 @@ function isHiddenField(el) {
   return false;
 }
 
-function validateCurrentPage() {
+function getCurrentPageEntryAndFields() {
+  const page = Number.parseInt(localStorage.getItem(PAGE_KEY) || "1", 10);
+  const state = ensureState();
+  const current = state.current || {};
+  const currentPageData = collectPageData();
+  const entry = {
+    ...(current.page1 || {}),
+    ...(current.page2 || {}),
+    ...(current.page3 || {}),
+  };
+  entry[`page${page}`] = currentPageData;
+  Object.assign(entry, currentPageData);
+
   const fieldSelectors = [
     "gcds-input",
     "gcds-select",
     "gcds-date-input",
     "gcds-radios",
   ];
-  const errors = new Map();
   const fields = Array.from(
     document.querySelectorAll(fieldSelectors.join(",")),
   );
+  const fieldMap = new Map();
+  fields.forEach((el) => {
+    getElementKeys(el).forEach((key) => {
+      if (key && !fieldMap.has(key)) fieldMap.set(key, el);
+    });
+  });
+
+  return { entry, fields, fieldMap, page };
+}
+
+function validateCurrentPage() {
+  const errors = new Map();
+  const { entry, fields, fieldMap, page } = getCurrentPageEntryAndFields();
 
   fields.forEach((el) => {
     if (isHiddenField(el)) {
@@ -827,9 +1507,11 @@ function validateCurrentPage() {
     validateBaseFieldConstraints(el, errors);
   });
 
-  validatePage1Rules(errors);
-  validatePage2Rules(errors);
-  validatePage3Rules(errors);
+  const entryErrors = validateEntryData(entry, [page]);
+  Object.entries(entryErrors).forEach(([fieldKey, message]) => {
+    const field = fieldMap.get(fieldKey);
+    if (field) addError(errors, field, message);
+  });
 
   fields.forEach((el) => {
     if (isHiddenField(el)) {
@@ -847,4 +1529,9 @@ function validateCurrentPage() {
   return errors.size === 0;
 }
 
-export { applyValidationToAllFields, validateCurrentPage };
+export {
+  applyValidationToAllFields,
+  validateCurrentPage,
+  validateEntryData,
+  validateEntriesForCsv,
+};

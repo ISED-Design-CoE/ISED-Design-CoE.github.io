@@ -2,7 +2,6 @@
 import { setCurrentPage } from "./site-data-upload-csv.js";
 
 const ALL_DATA_KEY = "site-data-upload-all";
-const MAX_STATIONS = 5;
 
 const PAGE1_FIELDS = [
   "licence-type",
@@ -75,7 +74,7 @@ const PAGE3_FIELDS = [
 
 function readAllData() {
   try {
-    return JSON.parse(sessionStorage.getItem(ALL_DATA_KEY) || "{}");
+    return JSON.parse(localStorage.getItem(ALL_DATA_KEY) || "{}");
   } catch (err) {
     console.warn("Could not parse saved site data:", err);
     return {};
@@ -83,7 +82,7 @@ function readAllData() {
 }
 
 function writeAllData(data) {
-  sessionStorage.setItem(ALL_DATA_KEY, JSON.stringify(data));
+  localStorage.setItem(ALL_DATA_KEY, JSON.stringify(data));
 }
 
 function getPageField(pageData, fieldKeys) {
@@ -252,8 +251,7 @@ function cloneEntryByIndex(rowIndex) {
   if (
     !Number.isInteger(rowIndex) ||
     rowIndex < 0 ||
-    rowIndex >= entries.length ||
-    entries.length >= MAX_STATIONS
+    rowIndex >= entries.length
   ) {
     return false;
   }

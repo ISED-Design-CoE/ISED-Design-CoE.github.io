@@ -14,6 +14,7 @@ import {
 import {
   validateCurrentPage,
   applyValidationToAllFields,
+  validateEntriesForCsv,
 } from "./site-data-validation.js";
 
 // ---- CSV headings and columns ----
@@ -68,6 +69,12 @@ const DIRECTIONAL_PATTERN_CODES = {
   2: "N",
 };
 
+const ANTENNA_TYPE_CODES = {
+  1: "AAS",
+  2: "NAC",
+  3: "NAU",
+};
+
 const CSV_FIELDS = [
   {
     heading: "Spectrum licence number",
@@ -78,7 +85,10 @@ const CSV_FIELDS = [
     get: (row) => row["reference-number"] ?? "",
   },
   { heading: "Contact name", get: (row) => row["contact-name"] ?? "" },
-  { heading: "Business telephone", get: (row) => row["business-number"] ?? "" },
+  {
+    heading: "Business telephone number",
+    get: (row) => row["business-number"] ?? "",
+  },
   { heading: "E-mail address", get: (row) => row["email-address"] ?? "" },
   { heading: "Station location", get: (row) => row["station-location"] ?? "" },
   {
@@ -136,11 +146,11 @@ const CSV_FIELDS = [
     get: (row) => getTxRxRadioValue(row, "rx", "radio-model"),
   },
   {
-    heading: "Tx Radio Manufacturer Code",
+    heading: "Tx Radio Manufacturer code",
     get: (row) => getTxRxRadioValue(row, "tx", "radio-code"),
   },
   {
-    heading: "Rx Radio Manufacturer Code",
+    heading: "Rx Radio Manufacturer code",
     get: (row) => getTxRxRadioValue(row, "rx", "radio-code"),
   },
   {
@@ -153,7 +163,7 @@ const CSV_FIELDS = [
   },
   { heading: "Bandwidth", get: (row) => row.bandwidth ?? "" },
   {
-    heading: "Class of Emisssion",
+    heading: "Class of Emission",
     get: (row) => row["class-of-emissions"] ?? "",
   },
   { heading: "Transmitter TCP-TRP", get: (row) => row.tcp ?? "" },
@@ -265,6 +275,24 @@ function mapValue(map, value) {
   return map[value] ?? value;
 }
 
+function createReverseLookup(map) {
+  return Object.fromEntries(
+    Object.entries(map).map(([key, value]) => [
+      String(value).toUpperCase(),
+      key,
+    ]),
+  );
+}
+
+const RADIO_TECHNOLOGY_VALUES = createReverseLookup(RADIO_TECHNOLOGY_CODES);
+const PROVINCE_TERRITORY_VALUES = createReverseLookup(PROVINCE_TERRITORY_CODES);
+const SITE_TYPE_VALUES = createReverseLookup(SITE_TYPE_CODES);
+const STRUCTURE_TYPE_VALUES = createReverseLookup(STRUCTURE_TYPE_CODES);
+const DIRECTIONAL_PATTERN_VALUES = createReverseLookup(
+  DIRECTIONAL_PATTERN_CODES,
+);
+const ANTENNA_TYPE_VALUES = createReverseLookup(ANTENNA_TYPE_CODES);
+
 function getPage3Side(row, side) {
   const antennaType = row["antenna-type"];
   if (side === "tx")
@@ -295,13 +323,408 @@ function getDirectionalValue(row, side, key) {
 function mapAntennaCode(row, side) {
   if (!getPage3Side(row, side)) return "";
   if (row["licence-type"] === "radio2") return "";
-  return "NAU";
+  return mapValue(ANTENNA_TYPE_CODES, row[`${side}-type-code`]);
+}
+
+function getRowsForExport() {
+  const state = ensureState();
+  const entries = Array.isArray(state.entries) ? state.entries : [];
+  let rows = entries;
+  if (!rows.length) {
+    const current = state.current || {};
+    const draft = { ...current.page1, ...current.page2, ...current.page3 };
+    if (!Object.values(draft).every((value) => value === "" || value == null)) {
+      rows = [draft];
+    }
+  }
+  return rows;
+}
+function validateAllDataForCsv() {
+  const rows = getRowsForExport();
+  const validationResult = validateEntriesForCsv(rows);
+  if (!validationResult.success) return validationResult;
+  return { success: true, rows };
+}
+
+function getCurrentCsvValidationErrors() {
+  const rows = getRowsForExport();
+  const validationResult = validateEntriesForCsv(rows);
+  return validationResult.success ? [] : validationResult.errors || [];
+}
+
+function parseCsvLine(line) {
+  const values = [];
+  let currentValue = "";
+  let inQuotes = false;
+
+  for (let index = 0; index < line.length; index += 1) {
+    const character = line[index];
+
+    if (character === '"') {
+      const nextCharacter = line[index + 1];
+      if (inQuotes && nextCharacter === '"') {
+        currentValue += '"';
+        index += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+
+    if (character === "," && !inQuotes) {
+      values.push(currentValue.trim());
+      currentValue = "";
+      continue;
+    }
+
+    currentValue += character;
+  }
+
+  values.push(currentValue.trim());
+  return values;
+}
+
+function stripUtf8Bom(value) {
+  return value.replace(/^\uFEFF/, "");
+}
+
+function normalizeImportedRow(row) {
+  const normalizedRow = {};
+  Object.entries(row).forEach(([heading, value]) => {
+    const normalizedHeading = stripUtf8Bom(String(heading ?? "")).trim();
+    const normalizedValue = typeof value === "string" ? value.trim() : value;
+    normalizedRow[normalizedHeading] = normalizedValue;
+    normalizedRow[normalizedHeading.toLowerCase()] = normalizedValue;
+  });
+  return normalizedRow;
+}
+
+function getImportedColumnValue(normalizedRow, heading) {
+  return (
+    normalizedRow[heading] ?? normalizedRow[String(heading).toLowerCase()] ?? ""
+  );
+}
+
+function getImportedSiteInfoChange(stationLocation) {
+  const normalized = String(stationLocation ?? "")
+    .trim()
+    .toUpperCase();
+  if (normalized === "NOCHANGE" || normalized === "NOCHANGES") return "radio2";
+  if (normalized === "NOSTATIONS") return "radio3";
+  return "radio1";
+}
+
+function getImportedLicenceType(stationType) {
+  return String(stationType ?? "")
+    .trim()
+    .toUpperCase() === "TC"
+    ? "radio2"
+    : "radio1";
+}
+
+function getImportedAntennaType(txFrequency, rxFrequency) {
+  const txValue = Number.parseFloat(String(txFrequency ?? ""));
+  const rxValue = Number.parseFloat(String(rxFrequency ?? ""));
+  const hasTx = Number.isFinite(txValue) && txValue > 0;
+  const hasRx = Number.isFinite(rxValue) && rxValue > 0;
+
+  if (hasTx && hasRx) return "radio3";
+  if (hasTx) return "radio1";
+  if (hasRx) return "radio2";
+  return "radio3";
+}
+
+function mapImportedValue(value, reverseLookup) {
+  const normalized = String(value ?? "")
+    .trim()
+    .toUpperCase();
+  if (!normalized) return "";
+  return reverseLookup[normalized] ?? "";
+}
+
+function mapImportedEntry(row) {
+  const normalizedRow = normalizeImportedRow(row);
+  const importedEntry = {
+    "licence-number": getImportedColumnValue(
+      normalizedRow,
+      "Spectrum licence number",
+    ),
+    "reference-number": getImportedColumnValue(
+      normalizedRow,
+      "Upload reference number",
+    ),
+    "contact-name": getImportedColumnValue(normalizedRow, "Contact name"),
+    "business-number": getImportedColumnValue(
+      normalizedRow,
+      "Business telephone number",
+    ),
+    "email-address": getImportedColumnValue(normalizedRow, "E-mail address"),
+    "station-location": getImportedColumnValue(
+      normalizedRow,
+      "Station location",
+    ),
+    "radio-technology": mapImportedValue(
+      getImportedColumnValue(normalizedRow, "Radio technology"),
+      RADIO_TECHNOLOGY_VALUES,
+    ),
+    "cell-id": getImportedColumnValue(normalizedRow, "Cell ID"),
+    "physical-cell-id": getImportedColumnValue(
+      normalizedRow,
+      "Physical Cell ID",
+    ),
+    "province-territory": mapImportedValue(
+      getImportedColumnValue(normalizedRow, "Province/Territory code"),
+      PROVINCE_TERRITORY_VALUES,
+    ),
+    latitude: getImportedColumnValue(normalizedRow, "Latitude"),
+    longitude: getImportedColumnValue(normalizedRow, "Longitude"),
+    "site-type": mapImportedValue(
+      getImportedColumnValue(normalizedRow, "Site Type Code"),
+      SITE_TYPE_VALUES,
+    ),
+    "structure-height": getImportedColumnValue(
+      normalizedRow,
+      "Structure height",
+    ),
+    "structure-type": mapImportedValue(
+      getImportedColumnValue(normalizedRow, "Site Structure Type Code"),
+      STRUCTURE_TYPE_VALUES,
+    ),
+    "date-of-modification": getImportedColumnValue(
+      normalizedRow,
+      "Station/Associated channels in-service date or last modified date",
+    ),
+    "site-record-id": getImportedColumnValue(normalizedRow, "Site Record ID"),
+    "tx-channel-frequency": getImportedColumnValue(
+      normalizedRow,
+      "Tx channel frequency or Tx lower frequency limit of the band in use",
+    ),
+    "rx-channel-frequency": getImportedColumnValue(
+      normalizedRow,
+      "Rx channel frequency or Rx lower frequency limit of the band in use",
+    ),
+    "tx-radio-model": getImportedColumnValue(
+      normalizedRow,
+      "Tx Radio model number",
+    ),
+    "rx-radio-model": getImportedColumnValue(
+      normalizedRow,
+      "Rx Radio model number",
+    ),
+    "tx-radio-code": getImportedColumnValue(
+      normalizedRow,
+      "Tx Radio Manufacturer Code",
+    ),
+    "rx-radio-code": getImportedColumnValue(
+      normalizedRow,
+      "Rx Radio Manufacturer Code",
+    ),
+    "tx-radio-certificate": getImportedColumnValue(
+      normalizedRow,
+      "Tx Radio Certification Number",
+    ),
+    "rx-radio-certificate": getImportedColumnValue(
+      normalizedRow,
+      "Rx Radio Certification Number",
+    ),
+    bandwidth: getImportedColumnValue(normalizedRow, "Bandwidth"),
+    "class-of-emissions": getImportedColumnValue(
+      normalizedRow,
+      "Class of Emission",
+    ),
+    tcp: getImportedColumnValue(normalizedRow, "Transmitter TCP-TRP"),
+    downlink: getImportedColumnValue(
+      normalizedRow,
+      "Downlink Resource Allocation",
+    ),
+    "tx-type-code": mapImportedValue(
+      getImportedColumnValue(normalizedRow, "Tx Antenna Type Code"),
+      ANTENNA_TYPE_VALUES,
+    ),
+    "rx-type-code": mapImportedValue(
+      getImportedColumnValue(normalizedRow, "Rx Antenna Type Code"),
+      ANTENNA_TYPE_VALUES,
+    ),
+    "tx-number-antennas": getImportedColumnValue(
+      normalizedRow,
+      "Number of Tx Antennas",
+    ),
+    "rx-number-antennas": getImportedColumnValue(
+      normalizedRow,
+      "Number of Rx Antennas",
+    ),
+    "tx-antenna-model": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Model Number",
+    ),
+    "rx-antenna-model": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Model Number",
+    ),
+    "tx-antenna-manufacturer": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Manufacturer",
+    ),
+    "rx-antenna-manufacturer": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Manufacturer",
+    ),
+    "tx-antenna-height": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Height",
+    ),
+    "rx-antenna-height": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Height",
+    ),
+    "tx-omnidirectional-pattern": mapImportedValue(
+      getImportedColumnValue(
+        normalizedRow,
+        "Tx Antenna Directional Pattern Indicator",
+      ),
+      DIRECTIONAL_PATTERN_VALUES,
+    ),
+    "rx-omnidirectional-pattern": mapImportedValue(
+      getImportedColumnValue(
+        normalizedRow,
+        "Rx Antenna Directional Pattern Indicator",
+      ),
+      DIRECTIONAL_PATTERN_VALUES,
+    ),
+    "tx-antenna-horizontal-beamwidth": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Horizontal Beam",
+    ),
+    "rx-antenna-horizontal-beamwidth": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Horizontal Beam",
+    ),
+    "tx-antenna-vertical-beamwidth": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Vertical Beam",
+    ),
+    "rx-antenna-vertical-beamwidth": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Vertical Beam",
+    ),
+    "tx-antenna-azimuth": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Azimuth",
+    ),
+    "rx-antenna-azimuth": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Azimuth",
+    ),
+    "tx-antenna-elevation-angle": getImportedColumnValue(
+      normalizedRow,
+      "Tx Antenna Elevation Angle",
+    ),
+    "rx-antenna-elevation-angle": getImportedColumnValue(
+      normalizedRow,
+      "Rx Antenna Elevation Angle",
+    ),
+    "tx-antenna-gain": getImportedColumnValue(normalizedRow, "Tx Antenna Gain"),
+    "rx-antenna-gain": getImportedColumnValue(normalizedRow, "Rx Antenna Gain"),
+    "tx-antenna-line-loss": getImportedColumnValue(
+      normalizedRow,
+      "Tx Line Loss",
+    ),
+    "rx-antenna-line-loss": getImportedColumnValue(
+      normalizedRow,
+      "Rx Line Loss",
+    ),
+  };
+
+  importedEntry["site-info-change"] = getImportedSiteInfoChange(
+    importedEntry["station-location"],
+  );
+  importedEntry["licence-type"] = getImportedLicenceType(
+    getImportedColumnValue(normalizedRow, "Station type"),
+  );
+  importedEntry["antenna-type"] = getImportedAntennaType(
+    importedEntry["tx-channel-frequency"],
+    importedEntry["rx-channel-frequency"],
+  );
+
+  return importedEntry;
+}
+
+function getImportedEntriesFromCsv(csvText) {
+  const lines = String(csvText ?? "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line !== "");
+
+  if (lines.length <= 1) {
+    return {
+      success: false,
+      message: "No station data found",
+      errors: ["No station data found"],
+    };
+  }
+
+  const headings = parseCsvLine(stripUtf8Bom(lines[0]));
+  const importedEntries = lines.slice(1).map((line) => {
+    const values = parseCsvLine(line);
+    const row = {};
+    headings.forEach((heading, index) => {
+      row[heading] = values[index] ?? "";
+    });
+    return mapImportedEntry(row);
+  });
+
+  return {
+    success: true,
+    importedEntries,
+  };
+}
+
+function validateCsvImportData(csvText) {
+  const importedResult = getImportedEntriesFromCsv(csvText);
+  if (!importedResult.success) return importedResult;
+
+  return {
+    importedEntries: importedResult.importedEntries,
+  };
+}
+
+function importAllDataFromCsv(csvText) {
+  const validationResult = validateCsvImportData(csvText);
+  if (!validationResult.importedEntries) {
+    return {
+      success: false,
+      message: validationResult.message,
+      errors: validationResult.errors || [],
+    };
+  }
+
+  const importedEntries = validationResult.importedEntries;
+
+  const state = ensureState();
+  const existingEntries = Array.isArray(state.entries) ? state.entries : [];
+
+  state.entries = [...existingEntries, ...importedEntries];
+  state.current = { page1: {}, page2: {}, page3: {} };
+  state.editing = null;
+  writeAllData(state);
+
+  const importValidation = validateEntriesForCsv(state.entries);
+  const errors = importValidation.success ? [] : importValidation.errors || [];
+
+  return {
+    success: true,
+    importedCount: importedEntries.length,
+    errors,
+    message: importValidation.success
+      ? ""
+      : "Some saved stations contain invalid or missing field values.",
+  };
 }
 
 // ------------------------------------
 
 function saveCurrentPageData() {
-  const page = parseInt(sessionStorage.getItem(PAGE_KEY) || "1", 10);
+  const page = parseInt(localStorage.getItem(PAGE_KEY) || "1", 10);
   const state = ensureState();
   state.current[`page${page}`] = collectPageData();
   writeAllData(state);
@@ -355,7 +778,7 @@ function escapeCsvValue(value) {
 }
 
 function buildCsv(rows) {
-  const header = CSV_FIELDS.map((field) => field.heading).join(",");
+  const header = getCsvHeadings().join(",");
   const body = rows
     .map((row) =>
       CSV_FIELDS.map((field) => escapeCsvValue(field.get(row))).join(","),
@@ -377,21 +800,24 @@ function downloadCsv(filename, csvContent) {
   URL.revokeObjectURL(url);
 }
 
-function exportAllDataAsCsv(filename = "site-data-upload.csv") {
-  const state = ensureState();
-  const entries = state.entries || [];
-  let rows = entries;
-  if (!rows.length) {
-    const current = state.current || {};
-    const draft = { ...current.page1, ...current.page2, ...current.page3 };
-    if (!Object.values(draft).every((v) => v === "" || v == null)) {
-      rows = [draft];
-    }
+function getDefaultCsvFilename() {
+  const currentDate = new Date();
+  const date = [
+    currentDate.getFullYear(),
+    String(currentDate.getMonth() + 1).padStart(2, "0"),
+    String(currentDate.getDate()).padStart(2, "0"),
+  ].join("-");
+  return `Site data ${date}.csv`;
+}
+
+function exportAllDataAsCsv(filename = getDefaultCsvFilename()) {
+  const validationResult = validateAllDataForCsv();
+  if (!validationResult.success) {
+    console.warn(validationResult.message);
+    return validationResult;
   }
-  if (!rows.length) {
-    console.warn("No data found to export.");
-    return;
-  }
+
+  let rows = validationResult.rows;
   rows = rows.map((row) => {
     if (row["site-info-change"] === "radio2") {
       return { ...row, "station-location": "NOCHANGE" };
@@ -406,6 +832,15 @@ function exportAllDataAsCsv(filename = "site-data-upload.csv") {
   });
   const csv = buildCsv(rows);
   downloadCsv(filename, csv);
+
+  return {
+    success: true,
+    exportedCount: rows.length,
+  };
+}
+
+function getCsvHeadings() {
+  return CSV_FIELDS.map((field) => field.heading);
 }
 
 export {
@@ -413,6 +848,11 @@ export {
   saveCurrentPageData,
   loadCurrentPageData,
   exportAllDataAsCsv,
+  validateAllDataForCsv,
+  getCurrentCsvValidationErrors,
+  getCsvHeadings,
+  validateCsvImportData,
+  importAllDataFromCsv,
   clearCurrentEntry,
   finalizeCurrentEntry,
   validateCurrentPage,

@@ -96,12 +96,19 @@
         <gcds-heading tag="h1">Site data upload CSV generator</gcds-heading>
 
         <gcds-text>
-          Add up to 5 stations below to your site data csv. When you are ready,
-          generate the csv file and upload your site data.
+          Add stations below to your site data csv. Alternatively, use the
+          import stations button to upload station data from a csv file. When
+          you are ready, generate the csv file and upload your site data.
         </gcds-text>
         <div style="margin-top: -25px">
           <gcds-heading tag="h2">Stations</gcds-heading>
 
+          <div class="error" hidden>
+            <gcds-error-summary
+              error-links='{ "#error-href-1": "Error summary item.", "#error-href-2": "Error summary item.", "#error-href-3": "Error summary item." }'
+            >
+            </gcds-error-summary>
+          </div>
           <gcds-table id="stations-table" columns="[]" data="[]">
             <template slot="cell:actions">
               <span
@@ -145,6 +152,15 @@
           <gcds-button button-role="primary" id="btn-add-entry"
             >+ Add station</gcds-button
           >
+          <gcds-button button-role="secondary" id="btn-upload-csv"
+            >Import stations</gcds-button
+          >
+          <input
+            id="csv-upload-input"
+            type="file"
+            accept=".csv,text/csv"
+            hidden
+          />
         </div>
 
         <dialog id="delete-station-dialog">
@@ -174,10 +190,10 @@
             your monthly site data upload.
           </gcds-text>
 
-          <gcds-input
+          <!-- <gcds-input
             input-id="file-name"
             label="Name of .csv file"
-          ></gcds-input>
+          ></gcds-input> -->
           <gcds-button button-role="start" id="download-csv"
             >Generate CSV</gcds-button
           >
@@ -218,8 +234,12 @@
         setCurrentPage,
         saveCurrentPageData,
         exportAllDataAsCsv,
+        getCurrentCsvValidationErrors,
+        getCsvHeadings,
+        importAllDataFromCsv,
         clearCurrentEntry,
       } from "./scripts/site-data-upload-csv.js";
+      import { clearCsvImportErrors as clearStoredCsvImportErrors } from "./scripts/site-data-storage.js";
       import {
         getStationRows,
         editEntryByIndex,
@@ -261,6 +281,11 @@
       renderStationsTable();
 
       const stationsTable = document.getElementById("stations-table");
+      const uploadCsvButton = document.getElementById("btn-upload-csv");
+      const uploadCsvInput = document.getElementById("csv-upload-input");
+      const csvErrorContainer = document.querySelector(".error");
+      const csvErrorSummary =
+        csvErrorContainer?.querySelector("gcds-error-summary");
       const deleteDialog = document.getElementById("delete-station-dialog");
       const cancelDeleteButton = document.getElementById(
         "cancel-delete-dialog",
@@ -268,6 +293,176 @@
       const confirmDeleteButton = document.getElementById(
         "confirm-delete-dialog",
       );
+      const expectedCsvHeadings = getCsvHeadings();
+
+      function parseCsvLine(line) {
+        const values = [];
+        let currentValue = "";
+        let inQuotes = false;
+
+        for (let index = 0; index < line.length; index += 1) {
+          const character = line[index];
+
+          if (character === '"') {
+            const nextCharacter = line[index + 1];
+            if (inQuotes && nextCharacter === '"') {
+              currentValue += '"';
+              index += 1;
+            } else {
+              inQuotes = !inQuotes;
+            }
+            continue;
+          }
+
+          if (character === "," && !inQuotes) {
+            values.push(currentValue.trim());
+            currentValue = "";
+            continue;
+          }
+
+          currentValue += character;
+        }
+
+        values.push(currentValue.trim());
+        return values;
+      }
+
+      function stripUtf8Bom(value) {
+        return value.replace(/^\uFEFF/, "");
+      }
+
+      function clearCsvImportErrors() {
+        if (csvErrorContainer) {
+          csvErrorContainer.hidden = true;
+        }
+
+        if (csvErrorSummary) {
+          csvErrorSummary.setAttribute("error-links", "{}");
+          if ("errorLinks" in csvErrorSummary) {
+            csvErrorSummary.errorLinks = {};
+          }
+        }
+
+        clearStoredCsvImportErrors();
+      }
+
+      function showCsvImportErrors(messages, options = {}) {
+        if (!csvErrorContainer || !csvErrorSummary) return;
+
+        const nextErrors = messages
+          .filter((message) => typeof message === "string" && message.trim())
+          .map((message) => message.trim());
+
+        if (!nextErrors.length) {
+          clearCsvImportErrors();
+          return;
+        }
+
+        const uniqueErrors = Array.from(new Set(nextErrors));
+
+        let targets = document.getElementById("csv-upload-error-targets");
+        if (!targets) {
+          targets = document.createElement("div");
+          targets.id = "csv-upload-error-targets";
+          targets.hidden = true;
+          csvErrorContainer.insertBefore(targets, csvErrorSummary);
+        }
+
+        targets.innerHTML = "";
+        const errorLinks = {};
+
+        uniqueErrors.forEach((message, index) => {
+          const targetId = `csv-upload-error-${index + 1}`;
+          const target = document.createElement("span");
+          target.id = targetId;
+          targets.appendChild(target);
+          errorLinks[`#${targetId}`] = message;
+        });
+
+        csvErrorSummary.setAttribute("error-links", JSON.stringify(errorLinks));
+        if ("errorLinks" in csvErrorSummary) {
+          csvErrorSummary.errorLinks = errorLinks;
+        }
+
+        csvErrorContainer.hidden = false;
+        csvErrorContainer.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      function validateUploadedCsvHeaders(csvText) {
+        const lines = csvText
+          .split(/\r?\n/)
+          .map((line) => line.trim())
+          .filter((line) => line !== "");
+
+        if (!lines.length) {
+          return {
+            isValid: false,
+            messages: ["The selected CSV file is empty."],
+          };
+        }
+
+        const headerRow = parseCsvLine(stripUtf8Bom(lines[0]));
+        const normalizedHeaderRow = headerRow.map((heading) => heading.trim());
+        const normalizedExpectedHeadings = expectedCsvHeadings.map((heading) =>
+          heading.trim(),
+        );
+
+        const uploadedHeadingSet = new Set(normalizedHeaderRow);
+        const expectedHeadingSet = new Set(normalizedExpectedHeadings);
+
+        const missingHeadings = normalizedExpectedHeadings.filter(
+          (heading) => !uploadedHeadingSet.has(heading),
+        );
+        const unexpectedHeadings = normalizedHeaderRow.filter(
+          (heading) => heading && !expectedHeadingSet.has(heading),
+        );
+
+        if (headerRow.length !== 54) {
+          const messages = ["Please upload a valid CSV file."];
+
+          if (missingHeadings.length) {
+            messages.push(`Missing columns: ${missingHeadings.join(", ")}.`);
+          } else {
+            messages.push("Missing columns: None.");
+          }
+
+          return {
+            isValid: false,
+            messages,
+          };
+        }
+
+        const mismatches = normalizedExpectedHeadings
+          .map((heading, index) => {
+            const actualHeading = normalizedHeaderRow[index] ?? "";
+            if (actualHeading === heading) return null;
+            return `Column ${index + 1} must be \"${heading}\".`;
+          })
+          .filter(Boolean);
+
+        if (mismatches.length) {
+          const messages = ["Please upload a valid CSV file."];
+
+          if (missingHeadings.length) {
+            messages.push(`Missing columns: ${missingHeadings.join(", ")}.`);
+          } else {
+            messages.push("Missing columns: None.");
+          }
+
+          return {
+            isValid: false,
+            messages,
+          };
+        }
+
+        return {
+          isValid: true,
+          rowCount: Math.max(lines.length - 1, 0),
+        };
+      }
 
       function closeDeleteDialog() {
         if (!(deleteDialog instanceof HTMLDialogElement)) return;
@@ -288,6 +483,12 @@
           if (Number.isInteger(rowIndex) && rowIndex >= 0) {
             if (deleteEntryByIndex(rowIndex)) {
               renderStationsTable();
+              const remainingErrors = getCurrentCsvValidationErrors();
+              if (remainingErrors.length) {
+                showCsvImportErrors(remainingErrors, { append: false });
+              } else {
+                clearCsvImportErrors();
+              }
             }
           }
 
@@ -360,16 +561,6 @@
           }
 
           if (action === "clone") {
-            const stationCount = getStationRows({
-              includeCurrentDraft: false,
-            }).length;
-            if (stationCount >= 5) {
-              window.alert(
-                "You can only have up to 5 stations. Delete one before cloning.",
-              );
-              return;
-            }
-
             if (!cloneEntryByIndex(rowIndex)) return;
             setCurrentPage(1);
             window.location.href = "page1.html";
@@ -411,13 +602,25 @@
           }
         }
 
-        let filename = "site-data-upload.csv";
+        const currentDate = new Date();
+        const date = [
+          currentDate.getFullYear(),
+          String(currentDate.getMonth() + 1).padStart(2, "0"),
+          String(currentDate.getDate()).padStart(2, "0"),
+        ].join("-");
+        let filename = `Site data ${date}.csv`;
         if (fileName) {
           const safeName = fileName.replace(/\.[^/.]+$/, "").trim();
           if (safeName) filename = `${safeName}.csv`;
         }
 
-        exportAllDataAsCsv(filename);
+        const exportResult = exportAllDataAsCsv(filename);
+        if (!exportResult?.success) {
+          window.alert(
+            exportResult?.message ||
+              "Fix the station information before generating the CSV.",
+          );
+        }
       });
 
       document
@@ -428,6 +631,82 @@
           setCurrentPage(1);
           window.location.href = "page1.html";
         });
+
+      uploadCsvButton?.addEventListener("click", (event) => {
+        event.preventDefault();
+        uploadCsvInput?.click();
+      });
+
+      uploadCsvInput?.addEventListener("change", async (event) => {
+        const file = event.target?.files?.[0];
+        if (!file) return;
+
+        const isCsvFile =
+          file.name.toLowerCase().endsWith(".csv") || file.type === "text/csv";
+
+        if (!isCsvFile) {
+          clearCsvImportErrors();
+          event.target.value = "";
+          return;
+        }
+
+        try {
+          const csvText = await file.text();
+          const validation = validateUploadedCsvHeaders(csvText);
+
+          if (!validation.isValid) {
+            showCsvImportErrors(validation.messages || [""]);
+            return;
+          }
+
+          const importResult = importAllDataFromCsv(csvText);
+          if (!importResult.success) {
+            const importErrors = Array.isArray(importResult.errors)
+              ? importResult.errors
+              : [];
+            showCsvImportErrors(
+              importErrors.length
+                ? importErrors
+                : [
+                    importResult.message ||
+                      "Unable to import this CSV file. Review the file and try again.",
+                  ],
+            );
+            return;
+          }
+
+          renderStationsTable();
+
+          const importErrors = getCurrentCsvValidationErrors();
+          if (importErrors.length) {
+            showCsvImportErrors(importErrors, { append: false });
+          } else {
+            clearCsvImportErrors();
+          }
+
+          console.log("Uploaded CSV file:", {
+            name: file.name,
+            size: file.size,
+            rowCount: importResult.importedCount,
+            columnCount: expectedCsvHeadings.length,
+          });
+        } catch (error) {
+          console.error("Unable to read uploaded CSV file", error);
+          showCsvImportErrors([
+            "Unable to read the selected CSV file. Please try again.",
+          ]);
+        } finally {
+          event.target.value = "";
+        }
+      });
+
+      clearStoredCsvImportErrors();
+      const currentErrors = getCurrentCsvValidationErrors();
+      if (currentErrors.length) {
+        showCsvImportErrors(currentErrors, { append: false });
+      } else {
+        clearCsvImportErrors();
+      }
     </script>
   </body>
 </html>
