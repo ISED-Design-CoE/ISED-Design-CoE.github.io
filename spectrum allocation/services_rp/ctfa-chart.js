@@ -48,6 +48,9 @@
     var CHART_HEIGHT = 290;
     var maritimePreview =
       new URLSearchParams(location.search).get("preview") === "true";
+    var maritimeFilter =
+      maritimePreview ||
+      new URLSearchParams(location.search).get("service") === "maritime";
     var maritimeServices = [
       "Maritime radionavigation",
       "Maritime mobile",
@@ -356,7 +359,7 @@
       serviceChecked = {};
       serviceKeys.forEach(function (k) {
         serviceChecked[k] =
-          !maritimePreview || maritimeServices.indexOf(k) !== -1;
+          !maritimeFilter || maritimeServices.indexOf(k) !== -1;
       });
 
       var html = "";
@@ -414,7 +417,7 @@
       // Hook search bar
       searchEl = document.getElementById("freqServiceSearch");
       if (searchEl) {
-        if (maritimePreview) searchEl.value = "maritime";
+        if (maritimeFilter) searchEl.value = "maritime";
         searchEl.addEventListener("input", function () {
           applyLegendSearch(searchEl.value);
         });
