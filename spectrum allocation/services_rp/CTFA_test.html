@@ -49,7 +49,6 @@
         window.addEventListener("pageshow", async function () {
           await document.fonts.ready;
           const page = document.scrollingElement;
-          window.scrollTo(0, (page.scrollHeight - page.clientHeight) * 0.08);
         });
       }
     </script>
