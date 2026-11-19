@@ -45,7 +45,7 @@
   });
 
   function initFreqCharts() {
-    var CHART_HEIGHT = 290;
+    var CHART_HEIGHT = 175;
     var maritimePreview =
       new URLSearchParams(location.search).get("preview") === "true";
     var maritimeFilter =
@@ -191,17 +191,35 @@
       "Standard frequency and time signal-Satellite": "#E74C3C",
     };
 
-    function createStripedPattern(colors, stripeHeight) {
+    function createStripedPattern(chart, colors) {
+      var area = chart.chartArea;
       var c = document.createElement("canvas");
       var ctx = c.getContext("2d");
-      c.width = 100;
-      c.height = colors.length * stripeHeight;
+      c.width = 1;
+      c.height = Math.ceil(area.bottom);
       colors.forEach(function (color, idx) {
+        var top = Math.round(
+          area.top + ((area.bottom - area.top) * idx) / colors.length,
+        );
+        var bottom = Math.round(
+          area.top + ((area.bottom - area.top) * (idx + 1)) / colors.length,
+        );
         ctx.fillStyle = color;
-        ctx.fillRect(0, idx * stripeHeight, c.width, stripeHeight);
+        ctx.fillRect(0, top, c.width, bottom - top);
       });
-      return ctx.createPattern(c, "repeat");
+      return chart.ctx.createPattern(c, "repeat-x");
     }
+
+    var stripePlugin = {
+      afterLayout: function (chart) {
+        chart.data.datasets.forEach(function (ds) {
+          if (!ds.__stripeColors) return;
+          var pattern = createStripedPattern(chart, ds.__stripeColors);
+          ds.__originalBackgroundColor = pattern;
+          if (!ds.__disabledByServiceFilter) ds.backgroundColor = pattern;
+        });
+      },
+    };
 
     function parseServices(raw) {
       if (!raw) return { services: [], globalNotes: "" };
@@ -537,10 +555,7 @@
               })
             : ["#CCCCCC"];
 
-          var background =
-            colors.length > 1
-              ? createStripedPattern(colors, band.stripeHeight)
-              : colors[0];
+          var background = colors[0];
 
           // Mapped services used for filtering (fuzzy to canonical keys)
           var mappedServices = parsed.services
@@ -567,6 +582,7 @@
             actualEnd: band.end,
             servicesFR: band.servicesFR || "",
           };
+          if (colors.length > 1) ds.__stripeColors = colors;
 
           // originals (immutable baseline)
           ds.__originalBackgroundColor = ds.backgroundColor;
@@ -590,9 +606,274 @@
           frequencyRange: r["frequencyRange"] || "",
           service: r["services(EN)"] || "",
           servicesFR: r["services(FR)"] || "",
-          stripeHeight: parseInt(r["stripeHeight"], 10) || 60,
         };
       });
+    }
+
+    function buildPrintPoster(chartDefs) {
+      function element(name, attributes, text) {
+        var node = document.createElementNS("http://www.w3.org/2000/svg", name);
+        Object.keys(attributes || {}).forEach(function (key) {
+          node.setAttribute(key, attributes[key]);
+        });
+        if (text !== undefined) node.textContent = text;
+        return node;
+      }
+
+      var svg = element("svg", {
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 1600 1100",
+        role: "img",
+        "aria-labelledby": "freqPrintTitle",
+        "font-family": "Arial, sans-serif",
+      });
+      svg.appendChild(
+        element(
+          "title",
+          { id: "freqPrintTitle" },
+          "Canadian table of frequency allocations",
+        ),
+      );
+      svg.appendChild(
+        element("rect", { width: 1600, height: 1100, fill: "#fff" }),
+      );
+      var measure = document.createElement("canvas").getContext("2d");
+      var plotLeft = 14;
+      var plotWidth = 1380;
+      var barHeight = 76;
+      var legendLeft = 1420;
+
+      function textColor(hex) {
+        var rgb = parseInt(hex.slice(1), 16);
+        var brightness =
+          0.299 * ((rgb >> 16) & 255) +
+          0.587 * ((rgb >> 8) & 255) +
+          0.114 * (rgb & 255);
+        return brightness > 150 ? "#000" : "#fff";
+      }
+
+      function addServiceLabel(group, text, x, y, width, height, fill, primary) {
+        var rotated = width < Math.min(42, height);
+        var availableWidth = (rotated ? height : width) - 2;
+        var availableHeight = (rotated ? width : height) - 2;
+        if (availableWidth <= 0 || availableHeight <= 0) return;
+
+        measure.font = "10px Arial";
+        var lines = [""];
+        text.split(/\s+/).forEach(function (word) {
+          var last = lines.length - 1;
+          var candidate = lines[last] ? lines[last] + " " + word : word;
+          if (lines[last] && measure.measureText(candidate).width > availableWidth)
+            lines.push(word);
+          else lines[last] = candidate;
+        });
+        var maxWidth = Math.max.apply(
+          null,
+          lines.map(function (line) {
+            return measure.measureText(line).width;
+          }),
+        );
+        var fontSize =
+          10 *
+          Math.min(
+            1,
+            availableWidth / Math.max(1, maxWidth),
+            availableHeight / (lines.length * 12),
+          );
+        var label = element("text", {
+          transform:
+            "translate(" +
+            (x + width / 2) +
+            " " +
+            (y + height / 2) +
+            ")" +
+            (rotated ? " rotate(-90)" : ""),
+          fill: fill,
+          "font-size": fontSize,
+          "font-style": primary ? "normal" : "italic",
+          "text-anchor": "middle",
+        });
+        lines.forEach(function (line, i) {
+          label.appendChild(
+            element(
+              "tspan",
+              {
+                x: 0,
+                y:
+                  (i - (lines.length - 1) / 2) * fontSize * 1.2 +
+                  fontSize * 0.35,
+              },
+              line,
+            ),
+          );
+        });
+        group.appendChild(label);
+      }
+
+      chartDefs.forEach(function (def, index) {
+        var chart = chartInstances[index];
+        var y = 55 + index * 128;
+        var divisor = def.unit === "GHz" ? 1000000 : def.unit === "MHz" ? 1000 : 1;
+        function frequency(value) {
+          return Number((value / divisor).toPrecision(8)).toString();
+        }
+        function position(value) {
+          return plotLeft + ((value - def.min) / (def.max - def.min)) * plotWidth;
+        }
+        var heading = chart.canvas
+          .closest(".freq-chart-container")
+          .querySelector(".freq-chart-title")
+          .textContent.trim();
+        svg.appendChild(
+          element(
+            "text",
+            { x: plotLeft, y: y - 36, "font-size": 9, "font-weight": "bold" },
+            heading,
+          ),
+        );
+        var edges = new Set([def.min, def.max]);
+
+        chart.data.datasets.forEach(function (ds) {
+          var start = Math.max(def.min, ds.actualStart);
+          var end = Math.min(def.max, ds.actualEnd);
+          if (end <= start) return;
+          edges.add(start);
+          edges.add(end);
+          var x = position(start);
+          var width = position(end) - x;
+          var services = ds.parsedServices.length
+            ? ds.parsedServices
+            : [{ name: "Not allocated", isPrimary: false }];
+          var stripeHeight = barHeight / services.length;
+          var group = element("g");
+          group.appendChild(
+            element("title", {}, ds.frequencyRange + ": " + ds.service),
+          );
+          services.forEach(function (svc, i) {
+            var fill = ds.__disabledByServiceFilter
+              ? "#BDBDBD"
+              : getColorForService(svc.name);
+            var stripeY = y + i * stripeHeight;
+            group.appendChild(
+              element("rect", {
+                x: x,
+                y: stripeY,
+                width: width,
+                height: stripeHeight,
+                fill: fill,
+              }),
+            );
+            addServiceLabel(
+              group,
+              svc.name,
+              x,
+              stripeY,
+              width,
+              stripeHeight,
+              textColor(fill),
+              svc.isPrimary,
+            );
+          });
+          group.appendChild(
+            element("rect", {
+              x: x,
+              y: y,
+              width: width,
+              height: barHeight,
+              fill: "none",
+              stroke: "#000",
+              "stroke-width": 0.6,
+            }),
+          );
+          svg.appendChild(group);
+        });
+
+        Array.from(edges)
+          .sort(function (a, b) {
+            return a - b;
+          })
+          .forEach(function (edge) {
+            svg.appendChild(
+              element(
+                "text",
+                {
+                  transform:
+                    "translate(" + position(edge) + " " + (y - 3) + ") rotate(-90)",
+                  "font-size": 5,
+                },
+                frequency(edge),
+              ),
+            );
+          });
+        svg.appendChild(
+          element(
+            "text",
+            {
+              x: plotLeft + plotWidth / 2,
+              y: y + barHeight + 13,
+              "text-anchor": "middle",
+              "font-size": 7,
+            },
+            "Frequency (" + def.unit + ")",
+          ),
+        );
+      });
+
+      svg.appendChild(
+        element(
+          "text",
+          { x: legendLeft, y: 38, "font-size": 32, "font-weight": "bold" },
+          "Canada",
+        ),
+      );
+      svg.appendChild(
+        element(
+          "text",
+          { x: legendLeft, y: 64, "font-size": 13, "font-weight": "bold" },
+          "Frequency allocations",
+        ),
+      );
+      svg.appendChild(
+        element("line", {
+          x1: legendLeft,
+          y1: 74,
+          x2: 1586,
+          y2: 74,
+          stroke: "#a62a1e",
+          "stroke-width": 2,
+        }),
+      );
+      svg.appendChild(
+        element(
+          "text",
+          { x: legendLeft, y: 95, "font-size": 11, "font-weight": "bold" },
+          "Legend",
+        ),
+      );
+      serviceKeys.forEach(function (service, i) {
+        var y = 106 + i * 15;
+        svg.appendChild(
+          element("rect", {
+            x: legendLeft,
+            y: y,
+            width: 9,
+            height: 9,
+            fill: serviceChecked[service]
+              ? individualServiceColors[service]
+              : "#BDBDBD",
+            stroke: "#555",
+            "stroke-width": 0.3,
+          }),
+        );
+        svg.appendChild(
+          element(
+            "text",
+            { x: legendLeft + 13, y: y + 7, "font-size": 6.5 },
+            service,
+          ),
+        );
+      });
+      return svg;
     }
 
     function initCharts(allBands) {
@@ -650,6 +931,7 @@
 
         var chart = new Chart(canvas, {
           type: "horizontalBar",
+          plugins: [stripePlugin],
           data: {
             labels: [""],
             datasets: createDatasetsForRange(allBands, def.min, def.max),
@@ -681,6 +963,25 @@
       updateAllChartsForServiceFilters();
       updateToggleButtonLabel();
       updateSelectedCount();
+
+      var printBtn = document.getElementById("freqPrint");
+      var printArea = document.getElementById("freqPrintArea");
+      if (printBtn && printArea) {
+        printBtn.disabled = false;
+        printBtn.addEventListener("click", function () {
+          printArea.textContent = "";
+          printArea.appendChild(buildPrintPoster(chartDefs));
+          document.body.classList.add("freq-printing");
+          try {
+            window.print();
+          } finally {
+            document.body.classList.remove("freq-printing");
+          }
+        });
+        window.addEventListener("afterprint", function () {
+          document.body.classList.remove("freq-printing");
+        });
+      }
     }
 
     Promise.resolve(window.ctfaAllocationData)
